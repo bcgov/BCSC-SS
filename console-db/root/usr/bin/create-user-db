@@ -1,0 +1,104 @@
+#!/bin/bash
+
+
+# =============================================================================
+# Usage:
+# -----------------------------------------------------------------------------
+usage() {
+    cat << EOF
+$0
+
+Creates a database and a user with the given password.
+Grants all privileges on the database to the created user.
+
+Usage: $0 USER DATABASE PASSWORD
+EOF
+    exit 1
+}
+
+if [ "$#" -ne 3 ]; then
+    echo "Passed $# parameters. Expected 3."
+    usage
+fi
+
+password=$3
+user=$1
+db=$2
+
+_psql() {
+    PGOPTIONS='--client-min-messages=warning' psql -qtA --set ON_ERROR_STOP=1 "$@" 2>&1
+}
+
+create_db_query="create database $db;"
+read -r -d '' create_db_query_workers<<EOF
+select nodename, success, result from run_command_on_workers('$create_db_query');
+EOF
+read -r -d '' create_user_query<<EOF
+create user $user with encrypted password '$password';
+revoke all on database $db from public;
+revoke all on database postgres from $user;
+grant all on database $db to $user;
+alter database $db owner to $user;
+EOF
+read -r -d '' create_user_query_workers<<EOF
+select nodename, success, result from run_command_on_workers('${create_user_query//\'/\'\'}');
+EOF
+
+read -ra worker_nodes<<<"$(_psql -c 'select node_name from master_get_active_worker_nodes();')"
+
+# Create DB on the coordinator
+coordinator_out=$(_psql -c "$create_db_query")
+if [ "$coordinator_out" == "ERROR:  database \"$db\" already exists" ]; then
+    echo "Database \"$db\" already exists on coordinator node"
+elif [[ $coordinator_out == ERROR* ]]; then
+    echo "$coordinator_out"
+    exit 1
+fi
+
+# Create DB on the workers
+mapfile -t create_db_workers_out<<<"$(_psql <<< "$create_db_query_workers")"
+for worker_out in "${create_db_workers_out[@]}"
+do
+    IFS='|' read -r -a worker_out_fields <<< "$worker_out"
+    if [ "${worker_out_fields[1]}" == "f" ]; then
+        if [ "${worker_out_fields[2]}" == "ERROR:  database \"$db\" already exists" ]; then
+            echo "Database \"$db\" already exists on worker node ${worker_out_fields[0]}"
+        else
+            echo "Error on worker ${worker_out_fields[0]}: ${worker_out_fields[2]}"
+            exit 1
+        fi
+    fi
+done
+
+coordinator_out=$(_psql <<< "$create_user_query")
+if [ "$coordinator_out" == "ERROR:  role \"$user\" already exists" ]; then
+    echo "User \"$user\" already exists on coordinator node"
+elif [[ $coordinator_out == ERROR* ]]; then
+    echo "$coordinator_out"
+    exit 1
+fi
+
+# Create user on the workers
+mapfile -t create_db_workers_out <<< "$(_psql <<< "$create_user_query_workers")"
+for worker_out in "${create_db_workers_out[@]}"
+do
+    IFS='|' read -ra worker_out_fields <<< "$worker_out"
+    if [ "${worker_out_fields[1]}" == "f" ]; then
+        if [ "${worker_out_fields[2]}" == "ERROR:  role \"$user\" already exists" ]; then
+            echo "User \"$user\" already exists on worker node ${worker_out_fields[0]}"
+        else
+            echo "Error on worker ${worker_out_fields[0]}: ${worker_out_fields[2]}"
+            exit 1
+        fi
+    fi
+done
+
+_psql -d "$db" -c "create extension if not exists citus;"
+
+# Register the workers in the newly created DB
+for worker_node in "${worker_nodes[@]}"
+do
+ _psql -d "$db" -c "select master_add_node('$worker_node', 5432);" > /dev/null
+done
+
+exit 0

@@ -1,0 +1,45 @@
+#!/bin/bash -e
+#
+# S2I assemble script for the 'cas-ggircs-postgres' image.
+# The 'assemble' script builds your application source so that it is ready to run.
+#
+# For more information refer to the documentation:
+#	https://github.com/openshift/source-to-image/blob/master/docs/builder_image.md
+#
+
+# If the 'cas-ggircs-postgres' assemble script is executed with the '-h' flag, print the usage.
+if [[ "$1" == "-h" ]]; then
+	exec /usr/libexec/s2i/usage
+fi
+
+# Restore artifacts from the previous build (if they exist).
+#
+if [ "$(ls /tmp/artifacts/ 2>/dev/null)" ]; then
+  echo "---> Restoring build artifacts..."
+  mv /tmp/artifacts/. ./
+fi
+
+echo "---> Installing application source..."
+cp -Rf /tmp/src/. ./
+
+echo "---> Building application from source..."
+# TODO: Add build steps for your application, eg npm install, bundle install, pip install, etc.
+# Fix source directory permissions
+/usr/libexec/fix-permissions --read-only ./
+
+# git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.2
+# echo -e '\n. $HOME/.asdf/asdf.sh' >> ~/.bashrc
+# echo -e '\n. $HOME/.asdf/completions/asdf.bash' >> ~/.bashrc
+# source ~/.bashrc
+# asdf plugin-add postgres https://github.com/smashedtoatoms/asdf-postgres.git
+# export POSTGRES_EXTRA_CONFIGURE_OPTIONS="--without-readline"
+# asdf install postgres 11.4
+
+# curl https://ftp.gnu.org/gnu/readline/readline-7.0.tar.gz | tar xz
+# pushd readline-7.0
+# CC=cc ./configure
+# make
+# make install
+# ldconfig
+# popd
+# rm -r readline-7.0
