@@ -1,4 +1,4 @@
-# BCSC-BPS UI
+# BCSC-SS UI
 
 ## Project setup
 
