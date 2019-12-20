@@ -3,7 +3,7 @@
 
 # Application Name
 
-BC Service Card Console API
+BC Service Card Self Service API
 
 ## Technology Stack Used
 * Python, Flask
