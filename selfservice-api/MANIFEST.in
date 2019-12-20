@@ -1,0 +1,5 @@
+include requirements.txt
+include gunicorn_config.py
+include src/*/logging.conf
+include LICENSE
+include README.md
