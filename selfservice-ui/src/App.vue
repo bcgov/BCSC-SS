@@ -1,7 +1,8 @@
 <template>
   <v-app>
+    <Header />
     <v-content>
-      <v-container fluid>
+      <v-container fluid class="main-content">
         <router-view />
       </v-container>
     </v-content>
@@ -10,8 +11,12 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-
-@Component({})
+import Header from '@/components/Header/Header.vue';
+@Component({
+  components: {
+    Header
+  }
+})
 export default class App extends Vue {}
 </script>
 
@@ -21,6 +26,9 @@ export default class App extends Vue {}
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  // margin-top: 60px;
+}
+.main-content {
   margin-top: 60px;
 }
 </style>
