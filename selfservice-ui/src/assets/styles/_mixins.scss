@@ -1,0 +1,43 @@
+@import './breakpoints';
+
+@import '~vuetify/src/styles/settings/_variables';
+
+// small to large handset	< 600px
+@mixin xs {
+  @media #{map-get($display-breakpoints, 'xs-and-up')} {
+    @content;
+  }
+}
+// small to medium tablet	600px > < 960px
+@mixin sm {
+  @media #{map-get($display-breakpoints, 'sm-and-up')} {
+    @content;
+  }
+}
+// large tablet to laptop	960px > < 1264px*
+@mixin md {
+  @media #{map-get($display-breakpoints, 'md-and-up')} {
+    @content;
+  }
+}
+
+// desktop	1264px* > < 1904px
+@mixin lg {
+  @media #{map-get($display-breakpoints, 'lg-and-up')} {
+    @content;
+  }
+}
+
+// 4k and ultra-wides	> 1904px
+@mixin xl {
+  @media #{map-get($display-breakpoints, 'xl-and-up')} {
+    @content;
+  }
+}
+
+// Custom devices
+@mixin rwd($screen) {
+  @media (min-width: $screen+'px') {
+    @content;
+  }
+}
