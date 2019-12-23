@@ -2,7 +2,6 @@
   <div class="hello">
     <h1>{{ msg }} <v-icon color="green">mdi-face</v-icon></h1>
     <h2>{{ devmsg }}<v-icon color="red">mdi-heart</v-icon></h2>
-    <v-btn color="primary">Primary</v-btn>
   </div>
 </template>
 
