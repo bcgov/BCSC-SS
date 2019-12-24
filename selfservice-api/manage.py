@@ -17,6 +17,7 @@ import logging
 
 from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager  # class for handling a set of commands
+
 # models included so that migrate can build the database migrations
 from selfservice_api import models  # noqa: F401 # pylint: disable=unused-import
 from selfservice_api import create_app

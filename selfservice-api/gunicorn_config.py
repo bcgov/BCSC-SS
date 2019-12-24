@@ -11,13 +11,14 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+# pylint: skip-file
 """The configuration for gunicorn, which picks up the runtime options from environment variables."""
 
 import os
 
 
-workers = int(os.environ.get('GUNICORN_PROCESSES', '1'))  # pylint: disable=invalid-name
-threads = int(os.environ.get('GUNICORN_THREADS', '1'))  # pylint: disable=invalid-name
+workers = int(os.environ.get('GUNICORN_PROCESSES', '1'))
+threads = int(os.environ.get('GUNICORN_THREADS', '1'))
 
-forwarded_allow_ips = '*'  # pylint: disable=invalid-name
-secure_scheme_headers = {'X-Forwarded-Proto': 'https'}  # pylint: disable=invalid-name
+forwarded_allow_ips = '*'
+secure_scheme_headers = {'X-Forwarded-Proto': 'https'}
