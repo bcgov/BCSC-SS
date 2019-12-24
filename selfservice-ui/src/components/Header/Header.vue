@@ -8,7 +8,7 @@
       <img
         src="@/assets/images/bc-logo-horizontal.svg"
         alt="Go to the Government of British Columbia website"
-        class="img"
+        class="img side-left-margin"
       />
       <!-- </a> -->
       <!-- <h1 class="text">BC SERVICE CARD</h1> -->
@@ -18,7 +18,12 @@
       <v-spacer></v-spacer>
       <v-spacer></v-spacer>
 
-      <v-btn text to="/" link dark class="mr-2 d-none d-sm-flex login-btn"
+      <v-btn
+        text
+        to="/"
+        link
+        dark
+        class="d-none d-sm-flex login-btn side-right-margin"
         >Login</v-btn
       >
       <v-btn text to="/" link dark class="mr-2 d-sm-none" @click="toggleMenu">
@@ -70,17 +75,11 @@ export default class Header extends Vue {
   border-bottom: 2px solid $BCgovGold5;
   border-color: $BCgovGold5 !important;
   color: $BCgovWhite;
-  // display: flex;
-  //   height: 65px;
   top: 0px;
-  //   position: fixed;
   width: 100%;
 
   .img {
     width: 175px;
-    @include sm {
-      margin: 0 65px 0 65px;
-    }
   }
 }
 

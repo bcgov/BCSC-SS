@@ -271,3 +271,15 @@ ul.list {
 .vue-affix {
   width: 282px;
 }
+
+.side-left-margin {
+  @include sm {
+    margin-left: 64px;
+  }
+}
+
+.side-right-margin {
+  @include sm {
+    margin-right: 64px;
+  }
+}
