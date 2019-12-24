@@ -1,4 +1,4 @@
-/** * Header of app */
+/** * Footer of app */
 
 <template>
   <v-footer height="auto">
