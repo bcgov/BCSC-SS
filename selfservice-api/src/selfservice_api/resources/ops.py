@@ -13,8 +13,8 @@
 # limitations under the License.
 """Endpoints to check and manage the health of the service."""
 from flask_restplus import Namespace, Resource
-from sqlalchemy import exc, text  # noqa: I001
-# noqa: I004
+from sqlalchemy import exc, text
+
 from selfservice_api.models import db
 
 
@@ -38,7 +38,6 @@ class Healthz(Resource):
         except exc.SQLAlchemyError:
             return {'message': 'api is down'}, 500
 
-        # made it here, so all checks passed
         return {'message': 'api is healthy'}, 200
 
 
@@ -49,5 +48,4 @@ class Readyz(Resource):
     @staticmethod
     def get():
         """Return a JSON object that identifies if the service is setupAnd ready to work."""
-        # TODO: add a poll to the DB when called
         return {'message': 'api is ready'}, 200

@@ -18,10 +18,7 @@ from os import path
 
 
 def setup_logging(conf):
-    """Create the services logger.
-
-    TODO should be reworked to load in the proper loggers and remove others.
-    """
+    """Create the services logger."""
     if conf and path.isfile(conf):
         logging.config.fileConfig(conf)
         print('Configure logging, from conf:{}'.format(conf), file=sys.stdout)

@@ -18,6 +18,7 @@ This module is the API for the BCSC Self Service.
 import os
 
 from flask import Flask
+
 from selfservice_api import config, models
 from selfservice_api.models import db, ma
 from selfservice_api.resources import API
@@ -26,7 +27,8 @@ from selfservice_api.utils.logging import setup_logging
 from selfservice_api.utils.run_version import get_run_version
 
 
-setup_logging(os.path.join(os.path.abspath(os.path.dirname(__file__)), 'logging.conf'))  # important to do this first # pylint: disable=line-too-long # noqa: E501
+setup_logging(os.path.join(os.path.abspath(
+    os.path.dirname(__file__)), 'logging.conf'))  # important to do this first
 
 
 def create_app(run_mode=os.getenv('FLASK_ENV', 'production')):

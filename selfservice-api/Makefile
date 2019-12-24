@@ -1,3 +1,4 @@
+.PHONY: license
 .PHONY: setup build-req clean clean-build clean-pyc clean-test
 
 .PHONY: docker-setup network build start qa style safety test test-travis flake8 \
@@ -98,6 +99,10 @@ pylint:
 ## run flake8 on the package and tests
 flake8:
 	flake8 src/$(project_name) tests
+
+## Verify source code license headers.
+license:
+	./scripts/verify_license_headers.sh src/$(project_name) tests
 
 
 #################################################################################
