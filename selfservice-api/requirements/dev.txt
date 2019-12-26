@@ -2,7 +2,6 @@
 -r prod.txt
 
 # Testing
-coverage
 pytest
 pytest-mock
 requests
