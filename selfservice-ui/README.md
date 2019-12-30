@@ -35,3 +35,9 @@ npm run lint
 ```
 npm run test:unit
 ```
+
+### Run style guidelines
+
+```
+npm run styleguide
+```
