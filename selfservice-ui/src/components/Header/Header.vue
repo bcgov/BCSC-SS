@@ -3,7 +3,7 @@
 <template>
   <div>
     <!-- <v-app-bar app> -->
-    <v-app-bar app color="" class="header" light="">
+    <v-app-bar app color class="header" light>
       <!-- <div class="banner"> -->
       <img
         src="@/assets/images/bc-logo-horizontal.svg"
@@ -18,23 +18,12 @@
       <v-spacer></v-spacer>
       <v-spacer></v-spacer>
 
-      <v-btn
-        text
-        to="/"
-        link
-        dark
-        class="d-none d-sm-flex login-btn side-right-margin"
-        >Login</v-btn
-      >
+      <v-btn text to="/" link dark class="d-none d-sm-flex login-btn side-right-margin">Login</v-btn>
       <v-btn text to="/" link dark class="mr-2 d-sm-none" @click="toggleMenu">
         <v-icon>mdi-menu</v-icon>
       </v-btn>
     </v-app-bar>
-    <nav
-      class="navigation-main"
-      :class="{ 'active-menu': showMenu }"
-      id="navbar"
-    >
+    <nav class="navigation-main" :class="{ 'active-menu': showMenu }" id="navbar">
       <ul>
         <li class="d-sm-none">
           <v-btn text to="/" link dark class="mr-2 login-btn">Login</v-btn>
