@@ -1,0 +1,98 @@
+---
+kind: Template
+apiVersion: v1
+metadata:
+  name: selfservicedb-build-template
+  creationTimestamp:
+objects:
+- kind: ImageStream
+  apiVersion: v1
+  metadata:
+    name: "${DB_NAME}"
+- kind: BuildConfig
+  apiVersion: v1
+  metadata:
+    name: "${DB_NAME}-build"
+    labels:
+      app: "${DB_NAME}-build"
+  spec:
+    triggers:
+    - type: ImageChange
+    - type: ConfigChange
+    runPolicy: Serial
+    source:
+      type: Git
+      git:
+        uri: "${GIT_REPO_URL}"
+        ref: "${GIT_REF}"
+      contextDir: "${SOURCE_CONTEXT_DIR}"
+      sourceSecret:
+        name: github-credentials
+    strategy:
+      type: Source
+      sourceStrategy:
+        from:
+          kind: "${SOURCE_IMAGE_KIND}"
+          name: "${SOURCE_IMAGE_NAME}:${SOURCE_IMAGE_TAG}"
+    output:
+      to:
+        kind: ImageStreamTag
+        name: "${DB_NAME}:${OUTPUT_IMAGE_TAG}"
+parameters:
+- name: DB_NAME
+  displayName: Name
+  description: The name assigned to all of the resources defined in this template.
+  required: true
+  value: selfservice-db
+- name: GIT_REPO_URL
+  displayName: Git Repo URL
+  description: The URL to your GIT repo.
+  required: true
+  value: https://github.com/bcgov/BCSC-SS.git
+- name: GIT_REF
+  displayName: Git Reference
+  description: The git reference or branch.
+  required: true
+  value: master
+- name: SOURCE_CONTEXT_DIR
+  displayName: Source Context Directory
+  description: The source context directory.
+  required: false
+  value: "/selfservice-db"
+- name: SOURCE_IMAGE_KIND_DOCKER
+  displayName: Source Image Kind
+  description: The 'kind' (type) of the  source image; typically ImageStreamTag, or
+    DockerImage.
+  required: true
+  value: ImageStreamTag
+- name: SOURCE_IMAGE_KIND_SOURCE
+  displayName: Source Image Kind
+  description: The 'kind' (type) of the  source image; typically ImageStreamTag, or
+    DockerImage.
+  required: true
+  value: DockerImage
+- name: SOURCE_IMAGE_NAME_SOURCE
+  displayName: Source Image Name
+  required: true
+  description: The name of the source image.
+  value: registry.access.redhat.com/rhscl/postgresql-10-rhel7
+- name: SOURCE_IMAGE_NAME_DOCKER
+  displayName: Source Image Name
+  description: The name of the source image.
+  required: true
+  value: selfservice-db
+- name: SOURCE_IMAGE_TAG
+  displayName: Source Image Tag
+  description: The tag of the source image.
+  required: true
+  value: dev
+- name: DOCKER_FILE_PATH
+  displayName: Docker File Path
+  description: The path to the docker file defining the build.
+  required: false
+  value: "./"
+- name: OUTPUT_IMAGE_TAG
+  displayName: Output Image Tag
+  description: The tag given to the built image.
+  required: true
+  value: dev

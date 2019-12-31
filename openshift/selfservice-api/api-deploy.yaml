@@ -1,0 +1,372 @@
+---
+kind: Template
+apiVersion: v1
+metadata:
+  annotations:
+    description: Deployment template for a notify api service.
+    tags: "${API_NAME}"
+  name: "${API_NAME}-deploy"
+objects:
+- kind: DeploymentConfig
+  apiVersion: v1
+  metadata:
+    name: "${API_NAME}"
+    labels:
+      app: "${API_NAME}"
+      app-group: "${APP_GROUP}"
+      template: "${API_NAME}-deploy"
+  spec:
+    strategy:
+      type: Rolling
+      rollingParams:
+        updatePeriodSeconds: 1
+        intervalSeconds: 1
+        timeoutSeconds: 600
+        maxUnavailable: 25%
+        maxSurge: 25%
+    triggers:
+    - type: ImageChange
+      imageChangeParams:
+        automatic: true
+        containerNames:
+        - "${API_NAME}"
+        from:
+          kind: ImageStreamTag
+          namespace: "${IMAGE_NAMESPACE}"
+          name: "${API_NAME}:${TAG_NAME}"
+    - type: ConfigChange
+    replicas: 1
+    selector:
+      app: "${API_NAME}"
+      deploymentconfig: "${API_NAME}"
+    template:
+      metadata:
+        labels:
+          app: "${API_NAME}"
+          app-group: "${APP_GROUP}"
+          deploymentconfig: "${API_NAME}"
+          template: "${API_NAME}-deploy"
+      spec:
+        containers:
+        - name: "${API_NAME}"
+          image: "${API_NAME}"
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 5000
+            protocol: TCP
+          envFrom:
+          - configMapRef:
+              name: ${API_NAME}-${TAG_NAME}-config
+          env:
+          - name: DATABASE_USERNAME
+            valueFrom:
+              configMapKeyRef:
+                name: "${DB_NAME}-${TAG_NAME}-config"
+                key: DATABASE_USER
+          - name: DATABASE_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: "${DB_NAME}-${TAG_NAME}-secret"
+                key: DATABASE_PASSWORD
+          - name: DATABASE_NAME
+            valueFrom:
+              configMapKeyRef:
+                name: "${DB_NAME}-${TAG_NAME}-config"
+                key: DATABASE_NAME
+          - name: DATABASE_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: "${DB_NAME}-${TAG_NAME}-config"
+                key: DATABASE_HOST
+          - name: DATABASE_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: "${DB_NAME}-${TAG_NAME}-config"
+                key: DATABASE_PORT
+          - name: DATABASE_TEST_USERNAME
+            valueFrom:
+              configMapKeyRef:
+                name: "${DB_NAME}-${TAG_NAME}-config"
+                key: DATABASE_TEST_USER
+          - name: DATABASE_TEST_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: "${DB_NAME}-${TAG_NAME}-secret"
+                key: DATABASE_TEST_PASSWORD
+          - name: DATABASE_TEST_NAME
+            valueFrom:
+              configMapKeyRef:
+                name: "${DB_NAME}-${TAG_NAME}-config"
+                key: DATABASE_TEST_NAME
+          - name: DATABASE_TEST_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: "${DB_NAME}-${TAG_NAME}-config"
+                key: DATABASE_TEST_HOST
+          - name: DATABASE_TEST_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: "${DB_NAME}-${TAG_NAME}-config"
+                key: DATABASE_TEST_PORT
+          - name: KEYCLOAK_URL
+            valueFrom:
+              configMapKeyRef:
+                name: "${API_NAME}-${TAG_NAME}-config"
+                key: KEYCLOAK_URL
+          - name: KEYCLOAK_REALM
+            valueFrom:
+              configMapKeyRef:
+                name: "${API_NAME}-${TAG_NAME}-config"
+                key: KEYCLOAK_REALM
+          - name: KEYCLOAK_CLIENT
+            valueFrom:
+              configMapKeyRef:
+                name: "${API_NAME}-${TAG_NAME}-config"
+                key: KEYCLOAK_CLIENT
+          - name: KEYCLOAK_CLIENT_SECRET
+            valueFrom:
+              configMapKeyRef:
+                name: "${API_NAME}-${TAG_NAME}-config"
+                key: KEYCLOAK_CLIENT_SECRET
+          - name: KEYCLOAK_ALGORITHMS
+            valueFrom:
+              configMapKeyRef:
+                name: "${API_NAME}-${TAG_NAME}-config"
+                key: KEYCLOAK_ALGORITHMS
+          - name: SENDGRID_API_KEY
+            valueFrom:
+              configMapKeyRef:
+                name: "${API_NAME}-${TAG_NAME}-config"
+                key: SENDGRID_API_KEY
+          - name: JWT_OIDC_WELL_KNOWN_CONFIG
+            valueFrom:
+              configMapKeyRef:
+                name: "${API_NAME}-${TAG_NAME}-config"
+                key: JWT_OIDC_WELL_KNOWN_CONFIG
+          - name: JWT_OIDC_ISSUER
+            valueFrom:
+              configMapKeyRef:
+                name: "${API_NAME}-${TAG_NAME}-config"
+                key: JWT_OIDC_ISSUER
+          - name: JWT_OIDC_AUDIENCE
+            valueFrom:
+              configMapKeyRef:
+                name: "${API_NAME}-${TAG_NAME}-config"
+                key: KEYCLOAK_CLIENT
+          - name: JWT_OIDC_CLIENT_SECRET
+            valueFrom:
+              configMapKeyRef:
+                name: "${API_NAME}-${TAG_NAME}-config"
+                key: KEYCLOAK_CLIENT_SECRET
+          - name: JWT_OIDC_ALGORITHMS
+            valueFrom:
+              configMapKeyRef:
+                name: "${API_NAME}-${TAG_NAME}-config"
+                key: KEYCLOAK_ALGORITHMS
+          - name: DATABASE_URL
+            valueFrom:
+              configMapKeyRef:
+                name: "${DB_NAME}-${TAG_NAME}-config"
+                key: DATABASE_URL
+          resources:
+            requests:
+              cpu: "${CPU_REQUEST}"
+              memory: "${MEMORY_REQUEST}"
+            limits:
+              cpu: "${CPU_LIMIT}"
+              memory: "${MEMORY_LIMIT}"
+          livenessProbe:
+            httpGet:
+              path: "/"
+              port: 5000
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: "/"
+              port: 5000
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          terminationMessagePath: "/dev/termination-log"
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+        restartPolicy: Always
+        terminationGracePeriodSeconds: 30
+        dnsPolicy: ClusterFirst
+        securityContext: {}
+        schedulerName: default-scheduler
+- kind: Service
+  apiVersion: v1
+  metadata:
+    name: "${API_NAME}"
+    creationTimestamp: 
+    labels:
+      app: "${API_NAME}"
+      app-group: "${APP_GROUP}"
+      template: "${API_NAME}-deploy"
+  spec:
+    ports:
+    - name: 5000-tcp
+      protocol: TCP
+      port: 5000
+      targetPort: 5000
+    selector:
+      deploymentconfig: "${API_NAME}"
+    type: ClusterIP
+    sessionAffinity: None
+  status:
+    loadBalancer: {}
+- kind: Route
+  apiVersion: v1
+  metadata:
+    name: "${API_NAME}"
+    labels:
+      app: "${API_NAME}"
+      app-group: "${APP_GROUP}"
+      template: "${API_NAME}-deploy"
+  spec:
+    host: "${API_NAME}-${TAG_NAME}.apps.okd.aottech.com"
+    to:
+      kind: Service
+      name: "${API_NAME}"
+      weight: 100
+    port:
+      targetPort: 5000-tcp
+    # tls:
+    #   termination: edge
+    wildcardPolicy: None
+  status:
+    ingress:
+    - host: "${API_NAME}-${TAG_NAME}.apps.okd.aottech.com"
+      routerName: router
+      conditions:
+      - type: Admitted
+        status: 'True'
+      wildcardPolicy: None
+- kind: ConfigMap
+  apiVersion: v1
+  metadata:
+    name: "${API_NAME}-${TAG_NAME}-config"
+    labels:
+      app: "${API_NAME}"
+      app-group: "${APP_GROUP}"
+      template: "${API_NAME}-deploy"
+  data:
+    KEYCLOAK_URL: "${KEYCLOAKURL}"
+    KEYCLOAK_REALM: "${KEYCLOAKREALM}"
+    KEYCLOAK_CLIENT: "${KEYCLOAKCLIENT}"
+    KEYCLOAK_CLIENT_SECRET: "${KEYCLOAKCLIENTSECRET}"
+    KEYCLOAK_ALGORITHMS: "${KEYCLOAKALGORITHMS}"
+    SENDGRID_API_KEY: "${SENDGRIDAPIKEY}"
+    JWT_OIDC_WELL_KNOWN_CONFIG: "${JWTOIDCWELLKNOWNCONFIG}"
+    JWT_OIDC_ISSUER: "${JWTOIDCISSUER}"
+    JWT_OIDC_AUDIENCE: "${KEYCLOAKCLIENT}"
+    JWT_OIDC_CLIENT_SECRET: "${KEYCLOAKCLIENTSECRET}"
+    JWT_OIDC_ALGORITHMS: "${KEYCLOAKALGORITHMS}"
+    API_URL: "http://${API_NAME}-${TAG_NAME}.apps.okd.aottech.com/"
+parameters:
+- name: API_NAME
+  displayName: Name
+  description: The name assigned to all of the OpenShift resources associated to the
+    server instance.
+  required: true
+  value: nodevue-api
+- name: APP_GROUP
+  displayName: App Group
+  description: The name assigned to all of the deployments in this project.
+  required: true
+  value: nodevue
+- name: IMAGE_NAMESPACE
+  displayName: Image Namespace
+  required: true
+  description: The namespace of the OpenShift project containing the imagestream for
+    the application.
+  value: shared-service
+- name: TAG_NAME
+  displayName: Environment TAG name
+  description: The TAG name for this environment, e.g., dev, test, prod
+  required: true
+  value: dev
+- name: DB_NAME
+  displayName: Database App Name
+  description: A valid database app name used by the service.
+  required: true
+  value: nodevue-db
+- name: KEYCLOAK_NAME
+  displayName: Name
+  description: The name assigned to all of the OpenShift resources associated to the
+    server instance.
+  required: true
+  value: keycloak
+- name: CPU_REQUEST
+  displayName: Resources CPU Request
+  description: The resources CPU request (in cores) for this build.
+  required: true
+  value: 100m
+- name: CPU_LIMIT
+  displayName: Resources CPU Limit
+  description: The resources CPU limit (in cores) for this build.
+  required: true
+  value: 750m
+- name: MEMORY_REQUEST
+  displayName: Resources Memory Request
+  description: The resources Memory request (in Mi, Gi, etc) for this build.
+  required: true
+  value: 100Mi
+- name: MEMORY_LIMIT
+  displayName: Resources Memory Limit
+  description: The resources Memory limit (in Mi, Gi, etc) for this build.
+  required: true
+  value: 2Gi
+- name: REPLICAS
+  displayName: The number of replicas to run
+  description: The number of replicas to run in this environment.
+  required: true
+  value: '1'
+- name: KEYCLOAKURL
+  displayName: keycloak Url
+  description: keycloak Url.
+  required: true
+  value: 'http://keycloak.aottech.com:8080/auth'
+- name: KEYCLOAKREALM
+  displayName: keycloak Url
+  description: keycloak Url.
+  required: true
+  value: 'codechallenge'
+- name: KEYCLOAKCLIENT
+  displayName: keycloak Url
+  description: keycloak Url.
+  required: true
+  value: 'client_codechallenge'
+- name: KEYCLOAKCLIENTSECRET
+  displayName: keycloak Url
+  description: keycloak Url.
+  required: true
+  value: '5a0c2bed-88d0-4320-b6f2-aba399a5d235'
+- name: KEYCLOAKALGORITHMS
+  displayName: keycloak Url
+  description: keycloak Url.
+  required: true
+  value: 'RS256'
+- name: SENDGRIDAPIKEY
+  displayName: keycloak Url
+  description: keycloak Url.
+  required: true
+  value: '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'
+- name: JWTOIDCWELLKNOWNCONFIG
+  displayName: keycloak Url
+  description: keycloak Url.
+  required: true
+  value: 'http://keycloak.aottech.com:8080/auth/realms/codechallenge/.well-known/openid-configuration'
+- name: JWTOIDCISSUER
+  displayName: keycloak Url
+  description: keycloak Url.
+  required: true
+  value: 'http://keycloak.aottech.com:8080/auth/realms/codechallenge'
+
