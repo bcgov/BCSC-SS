@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header.vue renders props when passed 1`] = `
+<div>
+  <v-app-bar-stub
+    app="true"
+    class="header"
+    color=""
+    extensionheight="48"
+    light="true"
+    src=""
+    tag="header"
+    tile="true"
+    value="true"
+  >
+    <img
+      alt="Go to the Government of British Columbia website"
+      class="img side-left-margin"
+      src="@/assets/images/bc-logo-horizontal.svg"
+    />
+     
+    <v-toolbar-title-stub>
+      BCSC SELF SERVICE
+    </v-toolbar-title-stub>
+     
+    <v-spacer-stub />
+     
+    <v-spacer-stub />
+     
+    <v-btn-stub
+      activeclass=""
+      class="d-none d-sm-flex login-btn side-right-margin"
+      dark="true"
+      link="true"
+      tag="button"
+      text="true"
+      to="/"
+      type="button"
+    >
+      Login
+    </v-btn-stub>
+     
+    <v-btn-stub
+      activeclass=""
+      class="mr-2 d-sm-none"
+      dark="true"
+      link="true"
+      tag="button"
+      text="true"
+      to="/"
+      type="button"
+    >
+      <v-icon-stub>
+        mdi-menu
+      </v-icon-stub>
+    </v-btn-stub>
+  </v-app-bar-stub>
+   
+  <nav
+    class="navigation-main"
+    id="navbar"
+  >
+    <ul>
+      <li
+        class="d-sm-none"
+      >
+        <v-btn-stub
+          activeclass=""
+          class="mr-2 login-btn"
+          dark="true"
+          link="true"
+          tag="button"
+          text="true"
+          to="/"
+          type="button"
+        >
+          Login
+        </v-btn-stub>
+      </li>
+       
+      <li>
+        <router-link-stub
+          event="click"
+          tag="a"
+          to="/"
+        >
+          Home
+        </router-link-stub>
+      </li>
+       
+      <li>
+        <router-link-stub
+          event="click"
+          tag="a"
+          to="about"
+        >
+          About
+        </router-link-stub>
+      </li>
+    </ul>
+  </nav>
+</div>
+`;

@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home.vue renders props when passed 1`] = `
+<div
+  class="home"
+>
+  <helloworld-stub
+    devmsg="Hello Developers"
+    msg="Hello world"
+  />
+</div>
+`;
