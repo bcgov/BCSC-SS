@@ -18,12 +18,23 @@
       <v-spacer></v-spacer>
       <v-spacer></v-spacer>
 
-      <v-btn text to="/" link dark class="d-none d-sm-flex login-btn side-right-margin">Login</v-btn>
+      <v-btn
+        text
+        to="/"
+        link
+        dark
+        class="d-none d-sm-flex login-btn side-right-margin"
+        >Login</v-btn
+      >
       <v-btn text to="/" link dark class="mr-2 d-sm-none" @click="toggleMenu">
         <v-icon>mdi-menu</v-icon>
       </v-btn>
     </v-app-bar>
-    <nav class="navigation-main" :class="{ 'active-menu': showMenu }" id="navbar">
+    <nav
+      class="navigation-main"
+      :class="{ 'active-menu': showMenu }"
+      id="navbar"
+    >
       <ul>
         <li class="d-sm-none">
           <v-btn text to="/" link dark class="mr-2 login-btn">Login</v-btn>
@@ -98,7 +109,7 @@ export default class Header extends Vue {
     display: flex;
     flex-direction: column;
     margin: 0;
-    color: #fff;
+    color: $BCgovWhite;
     list-style: none;
     @include sm {
       flex-direction: row;
@@ -110,7 +121,7 @@ export default class Header extends Vue {
         display: flex;
         font-size: 0.813em;
         font-weight: normal; /* 400 */
-        color: #fff;
+        color: $BCgovWhite;
         padding: 0 15px 0 15px;
         text-decoration: none;
 

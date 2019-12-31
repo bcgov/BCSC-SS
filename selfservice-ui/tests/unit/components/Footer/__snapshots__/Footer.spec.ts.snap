@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer.vue renders props when passed 1`] = `
+<v-footer-stub
+  height="auto"
+  tag="div"
+  tile="true"
+>
+  <v-layout-stub
+    class="side-left-margin"
+    justify-center=""
+    row=""
+    tag="div"
+    wrap=""
+  >
+    <v-flex-stub
+      dark=""
+      tag="div"
+      text-xs-center=""
+      white--text=""
+      xs12=""
+    >
+      <v-row-stub
+        justify="left"
+        nogutters="true"
+        tag="div"
+      >
+        <v-btn-stub
+          activeclass=""
+          color="white"
+          tag="button"
+          text="true"
+          type="button"
+        >
+          
+          Home
+        
+        </v-btn-stub>
+         
+        <v-btn-stub
+          activeclass=""
+          color="white"
+          tag="button"
+          text="true"
+          type="button"
+        >
+          
+          Disclaimer
+        
+        </v-btn-stub>
+         
+        <v-btn-stub
+          activeclass=""
+          color="white"
+          tag="button"
+          text="true"
+          type="button"
+        >
+          
+          Privacy
+        
+        </v-btn-stub>
+         
+        <v-btn-stub
+          activeclass=""
+          color="white"
+          tag="button"
+          text="true"
+          type="button"
+        >
+          
+          Accessibility
+        
+        </v-btn-stub>
+         
+        <v-btn-stub
+          activeclass=""
+          color="white"
+          tag="button"
+          text="true"
+          type="button"
+        >
+          
+          Copyright
+        
+        </v-btn-stub>
+         
+        <v-btn-stub
+          activeclass=""
+          color="white"
+          tag="button"
+          text="true"
+          type="button"
+        >
+          
+          Contact Us
+        
+        </v-btn-stub>
+      </v-row-stub>
+    </v-flex-stub>
+  </v-layout-stub>
+</v-footer-stub>
+`;
