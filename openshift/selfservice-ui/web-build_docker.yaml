@@ -119,23 +119,3 @@ parameters:
   description: The tag given to the built image.
   required: true
   value: dev
-- name: KEYCLOAKURL
-  displayName: keycloak Url
-  description: keycloak Url.
-  required: true
-  value: ''
-- name: KEYCLOAKREALM
-  displayName: keycloak Url
-  description: keycloak Url.
-  required: true
-  value: 'bcselfservice'
-- name: KEYCLOAKCLIENT
-  displayName: keycloak Url
-  description: keycloak Url.
-  required: true
-  value: 'client_bcselfservice'
-- name: KEYCLOAKCLIENTSECRET
-  displayName: keycloak Url
-  description: keycloak Url.
-  required: true
-  value: ''
