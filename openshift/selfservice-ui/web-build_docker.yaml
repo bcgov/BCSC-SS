@@ -34,15 +34,30 @@ objects:
         dockerfilePath: "${DOCKER_FILE_PATH}"
         buildArgs:
         - name: "API_BASE_URL"
-          value: "http://${API_NAME}-${TAG_NAME}.pathfinder.gov.bc.ca/"
+          valueFrom:
+            configMapKeyRef:
+              name: "${WEB_NAME}-${TAG_NAME}-config"
+              key: API_URL
         - name: KEYCLOAK_URL
-          value: ${KEYCLOAKURL}
+          valueFrom:
+            configMapKeyRef:
+              name: "${WEB_NAME}-${TAG_NAME}-config"
+              key: KEYCLOAK_URL
         - name: KEYCLOAK_REALM
-          value: ${KEYCLOAKREALM}
+          valueFrom:
+            configMapKeyRef:
+              name: "${WEB_NAME}-${TAG_NAME}-config"
+              key: KEYCLOAK_REALM
         - name: KEYCLOAK_CLIENT
-          value: ${KEYCLOAKCLIENT}
+          valueFrom:
+            configMapKeyRef:
+              name: "${WEB_NAME}-${TAG_NAME}-config"
+              key: KEYCLOAK_CLIENT
         - name: KEYCLOAK_CLIENT_SECRET
-          value: ${KEYCLOAKCLIENTSECRET}
+          valueFrom:
+              secretKeyRef:
+                name: "${WEB_NAME}-${TAG_NAME}-secret"
+                key: KEYCLOAK_CLIENT_SECRET
     output:
       to:
         kind: ImageStreamTag
@@ -108,7 +123,7 @@ parameters:
   displayName: keycloak Url
   description: keycloak Url.
   required: true
-  value: 'http://keycloak.aottech.com:8080/auth'
+  value: ''
 - name: KEYCLOAKREALM
   displayName: keycloak Url
   description: keycloak Url.
@@ -123,4 +138,4 @@ parameters:
   displayName: keycloak Url
   description: keycloak Url.
   required: true
-  value: '5a0c2bed-88d0-4320-b6f2-aba399a5d235'
+  value: ''
