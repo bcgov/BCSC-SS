@@ -4,6 +4,7 @@
 # Testing
 pytest
 pytest-mock
+pytest-cov
 requests
 pyhamcrest
 
@@ -16,6 +17,5 @@ flake8-isort
 flake8-quotes
 pep8-naming
 autopep8
-coverage
 pylint
 pylint-flask
