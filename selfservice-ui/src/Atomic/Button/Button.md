@@ -67,9 +67,6 @@ click
 </template>
 <script>
 export default {
-  data() {
-    return { value: '' };
-  },
   methods: {
     click() {
       console.log('you pressed button');
