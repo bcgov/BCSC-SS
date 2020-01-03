@@ -13,7 +13,6 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import Input from '@/Atomic/Input/Input.vue';
 
 @Component
 export default class HelloWorld extends Vue {
