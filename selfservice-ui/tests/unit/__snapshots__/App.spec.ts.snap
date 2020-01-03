@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App.vue renders props when passed 1`] = `
+<v-app-stub
+  id="app"
+>
+  <header-stub />
+   
+  <v-content-stub
+    tag="main"
+  >
+    <v-container-stub
+      class="main-content"
+      fluid="true"
+      tag="div"
+    >
+      <router-view-stub />
+    </v-container-stub>
+  </v-content-stub>
+   
+  <footer-stub />
+</v-app-stub>
+`;
