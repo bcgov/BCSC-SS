@@ -14,3 +14,4 @@
 
 """This exports all of the models and schemas used by the application."""
 from .db import db, ma
+from .org_whitelist import OrgWhitelist

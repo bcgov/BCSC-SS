@@ -41,10 +41,8 @@ class CreateRequestModel:  # pylint: disable=too-few-public-methods
     redirect_uris: []
 
     """Optional.
-    Defaults to openid, profile regardless of
-    value provided. This scope includes display
-    name, surname, given name, subject (user
-    identifier) and assurance level."""
+    If no scope is provided, defaults to
+    'openid profile address email'"""
     scope: str
 
     """Required.
