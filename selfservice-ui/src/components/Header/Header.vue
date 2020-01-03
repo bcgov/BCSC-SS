@@ -153,5 +153,6 @@ export default class Header extends Vue {
 .login-btn {
   background-color: $BCgovGold5;
   color: $BCgovWhite;
+  font-size: 18px;
 }
 </style>
