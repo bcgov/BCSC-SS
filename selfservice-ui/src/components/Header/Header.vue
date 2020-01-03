@@ -3,7 +3,7 @@
 <template>
   <div>
     <!-- <v-app-bar app> -->
-    <v-app-bar app color="" class="header" light="">
+    <v-app-bar app color class="header" light>
       <!-- <div class="banner"> -->
       <img
         src="@/assets/images/bc-logo-horizontal.svg"
@@ -109,7 +109,7 @@ export default class Header extends Vue {
     display: flex;
     flex-direction: column;
     margin: 0;
-    color: #fff;
+    color: $BCgovWhite;
     list-style: none;
     @include sm {
       flex-direction: row;
@@ -121,7 +121,7 @@ export default class Header extends Vue {
         display: flex;
         font-size: 0.813em;
         font-weight: normal; /* 400 */
-        color: #fff;
+        color: $BCgovWhite;
         padding: 0 15px 0 15px;
         text-decoration: none;
 
