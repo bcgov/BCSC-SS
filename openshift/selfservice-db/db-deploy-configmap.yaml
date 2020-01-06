@@ -1,0 +1,87 @@
+---
+kind: Template
+apiVersion: v1
+metadata:
+  name: "${DB_NAME}-configmap-template"
+  creationTimestamp: 
+objects:
+- kind: ConfigMap
+  apiVersion: v1
+  metadata:
+    name: "${DB_NAME}-${TAG_NAME}-config"
+    labels:
+      app: "${DB_NAME}-${TAG_NAME}"
+      app-group: "${APP_GROUP}"
+      template: "${DB_NAME}-deploy"
+  data:
+    DATABASE_HOST: "${DB_NAME}"
+    DATABASE_NAME: "${POSTGRESQL_DATABASE_NAME}"
+    DATABASE_USERNAME: "${POSTGRESQL_USER}"
+    DATABASE_PORT: "${DATABASE_PORT}"
+    DATABASE_TEST_HOST: "${DB_NAME}"
+    DATABASE_TEST_NAME: "${POSTGRESQL_DATABASE_NAME}-test"
+    DATABASE_TEST_PORT: "${DATABASE_PORT}"
+    DATABASE_TEST_USER: "${POSTGRESQL_USER}-test"
+    DATABASE_URL: "postgresql://${POSTGRESQL_USER}:${POSTGRESQL_PASSWORD}@${DB_NAME}.${NAMESPACE}-${TAG_NAME}.svc:5432/${POSTGRESQL_DATABASE_NAME}"
+- kind: Secret
+  apiVersion: v1
+  metadata:
+    name: "${DB_NAME}-${TAG_NAME}-secret"
+    labels:
+      app: "${DB_NAME}-persistent"
+      app-group: "${APP_GROUP}"
+  stringData:
+    ADMIN_PASSWORD: "${POSTGRESQL_ADMIN_PASSWORD}"
+    DATABASE_PASSWORD: "${POSTGRESQL_PASSWORD}"
+    DATABASE_ADMIN_PASSWORD: "${POSTGRESQL_PASSWORD}"
+    DATABASE_TEST_PASSWORD: "${POSTGRESQL_PASSWORD}"
+  type: Opaque
+parameters:
+- name: DB_NAME
+  displayName: Name
+  description: The name assigned to all of the OpenShift resources associated to the
+    server instance.
+  required: true
+  value: selfservice-db
+- name: APP_GROUP
+  displayName: App Group
+  description: The name assigned to all of the deployments in this project.
+  required: true
+  value: BC-ServiceCard
+- name: NAMESPACE
+  displayName: Name
+  description: This is a namespace in which instance is deployed
+  required: true
+  value: oultzp
+- name: POSTGRESQL_DATABASE_NAME
+  displayName: PostgreSQL Database Name
+  description: The name of the PostgreSQL database.
+  required: true
+  value: "postgres"
+- name: POSTGRESQL_USER
+  displayName: PostgreSQL Connection Username
+  description: Username for PostgreSQL user that will be used for accessing the database.  Needs
+    to be basee64 encoded/
+  required: true
+  value: "postgres"
+- name: POSTGRESQL_PASSWORD
+  displayName: PostgreSQL Connection Password
+  description: Password for the PostgreSQL connection user.  Needs to be basee64 encoded/
+  required: true
+  value: "postgres@123"
+- name: POSTGRESQL_ADMIN_PASSWORD
+  displayName: PostgreSQL Admin Password
+  description: Password for the 'postgres' PostgreSQL administrative account.  Needs
+    to be basee64 encoded.
+  required: true
+  value: "postgres@123"
+- name: DATABASE_PORT
+  displayName: Database host port
+  description: A valid database host port used by the service.
+  required: true
+  value: '5432'
+- name: TAG_NAME
+  displayName: TAG for the namespace & image tagging
+  description: TAG for the namespace & image tagging
+  required: true
+  value: dev
