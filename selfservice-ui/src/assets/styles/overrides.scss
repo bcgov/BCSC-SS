@@ -62,3 +62,14 @@
     display: none;
   }
 }
+.v-text-field > .v-input__control > .v-input__slot:after,
+.theme--light.v-text-field:not(.v-input--has-state)
+  > .v-input__control
+  > .v-input__slot:before {
+  border-color: $gray7;
+}
+.theme--light.v-text-field:not(.v-input--has-state)
+  > .v-input__control
+  > .v-input__slot:hover:before {
+  border-color: $BCgovABlue2;
+}
