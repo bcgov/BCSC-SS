@@ -11,6 +11,7 @@ import '@/assets/styles/_mixins.scss';
 import '@/assets/styles/base.scss';
 import '@/assets/styles/layout.scss';
 import '@/assets/styles/overrides.scss';
+import i18n from './i18n';
 
 Vue.config.productionTip = false;
 
@@ -18,5 +19,6 @@ new Vue({
   router,
   store,
   vuetify,
+  i18n,
   render: h => h(App)
 }).$mount('#app');
