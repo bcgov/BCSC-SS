@@ -1,2 +1,2 @@
 # BCSC-BPS
-Resources for broader public sector (bps) agencies to learn, discover and complete integration of the BC Services Card authentication component within bps online service.
+Resources to make it easier for public organizations to offer the widely used BC Services Card a secure and verified government issued identity card as a login option for online services.
