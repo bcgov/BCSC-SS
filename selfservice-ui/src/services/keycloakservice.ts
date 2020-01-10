@@ -10,9 +10,6 @@ const keycloakConfig: any = {
   url: process.env.VUE_APP_KEYCLOAK_URL,
   'ssl-required': sslRequired,
   clientId: process.env.VUE_APP_KEYCLOAK_CLIENT,
-  credentials: {
-    secret: process.env.VUE_APP_KEYCLOAK_CLIENT_SECRET
-  },
   'confidential-port': confidentialPort
 };
 /* tslint:enable */

@@ -31,8 +31,16 @@ const router = new VueRouter({
       meta: { requiresAuth: true, roles: ['bcsc', 'idir'] },
       props: true,
       component: () =>
-        import(/* webpackChunkName: "Profile" */ '../views/About.vue')
+        import(/* webpackChunkName: "About" */ '../views/About.vue')
     },
+    // {
+    //   path: '/create-app',
+    //   name: 'createApp',
+    //   meta: { requiresAuth: true, roles: ['bcsc', 'idir'] },
+    //   props: true,
+    //   component: () =>
+    //     import(/* webpackChunkName: "CreateApp" */ '../views/CreateApp.vue')
+    // },
 
     {
       path: '/unauthorized',

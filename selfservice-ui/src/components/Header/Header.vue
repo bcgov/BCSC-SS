@@ -5,10 +5,10 @@
     <!-- <v-app-bar app> -->
 
     <v-app-bar app color class="header" light clipped-left>
-      <v-app-bar-nav-icon
+      <!-- <v-app-bar-nav-icon
         @click.stop="drawer = !drawer"
         dark
-      ></v-app-bar-nav-icon>
+      ></v-app-bar-nav-icon> -->
       <!-- <div class="banner"> -->
       <img
         src="@/assets/images/bc-logo-horizontal.svg"
@@ -29,10 +29,11 @@
         link
         dark
         class="d-none d-sm-flex login-btn side-right-margin"
-        v-if="!userProfile.firstName"
+        v-if="!isLoggedin"
         >Login</v-btn
       >
-      <v-toolbar-title v-if="userProfile.firstName"
+
+      <v-toolbar-title v-if="isLoggedin"
         >Welcome {{ userProfile.firstName }} {{ userProfile.lastName }}
 
         <v-btn text @click="logout" color="white">
@@ -62,22 +63,29 @@
         </li>
       </ul>
     </nav>
+    <Sidebar v-if="showSideMenu" :drawer="drawer" />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
+import Sidebar from './Sidebar.vue';
 const KeyCloakModule = namespace('KeyCloakModule');
 
-@Component
+@Component({
+  components: {
+    Sidebar
+  }
+})
 export default class Header extends Vue {
   @KeyCloakModule.Getter('userProfile') private userProfile!: [];
   @KeyCloakModule.Action('setLogout') private setLogout!: any;
+  @KeyCloakModule.Getter('isLoggedin') private isLoggedin!: boolean;
 
   private showMenu: boolean = false;
   private drawer: boolean = false;
-  private showSideMenu: boolean = false;
+  private showSideMenu: boolean = true;
   /**
    * toggleMenu
    * @description : toggling mobile menu

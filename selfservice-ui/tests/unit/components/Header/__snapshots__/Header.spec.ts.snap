@@ -5,6 +5,7 @@ exports[`Header.vue renders props when passed 1`] = `
   <v-app-bar-stub
     app="true"
     class="header"
+    clippedleft="true"
     color=""
     extensionheight="48"
     light="true"
@@ -34,11 +35,13 @@ exports[`Header.vue renders props when passed 1`] = `
       link="true"
       tag="button"
       text="true"
-      to="/"
+      to="/about"
       type="button"
     >
       Login
     </v-btn-stub>
+     
+    <!---->
      
     <v-btn-stub
       activeclass=""
@@ -56,48 +59,8 @@ exports[`Header.vue renders props when passed 1`] = `
     </v-btn-stub>
   </v-app-bar-stub>
    
-  <nav
-    class="navigation-main"
-    id="navbar"
-  >
-    <ul>
-      <li
-        class="d-sm-none"
-      >
-        <v-btn-stub
-          activeclass=""
-          class="mr-2 login-btn"
-          dark="true"
-          link="true"
-          tag="button"
-          text="true"
-          to="/"
-          type="button"
-        >
-          Login
-        </v-btn-stub>
-      </li>
-       
-      <li>
-        <router-link-stub
-          event="click"
-          tag="a"
-          to="/"
-        >
-          Home
-        </router-link-stub>
-      </li>
-       
-      <li>
-        <router-link-stub
-          event="click"
-          tag="a"
-          to="about"
-        >
-          About
-        </router-link-stub>
-      </li>
-    </ul>
-  </nav>
+  <!---->
+   
+  <sidebar-stub />
 </div>
 `;
