@@ -57,8 +57,8 @@ export const mutations: MutationTree<KeyCloakState> = {
     state.profile = profile;
   },
 
-  SET_USER_ROLES(state, { isAdmin, isContibutor }) {
+  SET_USER_ROLES(state, { isAdmin, isClient }) {
     state.isAdmin = isAdmin;
-    state.isContibutor = isContibutor;
+    state.isClient = isClient;
   }
 };

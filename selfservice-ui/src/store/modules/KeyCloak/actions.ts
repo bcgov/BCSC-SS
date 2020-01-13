@@ -64,20 +64,20 @@ export const actions: ActionTree<KeyCloakState, RootState> = {
    */
   setUserRole({ commit }: any, userRole: string[]) {
     let isAdmin = false;
-    let isContibutor = false;
+    let isClient = false;
 
     if (userRole && userRole.length > 0) {
-      const isadminRole = userRole.indexOf('administrator');
+      const isadminRole = userRole.indexOf('ss_admin');
       if (isadminRole !== -1) {
         isAdmin = true;
       } else {
-        const isContibutorRole = userRole.indexOf('contributor');
-        if (isContibutorRole !== -1) {
-          isContibutor = true;
+        const isClientRole = userRole.indexOf('ss_client');
+        if (isClientRole !== -1) {
+          isClient = true;
         }
       }
     }
-    commit('SET_USER_ROLES', { isAdmin, isContibutor });
+    commit('SET_USER_ROLES', { isAdmin, isClient });
     commit('SET_TOKEN');
   },
 
@@ -88,7 +88,7 @@ export const actions: ActionTree<KeyCloakState, RootState> = {
    */
   userRedirect(store: any, path) {
     if (path === '/login') {
-      if (store.state.isContibutor || store.state.isAdmin) {
+      if (store.state.isClient || store.state.isAdmin) {
         router.push({ path: '/user' });
       }
     }

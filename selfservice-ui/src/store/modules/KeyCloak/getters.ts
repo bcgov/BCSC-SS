@@ -37,7 +37,7 @@ export const getters: GetterTree<KeyCloakState, RootState> = {
   isAdmin(state) {
     return state.isAdmin;
   },
-  isContibutor(state) {
-    return state.isContibutor;
+  isClient(state) {
+    return state.isClient;
   }
 };

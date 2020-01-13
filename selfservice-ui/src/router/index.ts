@@ -15,13 +15,13 @@ const router = new VueRouter({
     {
       path: '/',
       name: 'home',
-      meta: { requiresAuth: false, roles: ['administrator', 'offline_access'] },
+      meta: { requiresAuth: false, roles: ['ss_admin', 'offline_access'] },
       component: Home
     },
     {
       path: '/login',
       name: 'login',
-      meta: { requiresAuth: true, roles: ['administrator', 'offline_access'] },
+      meta: { requiresAuth: true, roles: ['ss_admin', 'offline_access'] },
       component: () =>
         import(/* webpackChunkName: "Authorize" */ '../views/Authorize.vue')
     },
