@@ -15,7 +15,7 @@
 from flask_restplus import Namespace, Resource
 from sqlalchemy import exc, text
 
-from selfservice_api.models import db
+from ..models import db
 
 
 API = Namespace('OPS', description='Service - OPS checks')

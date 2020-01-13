@@ -22,7 +22,7 @@ from flask import Flask
 from selfservice_api import config, models
 from selfservice_api.models import db, ma
 from selfservice_api.resources import API
-# from selfservice_api.utils.auth import jwt
+from selfservice_api.utils.auth import jwt
 from selfservice_api.utils.logging import setup_logging
 from selfservice_api.utils.run_version import get_run_version
 
@@ -40,7 +40,7 @@ def create_app(run_mode=os.getenv('FLASK_ENV', 'production')):
     ma.init_app(app)
 
     API.init_app(app)
-    # setup_jwt_manager(app, jwt)
+    setup_jwt_manager(app, jwt)
 
     @app.after_request
     def add_version(response):  # pylint: disable=unused-variable
@@ -68,7 +68,7 @@ def register_shellcontext(app):
         """Shell context objects."""
         return {
             'app': app,
-            # 'jwt': jwt,
+            'jwt': jwt,
             'db': db,
             'models': models}  # pragma: no cover
 

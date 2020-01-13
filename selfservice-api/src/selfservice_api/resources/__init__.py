@@ -23,6 +23,7 @@ from flask_restplus import Api
 
 from .meta import API as META_API
 from .ops import API as OPS_API
+from .user import API as USER_API
 
 
 # This will add the Authorize button to the swagger docs
@@ -45,3 +46,4 @@ API = Api(
 
 API.add_namespace(OPS_API, path='/ops')
 API.add_namespace(META_API, path='/meta')
+API.add_namespace(USER_API, path='/user')

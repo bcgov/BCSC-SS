@@ -11,17 +11,22 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""This manages Orginasition Whitelist."""
+"""This manages Audit Mixin for models."""
 
-from .audit_mixin import AuditDateTimeMixin
+import datetime
+
 from .db import db
 
 
-class OrgWhitelist(AuditDateTimeMixin, db.Model):
-    """This class manages whitelisted Orginasition."""
+class AuditDateTimeMixin(object):
+    """Inherit this class to extend the model with created and modified column."""
 
-    __tablename__ = 'org_whitelist'
-    id = db.Column(db.Integer, primary_key=True)
-    org_name = db.Column('org_name', db.String(250), nullable=False)
-    head_of_org = db.Column('head_of_org', db.String(250), nullable=False)
-    domain = db.Column('domain', db.String(50), nullable=False)
+    created = db.Column(db.DateTime, default=datetime.datetime.now)
+    modified = db.Column(db.DateTime, default=datetime.datetime.now, onupdate=datetime.datetime.now)
+
+
+class AuditUserMixin(object):
+    """Inherit this class to extend the model with created_by and modified_by column."""
+
+    created_by = db.Column(db.String(), nullable=False)
+    modified_by = db.Column(db.String(), nullable=True)
