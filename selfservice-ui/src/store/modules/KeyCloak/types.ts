@@ -5,5 +5,5 @@ export interface KeyCloakState {
   loading?: boolean;
   profile: [];
   isAdmin: boolean;
-  isContibutor: boolean;
+  isClient: boolean;
 }
