@@ -10,6 +10,7 @@ important action on your service, such as Download or Submit. */
     @input="input"
     @blur="input"
     v-bind="$attrs"
+    outlined
   ></v-text-field>
 </template>
 
