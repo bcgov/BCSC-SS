@@ -66,8 +66,5 @@ export default class Sidebar extends Vue {
 .v-navigation-drawer {
   text-align: left;
   background-color: $BCgovBlue5 !important;
-  @include lg {
-    height: calc(100% - 110px) !important;
-  }
 }
 </style>

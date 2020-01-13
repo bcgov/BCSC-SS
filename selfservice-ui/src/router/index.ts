@@ -28,19 +28,19 @@ const router = new VueRouter({
     {
       path: '/about',
       name: 'about',
-      meta: { requiresAuth: true, roles: ['bcsc', 'idir'] },
+      meta: { requiresAuth: true, roles: ['ss_client', 'idir'] },
       props: true,
       component: () =>
         import(/* webpackChunkName: "About" */ '../views/About.vue')
     },
-    // {
-    //   path: '/create-app',
-    //   name: 'createApp',
-    //   meta: { requiresAuth: true, roles: ['bcsc', 'idir'] },
-    //   props: true,
-    //   component: () =>
-    //     import(/* webpackChunkName: "CreateApp" */ '../views/CreateApp.vue')
-    // },
+    {
+      path: '/create-app',
+      name: 'createApp',
+      meta: { requiresAuth: true, roles: ['ss_client', 'idir'] },
+      props: true,
+      component: () =>
+        import(/* webpackChunkName: "CreateApp" */ '../views/CreateApp.vue')
+    },
 
     {
       path: '/unauthorized',
