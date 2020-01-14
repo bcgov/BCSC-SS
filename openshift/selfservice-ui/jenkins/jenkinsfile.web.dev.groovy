@@ -8,7 +8,14 @@ node{
 // You shouldn't have to edit these if you're following the conventions
 WEB_BUILD = WEB_NAME
 IMAGESTREAM_NAME = WEB_NAME
+NAMESPACE = 'oultzp'
+TOOLS_TAG = 'tools'
+NAMESPACE_BUILD = "${NAMESPACE_APP}"  + '-' + "${TOOLS_TAG}"
+ROCKETCHAT_CHANNEL='#bcsc-ss-bot'
 
+ROCKETCHAT_TOKEN = sh (
+                    script: """oc get secret/rocketchat-token-secret -n ${NAMESPACE_BUILD} -o template --template="{{.data.ROCKETCHAT_TOKEN}}" | base64 --decode""",
+                        returnStdout: true).trim()
 
 stage('Build ' + common.APP_NAME) {
   node{
@@ -19,6 +26,7 @@ stage('Build ' + common.APP_NAME) {
 
         // Build and verify the app
         common.buildAndVerify(WEB_BUILD)
+
         rocketChatNotificaiton("${ROCKETCHAT_TOKEN}", "${ROCKETCHAT_CHANNEL}", '{"username":"bcsc-jedi","icon_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s","text":"SelfService-UI build Success","attachments":[{"title":"Selfservice-ui build","title_link":"${currentBuild.absoluteUrl}/console","text":"Selfservice-ui build details:","image_url":"https://i.imgflip.com/1czxka.jpg","color":"#764FA5"}]}' )
         // Don't tag with BUILD_ID so the pruner can do it's job; it won't delete tagged images.
         // Tag the images for deployment based on the image's hash
