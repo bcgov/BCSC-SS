@@ -80,7 +80,7 @@ parameters:
   displayName: Source Context Directory
   description: The source context directory.
   required: false
-  value: /selfservice-ui
+  value: 
 - name: SOURCE_CONTEXT_DIR_API
   displayName: Source Context Directory
   description: The source context directory.
@@ -95,4 +95,4 @@ parameters:
   displayName: The Jenksinfile this pipeline should use.
   description: The Jenkinsfile this pipeline should use.
   required: false
-  value: "./jenkins/jenkinsfile.web.dev.groovy"
+  value: "openshift/selfservice-ui/jenkins/jenkinsfile.web.dev.groovy"
