@@ -23,22 +23,11 @@ class AppEnvironment{
 
 
 web_environments = [
-  dev:new WebEnvironment(name:'Development',tag:'dev',url:getUrlForRoute(${WEB_NAME}, dev)),
-  test:new WebEnvironment(name:'Test',tag:'test',url:getUrlForRoute(${WEB_NAME}, test)),
-  prod:new WebEnvironment(name:'Prod',tag:'prod',url:getUrlForRoute(${WEB_NAME}, prod))
+  dev:new AppEnvironment(name:'Development',tag:'dev',url:getUrlForRoute(${WEB_NAME}, dev)),
+  test:new AppEnvironment(name:'Test',tag:'test',url:getUrlForRoute(${WEB_NAME}, test)),
+  prod:new AppEnvironment(name:'Prod',tag:'prod',url:getUrlForRoute(${WEB_NAME}, prod))
 ]
 
-api_environments = [
-  dev:new ApiEnvironment(name:'Development',tag:'dev',url:getUrlForRoute(${WEB_NAME}, dev)),
-  test:new ApiEnvironment(name:'Test',tag:'test',url:getUrlForRoute(${WEB_NAME}, test)),
-  prod:new ApiEnvironment(name:'Prod',tag:'prod',url:getUrlForRoute(${WEB_NAME}, prod))
-]
-
-db_environments = [
-  dev:new DBEnvironment(name:'Development',tag:'dev',url:'https://dev.jag.gov.bc.ca/sheriff-scheduling/'),
-  test:new DBEnvironment(name:'Test',tag:'test',url:'https://test.jag.gov.bc.ca/sheriff-scheduling/'),
-  prod:new DBEnvironment(name:'Prod',tag:'prod',url:'https://jag.gov.bc.ca/sheriff-scheduling/')
-]
 
 // Gets the container hash for the latest image in an image stream
 def getLatestHash(imageStreamName){
