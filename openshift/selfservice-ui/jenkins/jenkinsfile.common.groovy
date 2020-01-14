@@ -102,7 +102,7 @@ String getUrlForRoute(String routeName, String projectNameSpace = '') {
     nameSpaceFlag = "-n ${projectNameSpace}"
   }
   def url = sh (
-    script: """ 'https://' + $(oc get routes jenkins -o json | jq '.spec.host' | xargs echo) + '/' | echo $url""",
+    script: """ 'https://' + `oc get routes jenkins -o json | jq '.spec.host' | xargs echo` + '/' | echo $url""",
     returnStdout: true
   ).trim()
 
