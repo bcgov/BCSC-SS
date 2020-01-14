@@ -6,7 +6,7 @@ node{
 }
 
 // You shouldn't have to edit these if you're following the conventions
-WEB_BUILD = WEB_NAME
+WEB_BUILD = WEB_NAME + "-build"
 IMAGESTREAM_NAME = WEB_NAME
 NAMESPACE = 'oultzp'
 TOOLS_TAG = 'tools'
@@ -14,7 +14,7 @@ NAMESPACE_BUILD = "${NAMESPACE}"  + '-' + "${TOOLS_TAG}"
 ROCKETCHAT_CHANNEL='#bcsc-ss-bot'
 
 
-stage('Build ' + WEB_BUILD) {
+stage('Build ' + WEB_NAME) {
   node{
     openshift.withProject() {
       try{
