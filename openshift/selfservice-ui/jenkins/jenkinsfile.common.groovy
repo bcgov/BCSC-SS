@@ -23,9 +23,9 @@ class AppEnvironment{
 
 
 web_environments = [
-  dev:new AppEnvironment(name:'Development',tag:'dev',url:getUrlForRoute(WEB_NAME, dev)),
-  test:new AppEnvironment(name:'Test',tag:'test',url:getUrlForRoute(WEB_NAME, test)),
-  prod:new AppEnvironment(name:'Prod',tag:'prod',url:getUrlForRoute(WEB_NAME, prod))
+  dev:new AppEnvironment(name:'Development',tag:'dev',url:"https://${WEB_NAME}-${PROJECT_PREFIX}-dev.${PATHFINDER_URL}/"),
+  test:new AppEnvironment(name:'Test',tag:'test',url:"https://${WEB_NAME}-${PROJECT_PREFIX}-test.${PATHFINDER_URL}/"),
+  prod:new AppEnvironment(name:'Prod',tag:'prod',url:"https://${WEB_NAME}-${PROJECT_PREFIX}-prod.${PATHFINDER_URL}/")
 ]
 
 
