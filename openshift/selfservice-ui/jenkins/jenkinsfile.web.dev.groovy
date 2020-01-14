@@ -1,3 +1,7 @@
+#!/usr/bin/env groovy
+import java.util.Date
+import java.text.SimpleDateFormat
+import groovy.json.*
 
 // Load Common Variables and utils
 common = ""
