@@ -14,7 +14,7 @@ NAMESPACE_BUILD = "${NAMESPACE}"  + '-' + "${TOOLS_TAG}"
 ROCKETCHAT_CHANNEL='#bcsc-ss-bot'
 
 
-stage('Build ' + common.APP_NAME) {
+stage('Build ' + WEB_BUILD) {
   node{
     openshift.withProject() {
       try{
