@@ -59,17 +59,17 @@ def ensureBuildExists(buildConfigName,templatePath){
 
 def triggerBuild(buildConfigName){
   echo "Building: ${buildConfigName}"
-  openshiftBuild bldCfg: buildConfigName, showBuildLogs: 'true', waitTime: '900000'  
+  openshiftBuild bldCfg: buildConfigName, showBuildLogs: 'true', waitTime: '9000000'  
 }
 
 def verifyBuild(buildConfigName){
-  openshiftVerifyBuild bldCfg: buildConfigName, showBuildLogs: 'true', waitTime: '900000'
+  openshiftVerifyBuild bldCfg: buildConfigName, showBuildLogs: 'true', waitTime: '9000000'
 }
 
 def buildAndVerify(buildConfigName){
   echo "Building: ${buildConfigName}"
-  openshiftBuild bldCfg: buildConfigName, showBuildLogs: 'true', waitTime: '900000'
-  openshiftVerifyBuild bldCfg: buildConfigName, showBuildLogs: 'true', waitTime: '900000'
+  openshiftBuild bldCfg: buildConfigName, showBuildLogs: 'true', waitTime: '9000000'
+  openshiftVerifyBuild bldCfg: buildConfigName, showBuildLogs: 'true', waitTime: '9000000'
 }
 
 def tagImage(srcHash, destination, imageStream){
@@ -79,7 +79,7 @@ def tagImage(srcHash, destination, imageStream){
     destTag: destination, 
     srcStream: imageStream, 
     srcTag: srcHash, 
-    waitTime: '900000'
+    waitTime: '9000000'
   )
 }
 
