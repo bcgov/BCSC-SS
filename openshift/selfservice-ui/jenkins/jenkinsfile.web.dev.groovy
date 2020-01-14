@@ -2,7 +2,7 @@
 // Load Common Variables and utils
 common = ""
 node{
-  common = load "./../../../workspace@script/openshift/selfservice-ui/jenkins/jenkinsfile.common.groovy"
+  common = load "../workspace@script/openshift/selfservice-ui/jenkins/jenkinsfile.common.groovy"
 }
 
 // You shouldn't have to edit these if you're following the conventions
