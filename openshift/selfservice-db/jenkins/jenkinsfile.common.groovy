@@ -27,7 +27,7 @@ class AppEnvironment{
 }
 
 
-web_environments = [
+db_environments = [
   dev:new AppEnvironment(name:'Development',tag:'dev',url:"https://${WEB_NAME}-${PROJECT_PREFIX}-dev.${PATHFINDER_URL}/"),
   test:new AppEnvironment(name:'Test',tag:'test',url:"https://${WEB_NAME}-${PROJECT_PREFIX}-test.${PATHFINDER_URL}/"),
   prod:new AppEnvironment(name:'Prod',tag:'prod',url:"https://${WEB_NAME}-${PROJECT_PREFIX}-prod.${PATHFINDER_URL}/")
@@ -37,7 +37,7 @@ web_environments = [
 // Gets the container hash for the latest image in an image stream
 def getLatestHash(imageStreamName){
   return sh (
-    script: """oc get istag ${imageStreamName}:latest -o=jsonpath='{@.image.metadata.name}' | sed -e 's/sha256://g'""",
+    script: """oc get istag ${imageStreamName}:dev -o=jsonpath='{@.image.metadata.name}' | sed -e 's/sha256://g'""",
     returnStdout: true
   ).trim()
 }
@@ -105,11 +105,11 @@ String getUrlForRoute(String routeName, String projectNameSpace = '') {
 
 @NonCPS
 def rocketChatNotificaiton(token, channel, comments) {
-  def payload = JsonOutput.toJson([text: comments, channel: channel])
+  // def payload = JsonOutput.toJson([text: comments, channel: channel])
   def rocketChatUrl = "https://chat.pathfinder.gov.bc.ca/hooks/" + "${token}"
 
   sh(returnStdout: true,
-     script: "curl -X POST -H 'Content-Type: application/json' --data \'${payload}\' ${rocketChatUrl}")
+     script: "curl -X POST -H 'Content-Type: application/json' --data ${comments} ${rocketChatUrl}")
 }
 
 // def notifyGood(title,description,buttons=[]){
