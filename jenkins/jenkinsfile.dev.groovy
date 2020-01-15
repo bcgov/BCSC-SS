@@ -2,7 +2,7 @@
 // Load Common Variables and utils
 common = ""
 node{
-  common = load "../workspace@script/jenkins/jenkinsfile.common.groovy"
+  common = load "../workspace@script/jenkins/enkinsfile.common.groovy"
 }
 
 // Common component parameters
@@ -27,37 +27,39 @@ API_BUILD = common.API_NAME + "-build"
 API_IMAGESTREAM_NAME = common.API_NAME
 
 
-node() {
-  stages {
-      stage('Running Builds for UI, API & DB') {
-          parallel {
-              stage('Build ' + WEB_IMAGESTREAM_NAME) {  
-                openshift.withProject() {
-                try{
-                    // Make sure the frontend build configs exist
-                    common.ensureBuildExists(WEB_BUILD,"openshift/selfservice-ui/web-build.yaml")
-                    // Build and verify the app
-                    common.buildAndVerify(WEB_BUILD)
-                    
-                    // Don't tag with BUILD_ID so the pruner can do it's job; it won't delete tagged images.
-                    // Tag the images for deployment based on the image's hash
-                    WEB_IMAGE_HASH = common.getLatestHash(WEB_IMAGESTREAM_NAME)          
-                    echo ">> WEB_IMAGE_HASH: ${WEB_IMAGE_HASH}"
+stages {
+    stage('Running Builds for UI, API & DB') {
+        parallel {
+            stage('Build ' + WEB_IMAGESTREAM_NAME) {
+                node{
+                    openshift.withProject() {
+                    try{
+                        // Make sure the frontend build configs exist
+                        common.ensureBuildExists(WEB_BUILD,"openshift/selfservice-ui/web-build.yaml")
+                        // Build and verify the app
+                        common.buildAndVerify(WEB_BUILD)
+                        
+                        // Don't tag with BUILD_ID so the pruner can do it's job; it won't delete tagged images.
+                        // Tag the images for deployment based on the image's hash
+                        WEB_IMAGE_HASH = common.getLatestHash(WEB_IMAGESTREAM_NAME)          
+                        echo ">> WEB_IMAGE_HASH: ${WEB_IMAGE_HASH}"
 
-                    // Success UI-Build Notification
-                    COMMENT = '{"username":"bcsc-jedi","icon_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s","text":"SelfService-UI build Success 🚀","attachments":[{"title":"Selfservice-ui build","title_link":${BUILD_URL},"text":"Selfservice-ui build details:","image_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwc_SWm-J_9OPSJVzUqxibPHZI55EBwpOB-JPeY0drU64YENdUWA&s","color":"#1ee321"}]}'
-                    common.rocketChatNotificaiton("${ROCKETCHAT_TOKEN}", "${ROCKETCHAT_CHANNEL}", "${COMMENT}" )
+                        // Success UI-Build Notification
+                        COMMENT = '{"username":"bcsc-jedi","icon_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s","text":"SelfService-UI build Success 🚀","attachments":[{"title":"Selfservice-ui build","title_link":${BUILD_URL},"text":"Selfservice-ui build details:","image_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwc_SWm-J_9OPSJVzUqxibPHZI55EBwpOB-JPeY0drU64YENdUWA&s","color":"#1ee321"}]}'
+                        common.rocketChatNotificaiton("${ROCKETCHAT_TOKEN}", "${ROCKETCHAT_CHANNEL}", "${COMMENT}" )
 
-                }catch(error){
-                    //Failure UI Build Notification
-                    FAILED_COMMENT = '{"username":"bcsc-jedi","icon_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s","text":"SelfService-UI build Failure 🤕","attachments":[{"title":"Selfservice-ui build","title_link":${BUILD_URL},"text":"Selfservice-ui build details:","image_url":"https://i.imgflip.com/1czxka.jpg","color":"#e3211e"}]}'
+                    }catch(error){
+                        //Failure UI Build Notification
+                        FAILED_COMMENT = '{"username":"bcsc-jedi","icon_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s","text":"SelfService-UI build Failure 🤕","attachments":[{"title":"Selfservice-ui build","title_link":${BUILD_URL},"text":"Selfservice-ui build details:","image_url":"https://i.imgflip.com/1czxka.jpg","color":"#e3211e"}]}'
 
-                    common.rocketChatNotificaiton("${ROCKETCHAT_TOKEN}", "${ROCKETCHAT_CHANNEL}", "${FAILED_COMMENT}" )
-                    throw error
+                        common.rocketChatNotificaiton("${ROCKETCHAT_TOKEN}", "${ROCKETCHAT_CHANNEL}", "${FAILED_COMMENT}" )
+                        throw error
+                    }
+                    }
                 }
-                } 
-              }
-              stage('Build ' + DB_IMAGESTREAM_NAME) {
+            }
+            stage('Build ' + DB_IMAGESTREAM_NAME) {
+              node{
                 openshift.withProject() {
                   try{
                     // Make sure the frontend build configs exist
@@ -79,9 +81,11 @@ node() {
                     common.rocketChatNotificaiton("${ROCKETCHAT_TOKEN}", "${ROCKETCHAT_CHANNEL}", "${FAILED_COMMENT}" )
                     throw error
                   }
-                }  
+                }
               }
-              stage('Build ' + API_IMAGESTREAM_NAME) {
+            }
+            stage('Build ' + API_IMAGESTREAM_NAME) {
+              node{
                 openshift.withProject() {
                   try{
                     // Make sure the frontend build configs exist
@@ -105,27 +109,31 @@ node() {
                   }
                 }
               }
-          }         
-      }
-      // Deploying to Dev
-      stage("Deploy" + WEB_IMAGESTREAM_NAME + "to ${common.web_environments.dev.name}") {
-        def environment = common.web_environments.dev.tag
-        def url = common.web_environments.dev.url
-          try{
-            common.deployAndVerify(WEBIMAGE_HASH,environment,WEB_IMAGESTREAM_NAME)
+            }
+        }         
+    }
+    // Deploying to Dev
+    stage("Deploy" + WEB_IMAGESTREAM_NAME + "to ${common.web_environments.dev.name}") {
+      def environment = common.web_environments.dev.tag
+      def url = common.web_environments.dev.url
+      node{
+        try{
+          common.deployAndVerify(WEBIMAGE_HASH,environment,WEB_IMAGESTREAM_NAME)
 
-            // WEB Deployment Success notification
-            COMMENT = '{"username":"bcsc-jedi","icon_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s","text":"SelfService-UI Deployment Success 🚀","attachments":[{"title":"Selfservice-ui Deployment","title_link":${BUILD_URL},"text":"Selfservice-ui build details:","image_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwc_SWm-J_9OPSJVzUqxibPHZI55EBwpOB-JPeY0drU64YENdUWA&s","color":"#1ee321"}]}'
-            common.rocketChatNotificaiton("${ROCKETCHAT_TOKEN}", "${ROCKETCHAT_CHANNEL}", "${COMMENT}" )
-          }catch(error){
-            // Web Deployment Failure Notification
-            FAILED_COMMENT = '{"username":"bcsc-jedi","icon_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s","text":"SelfService-UI Deployment Failure 🤕","attachments":[{"title":"Selfservice-ui Deployment","title_link":${BUILD_URL},"text":"Selfservice-ui build details:","image_url":"https://i.imgflip.com/1czxka.jpg","color":"#e3211e"}]}'
-            common.rocketChatNotificaiton("${ROCKETCHAT_TOKEN}", "${ROCKETCHAT_CHANNEL}", "${FAILED_COMMENT}" )
-            throw error
-          }
+          // WEB Deployment Success notification
+          COMMENT = '{"username":"bcsc-jedi","icon_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s","text":"SelfService-UI Deployment Success 🚀","attachments":[{"title":"Selfservice-ui Deployment","title_link":${BUILD_URL},"text":"Selfservice-ui build details:","image_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwc_SWm-J_9OPSJVzUqxibPHZI55EBwpOB-JPeY0drU64YENdUWA&s","color":"#1ee321"}]}'
+          common.rocketChatNotificaiton("${ROCKETCHAT_TOKEN}", "${ROCKETCHAT_CHANNEL}", "${COMMENT}" )
+        }catch(error){
+          // Web Deployment Failure Notification
+          FAILED_COMMENT = '{"username":"bcsc-jedi","icon_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s","text":"SelfService-UI Deployment Failure 🤕","attachments":[{"title":"Selfservice-ui Deployment","title_link":${BUILD_URL},"text":"Selfservice-ui build details:","image_url":"https://i.imgflip.com/1czxka.jpg","color":"#e3211e"}]}'
+          common.rocketChatNotificaiton("${ROCKETCHAT_TOKEN}", "${ROCKETCHAT_CHANNEL}", "${FAILED_COMMENT}" )
+          throw error
+        }
       }
-  }
-}  
+    }
+}
+
+
 // stage('Build ' + common.APP_NAME) {
 //   node{
 //     openshift.withProject() {
