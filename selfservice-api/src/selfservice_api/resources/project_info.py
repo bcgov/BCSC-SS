@@ -11,58 +11,40 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""API endpoints for managing an user resource."""
+"""API endpoints for managing an project info resource."""
 
 from http import HTTPStatus
 
-from flask import g
+from flask import g, request
 from flask_restplus import Namespace, Resource, cors
 from marshmallow import ValidationError
 
-from ..models.user import User
-from ..schemas.user import UserRequestSchema
+from ..models.project_info import ProjectInfo
+from ..schemas.project_info import ProjectInfoRequestSchema
 from ..utils.auth import jwt
 from ..utils.util import cors_preflight
 
 
-API = Namespace('User', description='User')
+API = Namespace('ProjectInfo', description='ProjectInfo')
 
 
 @cors_preflight('GET,POST,OPTIONS')
 @API.route('', methods=['GET', 'POST', 'OPTIONS'])
-class UserResource(Resource):
-    """Resource for managing create and get user."""
-
-    @staticmethod
-    @cors.crossdomain(origin='*')
-    @jwt.requires_auth
-    def get():
-        """Get user details."""
-        token_info = g.jwt_oidc_token_info
-
-        return token_info, 200
+class ProjectInfoResource(Resource):
+    """Resource for managing create and get project information."""
 
     @staticmethod
     @cors.crossdomain(origin='*')
     @jwt.requires_auth
     def post():
-        """Post a new user using the request body."""
-        token_info = g.jwt_oidc_token_info
+        """Post a new project information using the request body."""
+        project_info_json = request.get_json()
 
         try:
-            user = User.find_by_oauth_id(token_info.get('sub'))
-
-            if not user:
-                dict_data = UserRequestSchema().load({
-                    # Email from token is for this Sprint. Must be changed based on the user creation.
-                    'email': token_info.get('email'),
-                    'phone': '',
-                    'firstName': token_info.get('given_name'),
-                    'lastName': token_info.get('family_name'),
-                    'oauthId': token_info.get('sub')
-                })
-                user = User.create_from_dict(dict_data)
-
+            token_info = g.jwt_oidc_token_info
+            dict_data = ProjectInfoRequestSchema().load(project_info_json)
+            dict_data['oauth_id'] = token_info.get('sub')
+            ProjectInfo.create_from_dict(dict_data)
             response, status = 'success', HTTPStatus.CREATED.value
         except ValidationError as err:
             response, status = {'message': str(err.messages)}, \

@@ -11,17 +11,26 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""This manages Orginasition Whitelist."""
+"""This manages Base Model functions."""
 
-from .audit_mixin import AuditDateTimeMixin
 from .db import db
 
 
-class OrgWhitelist(AuditDateTimeMixin, db.Model):  # pylint: disable=too-few-public-methods
-    """This class manages whitelisted Orginasition."""
+class BaseModel():
+    """This class manages all of the base model functions."""
 
-    __tablename__ = 'org_whitelist'
-    id = db.Column(db.Integer, primary_key=True)
-    org_name = db.Column('org_name', db.String(250), nullable=False)
-    head_of_org = db.Column('head_of_org', db.String(250), nullable=False)
-    domain = db.Column('domain', db.String(50), nullable=False)
+    @staticmethod
+    def commit():
+        """Commit the session."""
+        db.session.commit()
+
+    def save(self):
+        """Save and commit."""
+        db.session.add(self)
+        db.session.commit()
+        return self
+
+    def delete(self):
+        """Delete and commit."""
+        db.session.delete(self)
+        db.session.commit()

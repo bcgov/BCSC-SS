@@ -12,6 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""This exports all of the models and schemas used by the application."""
+"""This exports all of the models used by the application."""
 from .db import db, ma
 from .org_whitelist import OrgWhitelist
+from .user import User
+from .project_info import ProjectInfo
+from .scope_package import ScopePackage
+from .technical_req import TechnicalReq
