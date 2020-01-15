@@ -1,3 +1,8 @@
+#!/usr/bin/env groovy
+import java.util.Date
+import java.text.SimpleDateFormat
+import groovy.json.*
+
 // Load shared devops utils
 library identifier: 'devops-library@master', retriever: modernSCM([
   $class: 'GitSCMSource',
@@ -23,22 +28,11 @@ class AppEnvironment{
 
 
 web_environments = [
-  dev:new WebEnvironment(name:'Development',tag:'dev',url:getUrlForRoute(${WEB_NAME}, dev)),
-  test:new WebEnvironment(name:'Test',tag:'test',url:getUrlForRoute(${WEB_NAME}, test)),
-  prod:new WebEnvironment(name:'Prod',tag:'prod',url:getUrlForRoute(${WEB_NAME}, prod))
+  dev:new AppEnvironment(name:'Development',tag:'dev',url:"https://${WEB_NAME}-${PROJECT_PREFIX}-dev.${PATHFINDER_URL}/"),
+  test:new AppEnvironment(name:'Test',tag:'test',url:"https://${WEB_NAME}-${PROJECT_PREFIX}-test.${PATHFINDER_URL}/"),
+  prod:new AppEnvironment(name:'Prod',tag:'prod',url:"https://${WEB_NAME}-${PROJECT_PREFIX}-prod.${PATHFINDER_URL}/")
 ]
 
-api_environments = [
-  dev:new ApiEnvironment(name:'Development',tag:'dev',url:getUrlForRoute(${WEB_NAME}, dev)),
-  test:new ApiEnvironment(name:'Test',tag:'test',url:getUrlForRoute(${WEB_NAME}, test)),
-  prod:new ApiEnvironment(name:'Prod',tag:'prod',url:getUrlForRoute(${WEB_NAME}, prod))
-]
-
-db_environments = [
-  dev:new DBEnvironment(name:'Development',tag:'dev',url:'https://dev.jag.gov.bc.ca/sheriff-scheduling/'),
-  test:new DBEnvironment(name:'Test',tag:'test',url:'https://test.jag.gov.bc.ca/sheriff-scheduling/'),
-  prod:new DBEnvironment(name:'Prod',tag:'prod',url:'https://jag.gov.bc.ca/sheriff-scheduling/')
-]
 
 // Gets the container hash for the latest image in an image stream
 def getLatestHash(imageStreamName){
@@ -90,7 +84,7 @@ def deployAndVerify(srcHash, destination, imageStream){
   openshiftVerifyDeployment(
     deploymentConfig: WEB_NAME, 
     namespace: "${PROJECT_PREFIX}-${destination}", 
-    waitTime: '900000'
+    waitTime: '9000000'
   )
 }
 
@@ -101,9 +95,8 @@ String getUrlForRoute(String routeName, String projectNameSpace = '') {
   if(projectNameSpace?.trim()) {
     nameSpaceFlag = "-n ${projectNameSpace}"
   }
-
   def url = sh (
-    script: "export url=https://$(oc get routes jenkins -o json | jq '.spec.host' | xargs echo)/ | echo $url",
+    script: """ 'https://' + `oc get routes jenkins -o json | jq '.spec.host' | xargs echo` + '/' | echo $url""",
     returnStdout: true
   ).trim()
 
@@ -112,27 +105,27 @@ String getUrlForRoute(String routeName, String projectNameSpace = '') {
 
 @NonCPS
 def rocketChatNotificaiton(token, channel, comments) {
-//   def payload = JsonOutput.toJson([text: comments, channel: channel])
+  def payload = JsonOutput.toJson([text: comments, channel: channel])
   def rocketChatUrl = "https://chat.pathfinder.gov.bc.ca/hooks/" + "${token}"
 
   sh(returnStdout: true,
-     script: "curl -X POST -H 'Content-Type: application/json' --data \'${comments}\' ${rocketChatUrl}")
+     script: "curl -X POST -H 'Content-Type: application/json' --data \'${payload}\' ${rocketChatUrl}")
 }
 
-def notifyGood(title,description,buttons=[]){
-  if(env.SLACK_HOOK){
-    slackNotify(
-      title,
-      description,
-      'good',
-      env.SLACK_HOOK,
-      SLACK_MAIN_CHANNEL,
-      buttons
-    )
-  }else{
-    echo "Would notify goodness via slack";
-  }
-}
+// def notifyGood(title,description,buttons=[]){
+//   if(env.SLACK_HOOK){
+//     slackNotify(
+//       title,
+//       description,
+//       'good',
+//       env.SLACK_HOOK,
+//       SLACK_MAIN_CHANNEL,
+//       buttons
+//     )
+//   }else{
+//     echo "Would notify goodness via slack";
+//   }
+// }
 
 // def notifyNewDeployment(environment,url,nextButtonText){
 //     notifyGood(
