@@ -109,7 +109,7 @@ def rocketChatNotificaiton(token, channel, comments) {
   def rocketChatUrl = "https://chat.pathfinder.gov.bc.ca/hooks/" + "${token}"
 
   sh(returnStdout: true,
-     script: "curl -X POST -H 'Content-Type: application/json' --data \'${comments}\' ${rocketChatUrl}")
+     script: "curl -X POST -H 'Content-Type: application/json' --data ${comments} ${rocketChatUrl}")
 }
 
 // def notifyGood(title,description,buttons=[]){
