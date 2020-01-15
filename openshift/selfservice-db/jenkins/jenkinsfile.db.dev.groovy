@@ -43,7 +43,7 @@ stage('Build ' + DB_NAME) {
       }catch(error){
         FAILED_COMMENT = "{"username":"bcsc-jedi","icon_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s","text":"SelfService-DB build Failure 🤕","attachments":[{"title":"Selfservice-DB build","title_link":${BUILD_URL},"text":"Selfservice-DB build details:","image_url":"https://i.imgflip.com/1czxka.jpg","color":"#e3211e"}]}"
 
-        common.rocketChatNotificaiton("${ROCKETCHAT_TOKEN}", "${ROCKETCHAT_CHANNEL}", FAILED_COMMENT )
+        common.rocketChatNotificaiton("${ROCKETCHAT_TOKEN}", "${ROCKETCHAT_CHANNEL}", "${FAILED_COMMENT}"" )
         // common.notifyError(
         //   "${WEB_BUILD} Build Broken 🤕",
         //   "Author:${env.CHANGE_AUTHOR_DISPLAY_NAME}\r\nError:'${error.message}'"
