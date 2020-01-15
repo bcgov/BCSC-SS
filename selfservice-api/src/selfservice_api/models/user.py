@@ -30,13 +30,6 @@ class User(AuditDateTimeMixin, BaseModel, db.Model):
     last_name = db.Column(db.String(250), nullable=False)
     oauth_id = db.Column(db.String(100), nullable=True)
 
-    developer_projects = db.relationship('ProjectInfo', foreign_keys='ProjectInfo.developer_id',
-                                         backref='developer', lazy=True)
-    manager_projects = db.relationship('ProjectInfo', foreign_keys='ProjectInfo.manager_id',
-                                       backref='manager', lazy=True)
-    cto_projects = db.relationship('ProjectInfo', foreign_keys='ProjectInfo.cto_id',
-                                   backref='cto', lazy=True)
-
     @classmethod
     def create_from_dict(cls, user_info: dict) -> User:
         """Create a new user from the provided dictionary."""

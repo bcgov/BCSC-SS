@@ -11,25 +11,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""This manages Project Info Enums."""
+"""Exposes all of the services used to communicate external API."""
 
-from enum import IntEnum
-
-
-class ProjectRoles(IntEnum):
-    """This Enum provides the list of Project Roles."""
-
-    Developer = 1
-    Manager = 2
-    Cto = 3
-
-
-class ProjectStatus(IntEnum):
-    """This Enum provides the list of Project Status."""
-
-    DevInProgress = 1
-    DevPending = 2
-    DevApproved = 3
-    DevRejected = 4
-    DevActivated = 5
-    DevNotActive = 6
+from .dynamic_client_registration import DynamicClientRegistrationService

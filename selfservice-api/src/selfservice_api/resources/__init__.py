@@ -23,7 +23,7 @@ from flask_restplus import Api
 
 from .meta import API as META_API
 from .ops import API as OPS_API
-from .project_info import API as PROJECTINFO_API
+from .project import API as PROJECT_API
 from .user import API as USER_API
 
 
@@ -48,4 +48,4 @@ API = Api(
 API.add_namespace(OPS_API, path='/ops')
 API.add_namespace(META_API, path='/meta')
 API.add_namespace(USER_API, path='/user')
-API.add_namespace(PROJECTINFO_API, path='/project-info')
+API.add_namespace(PROJECT_API, path='/project')

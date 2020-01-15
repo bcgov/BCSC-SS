@@ -14,4 +14,4 @@
 
 """This exports all of the enums used by the application."""
 
-from .project_info import ProjectRoles, ProjectStatus
+from .project import ProjectRoles, ProjectStatus

@@ -18,11 +18,11 @@ from __future__ import annotations
 from .audit_mixin import AuditDateTimeMixin, AuditUserMixin
 from .base_model import BaseModel
 from .db import db
-from .enums.project_info import ProjectRoles, ProjectStatus
+from .enums.project import ProjectRoles, ProjectStatus
 from .user import User
 
 
-class ProjectInfo(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
+class Project(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
     """This class manages project information."""
 
     id = db.Column(db.Integer, primary_key=True)
@@ -35,24 +35,31 @@ class ProjectInfo(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
     manager_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)
     cto_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)
 
+    developer = db.relationship('User', foreign_keys='Project.developer_id',
+                                backref='Project', lazy=True)
+    manager = db.relationship('User', foreign_keys='Project.manager_id',
+                              backref='Project', lazy=True)
+    cto = db.relationship('User', foreign_keys='Project.cto_id',
+                          backref='Project', lazy=True)
+
     status = db.Column(db.Integer(), nullable=False)
 
     @classmethod
-    def create_from_dict(cls, project_info: dict) -> ProjectInfo:
-        """Create a new project info from the provided dictionary."""
+    def create_from_dict(cls, project_info: dict) -> Project:
+        """Create a new project from the provided dictionary."""
         if project_info:
-            info = ProjectInfo()
-            info.organization_name = project_info['organization_name']
-            info.project_name = project_info['project_name']
-            info.description = project_info['description']
-            info.my_role = project_info['my_role']
+            project = Project()
+            project.organization_name = project_info['organization_name']
+            project.project_name = project_info['project_name']
+            project.description = project_info['description']
+            project.my_role = project_info['my_role']
 
-            info.created_by = info.__create_or_map_users__(project_info)
-            info.status = ProjectStatus.DevInProgress
+            project.created_by = project.__create_or_map_users__(project_info)
+            project.status = ProjectStatus.DevInProgress
 
-            info.save()
+            project.save()
 
-            return info
+            return project
         return None
 
     def __create_or_map_users__(self, project_info: dict):
@@ -87,3 +94,8 @@ class ProjectInfo(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
             self.cto_id = current_user.id
 
         return current_user.id
+
+    @classmethod
+    def find_by_id(cls, id) -> Project:
+        """Find project that matches the provided id."""
+        return cls.query.filter_by(id=id).first()

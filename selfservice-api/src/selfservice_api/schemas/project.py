@@ -11,15 +11,15 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""This manages Project Info Req/Res Schema."""
+"""This manages Project Req/Res Schema."""
 
 from marshmallow import EXCLUDE, Schema, fields, validate
 
-from ..models.enums.project_info import ProjectRoles
+from ..models.enums.project import ProjectRoles
 
 
-class ProjectRoleDetailsSchema(Schema):
-    """This class manages project role(developer,manager,cto) info request schema."""
+class ProjectUserSchema(Schema):
+    """This class manages project users(developer,manager,cto) request schema."""
 
     id = fields.Int()
     email = fields.Email(validate=validate.Length(max=250))
@@ -28,8 +28,8 @@ class ProjectRoleDetailsSchema(Schema):
     last_name = fields.Str(data_key='lastName', validate=validate.Length(max=250))
 
 
-class ProjectInfoRequestSchema(Schema):
-    """This class manages project info request schema."""
+class ProjectRequestSchema(Schema):
+    """This class manages project request schema."""
 
     class Meta:  # pylint: disable=too-few-public-methods
         """Exclude unknown fields in the deserialized output."""
@@ -42,6 +42,6 @@ class ProjectInfoRequestSchema(Schema):
     description = fields.Str(required=True)
     my_role = fields.Int(data_key='myRole', required=True, validate=validate.OneOf(list(map(int, ProjectRoles))))
 
-    developer_details = fields.Nested(ProjectRoleDetailsSchema, data_key='developerDetails')
-    manager_details = fields.Nested(ProjectRoleDetailsSchema, data_key='managerDetails')
-    cto_details = fields.Nested(ProjectRoleDetailsSchema, data_key='ctoDetails')
+    developer = fields.Nested(ProjectUserSchema, data_key='developerDetails')
+    manager = fields.Nested(ProjectUserSchema, data_key='managerDetails')
+    cto = fields.Nested(ProjectUserSchema, data_key='ctoDetails')

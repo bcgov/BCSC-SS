@@ -16,6 +16,6 @@
 from .db import db, ma
 from .org_whitelist import OrgWhitelist
 from .user import User
-from .project_info import ProjectInfo
+from .project import Project
 from .scope_package import ScopePackage
 from .technical_req import TechnicalReq

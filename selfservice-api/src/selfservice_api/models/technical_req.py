@@ -21,6 +21,8 @@ class TechnicalReq(AuditDateTimeMixin, AuditUserMixin, db.Model):  # pylint: dis
     """This class manages technical requirement information."""
 
     id = db.Column(db.Integer, primary_key=True)
+    project_id = db.Column(db.Integer, db.ForeignKey('project.id'), nullable=False)
+
     client_name = db.Column(db.String(100), nullable=True)
     client_uri = db.Column(db.String(500), nullable=True)
     redirect_uris = db.Column(db.JSON(), nullable=True)
