@@ -28,9 +28,8 @@ API_IMAGESTREAM_NAME = common.API_NAME
 
 
 pipeline {
-    agent none
+  node {
     stages {
-      node{
         stage('Running Builds for UI, API & DB') {
             parallel {
                 stage('Build ' + WEB_IMAGESTREAM_NAME) {
@@ -134,9 +133,8 @@ pipeline {
             }
           }
         }
-      }
-        
     }
+  }  
 }
 // stage('Build ' + common.APP_NAME) {
 //   node{
