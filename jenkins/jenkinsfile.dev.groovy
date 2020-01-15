@@ -2,7 +2,7 @@
 // Load Common Variables and utils
 common = ""
 node{
-  common = load "../workspace@script/jenkins/Jenkinsfile.common.groovy"
+  common = load "../workspace@script/jenkins/jenkinsfile.common.groovy"
 }
 
 // Common component parameters
