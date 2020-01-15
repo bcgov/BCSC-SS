@@ -21,23 +21,34 @@ class AppEnvironment{
   String url
 }
 
+// class ApiEnvironment{
+//   String name
+//   String tag
+//   String url
+// }
+
+// class DBEnvironment{
+//   String name
+//   String tag
+//   String url
+// }
 
 web_environments = [
-  dev:new WebEnvironment(name:'Development',tag:'dev',url:getUrlForRoute(${WEB_NAME}, dev)),
-  test:new WebEnvironment(name:'Test',tag:'test',url:getUrlForRoute(${WEB_NAME}, test)),
-  prod:new WebEnvironment(name:'Prod',tag:'prod',url:getUrlForRoute(${WEB_NAME}, prod))
+  dev:new AppEnvironment(name:'Development',tag:'dev',url:"https://${WEB_NAME}-${PROJECT_PREFIX}-dev.${PATHFINDER_URL}/"),
+  test:new AppEnvironment(name:'Test',tag:'test',url:"https://${WEB_NAME}-${PROJECT_PREFIX}-test.${PATHFINDER_URL}/"),
+  prod:new AppEnvironment(name:'Prod',tag:'prod',url:"https://${WEB_NAME}-${PROJECT_PREFIX}-prod.${PATHFINDER_URL}/")
 ]
 
 api_environments = [
-  dev:new ApiEnvironment(name:'Development',tag:'dev',url:getUrlForRoute(${WEB_NAME}, dev)),
-  test:new ApiEnvironment(name:'Test',tag:'test',url:getUrlForRoute(${WEB_NAME}, test)),
-  prod:new ApiEnvironment(name:'Prod',tag:'prod',url:getUrlForRoute(${WEB_NAME}, prod))
+  dev:new AppEnvironment(name:'Development',tag:'dev',url:"https://${API_NAME}-${PROJECT_PREFIX}-dev.${PATHFINDER_URL}/"),
+  test:new AppEnvironment(name:'Test',tag:'test',url:"https://${API_NAME}-${PROJECT_PREFIX}-test.${PATHFINDER_URL}/"),
+  prod:new AppEnvironment(name:'Prod',tag:'prod',url:"https://${API_NAME}-${PROJECT_PREFIX}-prod.${PATHFINDER_URL}/")
 ]
 
 db_environments = [
-  dev:new DBEnvironment(name:'Development',tag:'dev',url:'https://dev.jag.gov.bc.ca/sheriff-scheduling/'),
-  test:new DBEnvironment(name:'Test',tag:'test',url:'https://test.jag.gov.bc.ca/sheriff-scheduling/'),
-  prod:new DBEnvironment(name:'Prod',tag:'prod',url:'https://jag.gov.bc.ca/sheriff-scheduling/')
+  dev:new AppEnvironment(name:'Development',tag:'dev',url:"https://${DB_NAME}-${PROJECT_PREFIX}-dev.${PATHFINDER_URL}/"),
+  test:new AppEnvironment(name:'Test',tag:'test',url:"https://${DB_NAME}-${PROJECT_PREFIX}-test.${PATHFINDER_URL}/"),
+  prod:new AppEnvironment(name:'Prod',tag:'prod',url:"https://${DB_NAME}-${PROJECT_PREFIX}-prod.${PATHFINDER_URL}/")
 ]
 
 // Gets the container hash for the latest image in an image stream
@@ -83,12 +94,12 @@ def tagImage(srcHash, destination, imageStream){
   )
 }
 
-def deployAndVerify(srcHash, destination, imageStream){
-  echo "Deploying ${WEB_NAME} to ${destination}"
+def deployAndVerify(srcHash, destination, imageStream, name){
+  echo "Deploying ${name} to ${destination}"
   tagImage(srcHash, destination, imageStream)
   // verify deployment
   openshiftVerifyDeployment(
-    deploymentConfig: WEB_NAME, 
+    deploymentConfig: "${name}", 
     namespace: "${PROJECT_PREFIX}-${destination}", 
     waitTime: '900000'
   )
@@ -119,20 +130,20 @@ def rocketChatNotificaiton(token, channel, comments) {
      script: "curl -X POST -H 'Content-Type: application/json' --data \'${comments}\' ${rocketChatUrl}")
 }
 
-def notifyGood(title,description,buttons=[]){
-  if(env.SLACK_HOOK){
-    slackNotify(
-      title,
-      description,
-      'good',
-      env.SLACK_HOOK,
-      SLACK_MAIN_CHANNEL,
-      buttons
-    )
-  }else{
-    echo "Would notify goodness via slack";
-  }
-}
+// def notifyGood(title,description,buttons=[]){
+//   if(env.SLACK_HOOK){
+//     slackNotify(
+//       title,
+//       description,
+//       'good',
+//       env.SLACK_HOOK,
+//       SLACK_MAIN_CHANNEL,
+//       buttons
+//     )
+//   }else{
+//     echo "Would notify goodness via slack";
+//   }
+// }
 
 // def notifyNewDeployment(environment,url,nextButtonText){
 //     notifyGood(
