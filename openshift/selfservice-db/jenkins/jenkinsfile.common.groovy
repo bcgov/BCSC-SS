@@ -28,9 +28,9 @@ class AppEnvironment{
 
 
 db_environments = [
-  dev:new AppEnvironment(name:'Development',tag:'dev',url:"https://${WEB_NAME}-${PROJECT_PREFIX}-dev.${PATHFINDER_URL}/"),
-  test:new AppEnvironment(name:'Test',tag:'test',url:"https://${WEB_NAME}-${PROJECT_PREFIX}-test.${PATHFINDER_URL}/"),
-  prod:new AppEnvironment(name:'Prod',tag:'prod',url:"https://${WEB_NAME}-${PROJECT_PREFIX}-prod.${PATHFINDER_URL}/")
+  dev:new AppEnvironment(name:'Development',tag:'dev',url:"https://${DB_NAME}-${PROJECT_PREFIX}-dev.${PATHFINDER_URL}/"),
+  test:new AppEnvironment(name:'Test',tag:'test',url:"https://${DB_NAME}-${PROJECT_PREFIX}-test.${PATHFINDER_URL}/"),
+  prod:new AppEnvironment(name:'Prod',tag:'prod',url:"https://${DB_NAME}-${PROJECT_PREFIX}-prod.${PATHFINDER_URL}/")
 ]
 
 
@@ -78,11 +78,11 @@ def tagImage(srcHash, destination, imageStream){
 }
 
 def deployAndVerify(srcHash, destination, imageStream){
-  echo "Deploying ${WEB_NAME} to ${destination}"
+  echo "Deploying ${DB_NAME} to ${destination}"
   tagImage(srcHash, destination, imageStream)
   // verify deployment
   openshiftVerifyDeployment(
-    deploymentConfig: WEB_NAME, 
+    deploymentConfig: DB_NAME, 
     namespace: "${PROJECT_PREFIX}-${destination}", 
     waitTime: '9000000'
   )
