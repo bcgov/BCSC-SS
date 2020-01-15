@@ -27,7 +27,7 @@ API_BUILD = common.API_NAME + "-build"
 API_IMAGESTREAM_NAME = common.API_NAME
 
 
-node('master') {
+node() {
   stages {
       stage('Running Builds for UI, API & DB') {
           parallel {
