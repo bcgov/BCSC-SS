@@ -21,8 +21,8 @@ from .db import db
 class AuditDateTimeMixin():  # pylint: disable=too-few-public-methods
     """Inherit this class to extend the model with created and modified column."""
 
-    created = db.Column(db.DateTime, default=datetime.datetime.now)
-    modified = db.Column(db.DateTime, default=datetime.datetime.now, onupdate=datetime.datetime.now)
+    created = db.Column(db.DateTime, nullable=False, default=datetime.datetime.now)
+    modified = db.Column(db.DateTime, onupdate=datetime.datetime.now)
 
 
 class AuditUserMixin():  # pylint: disable=too-few-public-methods
