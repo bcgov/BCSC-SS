@@ -1,19 +1,21 @@
-/** * Footer of app */
+/** * CreateApp of app */
 
 <template>
-  <div>Create App</div>
+  <div>
+    <AddProjectInfo />
+  </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import Input from '@/Atomic/Input/Input.vue';
+import AddProjectInfo from '@/components/CreateApp/AddProjectInfo.vue';
 
 @Component({
   components: {
-    Input
+    AddProjectInfo
   }
 })
-export default class Footer extends Vue {
+export default class CreateApp extends Vue {
   private e6: number = 0;
 }
 </script>

@@ -1,15 +1,8 @@
-/** * Input atomic component * Primary buttons allow users to carry out an
-important action on your service, such as Download or Submit. */
+/** * TextArea atomic component * TextArea allow users to carry out an important
+action on your service, such as Download or Submit. */
 
 <template>
-  <v-text-field
-    :value="value"
-    :counter="counter"
-    :label="label"
-    :required="required"
-    @input="input"
-    v-bind="$attrs"
-  ></v-text-field>
+  <v-textarea :value="value" @input="input" v-bind="$attrs"></v-textarea>
   <!-- outlined -->
 </template>
 
@@ -22,7 +15,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
  */
 
 @Component
-export default class Input extends Vue {
+export default class TextArea extends Vue {
   /**
    * The counter for the input.
    *
