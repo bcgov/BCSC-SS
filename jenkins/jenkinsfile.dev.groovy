@@ -31,83 +31,77 @@ node {
   stages {
       stage('Running Builds for UI, API & DB') {
           parallel {
-              stage('Build ' + WEB_IMAGESTREAM_NAME) {
-                  node{
-                      openshift.withProject() {
-                      try{
-                          // Make sure the frontend build configs exist
-                          common.ensureBuildExists(WEB_BUILD,"openshift/selfservice-ui/web-build.yaml")
-                          // Build and verify the app
-                          common.buildAndVerify(WEB_BUILD)
-                          
-                          // Don't tag with BUILD_ID so the pruner can do it's job; it won't delete tagged images.
-                          // Tag the images for deployment based on the image's hash
-                          WEB_IMAGE_HASH = common.getLatestHash(WEB_IMAGESTREAM_NAME)          
-                          echo ">> WEB_IMAGE_HASH: ${WEB_IMAGE_HASH}"
+              stage('Build ' + WEB_IMAGESTREAM_NAME) {  
+                openshift.withProject() {
+                try{
+                    // Make sure the frontend build configs exist
+                    common.ensureBuildExists(WEB_BUILD,"openshift/selfservice-ui/web-build.yaml")
+                    // Build and verify the app
+                    common.buildAndVerify(WEB_BUILD)
+                    
+                    // Don't tag with BUILD_ID so the pruner can do it's job; it won't delete tagged images.
+                    // Tag the images for deployment based on the image's hash
+                    WEB_IMAGE_HASH = common.getLatestHash(WEB_IMAGESTREAM_NAME)          
+                    echo ">> WEB_IMAGE_HASH: ${WEB_IMAGE_HASH}"
 
-                          // Success UI-Build Notification
-                          COMMENT = '{"username":"bcsc-jedi","icon_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s","text":"SelfService-UI build Success 🚀","attachments":[{"title":"Selfservice-ui build","title_link":${BUILD_URL},"text":"Selfservice-ui build details:","image_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwc_SWm-J_9OPSJVzUqxibPHZI55EBwpOB-JPeY0drU64YENdUWA&s","color":"#1ee321"}]}'
-                          common.rocketChatNotificaiton("${ROCKETCHAT_TOKEN}", "${ROCKETCHAT_CHANNEL}", "${COMMENT}" )
+                    // Success UI-Build Notification
+                    COMMENT = '{"username":"bcsc-jedi","icon_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s","text":"SelfService-UI build Success 🚀","attachments":[{"title":"Selfservice-ui build","title_link":${BUILD_URL},"text":"Selfservice-ui build details:","image_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwc_SWm-J_9OPSJVzUqxibPHZI55EBwpOB-JPeY0drU64YENdUWA&s","color":"#1ee321"}]}'
+                    common.rocketChatNotificaiton("${ROCKETCHAT_TOKEN}", "${ROCKETCHAT_CHANNEL}", "${COMMENT}" )
 
-                      }catch(error){
-                          //Failure UI Build Notification
-                          FAILED_COMMENT = '{"username":"bcsc-jedi","icon_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s","text":"SelfService-UI build Failure 🤕","attachments":[{"title":"Selfservice-ui build","title_link":${BUILD_URL},"text":"Selfservice-ui build details:","image_url":"https://i.imgflip.com/1czxka.jpg","color":"#e3211e"}]}'
+                }catch(error){
+                    //Failure UI Build Notification
+                    FAILED_COMMENT = '{"username":"bcsc-jedi","icon_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s","text":"SelfService-UI build Failure 🤕","attachments":[{"title":"Selfservice-ui build","title_link":${BUILD_URL},"text":"Selfservice-ui build details:","image_url":"https://i.imgflip.com/1czxka.jpg","color":"#e3211e"}]}'
 
-                          common.rocketChatNotificaiton("${ROCKETCHAT_TOKEN}", "${ROCKETCHAT_CHANNEL}", "${FAILED_COMMENT}" )
-                          throw error
-                      }
-                      }
-                  }
+                    common.rocketChatNotificaiton("${ROCKETCHAT_TOKEN}", "${ROCKETCHAT_CHANNEL}", "${FAILED_COMMENT}" )
+                    throw error
+                }
+                } 
               }
               stage('Build ' + DB_IMAGESTREAM_NAME) {
-                node{
-                  openshift.withProject() {
-                    try{
-                      // Make sure the frontend build configs exist
-                      common.ensureBuildExists(DB_BUILD,"openshift/selfservice-db/db-build.yaml")
-                      // Build and verify the app
-                      common.buildAndVerify(DB_BUILD)
+                openshift.withProject() {
+                  try{
+                    // Make sure the frontend build configs exist
+                    common.ensureBuildExists(DB_BUILD,"openshift/selfservice-db/db-build.yaml")
+                    // Build and verify the app
+                    common.buildAndVerify(DB_BUILD)
 
-                      //Success DB-Build Notification
-                      COMMENT = '{"username":"bcsc-jedi","icon_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s","text":"SelfService-DB build Success 🚀","attachments":[{"title":"Selfservice-DB build","title_link":${BUILD_URL},"text":"Selfservice-db build details:","image_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwc_SWm-J_9OPSJVzUqxibPHZI55EBwpOB-JPeY0drU64YENdUWA&s","color":"#1ee321"}]}'
-                      common.rocketChatNotificaiton("${ROCKETCHAT_TOKEN}", "${ROCKETCHAT_CHANNEL}", "${COMMENT}" )
-                      
-                      // Tag the images for deployment based on the image's hash
-                      DB_IMAGE_HASH = common.getLatestHash(DB_IMAGESTREAM_NAME)          
-                      echo ">> DB_IMAGE_HASH: ${DB_IMAGE_HASH}"
+                    //Success DB-Build Notification
+                    COMMENT = '{"username":"bcsc-jedi","icon_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s","text":"SelfService-DB build Success 🚀","attachments":[{"title":"Selfservice-DB build","title_link":${BUILD_URL},"text":"Selfservice-db build details:","image_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwc_SWm-J_9OPSJVzUqxibPHZI55EBwpOB-JPeY0drU64YENdUWA&s","color":"#1ee321"}]}'
+                    common.rocketChatNotificaiton("${ROCKETCHAT_TOKEN}", "${ROCKETCHAT_CHANNEL}", "${COMMENT}" )
+                    
+                    // Tag the images for deployment based on the image's hash
+                    DB_IMAGE_HASH = common.getLatestHash(DB_IMAGESTREAM_NAME)          
+                    echo ">> DB_IMAGE_HASH: ${DB_IMAGE_HASH}"
 
-                    }catch(error){
-                      // failure DB Build Notification
-                      FAILED_COMMENT = '{"username":"bcsc-jedi","icon_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s","text":"SelfService-DB build Failure 🤕","attachments":[{"title":"Selfservice-DB build","title_link":${BUILD_URL},"text":"Selfservice-DB build details:","image_url":"https://i.imgflip.com/1czxka.jpg","color":"#e3211e"}]}'
-                      common.rocketChatNotificaiton("${ROCKETCHAT_TOKEN}", "${ROCKETCHAT_CHANNEL}", "${FAILED_COMMENT}" )
-                      throw error
-                    }
+                  }catch(error){
+                    // failure DB Build Notification
+                    FAILED_COMMENT = '{"username":"bcsc-jedi","icon_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s","text":"SelfService-DB build Failure 🤕","attachments":[{"title":"Selfservice-DB build","title_link":${BUILD_URL},"text":"Selfservice-DB build details:","image_url":"https://i.imgflip.com/1czxka.jpg","color":"#e3211e"}]}'
+                    common.rocketChatNotificaiton("${ROCKETCHAT_TOKEN}", "${ROCKETCHAT_CHANNEL}", "${FAILED_COMMENT}" )
+                    throw error
                   }
-                }
+                }  
               }
               stage('Build ' + API_IMAGESTREAM_NAME) {
-                node{
-                  openshift.withProject() {
-                    try{
-                      // Make sure the frontend build configs exist
-                      common.ensureBuildExists(API_BUILD,"openshift/selfservice-api/api-build.yaml")
-                      // Build and verify the app
-                      common.buildAndVerify(API_BUILD)
+                openshift.withProject() {
+                  try{
+                    // Make sure the frontend build configs exist
+                    common.ensureBuildExists(API_BUILD,"openshift/selfservice-api/api-build.yaml")
+                    // Build and verify the app
+                    common.buildAndVerify(API_BUILD)
 
-                      //Success DB-Build Notification
-                      COMMENT = '{"username":"bcsc-jedi","icon_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s","text":"SelfService-API build Success 🚀","attachments":[{"title":"Selfservice-API build","title_link":${BUILD_URL},"text":"Selfservice-API build details:","image_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwc_SWm-J_9OPSJVzUqxibPHZI55EBwpOB-JPeY0drU64YENdUWA&s","color":"#1ee321"}]}'
-                      common.rocketChatNotificaiton("${ROCKETCHAT_TOKEN}", "${ROCKETCHAT_CHANNEL}", "${COMMENT}" )
-                      
-                      // Tag the images for deployment based on the image's hash
-                      API_IMAGE_HASH = common.getLatestHash(API_IMAGESTREAM_NAME)          
-                      echo ">> API_IMAGE_HASH: ${API_IMAGE_HASH}"
+                    //Success DB-Build Notification
+                    COMMENT = '{"username":"bcsc-jedi","icon_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s","text":"SelfService-API build Success 🚀","attachments":[{"title":"Selfservice-API build","title_link":${BUILD_URL},"text":"Selfservice-API build details:","image_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwc_SWm-J_9OPSJVzUqxibPHZI55EBwpOB-JPeY0drU64YENdUWA&s","color":"#1ee321"}]}'
+                    common.rocketChatNotificaiton("${ROCKETCHAT_TOKEN}", "${ROCKETCHAT_CHANNEL}", "${COMMENT}" )
+                    
+                    // Tag the images for deployment based on the image's hash
+                    API_IMAGE_HASH = common.getLatestHash(API_IMAGESTREAM_NAME)          
+                    echo ">> API_IMAGE_HASH: ${API_IMAGE_HASH}"
 
-                    }catch(error){
-                      // failure DB Build Notification
-                      FAILED_COMMENT = '{"username":"bcsc-jedi","icon_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s","text":"SelfService-DB build Failure 🤕","attachments":[{"title":"Selfservice-API build","title_link":${BUILD_URL},"text":"Selfservice-API build details:","image_url":"https://i.imgflip.com/1czxka.jpg","color":"#e3211e"}]}'
-                      common.rocketChatNotificaiton("${ROCKETCHAT_TOKEN}", "${ROCKETCHAT_CHANNEL}", "${FAILED_COMMENT}" )
-                      throw error
-                    }
+                  }catch(error){
+                    // failure DB Build Notification
+                    FAILED_COMMENT = '{"username":"bcsc-jedi","icon_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s","text":"SelfService-DB build Failure 🤕","attachments":[{"title":"Selfservice-API build","title_link":${BUILD_URL},"text":"Selfservice-API build details:","image_url":"https://i.imgflip.com/1czxka.jpg","color":"#e3211e"}]}'
+                    common.rocketChatNotificaiton("${ROCKETCHAT_TOKEN}", "${ROCKETCHAT_CHANNEL}", "${FAILED_COMMENT}" )
+                    throw error
                   }
                 }
               }
@@ -117,7 +111,6 @@ node {
       stage("Deploy" + WEB_IMAGESTREAM_NAME + "to ${common.web_environments.dev.name}") {
         def environment = common.web_environments.dev.tag
         def url = common.web_environments.dev.url
-        node{
           try{
             common.deployAndVerify(WEBIMAGE_HASH,environment,WEB_IMAGESTREAM_NAME)
 
@@ -130,7 +123,6 @@ node {
             common.rocketChatNotificaiton("${ROCKETCHAT_TOKEN}", "${ROCKETCHAT_CHANNEL}", "${FAILED_COMMENT}" )
             throw error
           }
-        }
       }
   }
 }  
