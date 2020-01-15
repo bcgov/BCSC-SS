@@ -29,8 +29,8 @@ API_IMAGESTREAM_NAME = common.API_NAME
 
 pipeline {
     agent none
-    node {
-      stages {
+    stages {
+      node{
         stage('Running Builds for UI, API & DB') {
             parallel {
                 stage('Build ' + WEB_IMAGESTREAM_NAME) {
@@ -75,8 +75,8 @@ pipeline {
                         common.rocketChatNotificaiton("${ROCKETCHAT_TOKEN}", "${ROCKETCHAT_CHANNEL}", "${COMMENT}" )
                         
                         // Tag the images for deployment based on the image's hash
-                        IMAGE_HASH = common.getLatestHash(IMAGESTREAM_NAME)          
-                        echo ">> IMAGE_HASH: ${IMAGE_HASH}"
+                        DB_IMAGE_HASH = common.getLatestHash(DB_IMAGESTREAM_NAME)          
+                        echo ">> DB_IMAGE_HASH: ${DB_IMAGE_HASH}"
 
                       }catch(error){
                         // failure DB Build Notification
@@ -101,8 +101,8 @@ pipeline {
                         common.rocketChatNotificaiton("${ROCKETCHAT_TOKEN}", "${ROCKETCHAT_CHANNEL}", "${COMMENT}" )
                         
                         // Tag the images for deployment based on the image's hash
-                        IMAGE_HASH = common.getLatestHash(IMAGESTREAM_NAME)          
-                        echo ">> IMAGE_HASH: ${IMAGE_HASH}"
+                        API_IMAGE_HASH = common.getLatestHash(API_IMAGESTREAM_NAME)          
+                        echo ">> API_IMAGE_HASH: ${API_IMAGE_HASH}"
 
                       }catch(error){
                         // failure DB Build Notification
@@ -134,10 +134,9 @@ pipeline {
             }
           }
         }
+      }
+        
     }
-
-    }
-    
 }
 // stage('Build ' + common.APP_NAME) {
 //   node{
