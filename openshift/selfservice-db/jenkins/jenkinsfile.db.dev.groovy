@@ -89,29 +89,29 @@ stage('Build ' + DB_NAME) {
   // }
 
 // Deploying to Dev
-  // stage("Deploy to" + DB_NAME + "${common.db_environments.dev.name}") {
-  //   def environment = common.db_environments.dev.tag
-  //   def url = common.db_environments.dev.url
-  //   node{
-  //     try{
-  //       common.deployAndVerify(IMAGE_HASH,environment,IMAGESTREAM_NAME)
-  //       ROCKETCHAT_TOKEN = sh (
-  //                     script: """oc get secret/rocketchat-token-secret -n ${NAMESPACE_BUILD} -o template --template="{{.data.ROCKETCHAT_TOKEN}}" | base64 --decode""",
-  //                         returnStdout: true).trim()
+  stage("Deploy to" + DB_NAME + "${common.db_environments.dev.name}") {
+    def environment = common.db_environments.dev.tag
+    def url = common.db_environments.dev.url
+    node{
+      try{
+        common.deployAndVerify(IMAGE_HASH,environment,IMAGESTREAM_NAME)
+        ROCKETCHAT_TOKEN = sh (
+                      script: """oc get secret/rocketchat-token-secret -n ${NAMESPACE_BUILD} -o template --template="{{.data.ROCKETCHAT_TOKEN}}" | base64 --decode""",
+                          returnStdout: true).trim()
 
-  //       COMMENT = '{"username":"bcsc-jedi","icon_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s","text":"SelfService-DB Deployment Success 🚀","attachments":[{"title":"Selfservice-db Deployment","title_link":${BUILD_URL},"text":"Selfservice-DB Deployment details:","image_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwc_SWm-J_9OPSJVzUqxibPHZI55EBwpOB-JPeY0drU64YENdUWA&s","color":"#1ee321"}]}'
+        COMMENT = '{"username":"bcsc-jedi","icon_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s","text":"SelfService-DB Deployment Success 🚀","attachments":[{"title":"Selfservice-db Deployment","title_link":${BUILD_URL},"text":"Selfservice-DB Deployment details:","image_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwc_SWm-J_9OPSJVzUqxibPHZI55EBwpOB-JPeY0drU64YENdUWA&s","color":"#1ee321"}]}'
 
-  //       common.rocketChatNotificaiton("${ROCKETCHAT_TOKEN}", "${ROCKETCHAT_CHANNEL}", COMMENT )
-  //     //   common.notifyNewDeployment(environment,url,"Deploy to ${common.environments.test.name}?")
-  //     }catch(error){
-  //       // common.notifyDeploymentError(environment,error)
-  //       FAILED_COMMENT = '{"username":"bcsc-jedi","icon_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s","text":"SelfService-UI Deployment Failure 🤕","attachments":[{"title":"Selfservice-ui Deployment","title_link":${BUILD_URL},"text":"Selfservice-DB Deployment details:","image_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWWlY9blSXitK3hnPaxoUlZPiV3oJRcGrq3STQDwKsExo4bmgP&s","color":"#e3211e"}]}'
+        common.rocketChatNotificaiton("${ROCKETCHAT_TOKEN}", "${ROCKETCHAT_CHANNEL}", COMMENT )
+      //   common.notifyNewDeployment(environment,url,"Deploy to ${common.environments.test.name}?")
+      }catch(error){
+        // common.notifyDeploymentError(environment,error)
+        FAILED_COMMENT = '{"username":"bcsc-jedi","icon_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s","text":"SelfService-UI Deployment Failure 🤕","attachments":[{"title":"Selfservice-ui Deployment","title_link":${BUILD_URL},"text":"Selfservice-DB Deployment details:","image_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWWlY9blSXitK3hnPaxoUlZPiV3oJRcGrq3STQDwKsExo4bmgP&s","color":"#e3211e"}]}'
 
-  //       common.rocketChatNotificaiton("${ROCKETCHAT_TOKEN}", "${ROCKETCHAT_CHANNEL}", "${FAILED_COMMENT}" )
-  //       throw error
-  //     }
-  //   }
-  // }
+        common.rocketChatNotificaiton("${ROCKETCHAT_TOKEN}", "${ROCKETCHAT_CHANNEL}", "${FAILED_COMMENT}" )
+        throw error
+      }
+    }
+  }
 
 
 // // Deploying to Test
