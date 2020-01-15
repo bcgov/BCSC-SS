@@ -3,9 +3,6 @@
 common = ""
 node{
   common = load "../workspace@script/jenkins/jenkinsfile.common.groovy"
-  ROCKETCHAT_TOKEN = sh (
-                    script: """oc get secret/rocketchat-token-secret -n ${NAMESPACE_BUILD} -o template --template="{{.data.ROCKETCHAT_TOKEN}}" | base64 --decode""",
-                        returnStdout: true).trim()
 }
 
 // Common component parameters
@@ -44,6 +41,9 @@ stage('Build ' + WEB_IMAGESTREAM_NAME) {
 
         // Success UI-Build Notification
         COMMENT = '{"username":"bcsc-jedi","icon_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s","text":"SelfService-UI build Success 🚀","attachments":[{"title":"Selfservice-ui build","title_link":${BUILD_URL},"text":"Selfservice-ui build details:","image_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwc_SWm-J_9OPSJVzUqxibPHZI55EBwpOB-JPeY0drU64YENdUWA&s","color":"#1ee321"}]}'
+        ROCKETCHAT_TOKEN = sh (
+                    script: """oc get secret/rocketchat-token-secret -n ${NAMESPACE_BUILD} -o template --template="{{.data.ROCKETCHAT_TOKEN}}" | base64 --decode""",
+                        returnStdout: true).trim()
         common.rocketChatNotificaiton("${ROCKETCHAT_TOKEN}", "${ROCKETCHAT_CHANNEL}", "${COMMENT}" )
 
     }catch(error){
@@ -68,6 +68,9 @@ stage('Build ' + DB_IMAGESTREAM_NAME) {
 
         //Success DB-Build Notification
         COMMENT = '{"username":"bcsc-jedi","icon_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s","text":"SelfService-DB build Success 🚀","attachments":[{"title":"Selfservice-DB build","title_link":${BUILD_URL},"text":"Selfservice-db build details:","image_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwc_SWm-J_9OPSJVzUqxibPHZI55EBwpOB-JPeY0drU64YENdUWA&s","color":"#1ee321"}]}'
+        ROCKETCHAT_TOKEN = sh (
+                    script: """oc get secret/rocketchat-token-secret -n ${NAMESPACE_BUILD} -o template --template="{{.data.ROCKETCHAT_TOKEN}}" | base64 --decode""",
+                        returnStdout: true).trim()
         common.rocketChatNotificaiton("${ROCKETCHAT_TOKEN}", "${ROCKETCHAT_CHANNEL}", "${COMMENT}" )
         
         // Tag the images for deployment based on the image's hash
@@ -95,6 +98,9 @@ stage('Build ' + API_IMAGESTREAM_NAME) {
 
         //Success DB-Build Notification
         COMMENT = '{"username":"bcsc-jedi","icon_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s","text":"SelfService-API build Success 🚀","attachments":[{"title":"Selfservice-API build","title_link":${BUILD_URL},"text":"Selfservice-API build details:","image_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwc_SWm-J_9OPSJVzUqxibPHZI55EBwpOB-JPeY0drU64YENdUWA&s","color":"#1ee321"}]}'
+        ROCKETCHAT_TOKEN = sh (
+                    script: """oc get secret/rocketchat-token-secret -n ${NAMESPACE_BUILD} -o template --template="{{.data.ROCKETCHAT_TOKEN}}" | base64 --decode""",
+                        returnStdout: true).trim()
         common.rocketChatNotificaiton("${ROCKETCHAT_TOKEN}", "${ROCKETCHAT_CHANNEL}", "${COMMENT}" )
         
         // Tag the images for deployment based on the image's hash
@@ -121,6 +127,9 @@ stage("Deploy" + WEB_IMAGESTREAM_NAME + "to ${common.web_environments.dev.name}"
 
       // WEB Deployment Success notification
       COMMENT = '{"username":"bcsc-jedi","icon_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s","text":"SelfService-UI Deployment Success 🚀","attachments":[{"title":"Selfservice-ui Deployment","title_link":${BUILD_URL},"text":"Selfservice-ui build details:","image_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwc_SWm-J_9OPSJVzUqxibPHZI55EBwpOB-JPeY0drU64YENdUWA&s","color":"#1ee321"}]}'
+      ROCKETCHAT_TOKEN = sh (
+                    script: """oc get secret/rocketchat-token-secret -n ${NAMESPACE_BUILD} -o template --template="{{.data.ROCKETCHAT_TOKEN}}" | base64 --decode""",
+                        returnStdout: true).trim()
       common.rocketChatNotificaiton("${ROCKETCHAT_TOKEN}", "${ROCKETCHAT_CHANNEL}", "${COMMENT}" )
     }catch(error){
       // Web Deployment Failure Notification
@@ -141,6 +150,9 @@ stage("Deploy to" + DB_NAME + "${common.db_environments.dev.name}") {
 
       // DB Deployment Success notification
       COMMENT = '{"username":"bcsc-jedi","icon_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s","text":"SelfService-DB Deployment Success 🚀","attachments":[{"title":"Selfservice-db Deployment","title_link":${BUILD_URL},"text":"Selfservice-DB Deployment details:","image_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwc_SWm-J_9OPSJVzUqxibPHZI55EBwpOB-JPeY0drU64YENdUWA&s","color":"#1ee321"}]}'
+      ROCKETCHAT_TOKEN = sh (
+                    script: """oc get secret/rocketchat-token-secret -n ${NAMESPACE_BUILD} -o template --template="{{.data.ROCKETCHAT_TOKEN}}" | base64 --decode""",
+                        returnStdout: true).trim()
       common.rocketChatNotificaiton("${ROCKETCHAT_TOKEN}", "${ROCKETCHAT_CHANNEL}", COMMENT )
     }catch(error){
       // DB Deployment Failure notification
@@ -161,6 +173,9 @@ stage("Deploy to" + API_NAME + "${common.api_environments.dev.name}") {
 
       // DB Deployment Success notification
       COMMENT = '{"username":"bcsc-jedi","icon_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s","text":"SelfService-API Deployment Success 🚀","attachments":[{"title":"Selfservice-API Deployment","title_link":${BUILD_URL},"text":"Selfservice-API Deployment details:","image_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwc_SWm-J_9OPSJVzUqxibPHZI55EBwpOB-JPeY0drU64YENdUWA&s","color":"#1ee321"}]}'
+      ROCKETCHAT_TOKEN = sh (
+                    script: """oc get secret/rocketchat-token-secret -n ${NAMESPACE_BUILD} -o template --template="{{.data.ROCKETCHAT_TOKEN}}" | base64 --decode""",
+                        returnStdout: true).trim()
       common.rocketChatNotificaiton("${ROCKETCHAT_TOKEN}", "${ROCKETCHAT_CHANNEL}", COMMENT )
     }catch(error){
       // DB Deployment Failure notification
