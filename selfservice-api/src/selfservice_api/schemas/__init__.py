@@ -16,4 +16,4 @@
 
 from .project_info import ProjectInfoRequestSchema
 from .technical_req import TechnicalReqRequestSchema
-from .user import UserRequestSchema
+from .user import UserSchema

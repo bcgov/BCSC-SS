@@ -20,7 +20,7 @@ from flask_restplus import Namespace, Resource, cors
 from marshmallow import ValidationError
 
 from ..models.user import User
-from ..schemas.user import UserRequestSchema
+from ..schemas.user import UserSchema
 from ..utils.auth import jwt
 from ..utils.util import cors_preflight
 
@@ -39,8 +39,9 @@ class UserResource(Resource):
     def get():
         """Get user details."""
         token_info = g.jwt_oidc_token_info
+        user = User.find_by_oauth_id(token_info.get('sub'))
 
-        return token_info, 200
+        return UserSchema().dump(user), HTTPStatus.OK
 
     @staticmethod
     @cors.crossdomain(origin='*')
@@ -52,8 +53,9 @@ class UserResource(Resource):
         try:
             user = User.find_by_oauth_id(token_info.get('sub'))
 
+            user_schema = UserSchema()
             if not user:
-                dict_data = UserRequestSchema().load({
+                dict_data = user_schema.load({
                     # Email from token is for this Sprint. Must be changed based on the user creation.
                     'email': token_info.get('email'),
                     'phone': '',
@@ -63,8 +65,8 @@ class UserResource(Resource):
                 })
                 user = User.create_from_dict(dict_data)
 
-            response, status = 'success', HTTPStatus.CREATED.value
+            response, status = user_schema.dump(user), HTTPStatus.CREATED
         except ValidationError as err:
             response, status = {'message': str(err.messages)}, \
-                HTTPStatus.BAD_REQUEST.value
+                HTTPStatus.BAD_REQUEST
         return response, status
