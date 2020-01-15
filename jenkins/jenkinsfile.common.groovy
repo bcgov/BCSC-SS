@@ -105,20 +105,20 @@ def deployAndVerify(srcHash, destination, imageStream, name){
   )
 }
 
-@NonCPS
-String getUrlForRoute(String routeName, String projectNameSpace = '') {
+// @NonCPS
+// String getUrlForRoute(String routeName, String projectNameSpace = '') {
 
-  def nameSpaceFlag = ''
-  if(projectNameSpace?.trim()) {
-    nameSpaceFlag = "-n ${projectNameSpace}"
-  }
-  def url = sh (
-    script: """ 'https://' + `oc get routes jenkins -o json | jq '.spec.host' | xargs echo` + '/' | echo $url""",
-    returnStdout: true
-  ).trim()
+//   def nameSpaceFlag = ''
+//   if(projectNameSpace?.trim()) {
+//     nameSpaceFlag = "-n ${projectNameSpace}"
+//   }
+//   def url = sh (
+//     script: """ 'https://' + `oc get routes jenkins -o json | jq '.spec.host' | xargs echo` + '/' | echo $url""",
+//     returnStdout: true
+//   ).trim()
 
-  return url
-}
+//   return url
+// }
 
 @NonCPS
 def rocketChatNotificaiton(token, channel, comments) {

@@ -3,6 +3,9 @@
 common = ""
 node{
   common = load "../workspace@script/jenkins/jenkinsfile.common.groovy"
+  ROCKETCHAT_TOKEN = sh (
+                    script: """oc get secret/rocketchat-token-secret -n ${NAMESPACE_BUILD} -o template --template="{{.data.ROCKETCHAT_TOKEN}}" | base64 --decode""",
+                        returnStdout: true).trim()
 }
 
 // Common component parameters
@@ -10,9 +13,7 @@ NAMESPACE = 'oultzp'
 TOOLS_TAG = 'tools'
 NAMESPACE_BUILD = "${NAMESPACE}"  + '-' + "${TOOLS_TAG}"
 ROCKETCHAT_CHANNEL='#bcsc-ss-bot'
-ROCKETCHAT_TOKEN = sh (
-                    script: """oc get secret/rocketchat-token-secret -n ${NAMESPACE_BUILD} -o template --template="{{.data.ROCKETCHAT_TOKEN}}" | base64 --decode""",
-                        returnStdout: true).trim()
+
 
 // Selfservice-UI Parameters
 WEB_BUILD = common.WEB_NAME + "-build"
