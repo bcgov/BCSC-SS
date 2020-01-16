@@ -1,7 +1,7 @@
 FROM python:3.7
 
 
-COPY ./ /app
+COPY /selfservice-api/. /app
 WORKDIR /app
 RUN pip install .
 
