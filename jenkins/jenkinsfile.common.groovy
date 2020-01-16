@@ -114,16 +114,16 @@ def deployAndVerify(srcHash, destination, imageStream){
 //   return url
 // }
 
-def rocketchat_token(){
-    return sh (
-        script: """oc get secret/rocketchat-token-secret -n ${NAMESPACE_BUILD} -o template --template="{{.data.ROCKETCHAT_TOKEN}}" | base64 --decode""",
-        returnStdout: true
-  ).trim()
-}
+// def rocketchat_token(){
+//     return sh (
+//         script: """oc get secret/rocketchat-token-secret -n ${NAMESPACE_BUILD} -o template --template="{{.data.ROCKETCHAT_TOKEN}}" | base64 --decode""",
+//         returnStdout: true
+//   ).trim()
+// }
 
 @NonCPS
 def rocketChatNotificaiton(app_name) {
-  def token = rocketchat_token()
+  token = sh ("""oc get secret/rocketchat-token-secret -n ${NAMESPACE_BUILD} -o template --template="{{.data.ROCKETCHAT_TOKEN}}" | base64 --decode""")
   def rocketChatUrl = "https://chat.pathfinder.gov.bc.ca/hooks/" + "${token}"
   build_url = "${currentBuild.absoluteUrl}console"
   attachment = ["title":"${app_name} Deployment","title_link":"${build_url}", "image_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwc_SWm-J_9OPSJVzUqxibPHZI55EBwpOB-JPeY0drU64YENdUWA&s","color":"#1ee321"]
