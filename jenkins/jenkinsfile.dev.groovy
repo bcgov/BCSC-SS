@@ -3,7 +3,8 @@ NAMESPACE = 'oultzp'
 TOOLS_TAG = 'tools'
 NAMESPACE_BUILD = "${NAMESPACE}"  + '-' + "${TOOLS_TAG}"
 ROCKETCHAT_CHANNEL='#bcsc-ss-bot'
-
+BUILD_PHASE = "build"
+DEPLOYMENT_PHASE = "Deployment"
 // Load Common Variables and utils
 common = ""
 node{
@@ -33,25 +34,19 @@ stage('Build ' + WEB_IMAGESTREAM_NAME) {
         // Make sure the frontend build configs exist
         common.ensureBuildExists(WEB_BUILD,"openshift/selfservice-ui/web-build.yaml")
         // Build and verify the app
-        // common.buildAndVerify(WEB_BUILD)
+        common.buildAndVerify(WEB_BUILD)
         
-        // // Don't tag with BUILD_ID so the pruner can do it's job; it won't delete tagged images.
-        // // Tag the images for deployment based on the image's hash
-        // WEB_IMAGE_HASH = common.getLatestHash(WEB_IMAGESTREAM_NAME)          
-        // echo ">> WEB_IMAGE_HASH: ${WEB_IMAGE_HASH}"
-
+        // Don't tag with BUILD_ID so the pruner can do it's job; it won't delete tagged images.
+        // Tag the images for deployment based on the image's hash
+        WEB_IMAGE_HASH = common.getLatestHash(WEB_IMAGESTREAM_NAME)          
+        echo ">> WEB_IMAGE_HASH: ${WEB_IMAGE_HASH}"
+        
         // Success UI-Build Notification
-        
-        // ROCKETCHAT_TOKEN = sh (
-        //             script: """oc get secret/rocketchat-token-secret -n ${NAMESPACE_BUILD} -o template --template="{{.data.ROCKETCHAT_TOKEN}}" | base64 --decode""",
-        //                 returnStdout: true).trim()
-        common.rocketChatNotificaiton(ROCKETCHAT_TOKEN, WEB_IMAGESTREAM_NAME )
+        common.successNotificaiton(ROCKETCHAT_TOKEN, WEB_IMAGESTREAM_NAME, BUILD_PHASE )
 
     }catch(error){
         //Failure UI Build Notification
-        // FAILED_COMMENT = '{"username":"bcsc-jedi","icon_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s","text":"SelfService-UI build Failure 🤕","attachments":[{"title":"Selfservice-ui build","title_link":${BUILD_URL},"text":"Selfservice-ui build details:","image_url":"https://i.imgflip.com/1czxka.jpg","color":"#e3211e"}]}'
-
-        // common.rocketChatNotificaiton("${ROCKETCHAT_TOKEN}", "${ROCKETCHAT_CHANNEL}", "${FAILED_COMMENT}" )
+        common.failureNotificaiton(ROCKETCHAT_TOKEN, WEB_IMAGESTREAM_NAME, BUILD_PHASE )
         throw error
     }
     }

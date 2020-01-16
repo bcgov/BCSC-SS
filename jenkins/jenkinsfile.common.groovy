@@ -114,23 +114,27 @@ def deployAndVerify(srcHash, destination, imageStream){
 //   return url
 // }
 
-// def rocketchat_token(){
-//     return sh (
-//         script: """oc get secret/rocketchat-token-secret -n ${NAMESPACE_BUILD} -o template --template="{{.data.ROCKETCHAT_TOKEN}}" | base64 --decode""",
-//         returnStdout: true
-//   ).trim()
-// }
 
 @NonCPS
-def rocketChatNotificaiton(token, app_name) {
+def successNotificaiton(token, app_name, phase) {
   def rocketChatUrl = "https://chat.pathfinder.gov.bc.ca/hooks/" + "${token}"
   build_url = "${currentBuild.absoluteUrl}console"
-  attachment = ["title":"${app_name} Deployment","title_link":"${build_url}", "image_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwc_SWm-J_9OPSJVzUqxibPHZI55EBwpOB-JPeY0drU64YENdUWA&s","color":"#1ee321"]
+  attachment = ["title":"${app_name} ${phase}","title_link":"${build_url}", "image_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwc_SWm-J_9OPSJVzUqxibPHZI55EBwpOB-JPeY0drU64YENdUWA&s","color":"#1ee321"]
 
-  def payload = JsonOutput.toJson([username: "bcsc-jedi", icon_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s", text: "${app_name} Deployment Success 🚀", attachments: [attachment], channel: "${ROCKETCHAT_CHANNEL}"])
+  def payload = JsonOutput.toJson([username: "bcsc-jedi", icon_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s", text: "${app_name} ${phase} Success 🚀", attachments: [attachment], channel: "${ROCKETCHAT_CHANNEL}"])
   sh(returnStdout: true,
      script: "curl -X POST -H 'Content-Type: application/json' --data \'${payload}\' ${rocketChatUrl}")
 }
 
+@NonCPS
+def failureNotificaiton(token, app_name, phase) {
+  def rocketChatUrl = "https://chat.pathfinder.gov.bc.ca/hooks/" + "${token}"
+  build_url = "${currentBuild.absoluteUrl}console"
+  attachment = ["title":"${app_name} ${phase}","title_link":"${build_url}", "image_url":"https://i.imgflip.com/1czxka.jpg","color":"#e3211e"]
+
+  def payload = JsonOutput.toJson([username: "bcsc-jedi", icon_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s", text: "${app_name} ${phase} Failure 🤕", attachments: [attachment], channel: "${ROCKETCHAT_CHANNEL}"])
+  sh(returnStdout: true,
+     script: "curl -X POST -H 'Content-Type: application/json' --data \'${payload}\' ${rocketChatUrl}")
+}
 
 return this
