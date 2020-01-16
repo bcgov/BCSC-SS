@@ -26,17 +26,6 @@ class AppEnvironment{
   String url
 }
 
-// class ApiEnvironment{
-//   String name
-//   String tag
-//   String url
-// }
-
-// class DBEnvironment{
-//   String name
-//   String tag
-//   String url
-// }
 
 web_environments = [
   dev:new AppEnvironment(name:'Development',tag:'dev',url:"https://${WEB_NAME}-${PROJECT_PREFIX}-dev.${PATHFINDER_URL}/"),
@@ -125,79 +114,24 @@ def deployAndVerify(srcHash, destination, imageStream){
 //   return url
 // }
 
+def rocketchat_token(){
+    return sh (
+        script: """oc get secret/rocketchat-token-secret -n ${NAMESPACE_BUILD} -o template --template="{{.data.ROCKETCHAT_TOKEN}}" | base64 --decode""",
+        returnStdout: true
+  ).trim()
+}
+
 @NonCPS
-def rocketChatNotificaiton(token, channel, app_name) {
+def rocketChatNotificaiton(app_name) {
+  token = rocketchat_token()
   def rocketChatUrl = "https://chat.pathfinder.gov.bc.ca/hooks/" + "${token}"
   build_url = "${currentBuild.absoluteUrl}console"
   attachment = ["title":"${app_name} Deployment","title_link":"${build_url}", "image_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwc_SWm-J_9OPSJVzUqxibPHZI55EBwpOB-JPeY0drU64YENdUWA&s","color":"#1ee321"]
-//   COMMENT = {"username":"bcsc-jedi","icon_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s","text":"${app_name} Deployment Success 🚀","attachments":[{"title":"${app_name} Deployment","title_link":"${build_url}","text":"${app_name} Deployment details:","image_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwc_SWm-J_9OPSJVzUqxibPHZI55EBwpOB-JPeY0drU64YENdUWA&s","color":"#1ee321"}]}
-  def payload = JsonOutput.toJson([username: "bcsc-jedi", icon_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s", text: "${app_name} Deployment Success 🚀", attachments: [attachment], channel: channel])
+
+  def payload = JsonOutput.toJson([username: "bcsc-jedi", icon_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s", text: "${app_name} Deployment Success 🚀", attachments: [attachment], channel: "${ROCKETCHAT_CHANNEL}"])
   sh(returnStdout: true,
      script: "curl -X POST -H 'Content-Type: application/json' --data \'${payload}\' ${rocketChatUrl}")
 }
 
-// def notifyGood(title,description,buttons=[]){
-//   if(env.SLACK_HOOK){
-//     slackNotify(
-//       title,
-//       description,
-//       'good',
-//       env.SLACK_HOOK,
-//       SLACK_MAIN_CHANNEL,
-//       buttons
-//     )
-//   }else{
-//     echo "Would notify goodness via slack";
-//   }
-// }
-
-// def notifyNewDeployment(environment,url,nextButtonText){
-//     notifyGood(
-//       "New ${APP_NAME} in ${environment} 🚀",
-//       "Changes: ${getChangeString()}",
-//       [
-//         [
-//           type: "button",
-//           text: "View New Version",           
-//           url: "${url}"
-//         ],
-//         [
-//           type: "button",            
-//           text: nextButtonText,
-//           style: "primary",              
-//           url: "${currentBuild.absoluteUrl}/input"
-//         ]
-//       ]
-//     )
-// }
-
-// def notifyError(title,description){
-//   if(env.SLACK_HOOK){
-//     slackNotify(
-//       title,
-//       description,
-//       'danger',
-//       env.SLACK_HOOK,
-//       SLACK_DEV_CHANNEL,
-//       [
-//         [
-//           type: "button",
-//           text: "View Build Logs",
-//           style:"danger",        
-//           url: "${currentBuild.absoluteUrl}/console"
-//         ]
-//       ]
-//     )
-//   }else{
-//     echo "Would notify error via slack";
-//   }
-// }
-
-// def notifyDeploymentError(environment,error){
-//   notifyError(
-//     "Couldn't deploy ${APP_NAME} to ${environment} 🤕",
-//     "The latest deployment of the ${APP_NAME} to ${environment} seems to have failed\n'${error.message}'"
-//   )
-// }
 
 return this
