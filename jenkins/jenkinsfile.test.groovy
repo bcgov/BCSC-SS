@@ -101,10 +101,10 @@ stage('Build ' + API_IMAGESTREAM_NAME) {
   }
 }
 
-// Deploying WEB to Dev
-stage("Deploy" + WEB_IMAGESTREAM_NAME + "to ${common.web_environments.dev.name}") {
-  def environment = common.web_environments.dev.tag
-  def url = common.web_environments.dev.url
+// Deploying WEB to test
+stage("Deploy" + WEB_IMAGESTREAM_NAME + "to ${common.web_environments.test.name}") {
+  def environment = common.web_environments.test.tag
+  def url = common.web_environments.test.url
   node{
     try{
       common.deployAndVerify(WEB_IMAGE_HASH,environment,WEB_IMAGESTREAM_NAME)
@@ -119,10 +119,10 @@ stage("Deploy" + WEB_IMAGESTREAM_NAME + "to ${common.web_environments.dev.name}"
   }
 }
 
-// Deploying DB to Dev
-stage("Deploy to" + DB_NAME + "${common.db_environments.dev.name}") {
-  def environment = common.db_environments.dev.tag
-  def url = common.db_environments.dev.url
+// Deploying DB to test
+stage("Deploy to" + DB_NAME + "${common.db_environments.test.name}") {
+  def environment = common.db_environments.test.tag
+  def url = common.db_environments.test.url
   node{
     try{
       common.deployAndVerify(DB_IMAGE_HASH,environment,DB_IMAGESTREAM_NAME)
@@ -137,10 +137,10 @@ stage("Deploy to" + DB_NAME + "${common.db_environments.dev.name}") {
 }
 }
 
-// Deploying API to Dev
-stage("Deploy to" + API_NAME + "${common.api_environments.dev.name}") {
-  def environment = common.api_environments.dev.tag
-  def url = common.api_environments.dev.url
+// Deploying API to test
+stage("Deploy to" + API_NAME + "${common.api_environments.test.name}") {
+  def environment = common.api_environments.test.tag
+  def url = common.api_environments.test.url
   node{
     try{
       common.deployAndVerify(API_IMAGE_HASH,environment,API_IMAGESTREAM_NAME)
