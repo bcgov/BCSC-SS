@@ -130,9 +130,9 @@ def rocketChatNotificaiton(token, channel, app_name) {
   def rocketChatUrl = "https://chat.pathfinder.gov.bc.ca/hooks/" + "${token}"
   build_url = "${currentBuild.absoluteUrl}console"
 //   COMMENT = {"username":"bcsc-jedi","icon_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s","text":"${app_name} Deployment Success 🚀","attachments":[{"title":"${app_name} Deployment","title_link":"${build_url}","text":"${app_name} Deployment details:","image_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwc_SWm-J_9OPSJVzUqxibPHZI55EBwpOB-JPeY0drU64YENdUWA&s","color":"#1ee321"}]}
-  def payload = JsonOutput.toJson([username: "bcsc-jedi", icon_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s", title: "${app_name} Deployment", title_link: build_url, text: "${app_name} Deployment Success 🚀:", image_url:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwc_SWm-J_9OPSJVzUqxibPHZI55EBwpOB-JPeY0drU64YENdUWA&s", color: "#1ee321", channel: channel])
+  def payload = JsonOutput.toJson([username: "bcsc-jedi", icon_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s", text: "${app_name} Deployment Success 🚀", attachments: {"title":"${app_name} Deployment","title_link":"${build_url}","text":"${app_name} Deployment details:","image_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwc_SWm-J_9OPSJVzUqxibPHZI55EBwpOB-JPeY0drU64YENdUWA&s","color":"#1ee321"}, channel: channel])
   sh(returnStdout: true,
-     script: "curl -X POST -H 'Content-Type: application/json' --data \'${payload}\' ${rocketChatUrl}")
+     script: "curl -X POST -H 'Content-Type: application/json' --data-urlencode \'payload=${payload}\' ${rocketChatUrl}")
 }
 
 // def notifyGood(title,description,buttons=[]){
