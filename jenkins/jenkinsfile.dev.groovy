@@ -3,6 +3,9 @@
 common = ""
 node{
   common = load "../workspace@script/jenkins/jenkinsfile.common.groovy"
+  ROCKETCHAT_TOKEN = sh (
+                    script: """oc get secret/rocketchat-token-secret -n ${NAMESPACE_BUILD} -o template --template="{{.data.ROCKETCHAT_TOKEN}}" | base64 --decode""",
+                        returnStdout: true).trim()
 }
 
 // Common component parameters
@@ -44,7 +47,7 @@ stage('Build ' + WEB_IMAGESTREAM_NAME) {
         // ROCKETCHAT_TOKEN = sh (
         //             script: """oc get secret/rocketchat-token-secret -n ${NAMESPACE_BUILD} -o template --template="{{.data.ROCKETCHAT_TOKEN}}" | base64 --decode""",
         //                 returnStdout: true).trim()
-        common.rocketChatNotificaiton(WEB_IMAGESTREAM_NAME )
+        common.rocketChatNotificaiton(ROCKETCHAT_TOKEN, WEB_IMAGESTREAM_NAME )
 
     }catch(error){
         //Failure UI Build Notification
