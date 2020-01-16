@@ -1,6 +1,6 @@
 import axios from '@/lib/axios';
 import { ProjectInfoModel } from '@/models/ProjectInfoModel';
-import { PROJECTINFO_URL } from '@/config/urls';
+import { PROJECTINFO_URL } from '@/config/api-endpoints';
 export class ProjectInfoService {
   public static async getProjectInfos() {
     return await axios.get(PROJECTINFO_URL + '/');

@@ -1,9 +1,13 @@
-/** *  Project information */
+/** * Project information */
 <template>
   <v-card class="mx-auto" style="max-width: 80%;">
     <v-card class="mx-auto">
       <v-app-bar dark color="#003366">
-        <v-btn icon @click="$router.push('/projectinfo/')" aria-label="Back Button">
+        <v-btn
+          icon
+          @click="$router.push('/projectinfo/')"
+          aria-label="Back Button"
+        >
           <v-icon>mdi-arrow-left</v-icon>
         </v-btn>
         <v-toolbar-title>Project information</v-toolbar-title>
@@ -14,29 +18,31 @@
           <v-row dense>
             <v-col cols="12" md="12">
               <v-card class="pa-4 pt-6">
-                <v-card-title class="headline">Project information</v-card-title>
-                <v-card-subtitle class="text-left">Tell us about your Project</v-card-subtitle>
+                <v-card-title class="headline"
+                  >Project information</v-card-title
+                >
+                <v-card-subtitle class="text-left"
+                  >Tell us about your Project</v-card-subtitle
+                >
                 <Input
                   v-model="organizationName"
                   counter="200"
                   label="Organization name"
                   type="text"
-                  :rules="[rules.required,rules.length(2)]"
+                  :rules="[rules.required, rules.length(2)]"
                 />
                 <Input
                   v-model="projectName"
                   counter="100"
                   label="Project name"
                   type="text"
-                  :rules="[rules.required,rules.length(2)]"
-                  @change="input"
+                  :rules="[rules.required, rules.length(2)]"
                 />
                 <TextArea
                   v-model="description"
                   label="Description"
                   type="text"
                   :rules="[rules.required]"
-                  @input="input"
                 />
               </v-card>
             </v-col>
@@ -44,7 +50,9 @@
             <v-col cols="12">
               <v-card class="pa-4 pt-6">
                 <v-card-title class="headline">Project Roles</v-card-title>
-                <v-card-subtitle class="text-left">Tell us about your role in this project</v-card-subtitle>
+                <v-card-subtitle class="text-left"
+                  >Tell us about your role in this project</v-card-subtitle
+                >
                 <v-radio-group v-model="myRole" row>
                   I am
                   <v-radio label="Developer" value="1"></v-radio>
@@ -57,7 +65,9 @@
             <v-col cols="12" v-if="myRole !== '2'" sm="6">
               <v-card class="v-form pa-4 pt-6">
                 <v-card-title class="headline">Manager</v-card-title>
-                <v-card-subtitle class="text-left">Tell us about your Manager</v-card-subtitle>
+                <v-card-subtitle class="text-left"
+                  >Tell us about your Manager</v-card-subtitle
+                >
                 <Input
                   v-model="managerDetails.firstName"
                   label="First Name"
@@ -87,7 +97,9 @@
             <v-col cols="12" v-if="myRole !== '3'" sm="6">
               <v-card class="v-form pa-4 pt-6">
                 <v-card-title class="headline">CTO</v-card-title>
-                <v-card-subtitle class="text-left">Tell us about your CTO</v-card-subtitle>
+                <v-card-subtitle class="text-left"
+                  >Tell us about your CTO</v-card-subtitle
+                >
                 <Input
                   v-model="ctoDetails.firstName"
                   label="First Name"
@@ -118,7 +130,9 @@
             <v-col cols="12" v-if="myRole !== '1'" sm="6">
               <v-card class="pa-4 pt-6">
                 <v-card-title class="headline">Developer</v-card-title>
-                <v-card-subtitle class="text-left">Tell us about your Developer</v-card-subtitle>
+                <v-card-subtitle class="text-left"
+                  >Tell us about your Developer</v-card-subtitle
+                >
 
                 <Input
                   v-model="developerDetails.firstName"
@@ -159,7 +173,8 @@
                     color="indigo accent-4"
                     depressed
                     @click="addProjectInfo"
-                  >Next</Button>
+                    >Next</Button
+                  >
                 </v-card-actions>
               </v-card>
             </v-col>
@@ -204,9 +219,24 @@ export default class AddProjectInfo extends Vue {
   private projectName: string = '';
   private description: string = '';
   private myRole: string = '1';
-  private developerDetails: ProjectUserModel = <ProjectUserModel>{};
-  private managerDetails: ProjectUserModel = <ProjectUserModel>{};
-  private ctoDetails: ProjectUserModel = <ProjectUserModel>{};
+  private developerDetails: ProjectUserModel = {
+    email: '',
+    phone: '',
+    firstName: '',
+    lastName: ''
+  };
+  private managerDetails: ProjectUserModel = {
+    email: '',
+    phone: '',
+    firstName: '',
+    lastName: ''
+  };
+  private ctoDetails: ProjectUserModel = {
+    email: '',
+    phone: '',
+    firstName: '',
+    lastName: ''
+  };
 
   private isEditmode: boolean = false;
   /* istanbul ignore next */
@@ -260,6 +290,9 @@ export default class AddProjectInfo extends Vue {
       this.isEditmode = true;
       this.loadSingleProjectInfo(this.id);
     }
+  }
+  private input(value: string) {
+    // console.log('value', value);
   }
 }
 </script>

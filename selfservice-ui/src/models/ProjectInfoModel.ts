@@ -10,9 +10,9 @@ export interface ProjectInfoModel {
 }
 
 export interface ProjectUserModel {
-  id: string;
+  id?: string;
   email: string;
   phone: string;
   firstName: string;
-  LastName: string;
+  lastName: string;
 }

@@ -1,5 +1,5 @@
 {
-  "project-info": [
+  "project": [
     {
       "id": 1,
       "organizationName": "organic",
@@ -26,46 +26,6 @@
         "lastName": "l cto",
         "id": 3
       }
-    },
-    {
-      "organizationName": "aa",
-      "projectName": "aa",
-      "description": "testaa",
-      "myRole": "1",
-      "developerDetails": {},
-      "managerDetails": {
-        "firstName": "mf",
-        "lastName": "ml",
-        "email": "me",
-        "phone": "mp"
-      },
-      "ctoDetails": {
-        "firstName": "cf",
-        "lastName": "cl",
-        "email": "ce",
-        "phone": "cp"
-      },
-      "id": 11
-    },
-    {
-      "organizationName": "ss1",
-      "projectName": "dd",
-      "description": "test",
-      "myRole": "1",
-      "developerDetails": {},
-      "managerDetails": {
-        "firstName": "mf",
-        "lastName": "m",
-        "email": "m",
-        "phone": "m"
-      },
-      "ctoDetails": {
-        "firstName": "c",
-        "lastName": "c",
-        "email": "c",
-        "phone": "c"
-      },
-      "id": 12
     }
   ]
 }
