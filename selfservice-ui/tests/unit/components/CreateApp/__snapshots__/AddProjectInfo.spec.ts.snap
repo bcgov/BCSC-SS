@@ -191,55 +191,11 @@ exports[`AddProjectInfo.vue renders props when passed 1`] = `
             sm="6"
             tag="div"
           >
-            <v-card-stub
-              class="v-form pa-4 pt-6"
-              loaderheight="4"
-              tag="div"
-            >
-              <v-card-title-stub
-                class="headline"
-              >
-                Manager
-              </v-card-title-stub>
-               
-              <v-card-subtitle-stub
-                class="text-left"
-              >
-                Tell us about your Manager
-              </v-card-subtitle-stub>
-               
-              <input-stub
-                counter=""
-                label="First Name"
-                rules="v => !!v || 'This field is required'"
-                type="text"
-                value=""
-              />
-               
-              <input-stub
-                counter=""
-                label="Last Name"
-                rules="v => !!v || 'This field is required'"
-                type="text"
-                value=""
-              />
-               
-              <input-stub
-                counter=""
-                label="Work email "
-                rules="v => !!v || 'This field is required'"
-                type="text"
-                value=""
-              />
-               
-              <input-stub
-                counter=""
-                label="Phone "
-                rules="v => !!v || 'This field is required'"
-                type="text"
-                value=""
-              />
-            </v-card-stub>
+            <projectusers-stub
+              rules="[object Object]"
+              title="Manager"
+              userdetails="[object Object]"
+            />
           </v-col-stub>
            
           <v-col-stub
@@ -247,55 +203,11 @@ exports[`AddProjectInfo.vue renders props when passed 1`] = `
             sm="6"
             tag="div"
           >
-            <v-card-stub
-              class="v-form pa-4 pt-6"
-              loaderheight="4"
-              tag="div"
-            >
-              <v-card-title-stub
-                class="headline"
-              >
-                CTO
-              </v-card-title-stub>
-               
-              <v-card-subtitle-stub
-                class="text-left"
-              >
-                Tell us about your CTO
-              </v-card-subtitle-stub>
-               
-              <input-stub
-                counter=""
-                label="First Name"
-                rules="v => !!v || 'This field is required'"
-                type="text"
-                value=""
-              />
-               
-              <input-stub
-                counter=""
-                label="Last Name"
-                rules="v => !!v || 'This field is required'"
-                type="text"
-                value=""
-              />
-               
-              <input-stub
-                counter=""
-                label="Work email "
-                rules="v => !!v || 'This field is required'"
-                type="text"
-                value=""
-              />
-               
-              <input-stub
-                counter=""
-                label="Phone "
-                rules="v => !!v || 'This field is required'"
-                type="text"
-                value=""
-              />
-            </v-card-stub>
+            <projectusers-stub
+              rules="[object Object]"
+              title="CTO"
+              userdetails="[object Object]"
+            />
           </v-col-stub>
            
           <!---->

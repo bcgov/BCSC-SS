@@ -62,104 +62,28 @@
               </v-card>
             </v-col>
             <!-- <v-form ref="form" v-model="form" class="pa-4 pt-6"> -->
-            <v-col cols="12" v-if="myRole !== '2'" sm="6">
-              <v-card class="v-form pa-4 pt-6">
-                <v-card-title class="headline">Manager</v-card-title>
-                <v-card-subtitle class="text-left"
-                  >Tell us about your Manager</v-card-subtitle
-                >
-                <Input
-                  v-model="managerDetails.firstName"
-                  label="First Name"
-                  type="text"
-                  :rules="[rules.required]"
-                />
-                <Input
-                  v-model="managerDetails.lastName"
-                  label="Last Name"
-                  type="text"
-                  :rules="[rules.required]"
-                />
-                <Input
-                  v-model="managerDetails.email"
-                  label="Work email "
-                  type="text"
-                  :rules="[rules.required]"
-                />
-                <Input
-                  v-model="managerDetails.phone"
-                  label="Phone "
-                  type="text"
-                  :rules="[rules.required]"
-                />
-              </v-card>
+            <v-col cols="12" sm="6" v-if="myRole !== '2'">
+              <ProjectUsers
+                :userDetails="managerDetails"
+                :rules="rules"
+                title="Manager"
+              />
             </v-col>
-            <v-col cols="12" v-if="myRole !== '3'" sm="6">
-              <v-card class="v-form pa-4 pt-6">
-                <v-card-title class="headline">CTO</v-card-title>
-                <v-card-subtitle class="text-left"
-                  >Tell us about your CTO</v-card-subtitle
-                >
-                <Input
-                  v-model="ctoDetails.firstName"
-                  label="First Name"
-                  type="text"
-                  :rules="[rules.required]"
-                />
-                <Input
-                  v-model="ctoDetails.lastName"
-                  label="Last Name"
-                  type="text"
-                  :rules="[rules.required]"
-                />
-                <Input
-                  v-model="ctoDetails.email"
-                  label="Work email "
-                  type="text"
-                  :rules="[rules.required]"
-                />
-                <Input
-                  v-model="ctoDetails.phone"
-                  label="Phone "
-                  type="text"
-                  :rules="[rules.required]"
-                />
-              </v-card>
+            <v-col cols="12" sm="6" v-if="myRole !== '3'">
+              <ProjectUsers
+                :userDetails="ctoDetails"
+                :rules="rules"
+                title="CTO"
+              />
+            </v-col>
+            <v-col cols="12" sm="6" v-if="myRole !== '1'">
+              <ProjectUsers
+                :userDetails="developerDetails"
+                :rules="rules"
+                title="Developer"
+              />
             </v-col>
 
-            <v-col cols="12" v-if="myRole !== '1'" sm="6">
-              <v-card class="pa-4 pt-6">
-                <v-card-title class="headline">Developer</v-card-title>
-                <v-card-subtitle class="text-left"
-                  >Tell us about your Developer</v-card-subtitle
-                >
-
-                <Input
-                  v-model="developerDetails.firstName"
-                  label="First Name"
-                  type="text"
-                  :rules="[rules.required]"
-                />
-                <Input
-                  v-model="developerDetails.lastName"
-                  label="Last Name"
-                  type="text"
-                  :rules="[rules.required]"
-                />
-                <Input
-                  v-model="developerDetails.email"
-                  label="Work email "
-                  type="text"
-                  :rules="[rules.required]"
-                />
-                <Input
-                  v-model="developerDetails.phone"
-                  label="Phone "
-                  type="text"
-                  :rules="[rules.required]"
-                />
-              </v-card>
-            </v-col>
             <v-col cols="12">
               <v-card flat>
                 <v-divider></v-divider>
@@ -191,10 +115,12 @@ import { ProjectUserModel, ProjectInfoModel } from '@/models/ProjectInfoModel';
 import Input from '@/Atomic/Input/Input.vue';
 import TextArea from '@/Atomic/TextArea/TextArea.vue';
 import Button from '@/Atomic/Button/Button.vue';
+import ProjectUsers from './ProjectUsers.vue';
+import validationRules from '@/config/validationRules';
 
 const ProjectInfoModule = namespace('ProjectInfoModule');
 
-@Component({ components: { Input, TextArea, Button } })
+@Component({ components: { Input, TextArea, Button, ProjectUsers } })
 export default class AddProjectInfo extends Vue {
   @Prop({ default: '' })
   public id!: string;
@@ -240,11 +166,7 @@ export default class AddProjectInfo extends Vue {
 
   private isEditmode: boolean = false;
   /* istanbul ignore next */
-  private rules = {
-    length: (len: any) => (v: any) =>
-      (v || '').length >= len || 'Invalid character length, required ' + len,
-    required: (v: any) => !!v || 'This field is required'
-  };
+  private rules = validationRules;
 
   @Watch('getSingleProjectInfo')
   private ongetSingleProjectInfoChanged(val: any) {
