@@ -32,12 +32,12 @@ stage('Build ' + WEB_IMAGESTREAM_NAME) {
         // Make sure the frontend build configs exist
         common.ensureBuildExists(WEB_BUILD,"openshift/selfservice-ui/web-build.yaml")
         // Build and verify the app
-        common.buildAndVerify(WEB_BUILD)
+        // common.buildAndVerify(WEB_BUILD)
         
         // Don't tag with BUILD_ID so the pruner can do it's job; it won't delete tagged images.
         // Tag the images for deployment based on the image's hash
-        WEB_IMAGE_HASH = common.getLatestHash(WEB_IMAGESTREAM_NAME)          
-        echo ">> WEB_IMAGE_HASH: ${WEB_IMAGE_HASH}"
+        // WEB_IMAGE_HASH = common.getLatestHash(WEB_IMAGESTREAM_NAME)          
+        // echo ">> WEB_IMAGE_HASH: ${WEB_IMAGE_HASH}"
 
         // Success UI-Build Notification
         // COMMENT = '{"username":"bcsc-jedi","icon_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s","text":"SelfService-UI build Success 🚀","attachments":[{"title":"Selfservice-ui build","title_link":${BUILD_URL},"text":"Selfservice-ui build details:","image_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwc_SWm-J_9OPSJVzUqxibPHZI55EBwpOB-JPeY0drU64YENdUWA&s","color":"#1ee321"}]}'
