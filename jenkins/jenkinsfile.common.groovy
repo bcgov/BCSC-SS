@@ -123,7 +123,7 @@ def rocketchat_token(){
 
 @NonCPS
 def rocketChatNotificaiton(app_name) {
-  token = rocketchat_token()
+  def token = rocketchat_token()
   def rocketChatUrl = "https://chat.pathfinder.gov.bc.ca/hooks/" + "${token}"
   build_url = "${currentBuild.absoluteUrl}console"
   attachment = ["title":"${app_name} Deployment","title_link":"${build_url}", "image_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwc_SWm-J_9OPSJVzUqxibPHZI55EBwpOB-JPeY0drU64YENdUWA&s","color":"#1ee321"]
