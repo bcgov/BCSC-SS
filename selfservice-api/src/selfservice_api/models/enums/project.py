@@ -11,17 +11,25 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""This manages Orginasition Whitelist."""
+"""This manages Project Enums."""
 
-from .audit_mixin import AuditDateTimeMixin
-from .db import db
+from enum import IntEnum
 
 
-class OrgWhitelist(AuditDateTimeMixin, db.Model):  # pylint: disable=too-few-public-methods
-    """This class manages whitelisted Orginasition."""
+class ProjectRoles(IntEnum):
+    """This Enum provides the list of Project Roles."""
 
-    __tablename__ = 'org_whitelist'
-    id = db.Column(db.Integer, primary_key=True)
-    org_name = db.Column('org_name', db.String(250), nullable=False)
-    head_of_org = db.Column('head_of_org', db.String(250), nullable=False)
-    domain = db.Column('domain', db.String(50), nullable=False)
+    Developer = 1
+    Manager = 2
+    Cto = 3
+
+
+class ProjectStatus(IntEnum):
+    """This Enum provides the list of Project Status."""
+
+    DevInProgress = 1
+    DevPending = 2
+    DevApproved = 3
+    DevRejected = 4
+    DevActivated = 5
+    DevNotActive = 6
