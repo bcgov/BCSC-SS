@@ -1,0 +1,31 @@
+{
+  "project": [
+    {
+      "id": 1,
+      "organizationName": "organic",
+      "projectName": "project",
+      "myRole": "1",
+      "developerDetails": {
+        "email": "test@test.com",
+        "phone": "0987654321",
+        "firstName": "name",
+        "lastName": "l name",
+        "id": 1
+      },
+      "managerDetails": {
+        "email": "mail@test.com",
+        "phone": "1234567890",
+        "firstName": "f manager",
+        "lastName": "l manager",
+        "id": 2
+      },
+      "ctoDetails": {
+        "email": "cto@email.com",
+        "phone": "1234567890",
+        "firstName": "f cto",
+        "lastName": "l cto",
+        "id": 3
+      }
+    }
+  ]
+}

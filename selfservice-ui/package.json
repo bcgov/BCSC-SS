@@ -15,10 +15,12 @@
   "dependencies": {
     "@mdi/font": "^4.7.95",
     "animate.css": "^3.7.2",
+    "axios": "^0.19.1",
     "core-js": "^3.4.3",
     "keycloak-js": "^8.0.1",
     "register-service-worker": "^1.6.2",
     "vue": "^2.6.10",
+    "vue-axios": "^2.1.5",
     "vue-class-component": "^7.0.2",
     "vue-i18n": "^8.15.3",
     "vue-property-decorator": "^8.3.0",
