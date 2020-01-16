@@ -1,0 +1,247 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddProjectInfo.vue renders props when passed 1`] = `
+<v-card-stub
+  class="mx-auto"
+  loaderheight="4"
+  style="max-width: 80%;"
+  tag="div"
+>
+  <v-card-stub
+    class="mx-auto"
+    loaderheight="4"
+    tag="div"
+  >
+    <v-app-bar-stub
+      color="#003366"
+      dark="true"
+      extensionheight="48"
+      src=""
+      tag="header"
+      tile="true"
+      value="true"
+    >
+      <v-btn-stub
+        activeclass=""
+        aria-label="Back Button"
+        icon="true"
+        tag="button"
+        type="button"
+      >
+        <v-icon-stub>
+          mdi-arrow-left
+        </v-icon-stub>
+      </v-btn-stub>
+       
+      <v-toolbar-title-stub>
+        Project information
+      </v-toolbar-title-stub>
+       
+      <v-spacer-stub />
+    </v-app-bar-stub>
+     
+    <v-form-stub>
+      <v-container-stub
+        tag="div"
+      >
+        <v-row-stub
+          dense="true"
+          tag="div"
+        >
+          <v-col-stub
+            cols="12"
+            md="12"
+            tag="div"
+          >
+            <v-card-stub
+              class="pa-4 pt-6"
+              loaderheight="4"
+              tag="div"
+            >
+              <v-card-title-stub
+                class="headline"
+              >
+                Project information
+              </v-card-title-stub>
+               
+              <v-card-subtitle-stub
+                class="text-left"
+              >
+                Tell us about your Project
+              </v-card-subtitle-stub>
+               
+              <input-stub
+                counter="200"
+                label="Organization name"
+                rules="v => !!v || 'This field is required',v => (v || '').length >= len || 'Invalid character length, required ' + len"
+                type="text"
+                value=""
+              />
+               
+              <input-stub
+                counter="100"
+                label="Project name"
+                rules="v => !!v || 'This field is required',v => (v || '').length >= len || 'Invalid character length, required ' + len"
+                type="text"
+                value=""
+              />
+               
+              <textarea-stub
+                counter=""
+                label="Description"
+                rules="v => !!v || 'This field is required'"
+                type="text"
+                value=""
+              />
+            </v-card-stub>
+          </v-col-stub>
+           
+          <v-col-stub
+            cols="12"
+            tag="div"
+          >
+            <v-card-stub
+              class="pa-4 pt-6"
+              loaderheight="4"
+              tag="div"
+            >
+              <v-card-title-stub
+                class="headline"
+              >
+                Project Roles
+              </v-card-title-stub>
+               
+              <v-card-subtitle-stub
+                class="text-left"
+              >
+                Tell us about your role in this project
+              </v-card-subtitle-stub>
+               
+              <v-radio-group-stub
+                activeclass="v-item--active"
+                backgroundcolor=""
+                column="true"
+                errorcount="1"
+                errormessages=""
+                height="auto"
+                messages=""
+                row="true"
+                rules=""
+                successmessages=""
+                value="1"
+                valuecomparator="function deepEqual(a, b) {
+  if (a === b) return true;
+
+  if (a instanceof Date && b instanceof Date) {
+    // If the values are Date, they were convert to timestamp with getTime and compare it
+    if (a.getTime() !== b.getTime()) return false;
+  }
+
+  if (a !== Object(a) || b !== Object(b)) {
+    // If the values aren't objects, they were already checked for equality
+    return false;
+  }
+
+  var props = Object.keys(a);
+
+  if (props.length !== Object.keys(b).length) {
+    // Different number of props, don't bother to check
+    return false;
+  }
+
+  return props.every(function (p) {
+    return deepEqual(a[p], b[p]);
+  });
+}"
+              >
+                
+                I am
+                
+                <v-radio-stub
+                  label="Developer"
+                  officon="$radioOff"
+                  onicon="$radioOn"
+                  ripple="true"
+                  value="1"
+                />
+                 
+                <v-radio-stub
+                  label="Manager"
+                  officon="$radioOff"
+                  onicon="$radioOn"
+                  ripple="true"
+                  value="2"
+                />
+                 
+                <v-radio-stub
+                  label="CTO"
+                  officon="$radioOff"
+                  onicon="$radioOn"
+                  ripple="true"
+                  value="3"
+                />
+                For this project
+              
+              </v-radio-group-stub>
+            </v-card-stub>
+          </v-col-stub>
+           
+          <v-col-stub
+            cols="12"
+            sm="6"
+            tag="div"
+          >
+            <projectusers-stub
+              rules="[object Object]"
+              title="Manager"
+              userdetails="[object Object]"
+            />
+          </v-col-stub>
+           
+          <v-col-stub
+            cols="12"
+            sm="6"
+            tag="div"
+          >
+            <projectusers-stub
+              rules="[object Object]"
+              title="CTO"
+              userdetails="[object Object]"
+            />
+          </v-col-stub>
+           
+          <!---->
+           
+          <v-col-stub
+            cols="12"
+            tag="div"
+          >
+            <v-card-stub
+              flat="true"
+              loaderheight="4"
+              tag="div"
+            >
+              <v-divider-stub />
+               
+              <v-card-actions-stub>
+                <v-spacer-stub />
+                 
+                <button-stub
+                  class="white--text"
+                  color="indigo accent-4"
+                  depressed=""
+                  disabled="true"
+                  name="button"
+                  type="button"
+                >
+                  Next
+                </button-stub>
+              </v-card-actions-stub>
+            </v-card-stub>
+          </v-col-stub>
+        </v-row-stub>
+      </v-container-stub>
+    </v-form-stub>
+  </v-card-stub>
+</v-card-stub>
+`;

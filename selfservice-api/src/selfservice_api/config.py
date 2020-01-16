@@ -61,7 +61,7 @@ class _Config():  # pylint: disable=too-few-public-methods
 
     PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
-    SECRET_KEY = 'a secret'
+    SECRET_KEY = 'secret value'
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
@@ -87,7 +87,6 @@ class _Config():  # pylint: disable=too-few-public-methods
     JWT_OIDC_JWKS_URI = os.getenv('JWT_OIDC_JWKS_URI')
     JWT_OIDC_ISSUER = os.getenv('JWT_OIDC_ISSUER')
     JWT_OIDC_AUDIENCE = os.getenv('JWT_OIDC_AUDIENCE')
-    JWT_OIDC_CLIENT_SECRET = os.getenv('JWT_OIDC_CLIENT_SECRET')
     JWT_OIDC_CACHING_ENABLED = os.getenv('JWT_OIDC_CACHING_ENABLED')
     try:
         JWT_OIDC_JWKS_CACHE_TIMEOUT = int(os.getenv('JWT_OIDC_JWKS_CACHE_TIMEOUT'))
@@ -128,8 +127,7 @@ class TestConfig(_Config):  # pylint: disable=too-few-public-methods
     # JWT_OIDC_TEST_MODE will set jwt_manager to use
     JWT_OIDC_TEST_MODE = True
     JWT_OIDC_TEST_AUDIENCE = os.getenv('JWT_OIDC_AUDIENCE')
-    JWT_OIDC_TEST_CLIENT_SECRET = os.getenv('JWT_OIDC_CLIENT_SECRET')
-    JWT_OIDC_TEST_ISSUER = 'https://sso-dev.auth.gov.bc.ca/auth/realms/bcsc'
+    JWT_OIDC_TEST_ISSUER = 'https://sso-dev.auth.gov.bc.ca/auth/realms/bcsc_test'
     JWT_OIDC_TEST_KEYS = {
         'keys': [
             {

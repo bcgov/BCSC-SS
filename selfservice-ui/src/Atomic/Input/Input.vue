@@ -8,9 +8,9 @@ important action on your service, such as Download or Submit. */
     :label="label"
     :required="required"
     @input="input"
-    @blur="input"
     v-bind="$attrs"
   ></v-text-field>
+  <!-- outlined -->
 </template>
 
 <script lang="ts">
