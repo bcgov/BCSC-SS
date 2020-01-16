@@ -35,13 +35,6 @@ class Project(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
     manager_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)
     cto_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)
 
-    developer = db.relationship('User', foreign_keys='Project.developer_id',
-                                backref='Project', lazy=True)
-    manager = db.relationship('User', foreign_keys='Project.manager_id',
-                              backref='Project', lazy=True)
-    cto = db.relationship('User', foreign_keys='Project.cto_id',
-                          backref='Project', lazy=True)
-
     status = db.Column(db.Integer(), nullable=False)
 
     @classmethod
@@ -70,25 +63,25 @@ class Project(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
         current_user = User.find_by_oauth_id(project_info['oauth_id'])
 
         if project_info['my_role'] != ProjectRoles.Developer:
-            developer_user = User.find_by_email(project_info['developer_details']['email'])
+            developer_user = User.find_by_email(project_info['developer']['email'])
             if developer_user is None:
-                developer_user = User.create_from_dict(project_info['developer_details'])
+                developer_user = User.create_from_dict(project_info['developer'])
             self.developer_id = developer_user.id
         else:
             self.developer_id = current_user.id
 
         if project_info['my_role'] != ProjectRoles.Manager:
-            manager_user = User.find_by_email(project_info['manager_details']['email'])
+            manager_user = User.find_by_email(project_info['manager']['email'])
             if manager_user is None:
-                manager_user = User.create_from_dict(project_info['manager_details'])
+                manager_user = User.create_from_dict(project_info['manager'])
             self.manager_id = manager_user.id
         else:
             self.manager_id = current_user.id
 
         if project_info['my_role'] != ProjectRoles.Cto:
-            cto_user = User.find_by_email(project_info['cto_details']['email'])
+            cto_user = User.find_by_email(project_info['cto']['email'])
             if cto_user is None:
-                cto_user = User.create_from_dict(project_info['cto_details'])
+                cto_user = User.create_from_dict(project_info['cto'])
             self.cto_id = cto_user.id
         else:
             self.cto_id = current_user.id

@@ -19,7 +19,7 @@ from ..models.enums.project import ProjectRoles
 
 
 class ProjectUserSchema(Schema):
-    """This class manages project users(developer,manager,cto) request schema."""
+    """This class manages project users(developer,manager,cto) request and response schema."""
 
     id = fields.Int()
     email = fields.Email(validate=validate.Length(max=250))
@@ -28,8 +28,8 @@ class ProjectUserSchema(Schema):
     last_name = fields.Str(data_key='lastName', validate=validate.Length(max=250))
 
 
-class ProjectRequestSchema(Schema):
-    """This class manages project request schema."""
+class ProjectSchema(Schema):
+    """This class manages project request and response schema."""
 
     class Meta:  # pylint: disable=too-few-public-methods
         """Exclude unknown fields in the deserialized output."""

@@ -20,7 +20,7 @@ from flask_restplus import Namespace, Resource, cors
 from marshmallow import ValidationError
 
 from ..models.project import Project
-from ..schemas.project import ProjectRequestSchema
+from ..schemas.project import ProjectSchema
 from ..utils.auth import jwt
 from ..utils.util import cors_preflight
 
@@ -42,10 +42,11 @@ class ProjectResource(Resource):
 
         try:
             token_info = g.jwt_oidc_token_info
-            dict_data = ProjectRequestSchema().load(project_json)
+            project_schema = ProjectSchema()
+            dict_data = project_schema.load(project_json)
             dict_data['oauth_id'] = token_info.get('sub')
-            Project.create_from_dict(dict_data)
-            response, status = 'success', HTTPStatus.CREATED
+            project = Project.create_from_dict(dict_data)
+            response, status = project_schema.dump(project), HTTPStatus.CREATED
         except ValidationError as err:
             response, status = {'message': str(err.messages)}, \
                 HTTPStatus.BAD_REQUEST
@@ -64,4 +65,4 @@ class ProjectResourceById(Resource):
         """Get project details."""
         project = Project.find_by_id(id)
 
-        return ProjectRequestSchema().dump(project), HTTPStatus.OK
+        return ProjectSchema().dump(project), HTTPStatus.OK
