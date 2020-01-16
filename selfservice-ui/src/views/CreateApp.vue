@@ -15,5 +15,5 @@ import CreateApp from '@/components/CreateApp/CreateApp.vue';
   }
 })
 // Home goes here
-export default class Home extends Vue {}
+export default class CreateAppHome extends Vue {}
 </script>
