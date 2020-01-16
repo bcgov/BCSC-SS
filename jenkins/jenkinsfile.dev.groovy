@@ -34,12 +34,12 @@ stage('Build ' + WEB_IMAGESTREAM_NAME) {
         // Make sure the frontend build configs exist
         common.ensureBuildExists(WEB_BUILD,"openshift/selfservice-ui/web-build.yaml")
         // Build and verify the app
-        common.buildAndVerify(WEB_BUILD)
+        // common.buildAndVerify(WEB_BUILD)
         
         // Don't tag with BUILD_ID so the pruner can do it's job; it won't delete tagged images.
         // Tag the images for deployment based on the image's hash
-        WEB_IMAGE_HASH = common.getLatestHash(WEB_IMAGESTREAM_NAME)          
-        echo ">> WEB_IMAGE_HASH: ${WEB_IMAGE_HASH}"
+        // WEB_IMAGE_HASH = common.getLatestHash(WEB_IMAGESTREAM_NAME)          
+        // echo ">> WEB_IMAGE_HASH: ${WEB_IMAGE_HASH}"
         
         // Success UI-Build Notification
         common.successNotificaiton(ROCKETCHAT_TOKEN, WEB_IMAGESTREAM_NAME, BUILD_PHASE )
