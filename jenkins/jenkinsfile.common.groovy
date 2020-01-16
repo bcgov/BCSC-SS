@@ -1,3 +1,8 @@
+#!/usr/bin/env groovy
+import java.util.Date
+import java.text.SimpleDateFormat
+import groovy.json.*
+
 // Load shared devops utils
 library identifier: 'devops-library@master', retriever: modernSCM([
   $class: 'GitSCMSource',
