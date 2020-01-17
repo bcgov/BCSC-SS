@@ -2,6 +2,7 @@ import { ActionTree } from 'vuex';
 import { KeyCloakState } from './types';
 import { RootState } from '../../types';
 import KeycloakService from '@/services/keycloakservice';
+import { UserService } from '@/services/userService';
 // import axios from '@/lib/axios';
 import router from '@/router';
 // import { USER_URL } from '@/config/urlList';
@@ -30,7 +31,7 @@ export const actions: ActionTree<KeyCloakState, RootState> = {
       commit('SET_KEY_AUTH', keycloak);
       commit('SET_TOKEN');
       sessionStorage.setItem('keycloak_token', token);
-      // const user = await UserService.createUser();
+      const user = await UserService.createUser();
       // dispatch('setUserProfile', user.data);
       // if (user.data && user.data.firstTimeLogin) {
       //   router.push({ path: '/profile' });

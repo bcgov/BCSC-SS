@@ -4,6 +4,8 @@ exports[`CreateApp.vue renders props when passed 1`] = `
 <div
   class="home"
 >
-  <createapp-stub />
+  <createapp-stub
+    step="projectinfo"
+  />
 </div>
 `;

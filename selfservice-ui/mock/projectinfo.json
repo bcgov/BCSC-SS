@@ -51,6 +51,280 @@
         "lastName": "sc"
       },
       "id": 2
+    },
+    {
+      "organizationName": "aS",
+      "projectName": "AF",
+      "description": "asefasf",
+      "myRole": "1",
+      "developerDetails": {
+        "email": "",
+        "phone": "",
+        "firstName": "",
+        "lastName": ""
+      },
+      "managerDetails": {
+        "email": "d@2aczx.com",
+        "phone": "sfa",
+        "firstName": "asd",
+        "lastName": "asdas"
+      },
+      "ctoDetails": {
+        "email": "asd@asd.com",
+        "phone": "sds",
+        "firstName": "asd",
+        "lastName": "asd"
+      },
+      "id": 3
+    },
+    {
+      "organizationName": "wdas",
+      "projectName": "asd",
+      "description": "sad",
+      "myRole": "1",
+      "developerDetails": {
+        "email": "",
+        "phone": "",
+        "firstName": "",
+        "lastName": ""
+      },
+      "managerDetails": {
+        "email": "asd@asdas.com",
+        "phone": "asdsa",
+        "firstName": "asd",
+        "lastName": "asd"
+      },
+      "ctoDetails": {
+        "email": "asd@asd.com",
+        "phone": "sd",
+        "firstName": "asd",
+        "lastName": "asd"
+      },
+      "id": 4
+    }
+  ],
+  "technical-req": [
+    {
+      "id": 1,
+      "projectId": 1,
+      "clientUri": "uri",
+      "redirectUris": [],
+      "jwksUri": "uri",
+      "idTokenSignedResponseAlg": "RS256",
+      "userinfoSignedResponseAlg": "RS256",
+      "scopePackageId": 1
+    },
+    {
+      "projectId": "dfg",
+      "clientUri": "asdasda",
+      "redirectUris": "sadsad",
+      "jwksUri": "asd",
+      "idTokenSignedResponseAlg": "RS256",
+      "userinfoSignedResponseAlg": "RS256",
+      "id": 2
+    },
+    {
+      "projectId": "1",
+      "clientUri": "asd",
+      "redirectUris": [
+        null,
+        null
+      ],
+      "jwksUri": "asd",
+      "idTokenSignedResponseAlg": "RS256",
+      "userinfoSignedResponseAlg": "RS256",
+      "id": 3
+    },
+    {
+      "projectId": "1",
+      "clientUri": "dsaasd",
+      "redirectUris": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "jwksUri": "asd",
+      "idTokenSignedResponseAlg": "RS256",
+      "userinfoSignedResponseAlg": "RS256",
+      "id": 4
+    },
+    {
+      "projectId": "1",
+      "clientUri": "asd",
+      "redirectUris": [
+        null,
+        null,
+        null
+      ],
+      "jwksUri": "asd",
+      "idTokenSignedResponseAlg": "RS256",
+      "userinfoSignedResponseAlg": "RS256",
+      "id": 5
+    },
+    {
+      "projectId": "1",
+      "clientUri": "asd",
+      "redirectUris": [
+        null,
+        null,
+        null
+      ],
+      "jwksUri": "asd",
+      "idTokenSignedResponseAlg": "RS256",
+      "userinfoSignedResponseAlg": "RS256",
+      "id": 6
+    },
+    {
+      "projectId": "1",
+      "clientUri": "sad",
+      "redirectUris": [
+        null,
+        null,
+        null
+      ],
+      "jwksUri": "sd",
+      "idTokenSignedResponseAlg": "RS256",
+      "userinfoSignedResponseAlg": "RS256",
+      "id": 7
+    },
+    {
+      "projectId": "1",
+      "clientUri": "asd",
+      "redirectUris": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "jwksUri": "asd",
+      "idTokenSignedResponseAlg": "RS256",
+      "userinfoSignedResponseAlg": "RS256",
+      "id": 8
+    },
+    {
+      "projectId": "1",
+      "clientUri": "as",
+      "redirectUris": [
+        null,
+        null,
+        null
+      ],
+      "jwksUri": "as",
+      "idTokenSignedResponseAlg": "RS256",
+      "userinfoSignedResponseAlg": "RS256",
+      "id": 9
+    },
+    {
+      "projectId": "1",
+      "clientUri": "asd",
+      "redirectUris": [
+        null,
+        null,
+        null
+      ],
+      "jwksUri": "asd",
+      "idTokenSignedResponseAlg": "RS256",
+      "userinfoSignedResponseAlg": "RS256",
+      "id": 10
+    },
+    {
+      "projectId": "1",
+      "clientUri": "sd",
+      "redirectUris": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "jwksUri": "asd",
+      "idTokenSignedResponseAlg": "RS256",
+      "userinfoSignedResponseAlg": "RS256",
+      "id": 11
+    },
+    {
+      "projectId": "1",
+      "clientUri": "asdasd",
+      "redirectUris": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "jwksUri": "asd",
+      "idTokenSignedResponseAlg": "RS256",
+      "userinfoSignedResponseAlg": "RS256",
+      "id": 12
+    },
+    {
+      "projectId": "1",
+      "clientUri": "asd",
+      "redirectUris": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "jwksUri": "asda",
+      "idTokenSignedResponseAlg": "RS256",
+      "userinfoSignedResponseAlg": "RS256",
+      "id": 13
+    },
+    {
+      "projectId": "1",
+      "clientUri": "zxc",
+      "redirectUris": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "jwksUri": "sadasd",
+      "idTokenSignedResponseAlg": "RS256",
+      "userinfoSignedResponseAlg": "RS256",
+      "id": 14
+    },
+    {
+      "projectId": "1",
+      "clientUri": "zxc",
+      "redirectUris": [
+        "zxczx",
+        "sadsa",
+        "asd",
+        ""
+      ],
+      "jwksUri": "sadasd",
+      "idTokenSignedResponseAlg": "RS256",
+      "userinfoSignedResponseAlg": "RS256",
+      "id": 15
+    },
+    {
+      "projectId": "1",
+      "clientUri": "zxc",
+      "redirectUris": [
+        "zxczx",
+        "sadsa",
+        "asd",
+        ""
+      ],
+      "jwksUri": "sadasd",
+      "idTokenSignedResponseAlg": "RS256",
+      "userinfoSignedResponseAlg": "RS256",
+      "id": 16
+    },
+    {
+      "projectId": "1",
+      "clientUri": "sdf",
+      "redirectUris": [
+        "sdf",
+        "dsf",
+        "sdf",
+        ""
+      ],
+      "jwksUri": "sdfsdf",
+      "idTokenSignedResponseAlg": "RS256",
+      "userinfoSignedResponseAlg": "RS256",
+      "id": 17
     }
   ]
 }

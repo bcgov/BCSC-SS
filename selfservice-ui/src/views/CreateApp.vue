@@ -1,12 +1,12 @@
 <template>
   <div class="home">
-    <CreateApp />
+    <CreateApp :step="step" />
   </div>
 </template>
 
-<script>
+<script lang="ts">
 // @ is an alias to /src
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Prop } from 'vue-property-decorator';
 import CreateApp from '@/components/CreateApp/CreateApp.vue';
 
 @Component({
@@ -14,6 +14,10 @@ import CreateApp from '@/components/CreateApp/CreateApp.vue';
     CreateApp
   }
 })
-// Home goes here
-export default class CreateAppHome extends Vue {}
+export default class CreateAppHome extends Vue {
+  @Prop({ default: 'projectinfo' })
+  public step!: string;
+  @Prop({ default: '' })
+  public id!: string;
+}
 </script>

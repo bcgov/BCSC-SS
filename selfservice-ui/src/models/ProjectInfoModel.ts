@@ -4,9 +4,9 @@ export interface ProjectInfoModel {
   projectName: string;
   myRole: string;
   description: string;
-  developerDetails: ProjectUserModel;
-  managerDetails: ProjectUserModel;
-  ctoDetails: ProjectUserModel;
+  developerDetails?: ProjectUserModel;
+  managerDetails?: ProjectUserModel;
+  ctoDetails?: ProjectUserModel;
 }
 
 export interface ProjectUserModel {
