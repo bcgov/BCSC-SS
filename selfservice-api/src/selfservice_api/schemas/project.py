@@ -49,11 +49,13 @@ class ProjectSchema(Schema):
     @pre_load()
     def before_load(self, data, **kwargs):
         """Modify the data before validation and deserialization."""
-        if data.get('myRole') == ProjectRoles.Developer:
+        project_role = int(data.get('myRole', 0))
+
+        if project_role == ProjectRoles.Developer:
             data['developerDetails'] = {}
-        elif data.get('myRole') == ProjectRoles.Manager:
+        elif project_role == ProjectRoles.Manager:
             data['managerDetails'] = {}
-        elif data.get('myRole') == ProjectRoles.Cto:
+        elif project_role == ProjectRoles.Cto:
             data['ctoDetails'] = {}
 
         return data
