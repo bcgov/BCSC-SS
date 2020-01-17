@@ -36,7 +36,7 @@ const router = new VueRouter({
     {
       path: '/create-app/:step?',
       name: 'createApp',
-      // meta: { requiresAuth: true, roles: ['ss_client', 'idir'] },
+      meta: { requiresAuth: true, roles: ['ss_client', 'idir'] },
       props: true,
       component: () =>
         import(/* webpackChunkName: "CreateApp" */ '../views/CreateApp.vue')
