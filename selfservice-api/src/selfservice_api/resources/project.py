@@ -29,7 +29,7 @@ API = Namespace('Project', description='Project')
 
 
 @cors_preflight('POST,OPTIONS')
-@API.route('/', methods=['POST', 'OPTIONS'])
+@API.route('', methods=['POST', 'OPTIONS'])
 class ProjectResource(Resource):
     """Resource for managing create project."""
 
@@ -53,7 +53,7 @@ class ProjectResource(Resource):
 
 
 @cors_preflight('GET,OPTIONS')
-@API.route('/<int:id>/', methods=['GET', 'OPTIONS'])
+@API.route('/<int:id>', methods=['GET', 'OPTIONS'])
 class ProjectResourceById(Resource):
     """Resource for managing get project by id."""
 

@@ -29,7 +29,7 @@ API = Namespace('TechnicalReq', description='Technical Requirement')
 
 
 @cors_preflight('POST,OPTIONS')
-@API.route('/', methods=['POST', 'OPTIONS'])
+@API.route('', methods=['POST', 'OPTIONS'])
 class TechnicalReqResource(Resource):
     """Resource for managing create technical requirement."""
 
@@ -53,7 +53,7 @@ class TechnicalReqResource(Resource):
 
 
 @cors_preflight('GET,OPTIONS')
-@API.route('/<int:id>/', methods=['GET', 'OPTIONS'])
+@API.route('/<int:id>', methods=['GET', 'OPTIONS'])
 class TechnicalReqResourceById(Resource):
     """Resource for managing get technical requirement by id."""
 
