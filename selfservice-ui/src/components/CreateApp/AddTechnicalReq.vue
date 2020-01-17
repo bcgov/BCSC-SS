@@ -5,11 +5,7 @@
      <v-alert type="error" v-if="errorStatus">Something went wrong...</v-alert>-->
     <v-card class="mx-auto">
       <v-app-bar dark color="#003366">
-        <v-btn
-          icon
-          @click="$router.push('/create-app/')"
-          aria-label="Back Button"
-        >
+        <v-btn icon @click="$router.push('/project/')" aria-label="Back Button">
           <v-icon>mdi-arrow-left</v-icon>
         </v-btn>
         <v-toolbar-title>Technical requirments</v-toolbar-title>

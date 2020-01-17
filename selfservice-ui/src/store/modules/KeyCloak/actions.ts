@@ -24,20 +24,25 @@ export const actions: ActionTree<KeyCloakState, RootState> = {
    */
   async setKeyCloakAuth(state: any, data) {
     const { commit, dispatch } = state;
-    const { keycloak, path } = data;
+    const { keycloak, path, next } = data;
     const token = keycloak.token || false;
     if (token) {
       commit('SET_LOGIN', true);
       commit('SET_KEY_AUTH', keycloak);
       commit('SET_TOKEN');
       sessionStorage.setItem('keycloak_token', token);
-      const user = await UserService.createUser();
-      // dispatch('setUserProfile', user.data);
-      // if (user.data && user.data.firstTimeLogin) {
-      //   router.push({ path: '/profile' });
-      // } else {
-      //   dispatch('userRedirect', path);
-      // }
+      try {
+        const user = await UserService.createUser();
+        dispatch('setUserProfile', user.data);
+        dispatch('userRedirect', { path, next });
+        // if (user.data && user.data.firstTimeLogin) {
+        //   router.push({ path: '/profile' });
+        // } else {
+        //   dispatch('userRedirect', path);
+        // }
+      } catch {
+        dispatch('userRedirect', { path, next });
+      }
     }
   },
 
@@ -87,11 +92,13 @@ export const actions: ActionTree<KeyCloakState, RootState> = {
    * @param {*} { commit }
    * @param {*} keycloak
    */
-  userRedirect(store: any, path) {
+  userRedirect(store: any, { path, next }) {
     if (path === '/login') {
       if (store.state.isClient || store.state.isAdmin) {
-        router.push({ path: '/user' });
+        router.push({ path: '/project' });
       }
+    } else {
+      next();
     }
   }
 };
