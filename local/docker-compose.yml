@@ -2,8 +2,6 @@ version: "3"
 services:
   db:
     image: postgres:11
-    ports:
-      - "5432:5432"
     volumes:
       - dbdata:/var/lib/postgresql/data
     environment:
@@ -54,7 +52,7 @@ services:
       context: ./..
       dockerfile: selfservice-ui/Dockerfile
       args:
-        - API_BASE_URL=http://localhost:${API_PORT}/api/
+        - API_BASE_URL=http://localhost:${API_PORT}/api/v1/
         - KEYCLOAK_URL=${KEYCLOAK_URL}
         - KEYCLOAK_REALM=${KEYCLOAK_REALM}
         - KEYCLOAK_CLIENT=${KEYCLOAK_CLIENT}

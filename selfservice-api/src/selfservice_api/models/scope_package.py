@@ -25,4 +25,4 @@ class ScopePackage(db.Model):  # pylint: disable=too-few-public-methods
     claim_names = db.Column(db.JSON, nullable=False)
     scope = db.Column(db.String(100), nullable=False)
 
-    scope_packages = db.relationship('TechnicalReq', backref='scope_package', lazy=True)
+    technical_req = db.relationship('TechnicalReq', backref='scope_package', lazy=True)

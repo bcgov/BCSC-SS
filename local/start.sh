@@ -26,9 +26,9 @@ docker-compose up -d web
 sleep 10
 
 if which open > /dev/null; then
- open 'http://localhost:8080/'
+ open 'http://localhost:8081/'
 elif which start > /dev/null; then
- start 'http://localhost:8080/'
+ start 'http://localhost:8081/'
 else
  echo "Could not detect the web browser to use."
 fi
