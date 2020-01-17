@@ -12,9 +12,6 @@ export const getters: GetterTree<TechnicalReqState, RootState> = {
    * @returns  {object} technicalreq
    */
 
-  getTechnicalReqList(state) {
-    return state.technicalreqList;
-  },
   successStatus(state) {
     return state.successStatus;
   },

@@ -4,16 +4,23 @@ import { actions } from './actions';
 import { mutations } from './mutations';
 import { TechnicalReqState } from './types';
 import { RootState } from '../../types';
+import { TechnicalReqModel } from '@/models/TechnicalReqModel';
 
 /**
  * technicalreq state
  */
 export const state: TechnicalReqState = {
-  technicalreqList: [],
   loading: false,
   successStatus: false,
   errorStatus: false,
-  singleTechnicalReq: [],
+  singleTechnicalReq: {
+    projectId: '',
+    clientUri: '',
+    redirectUris: [],
+    jwksUri: '',
+    idTokenSignedResponseAlg: '',
+    userinfoSignedResponseAlg: ''
+  },
   message: ''
 };
 

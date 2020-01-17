@@ -14,15 +14,6 @@ export const mutations: MutationTree<TechnicalReqState> = {
   SET_LOADING(state, flag: boolean) {
     state.loading = flag;
   },
-  /**
-   * Sets technicalreq
-   * @param {*} state
-   * @param payload technicalreq list
-   */
-
-  SET_TECHNICALREQLIST(state, payload: any) {
-    state.technicalreqList = payload;
-  },
 
   /**
    * set stae on success
