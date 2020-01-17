@@ -1,14 +1,14 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils';
-import CreateApp from '@/views/CreateApp.vue';
+import Project from '@/views/Project.vue';
 import vuetify from 'vuetify';
 
-describe('CreateApp.vue', () => {
+describe('Project.vue', () => {
   let wrapper: any;
   beforeEach(() => {
     const localVue = createLocalVue();
     localVue.use(vuetify);
 
-    wrapper = shallowMount(CreateApp, {
+    wrapper = shallowMount(Project, {
       localVue
     });
   });

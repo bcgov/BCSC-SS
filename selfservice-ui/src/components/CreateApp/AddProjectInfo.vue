@@ -186,7 +186,7 @@ export default class AddProjectInfo extends Vue {
       this.addProjectInfoStore(data);
     }
     // (this.$refs.form as HTMLFormElement).reset();
-    this.$router.push('/create-app/technical/');
+    this.$router.push('/Project/technical/');
   }
 
   private updteEdit(val: any) {
