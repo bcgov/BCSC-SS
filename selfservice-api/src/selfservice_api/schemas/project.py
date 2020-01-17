@@ -13,7 +13,7 @@
 # limitations under the License.
 """This manages Project Req/Res Schema."""
 
-from marshmallow import EXCLUDE, Schema, fields, validate
+from marshmallow import EXCLUDE, Schema, fields, pre_load, validate
 
 from ..models.enums.project import ProjectRoles
 
@@ -45,3 +45,15 @@ class ProjectSchema(Schema):
     developer = fields.Nested(ProjectUserSchema, data_key='developerDetails')
     manager = fields.Nested(ProjectUserSchema, data_key='managerDetails')
     cto = fields.Nested(ProjectUserSchema, data_key='ctoDetails')
+
+    @pre_load()
+    def before_load(self, data, **kwargs):
+        """Modify the data before validation and deserialization."""
+        if data.get('myRole') == ProjectRoles.Developer:
+            data['developerDetails'] = {}
+        elif data.get('myRole') == ProjectRoles.Manager:
+            data['managerDetails'] = {}
+        elif data.get('myRole') == ProjectRoles.Cto:
+            data['ctoDetails'] = {}
+
+        return data

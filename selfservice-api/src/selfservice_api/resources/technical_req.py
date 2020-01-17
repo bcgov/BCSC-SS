@@ -11,7 +11,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""API endpoints for managing an project resource."""
+"""API endpoints for managing an technical requirement resource."""
 
 from http import HTTPStatus
 
@@ -19,33 +19,33 @@ from flask import g, request
 from flask_restplus import Namespace, Resource, cors
 from marshmallow import ValidationError
 
-from ..models.project import Project
-from ..schemas.project import ProjectSchema
+from ..models.technical_req import TechnicalReq
+from ..schemas.technical_req import TechnicalReqSchema
 from ..utils.auth import jwt
 from ..utils.util import cors_preflight
 
 
-API = Namespace('Project', description='Project')
+API = Namespace('TechnicalReq', description='Technical Requirement')
 
 
 @cors_preflight('POST,OPTIONS')
 @API.route('/', methods=['POST', 'OPTIONS'])
-class ProjectResource(Resource):
-    """Resource for managing create project."""
+class TechnicalReqResource(Resource):
+    """Resource for managing create technical requirement."""
 
     @staticmethod
     @cors.crossdomain(origin='*')
     @jwt.requires_auth
     def post():
-        """Post a new project using the request body."""
-        project_json = request.get_json()
+        """Post a new technical requirement using the request body."""
+        technical_req_json = request.get_json()
 
         try:
             token_info = g.jwt_oidc_token_info
-            project_schema = ProjectSchema()
-            dict_data = project_schema.load(project_json)
-            project = Project.create_from_dict(dict_data, token_info.get('sub'))
-            response, status = project_schema.dump(project), HTTPStatus.CREATED
+            technical_req_schema = TechnicalReqSchema()
+            dict_data = technical_req_schema.load(technical_req_json)
+            technical_req = TechnicalReq.create_from_dict(dict_data, token_info.get('sub'))
+            response, status = technical_req_schema.dump(technical_req), HTTPStatus.CREATED
         except ValidationError as err:
             response, status = {'message': str(err.messages)}, \
                 HTTPStatus.BAD_REQUEST
@@ -54,14 +54,14 @@ class ProjectResource(Resource):
 
 @cors_preflight('GET,OPTIONS')
 @API.route('/<int:id>/', methods=['GET', 'OPTIONS'])
-class ProjectResourceById(Resource):
-    """Resource for managing get project by id."""
+class TechnicalReqResourceById(Resource):
+    """Resource for managing get technical requirement by id."""
 
     @staticmethod
     @cors.crossdomain(origin='*')
     @jwt.requires_auth
     def get(id):
-        """Get project details."""
-        project = Project.find_by_id(id)
+        """Get technical requirement details."""
+        technical_req = TechnicalReq.find_by_id(id)
 
-        return ProjectSchema().dump(project), HTTPStatus.OK
+        return TechnicalReqSchema().dump(technical_req), HTTPStatus.OK

@@ -16,15 +16,15 @@
 from marshmallow import EXCLUDE, Schema, fields, validate
 
 
-class TechnicalReqRequestSchema(Schema):
-    """This class manages technical requirement request schema."""
+class TechnicalReqSchema(Schema):
+    """This class manages technical requirement request and response schema."""
 
     unknown = EXCLUDE
 
     id = fields.Int()
-    client_name = fields.Str(data_key='clientName', validate=validate.Length(max=100))
+    project_id = fields.Int(data_key='projectId', required=True)
     client_uri = fields.Str(data_key='clientUri', validate=validate.Length(max=500))
-    redirect_uris = fields.Dict(data_key='redirectUris')
+    redirect_uris = fields.List(fields.String(), data_key='redirectUris', required=True)
     jwks_uri = fields.Str(data_key='jwksUri', validate=validate.Length(max=500))
     id_token_signed_response_alg = fields.Str(data_key='idTokenSignedResponseAlg', validate=validate.Length(max=10))
     userinfo_signed_response_alg = fields.Str(data_key='userinfoSignedResponseAlg', validate=validate.Length(max=10))

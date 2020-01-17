@@ -15,5 +15,5 @@
 """This exports all of the schemas used by the application."""
 
 from .project import ProjectSchema
-from .technical_req import TechnicalReqRequestSchema
+from .technical_req import TechnicalReqSchema
 from .user import UserSchema
