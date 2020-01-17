@@ -145,19 +145,14 @@ export default class AddProjectInfo extends Vue {
   private projectName: string = '';
   private description: string = '';
   private myRole: string = '1';
-  private developerDetails: ProjectUserModel = {
+  private developerDetails?: undefined;
+  private managerDetails?: ProjectUserModel = {
     email: '',
     phone: '',
     firstName: '',
     lastName: ''
   };
-  private managerDetails: ProjectUserModel = {
-    email: '',
-    phone: '',
-    firstName: '',
-    lastName: ''
-  };
-  private ctoDetails: ProjectUserModel = {
+  private ctoDetails?: ProjectUserModel = {
     email: '',
     phone: '',
     firstName: '',
@@ -191,7 +186,7 @@ export default class AddProjectInfo extends Vue {
       this.addProjectInfoStore(data);
     }
     // (this.$refs.form as HTMLFormElement).reset();
-    // this.$router.push('/projectinfo/');
+    this.$router.push('/create-app/technical/');
   }
 
   private updteEdit(val: any) {

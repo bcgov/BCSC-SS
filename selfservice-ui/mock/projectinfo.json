@@ -26,31 +26,18 @@
         "lastName": "l cto",
         "id": 3
       }
-    },
+    }
+  ],
+  "technical-req": [
     {
-      "organizationName": "ddd",
-      "projectName": "dddd",
-      "description": "dddd",
-      "myRole": "1",
-      "developerDetails": {
-        "email": "",
-        "phone": "",
-        "firstName": "",
-        "lastName": ""
-      },
-      "managerDetails": {
-        "email": "ac",
-        "phone": "cg",
-        "firstName": "da",
-        "lastName": "ac"
-      },
-      "ctoDetails": {
-        "email": "z",
-        "phone": "ZX",
-        "firstName": "ds",
-        "lastName": "sc"
-      },
-      "id": 2
+      "id": 1,
+      "projectId": 1,
+      "clientUri": "uri",
+      "redirectUris": [],
+      "jwksUri": "uri",
+      "idTokenSignedResponseAlg": "RS256",
+      "userinfoSignedResponseAlg": "RS256",
+      "scopePackageId": 1
     }
   ]
 }

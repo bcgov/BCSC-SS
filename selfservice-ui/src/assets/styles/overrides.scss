@@ -73,3 +73,7 @@
   > .v-input__slot:hover:before {
   border-color: $BCgovABlue2;
 }
+
+.v-list-item__content {
+  text-align: left !important;
+}

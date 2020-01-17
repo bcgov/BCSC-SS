@@ -9,6 +9,7 @@ important action on your service, such as Download or Submit. */
     :required="required"
     @input="input"
     v-bind="$attrs"
+    @blur="$emit('blur')"
   ></v-text-field>
   <!-- outlined -->
 </template>

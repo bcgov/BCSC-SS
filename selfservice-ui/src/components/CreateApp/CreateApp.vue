@@ -2,20 +2,25 @@
 
 <template>
   <div>
-    <AddProjectInfo />
+    <AddTechnicalReq v-if="step === 'technical'" />
+    <AddProjectInfo v-if="step === 'projectinfo'" />
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Prop } from 'vue-property-decorator';
 import AddProjectInfo from '@/components/CreateApp/AddProjectInfo.vue';
+import AddTechnicalReq from '@/components/CreateApp/AddTechnicalReq.vue';
 
 @Component({
   components: {
-    AddProjectInfo
+    AddProjectInfo,
+    AddTechnicalReq
   }
 })
 export default class CreateApp extends Vue {
+  @Prop({ default: 'projectinfo' })
+  public step!: string;
   private e6: number = 0;
 }
 </script>

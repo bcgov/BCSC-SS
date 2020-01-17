@@ -12,7 +12,6 @@
     "ordered-imports": false,
     "quotemark": [true, "single"],
     "trailing-comma": false,
-    "arrow-parens": false,
-    "no-angle-bracket-type-assertion": false
+    "arrow-parens": false
   }
 }
