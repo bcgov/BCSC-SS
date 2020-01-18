@@ -34,14 +34,18 @@ export const actions: ActionTree<KeyCloakState, RootState> = {
       try {
         const user = await UserService.createUser();
         dispatch('setUserProfile', user.data);
-        dispatch('userRedirect', { path, next });
+        if (path) {
+          dispatch('userRedirect', { path, next });
+        }
         // if (user.data && user.data.firstTimeLogin) {
         //   router.push({ path: '/profile' });
         // } else {
         //   dispatch('userRedirect', path);
         // }
       } catch {
-        dispatch('userRedirect', { path, next });
+        if (path) {
+          dispatch('userRedirect', { path, next });
+        }
       }
     }
   },
