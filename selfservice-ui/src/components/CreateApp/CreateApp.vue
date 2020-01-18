@@ -2,7 +2,7 @@
 
 <template>
   <div>
-    <AddTechnicalReq v-if="step === 'technical'" />
+    <AddTechnicalReq v-if="step === 'technical'" :id="id" />
     <AddProjectInfo v-if="step === 'projectinfo'" />
   </div>
 </template>
@@ -21,6 +21,8 @@ import AddTechnicalReq from '@/components/CreateApp/AddTechnicalReq.vue';
 export default class CreateApp extends Vue {
   @Prop({ default: 'projectinfo' })
   public step!: string;
+  @Prop({ default: 0 })
+  public id!: number;
   private e6: number = 0;
 }
 </script>

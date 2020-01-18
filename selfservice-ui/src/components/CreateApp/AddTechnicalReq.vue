@@ -23,13 +23,10 @@
                 <!-- <v-card-subtitle class="text-left"
                   >Tell us about your Project</v-card-subtitle
                 > -->
-                <v-card-title class="headline">Project Name</v-card-title>
-                <!-- <Input
-                  v-model="projectId"
-                  counter="10"
-                  label="Project Name"
-                  type="text"
-                /> -->
+                <v-card-title class="headline">{{
+                  getSingleProjectInfo.projectName
+                }}</v-card-title>
+
                 <Input
                   v-model="clientUri"
                   counter="10"
@@ -53,7 +50,6 @@
                     @click:append="clearUri(index)"
                   ></v-text-field>
                   <!-- :rules="[rules.required]" -->
-                  {{ redirectUris }}
                 </div>
                 <Input
                   v-model="jwksUri"
@@ -110,13 +106,14 @@ import {
 } from '@/constants/algoritham';
 import { TechnicalReqModel } from '@/models/TechnicalReqModel';
 const TechnicalReqModule = namespace('TechnicalReqModule');
+const ProjectInfoModule = namespace('ProjectInfoModule');
 
 @Component({
   components: { Input, Button, Select }
 })
 export default class AddTechnicalReq extends Vue {
-  @Prop({ default: '' })
-  public id!: string;
+  @Prop({ default: 0 })
+  public id!: number;
   @Prop({ default: '' })
   public action!: string;
 
@@ -131,9 +128,14 @@ export default class AddTechnicalReq extends Vue {
   @TechnicalReqModule.Action('loadSingleTechnicalReq')
   public loadSingleTechnicalReq!: any;
 
+  @ProjectInfoModule.Getter('getSingleProjectInfo')
+  public getSingleProjectInfo!: any;
+  @ProjectInfoModule.Action('loadSingleProjectInfo')
+  public loadSingleProjectInfo!: any;
+
   public form: boolean = false;
   private isLoading: boolean = false;
-  private projectId: string = '1';
+  private projectId: number = this.id || 0;
   private clientUri: string = '';
   private redirectUris: any = [''];
   private jwksUri: string = '';
@@ -186,9 +188,15 @@ export default class AddTechnicalReq extends Vue {
 
   private mounted() {
     this.isEditmode = false;
-    if (this.action && this.action === 'edit' && this.id !== '') {
+    if (this.action && this.action === 'edit' && this.id !== 0) {
       this.isEditmode = true;
       this.loadSingleTechnicalReq(this.id);
+    }
+
+    if (this.getSingleProjectInfo && this.getSingleProjectInfo.id !== 0) {
+      this.projectId = this.getSingleProjectInfo.id;
+    } else {
+      this.loadSingleProjectInfo(this.id);
     }
   }
   private addUri() {

@@ -34,7 +34,7 @@ const router = new VueRouter({
         import(/* webpackChunkName: "About" */ '../views/About.vue')
     },
     {
-      path: '/project/:step?',
+      path: '/project/:step?/:id?',
       name: 'project',
       meta: { requiresAuth: true, roles: ['ss_client', 'idir'] },
       props: true,

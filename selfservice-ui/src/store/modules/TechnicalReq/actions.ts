@@ -23,7 +23,7 @@ export const actions: ActionTree<TechnicalReqState, RootState> = {
       commit('SET_TECHNICALREQ_SUCCESSFULLY', true);
       commit('SET_TECHNICALREQ_ERROR', false);
       commit('SET_TECHNICALREQ_MESSAGE', i18n.t('TECHNICALREQ_ADD_MESSAGE'));
-      dispatch('loadTechnicalReq');
+      //   dispatch('loadTechnicalReq');
     } catch {
       commit('SET_TECHNICALREQ_SUCCESSFULLY', false);
       commit('SET_TECHNICALREQ_ERROR', true);

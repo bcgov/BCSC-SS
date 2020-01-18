@@ -4,6 +4,7 @@ import { RootState } from '../../types';
 
 import i18n from '../../../i18n';
 import { ProjectInfoService } from '@/services/ProjectInfoService';
+import router from '@/router';
 
 /**
  * projectinfo Actions
@@ -17,12 +18,15 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
   async addProjectInfo({ commit, dispatch }, data) {
     commit('SET_LOADING', true);
     try {
-      await ProjectInfoService.createProjectInfo(data);
+      const projectinfo = await ProjectInfoService.createProjectInfo(data);
       commit('SET_LOADING', false);
       commit('SET_PROJECTINFO_SUCCESSFULLY', true);
       commit('SET_PROJECTINFO_ERROR', false);
       commit('SET_PROJECTINFO_MESSAGE', i18n.t('PROJECTINFO_ADD_MESSAGE'));
-      dispatch('loadProjectInfo');
+      commit('SET_EDIT_PROJECTINFO', projectinfo.data);
+      const id = projectinfo.data.id;
+      router.push('/project/technical/' + id);
+      // dispatch('loadProjectInfo');
     } catch {
       commit('SET_PROJECTINFO_SUCCESSFULLY', false);
       commit('SET_PROJECTINFO_ERROR', true);

@@ -64,7 +64,7 @@ export const actions: ActionTree<KeyCloakState, RootState> = {
     commit('SET_USER_PROFILE', profile);
   },
   /**
-   * setKeyCloakAuth when token provide
+   * setUserRole when token provide
    * @param {*} { commit }
    * @param {*} keycloak
    */
