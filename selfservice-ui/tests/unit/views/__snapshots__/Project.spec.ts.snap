@@ -5,6 +5,7 @@ exports[`Project.vue renders props when passed 1`] = `
   class="home"
 >
   <createapp-stub
+    id="0"
     step="projectinfo"
   />
 </div>
