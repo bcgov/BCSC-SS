@@ -34,7 +34,7 @@ const router = new VueRouter({
         import(/* webpackChunkName: "About" */ '../views/About.vue')
     },
     {
-      path: '/project/:step?',
+      path: '/project/:step?/:id?',
       name: 'project',
       meta: { requiresAuth: true, roles: ['ss_client', 'idir'] },
       props: true,
@@ -55,7 +55,8 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   // redirect to login page if not logged in and trying to access a restricted page
-
+  // debugger;
+  // console.log('next', next);
   // check login status
   const isLoggedin = store.state.KeyCloakModule.authenticated;
   if (to.meta.requiresAuth) {
@@ -65,6 +66,9 @@ router.beforeEach((to, from, next) => {
       } else {
         next({ name: 'Unauthorized' });
       }
+    } else if (sessionStorage.getItem('keycloak_token')) {
+      KeycloakService.init(next, to.path, to.meta.roles);
+      // debugger;
     } else {
       KeycloakService.init(next, '/login', to.meta.roles);
     }

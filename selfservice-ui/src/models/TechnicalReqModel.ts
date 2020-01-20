@@ -1,6 +1,6 @@
 export interface TechnicalReqModel {
-  id?: string;
-  projectId: string;
+  id?: number;
+  projectId?: number;
   clientUri: string;
   redirectUris: string[];
   jwksUri: string;

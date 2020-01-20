@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <CreateApp :step="step" />
+    <CreateApp :step="step" :id="id" />
   </div>
 </template>
 
@@ -17,7 +17,7 @@ import CreateApp from '@/components/CreateApp/CreateApp.vue';
 export default class CreateAppHome extends Vue {
   @Prop({ default: 'projectinfo' })
   public step!: string;
-  @Prop({ default: '' })
+  @Prop({ default: 0 })
   public id!: string;
 }
 </script>

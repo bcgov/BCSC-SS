@@ -14,7 +14,7 @@ export const state: TechnicalReqState = {
   successStatus: false,
   errorStatus: false,
   singleTechnicalReq: {
-    projectId: '',
+    projectId: 0,
     clientUri: '',
     redirectUris: [],
     jwksUri: '',
