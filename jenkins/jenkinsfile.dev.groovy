@@ -153,7 +153,7 @@ stage("Deploy to" + API_NAME + "${common.api_environments.dev.name}") {
   node{
     try{
       // Tag the images for deployment based on the image's hash
-      API_IMAGE_HASH = common.getLatestHash(API_IMAGESTREAM_NAME)          
+      API_IMAGE_HASH = common.getLatestHash(API_IMAGESTREAM_NAME, environment)          
       echo ">> API_IMAGE_HASH: ${API_IMAGE_HASH}"
 
       common.deployAndVerify(API_IMAGE_HASH,environment,API_IMAGESTREAM_NAME)
