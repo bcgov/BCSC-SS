@@ -35,25 +35,13 @@ objects:
         dockerfilePath: "${DOCKER_FILE_PATH}"
         buildArgs:
         - name: API_BASE_URL
-          valueFrom:
-            configMapKeyRef:
-              name: "${WEB_NAME}-${TAG_NAME}-config"
-              key: API_URL
+          value: "https://selfservice-api-dev.pathfinder.gov.bc.ca/"
         - name: KEYCLOAK_URL
-          valueFrom:
-            configMapKeyRef:
-              name: "${WEB_NAME}-${TAG_NAME}-config"
-              key: KEYCLOAK_URL
+          value: "https://sso-dev.pathfinder.gov.bc.ca/auth"
         - name: KEYCLOAK_REALM
-          valueFrom:
-            configMapKeyRef:
-              name: "${WEB_NAME}-${TAG_NAME}-config"
-              key: KEYCLOAK_REALM
+          value: "1gw8g24z"
         - name: KEYCLOAK_CLIENT
-          valueFrom:
-            configMapKeyRef:
-              name: "${WEB_NAME}-${TAG_NAME}-config"
-              key: KEYCLOAK_CLIENT
+          value: "bcscss"
     output:
       to:
         kind: ImageStreamTag

@@ -32,7 +32,7 @@ stage('Build ' + WEB_IMAGESTREAM_NAME) {
     openshift.withProject() {
     try{
         // Make sure the frontend build configs exist
-        common.ensureBuildExists(WEB_BUILD,"openshift/selfservice-ui/web-build.yaml")
+        common.ensureBuildExists(WEB_BUILD,"openshift/selfservice-ui/web-build_test.yaml")
         // Build and verify the app
         common.buildAndVerify(WEB_BUILD)
         
