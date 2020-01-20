@@ -149,7 +149,12 @@ export default class AddProjectInfo extends Vue {
   private projectName: string = '';
   private description: string = '';
   private myRole: string = '1';
-  private developerDetails?: undefined;
+  private developerDetails?: ProjectUserModel = {
+    email: '',
+    phone: '',
+    firstName: '',
+    lastName: ''
+  };
   private managerDetails?: ProjectUserModel = {
     email: '',
     phone: '',
