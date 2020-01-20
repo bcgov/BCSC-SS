@@ -3,11 +3,7 @@
   <v-card class="mx-auto" style="max-width: 80%;">
     <v-card class="mx-auto">
       <v-app-bar dark color="#003366">
-        <v-btn
-          icon
-          @click="$router.push('/projectinfo/')"
-          aria-label="Back Button"
-        >
+        <v-btn icon @click="$router.push('/project/')" aria-label="Back Button">
           <v-icon>mdi-arrow-left</v-icon>
         </v-btn>
         <v-toolbar-title>Project information</v-toolbar-title>
@@ -26,17 +22,25 @@
                 >
                 <Input
                   v-model="organizationName"
-                  counter="200"
+                  counter="100"
                   label="Organization name"
                   type="text"
-                  :rules="[rules.required, rules.length(2)]"
+                  :rules="[
+                    rules.required,
+                    rules.length(2),
+                    rules.maxLength(100)
+                  ]"
                 />
                 <Input
                   v-model="projectName"
                   counter="100"
                   label="Project name"
                   type="text"
-                  :rules="[rules.required, rules.length(2)]"
+                  :rules="[
+                    rules.required,
+                    rules.length(2),
+                    rules.maxLength(100)
+                  ]"
                 />
                 <TextArea
                   v-model="description"
@@ -145,19 +149,19 @@ export default class AddProjectInfo extends Vue {
   private projectName: string = '';
   private description: string = '';
   private myRole: string = '1';
-  private developerDetails: ProjectUserModel = {
+  private developerDetails?: ProjectUserModel = {
     email: '',
     phone: '',
     firstName: '',
     lastName: ''
   };
-  private managerDetails: ProjectUserModel = {
+  private managerDetails?: ProjectUserModel = {
     email: '',
     phone: '',
     firstName: '',
     lastName: ''
   };
-  private ctoDetails: ProjectUserModel = {
+  private ctoDetails?: ProjectUserModel = {
     email: '',
     phone: '',
     firstName: '',
@@ -191,7 +195,7 @@ export default class AddProjectInfo extends Vue {
       this.addProjectInfoStore(data);
     }
     // (this.$refs.form as HTMLFormElement).reset();
-    // this.$router.push('/projectinfo/');
+    // this.$router.push('/project/technical/');
   }
 
   private updteEdit(val: any) {

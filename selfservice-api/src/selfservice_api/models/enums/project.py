@@ -13,7 +13,7 @@
 # limitations under the License.
 """This manages Project Enums."""
 
-from enum import IntEnum
+from enum import Enum, IntEnum
 
 
 class ProjectRoles(IntEnum):
@@ -33,3 +33,20 @@ class ProjectStatus(IntEnum):
     DevRejected = 4
     DevActivated = 5
     DevNotActive = 6
+
+
+class Algorithms(Enum):
+    """This enum provides the list of Algorithms supported by Dynamic API."""
+
+    HS256 = 'HS256'
+    HS384 = 'HS384'
+    HS512 = 'HS512'
+    RS256 = 'RS256'
+    RS384 = 'RS384'
+    RS512 = 'RS512'
+    ES256 = 'ES256'
+    ES384 = 'ES384'
+    ES512 = 'ES512'
+    PS256 = 'PS256'
+    PS384 = 'PS384'
+    PS512 = 'PS512'

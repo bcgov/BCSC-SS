@@ -37,9 +37,11 @@ class Project(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
 
     status = db.Column(db.Integer(), nullable=False)
 
+    technical_req = db.relationship('TechnicalReq', backref='project', lazy=True)
+
     @classmethod
-    def create_from_dict(cls, project_info: dict) -> Project:
-        """Create a new project from the provided dictionary."""
+    def create_from_dict(cls, project_info: dict, oauth_id: str) -> Project:
+        """Create a new project from the provided dictionary and current user oauth id."""
         if project_info:
             project = Project()
             project.organization_name = project_info['organization_name']
@@ -47,7 +49,7 @@ class Project(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
             project.description = project_info['description']
             project.my_role = project_info['my_role']
 
-            project.created_by = project.__create_or_map_users__(project_info)
+            project.created_by = project.__create_or_map_users__(project_info, oauth_id)
             project.status = ProjectStatus.DevInProgress
 
             project.save()
@@ -55,12 +57,12 @@ class Project(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
             return project
         return None
 
-    def __create_or_map_users__(self, project_info: dict):
+    def __create_or_map_users__(self, project_info: dict, oauth_id: str):
         """Create or map the users of project.
 
         :return : current user id
         """
-        current_user = User.find_by_oauth_id(project_info['oauth_id'])
+        current_user = User.find_by_oauth_id(oauth_id)
 
         if project_info['my_role'] != ProjectRoles.Developer:
             developer_user = User.find_by_email(project_info['developer']['email'])

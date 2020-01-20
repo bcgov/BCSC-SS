@@ -1,14 +1,9 @@
-/** * TextArea atomic component * TextArea allow users to carry out an important
+/** * Select atomic component * Select allow users to carry out an important
 action on your service, such as Download or Submit. */
 
 <template>
-  <v-textarea
-    :value="value"
-    :label="label"
-    @input="input"
-    v-bind="$attrs"
-  ></v-textarea>
-  <!-- outlined -->
+  <!-- <v-Select :value="value" @input="input" v-bind="$attrs"></v-Select> -->
+  <v-select :items="items" v-bind="$attrs" :label="label"></v-select>
 </template>
 
 <script lang="ts">
@@ -20,32 +15,14 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
  */
 
 @Component
-export default class TextArea extends Vue {
-  /**
-   * The counter for the input.
-   *
-   */
-  @Prop({
-    default: ''
-  })
-  private counter!: string | number;
-
-  /**
-   * The type for the input.
-   * @values input, password
-   */
-  @Prop({
-    default: 'text'
-  })
-  private type!: string;
-
+export default class Select extends Vue {
   /**
    *  value for input
    */
   @Prop({
     default: ''
   })
-  private value!: string;
+  private items!: any;
 
   /**
    *  label text
@@ -54,14 +31,6 @@ export default class TextArea extends Vue {
     default: ''
   })
   private label!: string;
-
-  /**
-   *  required
-   */
-  @Prop({
-    default: false
-  })
-  private required!: boolean;
 
   /**
    * input
@@ -76,4 +45,7 @@ export default class TextArea extends Vue {
 
 <style lang="scss" scoped>
 // @import './../../assets/styles/theme.scss';
+.v-list-item__content {
+  text-align: left;
+}
 </style>

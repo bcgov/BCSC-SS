@@ -117,7 +117,8 @@ export default class KeycloakService {
         .success(() => {
           store.dispatch('KeyCloakModule/setKeyCloakAuth', {
             keycloak: KeycloakService.keycloak,
-            path: silentCheckSsoRedirectUri
+            path: silentCheckSsoRedirectUri,
+            next
           });
 
           store.dispatch(

@@ -72,7 +72,6 @@ def upgrade():
     sa.Column('modified_by', sa.String(), nullable=True),
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('project_id', sa.Integer(), nullable=False),
-    sa.Column('client_name', sa.String(length=100), nullable=True),
     sa.Column('client_uri', sa.String(length=500), nullable=True),
     sa.Column('redirect_uris', sa.JSON(), nullable=True),
     sa.Column('jwks_uri', sa.String(length=500), nullable=True),

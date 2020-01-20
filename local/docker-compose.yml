@@ -1,9 +1,7 @@
-version: "3"
+version: '3'
 services:
   db:
     image: postgres:11
-    ports:
-      - "5432:5432"
     volumes:
       - dbdata:/var/lib/postgresql/data
     environment:
@@ -11,7 +9,7 @@ services:
       - POSTGRES_PASSWORD=${DB_POSTGRES_PASSWORD}
       - POSTGRES_DB=${DB_POSTGRES_DB}
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U cc_user"]
+      test: ['CMD-SHELL', 'pg_isready -U ${DB_POSTGRES_USER}']
       interval: 10s
       timeout: 5s
       retries: 5
@@ -29,10 +27,17 @@ services:
       - DATABASE_NAME=${DB_POSTGRES_DB}
       - DATABASE_HOST=db
       - DATABASE_PORT=5432
+      - JWT_OIDC_WELL_KNOWN_CONFIG=${KEYCLOAK_URL}/realms/${KEYCLOAK_REALM}/.well-known/openid-configuration
+      - JWT_OIDC_ISSUER=${KEYCLOAK_URL}/realms/${KEYCLOAK_REALM}
+      - JWT_OIDC_AUDIENCE=${KEYCLOAK_CLIENT}
+      - JWT_OIDC_ALGORITHMS=${KEYCLOAK_ALGORITHMS}
+      - JWT_OIDC_JWKS_URI=${KEYCLOAK_URL}/realms/${KEYCLOAK_REALM}/protocol/openid-connect/certs
+      - JWT_OIDC_CACHING_ENABLED=True
+      - JWT_OIDC_JWKS_CACHE_TIMEOUT=300
   api:
     image: bscs_ss_api
     ports:
-      - "${API_PORT}:5000"
+      - '${API_PORT}:5000'
     command: gunicorn -b :5000 selfservice_api:create_app()
     depends_on:
       - migration
@@ -54,12 +59,12 @@ services:
       context: ./..
       dockerfile: selfservice-ui/Dockerfile
       args:
-        - API_BASE_URL=http://localhost:${API_PORT}/api/
+        - API_BASE_URL=http://localhost:${API_PORT}/api/v1/
         - KEYCLOAK_URL=${KEYCLOAK_URL}
         - KEYCLOAK_REALM=${KEYCLOAK_REALM}
         - KEYCLOAK_CLIENT=${KEYCLOAK_CLIENT}
     ports:
-      - "${WEB_PORT}:8080"
+      - '${WEB_PORT}:8080'
     depends_on:
       - api
 volumes:

@@ -2,5 +2,8 @@
   "message": "hello i18n !!",
   "PROJECTINFO_ADD_MESSAGE": "ProjectInfo  added successfully",
   "PROJECTINFO_UPDATE_MESSAGE": "ProjectInfo Updated successfully",
-  "PROJECTINFO_DELETE_MESSAGE": "ProjectInfo  Deleted successfully"
+  "PROJECTINFO_DELETE_MESSAGE": "ProjectInfo  Deleted successfully",
+  "TECHNICALREQ_ADD_MESSAGE": "TechnicalReq  added successfully",
+  "TECHNICALREQ_UPDATE_MESSAGE": "TechnicalReq Updated successfully",
+  "TECHNICALREQ_DELETE_MESSAGE": "TechnicalReq  Deleted successfully"
 }

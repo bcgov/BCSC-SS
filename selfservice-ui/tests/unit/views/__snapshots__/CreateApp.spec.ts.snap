@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`CreateApp.vue renders props when passed 1`] = `
-<div
-  class="home"
->
-  <createapp-stub />
-</div>
-`;
