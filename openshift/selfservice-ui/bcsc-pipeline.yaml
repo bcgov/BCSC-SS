@@ -69,7 +69,7 @@ parameters:
   displayName: Secret name for the webhook.
   description: The name of the Secret that holds the webhook.
   required: true
-  value: github-${WEB_NAME}-${TAG_NAME}
+  value: bcsc-ss
 - name: SOURCE_CONTEXT_DIR
   displayName: Source Context Directory
   description: The source context directory.

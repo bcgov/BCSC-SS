@@ -48,7 +48,7 @@ db_environments = [
 // Gets the container hash for the latest image in an image stream
 def getLatestHash(imageStreamName, env){
   return sh (
-    script: """oc get istag ${imageStreamName}:{env} -o=jsonpath='{@.image.metadata.name}' | sed -e 's/sha256://g'""",
+    script: """oc get istag ${imageStreamName}:${env} -o=jsonpath='{@.image.metadata.name}' | sed -e 's/sha256://g'""",
     returnStdout: true
   ).trim()
 }
