@@ -17,8 +17,9 @@ objects:
       app: "${WEB_NAME}-build"
   spec:
     triggers:
-    - type: ImageChange
-    - type: ConfigChange
+    - type: Github
+      github:
+        secret: bcsc-ss
     runPolicy: Serial
     source:
       type: Git
@@ -53,15 +54,17 @@ objects:
             configMapKeyRef:
               name: "${WEB_NAME}-${TAG_NAME}-config"
               key: KEYCLOAK_CLIENT
-        - name: KEYCLOAK_CLIENT_SECRET
-          valueFrom:
-              secretKeyRef:
-                name: "${WEB_NAME}-${TAG_NAME}-secret"
-                key: KEYCLOAK_CLIENT_SECRET
     output:
       to:
         kind: ImageStreamTag
         name: "${WEB_NAME}:${OUTPUT_IMAGE_TAG}"
+    resources:
+      limits:
+        cpu: '1'
+        memory: 4Gi
+      requests:
+        cpu: '1'
+        memory: 4Gi
 parameters:
 - name: WEB_NAME
   displayName: Name

@@ -280,6 +280,7 @@ objects:
     tls:
       termination: edge
     wildcardPolicy: None
+    host: "${API_NAME}-${TAG_NAME}.pathfinder.gov.bc.ca"
   status:
     ingress:
     - host:

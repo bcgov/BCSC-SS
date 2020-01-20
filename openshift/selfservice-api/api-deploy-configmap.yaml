@@ -88,7 +88,7 @@ parameters:
   displayName: keycloak Url
   description: keycloak Url.
   required: true
-  value: 'client_bcselfservice'
+  value: 'bcscss'
 - name: KEYCLOAKCLIENTSECRET_DEV
   displayName: keycloak Client Secret - Dev
   description: keycloak Client Secret - Dev

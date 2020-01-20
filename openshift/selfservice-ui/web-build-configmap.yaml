@@ -17,7 +17,7 @@ objects:
     KEYCLOAK_REALM: "${KEYCLOAKREALM}"
     KEYCLOAK_CLIENT: "${KEYCLOAKCLIENT}"
     KEYCLOAK_ALGORITHMS: "${KEYCLOAKALGORITHMS}"
-    API_URL: "${WEB_NAME}-oultzp-dev.pathfinder.gov.bc.ca/"
+    API_URL: "https://${API_NAME}-dev.pathfinder.gov.bc.ca/"
 - kind: ConfigMap
   apiVersion: v1
   metadata:
@@ -30,7 +30,7 @@ objects:
     KEYCLOAK_REALM: "${KEYCLOAKREALM}"
     KEYCLOAK_CLIENT: "${KEYCLOAKCLIENT}"
     KEYCLOAK_ALGORITHMS: "${KEYCLOAKALGORITHMS}"
-    API_URL: "${WEB_NAME}-oultzp-test.pathfinder.gov.bc.ca/"
+    API_URL: "https://${API_NAME}-test.pathfinder.gov.bc.ca/"
 - kind: ConfigMap
   apiVersion: v1
   metadata:
@@ -43,7 +43,7 @@ objects:
     KEYCLOAK_REALM: "${KEYCLOAKREALM}"
     KEYCLOAK_CLIENT: "${KEYCLOAKCLIENT}"
     KEYCLOAK_ALGORITHMS: "${KEYCLOAKALGORITHMS}"
-    API_URL: "${WEB_NAME}-oultzp-prod.pathfinder.gov.bc.ca/"
+    API_URL: "https://${API_NAME}-prod.pathfinder.gov.bc.ca/"
 parameters:
 - name: WEB_NAME
   displayName: Name
@@ -79,7 +79,7 @@ parameters:
   displayName: keycloak Url
   description: keycloak Url.
   required: true
-  value: 'client_bcselfservice'
+  value: 'bcscss'
 - name: KEYCLOAKCLIENTSECRET_DEV
   displayName: keycloak Client Secret - Dev
   description: keycloak Client Secret - Dev
@@ -152,3 +152,8 @@ parameters:
   description: JWT oidc issuer Prod
   required: true
   value: 'https://sso.pathfinder.gov.bc.ca/auth/realms/1gw8g24z/protocol/openid-connect/certs'
+- name: TAG_NAME
+  displayName: Environment TAG name
+  description: The TAG name for this environment, e.g., dev, test, prod
+  required: true
+  value: dev
