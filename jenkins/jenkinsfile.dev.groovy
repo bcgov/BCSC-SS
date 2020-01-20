@@ -110,7 +110,7 @@ stage("Deploy" + WEB_IMAGESTREAM_NAME + "to ${common.web_environments.dev.name}"
       // Tag the images for deployment based on the image's hash
       WEB_IMAGE_HASH = common.getLatestHash(WEB_IMAGESTREAM_NAME, environment)          
       echo ">> WEB_IMAGE_HASH: ${WEB_IMAGE_HASH}"
-      
+
       common.deployAndVerify(WEB_IMAGE_HASH,environment,WEB_IMAGESTREAM_NAME)
 
       // WEB Deployment Success notification
@@ -125,12 +125,13 @@ stage("Deploy" + WEB_IMAGESTREAM_NAME + "to ${common.web_environments.dev.name}"
 
 // Deploying DB to Dev
 stage("Deploy to" + DB_NAME + "${common.db_environments.dev.name}") {
-  def environment = common.db_environments.prod.tag
+  def environment = common.db_environments.dev.tag
+  db_tag = "prod"
   def url = common.db_environments.dev.url
   node{
     try{
       // Tag the images for deployment based on the image's hash
-      DB_IMAGE_HASH = common.getLatestHash(DB_IMAGESTREAM_NAME, environment)          
+      DB_IMAGE_HASH = common.getLatestHash(DB_IMAGESTREAM_NAME, db_tag)          
       echo ">> DB_IMAGE_HASH: ${DB_IMAGE_HASH}"
 
       common.deployAndVerify(DB_IMAGE_HASH,environment,DB_IMAGESTREAM_NAME)
