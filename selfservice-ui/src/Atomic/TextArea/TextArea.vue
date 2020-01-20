@@ -2,7 +2,12 @@
 action on your service, such as Download or Submit. */
 
 <template>
-  <v-textarea :value="value" @input="input" v-bind="$attrs"></v-textarea>
+  <v-textarea
+    :value="value"
+    :label="label"
+    @input="input"
+    v-bind="$attrs"
+  ></v-textarea>
   <!-- outlined -->
 </template>
 
