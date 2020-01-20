@@ -4,6 +4,6 @@ export interface ProjectInfoState {
   loading?: boolean;
   successStatus?: boolean;
   errorStatus?: boolean;
-  singleProjectInfo: ProjectInfoModel[];
+  singleProjectInfo: ProjectInfoModel;
   message: string;
 }

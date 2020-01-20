@@ -13,7 +13,12 @@ export const state: ProjectInfoState = {
   loading: false,
   successStatus: false,
   errorStatus: false,
-  singleProjectInfo: [],
+  singleProjectInfo: {
+    organizationName: '',
+    projectName: '',
+    myRole: '',
+    description: ''
+  },
   message: ''
 };
 
