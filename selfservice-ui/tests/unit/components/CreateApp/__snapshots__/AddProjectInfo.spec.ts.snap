@@ -71,9 +71,9 @@ exports[`AddProjectInfo.vue renders props when passed 1`] = `
               </v-card-subtitle-stub>
                
               <input-stub
-                counter="200"
+                counter="100"
                 label="Organization name"
-                rules="v => !!v || 'This field is required',v => (v || '').length >= len || 'Invalid character length, required ' + len"
+                rules="v => !!v || 'This field is required',v => (v || '').length >= len || 'Invalid character length, required ' + len,v => (v || '').length <= len || 'Invalid character length, max length ' + len"
                 type="text"
                 value=""
               />
@@ -81,7 +81,7 @@ exports[`AddProjectInfo.vue renders props when passed 1`] = `
               <input-stub
                 counter="100"
                 label="Project name"
-                rules="v => !!v || 'This field is required',v => (v || '').length >= len || 'Invalid character length, required ' + len"
+                rules="v => !!v || 'This field is required',v => (v || '').length >= len || 'Invalid character length, required ' + len,v => (v || '').length <= len || 'Invalid character length, max length ' + len"
                 type="text"
                 value=""
               />
