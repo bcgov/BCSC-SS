@@ -15,20 +15,20 @@ const router = new VueRouter({
     {
       path: '/',
       name: 'home',
-      meta: { requiresAuth: false, roles: ['ss_admin', 'offline_access'] },
+      // meta: { requiresAuth: false, roles: ['ss_admin', 'offline_access'] },
       component: Home
     },
     {
       path: '/login',
       name: 'login',
-      meta: { requiresAuth: true, roles: ['ss_admin', 'offline_access'] },
+      meta: { requiresAuth: true, roles: ['ss_admin', 'ss_client', 'idir'] },
       component: () =>
         import(/* webpackChunkName: "Authorize" */ '../views/Authorize.vue')
     },
     {
       path: '/about',
       name: 'about',
-      meta: { requiresAuth: true, roles: ['ss_client', 'idir'] },
+      meta: { requiresAuth: true, roles: ['ss_client', 'idir', 'ss_admin'] },
       props: true,
       component: () =>
         import(/* webpackChunkName: "About" */ '../views/About.vue')
@@ -36,7 +36,7 @@ const router = new VueRouter({
     {
       path: '/project/:step?/:id?',
       name: 'project',
-      meta: { requiresAuth: true, roles: ['ss_client', 'idir'] },
+      meta: { requiresAuth: true, roles: ['ss_client', 'idir', 'ss_admin'] },
       props: true,
       component: () =>
         import(/* webpackChunkName: "project" */ '../views/Project.vue')
@@ -55,8 +55,6 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   // redirect to login page if not logged in and trying to access a restricted page
-  // debugger;
-  // console.log('next', next);
   // check login status
   const isLoggedin = store.state.KeyCloakModule.authenticated;
   if (to.meta.requiresAuth) {
