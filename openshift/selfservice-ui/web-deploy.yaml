@@ -124,6 +124,7 @@ objects:
       kind: Service
       name: "${WEB_NAME}"
       weight: 100
+    host: "${WEB_NAME}-${TAG_NAME}.pathfinder.gov.bc.ca"
 parameters:
 - description: The name assigned to all of the openshift objects defined in this template.
     It is also the name of runtime image you want.

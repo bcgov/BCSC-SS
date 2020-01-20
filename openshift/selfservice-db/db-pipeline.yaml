@@ -62,7 +62,7 @@ parameters:
   displayName: Git Reference
   description: The git reference or branch.
   required: true
-  value: development
+  value: deployment/openshift
 - name: WEBHOOK
   displayName: Secret name for the webhook.
   description: The name of the Secret that holds the webhook.
@@ -72,9 +72,9 @@ parameters:
   displayName: Source Context Directory
   description: The source context directory.
   required: false
-  value: /selfservice-db
+  value: 
 - name: JENKINS_FILE
   displayName: The Jenksinfile this pipeline should use.
   description: The Jenkinsfile this pipeline should use.
   required: false
-  value: "./jenkins/${TAG_NAME}.groovy"
+  value: "openshift/selfservice-db/jenkins/jenkinsfile.db.dev.groovy"

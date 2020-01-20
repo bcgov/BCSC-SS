@@ -14,7 +14,7 @@ objects:
       app-group: "${APP_GROUP}"
       template: "${DB_NAME}-deploy"
   data:
-    DATABASE_HOST: "${DB_NAME}"
+    DATABASE_HOST: "${DB_NAME}.${NAMESPACE}-${TAG_NAME}.svc"
     DATABASE_NAME: "${POSTGRESQL_DATABASE_NAME}"
     DATABASE_USERNAME: "${POSTGRESQL_USER}"
     DATABASE_PORT: "${DATABASE_PORT}"

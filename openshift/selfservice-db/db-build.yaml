@@ -36,6 +36,13 @@ objects:
       to:
         kind: ImageStreamTag
         name: "${DB_NAME}:${OUTPUT_IMAGE_TAG}"
+    resources:
+      limits:
+        cpu: '2'
+        memory: 8Gi
+      requests:
+        cpu: '2'
+        memory: 8Gi
 parameters:
 - name: DB_NAME
   displayName: Name
@@ -72,7 +79,7 @@ parameters:
   displayName: Source Image Tag
   description: The tag of the source image.
   required: true
-  value: dev
+  value: prod
 - name: DOCKER_FILE_PATH
   displayName: Docker File Path
   description: The path to the docker file defining the build.
@@ -82,4 +89,4 @@ parameters:
   displayName: Output Image Tag
   description: The tag given to the built image.
   required: true
-  value: dev
+  value: prod

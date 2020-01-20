@@ -25,7 +25,7 @@ objects:
       git:
         uri: "${GIT_REPO_URL}"
         ref: "${GIT_REF}"
-      contextDir: "${SOURCE_CONTEXT_DIR_WEB}"
+      contextDir: "${SOURCE_CONTEXT_DIR}"
       sourceSecret:
         name: github-credentials
     strategy:
@@ -64,17 +64,17 @@ parameters:
   displayName: Git Reference
   description: The git reference or branch.
   required: true
-  value: master
+  value: dev
 - name: WEBHOOK
   displayName: Secret name for the webhook.
   description: The name of the Secret that holds the webhook.
   required: true
-  value: github-${WEB_NAME}-${TAG_NAME}
-- name: SOURCE_CONTEXT_DIR_WEB
+  value: bcsc-ss
+- name: SOURCE_CONTEXT_DIR
   displayName: Source Context Directory
   description: The source context directory.
   required: false
-  value: /selfservice-ui
+  value: 
 - name: SOURCE_CONTEXT_DIR_API
   displayName: Source Context Directory
   description: The source context directory.
@@ -89,4 +89,4 @@ parameters:
   displayName: The Jenksinfile this pipeline should use.
   description: The Jenkinsfile this pipeline should use.
   required: false
-  value: "./jenkins/${TAG_NAME}.groovy"
+  value: "jenkins/jenkinsfile.dev.groovy"
