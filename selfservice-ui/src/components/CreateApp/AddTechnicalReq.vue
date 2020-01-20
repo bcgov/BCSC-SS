@@ -29,10 +29,10 @@
 
                 <Input
                   v-model="clientUri"
-                  counter="10"
+                  counter="500"
                   label="Application URL"
                   type="text"
-                  :rules="[rules.required]"
+                  :rules="[rules.required, rules.url, rules.maxLength(500)]"
                 />
                 <div
                   v-for="(redirectUri, index) in redirectUris"
@@ -41,22 +41,22 @@
                 >
                   <v-text-field
                     v-model="redirectUris[index]"
-                    counter="10"
                     label="Redirect URI values"
                     type="text"
                     filled
                     @blur="addUri"
                     append-icon="mdi-minus"
                     @click:append="clearUri(index)"
+                    :rules="[rules.url]"
                   ></v-text-field>
                   <!-- :rules="[rules.required]" -->
                 </div>
                 <Input
                   v-model="jwksUri"
-                  counter="10"
+                  counter="500"
                   label="JWKS URL"
                   type="text"
-                  :rules="[rules.required]"
+                  :rules="[rules.required, rules.url, rules.maxLength(500)]"
                 />
                 <Select
                   v-model="idTokenSignedResponseAlg"
@@ -155,6 +155,11 @@ export default class AddTechnicalReq extends Vue {
     this.updteEdit(val);
   }
 
+  @Watch('getSingleProjectInfo')
+  private ongetSingleProjectInfoChanged(val: any) {
+    this.projectId = this.getSingleProjectInfo.id;
+  }
+
   private addTechnicalReq() {
     const data: TechnicalReqModel = {
       projectId: this.projectId,
@@ -193,7 +198,7 @@ export default class AddTechnicalReq extends Vue {
       this.loadSingleTechnicalReq(this.id);
     }
 
-    if (this.getSingleProjectInfo && this.getSingleProjectInfo.id !== 0) {
+    if (this.getSingleProjectInfo && this.getSingleProjectInfo.id) {
       this.projectId = this.getSingleProjectInfo.id;
     } else {
       this.loadSingleProjectInfo(this.id);

@@ -9,25 +9,25 @@
     <Input
       v-model="userDetails.firstName"
       label="First Name"
-      :rules="[rules.required]"
+      :rules="[rules.required, rules.length(2), rules.maxLength(250)]"
       type="text"
     />
     <Input
       v-model="userDetails.lastName"
       label="Last Name"
-      :rules="[rules.required]"
+      :rules="[rules.required, rules.length(2), rules.maxLength(250)]"
       type="text"
     />
     <Input
       v-model="userDetails.email"
       label="Work email"
-      :rules="[rules.required, rules.email]"
+      :rules="[rules.required, rules.email, rules.maxLength(250)]"
       type="text"
     />
     <Input
       v-model="userDetails.phone"
       label="Phone"
-      :rules="[rules.required]"
+      :rules="[rules.required, rules.maxLength(15)]"
       type="text"
     />
   </v-card>

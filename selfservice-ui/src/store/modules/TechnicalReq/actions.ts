@@ -1,8 +1,8 @@
+import router from '@/router';
+import i18n from '@/i18n';
 import { ActionTree } from 'vuex';
 import { TechnicalReqState } from './types';
 import { RootState } from '../../types';
-
-import i18n from '@/i18n';
 import { TechnicalReqService } from '@/services/TechnicalReqService';
 
 /**
@@ -14,16 +14,18 @@ export const actions: ActionTree<TechnicalReqState, RootState> = {
    * @param  {} {commit, dispatch}
    * @param  {} technicalreq  list
    */
-  async addTechnicalReq({ commit, dispatch }, data) {
+  async addTechnicalReq({ commit, rootState }, data) {
     commit('SET_LOADING', true);
-
     try {
       await TechnicalReqService.createTechnicalReq(data);
+
       commit('SET_LOADING', false);
       commit('SET_TECHNICALREQ_SUCCESSFULLY', true);
       commit('SET_TECHNICALREQ_ERROR', false);
       commit('SET_TECHNICALREQ_MESSAGE', i18n.t('TECHNICALREQ_ADD_MESSAGE'));
-      //   dispatch('loadTechnicalReq');
+      // dispatch('loadTechnicalReq');
+      const { id } = rootState.ProjectInfoModule.singleProjectInfo;
+      router.push('/project/package/' + id);
     } catch {
       commit('SET_TECHNICALREQ_SUCCESSFULLY', false);
       commit('SET_TECHNICALREQ_ERROR', true);

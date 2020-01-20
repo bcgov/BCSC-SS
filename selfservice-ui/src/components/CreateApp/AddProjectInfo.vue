@@ -22,17 +22,25 @@
                 >
                 <Input
                   v-model="organizationName"
-                  counter="200"
+                  counter="100"
                   label="Organization name"
                   type="text"
-                  :rules="[rules.required, rules.length(2)]"
+                  :rules="[
+                    rules.required,
+                    rules.length(2),
+                    rules.maxLength(100)
+                  ]"
                 />
                 <Input
                   v-model="projectName"
                   counter="100"
                   label="Project name"
                   type="text"
-                  :rules="[rules.required, rules.length(2)]"
+                  :rules="[
+                    rules.required,
+                    rules.length(2),
+                    rules.maxLength(100)
+                  ]"
                 />
                 <TextArea
                   v-model="description"
