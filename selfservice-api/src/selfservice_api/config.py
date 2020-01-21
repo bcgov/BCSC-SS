@@ -127,13 +127,13 @@ class TestConfig(_Config):  # pylint: disable=too-few-public-methods
     # JWT_OIDC_TEST_MODE will set jwt_manager to use
     JWT_OIDC_TEST_MODE = True
     JWT_OIDC_TEST_AUDIENCE = os.getenv('JWT_OIDC_AUDIENCE')
-    JWT_OIDC_TEST_ISSUER = 'https://sso-dev.auth.gov.bc.ca/auth/realms/bcsc_test'
+    JWT_OIDC_TEST_ISSUER = os.getenv('JWT_OIDC_ISSUER')
     JWT_OIDC_TEST_KEYS = {
         'keys': [
             {
-                'kid': 'flask-jwt-oidc-test-client',
+                'kid': os.getenv('JWT_OIDC_AUDIENCE'),
                 'kty': 'RSA',
-                'alg': 'RS256',
+                'alg': os.getenv('JWT_OIDC_ALGORITHMS'),
                 'use': 'sig',
                 'n': 'AN-fWcpCyE5KPzHDjigLaSUVZI0uYrcGcc40InVtl-rQRDmAh-C2W8H4_Hxhr5VLc6crsJ2LiJTV_E72S03pzpOOaaYV6-TzAjCou2GYJIXev7f6Hh512PuG5wyxda_TlBSsI-gvphRTPsKCnPutrbiukCYrnPuWxX5_cES9eStR',  # noqa: E501  # pylint: disable=line-too-long
                 'e': 'AQAB'
@@ -144,9 +144,9 @@ class TestConfig(_Config):  # pylint: disable=too-few-public-methods
     JWT_OIDC_TEST_PRIVATE_KEY_JWKS = {
         'keys': [
             {
-                'kid': 'flask-jwt-oidc-test-client',
+                'kid': os.getenv('JWT_OIDC_AUDIENCE'),
                 'kty': 'RSA',
-                'alg': 'RS256',
+                'alg': os.getenv('JWT_OIDC_ALGORITHMS'),
                 'use': 'sig',
                 'n': 'AN-fWcpCyE5KPzHDjigLaSUVZI0uYrcGcc40InVtl-rQRDmAh-C2W8H4_Hxhr5VLc6crsJ2LiJTV_E72S03pzpOOaaYV6-TzAjCou2GYJIXev7f6Hh512PuG5wyxda_TlBSsI-gvphRTPsKCnPutrbiukCYrnPuWxX5_cES9eStR',  # noqa: E501  # pylint: disable=line-too-long
                 'e': 'AQAB',
