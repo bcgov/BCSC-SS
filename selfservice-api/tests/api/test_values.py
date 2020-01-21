@@ -11,6 +11,17 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""Test-Suite for the API."""
 
-API_URI_PREFIX = '/api/v1/'
+"""Tests API endpoints for exposing static list of values."""
+from http import HTTPStatus
+
+from ..api import API_URI_PREFIX
+from ..helper.auth import ss_client_auth_header
+
+
+def test_values_algorithms(client, jwt, session):
+    """Assert that the endpoint returns the success status for algorithms."""
+    headers = ss_client_auth_header(jwt)
+    rv = client.get(API_URI_PREFIX + 'values/algorithms', headers=headers)
+
+    assert rv.status_code == HTTPStatus.OK

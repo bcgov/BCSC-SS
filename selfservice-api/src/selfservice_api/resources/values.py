@@ -27,7 +27,7 @@ API = Namespace('Values', description='Values')
 
 
 @cors_preflight('GET,OPTIONS')
-@API.route('/algorithms/', methods=['GET', 'OPTIONS'])
+@API.route('/algorithms', methods=['GET', 'OPTIONS'])
 class AlgorithmValuesResource(Resource):
     """Resource for managing get algorithm values."""
 
