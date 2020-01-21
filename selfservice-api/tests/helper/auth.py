@@ -28,10 +28,10 @@ class TestJwtClaims(dict, Enum):
     """Test scenarios of jwt claims."""
 
     invalid = {
-        'sub': 'barfoo',
-        'given_name': 'Trouble',
-        'family_name': 'Maker',
-        'preferred_username': 'troublemaker'
+        'sub': 'invalid',
+        'given_name': 'invalid',
+        'family_name': 'user',
+        'preferred_username': 'invaliduser'
     }
 
     ss_client = {
