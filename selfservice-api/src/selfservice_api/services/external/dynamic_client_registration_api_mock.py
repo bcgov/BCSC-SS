@@ -11,7 +11,10 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""***Temperory***: API mock for BCSC OIDC Dynamic Client Registration."""
+"""***Temperory***: API mock for BCSC OIDC Dynamic Client Registration.
+
+ignore from analysis
+"""
 
 import binascii
 import json
