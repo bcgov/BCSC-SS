@@ -18,9 +18,9 @@ describes the required fields, assumptions and constraints for
 creating, updating, deleting and viewing a client configuration.
 """
 
-from .models.dynamic_client_create import CreateRequestModel, CreateResponseModel
-from .models.dynamic_client_get import GetResponseModel
-from .models.dynamic_client_update import UpdateRequestModel, UpdateResponseModel
+from .dynamic_client_registration_api_mock import DynamicClientRegistrationApiMock
+from .models.dynamic_client_create import CreateRequestModel
+from .models.dynamic_client_update import UpdateRequestModel
 
 
 class DynamicClientRegistrationService():
@@ -29,19 +29,19 @@ class DynamicClientRegistrationService():
     @staticmethod
     def create(request: CreateRequestModel):
         """Client Registration Request for a new client at the BCSC OpenID Provider."""
-        response = CreateResponseModel()
+        response = DynamicClientRegistrationApiMock.create(request)
 
         return response
 
     @staticmethod
     def get(registration_access_token: str):
         """Get Registration Request for an existing client at the BCSC OpenID Provider."""
-        return GetResponseModel()
+        return DynamicClientRegistrationApiMock.get(registration_access_token)
 
     @staticmethod
     def update(registration_access_token: str, request: UpdateRequestModel):
         """Update Registration Request for an existing client at the BCSC OpenID Provider."""
-        return UpdateResponseModel()
+        return DynamicClientRegistrationApiMock.update(registration_access_token, request)
 
     @staticmethod
     def delete():

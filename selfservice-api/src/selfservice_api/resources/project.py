@@ -46,22 +46,22 @@ class ProjectResource(Resource):
             dict_data = project_schema.load(project_json)
             project = Project.create_from_dict(dict_data, token_info.get('sub'))
             response, status = project_schema.dump(project), HTTPStatus.CREATED
-        except ValidationError as err:
-            response, status = {'message': str(err.messages)}, \
+        except ValidationError as project_err:
+            response, status = {'message': str(project_err.messages)}, \
                 HTTPStatus.BAD_REQUEST
         return response, status
 
 
 @cors_preflight('GET,OPTIONS')
-@API.route('/<int:id>', methods=['GET', 'OPTIONS'])
+@API.route('/<int:project_id>', methods=['GET', 'OPTIONS'])
 class ProjectResourceById(Resource):
     """Resource for managing get project by id."""
 
     @staticmethod
     @cors.crossdomain(origin='*')
     @jwt.requires_auth
-    def get(id):
+    def get(project_id):
         """Get project details."""
-        project = Project.find_by_id(id)
+        project = Project.find_by_id(project_id)
 
         return ProjectSchema().dump(project), HTTPStatus.OK

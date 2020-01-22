@@ -11,8 +11,8 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 """Tests to assure the API endpoints for managing user is working as expected."""
+
 import json
 from http import HTTPStatus
 
@@ -40,16 +40,19 @@ def test_get_user(client, jwt, session):
     assert data['id'] == user['id']
 
 
-def create_user(client, jwt):
-    """Create user and return user object."""
-    response = _create_user_(client, jwt)
+def create_user(client, jwt, project_role='developer'):
+    """Create user and return user object.
+
+    project_role allowed values: developer, manager, cto
+    """
+    response = _create_user_(client, jwt, project_role=project_role)
     user = json.loads(response.data)
     return user
 
 
-def _create_user_(client, jwt):
+def _create_user_(client, jwt, project_role='developer'):
     """Create user and return response object."""
-    headers = ss_client_auth_header(jwt)
+    headers = ss_client_auth_header(jwt, project_role=project_role)
     response = client.post(API_URI_PREFIX + 'user',
                            headers=headers, content_type='application/json')
     return response

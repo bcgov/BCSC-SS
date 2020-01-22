@@ -34,13 +34,41 @@ class TestJwtClaims(dict, Enum):
         'preferred_username': 'invaliduser'
     }
 
-    ss_client = {
+    ss_client_developer = {
         'iss': os.getenv('JWT_OIDC_ISSUER'),
         'sub': '79ae27e8-4f87-4b7d-8075-46aa4be72e02',
-        'given_name': 'client',
-        'family_name': 'ss',
+        'given_name': 'developer',
+        'family_name': 'ss_client',
         'email': 'developer@email.com',
-        'preferred_username': 'ssclient',
+        'preferred_username': 'ssclientdeveloper',
+        'realm_access': {
+            'roles': [
+                'ss_client'
+            ]
+        }
+    }
+
+    ss_client_manager = {
+        'iss': os.getenv('JWT_OIDC_ISSUER'),
+        'sub': '24a6c1c5-d57f-4a18-a30b-74cb714086e9',
+        'given_name': 'manager',
+        'family_name': 'ss_client',
+        'email': 'manager@email.com',
+        'preferred_username': 'ssclientmanager',
+        'realm_access': {
+            'roles': [
+                'ss_client'
+            ]
+        }
+    }
+
+    ss_client_cto = {
+        'iss': os.getenv('JWT_OIDC_ISSUER'),
+        'sub': '9821a391-5820-4c63-8392-2b72d8373874',
+        'given_name': 'cto',
+        'family_name': 'ss_client',
+        'email': 'cto@email.com',
+        'preferred_username': 'ssclientcto',
         'realm_access': {
             'roles': [
                 'ss_client'
@@ -50,7 +78,7 @@ class TestJwtClaims(dict, Enum):
 
     ss_admin = {
         'iss': os.getenv('JWT_OIDC_ISSUER'),
-        'sub': '79ae27e8-4f87-4b7d-8075-46aa4be72e02',
+        'sub': '65a62428-6713-4e7d-8f12-99e56de58386',
         'given_name': 'admin',
         'family_name': 'ss',
         'preferred_username': 'ssadmin',
@@ -62,9 +90,13 @@ class TestJwtClaims(dict, Enum):
     }
 
 
-def ss_client_auth_header(jwt):
-    """Produce ss_client JWT tokens for use in tests."""
-    return {'Authorization': 'Bearer ' + jwt.create_jwt(claims=TestJwtClaims.ss_client, header=JWT_HEADER)}
+def ss_client_auth_header(jwt, project_role='developer'):
+    """Produce ss_client JWT tokens for use in tests.
+
+    project_role allowed values: developer, manager, cto
+    """
+    claims = TestJwtClaims['ss_client_' + project_role]
+    return {'Authorization': 'Bearer ' + jwt.create_jwt(claims=claims, header=JWT_HEADER)}
 
 
 def ss_admin_auth_header(jwt):

@@ -11,8 +11,8 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 """This exports all of the models used by the application."""
+
 from .db import db, ma
 from .org_whitelist import OrgWhitelist
 from .user import User

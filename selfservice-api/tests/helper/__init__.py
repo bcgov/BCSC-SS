@@ -12,3 +12,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 """Helper functions for testing."""
+
+import re
+
+
+def camel2snake(camel_dict: dict):
+    """Convert the passed dictionary's keys from camelCase to snake_case."""
+    converted_obj = {}
+    for key in camel_dict.keys():
+        converted_key = re.sub(r'[A-Z]', lambda x: '_' + x.group(0).lower(), key)
+        if type(camel_dict[key]) is dict:
+            converted_obj[converted_key] = camel2snake(camel_dict[key])
+        else:
+            converted_obj[converted_key] = camel_dict[key]
+    return converted_obj

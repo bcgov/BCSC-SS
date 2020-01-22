@@ -11,16 +11,16 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 """Tests to assure the API endpoints for managing a project technical requirements is working as expected."""
+
 import json
 from http import HTTPStatus
 
 from ..api import API_URI_PREFIX
 from ..helper.auth import ss_client_auth_header
 from ..helper.request_data import factory_project_technical_req
-from .test_project import create_project
-from .test_user import create_user
+from .test_api_project import create_project
+from .test_api_user import create_user
 
 
 def test_post_technical_req(client, jwt, session):
@@ -28,6 +28,17 @@ def test_post_technical_req(client, jwt, session):
     response = _create_technical_req_(client, jwt)
 
     assert response.status_code == HTTPStatus.CREATED
+
+
+def test_post_technical_req_validation(client, jwt, session):
+    """Assert that the endpoint returns the failure status."""
+    headers = ss_client_auth_header(jwt)
+    req_data = {}
+
+    response = client.post(API_URI_PREFIX + 'technical-req', data=json.dumps(req_data),
+                           headers=headers, content_type='application/json')
+
+    assert response.status_code == HTTPStatus.BAD_REQUEST
 
 
 def test_get_technical_req(client, jwt, session):

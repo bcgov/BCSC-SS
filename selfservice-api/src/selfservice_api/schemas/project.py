@@ -47,15 +47,15 @@ class ProjectSchema(Schema):
     cto = fields.Nested(ProjectUserSchema, data_key='ctoDetails')
 
     @pre_load()
-    def before_load(self, data, **kwargs):
+    def before_load(self, data, **kwargs):  # pylint: disable=no-self-use
         """Modify the data before validation and deserialization."""
         project_role = int(data.get('myRole', 0))
 
-        if project_role == ProjectRoles.Developer:
-            data['developerDetails'] = {}
+        if project_role == ProjectRoles.Cto:
+            data['ctoDetails'] = {}
         elif project_role == ProjectRoles.Manager:
             data['managerDetails'] = {}
-        elif project_role == ProjectRoles.Cto:
-            data['ctoDetails'] = {}
+        else:
+            data['developerDetails'] = {}
 
         return data

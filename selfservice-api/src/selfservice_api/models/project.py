@@ -91,6 +91,6 @@ class Project(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
         return current_user.id
 
     @classmethod
-    def find_by_id(cls, id) -> Project:
+    def find_by_id(cls, project_id) -> Project:
         """Find project that matches the provided id."""
-        return cls.query.filter_by(id=id).first()
+        return cls.query.filter_by(id=project_id).first()

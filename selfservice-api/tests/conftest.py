@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 """Common setup and fixtures for the pytest suite used by this service."""
+
 from contextlib import contextmanager
 
 import pytest

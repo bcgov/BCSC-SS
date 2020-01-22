@@ -15,6 +15,7 @@
 
 This module is the API for the BCSC Self Service.
 """
+
 import os
 
 from flask import Flask
