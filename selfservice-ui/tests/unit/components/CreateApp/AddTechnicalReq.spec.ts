@@ -1,34 +1,37 @@
-/* tslint:disable */
 import { shallowMount, createLocalVue } from '@vue/test-utils';
-import Header from '@/components/Header/Header.vue';
+import AddTechnicalReq from '@/components/CreateApp/AddTechnicalReq.vue';
 import vuetify from 'vuetify';
 import Vuex from 'vuex';
-import VueRouter from 'vue-router';
 
-describe('Header.vue', () => {
+describe('AddTechnicalReq.vue', () => {
   let wrapper: any;
   beforeEach(() => {
     const localVue = createLocalVue();
     localVue.use(vuetify);
-    localVue.use(VueRouter);
-    const router = new VueRouter();
     localVue.use(Vuex);
     const store = new Vuex.Store({
       modules: {
-        KeyCloakModule: {
+        ProjectInfoModule: {
           namespaced: true,
           state: {},
           getters: {
-            userProfile: jest.fn(),
+            getSingleProjectInfo: jest.fn(),
             isLoggedin: jest.fn()
-          }
+          },
+          actions: { getSingleTechnicalReq: jest.fn() }
+        },
+        TechnicalReqModule: {
+          namespaced: true,
+          state: {},
+          getters: {
+            getSingleTechnicalReq: jest.fn()
+          },
+          actions: { getSingleTechnicalReq: jest.fn() }
         }
       }
     });
-
-    wrapper = shallowMount(Header, {
+    wrapper = shallowMount(AddTechnicalReq, {
       localVue,
-      router,
       store
     });
   });
