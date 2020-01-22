@@ -13,7 +13,7 @@
 # limitations under the License.
 """***Temperory***: API mock for BCSC OIDC Dynamic Client Registration.
 
-ignore from analysis
+@sonar.issue.ignore.allfile
 """
 
 import binascii
