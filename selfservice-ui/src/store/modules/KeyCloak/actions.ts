@@ -25,10 +25,11 @@ export const actions: ActionTree<KeyCloakState, RootState> = {
   async setKeyCloakAuth(state: any, data) {
     const { commit, dispatch } = state;
     const { keycloak, path, next } = data;
+
     const token = keycloak.token || false;
     if (token) {
       commit('SET_LOGIN', true);
-      commit('SET_KEY_AUTH', keycloak);
+      commit('SET_KEY_AUTH', { ...keycloak });
       commit('SET_TOKEN');
       sessionStorage.setItem('keycloak_token', token);
       try {

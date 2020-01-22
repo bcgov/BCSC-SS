@@ -54,7 +54,7 @@ export default class Sidebar extends Vue {
   @Prop() private drawer!: boolean;
   private items: any = [
     { title: 'Dashboard', icon: 'mdi-view-dashboard', link: '/' },
-    { title: 'Create App', icon: 'mdi-plus-circle', link: '/project' },
+    { title: 'Create Project', icon: 'mdi-plus-circle', link: '/project' },
     { title: 'About', icon: 'mdi-help-box', link: '/about' }
   ];
 }
