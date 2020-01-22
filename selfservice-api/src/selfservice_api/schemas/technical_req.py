@@ -22,7 +22,8 @@ class TechnicalReqSchema(Schema):
     unknown = EXCLUDE
 
     id = fields.Int()
-    project_id = fields.Int(data_key='projectId', required=True)
+    project_id = fields.Int(data_key='projectId', required=True,
+                            validate=validate.Range(min=1, error='invalid projectId'))
     client_uri = fields.Str(data_key='clientUri', validate=validate.Length(max=500))
     redirect_uris = fields.List(fields.String(), data_key='redirectUris', required=True)
     jwks_uri = fields.Str(data_key='jwksUri', validate=validate.Length(max=500))

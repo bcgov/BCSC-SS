@@ -19,6 +19,7 @@ All services have 2 defaults sets of endpoints:
  - meta
 That are used to expose operational health information about the service, and meta information.
 """
+
 from flask_restplus import Api
 
 from .meta import API as META_API

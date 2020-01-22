@@ -19,11 +19,6 @@ from .db import db
 class BaseModel():
     """This class manages all of the base model functions."""
 
-    @staticmethod
-    def commit():
-        """Commit the session."""
-        db.session.commit()
-
     def save(self):
         """Save and commit."""
         db.session.add(self)

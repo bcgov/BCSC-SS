@@ -46,22 +46,22 @@ class TechnicalReqResource(Resource):
             dict_data = technical_req_schema.load(technical_req_json)
             technical_req = TechnicalReq.create_from_dict(dict_data, token_info.get('sub'))
             response, status = technical_req_schema.dump(technical_req), HTTPStatus.CREATED
-        except ValidationError as err:
-            response, status = {'message': str(err.messages)}, \
+        except ValidationError as technical_req_err:
+            response, status = {'message': str(technical_req_err.messages)}, \
                 HTTPStatus.BAD_REQUEST
         return response, status
 
 
 @cors_preflight('GET,OPTIONS')
-@API.route('/<int:id>', methods=['GET', 'OPTIONS'])
+@API.route('/<int:technical_req_id>', methods=['GET', 'OPTIONS'])
 class TechnicalReqResourceById(Resource):
     """Resource for managing get technical requirement by id."""
 
     @staticmethod
     @cors.crossdomain(origin='*')
     @jwt.requires_auth
-    def get(id):
+    def get(technical_req_id):
         """Get technical requirement details."""
-        technical_req = TechnicalReq.find_by_id(id)
+        technical_req = TechnicalReq.find_by_id(technical_req_id)
 
         return TechnicalReqSchema().dump(technical_req), HTTPStatus.OK
