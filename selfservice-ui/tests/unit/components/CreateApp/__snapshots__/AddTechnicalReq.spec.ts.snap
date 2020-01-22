@@ -1,0 +1,161 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddTechnicalReq.vue renders props when passed 1`] = `
+<v-card-stub
+  class="mx-auto"
+  loaderheight="4"
+  style="max-width: 80%;"
+  tag="div"
+>
+  <v-card-stub
+    class="mx-auto"
+    loaderheight="4"
+    tag="div"
+  >
+    <v-app-bar-stub
+      color="#003366"
+      dark="true"
+      extensionheight="48"
+      src=""
+      tag="header"
+      tile="true"
+      value="true"
+    >
+      <v-btn-stub
+        activeclass=""
+        aria-label="Back Button"
+        icon="true"
+        tag="button"
+        type="button"
+      >
+        <v-icon-stub>
+          mdi-arrow-left
+        </v-icon-stub>
+      </v-btn-stub>
+       
+      <v-toolbar-title-stub>
+        Technical requirments
+      </v-toolbar-title-stub>
+       
+      <v-spacer-stub />
+    </v-app-bar-stub>
+     
+    <v-form-stub
+      class="pa-4 pt-6"
+    >
+      <v-container-stub
+        tag="div"
+      >
+        <v-row-stub
+          dense="true"
+          tag="div"
+        >
+          <v-col-stub
+            cols="12"
+            md="12"
+            tag="div"
+          >
+            <v-card-stub
+              class="pa-4 pt-6"
+              loaderheight="4"
+              tag="div"
+            >
+              <v-card-title-stub
+                class="headline"
+              >
+                
+                
+              
+              </v-card-title-stub>
+               
+              <input-stub
+                counter="500"
+                label="Application URL"
+                rules="v => !!v || 'This field is required',v => {
+    if (v === '') {
+      return true;
+    } else {
+      return /^(?:http(s)?:\\\\/\\\\/)?[\\\\w.-]+(?:\\\\.[\\\\w\\\\.-]+)+[\\\\w\\\\-\\\\._~:/?#[\\\\]@!\\\\$&'\\\\(\\\\)\\\\*\\\\+,;=.]+$/.test(v) || ' must be valid URL';
+    }
+  },v => (v || '').length <= len || 'Invalid character length, max length ' + len"
+                type="text"
+                value=""
+              />
+               
+              <div
+                class="row v-form pa-4 pt-6"
+              >
+                <v-text-field-stub
+                  appendicon="mdi-minus"
+                  backgroundcolor=""
+                  clearicon="$clear"
+                  errorcount="1"
+                  errormessages=""
+                  filled="true"
+                  label="Redirect URI values"
+                  loaderheight="2"
+                  messages=""
+                  rules="v => {
+    if (v === '') {
+      return true;
+    } else {
+      return /^(?:http(s)?:\\\\/\\\\/)?[\\\\w.-]+(?:\\\\.[\\\\w\\\\.-]+)+[\\\\w\\\\-\\\\._~:/?#[\\\\]@!\\\\$&'\\\\(\\\\)\\\\*\\\\+,;=.]+$/.test(v) || ' must be valid URL';
+    }
+  }"
+                  successmessages=""
+                  type="text"
+                  value=""
+                />
+              </div>
+               
+              <input-stub
+                counter="500"
+                label="JWKS URL"
+                rules="v => !!v || 'This field is required',v => {
+    if (v === '') {
+      return true;
+    } else {
+      return /^(?:http(s)?:\\\\/\\\\/)?[\\\\w.-]+(?:\\\\.[\\\\w\\\\.-]+)+[\\\\w\\\\-\\\\._~:/?#[\\\\]@!\\\\$&'\\\\(\\\\)\\\\*\\\\+,;=.]+$/.test(v) || ' must be valid URL';
+    }
+  },v => (v || '').length <= len || 'Invalid character length, max length ' + len"
+                type="text"
+                value=""
+              />
+               
+              <select-stub
+                items="HS256,HS384,HS512,RS256,RS384,RS512,ES256,ES384,ES512,PS256,PS384,PS512"
+                label="ID Token Signature Algorithm"
+                rules="v => !!v || 'This field is required'"
+                value="RS256"
+              />
+               
+              <select-stub
+                items="HS256,HS384,HS512,RS256,RS384,RS512,ES256,ES384,ES512,PS256,PS384,PS512"
+                label="User Info Signed Response Algorithm"
+                rules="v => !!v || 'This field is required'"
+                value="RS256"
+              />
+               
+              <v-divider-stub />
+               
+              <v-card-actions-stub>
+                <v-spacer-stub />
+                 
+                <button-stub
+                  class="white--text"
+                  depressed=""
+                  disabled="true"
+                  name="button"
+                  type="button"
+                >
+                  Next
+                </button-stub>
+              </v-card-actions-stub>
+            </v-card-stub>
+          </v-col-stub>
+        </v-row-stub>
+      </v-container-stub>
+    </v-form-stub>
+  </v-card-stub>
+</v-card-stub>
+`;
