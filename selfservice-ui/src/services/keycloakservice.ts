@@ -129,14 +129,14 @@ export default class KeycloakService {
             store.dispatch('KeyCloakModule/setUserProfile', profile);
           });
           setInterval(() => {
-            KeycloakService.updateToken(10)
+            KeycloakService.keycloak
+              .updateToken(5)
               .success((refreshed: any) => {
-                // console.log('refreshed', refreshed);
                 if (refreshed) {
-                  store.dispatch(
-                    'KeyCloakModule/setKeyCloakAuth',
-                    KeycloakService.keycloak
-                  );
+                  // console.log('token refreshed', refreshed);
+                  store.dispatch('KeyCloakModule/setKeyCloakAuth', {
+                    keycloak: KeycloakService.keycloak
+                  });
                 }
               })
               .error(() => {
@@ -146,7 +146,7 @@ export default class KeycloakService {
                 );
                 // console.info('Failed to refresh token');
               });
-          }, 100000);
+          }, 6000);
           if (KeycloakService.checkPermission(roles)) {
             next();
           } else {
