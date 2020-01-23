@@ -4,6 +4,7 @@ TOOLS_TAG = 'tools'
 NAMESPACE_BUILD = "${NAMESPACE}"  + '-' + "${TOOLS_TAG}"
 ROCKETCHAT_CHANNEL='#bcsc-ss-bot'
 BUILD_PHASE = "build"
+TEST_PHASE = "Test"
 DEPLOYMENT_PHASE = "Deployment"
 // Load Common Variables and utils
 common = ""
@@ -36,11 +37,6 @@ stage('Build ' + WEB_IMAGESTREAM_NAME) {
         // Build and verify the app
         common.buildAndVerify(WEB_BUILD)
         
-        // Don't tag with BUILD_ID so the pruner can do it's job; it won't delete tagged images.
-        // Tag the images for deployment based on the image's hash
-        // WEB_IMAGE_HASH = common.getLatestHash(WEB_IMAGESTREAM_NAME)          
-        // echo ">> WEB_IMAGE_HASH: ${WEB_IMAGE_HASH}"
-        
         // Success UI-Build Notification
         common.successNotificaiton(ROCKETCHAT_TOKEN, WEB_IMAGESTREAM_NAME, BUILD_PHASE )
 
@@ -53,48 +49,55 @@ stage('Build ' + WEB_IMAGESTREAM_NAME) {
   }
 }
 
-// stage('Build ' + DB_IMAGESTREAM_NAME) {
-//   node{
-//     openshift.withProject() {
-//       try{
-//         // Make sure the frontend build configs exist
-//         common.ensureBuildExists(DB_BUILD,"openshift/selfservice-db/db-build.yaml")
-//         // Build and verify the app
-//         common.buildAndVerify(DB_BUILD)
-        
-//         // Tag the images for deployment based on the image's hash
-        // DB_IMAGE_HASH = common.getLatestHash(DB_IMAGESTREAM_NAME)          
-        // echo ">> DB_IMAGE_HASH: ${DB_IMAGE_HASH}"
-
-//         //Success DB-Build Notification
-//         common.successNotificaiton(ROCKETCHAT_TOKEN, DB_IMAGESTREAM_NAME, BUILD_PHASE )
-//       }catch(error){
-//         // failure DB Build Notification
-//         common.failureNotificaiton(ROCKETCHAT_TOKEN, DB_IMAGESTREAM_NAME, BUILD_PHASE )
-//         throw error
-//       }
-//     }
-//   }
-// }
-
 stage('Build ' + API_IMAGESTREAM_NAME) {
   node{
     openshift.withProject() {
       try{
         // Make sure the frontend build configs exist
-        common.ensureBuildExists(API_BUILD,"openshift/selfservice-api/api-build.yaml")
+        common.ensureBuildExists(API_IMAGESTREAM_NAME,"openshift/selfservice-api/api-build.yaml")
         // Build and verify the app
         common.buildAndVerify(API_BUILD)
-
-        // // Tag the images for deployment based on the image's hash
-        // API_IMAGE_HASH = common.getLatestHash(API_IMAGESTREAM_NAME)          
-        // echo ">> API_IMAGE_HASH: ${API_IMAGE_HASH}"
 
         //Success DB-Build Notification
         common.successNotificaiton(ROCKETCHAT_TOKEN, API_IMAGESTREAM_NAME, BUILD_PHASE)
       }catch(error){
         // failure DB Build Notification
         common.failureNotificaiton(ROCKETCHAT_TOKEN, API_IMAGESTREAM_NAME, BUILD_PHASE )
+        throw error
+      }
+    }
+  }
+}
+
+// Integration testing for API
+stage('Integration Test run for API ' + API_IMAGESTREAM_NAME) {
+  def db_environment = common.db_environments.tools.tag
+  def api_environment = common.db_environments.tools.tag
+  db_tag = "prod"
+  def api_tag = common.api_environments.dev.tag
+  node{
+    openshift.withProject() {
+      try{
+        // Make sure the frontend build configs exist
+        common.createTestDeployment(DB_IMAGESTREAM_NAME,"openshift/selfservice-db/db-deploy.yaml")
+        // Tag the images for deployment based on the image's hash
+        DB_IMAGE_HASH = common.getLatestHash(DB_IMAGESTREAM_NAME, db_tag)          
+        echo ">> DB_IMAGE_HASH: ${DB_IMAGE_HASH}"
+        // Verify deloyment
+        common.deployAndVerify(DB_IMAGE_HASH,environment,DB_IMAGESTREAM_NAME)
+
+        // Make sure the frontend build configs exist
+        common.createTestDeployment(API_IMAGESTREAM_NAME,"openshift/selfservice-api/api-deploy-test.yaml")
+        // Tag the images for deployment based on the image's hash
+        API_IMAGE_HASH = common.getLatestHash(API_IMAGESTREAM_NAME, api_tag)          
+        echo ">> API_IMAGE_HASH: ${API_IMAGE_HASH}"
+        // Verify deloyment
+        common.deployAndVerify(API_IMAGE_HASH,environment,API_IMAGESTREAM_NAME)
+        //Success DB-Build Notification
+        common.testSuccessNotificaiton(ROCKETCHAT_TOKEN, API_IMAGESTREAM_NAME, TEST_PHASE)
+      }catch(error){
+        // failure DB Build Notification
+        common.failureNotificaiton(ROCKETCHAT_TOKEN, API_IMAGESTREAM_NAME, TEST_PHASE )
         throw error
       }
     }

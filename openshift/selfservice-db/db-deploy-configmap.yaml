@@ -18,7 +18,7 @@ objects:
     DATABASE_NAME: "${POSTGRESQL_DATABASE_NAME}"
     DATABASE_USERNAME: "${POSTGRESQL_USER}"
     DATABASE_PORT: "${DATABASE_PORT}"
-    DATABASE_TEST_HOST: "${DB_NAME}"
+    DATABASE_TEST_HOST: "${DB_NAME}.${NAMESPACE}-${TAG_NAME}.svc"
     DATABASE_TEST_NAME: "${POSTGRESQL_DATABASE_NAME}-test"
     DATABASE_TEST_PORT: "${DATABASE_PORT}"
     DATABASE_TEST_USER: "${POSTGRESQL_USER}-test"
@@ -84,4 +84,4 @@ parameters:
   displayName: TAG for the namespace & image tagging
   description: TAG for the namespace & image tagging
   required: true
-  value: dev
+  value: tools
