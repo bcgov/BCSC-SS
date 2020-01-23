@@ -67,7 +67,7 @@ def ensureBuildExists(buildConfigName,templatePath){
 
 def createTestDeployment(deploymentConfigName,templatePath){
   return sh (
-    script: """oc process -f "${env.WORKSPACE}/../workspace@script/${templatePath}" | oc create -f -n oultzp-tools -""",
+    script: """oc process -f "${env.WORKSPACE}/../workspace@script/${templatePath}" | oc apply -f -n oultzp-tools -""",
     returnStdout: true
   ).trim()
 }
