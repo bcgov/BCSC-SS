@@ -78,7 +78,6 @@ def deleteTestDeployment(deploymentConfigName,templatePath){
     returnStdout: true
   ).trim()
   }
-}
 
 def triggerBuild(buildConfigName){
   echo "Building: ${buildConfigName}"
