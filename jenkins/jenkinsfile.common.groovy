@@ -116,6 +116,17 @@ def deployAndVerify(srcHash, destination, imageStream){
   )
 }
 
+def deployAndVerifyTest(srcHash, destination, imageStream){
+  echo "Deploying ${imageStream} to ${destination}"
+  tagImage(srcHash, destination, imageStream)
+  // verify deployment
+  openshiftVerifyDeployment(
+    deploymentConfig: "${imageStream}", 
+    namespace: "${PROJECT_PREFIX}-tools", 
+    waitTime: '900000'
+  )
+}
+
 // @NonCPS
 // String getUrlForRoute(String routeName, String projectNameSpace = '') {
 
