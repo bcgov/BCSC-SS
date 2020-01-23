@@ -12,6 +12,7 @@ describe('AddProjectInfo.vue', () => {
     const store = new Vuex.Store({
       modules: {
         ProjectInfoModule: {
+          namespaced: true,
           state: {},
           getters: {
             getSingleProjectInfo: jest.fn(),

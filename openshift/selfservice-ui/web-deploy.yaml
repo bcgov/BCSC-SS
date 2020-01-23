@@ -124,7 +124,7 @@ objects:
       kind: Service
       name: "${WEB_NAME}"
       weight: 100
-    host: "${WEB_NAME}-${TAG_NAME}.pathfinder.gov.bc.ca"
+    host: "${WEB_NAME_ROUTE}-${TAG_NAME}.pathfinder.gov.bc.ca"
 parameters:
 - description: The name assigned to all of the openshift objects defined in this template.
     It is also the name of runtime image you want.
@@ -161,3 +161,9 @@ parameters:
   displayName: Storage Capacity
   name: VOLUME_CAPACITY
   value: 1Gi
+- description: The name assigned to all of the openshift objects defined in this template.
+    It is also the name of runtime image you want.
+  displayName: Name
+  name: WEB_NAME_ROUTE
+  required: true
+  value: selfservice

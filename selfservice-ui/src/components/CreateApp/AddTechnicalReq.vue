@@ -2,7 +2,7 @@
 <template>
   <v-card class="mx-auto" style="max-width: 80%;">
     <!--  <v-alert type="success" v-if="successStatus">TechnicalReq {{isEditmode ? 'Updated' : 'Added'}} succesfully</v-alert>
-     <v-alert type="error" v-if="errorStatus">Something went wrong...</v-alert>-->
+    <v-alert type="error" v-if="errorStatus">Something went wrong...</v-alert>-->
     <v-card class="mx-auto">
       <v-app-bar dark color="#003366">
         <v-btn icon @click="$router.push('/project/')" aria-label="Back Button">
@@ -19,13 +19,15 @@
               <v-card class="pa-4 pt-6">
                 <!-- <v-card-title class="headline"
                   >Technical information</v-card-title
-                > -->
+                >-->
                 <!-- <v-card-subtitle class="text-left"
                   >Tell us about your Project</v-card-subtitle
-                > -->
-                <v-card-title class="headline">{{
-                  getSingleProjectInfo.projectName
-                }}</v-card-title>
+                >-->
+                <v-card-title class="headline">
+                  {{
+                  getSingleProjectInfo && getSingleProjectInfo.projectName
+                  }}
+                </v-card-title>
 
                 <Input
                   v-model="clientUri"
@@ -81,8 +83,7 @@
                     class="white--text"
                     depressed
                     @click="addTechnicalReq"
-                    >Next</Button
-                  >
+                  >Next</Button>
                 </v-card-actions>
               </v-card>
             </v-col>
