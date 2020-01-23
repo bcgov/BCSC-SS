@@ -67,14 +67,14 @@ def ensureBuildExists(buildConfigName,templatePath){
 
 def createTestDeployment(deploymentConfigName,templatePath){
   return sh (
-    script: """oc process -f "${env.WORKSPACE}/../workspace@script/${templatePath}" | oc apply -f -n oultzp-tools -""",
+    script: """oc process -f "${env.WORKSPACE}/../workspace@script/${templatePath}" | oc apply -n oultzp-tools -f -""",
     returnStdout: true
   ).trim()
 }
 
 def deleteTestDeployment(deploymentConfigName,templatePath){
     return sh (
-    script: """oc process -f "${env.WORKSPACE}/../workspace@script/${templatePath}" | oc delete -f -n oultzp-tools -""",
+    script: """oc process -f "${env.WORKSPACE}/../workspace@script/${templatePath}" | oc delete -n oultzp-tools -f -""",
     returnStdout: true
   ).trim()
   }
