@@ -79,22 +79,27 @@ stage('Integration Test run for API ' + API_IMAGESTREAM_NAME) {
     openshift.withProject() {
       try{
         // Make sure the frontend build configs exist
-        common.createTestDeployment(DB_IMAGESTREAM_NAME,"openshift/selfservice-db/db-deploy.yaml")
+        common.createTestDeployment(DB_IMAGESTREAM_NAME,"openshift/selfservice-db/db-deploy-test-Ephemeral.yaml")
         // Tag the images for deployment based on the image's hash
         DB_IMAGE_HASH = common.getLatestHash(DB_IMAGESTREAM_NAME, db_tag)          
         echo ">> DB_IMAGE_HASH: ${DB_IMAGE_HASH}"
         // Verify deloyment
-        common.deployAndVerify(DB_IMAGE_HASH,environment,DB_IMAGESTREAM_NAME)
-
+        common.deployAndVerifyTest(DB_IMAGE_HASH,db_tag,DB_IMAGESTREAM_NAME)
         // Make sure the frontend build configs exist
         common.createTestDeployment(API_IMAGESTREAM_NAME,"openshift/selfservice-api/api-deploy-test.yaml")
+
+        
         // Tag the images for deployment based on the image's hash
         API_IMAGE_HASH = common.getLatestHash(API_IMAGESTREAM_NAME, api_tag)          
         echo ">> API_IMAGE_HASH: ${API_IMAGE_HASH}"
         // Verify deloyment
-        common.deployAndVerify(API_IMAGE_HASH,environment,API_IMAGESTREAM_NAME)
+        common.deployAndVerifyTest(API_IMAGE_HASH,api_tag,API_IMAGESTREAM_NAME)
         //Success DB-Build Notification
         common.testSuccessNotificaiton(ROCKETCHAT_TOKEN, API_IMAGESTREAM_NAME, TEST_PHASE)
+
+        // Deleting testing templates
+        common.deleteTestDeployment(API_IMAGESTREAM_NAME,"openshift/selfservice-api/api-deploy-test.yaml")
+        common.createTestDeployment(DB_IMAGESTREAM_NAME,"openshift/selfservice-db/db-deploy-test-Ephemeral.yaml")
       }catch(error){
         // failure DB Build Notification
         common.failureNotificaiton(ROCKETCHAT_TOKEN, API_IMAGESTREAM_NAME, TEST_PHASE )
