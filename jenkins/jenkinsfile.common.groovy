@@ -30,19 +30,22 @@ class AppEnvironment{
 web_environments = [
   dev:new AppEnvironment(name:'Development',tag:'dev',url:"https://${WEB_NAME}-${PROJECT_PREFIX}-dev.${PATHFINDER_URL}/"),
   test:new AppEnvironment(name:'Test',tag:'test',url:"https://${WEB_NAME}-${PROJECT_PREFIX}-test.${PATHFINDER_URL}/"),
-  prod:new AppEnvironment(name:'Prod',tag:'prod',url:"https://${WEB_NAME}-${PROJECT_PREFIX}-prod.${PATHFINDER_URL}/")
+  prod:new AppEnvironment(name:'Prod',tag:'prod',url:"https://${WEB_NAME}-${PROJECT_PREFIX}-prod.${PATHFINDER_URL}/"),
+  tools:new AppEnvironment(name:'Tools',tag:'tools',url:"https://${WEB_NAME}-${PROJECT_PREFIX}-tools.${PATHFINDER_URL}/")
 ]
 
 api_environments = [
   dev:new AppEnvironment(name:'Development',tag:'dev',url:"https://${API_NAME}-${PROJECT_PREFIX}-dev.${PATHFINDER_URL}/"),
   test:new AppEnvironment(name:'Test',tag:'test',url:"https://${API_NAME}-${PROJECT_PREFIX}-test.${PATHFINDER_URL}/"),
-  prod:new AppEnvironment(name:'Prod',tag:'prod',url:"https://${API_NAME}-${PROJECT_PREFIX}-prod.${PATHFINDER_URL}/")
+  prod:new AppEnvironment(name:'Prod',tag:'prod',url:"https://${API_NAME}-${PROJECT_PREFIX}-prod.${PATHFINDER_URL}/"),
+  tools:new AppEnvironment(name:'Tools',tag:'tools',url:"https://${API_NAME}-${PROJECT_PREFIX}-tools.${PATHFINDER_URL}/")
 ]
 
 db_environments = [
   dev:new AppEnvironment(name:'Development',tag:'dev',url:"https://${DB_NAME}-${PROJECT_PREFIX}-dev.${PATHFINDER_URL}/"),
   test:new AppEnvironment(name:'Test',tag:'test',url:"https://${DB_NAME}-${PROJECT_PREFIX}-test.${PATHFINDER_URL}/"),
-  prod:new AppEnvironment(name:'Prod',tag:'prod',url:"https://${DB_NAME}-${PROJECT_PREFIX}-prod.${PATHFINDER_URL}/")
+  prod:new AppEnvironment(name:'Prod',tag:'prod',url:"https://${DB_NAME}-${PROJECT_PREFIX}-prod.${PATHFINDER_URL}/"),
+  tools:new AppEnvironment(name:'Tools',tag:'tools',url:"https://${DB_NAME}-${PROJECT_PREFIX}-tools.${PATHFINDER_URL}/")
 ]
 
 // Gets the container hash for the latest image in an image stream
@@ -59,6 +62,24 @@ def ensureBuildExists(buildConfigName,templatePath){
     echo ">> ${newBuildConfig}"
   }else{
     echo "Build Config '${buildConfigName}' already exists"
+  }
+}
+
+def createTestDeployment(deploymentConfigName,templatePath){
+  if(!openshift.selector( "dc/${deploymentConfigName}")){
+    newdeploymentConfig = sh ( """oc process -f "${env.WORKSPACE}/../workspace@script/${templatePath}" | oc create -f -n oultzp-tools - """)
+    echo ">> ${newdeploymentConfig}"
+  }else{
+    echo "Deployment Config '${newdeploymentConfig}' already exists"
+  }
+}
+
+def deleteTestDeployment(deploymentConfigName,templatePath){
+  if(!openshift.selector( "dc/${deploymentConfigName}")){
+    newdeploymentConfig = sh ( """oc process -f "${env.WORKSPACE}/../workspace@script/${templatePath}" | oc delete -f -n oultzp-tools - """)
+    echo ">> ${newdeploymentConfig}"
+  }else{
+    echo "Deployment Config '${newdeploymentConfig}' already exists"
   }
 }
 
@@ -131,6 +152,28 @@ def failureNotificaiton(token, app_name, phase) {
   def rocketChatUrl = "https://chat.pathfinder.gov.bc.ca/hooks/" + "${token}"
   build_url = "${currentBuild.absoluteUrl}console"
   attachment = ["title":"${app_name} ${phase}","title_link":"${build_url}", "image_url":"https://i.imgflip.com/1czxka.jpg","color":"#e3211e"]
+
+  def payload = JsonOutput.toJson([username: "bcsc-jedi", icon_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s", text: "${app_name} ${phase} Failure 🤕", attachments: [attachment], channel: "${ROCKETCHAT_CHANNEL}"])
+  sh(returnStdout: true,
+     script: "curl -X POST -H 'Content-Type: application/json' --data \'${payload}\' ${rocketChatUrl}")
+}
+
+@NonCPS
+def testSuccessNotificaiton(token, app_name, phase) {
+  def rocketChatUrl = "https://chat.pathfinder.gov.bc.ca/hooks/" + "${token}"
+  build_url = "${currentBuild.absoluteUrl}console"
+  attachment = ["title":"${app_name} ${phase}","title_link":"${build_url}", "image_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpxInndyxhBfNjQkQv4UmBSPJIh2P3vRxm9uEbWeGpTyG66UOl&s","color":"#1ee321"]
+
+  def payload = JsonOutput.toJson([username: "bcsc-jedi", icon_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s", text: "${app_name} ${phase} Success 🚀", attachments: [attachment], channel: "${ROCKETCHAT_CHANNEL}"])
+  sh(returnStdout: true,
+     script: "curl -X POST -H 'Content-Type: application/json' --data \'${payload}\' ${rocketChatUrl}")
+}
+
+@NonCPS
+def testFailureNotificaiton(token, app_name, phase) {
+  def rocketChatUrl = "https://chat.pathfinder.gov.bc.ca/hooks/" + "${token}"
+  build_url = "${currentBuild.absoluteUrl}console"
+  attachment = ["title":"${app_name} ${phase}","title_link":"${build_url}", "image_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0X7YqVeab8XHYMAmSWJkwcWBK8jSC3esX2lXE7-070RXtqdBysw&s","color":"#1ee321"]
 
   def payload = JsonOutput.toJson([username: "bcsc-jedi", icon_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTizwY92yvdrPaFVBlbw6JW9fiDxZrogj10UvkKGnp66xLNx3io5Q&s", text: "${app_name} ${phase} Failure 🤕", attachments: [attachment], channel: "${ROCKETCHAT_CHANNEL}"])
   sh(returnStdout: true,

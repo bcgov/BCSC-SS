@@ -34,13 +34,13 @@ objects:
       dockerStrategy:
         dockerfilePath: "${DOCKER_FILE_PATH}"
         buildArgs:
-        - name: API_BASE_URL
-          value: "https://selfservice-api-dev.pathfinder.gov.bc.ca/"
-        - name: KEYCLOAK_URL
+        - name: "API_BASE_URL"
+          value: "https://selfservice-api-dev.pathfinder.gov.bc.ca/api/v1/"
+        - name: "KEYCLOAK_URL"
           value: "https://sso-dev.pathfinder.gov.bc.ca/auth"
-        - name: KEYCLOAK_REALM
+        - name: "KEYCLOAK_REALM"
           value: "1gw8g24z"
-        - name: KEYCLOAK_CLIENT
+        - name: "KEYCLOAK_CLIENT"
           value: "bcscss"
     output:
       to:
@@ -78,7 +78,7 @@ parameters:
   displayName: Git Reference
   description: The git reference or branch.
   required: true
-  value: deployment/openshift
+  value: dev
 - name: SOURCE_CONTEXT_DIR
   displayName: Source Context Directory
   description: The source context directory.
