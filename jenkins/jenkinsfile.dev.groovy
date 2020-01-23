@@ -84,7 +84,7 @@ stage('Integration Test run for API ' + API_IMAGESTREAM_NAME) {
         DB_IMAGE_HASH = common.getLatestHash(DB_IMAGESTREAM_NAME, db_tag)          
         echo ">> DB_IMAGE_HASH: ${DB_IMAGE_HASH}"
         // Verify deloyment
-        common.deployAndVerify(DB_IMAGE_HASH,environment,DB_IMAGESTREAM_NAME)
+        common.deployAndVerify(DB_IMAGE_HASH,db_environment,DB_IMAGESTREAM_NAME)
 
         // Make sure the frontend build configs exist
         common.createTestDeployment(API_IMAGESTREAM_NAME,"openshift/selfservice-api/api-deploy-test.yaml")
@@ -92,7 +92,7 @@ stage('Integration Test run for API ' + API_IMAGESTREAM_NAME) {
         API_IMAGE_HASH = common.getLatestHash(API_IMAGESTREAM_NAME, api_tag)          
         echo ">> API_IMAGE_HASH: ${API_IMAGE_HASH}"
         // Verify deloyment
-        common.deployAndVerify(API_IMAGE_HASH,environment,API_IMAGESTREAM_NAME)
+        common.deployAndVerify(API_IMAGE_HASH,api_environment,API_IMAGESTREAM_NAME)
         //Success DB-Build Notification
         common.testSuccessNotificaiton(ROCKETCHAT_TOKEN, API_IMAGESTREAM_NAME, TEST_PHASE)
       }catch(error){
