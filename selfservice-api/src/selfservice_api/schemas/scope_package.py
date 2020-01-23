@@ -11,20 +11,20 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""Supply version and commit hash info."""
+"""This manages scope package Response Schema."""
 
-import os
-
-from ..version import __version__
+from marshmallow import EXCLUDE, Schema, fields
 
 
-def _get_build_openshift_commit_hash():
-    return os.getenv('OPENSHIFT_BUILD_COMMIT', None)
+class ScopePackageSchema(Schema):
+    """This class manages scope package response schema."""
 
+    class Meta:  # pylint: disable=too-few-public-methods
+        """Exclude unknown fields in the deserialized output."""
 
-def get_run_version():
-    """Return a formatted version string for this service."""
-    commit_hash = _get_build_openshift_commit_hash()
-    if commit_hash:
-        return f'{__version__}-{commit_hash}'
-    return __version__
+        unknown = EXCLUDE
+
+    id = fields.Int()
+    package_name = fields.Str(data_key='packageName')
+    description = fields.Str(data_key='description')
+    claim_names = fields.List(fields.String(), data_key='claimNames')

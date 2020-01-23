@@ -11,20 +11,17 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""Supply version and commit hash info."""
+"""Tests API endpoints for scope package."""
 
-import os
+from http import HTTPStatus
 
-from ..version import __version__
-
-
-def _get_build_openshift_commit_hash():
-    return os.getenv('OPENSHIFT_BUILD_COMMIT', None)
+from ..api import API_URI_PREFIX
+from ..helper.auth import ss_client_auth_header
 
 
-def get_run_version():
-    """Return a formatted version string for this service."""
-    commit_hash = _get_build_openshift_commit_hash()
-    if commit_hash:
-        return f'{__version__}-{commit_hash}'
-    return __version__
+def test_values_algorithms(client, jwt, session):
+    """Assert that the endpoint returns the success status for scope packages."""
+    headers = ss_client_auth_header(jwt)
+    rv = client.get(API_URI_PREFIX + 'scope-package', headers=headers)
+
+    assert rv.status_code == HTTPStatus.OK
