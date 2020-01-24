@@ -3,7 +3,7 @@ import axios from '@/lib/axios';
 import { PACKAGE_URL, TECHNICALREQ_URL } from '@/config/api-endpoints';
 export class PackageService {
   public static async getPackages() {
-    return await axios.get(PACKAGE_URL + '/');
+    return await axios.get(PACKAGE_URL);
   }
 
   public static async updatePackageProject(

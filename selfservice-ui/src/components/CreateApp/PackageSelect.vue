@@ -28,7 +28,7 @@
           <v-col v-for="(packageData, idx) in getPackageList" :key="idx" cols="12" md="12">
             <v-item v-slot:default="{ active }" :value="packageData.id">
               <v-card
-                class="d-flex align-center pa-4"
+                class="d-flex align-center pa-4 select-package"
                 :class="active ? 'active-bg' : ''"
                 @click="selectedPackage(packageData.id)"
               >
