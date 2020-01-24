@@ -23,6 +23,9 @@ from .test_api_project import create_project
 from .test_api_user import create_user
 
 
+TECHNICALREQ_API = API_URI_PREFIX + 'project/:project_id/technical-req'
+
+
 def test_post_technical_req(client, jwt, session):
     """Assert that the endpoint returns the success status."""
     response = _create_technical_req_(client, jwt)
@@ -33,9 +36,11 @@ def test_post_technical_req(client, jwt, session):
 def test_post_technical_req_validation(client, jwt, session):
     """Assert that the endpoint returns the failure status."""
     headers = ss_client_auth_header(jwt)
+    create_user(client, jwt)
+    project = create_project(client, jwt)
     req_data = {}
 
-    response = client.post(API_URI_PREFIX + 'technical-req', data=json.dumps(req_data),
+    response = client.post(TECHNICALREQ_API.replace(':project_id', str(project['id'])), data=json.dumps(req_data),
                            headers=headers, content_type='application/json')
 
     assert response.status_code == HTTPStatus.BAD_REQUEST
@@ -46,7 +51,7 @@ def test_get_technical_req(client, jwt, session):
     headers = ss_client_auth_header(jwt)
     technical_req = create_technical_req(client, jwt)
 
-    response = client.get(API_URI_PREFIX + 'technical-req/' + str(technical_req['id']),
+    response = client.get(TECHNICALREQ_API.replace(':project_id', str(technical_req['projectId'])),
                           headers=headers, content_type='application/json')
 
     assert response.status_code == HTTPStatus.OK
@@ -69,7 +74,7 @@ def _create_technical_req_(client, jwt):
     request_data = factory_project_technical_req()
     request_data['projectId'] = project['id']
 
-    response = client.post(API_URI_PREFIX + 'technical-req',
+    response = client.post(TECHNICALREQ_API.replace(':project_id', str(project['id'])),
                            data=json.dumps(request_data),
                            headers=headers, content_type='application/json')
     return response

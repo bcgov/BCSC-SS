@@ -16,8 +16,8 @@
 from marshmallow import EXCLUDE, Schema, fields, validate
 
 
-class TechnicalReqSchema(Schema):
-    """This class manages technical requirement request and response schema."""
+class TechnicalReqRequestSchema(Schema):
+    """This class manages technical requirement request schema."""
 
     unknown = EXCLUDE
 
@@ -29,3 +29,27 @@ class TechnicalReqSchema(Schema):
     jwks_uri = fields.Str(data_key='jwksUri', validate=validate.Length(max=500))
     id_token_signed_response_alg = fields.Str(data_key='idTokenSignedResponseAlg', validate=validate.Length(max=10))
     userinfo_signed_response_alg = fields.Str(data_key='userinfoSignedResponseAlg', validate=validate.Length(max=10))
+
+
+class TechnicalReqPackageSchema(Schema):
+    """This class manages technical requirement request schema."""
+
+    unknown = EXCLUDE
+
+    scope_package_id = fields.Int(data_key='scopePackageId', required=True)
+
+
+class TechnicalReqTestAccountSchema(Schema):
+    """This class manages technical requirement request schema."""
+
+    unknown = EXCLUDE
+
+    no_of_test_account = fields.Int(data_key='noOfTestAccount', required=True)
+    note_test_account = fields.Str(data_key='noteTestAccount')
+
+
+class TechnicalReqResponseSchema(TechnicalReqRequestSchema,
+                                 TechnicalReqPackageSchema,
+                                 TechnicalReqTestAccountSchema
+                                 ):
+    """This class manages technical requirement response schema."""

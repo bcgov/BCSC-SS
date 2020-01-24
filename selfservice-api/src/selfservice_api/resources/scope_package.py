@@ -11,33 +11,34 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""API endpoints for exposing static list of values."""
+"""API endpoints for scope package."""
 
 from http import HTTPStatus
 
 from flask import jsonify
 from flask_restplus import Namespace, Resource, cors
 
-from ..models.enums.project import Algorithms
+from ..models.scope_package import ScopePackage
+from ..schemas.scope_package import ScopePackageSchema
 from ..utils.auth import jwt
 from ..utils.util import cors_preflight
 
 
-API = Namespace('Values', description='Values')
+API = Namespace('ScopePackage', description='ScopePackage')
 
 
 @cors_preflight('GET,OPTIONS')
-@API.route('/algorithms', methods=['GET', 'OPTIONS'])
-class AlgorithmValuesResource(Resource):
-    """Resource for managing get algorithm values."""
+@API.route('', methods=['GET', 'OPTIONS'])
+class ScopePackageResource(Resource):
+    """Resource for managing get scope packages."""
 
     @staticmethod
     @cors.crossdomain(origin='*')
     @jwt.requires_auth
     def get():
-        """Get algorithms."""
-        algorithms = [e.value for e in Algorithms]
+        """Get all scope package."""
+        scope_packages = ScopePackage.find_all()
 
         return jsonify({
-            'algorithms': algorithms
+            'scopePackages': ScopePackageSchema().dump(scope_packages, many=True)
         }), HTTPStatus.OK
