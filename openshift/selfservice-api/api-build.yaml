@@ -36,6 +36,7 @@ objects:
       to:
         kind: ImageStreamTag
         name: "${API_NAME}:${OUTPUT_IMAGE_TAG}"
+    
 parameters:
 - name: API_NAME
   displayName: Name
