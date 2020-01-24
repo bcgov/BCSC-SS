@@ -2,7 +2,7 @@ export interface ProjectInfoModel {
   id?: string;
   organizationName: string;
   projectName: string;
-  myRole: string;
+  myRole: number;
   description: string;
   users: ProjectUserModel[];
 }

@@ -51,22 +51,24 @@
               <v-card class="pa-4 pt-6">
                 <v-card-title class="headline">Project Roles</v-card-title>
                 <v-card-subtitle class="text-left">Tell us about your role in this project</v-card-subtitle>
-                <v-radio-group v-model="myRole" row>
+                <v-radio-group v-model.number="myRole" row>
                   I am
-                  <v-radio label="Developer" value="1"></v-radio>
-                  <v-radio label="Manager" value="2"></v-radio>
-                  <v-radio label="CTO" value="3"></v-radio>For this project
+                  <v-radio label="Developer" v-bind:value="1"></v-radio>
+                  <v-radio label="Manager" v-bind:value="2"></v-radio>
+                  <v-radio label="CTO" v-bind:value="3"></v-radio>
+                  For this project {{myRole}}
                 </v-radio-group>
               </v-card>
             </v-col>
+
             <!-- <v-form ref="form" v-model="form" class="pa-4 pt-6"> -->
-            <v-col cols="12" sm="6" v-if="myRole !== '2'">
+            <v-col cols="12" sm="6" v-if="myRole !== 2">
               <ProjectUsers :userDetails="users[1]" :rules="rules" title="Manager" />
             </v-col>
-            <v-col cols="12" sm="6" v-if="myRole !== '3'">
+            <v-col cols="12" sm="6" v-if="myRole !== 3">
               <ProjectUsers :userDetails="users[2]" :rules="rules" title="CTO" />
             </v-col>
-            <v-col cols="12" sm="6" v-if="myRole !== '1'">
+            <v-col cols="12" sm="6" v-if="myRole !== 1">
               <ProjectUsers :userDetails="users[0]" :rules="rules" title="Developer" />
             </v-col>
 
@@ -129,7 +131,7 @@ export default class AddProjectInfo extends Vue {
   private organizationName: string = '';
   private projectName: string = '';
   private description: string = '';
-  private myRole: string = '1';
+  private myRole: number = 1;
   private users: ProjectUserModel[] = [
     {
       email: '',
@@ -165,14 +167,18 @@ export default class AddProjectInfo extends Vue {
 
   private addProjectInfo() {
     // to fix change below line
-    const usersList = this.users.splice(1, 2);
+    const selectedUserIdx = this.users.filter(user => {
+      return user.role !== this.myRole;
+    });
+
+    // const usersList = this.users.splice(1, 2);
     // console.log('usersList', usersList);
     const data: ProjectInfoModel = {
       organizationName: this.organizationName,
       projectName: this.projectName,
       description: this.description,
       myRole: this.myRole,
-      users: usersList
+      users: selectedUserIdx
     };
 
     if (this.isEditmode) {
