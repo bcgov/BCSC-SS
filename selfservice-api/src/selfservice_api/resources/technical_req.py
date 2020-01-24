@@ -20,7 +20,8 @@ from flask_restplus import Namespace, Resource, cors
 from marshmallow import ValidationError
 
 from ..models.technical_req import TechnicalReq
-from ..schemas.technical_req import TechnicalReqPackageSchema, TechnicalReqRequestSchema, TechnicalReqResponseSchema, TechnicalReqTestAccountSchema  # noqa: I001, E501
+from ..schemas.technical_req import (TechnicalReqPackageSchema, TechnicalReqRequestSchema,  # noqa: I001
+                                     TechnicalReqResponseSchema, TechnicalReqTestAccountSchema)  # noqa: I001
 from ..utils.auth import jwt
 from ..utils.util import cors_preflight
 
