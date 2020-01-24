@@ -25,6 +25,7 @@ jobs:
     - name: npm install, build, and test
       run: |
         cd selfservice-ui
+        npm install
         npm run test:unit
       env:
         CI: true
