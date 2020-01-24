@@ -33,7 +33,8 @@ def upgrade():
     op.drop_column('project', 'manager_id')
     op.drop_column('project', 'cto_id')
     op.drop_column('project', 'developer_id')
-    # ### end Alembic commands ###
+    op.add_column('technical_req', sa.Column('no_of_test_account', sa.INTEGER(), autoincrement=False, nullable=True))
+    op.add_column('technical_req', sa.Column('note_test_account', sa.Text(), nullable=True))
 
     scope_package = table('scope_package',
                           column('package_name', sa.String), column('description', sa.Text),
@@ -51,6 +52,8 @@ def upgrade():
              'scope': 'openid profile address'}
         ]
     )
+
+    # ### end Alembic commands ###
 
 
 def downgrade():

@@ -35,6 +35,9 @@ class TechnicalReq(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):  # 
 
     scope_package_id = db.Column(db.Integer, db.ForeignKey('scope_package.id'), nullable=True)
 
+    no_of_test_account = db.Column(db.Integer(), nullable=True)
+    note_test_account = db.Column(db.Text(), nullable=True)
+
     @classmethod
     def create_from_dict(cls, technical_req_info: dict, oauth_id: str) -> TechnicalReq:
         """Create a new technical requirement from the provided dictionary."""
@@ -59,3 +62,11 @@ class TechnicalReq(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):  # 
     def find_by_project_id(cls, project_id) -> TechnicalReq:
         """Find technical requirement that matches the provided id."""
         return cls.query.filter(TechnicalReq.project_id == project_id).first()
+
+    def update(self, oauth_id: str, technical_req_info: dict):
+        """Update technical requirement."""
+        current_user = User.find_by_oauth_id(oauth_id)
+        technical_req_info['modified_by'] = current_user.id
+        self.update_from_dict(['modified_by', 'scope_package_id', 'no_of_test_account', 'note_test_account'],
+                              technical_req_info)
+        self.commit()

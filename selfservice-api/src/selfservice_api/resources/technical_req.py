@@ -20,7 +20,7 @@ from flask_restplus import Namespace, Resource, cors
 from marshmallow import ValidationError
 
 from ..models.technical_req import TechnicalReq
-from ..schemas.technical_req import TechnicalReqSchema
+from ..schemas.technical_req import TechnicalReqPackageSchema, TechnicalReqRequestSchema, TechnicalReqResponseSchema, TechnicalReqTestAccountSchema  # noqa: I001, E501
 from ..utils.auth import jwt
 from ..utils.util import cors_preflight
 
@@ -28,8 +28,8 @@ from ..utils.util import cors_preflight
 API = Namespace('TechnicalReq', description='Technical Requirement')
 
 
-@cors_preflight('GET,POST,OPTIONS')
-@API.route('', methods=['GET', 'POST', 'OPTIONS'])
+@cors_preflight('GET,POST,PATCH,OPTIONS')
+@API.route('', methods=['GET', 'POST', 'PATCH', 'OPTIONS'])
 class TechnicalReqResource(Resource):
     """Resource for managing create technical requirement."""
 
@@ -42,7 +42,7 @@ class TechnicalReqResource(Resource):
 
         try:
             token_info = g.jwt_oidc_token_info
-            technical_req_schema = TechnicalReqSchema()
+            technical_req_schema = TechnicalReqRequestSchema()
             dict_data = technical_req_schema.load(technical_req_json)
             technical_req = TechnicalReq.create_from_dict(dict_data, token_info.get('sub'))
             response, status = technical_req_schema.dump(technical_req), HTTPStatus.CREATED
@@ -58,4 +58,28 @@ class TechnicalReqResource(Resource):
         """Get technical requirement details."""
         technical_req = TechnicalReq.find_by_project_id(project_id)
 
-        return TechnicalReqSchema().dump(technical_req), HTTPStatus.OK
+        return TechnicalReqResponseSchema().dump(technical_req), HTTPStatus.OK
+
+    @staticmethod
+    @cors.crossdomain(origin='*')
+    @jwt.requires_auth
+    def patch(project_id):
+        """Update scope package or test account in technical requirement."""
+        tr_patch_json = request.get_json()
+
+        token_info = g.jwt_oidc_token_info
+        technical_req_info = None
+        if 'update' in tr_patch_json:
+            if tr_patch_json['update'] == 'package':
+                technical_req_info = TechnicalReqPackageSchema().load(tr_patch_json)
+            if tr_patch_json['update'] == 'test-account':
+                technical_req_info = TechnicalReqTestAccountSchema().load(tr_patch_json)
+
+        if technical_req_info is not None:
+            technical_req = TechnicalReq.find_by_project_id(project_id)
+            technical_req.update(token_info.get('sub'), technical_req_info)
+            response, status = 'Updated successfully', HTTPStatus.OK
+        else:
+            response, status = 'Update failed', HTTPStatus.BAD_REQUEST
+
+        return response, status
