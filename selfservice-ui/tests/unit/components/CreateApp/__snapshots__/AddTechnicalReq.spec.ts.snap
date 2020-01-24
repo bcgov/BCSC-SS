@@ -13,7 +13,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
     tag="div"
   >
     <v-app-bar-stub
-      color="#003366"
+      class="bc-subtitle"
       dark="true"
       extensionheight="48"
       src=""
@@ -64,8 +64,6 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                 class="headline"
               >
                 
-                
-              
               </v-card-title-stub>
                
               <input-stub
