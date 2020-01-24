@@ -36,7 +36,7 @@ class TechnicalReqResource(Resource):
     @staticmethod
     @cors.crossdomain(origin='*')
     @jwt.requires_auth
-    def post():
+    def post(project_id):
         """Post a new technical requirement using the request body."""
         technical_req_json = request.get_json()
 
@@ -44,6 +44,7 @@ class TechnicalReqResource(Resource):
             token_info = g.jwt_oidc_token_info
             technical_req_schema = TechnicalReqRequestSchema()
             dict_data = technical_req_schema.load(technical_req_json)
+            dict_data['project_id'] = project_id
             technical_req = TechnicalReq.create_from_dict(dict_data, token_info.get('sub'))
             response, status = technical_req_schema.dump(technical_req), HTTPStatus.CREATED
         except ValidationError as technical_req_err:
