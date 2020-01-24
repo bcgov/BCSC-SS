@@ -84,4 +84,4 @@ parameters:
   displayName: TAG for the namespace & image tagging
   description: TAG for the namespace & image tagging
   required: true
-  value: tools
+  value: prod

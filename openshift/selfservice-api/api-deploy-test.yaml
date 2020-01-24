@@ -66,57 +66,57 @@ objects:
           - name: DATABASE_ADMIN_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: "${DB_NAME}-${TAG_NAME}-secret"
+                name: "${DB_NAME}-${DB_TAG_NAME}-secret"
                 key: DATABASE_ADMIN_PASSWORD
           - name: DATABASE_USERNAME
             valueFrom:
               configMapKeyRef:
-                name: "${DB_NAME}-${TAG_NAME}-config"
+                name: "${DB_NAME}-${DB_TAG_NAME}-config"
                 key: DATABASE_USERNAME
           - name: DATABASE_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: "${DB_NAME}-${TAG_NAME}-secret"
+                name: "${DB_NAME}-${DB_TAG_NAME}-secret"
                 key: DATABASE_PASSWORD
           - name: DATABASE_NAME
             valueFrom:
               configMapKeyRef:
-                name: "${DB_NAME}-${TAG_NAME}-config"
+                name: "${DB_NAME}-${DB_TAG_NAME}-config"
                 key: DATABASE_NAME
           - name: DATABASE_HOST
             valueFrom:
               configMapKeyRef:
-                name: "${DB_NAME}-${TAG_NAME}-config"
+                name: "${DB_NAME}-${DB_TAG_NAME}-config"
                 key: DATABASE_HOST
           - name: DATABASE_PORT
             valueFrom:
               configMapKeyRef:
-                name: "${DB_NAME}-${TAG_NAME}-config"
+                name: "${DB_NAME}-${DB_TAG_NAME}-config"
                 key: DATABASE_PORT
           - name: DATABASE_TEST_USERNAME
             valueFrom:
               configMapKeyRef:
-                name: "${DB_NAME}-${TAG_NAME}-config"
+                name: "${DB_NAME}-${DB_TAG_NAME}-config"
                 key: DATABASE_TEST_USER
           - name: DATABASE_TEST_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: "${DB_NAME}-${TAG_NAME}-secret"
+                name: "${DB_NAME}-${DB_TAG_NAME}-secret"
                 key: DATABASE_TEST_PASSWORD
           - name: DATABASE_TEST_NAME
             valueFrom:
               configMapKeyRef:
-                name: "${DB_NAME}-${TAG_NAME}-config"
+                name: "${DB_NAME}-${DB_TAG_NAME}-config"
                 key: DATABASE_TEST_NAME
           - name: DATABASE_TEST_HOST
             valueFrom:
               configMapKeyRef:
-                name: "${DB_NAME}-${TAG_NAME}-config"
+                name: "${DB_NAME}-${DB_TAG_NAME}-config"
                 key: DATABASE_TEST_HOST
           - name: DATABASE_TEST_PORT
             valueFrom:
               configMapKeyRef:
-                name: "${DB_NAME}-${TAG_NAME}-config"
+                name: "${DB_NAME}-${DB_TAG_NAME}-config"
                 key: DATABASE_TEST_PORT
           - name: JWT_OIDC_ALGORITHMS
             valueFrom:
@@ -161,7 +161,7 @@ objects:
           - name: DATABASE_URL
             valueFrom:
               configMapKeyRef:
-                name: "${DB_NAME}-${TAG_NAME}-config"
+                name: "${DB_NAME}-${DB_TAG_NAME}-config"
                 key: DATABASE_URL
           resources:
             requests:
@@ -267,6 +267,11 @@ parameters:
   description: The TAG name for this environment, e.g., dev, test, prod
   required: true
   value: dev
+- name: DB_TAG_NAME
+  displayName: Environment TAG name
+  description: The TAG name for this environment, e.g., dev, test, prod
+  required: true
+  value: prod
 - name: DB_NAME
   displayName: Database App Name
   description: A valid database app name used by the service.

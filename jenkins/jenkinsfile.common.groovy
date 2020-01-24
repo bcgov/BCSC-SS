@@ -66,22 +66,18 @@ def ensureBuildExists(buildConfigName,templatePath){
 }
 
 def createTestDeployment(deploymentConfigName,templatePath){
-  if(!openshift.selector( "dc/${deploymentConfigName}")){
-    newdeploymentConfig = sh ( """oc process -f "${env.WORKSPACE}/../workspace@script/${templatePath}" | oc create -f -n oultzp-tools - """)
-    echo ">> ${newdeploymentConfig}"
-  }else{
-    echo "Deployment Config '${newdeploymentConfig}' already exists"
-  }
+  return sh (
+    script: """oc process -f "${env.WORKSPACE}/../workspace@script/${templatePath}" | oc apply -n oultzp-tools -f -""",
+    returnStdout: true
+  ).trim()
 }
 
 def deleteTestDeployment(deploymentConfigName,templatePath){
-  if(!openshift.selector( "dc/${deploymentConfigName}")){
-    newdeploymentConfig = sh ( """oc process -f "${env.WORKSPACE}/../workspace@script/${templatePath}" | oc delete -f -n oultzp-tools - """)
-    echo ">> ${newdeploymentConfig}"
-  }else{
-    echo "Deployment Config '${newdeploymentConfig}' already exists"
+    return sh (
+    script: """oc process -f "${env.WORKSPACE}/../workspace@script/${templatePath}" | oc delete -n oultzp-tools -f -""",
+    returnStdout: true
+  ).trim()
   }
-}
 
 def triggerBuild(buildConfigName){
   echo "Building: ${buildConfigName}"
@@ -116,6 +112,17 @@ def deployAndVerify(srcHash, destination, imageStream){
   openshiftVerifyDeployment(
     deploymentConfig: "${imageStream}", 
     namespace: "${PROJECT_PREFIX}-${destination}", 
+    waitTime: '900000'
+  )
+}
+
+def deployAndVerifyTest(srcHash, destination, imageStream){
+  echo "Deploying ${imageStream} to ${destination}"
+  tagImage(srcHash, destination, imageStream)
+  // verify deployment
+  openshiftVerifyDeployment(
+    deploymentConfig: "${imageStream}", 
+    namespace: "${PROJECT_PREFIX}-tools", 
     waitTime: '900000'
   )
 }
