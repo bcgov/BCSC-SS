@@ -28,8 +28,8 @@ from ..utils.util import cors_preflight
 API = Namespace('TechnicalReq', description='Technical Requirement')
 
 
-@cors_preflight('POST,OPTIONS')
-@API.route('', methods=['POST', 'OPTIONS'])
+@cors_preflight('GET,POST,OPTIONS')
+@API.route('', methods=['GET', 'POST', 'OPTIONS'])
 class TechnicalReqResource(Resource):
     """Resource for managing create technical requirement."""
 
@@ -51,17 +51,11 @@ class TechnicalReqResource(Resource):
                 HTTPStatus.BAD_REQUEST
         return response, status
 
-
-@cors_preflight('GET,OPTIONS')
-@API.route('/<int:technical_req_id>', methods=['GET', 'OPTIONS'])
-class TechnicalReqResourceById(Resource):
-    """Resource for managing get technical requirement by id."""
-
     @staticmethod
     @cors.crossdomain(origin='*')
     @jwt.requires_auth
-    def get(technical_req_id):
+    def get(project_id):
         """Get technical requirement details."""
-        technical_req = TechnicalReq.find_by_id(technical_req_id)
+        technical_req = TechnicalReq.find_by_project_id(project_id)
 
         return TechnicalReqSchema().dump(technical_req), HTTPStatus.OK

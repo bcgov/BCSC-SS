@@ -56,6 +56,6 @@ class TechnicalReq(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):  # 
         return None
 
     @classmethod
-    def find_by_id(cls, technical_req_id) -> TechnicalReq:
+    def find_by_project_id(cls, project_id) -> TechnicalReq:
         """Find technical requirement that matches the provided id."""
-        return cls.query.filter_by(id=technical_req_id).first()
+        return cls.query.filter(TechnicalReq.project_id == project_id).first()

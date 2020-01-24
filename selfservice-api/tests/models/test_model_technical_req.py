@@ -31,10 +31,10 @@ def test_none_create_from_dict(session):
     assert technical_req is None
 
 
-def test_find_by_id(session):
+def test_find_by_project_id(session):
     """Assert technical_req instance that matches the provided id."""
     technical_req = create_technical_req(session)
-    found = technical_req.find_by_id(technical_req.id)
+    found = technical_req.find_by_project_id(technical_req.project_id)
     assert found is not None
 
 
