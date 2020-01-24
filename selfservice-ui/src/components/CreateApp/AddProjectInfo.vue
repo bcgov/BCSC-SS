@@ -55,8 +55,7 @@
                   I am
                   <v-radio label="Developer" v-bind:value="1"></v-radio>
                   <v-radio label="Manager" v-bind:value="2"></v-radio>
-                  <v-radio label="CTO" v-bind:value="3"></v-radio>
-                  For this project {{myRole}}
+                  <v-radio label="CTO" v-bind:value="3"></v-radio>For this project
                 </v-radio-group>
               </v-card>
             </v-col>
