@@ -4,9 +4,7 @@ export interface ProjectInfoModel {
   projectName: string;
   myRole: string;
   description: string;
-  developerDetails?: ProjectUserModel;
-  managerDetails?: ProjectUserModel;
-  ctoDetails?: ProjectUserModel;
+  users: ProjectUserModel[];
 }
 
 export interface ProjectUserModel {
@@ -15,4 +13,5 @@ export interface ProjectUserModel {
   phone: string;
   firstName: string;
   lastName: string;
+  role: number;
 }

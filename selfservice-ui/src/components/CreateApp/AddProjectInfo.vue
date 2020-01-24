@@ -61,13 +61,13 @@
             </v-col>
             <!-- <v-form ref="form" v-model="form" class="pa-4 pt-6"> -->
             <v-col cols="12" sm="6" v-if="myRole !== '2'">
-              <ProjectUsers :userDetails="managerDetails" :rules="rules" title="Manager" />
+              <ProjectUsers :userDetails="users[1]" :rules="rules" title="Manager" />
             </v-col>
             <v-col cols="12" sm="6" v-if="myRole !== '3'">
-              <ProjectUsers :userDetails="ctoDetails" :rules="rules" title="CTO" />
+              <ProjectUsers :userDetails="users[2]" :rules="rules" title="CTO" />
             </v-col>
             <v-col cols="12" sm="6" v-if="myRole !== '1'">
-              <ProjectUsers :userDetails="developerDetails" :rules="rules" title="Developer" />
+              <ProjectUsers :userDetails="users[0]" :rules="rules" title="Developer" />
             </v-col>
 
             <v-col cols="12">
@@ -130,24 +130,29 @@ export default class AddProjectInfo extends Vue {
   private projectName: string = '';
   private description: string = '';
   private myRole: string = '1';
-  private developerDetails?: ProjectUserModel = {
-    email: '',
-    phone: '',
-    firstName: '',
-    lastName: ''
-  };
-  private managerDetails?: ProjectUserModel = {
-    email: '',
-    phone: '',
-    firstName: '',
-    lastName: ''
-  };
-  private ctoDetails?: ProjectUserModel = {
-    email: '',
-    phone: '',
-    firstName: '',
-    lastName: ''
-  };
+  private users: ProjectUserModel[] = [
+    {
+      email: '',
+      phone: '',
+      firstName: '',
+      lastName: '',
+      role: 1
+    },
+    {
+      email: '',
+      phone: '',
+      firstName: '',
+      lastName: '',
+      role: 2
+    },
+    {
+      email: '',
+      phone: '',
+      firstName: '',
+      lastName: '',
+      role: 3
+    }
+  ];
 
   private isEditmode: boolean = false;
   /* istanbul ignore next */
@@ -159,14 +164,15 @@ export default class AddProjectInfo extends Vue {
   }
 
   private addProjectInfo() {
+    // to fix change below line
+    const usersList = this.users.splice(1, 2);
+    // console.log('usersList', usersList);
     const data: ProjectInfoModel = {
       organizationName: this.organizationName,
       projectName: this.projectName,
       description: this.description,
       myRole: this.myRole,
-      developerDetails: this.developerDetails,
-      managerDetails: this.managerDetails,
-      ctoDetails: this.ctoDetails
+      users: usersList
     };
 
     if (this.isEditmode) {
@@ -184,9 +190,7 @@ export default class AddProjectInfo extends Vue {
     this.projectName = val.projectName;
     this.description = val.description;
     this.myRole = val.myRole;
-    this.developerDetails = val.developerDetails;
-    this.managerDetails = val.managerDetails;
-    this.ctoDetails = val.ctoDetails;
+    this.users = this.users;
     // this.id = val.id;
     this.isEditmode = true;
   }

@@ -7,10 +7,11 @@ export class PackageService {
   }
 
   public static async updatePackageProject(
-    projectId: number,
+    projectId: string,
     slectedPackage: number
   ) {
-    return await axios.patch(TECHNICALREQ_URL, {
+    const techUrl = TECHNICALREQ_URL.replace('<projectId>', projectId);
+    return await axios.patch(techUrl, {
       scopePackageId: slectedPackage,
       update: 'package'
     });
