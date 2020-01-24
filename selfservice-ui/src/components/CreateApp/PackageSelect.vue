@@ -105,10 +105,8 @@ export default class ListPackage extends Vue {
   @PackageModule.Getter('errorStatus') public errorStatus!: boolean;
   @PackageModule.Action('loadPackage') public loadPackage!: any;
   @PackageModule.Getter('getPackageList') public getPackageList!: [];
-  @PackageModule.Action('loadSinglePackage') public loadSinglePackage!: any;
   @PackageModule.Action('clearStatus') public clearStatus!: any;
-  @PackageModule.Action('removePackage') public removePackage!: any;
-  @PackageModule.Getter('getPackageMessage') public getPackageMessage!: any;
+  @PackageModule.Action('addPackagetoProject') public addPackagetoProject!: any;
 
   private slectedPackage: number = 1;
   private isLoading: boolean = false;
@@ -119,12 +117,6 @@ export default class ListPackage extends Vue {
     setTimeout(this.clearStatus, 3000);
   }
 
-  private remove(id: string) {
-    const confrm = confirm('Are you sure to delete ?');
-    if (confrm) {
-      this.removePackage(id);
-    }
-  }
   private mounted() {
     this.loadPackage();
   }
@@ -134,6 +126,10 @@ export default class ListPackage extends Vue {
   private submitPackage() {
     // console.log('this.slectedPackage ', this.slectedPackage);
     // add package to project com ehere
+    this.addPackagetoProject({
+      slectedPackage: this.slectedPackage,
+      projectId: this.projectId
+    });
   }
 }
 </script>
