@@ -14,5 +14,5 @@
 """This exports all of the schemas used by the application."""
 
 from .project import ProjectSchema
-from .technical_req import TechnicalReqSchema
+from .technical_req import TechnicalReqPackageSchema, TechnicalReqRequestSchema, TechnicalReqResponseSchema, TechnicalReqTestAccountSchema  # noqa: I001, E501
 from .user import UserSchema
