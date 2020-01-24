@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PackageSelect.vue renders props when passed 1`] = `
+<v-card-stub
+  class="mx-auto"
+  loaderheight="4"
+  style="max-width: 80%;"
+  tag="div"
+>
+  <v-toolbar-stub
+    class="bc-subtitle"
+    dark="true"
+    extensionheight="48"
+    flat="true"
+    src=""
+    tag="header"
+    tile="true"
+  >
+    <v-btn-stub
+      activeclass=""
+      aria-label="Back Button"
+      icon="true"
+      tag="button"
+      type="button"
+    >
+      <v-icon-stub>
+        mdi-arrow-left
+      </v-icon-stub>
+    </v-btn-stub>
+     
+    <v-toolbar-title-stub>
+      Select Package
+    </v-toolbar-title-stub>
+     
+    <div
+      class="flex-grow-1"
+    />
+     
+    <v-col-stub
+      class="col-lg-4 col-md-5 col-8"
+      tag="div"
+    >
+      <!---->
+    </v-col-stub>
+     
+    <div
+      class="flex-grow-1"
+    />
+  </v-toolbar-stub>
+   
+  <v-divider-stub />
+   
+  <v-item-group-stub
+    activeclass="v-item--active"
+    mandatory="true"
+    value="1"
+  >
+    <v-container-stub
+      tag="div"
+    >
+      <v-row-stub
+        class="ma-5"
+        tag="div"
+      >
+        <v-col-stub
+          cols="12"
+          flat=""
+          tag="div"
+        >
+          <v-card-stub
+            flat="true"
+            loaderheight="4"
+            tag="div"
+          >
+            <v-list-item-content-stub>
+              Choosing a package level
+            </v-list-item-content-stub>
+             
+            <v-list-item-content-stub>
+              Package 1 - best fit for organizations looking for a digital signature
+            </v-list-item-content-stub>
+             
+            <v-list-item-content-stub>
+              Package 2 - best fit for organizations who want to know who the user is and communicate directly with their users electronically
+            </v-list-item-content-stub>
+             
+            <v-list-item-content-stub>
+              Package 3 - best fit for organizations who want to know who the user is and communicate directly with their users non-electronically
+            </v-list-item-content-stub>
+          </v-card-stub>
+        </v-col-stub>
+         
+      </v-row-stub>
+    </v-container-stub>
+  </v-item-group-stub>
+   
+  <v-col-stub
+    cols="12"
+    tag="div"
+  >
+    <v-card-stub
+      class="ma-5"
+      flat="true"
+      loaderheight="4"
+      tag="div"
+    >
+      <v-divider-stub />
+       
+      <v-card-actions-stub>
+        <v-spacer-stub />
+         
+        <button-stub
+          class="white--text"
+          color="indigo accent-4"
+          depressed=""
+          name="button"
+          type="button"
+        >
+          Next
+        </button-stub>
+      </v-card-actions-stub>
+    </v-card-stub>
+  </v-col-stub>
+</v-card-stub>
+`;

@@ -17,7 +17,7 @@ export const actions: ActionTree<PackageState, RootState> = {
   async loadPackage({ commit }) {
     commit('SET_LOADING', true);
     const packageData = await PackageService.getPackages();
-    commit('SET_PACKAGELIST', packageData.data.scopePackage);
+    commit('SET_PACKAGELIST', packageData.data.scopePackages);
     commit('SET_LOADING', false);
   },
 

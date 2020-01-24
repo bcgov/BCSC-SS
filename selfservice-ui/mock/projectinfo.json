@@ -41,7 +41,7 @@
     }
   ],
   "scope-package": {
-    "scopePackage": [
+    "scopePackages": [
       {
         "id": 1,
         "packageName": "Package 1",

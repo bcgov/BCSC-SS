@@ -3,14 +3,15 @@ import axios from '@/lib/axios';
 import { PACKAGE_URL, TECHNICALREQ_URL } from '@/config/api-endpoints';
 export class PackageService {
   public static async getPackages() {
-    return await axios.get(PACKAGE_URL + '/');
+    return await axios.get(PACKAGE_URL);
   }
 
   public static async updatePackageProject(
-    projectId: number,
+    projectId: string,
     slectedPackage: number
   ) {
-    return await axios.patch(TECHNICALREQ_URL, {
+    const techUrl = TECHNICALREQ_URL.replace('<projectId>', projectId);
+    return await axios.patch(techUrl, {
       scopePackageId: slectedPackage,
       update: 'package'
     });

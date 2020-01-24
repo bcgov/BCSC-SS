@@ -52,4 +52,4 @@ class ProjectSchema(Schema):
     description = fields.Str(required=True)
     my_role = fields.Int(data_key='myRole', required=True, validate=validate.OneOf(list(map(int, ProjectRoles))))
 
-    users = fields.List(fields.Nested(ProjectUserSchema), data_key='users')
+    users = fields.List(fields.Nested(ProjectUserSchema), data_key='users', required=True)

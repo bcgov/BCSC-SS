@@ -16,8 +16,9 @@ export const state: ProjectInfoState = {
   singleProjectInfo: {
     organizationName: '',
     projectName: '',
-    myRole: '',
-    description: ''
+    myRole: 0,
+    description: '',
+    users: []
   },
   message: ''
 };

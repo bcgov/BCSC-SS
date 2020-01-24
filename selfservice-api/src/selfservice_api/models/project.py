@@ -25,8 +25,9 @@ from .user import User
 class ProjectUsersAssociation(BaseModel, db.Model):
     """This class manages project and user association."""
 
-    project_id = db.Column(db.Integer, db.ForeignKey('project.id'), primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
+    project_id = db.Column(db.Integer, db.ForeignKey('project.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     role = db.Column(db.Integer, nullable=False)
 
     user = db.relationship('User', lazy=True, backref=db.backref('projects', lazy=True))

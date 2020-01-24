@@ -9,7 +9,12 @@ export class TechnicalReqService {
     return await axios.get(TECHNICALREQ_URL + '/' + id);
   }
   public static async createTechnicalReq(technicalreqModel: any) {
-    return await axios.post(TECHNICALREQ_URL, technicalreqModel);
+    const techUrl = TECHNICALREQ_URL.replace(
+      '<projectId>',
+      technicalreqModel.projectId
+    );
+
+    return await axios.post(techUrl, technicalreqModel);
   }
   public static async updateTechnicalReq(technicalreqModel: TechnicalReqModel) {
     return await axios.put(

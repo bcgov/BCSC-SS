@@ -51,23 +51,24 @@
               <v-card class="pa-4 pt-6">
                 <v-card-title class="headline">Project Roles</v-card-title>
                 <v-card-subtitle class="text-left">Tell us about your role in this project</v-card-subtitle>
-                <v-radio-group v-model="myRole" row>
+                <v-radio-group v-model.number="myRole" row>
                   I am
-                  <v-radio label="Developer" value="1"></v-radio>
-                  <v-radio label="Manager" value="2"></v-radio>
-                  <v-radio label="CTO" value="3"></v-radio>For this project
+                  <v-radio label="Developer" v-bind:value="1"></v-radio>
+                  <v-radio label="Manager" v-bind:value="2"></v-radio>
+                  <v-radio label="CTO" v-bind:value="3"></v-radio>For this project
                 </v-radio-group>
               </v-card>
             </v-col>
+
             <!-- <v-form ref="form" v-model="form" class="pa-4 pt-6"> -->
-            <v-col cols="12" sm="6" v-if="myRole !== '2'">
-              <ProjectUsers :userDetails="managerDetails" :rules="rules" title="Manager" />
+            <v-col cols="12" sm="6" v-if="myRole !== 2">
+              <ProjectUsers :userDetails="users[1]" :rules="rules" title="Manager" />
             </v-col>
-            <v-col cols="12" sm="6" v-if="myRole !== '3'">
-              <ProjectUsers :userDetails="ctoDetails" :rules="rules" title="CTO" />
+            <v-col cols="12" sm="6" v-if="myRole !== 3">
+              <ProjectUsers :userDetails="users[2]" :rules="rules" title="CTO" />
             </v-col>
-            <v-col cols="12" sm="6" v-if="myRole !== '1'">
-              <ProjectUsers :userDetails="developerDetails" :rules="rules" title="Developer" />
+            <v-col cols="12" sm="6" v-if="myRole !== 1">
+              <ProjectUsers :userDetails="users[0]" :rules="rules" title="Developer" />
             </v-col>
 
             <v-col cols="12">
@@ -129,25 +130,30 @@ export default class AddProjectInfo extends Vue {
   private organizationName: string = '';
   private projectName: string = '';
   private description: string = '';
-  private myRole: string = '1';
-  private developerDetails?: ProjectUserModel = {
-    email: '',
-    phone: '',
-    firstName: '',
-    lastName: ''
-  };
-  private managerDetails?: ProjectUserModel = {
-    email: '',
-    phone: '',
-    firstName: '',
-    lastName: ''
-  };
-  private ctoDetails?: ProjectUserModel = {
-    email: '',
-    phone: '',
-    firstName: '',
-    lastName: ''
-  };
+  private myRole: number = 1;
+  private users: ProjectUserModel[] = [
+    {
+      email: '',
+      phone: '',
+      firstName: '',
+      lastName: '',
+      role: 1
+    },
+    {
+      email: '',
+      phone: '',
+      firstName: '',
+      lastName: '',
+      role: 2
+    },
+    {
+      email: '',
+      phone: '',
+      firstName: '',
+      lastName: '',
+      role: 3
+    }
+  ];
 
   private isEditmode: boolean = false;
   /* istanbul ignore next */
@@ -159,14 +165,19 @@ export default class AddProjectInfo extends Vue {
   }
 
   private addProjectInfo() {
+    // to fix change below line
+    const selectedUserIdx = this.users.filter(user => {
+      return user.role !== this.myRole;
+    });
+
+    // const usersList = this.users.splice(1, 2);
+    // console.log('usersList', usersList);
     const data: ProjectInfoModel = {
       organizationName: this.organizationName,
       projectName: this.projectName,
       description: this.description,
       myRole: this.myRole,
-      developerDetails: this.developerDetails,
-      managerDetails: this.managerDetails,
-      ctoDetails: this.ctoDetails
+      users: selectedUserIdx
     };
 
     if (this.isEditmode) {
@@ -184,9 +195,7 @@ export default class AddProjectInfo extends Vue {
     this.projectName = val.projectName;
     this.description = val.description;
     this.myRole = val.myRole;
-    this.developerDetails = val.developerDetails;
-    this.managerDetails = val.managerDetails;
-    this.ctoDetails = val.ctoDetails;
+    this.users = this.users;
     // this.id = val.id;
     this.isEditmode = true;
   }
