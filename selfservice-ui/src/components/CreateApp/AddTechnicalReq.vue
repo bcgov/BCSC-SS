@@ -4,8 +4,8 @@
     <!--  <v-alert type="success" v-if="successStatus">TechnicalReq {{isEditmode ? 'Updated' : 'Added'}} succesfully</v-alert>
     <v-alert type="error" v-if="errorStatus">Something went wrong...</v-alert>-->
     <v-card class="mx-auto">
-      <v-app-bar dark color="#003366">
-        <v-btn icon @click="$router.push('/project/')" aria-label="Back Button">
+      <v-app-bar dark class="bc-subtitle">
+        <v-btn icon @click="$router.push('/project/info/' + projectId)" aria-label="Back Button">
           <v-icon>mdi-arrow-left</v-icon>
         </v-btn>
         <v-toolbar-title>Technical requirments</v-toolbar-title>
@@ -23,11 +23,9 @@
                 <!-- <v-card-subtitle class="text-left"
                   >Tell us about your Project</v-card-subtitle
                 >-->
-                <v-card-title class="headline">
-                  {{
-                  getSingleProjectInfo && getSingleProjectInfo.projectName
-                  }}
-                </v-card-title>
+                <v-card-title
+                  class="headline"
+                >{{ getSingleProjectInfo && getSingleProjectInfo.projectName }}</v-card-title>
 
                 <Input
                   v-model="clientUri"

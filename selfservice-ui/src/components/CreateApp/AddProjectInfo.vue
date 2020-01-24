@@ -2,7 +2,7 @@
 <template>
   <v-card class="mx-auto" style="max-width: 80%;">
     <v-card class="mx-auto">
-      <v-app-bar dark color="#003366">
+      <v-app-bar dark class="bc-subtitle">
         <v-btn icon @click="$router.push('/project/')" aria-label="Back Button">
           <v-icon>mdi-arrow-left</v-icon>
         </v-btn>
@@ -14,12 +14,8 @@
           <v-row dense>
             <v-col cols="12" md="12">
               <v-card class="pa-4 pt-6">
-                <v-card-title class="headline"
-                  >Project information</v-card-title
-                >
-                <v-card-subtitle class="text-left"
-                  >Tell us about your Project</v-card-subtitle
-                >
+                <v-card-title class="headline">Project information</v-card-title>
+                <v-card-subtitle class="text-left">Tell us about your Project</v-card-subtitle>
                 <Input
                   v-model="organizationName"
                   counter="100"
@@ -54,9 +50,7 @@
             <v-col cols="12">
               <v-card class="pa-4 pt-6">
                 <v-card-title class="headline">Project Roles</v-card-title>
-                <v-card-subtitle class="text-left"
-                  >Tell us about your role in this project</v-card-subtitle
-                >
+                <v-card-subtitle class="text-left">Tell us about your role in this project</v-card-subtitle>
                 <v-radio-group v-model="myRole" row>
                   I am
                   <v-radio label="Developer" value="1"></v-radio>
@@ -67,25 +61,13 @@
             </v-col>
             <!-- <v-form ref="form" v-model="form" class="pa-4 pt-6"> -->
             <v-col cols="12" sm="6" v-if="myRole !== '2'">
-              <ProjectUsers
-                :userDetails="managerDetails"
-                :rules="rules"
-                title="Manager"
-              />
+              <ProjectUsers :userDetails="managerDetails" :rules="rules" title="Manager" />
             </v-col>
             <v-col cols="12" sm="6" v-if="myRole !== '3'">
-              <ProjectUsers
-                :userDetails="ctoDetails"
-                :rules="rules"
-                title="CTO"
-              />
+              <ProjectUsers :userDetails="ctoDetails" :rules="rules" title="CTO" />
             </v-col>
             <v-col cols="12" sm="6" v-if="myRole !== '1'">
-              <ProjectUsers
-                :userDetails="developerDetails"
-                :rules="rules"
-                title="Developer"
-              />
+              <ProjectUsers :userDetails="developerDetails" :rules="rules" title="Developer" />
             </v-col>
 
             <v-col cols="12">
@@ -101,8 +83,7 @@
                     color="indigo accent-4"
                     depressed
                     @click="addProjectInfo"
-                    >Next</Button
-                  >
+                  >Next</Button>
                 </v-card-actions>
               </v-card>
             </v-col>
@@ -206,13 +187,13 @@ export default class AddProjectInfo extends Vue {
     this.developerDetails = val.developerDetails;
     this.managerDetails = val.managerDetails;
     this.ctoDetails = val.ctoDetails;
-    this.id = val.id;
+    // this.id = val.id;
     this.isEditmode = true;
   }
 
   private mounted() {
     this.isEditmode = false;
-    if (this.action && this.action === 'edit' && this.id !== '') {
+    if (this.id !== '') {
       this.isEditmode = true;
       this.loadSingleProjectInfo(this.id);
     }

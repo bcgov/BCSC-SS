@@ -39,5 +39,31 @@
       "userinfoSignedResponseAlg": "RS256",
       "scopePackageId": 1
     }
-  ]
+  ],
+  "scope-package": {
+    "scopePackage": [
+      {
+        "id": 1,
+        "packageName": "Package 1",
+        "description": "This package contains the following data:",
+        "claimNames": ["Given Name", "Surname"]
+      },
+      {
+        "id": 2,
+        "packageName": "Package 2",
+        "description": "This package contains the following data:",
+        "claimNames": ["Given Name", "Surname", "Email Address"]
+      },
+      {
+        "id": 3,
+        "packageName": "Package 3",
+        "description": "This package contains the following data:",
+        "claimNames": [
+          "Given Name",
+          "Surname",
+          "Address block (street address, locality, state or province, postal code, country)"
+        ]
+      }
+    ]
+  }
 }

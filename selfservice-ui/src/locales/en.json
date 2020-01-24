@@ -5,5 +5,8 @@
   "PROJECTINFO_DELETE_MESSAGE": "ProjectInfo  Deleted successfully",
   "TECHNICALREQ_ADD_MESSAGE": "TechnicalReq  added successfully",
   "TECHNICALREQ_UPDATE_MESSAGE": "TechnicalReq Updated successfully",
-  "TECHNICALREQ_DELETE_MESSAGE": "TechnicalReq  Deleted successfully"
+  "TECHNICALREQ_DELETE_MESSAGE": "TechnicalReq  Deleted successfully",
+  "PACKAGE_ADD_MESSAGE": "Package  added successfully",
+  "PACKAGE_UPDATE_MESSAGE": "Package Updated successfully",
+  "PACKAGE_DELETE_MESSAGE": "Package  Deleted successfully"
 }

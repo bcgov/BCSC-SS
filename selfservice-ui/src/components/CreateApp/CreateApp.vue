@@ -3,8 +3,8 @@
 <template>
   <div>
     <AddTechnicalReq v-if="step === 'technical'" :id="id" />
-    <AddProjectInfo v-if="step === 'projectinfo'" />
-    <PackageSelect v-if="step === 'package'" />
+    <AddProjectInfo v-if="step === 'info'" :id="id" />
+    <PackageSelect v-if="step === 'package'" :id="id" />
   </div>
 </template>
 
@@ -22,9 +22,9 @@ import PackageSelect from '@/components/CreateApp/PackageSelect.vue';
   }
 })
 export default class CreateApp extends Vue {
-  @Prop({ default: 'projectinfo' })
+  @Prop({ default: 'info' })
   public step!: string;
-  @Prop({ default: 0 })
+  @Prop({ default: '' })
   public id!: number;
   private e6: number = 0;
 }
