@@ -4,13 +4,20 @@ import { RootState } from './types';
 import KeyCloakModule from './modules/KeyCloak';
 import ProjectInfoModule from './modules/ProjectInfo';
 import TechnicalReqModule from './modules/TechnicalReq';
+
+import PackageModule from './modules/Package';
 Vue.use(Vuex);
 
 /**
  * Main store with modules
  */
 const store: StoreOptions<RootState> = {
-  modules: { KeyCloakModule, ProjectInfoModule, TechnicalReqModule },
+  modules: {
+    KeyCloakModule,
+    ProjectInfoModule,
+    TechnicalReqModule,
+    PackageModule
+  },
   strict: true
 };
 

@@ -23,6 +23,17 @@ def camel2snake(camel_dict: dict):
         converted_key = re.sub(r'[A-Z]', lambda x: '_' + x.group(0).lower(), key)
         if type(camel_dict[key]) is dict:
             converted_obj[converted_key] = camel2snake(camel_dict[key])
+        elif type(camel_dict[key]) is list:
+            converted_list = []
+            for list_value in camel_dict[key]:
+                if type(list_value) is dict:
+                    converted_list.append(camel2snake(list_value))
+                else:
+                    break
+            if len(converted_list) > 0:
+                converted_obj[converted_key] = converted_list
+            else:
+                converted_obj[converted_key] = camel_dict[key]
         else:
             converted_obj[converted_key] = camel_dict[key]
     return converted_obj

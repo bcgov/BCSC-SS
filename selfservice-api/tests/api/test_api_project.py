@@ -24,6 +24,9 @@ from .test_api_user import create_user
 from selfservice_api.models.enums import ProjectRoles
 
 
+PROJECTINFO_API = API_URI_PREFIX + 'project/info'
+
+
 def test_post_project_as_developer(client, jwt, session):
     """Assert that the endpoint returns the success status."""
     create_user(client, jwt, project_role='manager')
@@ -54,7 +57,7 @@ def test_post_project_validation(client, jwt, session):
     headers = ss_client_auth_header(jwt)
     req_data = {}
 
-    response = client.post(API_URI_PREFIX + 'project', data=json.dumps(req_data),
+    response = client.post(PROJECTINFO_API, data=json.dumps(req_data),
                            headers=headers, content_type='application/json')
 
     assert response.status_code == HTTPStatus.BAD_REQUEST
@@ -65,7 +68,7 @@ def test_get_project(client, jwt, session):
     headers = ss_client_auth_header(jwt)
     project = create_project(client, jwt)
 
-    response = client.get(API_URI_PREFIX + 'project/' + str(project['id']),
+    response = client.get(PROJECTINFO_API + '/' + str(project['id']),
                           headers=headers, content_type='application/json')
 
     assert response.status_code == HTTPStatus.OK
@@ -86,6 +89,6 @@ def _create_project_(client, jwt, my_role):
     headers = ss_client_auth_header(jwt, project_role=project_role)
     create_user(client, jwt, project_role=project_role)
 
-    response = client.post(API_URI_PREFIX + 'project', data=json.dumps(factory_project_info(my_role=my_role)),
+    response = client.post(PROJECTINFO_API, data=json.dumps(factory_project_info(my_role=my_role)),
                            headers=headers, content_type='application/json')
     return response

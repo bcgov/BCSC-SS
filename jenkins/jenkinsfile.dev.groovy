@@ -28,25 +28,7 @@ API_BUILD = common.API_NAME + "-build"
 API_IMAGESTREAM_NAME = common.API_NAME
 
 
-podTemplate(
-  label: 'jenkins-python3nodejs',
-  name: 'jenkins-python3nodejs',
-  serviceAccount: 'jenkins',
-  cloud: 'openshift',
-  containers: [
-    containerTemplate(
-      name: 'jnlp',
-      image: 'docker-registry.default.svc:5000/oultzp-tools/jenkins-slave-python3nodejs',
-      resourceRequestCpu: '1000m',
-      resourceLimitCpu: '2000m',
-      resourceRequestMemory: '2Gi',
-      resourceLimitMemory: '4Gi',
-      workingDir: '/tmp',
-      command: '',
-      args: '${computer.jnlpmac} ${computer.name}'
-    )
-  ]
-){
+
 stage('Build ' + WEB_IMAGESTREAM_NAME) {
   node('jenkins-python3nodejs'){
     openshift.withProject() {
@@ -67,27 +49,26 @@ stage('Build ' + WEB_IMAGESTREAM_NAME) {
     }
   }
 }
+
+stage('Build ' + API_IMAGESTREAM_NAME) {
+  node{
+    openshift.withProject() {
+      try{
+        // Make sure the frontend build configs exist
+        common.ensureBuildExists(API_IMAGESTREAM_NAME,"openshift/selfservice-api/api-build.yaml")
+        // Build and verify the app
+        common.buildAndVerify(API_BUILD)
+
+        //Success DB-Build Notification
+        common.successNotificaiton(ROCKETCHAT_TOKEN, API_IMAGESTREAM_NAME, BUILD_PHASE)
+      }catch(error){
+        // failure DB Build Notification
+        common.failureNotificaiton(ROCKETCHAT_TOKEN, API_IMAGESTREAM_NAME, BUILD_PHASE )
+        throw error
+      }
+    }
+  }
 }
-
-// stage('Build ' + API_IMAGESTREAM_NAME) {
-//   node{
-//     openshift.withProject() {
-//       try{
-//         // Make sure the frontend build configs exist
-//         common.ensureBuildExists(API_IMAGESTREAM_NAME,"openshift/selfservice-api/api-build.yaml")
-//         // Build and verify the app
-//         common.buildAndVerify(API_BUILD)
-
-//         //Success DB-Build Notification
-//         common.successNotificaiton(ROCKETCHAT_TOKEN, API_IMAGESTREAM_NAME, BUILD_PHASE)
-//       }catch(error){
-//         // failure DB Build Notification
-//         common.failureNotificaiton(ROCKETCHAT_TOKEN, API_IMAGESTREAM_NAME, BUILD_PHASE )
-//         throw error
-//       }
-//     }
-//   }
-// }
 
 // // Integration testing for API
 // stage('Integration Test run for API ' + API_IMAGESTREAM_NAME) {
@@ -129,69 +110,69 @@ stage('Build ' + WEB_IMAGESTREAM_NAME) {
 //   }
 // }
 
-// // Deploying WEB to Dev
-// stage("Deploy" + WEB_IMAGESTREAM_NAME + "to ${common.web_environments.dev.name}") {
-//   def environment = common.web_environments.dev.tag
-//   def url = common.web_environments.dev.url
-//   node{
-//     try{
-//       // Tag the images for deployment based on the image's hash
-//       WEB_IMAGE_HASH = common.getLatestHash(WEB_IMAGESTREAM_NAME, environment)          
-//       echo ">> WEB_IMAGE_HASH: ${WEB_IMAGE_HASH}"
+// Deploying WEB to Dev
+stage("Deploy" + WEB_IMAGESTREAM_NAME + "to ${common.web_environments.dev.name}") {
+  def environment = common.web_environments.dev.tag
+  def url = common.web_environments.dev.url
+  node{
+    try{
+      // Tag the images for deployment based on the image's hash
+      WEB_IMAGE_HASH = common.getLatestHash(WEB_IMAGESTREAM_NAME, environment)          
+      echo ">> WEB_IMAGE_HASH: ${WEB_IMAGE_HASH}"
 
-//       common.deployAndVerify(WEB_IMAGE_HASH,environment,WEB_IMAGESTREAM_NAME)
+      common.deployAndVerify(WEB_IMAGE_HASH,environment,WEB_IMAGESTREAM_NAME)
 
-//       // WEB Deployment Success notification
-//       common.successNotificaiton(ROCKETCHAT_TOKEN, WEB_IMAGESTREAM_NAME, DEPLOYMENT_PHASE )
-//     }catch(error){
-//       // Web Deployment Failure Notification
-//       common.failureNotificaiton(ROCKETCHAT_TOKEN, WEB_IMAGESTREAM_NAME, DEPLOYMENT_PHASE )
-//       throw error
-//     }
-//   }
-// }
+      // WEB Deployment Success notification
+      common.successNotificaiton(ROCKETCHAT_TOKEN, WEB_IMAGESTREAM_NAME, DEPLOYMENT_PHASE )
+    }catch(error){
+      // Web Deployment Failure Notification
+      common.failureNotificaiton(ROCKETCHAT_TOKEN, WEB_IMAGESTREAM_NAME, DEPLOYMENT_PHASE )
+      throw error
+    }
+  }
+}
 
-// // Deploying DB to Dev
-// stage("Deploy to" + DB_NAME + "${common.db_environments.dev.name}") {
-//   def environment = common.db_environments.dev.tag
-//   db_tag = "prod"
-//   def url = common.db_environments.dev.url
-//   node{
-//     try{
-//       // Tag the images for deployment based on the image's hash
-//       DB_IMAGE_HASH = common.getLatestHash(DB_IMAGESTREAM_NAME, db_tag)          
-//       echo ">> DB_IMAGE_HASH: ${DB_IMAGE_HASH}"
+// Deploying DB to Dev
+stage("Deploy to" + DB_NAME + "${common.db_environments.dev.name}") {
+  def environment = common.db_environments.dev.tag
+  db_tag = "prod"
+  def url = common.db_environments.dev.url
+  node{
+    try{
+      // Tag the images for deployment based on the image's hash
+      DB_IMAGE_HASH = common.getLatestHash(DB_IMAGESTREAM_NAME, db_tag)          
+      echo ">> DB_IMAGE_HASH: ${DB_IMAGE_HASH}"
 
-//       common.deployAndVerify(DB_IMAGE_HASH,environment,DB_IMAGESTREAM_NAME)
+      common.deployAndVerify(DB_IMAGE_HASH,environment,DB_IMAGESTREAM_NAME)
 
-//       // DB Deployment Success notification
-//       common.successNotificaiton(ROCKETCHAT_TOKEN, DB_IMAGESTREAM_NAME, DEPLOYMENT_PHASE )
-//     }catch(error){
-//       // DB Deployment Failure notification
-//       common.failureNotificaiton(ROCKETCHAT_TOKEN, DB_IMAGESTREAM_NAME, DEPLOYMENT_PHASE )
-//       throw error
-//     }
-// }
-// }
+      // DB Deployment Success notification
+      common.successNotificaiton(ROCKETCHAT_TOKEN, DB_IMAGESTREAM_NAME, DEPLOYMENT_PHASE )
+    }catch(error){
+      // DB Deployment Failure notification
+      common.failureNotificaiton(ROCKETCHAT_TOKEN, DB_IMAGESTREAM_NAME, DEPLOYMENT_PHASE )
+      throw error
+    }
+}
+}
 
-// // Deploying API to Dev
-// stage("Deploy to" + API_NAME + "${common.api_environments.dev.name}") {
-//   def environment = common.api_environments.dev.tag
-//   def url = common.api_environments.dev.url
-//   node{
-//     try{
-//       // Tag the images for deployment based on the image's hash
-//       API_IMAGE_HASH = common.getLatestHash(API_IMAGESTREAM_NAME, environment)          
-//       echo ">> API_IMAGE_HASH: ${API_IMAGE_HASH}"
+// Deploying API to Dev
+stage("Deploy to" + API_NAME + "${common.api_environments.dev.name}") {
+  def environment = common.api_environments.dev.tag
+  def url = common.api_environments.dev.url
+  node{
+    try{
+      // Tag the images for deployment based on the image's hash
+      API_IMAGE_HASH = common.getLatestHash(API_IMAGESTREAM_NAME, environment)          
+      echo ">> API_IMAGE_HASH: ${API_IMAGE_HASH}"
 
-//       common.deployAndVerify(API_IMAGE_HASH,environment,API_IMAGESTREAM_NAME)
+      common.deployAndVerify(API_IMAGE_HASH,environment,API_IMAGESTREAM_NAME)
 
-//       // DB Deployment Success notification
-//       common.successNotificaiton(ROCKETCHAT_TOKEN, API_IMAGESTREAM_NAME, DEPLOYMENT_PHASE )
-//     }catch(error){
-//       // DB Deployment Failure notification
-//       common.failureNotificaiton(ROCKETCHAT_TOKEN, API_IMAGESTREAM_NAME, DEPLOYMENT_PHASE )
-//       throw error
-//     }
-//   }
-// }  
+      // DB Deployment Success notification
+      common.successNotificaiton(ROCKETCHAT_TOKEN, API_IMAGESTREAM_NAME, DEPLOYMENT_PHASE )
+    }catch(error){
+      // DB Deployment Failure notification
+      common.failureNotificaiton(ROCKETCHAT_TOKEN, API_IMAGESTREAM_NAME, DEPLOYMENT_PHASE )
+      throw error
+    }
+  }
+}  

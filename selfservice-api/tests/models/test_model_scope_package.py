@@ -11,9 +11,13 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""This exports all of the schemas used by the application."""
+"""This tests ScopePackage model."""
 
-from .project import ProjectSchema
-from .technical_req import (TechnicalReqPackageSchema, TechnicalReqRequestSchema,  # noqa: I001
-                            TechnicalReqResponseSchema, TechnicalReqTestAccountSchema)  # noqa: I001
-from .user import UserSchema
+
+from selfservice_api.models.scope_package import ScopePackage
+
+
+def test_find_all(session):
+    """Assert scoped packages list."""
+    found = ScopePackage.find_all()
+    assert len(found) > 0

@@ -20,12 +20,12 @@ import os
 
 from flask import Flask
 
-from selfservice_api import config, models
-from selfservice_api.models import db, ma
-from selfservice_api.resources import API
-from selfservice_api.utils.auth import jwt
-from selfservice_api.utils.logging import setup_logging
-from selfservice_api.utils.run_version import get_run_version
+from . import config, models
+from .models import db, ma
+from .resources import API
+from .utils.auth import jwt
+from .utils.logging import setup_logging
+from .utils.run_version import get_run_version
 
 
 setup_logging(os.path.join(os.path.abspath(

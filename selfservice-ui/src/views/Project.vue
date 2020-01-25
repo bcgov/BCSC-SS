@@ -15,9 +15,9 @@ import CreateApp from '@/components/CreateApp/CreateApp.vue';
   }
 })
 export default class CreateAppHome extends Vue {
-  @Prop({ default: 'projectinfo' })
+  @Prop({ default: 'info' })
   public step!: string;
-  @Prop({ default: 0 })
+  @Prop({ default: '' })
   public id!: string;
 }
 </script>

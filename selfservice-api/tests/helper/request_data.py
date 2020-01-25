@@ -39,47 +39,37 @@ def factory_project_info(is_model=False, my_role=ProjectRoles.Developer):
         'organizationName': 'organization',
         'projectName': 'project',
         'description': 'project which i am trying to create',
-        'myRole': my_role
+        'myRole': my_role,
+        'users': []
     }
-    if my_role == ProjectRoles.Developer:
-        project['developerDetails'] = {}
-    else:
-        project['developerDetails'] = {
+    if my_role != ProjectRoles.Developer:
+        project['users'].append({
             'email': 'developer@email.com',
             'phone': '1234567890',
             'firstName': 'f developer',
-            'lastName': 'l developer'
-        }
+            'lastName': 'l developer',
+            'role': ProjectRoles.Developer
+        })
 
-    if my_role == ProjectRoles.Manager:
-        project['managerDetails'] = {}
-    else:
-        project['managerDetails'] = {
+    if my_role != ProjectRoles.Manager:
+        project['users'].append({
             'email': 'manager@email.com',
             'phone': '1234567890',
             'firstName': 'f manager',
-            'lastName': 'l manager'
-        }
+            'lastName': 'l manager',
+            'role': ProjectRoles.Manager
+        })
 
-    if my_role == ProjectRoles.Cto:
-        project['ctoDetails'] = {}
-    else:
-        project['ctoDetails'] = {
+    if my_role != ProjectRoles.Cto:
+        project['users'].append({
             'email': 'cto@email.com',
             'phone': '1234567890',
             'firstName': 'f cto',
-            'lastName': 'l cto'
-        }
+            'lastName': 'l cto',
+            'role': ProjectRoles.Cto
+        })
 
     if is_model:
-        project['developer'] = project['developerDetails']
-        project['manager'] = project['managerDetails']
-        project['cto'] = project['ctoDetails']
-
-        del project['developerDetails']
-        del project['managerDetails']
-        del project['ctoDetails']
-
         return camel2snake(project)
     else:
         return project

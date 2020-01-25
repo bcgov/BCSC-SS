@@ -26,3 +26,8 @@ class ScopePackage(db.Model):  # pylint: disable=too-few-public-methods
     scope = db.Column(db.String(100), nullable=False)
 
     technical_req = db.relationship('TechnicalReq', backref='scope_package', lazy=True)
+
+    @classmethod
+    def find_all(cls):
+        """Fetch all scope packages."""
+        return cls.query.all()
