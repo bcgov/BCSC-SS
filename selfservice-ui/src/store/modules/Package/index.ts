@@ -2,30 +2,23 @@ import { Module } from 'vuex';
 import { getters } from './getters';
 import { actions } from './actions';
 import { mutations } from './mutations';
-import { ProjectInfoState } from './types';
+import { PackageState } from './types';
 import { RootState } from '../../types';
 
 /**
- * projectinfo state
+ * package state
  */
-export const state: ProjectInfoState = {
-  projectinfoList: [],
+export const state: PackageState = {
+  packageList: [],
   loading: false,
   successStatus: false,
   errorStatus: false,
-  singleProjectInfo: {
-    organizationName: '',
-    projectName: '',
-    myRole: 0,
-    description: '',
-    users: []
-  },
   message: ''
 };
 
 const namespaced: boolean = true;
 
-const ProjectInfoModule: Module<ProjectInfoState, RootState> = {
+const PackageModule: Module<PackageState, RootState> = {
   namespaced,
   state,
   getters,
@@ -33,4 +26,4 @@ const ProjectInfoModule: Module<ProjectInfoState, RootState> = {
   mutations
 };
 
-export default ProjectInfoModule;
+export default PackageModule;

@@ -11,9 +11,20 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""This exports all of the schemas used by the application."""
+"""This manages scope package Response Schema."""
 
-from .project import ProjectSchema
-from .technical_req import (TechnicalReqPackageSchema, TechnicalReqRequestSchema,  # noqa: I001
-                            TechnicalReqResponseSchema, TechnicalReqTestAccountSchema)  # noqa: I001
-from .user import UserSchema
+from marshmallow import EXCLUDE, Schema, fields
+
+
+class ScopePackageSchema(Schema):
+    """This class manages scope package response schema."""
+
+    class Meta:  # pylint: disable=too-few-public-methods
+        """Exclude unknown fields in the deserialized output."""
+
+        unknown = EXCLUDE
+
+    id = fields.Int()
+    package_name = fields.Str(data_key='packageName')
+    description = fields.Str(data_key='description')
+    claim_names = fields.List(fields.String(), data_key='claimNames')
