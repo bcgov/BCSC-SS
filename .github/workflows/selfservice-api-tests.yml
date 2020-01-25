@@ -45,9 +45,9 @@ jobs:
           pylint src --rcfile=setup.cfg
           flake8
       - name: Start a PostgreSQL database with docker-compose
-        working-directory: selfservice-api
+        working-directory: local
         run: |
-          ./ready_local_db.sh
+          sh ready_local_db.sh
       - name: Execute Unit Tests with PyTest
         working-directory: selfservice-api
         run: |
