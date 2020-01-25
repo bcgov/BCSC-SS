@@ -3,7 +3,7 @@ name: BCSC_SS API Integration testing
 on: [push, pull_request]
 
 jobs:
-  ppr-api-build:
+  selfservice-api-integration-test:
     runs-on: ubuntu-latest
 
     env:
@@ -45,6 +45,7 @@ jobs:
           pylint src --rcfile=setup.cfg
           flake8
       - name: Start a PostgreSQL database with docker-compose
+        working-directory: selfservice-api
         run: |
           ./ready_local_db.sh
       - name: Execute Unit Tests with PyTest
