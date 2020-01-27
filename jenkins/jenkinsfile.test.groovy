@@ -4,6 +4,7 @@ TOOLS_TAG = 'tools'
 NAMESPACE_BUILD = "${NAMESPACE}"  + '-' + "${TOOLS_TAG}"
 ROCKETCHAT_CHANNEL='#bcsc-ss-bot'
 BUILD_PHASE = "build"
+TEST_PHASE = "Test"
 DEPLOYMENT_PHASE = "Deployment"
 // Load Common Variables and utils
 common = ""
@@ -27,19 +28,15 @@ API_BUILD = common.API_NAME + "-build"
 API_IMAGESTREAM_NAME = common.API_NAME
 
 
+
 stage('Build ' + WEB_IMAGESTREAM_NAME) {
-  node{
+  node('jenkins-python3nodejs'){
     openshift.withProject() {
     try{
         // Make sure the frontend build configs exist
         common.ensureBuildExists(WEB_BUILD,"openshift/selfservice-ui/web-build.yaml")
         // Build and verify the app
         common.buildAndVerify(WEB_BUILD)
-        
-        // Don't tag with BUILD_ID so the pruner can do it's job; it won't delete tagged images.
-        // Tag the images for deployment based on the image's hash
-        WEB_IMAGE_HASH = common.getLatestHash(WEB_IMAGESTREAM_NAME)          
-        echo ">> WEB_IMAGE_HASH: ${WEB_IMAGE_HASH}"
         
         // Success UI-Build Notification
         common.successNotificaiton(ROCKETCHAT_TOKEN, WEB_IMAGESTREAM_NAME, BUILD_PHASE )
@@ -53,42 +50,14 @@ stage('Build ' + WEB_IMAGESTREAM_NAME) {
   }
 }
 
-stage('Build ' + DB_IMAGESTREAM_NAME) {
-  node{
-    openshift.withProject() {
-      try{
-        // Make sure the frontend build configs exist
-        common.ensureBuildExists(DB_BUILD,"openshift/selfservice-db/db-build.yaml")
-        // Build and verify the app
-        common.buildAndVerify(DB_BUILD)
-        
-        // Tag the images for deployment based on the image's hash
-        DB_IMAGE_HASH = common.getLatestHash(DB_IMAGESTREAM_NAME)          
-        echo ">> DB_IMAGE_HASH: ${DB_IMAGE_HASH}"
-
-        //Success DB-Build Notification
-        common.successNotificaiton(ROCKETCHAT_TOKEN, DB_IMAGESTREAM_NAME, BUILD_PHASE )
-      }catch(error){
-        // failure DB Build Notification
-        common.failureNotificaiton(ROCKETCHAT_TOKEN, DB_IMAGESTREAM_NAME, BUILD_PHASE )
-        throw error
-      }
-    }
-  }
-}
-
 stage('Build ' + API_IMAGESTREAM_NAME) {
   node{
     openshift.withProject() {
       try{
         // Make sure the frontend build configs exist
-        common.ensureBuildExists(API_BUILD,"openshift/selfservice-api/api-build.yaml")
+        common.ensureBuildExists(API_IMAGESTREAM_NAME,"openshift/selfservice-api/api-build.yaml")
         // Build and verify the app
         common.buildAndVerify(API_BUILD)
-
-        // Tag the images for deployment based on the image's hash
-        API_IMAGE_HASH = common.getLatestHash(API_IMAGESTREAM_NAME)          
-        echo ">> API_IMAGE_HASH: ${API_IMAGE_HASH}"
 
         //Success DB-Build Notification
         common.successNotificaiton(ROCKETCHAT_TOKEN, API_IMAGESTREAM_NAME, BUILD_PHASE)
@@ -107,6 +76,10 @@ stage("Deploy" + WEB_IMAGESTREAM_NAME + "to ${common.web_environments.test.name}
   def url = common.web_environments.test.url
   node{
     try{
+      // Tag the images for deployment based on the image's hash
+      WEB_IMAGE_HASH = common.getLatestHash(WEB_IMAGESTREAM_NAME, environment)          
+      echo ">> WEB_IMAGE_HASH: ${WEB_IMAGE_HASH}"
+
       common.deployAndVerify(WEB_IMAGE_HASH,environment,WEB_IMAGESTREAM_NAME)
 
       // WEB Deployment Success notification
@@ -122,9 +95,14 @@ stage("Deploy" + WEB_IMAGESTREAM_NAME + "to ${common.web_environments.test.name}
 // Deploying DB to test
 stage("Deploy to" + DB_NAME + "${common.db_environments.test.name}") {
   def environment = common.db_environments.test.tag
+  db_tag = "prod"
   def url = common.db_environments.test.url
   node{
     try{
+      // Tag the images for deployment based on the image's hash
+      DB_IMAGE_HASH = common.getLatestHash(DB_IMAGESTREAM_NAME, db_tag)          
+      echo ">> DB_IMAGE_HASH: ${DB_IMAGE_HASH}"
+
       common.deployAndVerify(DB_IMAGE_HASH,environment,DB_IMAGESTREAM_NAME)
 
       // DB Deployment Success notification
@@ -143,6 +121,10 @@ stage("Deploy to" + API_NAME + "${common.api_environments.test.name}") {
   def url = common.api_environments.test.url
   node{
     try{
+      // Tag the images for deployment based on the image's hash
+      API_IMAGE_HASH = common.getLatestHash(API_IMAGESTREAM_NAME, environment)          
+      echo ">> API_IMAGE_HASH: ${API_IMAGE_HASH}"
+
       common.deployAndVerify(API_IMAGE_HASH,environment,API_IMAGESTREAM_NAME)
 
       // DB Deployment Success notification
