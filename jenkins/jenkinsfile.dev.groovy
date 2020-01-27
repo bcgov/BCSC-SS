@@ -30,7 +30,7 @@ API_IMAGESTREAM_NAME = common.API_NAME
 
 
 stage('Build ' + WEB_IMAGESTREAM_NAME) {
-  node('jenkins-python3nodejs'){
+  node{
     openshift.withProject() {
     try{
         // Make sure the frontend build configs exist
