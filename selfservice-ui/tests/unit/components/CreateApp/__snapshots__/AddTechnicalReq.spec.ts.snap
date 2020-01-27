@@ -122,7 +122,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                 class="row v-form pa-4 pt-6"
               >
                 <div
-                  class="v-input theme--light v-text-field v-text-field--filled v-text-field--enclosed"
+                  class="v-input addUri theme--light v-text-field v-text-field--filled v-text-field--enclosed"
                 >
                   <div
                     class="v-input__control"
@@ -414,7 +414,877 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                  
                 <button
                   aria-disabled="true"
-                  class="btn white--text v-btn v-btn--contained theme--light v-size--default primary normal disabled"
+                  class="btn white--text submit-req v-btn v-btn--contained theme--light v-size--default primary normal disabled"
+                  depressed=""
+                  name="button"
+                  type="button"
+                >
+                  <span
+                    class="v-btn__content"
+                  >
+                    Next
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+`;
+
+exports[`AddTechnicalReq.vue renders props when passed 2`] = `
+<div
+  class="mx-auto v-card v-sheet theme--light"
+  style="max-width: 80%;"
+>
+  <div
+    class="mx-auto v-card v-sheet theme--light"
+  >
+    <header
+      class="bc-subtitle v-sheet v-sheet--tile theme--dark v-toolbar v-app-bar"
+      style="height: 64px; margin-top: 0px; transform: translateY(0px); left: 0px; right: 0px;"
+    >
+      <div
+        class="v-toolbar__content"
+        style="height: 64px;"
+      >
+        <button
+          aria-label="Back Button"
+          class="v-btn v-btn--flat v-btn--icon v-btn--round theme--dark v-size--default"
+          type="button"
+        >
+          <span
+            class="v-btn__content"
+          >
+            <i
+              aria-hidden="true"
+              class="v-icon notranslate mdi mdi-arrow-left theme--dark"
+            />
+          </span>
+        </button>
+         
+        <div
+          class="v-toolbar__title"
+        >
+          Technical requirments
+        </div>
+         
+        <div
+          class="spacer"
+        />
+      </div>
+    </header>
+     
+    <form
+      class="v-form pa-4 pt-6"
+      novalidate="novalidate"
+    >
+      <div
+        class="container"
+      >
+        <div
+          class="row row--dense"
+        >
+          <div
+            class="col-md-12 col-12"
+          >
+            <div
+              class="pa-4 pt-6 v-card v-sheet theme--light"
+            >
+              <div
+                class="v-card__title headline"
+              >
+                
+              </div>
+               
+              <div
+                class="v-input input theme--light v-text-field"
+                rules="v => !!v || 'This field is required',v => {
+    if (v === '') {
+      return true;
+    } else {
+      return /^(?:http(s)?:\\\\/\\\\/)?[\\\\w.-]+(?:\\\\.[\\\\w\\\\.-]+)+[\\\\w\\\\-\\\\._~:/?#[\\\\]@!\\\\$&'\\\\(\\\\)\\\\*\\\\+,;=.]+$/.test(v) || ' must be valid URL';
+    }
+  },v => (v || '').length <= len || 'Invalid character length, max length ' + len"
+              >
+                <div
+                  class="v-input__control"
+                >
+                  <div
+                    class="v-input__slot"
+                  >
+                    <div
+                      class="v-text-field__slot"
+                    >
+                      <label
+                        class="v-label theme--light"
+                        for="input-54"
+                        style="left: 0px; position: absolute;"
+                      >
+                        Application URL
+                      </label>
+                      <input
+                        id="input-54"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    class="v-text-field__details"
+                  >
+                    <div
+                      class="v-messages theme--light"
+                    >
+                      <span
+                        class="v-messages__wrapper"
+                        name="message-transition"
+                        tag="div"
+                      />
+                    </div>
+                    <div
+                      class="v-counter theme--light"
+                    >
+                      0 / 500
+                    </div>
+                  </div>
+                </div>
+              </div>
+               
+              <div
+                class="row v-form pa-4 pt-6"
+              >
+                <div
+                  class="v-input addUri theme--light v-text-field v-text-field--filled v-text-field--enclosed"
+                >
+                  <div
+                    class="v-input__control"
+                  >
+                    <div
+                      class="v-input__slot"
+                    >
+                      <div
+                        class="v-text-field__slot"
+                      >
+                        <label
+                          class="v-label theme--light"
+                          for="input-57"
+                          style="left: 0px; position: absolute;"
+                        >
+                          Redirect URI values
+                        </label>
+                        <input
+                          id="input-57"
+                          type="text"
+                        />
+                      </div>
+                      <div
+                        class="v-input__append-inner"
+                      >
+                        <div
+                          class="v-input__icon v-input__icon--append"
+                        >
+                          <i
+                            class="v-icon notranslate v-icon--link mdi mdi-minus theme--light"
+                            role="button"
+                            tabindex="0"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="v-text-field__details"
+                    >
+                      <div
+                        class="v-messages theme--light"
+                      >
+                        <span
+                          class="v-messages__wrapper"
+                          name="message-transition"
+                          tag="div"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+               
+              <div
+                class="v-input input theme--light v-text-field"
+                rules="v => !!v || 'This field is required',v => {
+    if (v === '') {
+      return true;
+    } else {
+      return /^(?:http(s)?:\\\\/\\\\/)?[\\\\w.-]+(?:\\\\.[\\\\w\\\\.-]+)+[\\\\w\\\\-\\\\._~:/?#[\\\\]@!\\\\$&'\\\\(\\\\)\\\\*\\\\+,;=.]+$/.test(v) || ' must be valid URL';
+    }
+  },v => (v || '').length <= len || 'Invalid character length, max length ' + len"
+              >
+                <div
+                  class="v-input__control"
+                >
+                  <div
+                    class="v-input__slot"
+                  >
+                    <div
+                      class="v-text-field__slot"
+                    >
+                      <label
+                        class="v-label theme--light"
+                        for="input-62"
+                        style="left: 0px; position: absolute;"
+                      >
+                        JWKS URL
+                      </label>
+                      <input
+                        id="input-62"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    class="v-text-field__details"
+                  >
+                    <div
+                      class="v-messages theme--light"
+                    >
+                      <span
+                        class="v-messages__wrapper"
+                        name="message-transition"
+                        tag="div"
+                      />
+                    </div>
+                    <div
+                      class="v-counter theme--light"
+                    >
+                      0 / 500
+                    </div>
+                  </div>
+                </div>
+              </div>
+               
+              <div
+                class="v-input v-input--is-label-active v-input--is-dirty theme--light v-text-field v-select"
+                rules="v => !!v || 'This field is required'"
+                value="RS256"
+              >
+                <div
+                  class="v-input__control"
+                >
+                  <div
+                    aria-expanded="false"
+                    aria-haspopup="listbox"
+                    aria-owns="list-66"
+                    class="v-input__slot"
+                    role="button"
+                  >
+                    <div
+                      class="v-select__slot"
+                    >
+                      <label
+                        class="v-label v-label--active theme--light"
+                        for="input-66"
+                        style="left: 0px; position: absolute;"
+                      >
+                        ID Token Signature Algorithm
+                      </label>
+                      <div
+                        class="v-select__selections"
+                      >
+                        <div
+                          class="v-select__selection v-select__selection--comma"
+                        >
+                          RS256
+                        </div>
+                        <input
+                          aria-readonly="true"
+                          autocomplete="off"
+                          id="input-66"
+                          readonly="readonly"
+                          type="text"
+                        />
+                      </div>
+                      <div
+                        class="v-input__append-inner"
+                      >
+                        <div
+                          class="v-input__icon v-input__icon--append"
+                        >
+                          <i
+                            aria-hidden="true"
+                            class="v-icon notranslate material-icons theme--light"
+                          >
+                            $dropdown
+                          </i>
+                        </div>
+                      </div>
+                      <input
+                        type="hidden"
+                        value="RS256"
+                      />
+                    </div>
+                    <div
+                      class="v-menu"
+                    >
+                      <div
+                        class="v-menu__content theme--light "
+                        style="max-height: 304px; min-width: 0px; max-width: auto; top: 12px; left: 0px; transform-origin: top left; z-index: 0; display: none;"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    class="v-text-field__details"
+                  >
+                    <div
+                      class="v-messages theme--light"
+                    >
+                      <span
+                        class="v-messages__wrapper"
+                        name="message-transition"
+                        tag="div"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+               
+              <div
+                class="v-input v-input--is-label-active v-input--is-dirty theme--light v-text-field v-select"
+                rules="v => !!v || 'This field is required'"
+                value="RS256"
+              >
+                <div
+                  class="v-input__control"
+                >
+                  <div
+                    aria-expanded="false"
+                    aria-haspopup="listbox"
+                    aria-owns="list-74"
+                    class="v-input__slot"
+                    role="button"
+                  >
+                    <div
+                      class="v-select__slot"
+                    >
+                      <label
+                        class="v-label v-label--active theme--light"
+                        for="input-74"
+                        style="left: 0px; position: absolute;"
+                      >
+                        User Info Signed Response Algorithm
+                      </label>
+                      <div
+                        class="v-select__selections"
+                      >
+                        <div
+                          class="v-select__selection v-select__selection--comma"
+                        >
+                          RS256
+                        </div>
+                        <input
+                          aria-readonly="true"
+                          autocomplete="off"
+                          id="input-74"
+                          readonly="readonly"
+                          type="text"
+                        />
+                      </div>
+                      <div
+                        class="v-input__append-inner"
+                      >
+                        <div
+                          class="v-input__icon v-input__icon--append"
+                        >
+                          <i
+                            aria-hidden="true"
+                            class="v-icon notranslate material-icons theme--light"
+                          >
+                            $dropdown
+                          </i>
+                        </div>
+                      </div>
+                      <input
+                        type="hidden"
+                        value="RS256"
+                      />
+                    </div>
+                    <div
+                      class="v-menu"
+                    >
+                      <div
+                        class="v-menu__content theme--light "
+                        style="max-height: 304px; min-width: 0px; max-width: auto; top: 12px; left: 0px; transform-origin: top left; z-index: 0; display: none;"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    class="v-text-field__details"
+                  >
+                    <div
+                      class="v-messages theme--light"
+                    >
+                      <span
+                        class="v-messages__wrapper"
+                        name="message-transition"
+                        tag="div"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+               
+              <hr
+                aria-orientation="horizontal"
+                class="v-divider theme--light"
+                role="separator"
+              />
+               
+              <div
+                class="v-card__actions"
+              >
+                <div
+                  class="spacer"
+                />
+                 
+                <button
+                  aria-disabled="true"
+                  class="btn white--text submit-req v-btn v-btn--contained theme--light v-size--default primary normal disabled"
+                  depressed=""
+                  name="button"
+                  type="button"
+                >
+                  <span
+                    class="v-btn__content"
+                  >
+                    Next
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+`;
+
+exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
+<div
+  class="mx-auto v-card v-sheet theme--light"
+  style="max-width: 80%;"
+>
+  <div
+    class="mx-auto v-card v-sheet theme--light"
+  >
+    <header
+      class="bc-subtitle v-sheet v-sheet--tile theme--dark v-toolbar v-app-bar"
+      style="height: 64px; margin-top: 0px; transform: translateY(0px); left: 0px; right: 0px;"
+    >
+      <div
+        class="v-toolbar__content"
+        style="height: 64px;"
+      >
+        <button
+          aria-label="Back Button"
+          class="v-btn v-btn--flat v-btn--icon v-btn--round theme--dark v-size--default"
+          type="button"
+        >
+          <span
+            class="v-btn__content"
+          >
+            <i
+              aria-hidden="true"
+              class="v-icon notranslate mdi mdi-arrow-left theme--dark"
+            />
+          </span>
+        </button>
+         
+        <div
+          class="v-toolbar__title"
+        >
+          Technical requirments
+        </div>
+         
+        <div
+          class="spacer"
+        />
+      </div>
+    </header>
+     
+    <form
+      class="v-form pa-4 pt-6"
+      novalidate="novalidate"
+    >
+      <div
+        class="container"
+      >
+        <div
+          class="row row--dense"
+        >
+          <div
+            class="col-md-12 col-12"
+          >
+            <div
+              class="pa-4 pt-6 v-card v-sheet theme--light"
+            >
+              <div
+                class="v-card__title headline"
+              >
+                
+              </div>
+               
+              <div
+                class="v-input input theme--light v-text-field"
+                rules="v => !!v || 'This field is required',v => {
+    if (v === '') {
+      return true;
+    } else {
+      return /^(?:http(s)?:\\\\/\\\\/)?[\\\\w.-]+(?:\\\\.[\\\\w\\\\.-]+)+[\\\\w\\\\-\\\\._~:/?#[\\\\]@!\\\\$&'\\\\(\\\\)\\\\*\\\\+,;=.]+$/.test(v) || ' must be valid URL';
+    }
+  },v => (v || '').length <= len || 'Invalid character length, max length ' + len"
+              >
+                <div
+                  class="v-input__control"
+                >
+                  <div
+                    class="v-input__slot"
+                  >
+                    <div
+                      class="v-text-field__slot"
+                    >
+                      <label
+                        class="v-label theme--light"
+                        for="input-95"
+                        style="left: 0px; position: absolute;"
+                      >
+                        Application URL
+                      </label>
+                      <input
+                        id="input-95"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    class="v-text-field__details"
+                  >
+                    <div
+                      class="v-messages theme--light"
+                    >
+                      <span
+                        class="v-messages__wrapper"
+                        name="message-transition"
+                        tag="div"
+                      />
+                    </div>
+                    <div
+                      class="v-counter theme--light"
+                    >
+                      0 / 500
+                    </div>
+                  </div>
+                </div>
+              </div>
+               
+              <div
+                class="row v-form pa-4 pt-6"
+              >
+                <div
+                  class="v-input addUri theme--light v-text-field v-text-field--filled v-text-field--enclosed"
+                >
+                  <div
+                    class="v-input__control"
+                  >
+                    <div
+                      class="v-input__slot"
+                    >
+                      <div
+                        class="v-text-field__slot"
+                      >
+                        <label
+                          class="v-label theme--light"
+                          for="input-98"
+                          style="left: 0px; position: absolute;"
+                        >
+                          Redirect URI values
+                        </label>
+                        <input
+                          id="input-98"
+                          type="text"
+                        />
+                      </div>
+                      <div
+                        class="v-input__append-inner"
+                      >
+                        <div
+                          class="v-input__icon v-input__icon--append"
+                        >
+                          <i
+                            class="v-icon notranslate v-icon--link mdi mdi-minus theme--light"
+                            role="button"
+                            tabindex="0"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="v-text-field__details"
+                    >
+                      <div
+                        class="v-messages theme--light"
+                      >
+                        <span
+                          class="v-messages__wrapper"
+                          name="message-transition"
+                          tag="div"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+               
+              <div
+                class="v-input input theme--light v-text-field"
+                rules="v => !!v || 'This field is required',v => {
+    if (v === '') {
+      return true;
+    } else {
+      return /^(?:http(s)?:\\\\/\\\\/)?[\\\\w.-]+(?:\\\\.[\\\\w\\\\.-]+)+[\\\\w\\\\-\\\\._~:/?#[\\\\]@!\\\\$&'\\\\(\\\\)\\\\*\\\\+,;=.]+$/.test(v) || ' must be valid URL';
+    }
+  },v => (v || '').length <= len || 'Invalid character length, max length ' + len"
+              >
+                <div
+                  class="v-input__control"
+                >
+                  <div
+                    class="v-input__slot"
+                  >
+                    <div
+                      class="v-text-field__slot"
+                    >
+                      <label
+                        class="v-label theme--light"
+                        for="input-103"
+                        style="left: 0px; position: absolute;"
+                      >
+                        JWKS URL
+                      </label>
+                      <input
+                        id="input-103"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    class="v-text-field__details"
+                  >
+                    <div
+                      class="v-messages theme--light"
+                    >
+                      <span
+                        class="v-messages__wrapper"
+                        name="message-transition"
+                        tag="div"
+                      />
+                    </div>
+                    <div
+                      class="v-counter theme--light"
+                    >
+                      0 / 500
+                    </div>
+                  </div>
+                </div>
+              </div>
+               
+              <div
+                class="v-input v-input--is-label-active v-input--is-dirty theme--light v-text-field v-select"
+                rules="v => !!v || 'This field is required'"
+                value="RS256"
+              >
+                <div
+                  class="v-input__control"
+                >
+                  <div
+                    aria-expanded="false"
+                    aria-haspopup="listbox"
+                    aria-owns="list-107"
+                    class="v-input__slot"
+                    role="button"
+                  >
+                    <div
+                      class="v-select__slot"
+                    >
+                      <label
+                        class="v-label v-label--active theme--light"
+                        for="input-107"
+                        style="left: 0px; position: absolute;"
+                      >
+                        ID Token Signature Algorithm
+                      </label>
+                      <div
+                        class="v-select__selections"
+                      >
+                        <div
+                          class="v-select__selection v-select__selection--comma"
+                        >
+                          RS256
+                        </div>
+                        <input
+                          aria-readonly="true"
+                          autocomplete="off"
+                          id="input-107"
+                          readonly="readonly"
+                          type="text"
+                        />
+                      </div>
+                      <div
+                        class="v-input__append-inner"
+                      >
+                        <div
+                          class="v-input__icon v-input__icon--append"
+                        >
+                          <i
+                            aria-hidden="true"
+                            class="v-icon notranslate material-icons theme--light"
+                          >
+                            $dropdown
+                          </i>
+                        </div>
+                      </div>
+                      <input
+                        type="hidden"
+                        value="RS256"
+                      />
+                    </div>
+                    <div
+                      class="v-menu"
+                    >
+                      <div
+                        class="v-menu__content theme--light "
+                        style="max-height: 304px; min-width: 0px; max-width: auto; top: 12px; left: 0px; transform-origin: top left; z-index: 0; display: none;"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    class="v-text-field__details"
+                  >
+                    <div
+                      class="v-messages theme--light"
+                    >
+                      <span
+                        class="v-messages__wrapper"
+                        name="message-transition"
+                        tag="div"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+               
+              <div
+                class="v-input v-input--is-label-active v-input--is-dirty theme--light v-text-field v-select"
+                rules="v => !!v || 'This field is required'"
+                value="RS256"
+              >
+                <div
+                  class="v-input__control"
+                >
+                  <div
+                    aria-expanded="false"
+                    aria-haspopup="listbox"
+                    aria-owns="list-115"
+                    class="v-input__slot"
+                    role="button"
+                  >
+                    <div
+                      class="v-select__slot"
+                    >
+                      <label
+                        class="v-label v-label--active theme--light"
+                        for="input-115"
+                        style="left: 0px; position: absolute;"
+                      >
+                        User Info Signed Response Algorithm
+                      </label>
+                      <div
+                        class="v-select__selections"
+                      >
+                        <div
+                          class="v-select__selection v-select__selection--comma"
+                        >
+                          RS256
+                        </div>
+                        <input
+                          aria-readonly="true"
+                          autocomplete="off"
+                          id="input-115"
+                          readonly="readonly"
+                          type="text"
+                        />
+                      </div>
+                      <div
+                        class="v-input__append-inner"
+                      >
+                        <div
+                          class="v-input__icon v-input__icon--append"
+                        >
+                          <i
+                            aria-hidden="true"
+                            class="v-icon notranslate material-icons theme--light"
+                          >
+                            $dropdown
+                          </i>
+                        </div>
+                      </div>
+                      <input
+                        type="hidden"
+                        value="RS256"
+                      />
+                    </div>
+                    <div
+                      class="v-menu"
+                    >
+                      <div
+                        class="v-menu__content theme--light "
+                        style="max-height: 304px; min-width: 0px; max-width: auto; top: 12px; left: 0px; transform-origin: top left; z-index: 0; display: none;"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    class="v-text-field__details"
+                  >
+                    <div
+                      class="v-messages theme--light"
+                    >
+                      <span
+                        class="v-messages__wrapper"
+                        name="message-transition"
+                        tag="div"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+               
+              <hr
+                aria-orientation="horizontal"
+                class="v-divider theme--light"
+                role="separator"
+              />
+               
+              <div
+                class="v-card__actions"
+              >
+                <div
+                  class="spacer"
+                />
+                 
+                <button
+                  aria-disabled="true"
+                  class="btn white--text submit-req v-btn v-btn--contained theme--light v-size--default primary normal disabled"
                   depressed=""
                   name="button"
                   type="button"
