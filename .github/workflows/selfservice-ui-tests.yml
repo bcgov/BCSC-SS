@@ -1,11 +1,6 @@
-name: Node CI
+name: BCSC_SS UI tests
 
-on:
-  pull_request:
-    branches: 
-      - dev
-      - test
-      - prod
+on: [push, pull_request]
 
 jobs:
   build:

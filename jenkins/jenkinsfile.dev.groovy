@@ -28,12 +28,13 @@ API_BUILD = common.API_NAME + "-build"
 API_IMAGESTREAM_NAME = common.API_NAME
 
 
+
 stage('Build ' + WEB_IMAGESTREAM_NAME) {
-  node{
+  node('jenkins-python3nodejs'){
     openshift.withProject() {
     try{
         // Make sure the frontend build configs exist
-        common.ensureBuildExists(WEB_BUILD,"openshift/selfservice-ui/web-build_test.yaml")
+        common.ensureBuildExists(WEB_BUILD,"openshift/selfservice-ui/web-build.yaml")
         // Build and verify the app
         common.buildAndVerify(WEB_BUILD)
         
@@ -68,41 +69,6 @@ stage('Build ' + API_IMAGESTREAM_NAME) {
     }
   }
 }
-
-// Integration testing for API
-// stage('Integration Test run for API ' + API_IMAGESTREAM_NAME) {
-//   def db_environment = common.db_environments.tools.tag
-//   def api_environment = common.db_environments.tools.tag
-//   db_tag = "prod"
-//   def api_tag = common.api_environments.dev.tag
-//   node{
-//     openshift.withProject() {
-//       try{
-//         // Make sure the frontend build configs exist
-//         common.createTestDeployment(DB_IMAGESTREAM_NAME,"openshift/selfservice-db/db-deploy.yaml")
-//         // Tag the images for deployment based on the image's hash
-//         DB_IMAGE_HASH = common.getLatestHash(DB_IMAGESTREAM_NAME, db_tag)          
-//         echo ">> DB_IMAGE_HASH: ${DB_IMAGE_HASH}"
-//         // Verify deloyment
-//         common.deployAndVerify(DB_IMAGE_HASH,environment,DB_IMAGESTREAM_NAME)
-
-//         // Make sure the frontend build configs exist
-//         common.createTestDeployment(API_IMAGESTREAM_NAME,"openshift/selfservice-api/api-deploy-test.yaml")
-//         // Tag the images for deployment based on the image's hash
-//         API_IMAGE_HASH = common.getLatestHash(API_IMAGESTREAM_NAME, api_tag)          
-//         echo ">> API_IMAGE_HASH: ${API_IMAGE_HASH}"
-//         // Verify deloyment
-//         common.deployAndVerify(API_IMAGE_HASH,environment,API_IMAGESTREAM_NAME)
-//         //Success DB-Build Notification
-//         common.testSuccessNotificaiton(ROCKETCHAT_TOKEN, API_IMAGESTREAM_NAME, TEST_PHASE)
-//       }catch(error){
-//         // failure DB Build Notification
-//         common.failureNotificaiton(ROCKETCHAT_TOKEN, API_IMAGESTREAM_NAME, TEST_PHASE )
-//         throw error
-//       }
-//     }
-//   }
-// }
 
 // Deploying WEB to Dev
 stage("Deploy" + WEB_IMAGESTREAM_NAME + "to ${common.web_environments.dev.name}") {

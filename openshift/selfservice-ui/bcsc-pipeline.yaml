@@ -64,7 +64,7 @@ parameters:
   displayName: Git Reference
   description: The git reference or branch.
   required: true
-  value: deployment/openshift
+  value: dev
 - name: WEBHOOK
   displayName: Secret name for the webhook.
   description: The name of the Secret that holds the webhook.
