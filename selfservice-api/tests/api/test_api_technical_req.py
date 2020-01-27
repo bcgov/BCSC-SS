@@ -61,7 +61,7 @@ def test_patch_technical_req_package(client, jwt, session):
     assert response.status_code == HTTPStatus.OK
 
 
-def test_patch_technical_req_test_account(client, jwt, session): 
+def test_patch_technical_req_test_account(client, jwt, session):
     """Assert that the endpoint returns the success status."""
     headers = ss_client_auth_header(jwt)
     technical_req = create_technical_req(client, jwt)
