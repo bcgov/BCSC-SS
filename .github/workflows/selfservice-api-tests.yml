@@ -1,4 +1,4 @@
-name: BCSC_SS API Integration tests
+name: BCSC_SS API integration tests
 
 on: [push, pull_request]
 
