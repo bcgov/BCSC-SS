@@ -60,5 +60,6 @@ jobs:
       #     flags: python_unittests
       #     fail_ci_if_error: false
       - name: Shutdown docker-compose
+        working-directory: local
         run: |
           docker-compose -f docker-compose-db.yml down 
