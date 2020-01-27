@@ -27,12 +27,10 @@ class ProjectRoles(IntEnum):
 class ProjectStatus(IntEnum):
     """This Enum provides the list of Project Status."""
 
-    DevInProgress = 1
-    DevPending = 2
+    Draft = 1
+    DevSubmitted = 2
     DevApproved = 3
-    DevRejected = 4
-    DevActivated = 5
-    DevNotActive = 6
+    DevActivated = 4
 
 
 class Algorithms(Enum):
