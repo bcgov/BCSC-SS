@@ -57,7 +57,7 @@ class Project(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
             project.project_name = project_info['project_name']
             project.description = project_info['description']
             project.created_by = current_user.id
-            project.status = ProjectStatus.DevInProgress
+            project.status = ProjectStatus.Draft
             project.save()
 
             project.__create_or_map_users__(project_info)

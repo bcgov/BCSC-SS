@@ -21,7 +21,6 @@ from ..helper.auth import ss_client_auth_header
 from ..helper.request_data import factory_project_technical_req
 from .test_api_project import create_project
 from .test_api_scope_package import get_scope_packages
-from .test_api_user import create_user
 
 
 TECHNICALREQ_API = API_URI_PREFIX + 'project/:project_id/technical-req'
@@ -37,7 +36,6 @@ def test_post_technical_req(client, jwt, session):
 def test_post_technical_req_validation(client, jwt, session):
     """Assert that the endpoint returns the failure status."""
     headers = ss_client_auth_header(jwt)
-    # create_user(client, jwt)
     project = create_project(client, jwt)
     req_data = {}
 
@@ -50,16 +48,15 @@ def test_post_technical_req_validation(client, jwt, session):
 def test_patch_technical_req_package(client, jwt, session):
     """Assert that the endpoint returns the success status."""
     headers = ss_client_auth_header(jwt)
-    # create_user(client, jwt)
-    project = create_project(client, jwt)
+    technical_req = create_technical_req(client, jwt)
     scope_packages = get_scope_packages(client, jwt, session)
     req_data = {
         'update': 'package',
         'scopePackageId': scope_packages['scopePackages'][0]['id']
     }
 
-    response = client.patch(TECHNICALREQ_API.replace(':project_id', str(project['id'])), data=json.dumps(req_data),
-                            headers=headers, content_type='application/json')
+    response = client.patch(TECHNICALREQ_API.replace(':project_id', str(technical_req['projectId'])),
+                            data=json.dumps(req_data), headers=headers, content_type='application/json')
 
     assert response.status_code == HTTPStatus.OK
 
@@ -67,23 +64,42 @@ def test_patch_technical_req_package(client, jwt, session):
 def test_patch_technical_req_test_account(client, jwt, session): 
     """Assert that the endpoint returns the success status."""
     headers = ss_client_auth_header(jwt)
-    # create_user(client, jwt)
-    project = create_project(client, jwt)
+    technical_req = create_technical_req(client, jwt)
     req_data = {
         'update': 'test-account',
         'noOfTestAccount': 5,
         'noteTestAccount': 'renmarks'
     }
 
-    response = client.patch(TECHNICALREQ_API.replace(':project_id', str(project['id'])), data=json.dumps(req_data),
-                            headers=headers, content_type='application/json')
+    response = client.patch(TECHNICALREQ_API.replace(':project_id', str(technical_req['projectId'])),
+                            data=json.dumps(req_data), headers=headers, content_type='application/json')
 
     assert response.status_code == HTTPStatus.OK
 
 
+def test_patch_technical_req_validation(client, jwt, session):
+    """Assert that the endpoint returns the failure status."""
+    headers = ss_client_auth_header(jwt)
+    technical_req = create_technical_req(client, jwt)
+    scope_packages = get_scope_packages(client, jwt, session)
+    req_data = {
+        'scopePackageId': scope_packages['scopePackages'][0]['id']
+    }
+
+    response = client.patch(TECHNICALREQ_API.replace(':project_id', str(technical_req['projectId'])),
+                            data=json.dumps(req_data), headers=headers, content_type='application/json')
+
+    assert response.status_code == HTTPStatus.BAD_REQUEST
+
+
 def test_get_technical_req(client, jwt, session):
     """Assert that the endpoint returns the success status."""
-    response = _get_technical_req_(client, jwt, session)
+    headers = ss_client_auth_header(jwt)
+    technical_req = create_technical_req(client, jwt)
+
+    response = client.get(TECHNICALREQ_API.replace(':project_id', str(technical_req['projectId'])),
+                          headers=headers, content_type='application/json')
+
     assert response.status_code == HTTPStatus.OK
 
 
@@ -97,7 +113,6 @@ def create_technical_req(client, jwt):
 def _create_technical_req_(client, jwt):
     """Create technical requirement and return response object."""
     headers = ss_client_auth_header(jwt)
-    create_user(client, jwt)
     project = create_project(client, jwt)
     request_data = factory_project_technical_req()
     request_data['projectId'] = project['id']
@@ -105,21 +120,4 @@ def _create_technical_req_(client, jwt):
     response = client.post(TECHNICALREQ_API.replace(':project_id', str(project['id'])),
                            data=json.dumps(request_data),
                            headers=headers, content_type='application/json')
-    return response
-
-
-def get_technical_req(client, jwt, session):
-    """Get technical requirement and return technical_req object."""
-    response = _get_technical_req_(client, jwt, session)
-    return json.loads(response.data)
-
-
-def _get_technical_req_(client, jwt, session):
-    """Get technical requirement and return response object."""
-    headers = ss_client_auth_header(jwt)
-    technical_req = create_technical_req(client, jwt)
-
-    response = client.get(TECHNICALREQ_API.replace(':project_id', str(technical_req['projectId'])),
-                          headers=headers, content_type='application/json')
-
     return response
