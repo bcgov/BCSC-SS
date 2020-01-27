@@ -1,4 +1,4 @@
-name: BCSC-SS UI unit testing
+name: BCSC_SS UI tests
 
 on: [push, pull_request]
 

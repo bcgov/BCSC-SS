@@ -1,4 +1,4 @@
-name: BCSC_SS API Integration testing
+name: BCSC_SS API Integration tests
 
 on: [push, pull_request]
 
@@ -61,4 +61,4 @@ jobs:
       #     fail_ci_if_error: false
       - name: Shutdown docker-compose
         run: |
-          docker-compose down
+          docker-compose -f docker-compose-db.yml down 
