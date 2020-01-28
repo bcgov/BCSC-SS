@@ -96,7 +96,7 @@ import { Component, Vue, Watch, Prop } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
 import Button from '@/Atomic/Button/Button.vue';
 import TextArea from '@/Atomic/TextArea/TextArea.vue';
-const PackageModule = namespace('PackageModule');
+const PackageAndTestModule = namespace('PackageAndTestModule');
 
 @Component({
   components: {
@@ -107,12 +107,12 @@ const PackageModule = namespace('PackageModule');
 export default class TestAccountRequest extends Vue {
   @Prop({ default: 0 })
   public id!: number;
-  @PackageModule.Getter('successStatus') public successStatus!: boolean;
-  @PackageModule.Getter('errorStatus') public errorStatus!: boolean;
-  @PackageModule.Action('loadPackage') public loadPackage!: any;
-  @PackageModule.Getter('getPackageList') public getPackageList!: [];
-  @PackageModule.Action('clearStatus') public clearStatus!: any;
-  @PackageModule.Action('addTestAccountRequestToProject')
+  @PackageAndTestModule.Getter('successStatus') public successStatus!: boolean;
+  @PackageAndTestModule.Getter('errorStatus') public errorStatus!: boolean;
+  @PackageAndTestModule.Action('loadPackage') public loadPackage!: any;
+  @PackageAndTestModule.Getter('getPackageList') public getPackageList!: [];
+  @PackageAndTestModule.Action('clearStatus') public clearStatus!: any;
+  @PackageAndTestModule.Action('addTestAccountRequestToProject')
   public addTestAccountRequestToProject!: any;
 
   private noOfTestAccounts: any = [1, 2, 3, 5];

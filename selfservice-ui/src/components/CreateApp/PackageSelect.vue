@@ -92,7 +92,7 @@
 import { Component, Vue, Watch, Prop } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
 import Button from '@/Atomic/Button/Button.vue';
-const PackageModule = namespace('PackageModule');
+const PackageAndTestModule = namespace('PackageAndTestModule');
 
 @Component({
   components: {
@@ -102,12 +102,13 @@ const PackageModule = namespace('PackageModule');
 export default class ListPackage extends Vue {
   @Prop({ default: 0 })
   public id!: number;
-  @PackageModule.Getter('successStatus') public successStatus!: boolean;
-  @PackageModule.Getter('errorStatus') public errorStatus!: boolean;
-  @PackageModule.Action('loadPackage') public loadPackage!: any;
-  @PackageModule.Getter('getPackageList') public getPackageList!: [];
-  @PackageModule.Action('clearStatus') public clearStatus!: any;
-  @PackageModule.Action('addPackagetoProject') public addPackagetoProject!: any;
+  @PackageAndTestModule.Getter('successStatus') public successStatus!: boolean;
+  @PackageAndTestModule.Getter('errorStatus') public errorStatus!: boolean;
+  @PackageAndTestModule.Action('loadPackage') public loadPackage!: any;
+  @PackageAndTestModule.Getter('getPackageList') public getPackageList!: [];
+  @PackageAndTestModule.Action('clearStatus') public clearStatus!: any;
+  @PackageAndTestModule.Action('addPackagetoProject')
+  public addPackagetoProject!: any;
 
   private slectedPackage: number = 1;
   private isLoading: boolean = false;

@@ -1,4 +1,4 @@
-export interface PackageModel {
+export interface PackageAndTest {
   id: string;
   packageName: string;
   description: string;

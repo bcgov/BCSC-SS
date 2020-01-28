@@ -13,7 +13,7 @@ describe('PackageSelect.vue', () => {
   vuetify = new Vuetify();
   const store = new Vuex.Store({
     modules: {
-      PackageModule: {
+      PackageAndTestModule: {
         namespaced: true,
         state: {},
         getters: {
