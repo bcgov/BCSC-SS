@@ -16,7 +16,7 @@
     <v-divider></v-divider>
     <v-item-group mandatory :value="slectedNumber">
       <v-container>
-        <v-row class="ma-5">
+        <v-row class="mx-4">
           <v-col cols="12" flat>
             <v-card flat>
               <!-- <v-list-item-content>BCSC Test Account</v-list-item-content> -->
@@ -54,7 +54,7 @@
                 v-model="notes"
                 :label="$t('testAccount.special_notes')"
                 type="text"
-                outline
+                outlined
               />
             </v-card>
           </v-col>
@@ -62,9 +62,9 @@
       </v-container>
     </v-item-group>
     <v-col cols="12">
-      <v-card flat class="ma-5">
+      <v-card flat>
         <v-divider></v-divider>
-        <v-card-actions>
+        <v-card-actions class="mx-4">
           <v-spacer></v-spacer>
           <Button
             @click="$router.push('/project/package/' + projectId)"
@@ -74,7 +74,7 @@
           <Button
             :disabled="!slectedNumber"
             :loading="isLoading"
-            class="white--text submit-package"
+            class="white--text submit-package ml-6"
             depressed
             @click="submitTestAccount"
           >{{$t('testAccount.Next')}}</Button>
@@ -119,9 +119,6 @@ export default class TestAccountRequest extends Vue {
     setTimeout(this.clearStatus, 3000);
   }
 
-  // private mounted() {
-  //   this.loadPackage();
-  // }
   private selectedTestAccount(packageVal: number) {
     this.slectedNumber = packageVal;
   }
