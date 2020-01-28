@@ -55,7 +55,7 @@ describe('Header.vue', () => {
     expect(wrapper.element).toMatchSnapshot();
   });
   it('Toggle menu onlick ', () => {
-    const wrapper = mountFunction({});
+    wrapper = mountFunction({});
     const event = jest.fn();
     const button = wrapper.find('.toggleMenu');
     wrapper.vm.$on('action-btn:clicked', event);
@@ -65,7 +65,7 @@ describe('Header.vue', () => {
   });
 
   it('Logout user on logout button onlick ', () => {
-    const wrapper = mountFunction({});
+    wrapper = mountFunction({});
 
     const event = jest.fn();
     const button = wrapper.find('.logout');
