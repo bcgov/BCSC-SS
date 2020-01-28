@@ -10,10 +10,29 @@ export class PackageService {
     projectId: string,
     slectedPackage: number
   ) {
-    const techUrl = TECHNICALREQ_URL.replace('<projectId>', projectId);
-    return await axios.patch(techUrl, {
+    return await this.updatePackageOrTestToProject(projectId, {
       scopePackageId: slectedPackage,
       update: 'package'
+    });
+  }
+
+  public static async updatePackageOrTestToProject(
+    projectId: string,
+    data: any
+  ) {
+    const techUrl = TECHNICALREQ_URL.replace('<projectId>', projectId);
+    return await axios.patch(techUrl, data);
+  }
+
+  public static async updateTestRequestProject(
+    projectId: string,
+    noOfTestAccount: number,
+    noteTestAccount: string
+  ) {
+    return await this.updatePackageOrTestToProject(projectId, {
+      noOfTestAccount,
+      noteTestAccount,
+      update: 'test-account'
     });
   }
 }

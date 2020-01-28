@@ -5,7 +5,7 @@ import KeyCloakModule from './modules/KeyCloak';
 import ProjectInfoModule from './modules/ProjectInfo';
 import TechnicalReqModule from './modules/TechnicalReq';
 
-import PackageModule from './modules/Package';
+import PackageModule from './modules/PackageAndTest';
 Vue.use(Vuex);
 
 /**
