@@ -48,6 +48,7 @@
                     append-icon="mdi-minus"
                     @click:append="clearUri(index)"
                     :rules="[rules.url]"
+                    class="addUri"
                   ></v-text-field>
                   <!-- :rules="[rules.required]" -->
                 </div>
@@ -78,7 +79,7 @@
                   <Button
                     :disabled="!form"
                     :loading="isLoading"
-                    class="white--text"
+                    class="white--text submit-req"
                     depressed
                     @click="addTechnicalReq"
                   >Next</Button>

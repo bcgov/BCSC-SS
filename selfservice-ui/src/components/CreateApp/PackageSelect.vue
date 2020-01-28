@@ -25,8 +25,9 @@
               <v-list-item-content>Package 3 - best fit for organizations who want to know who the user is and communicate directly with their users non-electronically</v-list-item-content>
             </v-card>
           </v-col>
+
           <v-col v-for="(packageData, idx) in getPackageList" :key="idx" cols="12" md="12">
-            <v-item v-slot:default="{ active }" :value="packageData.id">
+            <v-item v-slot:default="{ active }" :value="packageData.id" class="select-package">
               <v-card
                 class="d-flex align-center pa-4 select-package"
                 :class="active ? 'active-bg' : ''"
@@ -77,7 +78,7 @@
           <Button
             :disabled="!slectedPackage"
             :loading="isLoading"
-            class="white--text"
+            class="white--text submit-package"
             color="indigo accent-4"
             depressed
             @click="submitPackage"
@@ -124,7 +125,6 @@ export default class ListPackage extends Vue {
     this.slectedPackage = packageVal;
   }
   private submitPackage() {
-    // console.log('this.slectedPackage ', this.slectedPackage);
     // add package to project com ehere
     this.addPackagetoProject({
       slectedPackage: this.slectedPackage,
@@ -133,11 +133,6 @@ export default class ListPackage extends Vue {
   }
 }
 </script>
-<style scoped>
-.alert-top {
-  margin-top: 17px;
-}
-</style>
 
 <style lang="scss" scoped>
 @import './../../assets/styles/theme.scss';

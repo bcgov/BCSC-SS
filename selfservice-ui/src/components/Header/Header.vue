@@ -8,7 +8,7 @@
       <!-- <v-app-bar-nav-icon
         @click.stop="drawer = !drawer"
         dark
-      ></v-app-bar-nav-icon> -->
+      ></v-app-bar-nav-icon>-->
       <!-- <div class="banner"> -->
       <img
         src="@/assets/images/bc-logo-horizontal.svg"
@@ -30,17 +30,15 @@
         dark
         class="d-none d-sm-flex login-btn side-right-margin"
         v-if="!isLoggedin"
-        >Login</v-btn
-      >
+      >Login</v-btn>
 
-      <v-toolbar-title v-if="isLoggedin"
-        >Welcome {{ userProfile.firstName }} {{ userProfile.lastName }}
-
+      <v-toolbar-title v-if="isLoggedin">
+        Welcome {{ userProfile.firstName }} {{ userProfile.lastName }}
         <v-btn text @click="logout" color="white">
-          <span class="mr-2" color="white">Logout</span>
+          <span class="mr-2 logout" color="white">Logout</span>
         </v-btn>
       </v-toolbar-title>
-      <v-btn text to="/" link dark class="mr-2 d-sm-none" @click="toggleMenu">
+      <v-btn text to="/" link dark class="mr-2 d-sm-none toggleMenu" @click="toggleMenu">
         <v-icon>mdi-menu</v-icon>
       </v-btn>
     </v-app-bar>
