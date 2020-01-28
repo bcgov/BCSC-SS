@@ -8,5 +8,13 @@
   "TECHNICALREQ_DELETE_MESSAGE": "TechnicalReq  Deleted successfully",
   "PACKAGE_ADD_MESSAGE": "Package  added successfully",
   "PACKAGE_UPDATE_MESSAGE": "Package Updated successfully",
-  "PACKAGE_DELETE_MESSAGE": "Package  Deleted successfully"
+  "PACKAGE_DELETE_MESSAGE": "Package  Deleted successfully",
+  "testAccount": {
+    "pagetitle": "Test Accounts",
+    "pageinfo": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+    "how_many_test_account": "How many test accounts do you require?",
+    "special_notes": "Special requests or notes for test account creation",
+    "Next": "Next",
+    "Back": "Go Back"
+  }
 }

@@ -6,7 +6,7 @@
       <v-btn icon @click="$router.push('/project/package/' + projectId)" aria-label="Back Button">
         <v-icon>mdi-arrow-left</v-icon>
       </v-btn>
-      <v-toolbar-title>Test Accounts</v-toolbar-title>
+      <v-toolbar-title>{{$t('testAccount.pagetitle')}}</v-toolbar-title>
       <div class="flex-grow-1"></div>
       <v-col class="col-lg-4 col-md-5 col-8">
         <v-alert type="error" v-if="errorStatus" class="alert-top">Something went wrong...</v-alert>
@@ -20,13 +20,13 @@
           <v-col cols="12" flat>
             <v-card flat>
               <!-- <v-list-item-content>BCSC Test Account</v-list-item-content> -->
-              <v-list-item-content>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</v-list-item-content>
+              <v-list-item-content>{{$t('testAccount.pageinfo')}}</v-list-item-content>
             </v-card>
           </v-col>
 
           <v-col cols="12" flat>
             <v-card flat>
-              <v-list-item-content>How many test accounts do you require?</v-list-item-content>
+              <v-list-item-content>{{$t('testAccount.how_many_test_account')}}</v-list-item-content>
             </v-card>
           </v-col>
 
@@ -44,23 +44,15 @@
                   </v-list-item-content>
                 </v-list-item>
                 <v-spacer></v-spacer>
-                <!-- <div v-if="!active" class="text-center mr-5"> -->
-                <!-- <v-icon color="#eae9e9" x-large>mdi-check-circle-outline</v-icon> -->
-                <!-- Select this package -->
-                <!-- </div>
-                <div v-if="active" class="display-3 flex-grow-1 text-center mr-5">-->
-                <!-- <v-icon color="green" x-large>mdi-check-circle</v-icon> -->
-                <!-- </div> -->
-                <!-- </v-scroll-y-transition> -->
               </v-card>
             </v-item>
           </v-col>
           <v-col cols="12" flat>
             <v-card flat>
-              <v-list-item-content>Special requests or notes for test account creation</v-list-item-content>
+              <v-list-item-content>{{$t('testAccount.special_notes')}}</v-list-item-content>
               <TextArea
                 v-model="notes"
-                label="Special requests or notes for test account creation"
+                :label="$t('testAccount.special_notes')"
                 type="text"
                 outline
               />
@@ -78,14 +70,14 @@
             @click="$router.push('/project/package/' + projectId)"
             aria-label="Back Button"
             secondary
-          >Go Back</Button>
+          >{{$t('testAccount.Back')}}</Button>
           <Button
             :disabled="!slectedNumber"
             :loading="isLoading"
             class="white--text submit-package"
             depressed
             @click="submitTestAccount"
-          >Next</Button>
+          >{{$t('testAccount.Next')}}</Button>
         </v-card-actions>
       </v-card>
     </v-col>
