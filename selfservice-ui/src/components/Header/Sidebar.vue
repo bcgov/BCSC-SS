@@ -3,14 +3,10 @@
 <template>
   <v-card class="mx-auto">
     <v-navigation-drawer app clipped fixed height="100%" permanent>
-      <!-- v-model="drawer" -->
       <v-list dark>
         <v-list-item>
           <v-list-item-content>
             <v-list-item-title class="title">Self Service</v-list-item-title>
-            <!-- <v-list-item-subtitle>
-              subtext
-            </v-list-item-subtitle>-->
           </v-list-item-content>
         </v-list-item>
 
