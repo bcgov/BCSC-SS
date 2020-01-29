@@ -15,16 +15,16 @@ node{
 }
 
 // Selfservice-UI Parameters
-WEB_BUILD = common.WEB_NAME + "-build"
-WEB_IMAGESTREAM_NAME = common.WEB_NAME
+WEB_BUILD = common.WEB_NAME + "-build-" + common.web_environments.prod.tag
+WEB_IMAGESTREAM_NAME = common.WEB_NAME + "-" + common.web_environments.prod.tag
 
 // Selfservice-db parameters
-DB_BUILD = common.DB_NAME + "-build"
-DB_IMAGESTREAM_NAME = common.DB_NAME
+DB_BUILD = common.DB_NAME + "-build-" + common.web_environments.prod.tag
+DB_IMAGESTREAM_NAME = common.DB_NAME + "-" + common.web_environments.prod.tag
 
 // SelfService-Api parameters
-API_BUILD = common.API_NAME + "-build"
-API_IMAGESTREAM_NAME = common.API_NAME
+API_BUILD = common.API_NAME + "-build-" + common.web_environments.prod.tag
+API_IMAGESTREAM_NAME = common.API_NAME + "-" + common.web_environments.prod.tag
 
 
 
