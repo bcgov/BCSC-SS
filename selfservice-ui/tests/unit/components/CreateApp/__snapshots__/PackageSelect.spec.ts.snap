@@ -270,7 +270,7 @@ exports[`PackageSelect.vue renders props when passed 1`] = `
         />
          
         <button
-          class="btn white--text submit-package v-btn v-btn--contained theme--light v-size--default primary normal"
+          class="btn white--text submit-package v-btn v-btn--depressed theme--light v-size--default indigo accent-4 primary normal"
           color="indigo accent-4"
           depressed=""
           name="button"
@@ -558,7 +558,7 @@ exports[`PackageSelect.vue select on package on click  1`] = `
         />
          
         <button
-          class="btn white--text submit-package v-btn v-btn--contained theme--light v-size--default primary normal"
+          class="btn white--text submit-package v-btn v-btn--depressed theme--light v-size--default indigo accent-4 primary normal"
           color="indigo accent-4"
           depressed=""
           name="button"
@@ -846,7 +846,7 @@ exports[`PackageSelect.vue submit form with selected package on submit click  1`
         />
          
         <button
-          class="btn white--text submit-package v-btn v-btn--contained theme--light v-size--default primary normal"
+          class="btn white--text submit-package v-btn v-btn--depressed theme--light v-size--default indigo accent-4 primary normal"
           color="indigo accent-4"
           depressed=""
           name="button"

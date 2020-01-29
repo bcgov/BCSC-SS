@@ -1,6 +1,6 @@
-import { PackageModel } from '@/models/PackageModel';
+import { PackageAndTest } from '@/models/PackageAndTest';
 export interface PackageState {
-  packageList: PackageModel[];
+  packageList: PackageAndTest[];
   loading?: boolean;
   successStatus?: boolean;
   errorStatus?: boolean;

@@ -18,7 +18,7 @@ export const state: PackageState = {
 
 const namespaced: boolean = true;
 
-const PackageModule: Module<PackageState, RootState> = {
+const PackageAndTestModule: Module<PackageState, RootState> = {
   namespaced,
   state,
   getters,
@@ -26,4 +26,4 @@ const PackageModule: Module<PackageState, RootState> = {
   mutations
 };
 
-export default PackageModule;
+export default PackageAndTestModule;

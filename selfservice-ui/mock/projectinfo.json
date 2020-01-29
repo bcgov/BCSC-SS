@@ -37,7 +37,9 @@
       "jwksUri": "uri",
       "idTokenSignedResponseAlg": "RS256",
       "userinfoSignedResponseAlg": "RS256",
-      "scopePackageId": 1
+      "scopePackageId": 1,
+      "noOfTestAccount": 5,
+      "noteTestAccount": "additional note"
     }
   ],
   "scope-package": {
