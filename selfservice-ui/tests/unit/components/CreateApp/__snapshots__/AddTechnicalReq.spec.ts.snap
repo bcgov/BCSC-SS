@@ -413,8 +413,21 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                 />
                  
                 <button
+                  aria-label="Back Button"
+                  class="btn v-btn v-btn--contained theme--light v-size--default secondary normal"
+                  name="button"
+                  type="button"
+                >
+                  <span
+                    class="v-btn__content"
+                  >
+                    Go Back
+                  </span>
+                </button>
+                 
+                <button
                   aria-disabled="true"
-                  class="btn white--text submit-req v-btn v-btn--depressed theme--light v-size--default primary normal disabled"
+                  class="btn white--text submit-req ml-6 v-btn v-btn--depressed theme--light v-size--default primary normal disabled"
                   depressed=""
                   name="button"
                   type="button"
@@ -521,13 +534,13 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                     >
                       <label
                         class="v-label theme--light"
-                        for="input-54"
+                        for="input-56"
                         style="left: 0px; position: absolute;"
                       >
                         Application URL
                       </label>
                       <input
-                        id="input-54"
+                        id="input-56"
                         type="text"
                       />
                     </div>
@@ -570,13 +583,13 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                       >
                         <label
                           class="v-label theme--light"
-                          for="input-57"
+                          for="input-59"
                           style="left: 0px; position: absolute;"
                         >
                           Redirect URI values
                         </label>
                         <input
-                          id="input-57"
+                          id="input-59"
                           type="text"
                         />
                       </div>
@@ -632,13 +645,13 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                     >
                       <label
                         class="v-label theme--light"
-                        for="input-62"
+                        for="input-64"
                         style="left: 0px; position: absolute;"
                       >
                         JWKS URL
                       </label>
                       <input
-                        id="input-62"
+                        id="input-64"
                         type="text"
                       />
                     </div>
@@ -675,7 +688,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                   <div
                     aria-expanded="false"
                     aria-haspopup="listbox"
-                    aria-owns="list-66"
+                    aria-owns="list-68"
                     class="v-input__slot"
                     role="button"
                   >
@@ -684,7 +697,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                     >
                       <label
                         class="v-label v-label--active theme--light"
-                        for="input-66"
+                        for="input-68"
                         style="left: 0px; position: absolute;"
                       >
                         ID Token Signature Algorithm
@@ -700,7 +713,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                         <input
                           aria-readonly="true"
                           autocomplete="off"
-                          id="input-66"
+                          id="input-68"
                           readonly="readonly"
                           type="text"
                         />
@@ -760,7 +773,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                   <div
                     aria-expanded="false"
                     aria-haspopup="listbox"
-                    aria-owns="list-74"
+                    aria-owns="list-76"
                     class="v-input__slot"
                     role="button"
                   >
@@ -769,7 +782,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                     >
                       <label
                         class="v-label v-label--active theme--light"
-                        for="input-74"
+                        for="input-76"
                         style="left: 0px; position: absolute;"
                       >
                         User Info Signed Response Algorithm
@@ -785,7 +798,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                         <input
                           aria-readonly="true"
                           autocomplete="off"
-                          id="input-74"
+                          id="input-76"
                           readonly="readonly"
                           type="text"
                         />
@@ -848,8 +861,21 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                 />
                  
                 <button
+                  aria-label="Back Button"
+                  class="btn v-btn v-btn--contained theme--light v-size--default secondary normal"
+                  name="button"
+                  type="button"
+                >
+                  <span
+                    class="v-btn__content"
+                  >
+                    Go Back
+                  </span>
+                </button>
+                 
+                <button
                   aria-disabled="true"
-                  class="btn white--text submit-req v-btn v-btn--depressed theme--light v-size--default primary normal disabled"
+                  class="btn white--text submit-req ml-6 v-btn v-btn--depressed theme--light v-size--default primary normal disabled"
                   depressed=""
                   name="button"
                   type="button"
@@ -956,13 +982,13 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                     >
                       <label
                         class="v-label theme--light"
-                        for="input-95"
+                        for="input-99"
                         style="left: 0px; position: absolute;"
                       >
                         Application URL
                       </label>
                       <input
-                        id="input-95"
+                        id="input-99"
                         type="text"
                       />
                     </div>
@@ -1005,13 +1031,13 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                       >
                         <label
                           class="v-label theme--light"
-                          for="input-98"
+                          for="input-102"
                           style="left: 0px; position: absolute;"
                         >
                           Redirect URI values
                         </label>
                         <input
-                          id="input-98"
+                          id="input-102"
                           type="text"
                         />
                       </div>
@@ -1067,13 +1093,13 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                     >
                       <label
                         class="v-label theme--light"
-                        for="input-103"
+                        for="input-107"
                         style="left: 0px; position: absolute;"
                       >
                         JWKS URL
                       </label>
                       <input
-                        id="input-103"
+                        id="input-107"
                         type="text"
                       />
                     </div>
@@ -1110,7 +1136,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                   <div
                     aria-expanded="false"
                     aria-haspopup="listbox"
-                    aria-owns="list-107"
+                    aria-owns="list-111"
                     class="v-input__slot"
                     role="button"
                   >
@@ -1119,7 +1145,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                     >
                       <label
                         class="v-label v-label--active theme--light"
-                        for="input-107"
+                        for="input-111"
                         style="left: 0px; position: absolute;"
                       >
                         ID Token Signature Algorithm
@@ -1135,7 +1161,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                         <input
                           aria-readonly="true"
                           autocomplete="off"
-                          id="input-107"
+                          id="input-111"
                           readonly="readonly"
                           type="text"
                         />
@@ -1195,7 +1221,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                   <div
                     aria-expanded="false"
                     aria-haspopup="listbox"
-                    aria-owns="list-115"
+                    aria-owns="list-119"
                     class="v-input__slot"
                     role="button"
                   >
@@ -1204,7 +1230,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                     >
                       <label
                         class="v-label v-label--active theme--light"
-                        for="input-115"
+                        for="input-119"
                         style="left: 0px; position: absolute;"
                       >
                         User Info Signed Response Algorithm
@@ -1220,7 +1246,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                         <input
                           aria-readonly="true"
                           autocomplete="off"
-                          id="input-115"
+                          id="input-119"
                           readonly="readonly"
                           type="text"
                         />
@@ -1283,8 +1309,21 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                 />
                  
                 <button
+                  aria-label="Back Button"
+                  class="btn v-btn v-btn--contained theme--light v-size--default secondary normal"
+                  name="button"
+                  type="button"
+                >
+                  <span
+                    class="v-btn__content"
+                  >
+                    Go Back
+                  </span>
+                </button>
+                 
+                <button
                   aria-disabled="true"
-                  class="btn white--text submit-req v-btn v-btn--depressed theme--light v-size--default primary normal disabled"
+                  class="btn white--text submit-req ml-6 v-btn v-btn--depressed theme--light v-size--default primary normal disabled"
                   depressed=""
                   name="button"
                   type="button"
