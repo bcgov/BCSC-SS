@@ -89,7 +89,7 @@ objects:
         from:
           kind: ImageStreamTag
           namespace: "${IMAGE_NAMESPACE}"
-          name: "${WEB_NAME}:${TAG_NAME}"
+          name: "${WEB_NAME}-${TAG_NAME}:${TAG_NAME}"
 - apiVersion: v1
   kind: Service
   metadata:
@@ -124,6 +124,7 @@ objects:
       kind: Service
       name: "${WEB_NAME}"
       weight: 100
+    host: "${WEB_NAME_ROUTE}-${TAG_NAME}.pathfinder.gov.bc.ca"
 parameters:
 - description: The name assigned to all of the openshift objects defined in this template.
     It is also the name of runtime image you want.
@@ -133,7 +134,7 @@ parameters:
   value: selfservice-ui
 - name: APP_GROUP
   displayName: App Group
-  description: The name assigned to all of the deployments in this project.
+  description: The name assigned to all of the deployments in this projects.
   required: true
   value: BC-ServiceCard
 - description: The namespace where to get the above image name
@@ -160,3 +161,9 @@ parameters:
   displayName: Storage Capacity
   name: VOLUME_CAPACITY
   value: 1Gi
+- description: The name assigned to all of the openshift objects defined in this template.
+    It is also the name of runtime image you want.
+  displayName: Name
+  name: WEB_NAME_ROUTE
+  required: true
+  value: selfservice

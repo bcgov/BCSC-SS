@@ -32,7 +32,7 @@ objects:
         from:
           kind: ImageStreamTag
           namespace: "${IMAGE_NAMESPACE}"
-          name: "${SOURCE_IMAGE_NAME}:${TAG_NAME}"
+          name: "${SOURCE_IMAGE_NAME}:prod"
     - type: ConfigChange
     replicas: 1
     test: false
@@ -46,7 +46,7 @@ objects:
         volumes:
         - name: "${DB_NAME}-data"
           persistentVolumeClaim:
-            claimName: "${DB_NAME}"
+            claimName: "${DB_NAME}-${TAG_NAME}"
         containers:
         - name: "${DB_NAME}"
           image: " "
@@ -119,7 +119,7 @@ objects:
 - kind: PersistentVolumeClaim
   apiVersion: v1
   metadata:
-    name: "${DB_NAME}"
+    name: "${DB_NAME}-${TAG_NAME}"
     labels:
       app: "${DB_NAME}-persistent"
       template: "${DB_NAME}-persistent-template"
@@ -150,7 +150,7 @@ objects:
     selector:
       name: "${DB_NAME}"
     type: ClusterIP
-    sessionAffinity: None
+    hostname: "${DB_NAME}.svc.cluster.local"
 parameters:
 - name: DB_NAME
   displayName: Name
@@ -215,32 +215,32 @@ parameters:
   displayName: Persistent Volume Size
   description: The size of the persistent volume , e.g. 512Mi, 1Gi, 2Gi.
   required: true
-  value: 1Gi
+  value: 2Gi
 - name: PERSISTENT_VOLUME_CLASS
   displayName: Persistent Volume Class name
   description: The class of the volume; gluster-file, gluster-block, gluster-file-db
   required: false
-  value: gluster-file-db
+  value: netapp-block-standard
 - name: CPU_REQUEST
   displayName: Resources CPU Request
   description: The resources CPU request (in cores) for this build.
   required: true
-  value: 100m
+  value: '2'
 - name: CPU_LIMIT
   displayName: Resources CPU Limit
   description: The resources CPU limit (in cores) for this build.
   required: true
-  value: 750m
+  value: '4'
 - name: MEMORY_REQUEST
   displayName: Resources Memory Request
   description: The resources Memory request (in Mi, Gi, etc) for this build.
   required: true
-  value: 100Mi
+  value: 1Gi
 - name: MEMORY_LIMIT
   displayName: Resources Memory Limit
   description: The resources Memory limit (in Mi, Gi, etc) for this build.
   required: true
-  value: 2Gi
+  value: 4Gi
 - name: DATABASE_HOST
   displayName: Database host name
   description: A valid database host name used by the service.

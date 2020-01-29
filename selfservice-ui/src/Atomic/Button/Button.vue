@@ -13,6 +13,7 @@ important action on your service, such as Download or Submit. */
     ]"
     :aria-disabled="disabled"
     @click="click"
+    v-bind="$attrs"
   >
     <!-- @slot  Button display name-->
     <slot></slot>

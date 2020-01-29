@@ -1,7 +1,7 @@
 var path = require('path');
 module.exports = {
   // set your styleguidist configuration here
-  title: 'BC Default Style Guide',
+  title: 'BC Style Guide',
   // components: 'src/components/**/[A-Z]*.vue',
   defaultExample: true,
   copyCodeButton: true,
@@ -20,6 +20,8 @@ module.exports = {
   // webpackConfig: {
   //   // custom config goes here
   // },
+  styleguideDir: 'styleguide',
   exampleMode: 'expand',
-  require: [path.join(__dirname, 'styleguide/global.requires.js')]
+  require: [path.join(__dirname, 'styleguide-config/global.requires.js')],
+  renderRootJsx: path.join(__dirname, 'styleguide-config/styleguide.root.js')
 };

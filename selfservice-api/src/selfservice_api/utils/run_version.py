@@ -12,9 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 """Supply version and commit hash info."""
+
 import os
 
-from selfservice_api.version import __version__
+from ..version import __version__
 
 
 def _get_build_openshift_commit_hash():

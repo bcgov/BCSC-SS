@@ -1,0 +1,125 @@
+---
+kind: Template
+apiVersion: v1
+metadata:
+  name: "${WEB_NAME}-build-template"
+  creationTimestamp: 
+objects:
+- kind: ImageStream
+  apiVersion: v1
+  metadata:
+    name: "${WEB_NAME}-${TAG_NAME}"
+- kind: BuildConfig
+  apiVersion: v1
+  metadata:
+    name: "${WEB_NAME}-build-${TAG_NAME}"
+    labels:
+      app: "${WEB_NAME}-build-${TAG_NAME}"
+  spec:
+    triggers:
+    - type: Github
+      github:
+        secret: bcsc-ss
+    runPolicy: Serial
+    source:
+      type: Git
+      git:
+        uri: "${GIT_REPO_URL}"
+        ref: "${GIT_REF}"
+      contextDir: "${SOURCE_CONTEXT_DIR}"
+      sourceSecret:
+        name: github-credentials
+    strategy:
+      type: Docker
+      dockerStrategy:
+        dockerfilePath: "${DOCKER_FILE_PATH}"
+        buildArgs:
+        buildArgs:
+        - name: "API_BASE_URL"
+          value: ${API_BASE_URL}
+        - name: "KEYCLOAK_URL"
+          value: ${KEYCLOAK_URL}
+        - name: "KEYCLOAK_REALM"
+          value: ${KEYCLOAK_REALM}
+        - name: "KEYCLOAK_CLIENT"
+          value: ${KEYCLOAK_CLIENT}
+    output:
+      to:
+        kind: ImageStreamTag
+        name: "${WEB_NAME}-${TAG_NAME}:${OUTPUT_IMAGE_TAG}"
+    resources:
+      limits:
+        cpu: '1'
+        memory: 4Gi
+      requests:
+        cpu: '1'
+        memory: 4Gi
+parameters:
+- name: WEB_NAME
+  displayName: Name
+  description: The name assigned to all of the resources defined in this template.
+  required: true
+  value: selfservice-ui
+- name: API_NAME
+  displayName: Name
+  description: The name assigned to all of the resources defined in this template.
+  required: true
+  value: selfservice-api
+- name: TAG_NAME
+  displayName: Name
+  description: The name assigned to all of the resources defined in this template.
+  required: true
+  value: dev
+- name: GIT_REPO_URL
+  displayName: Git Repo URL
+  description: The URL to your GIT repo.
+  required: true
+  value: https://github.com/bcgov/BCSC-SS.git
+- name: GIT_REF
+  displayName: Git Reference
+  description: The git reference or branch.
+  required: true
+  value: dev
+- name: SOURCE_CONTEXT_DIR
+  displayName: Source Context Directory
+  description: The source context directory.
+  required: false
+  value: "/selfservice-ui"
+- name: SOURCE_IMAGE_KIND
+  displayName: Source Image Kind
+  description: The 'kind' (type) of the  source image; typically ImageStreamTag, or
+    DockerImage.
+  required: true
+  value: ImageStreamTag
+- name: SOURCE_IMAGE_NAME
+  displayName: Source Image Name
+  description: The name of the source image.
+  required: true
+  value: selfservice-ui
+- name: SOURCE_IMAGE_TAG
+  displayName: Source Image Tag
+  description: The tag of the source image.
+  required: true
+  value: dev
+- name: DOCKER_FILE_PATH
+  displayName: Docker File Path
+  description: The path to the docker file defining the build.
+  required: false
+  value: "./Dockerfile"
+- name: OUTPUT_IMAGE_TAG
+  displayName: Output Image Tag
+  description: The tag given to the built image.
+  required: true
+  value: dev
+- name: API_BASE_URL
+  required: true
+  value: "https://selfservice-api-dev.pathfinder.gov.bc.ca/api/v1/"
+- name: KEYCLOAK_URL
+  required: true
+  value: "https://sso-dev.pathfinder.gov.bc.ca/auth"
+- name: KEYCLOAK_REALM
+  required: true
+  value: "1gw8g24z"
+- name: KEYCLOAK_CLIENT
+  required: true
+  value: "bcscss"

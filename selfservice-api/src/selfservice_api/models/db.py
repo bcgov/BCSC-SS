@@ -15,6 +15,7 @@
 
 These will get initialized by the application using the models
 """
+
 from flask_marshmallow import Marshmallow
 from flask_sqlalchemy import SQLAlchemy
 

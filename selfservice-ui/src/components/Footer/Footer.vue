@@ -43,6 +43,7 @@ footer {
   border-top: 2px solid $BCgovGold5 !important;
   color: $BCgovWhite !important;
   padding: 4px 16px;
+  z-index: 5;
   @include sm {
     // padding: 6px 65px 6px 65px;
   }

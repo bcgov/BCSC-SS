@@ -11,7 +11,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 """Version of this service in PEP440.
 
 [N!]N(.N)*[{a|b|rc}N][.postN][.devN]

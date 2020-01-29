@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Unauthorized.vue renders without crashing 1`] = `
+<v-container-stub
+  tag="div"
+>
+  <v-layout-stub
+    align-center=""
+    d-flex=""
+    justify-center=""
+    row=""
+    tag="div"
+    wrap=""
+  >
+    
+    You are not Authorized to see
+  
+  </v-layout-stub>
+</v-container-stub>
+`;

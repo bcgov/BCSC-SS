@@ -13,20 +13,15 @@
 # limitations under the License.
 """This manages Orginasition Whitelist."""
 
-import datetime
-
-from sqlalchemy import Column, DateTime, Integer, String
-
+from .audit_mixin import AuditDateTimeMixin
 from .db import db
 
 
-class OrgWhitelist(db.Model):
+class OrgWhitelist(AuditDateTimeMixin, db.Model):  # pylint: disable=too-few-public-methods
     """This class manages whitelisted Orginasition."""
 
     __tablename__ = 'org_whitelist'
-    id = Column(Integer, primary_key=True)
-    org_name = Column('org_name', String(250), nullable=False)
-    head_of_org = Column('head_of_org', String(250), nullable=False)
-    domain = Column('domain', String(50), nullable=False)
-    created = Column(DateTime, default=datetime.datetime.now)
-    modified = Column(DateTime, default=datetime.datetime.now, onupdate=datetime.datetime.now)
+    id = db.Column(db.Integer, primary_key=True)
+    org_name = db.Column('org_name', db.String(250), nullable=False)
+    head_of_org = db.Column('head_of_org', db.String(250), nullable=False)
+    domain = db.Column('domain', db.String(50), nullable=False)

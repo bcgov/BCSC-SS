@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 """Common setup and fixtures for the pytest suite used by this service."""
+
 from contextlib import contextmanager
 
 import pytest
@@ -20,7 +21,7 @@ from sqlalchemy import event, text
 from sqlalchemy.schema import DropConstraint, MetaData
 
 from selfservice_api import create_app
-# from selfservice_api import jwt as _jwt
+from selfservice_api import jwt as _jwt
 from selfservice_api.models import db as _db
 
 
@@ -73,10 +74,10 @@ def client(app):  # pylint: disable=redefined-outer-name
     return app.test_client()
 
 
-# @pytest.fixture(scope='session')
-# def jwt():
-#     """Return a session-wide jwt manager."""
-#     return _jwt
+@pytest.fixture(scope='session')
+def jwt():
+    """Return a session-wide jwt manager."""
+    return _jwt
 
 
 @pytest.fixture(scope='session')
