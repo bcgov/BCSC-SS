@@ -24,8 +24,9 @@ export const actions: ActionTree<TechnicalReqState, RootState> = {
       commit('SET_TECHNICALREQ_ERROR', false);
       commit('SET_TECHNICALREQ_MESSAGE', i18n.t('TECHNICALREQ_ADD_MESSAGE'));
       // dispatch('loadTechnicalReq');
-      const { id } = rootState.ProjectInfoModule.singleProjectInfo;
-      router.push('/project/package/' + id);
+      const id =
+        data.projectId || rootState.ProjectInfoModule.singleProjectInfo;
+      router.push(`/project/${id}/package/`);
     } catch {
       commit('SET_TECHNICALREQ_SUCCESSFULLY', false);
       commit('SET_TECHNICALREQ_ERROR', true);

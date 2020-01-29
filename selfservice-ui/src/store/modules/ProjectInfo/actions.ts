@@ -25,7 +25,7 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
       commit('SET_PROJECTINFO_MESSAGE', i18n.t('PROJECTINFO_ADD_MESSAGE'));
       commit('SET_EDIT_PROJECTINFO', projectinfo.data);
       const id = projectinfo.data.id;
-      router.push('/project/technical/' + id);
+      router.push(`/project/${id}/technical/`);
       // dispatch('loadProjectInfo');
     } catch {
       commit('SET_PROJECTINFO_SUCCESSFULLY', false);

@@ -33,7 +33,7 @@ export const actions: ActionTree<PackageState, RootState> = {
     // const packageData =
     await PackageAndTest.updatePackageProject(projectId, slectedPackage);
     // commit('SET_PACKAGELIST', packageData.data.scopePackage);
-    router.push('/project/test-account/' + projectId);
+    router.push(`/project/${projectId}/test-account/`);
     commit('SET_LOADING', false);
   },
 
