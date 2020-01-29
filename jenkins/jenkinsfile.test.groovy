@@ -18,6 +18,7 @@ node{
 // Selfservice-UI Parameters
 WEB_BUILD = common.WEB_NAME + "-build-" + common.web_environments.test.tag
 WEB_IMAGESTREAM_NAME = common.WEB_NAME + "-" + common.web_environments.test.tag
+WEB_NAME = common.WEB_NAME
 
 // Selfservice-db parameters
 DB_BUILD = common.DB_NAME + "-build-" + common.web_environments.test.tag
@@ -26,11 +27,12 @@ DB_IMAGESTREAM_NAME = common.DB_NAME + "-" + common.web_environments.test.tag
 // SelfService-Api parameters
 API_BUILD = common.API_NAME + "-build-" + common.web_environments.test.tag
 API_IMAGESTREAM_NAME = common.API_NAME + "-" + common.web_environments.test.tag
+API_NAME = common.API_NAME
 
 
 
 stage('Build ' + WEB_IMAGESTREAM_NAME) {
-  node('jenkins-python3nodejs'){
+  node{
     openshift.withProject() {
     try{
         // Make sure the frontend build configs exist
@@ -80,13 +82,13 @@ stage("Deploy" + WEB_IMAGESTREAM_NAME + "to ${common.web_environments.test.name}
       WEB_IMAGE_HASH = common.getLatestHash(WEB_IMAGESTREAM_NAME, environment)          
       echo ">> WEB_IMAGE_HASH: ${WEB_IMAGE_HASH}"
 
-      common.deployAndVerify(WEB_IMAGE_HASH,environment,WEB_IMAGESTREAM_NAME)
+      common.deployAndVerify(WEB_IMAGE_HASH,environment,WEB_NAME)
 
       // WEB Deployment Success notification
-      common.successNotificaiton(ROCKETCHAT_TOKEN, WEB_IMAGESTREAM_NAME, DEPLOYMENT_PHASE )
+      common.successNotificaiton(ROCKETCHAT_TOKEN, WEB_NAME, DEPLOYMENT_PHASE )
     }catch(error){
       // Web Deployment Failure Notification
-      common.failureNotificaiton(ROCKETCHAT_TOKEN, WEB_IMAGESTREAM_NAME, DEPLOYMENT_PHASE )
+      common.failureNotificaiton(ROCKETCHAT_TOKEN, WEB_NAME, DEPLOYMENT_PHASE )
       throw error
     }
   }
@@ -125,13 +127,13 @@ stage("Deploy to" + API_NAME + "${common.api_environments.test.name}") {
       API_IMAGE_HASH = common.getLatestHash(API_IMAGESTREAM_NAME, environment)          
       echo ">> API_IMAGE_HASH: ${API_IMAGE_HASH}"
 
-      common.deployAndVerify(API_IMAGE_HASH,environment,API_IMAGESTREAM_NAME)
+      common.deployAndVerify(API_IMAGE_HASH,environment, API_NAME)
 
       // DB Deployment Success notification
-      common.successNotificaiton(ROCKETCHAT_TOKEN, API_IMAGESTREAM_NAME, DEPLOYMENT_PHASE )
+      common.successNotificaiton(ROCKETCHAT_TOKEN, API_NAME, DEPLOYMENT_PHASE )
     }catch(error){
       // DB Deployment Failure notification
-      common.failureNotificaiton(ROCKETCHAT_TOKEN, API_IMAGESTREAM_NAME, DEPLOYMENT_PHASE )
+      common.failureNotificaiton(ROCKETCHAT_TOKEN, API_NAME, DEPLOYMENT_PHASE )
       throw error
     }
   }
