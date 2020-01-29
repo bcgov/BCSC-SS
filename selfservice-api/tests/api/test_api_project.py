@@ -16,21 +16,16 @@
 import json
 from http import HTTPStatus
 
-from ..api import API_URI_PREFIX
+from ..helper.api_create_data import (PROJECTINFO_API, _create_project_, _get_project_,  # noqa: I001
+                                      create_project, create_technical_req_with_additional, create_user)  # noqa: I001
 from ..helper.auth import ss_client_auth_header
-from ..helper.request_data import factory_project_info
-from .test_api_user import create_user
 
 from selfservice_api.models.enums import ProjectRoles
-
-
-PROJECTINFO_API = API_URI_PREFIX + 'project/info'
 
 
 def test_post_project_as_developer(client, jwt, session):
     """Assert that the endpoint returns the success status."""
     create_user(client, jwt, project_role='manager')
-
     response = _create_project_(client, jwt, ProjectRoles.Developer)
 
     assert response.status_code == HTTPStatus.CREATED
@@ -65,30 +60,59 @@ def test_post_project_validation(client, jwt, session):
 
 def test_get_project(client, jwt, session):
     """Assert that the endpoint returns the success status."""
-    headers = ss_client_auth_header(jwt)
-    project = create_project(client, jwt)
+    response = _get_project_(client, jwt)
+    assert response.status_code == HTTPStatus.OK
 
-    response = client.get(PROJECTINFO_API + '/' + str(project['id']),
-                          headers=headers, content_type='application/json')
+
+def test_patch_project_status(client, jwt, session):
+    """Assert that the endpoint returns the success status."""
+    headers = ss_client_auth_header(jwt)
+    technical_req = create_technical_req_with_additional(client, jwt)
+
+    req_data = {'update': 'status', 'status': 2}
+    response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
+                            data=json.dumps(req_data), headers=headers, content_type='application/json')
 
     assert response.status_code == HTTPStatus.OK
-    data = json.loads(response.data)
-    assert data['id'] == project['id']
 
 
-def create_project(client, jwt):
-    """Create project and return project object."""
-    response = _create_project_(client, jwt, ProjectRoles.Developer)
-    project = json.loads(response.data)
-    return project
+def test_patch_project_status_validation(client, jwt, session):
+    """Assert that the endpoint returns the failure status."""
+    headers = ss_client_auth_header(jwt)
+    req_data = {}
 
+    response = client.patch(PROJECTINFO_API + '/1234',
+                            data=json.dumps(req_data), headers=headers, content_type='application/json')
 
-def _create_project_(client, jwt, my_role):
-    """Create project and return response object."""
-    project_role = 'developer' if my_role == 1 else 'manager' if my_role == 2 else 'cto'
-    headers = ss_client_auth_header(jwt, project_role=project_role)
-    create_user(client, jwt, project_role=project_role)
+    assert response.status_code == HTTPStatus.BAD_REQUEST
 
-    response = client.post(PROJECTINFO_API, data=json.dumps(factory_project_info(my_role=my_role)),
-                           headers=headers, content_type='application/json')
-    return response
+    req_data = {'update': ''}
+
+    technical_req = create_technical_req_with_additional(client, jwt)
+    response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
+                            data=json.dumps(req_data), headers=headers, content_type='application/json')
+
+    assert response.status_code == HTTPStatus.BAD_REQUEST
+
+    req_data = {'update': 'status'}
+
+    response = client.patch(PROJECTINFO_API + '/1234',
+                            data=json.dumps(req_data), headers=headers, content_type='application/json')
+
+    assert response.status_code == HTTPStatus.BAD_REQUEST
+
+    req_data = {'update': 'status'}
+
+    technical_req = create_technical_req_with_additional(client, jwt)
+    response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
+                            data=json.dumps(req_data), headers=headers, content_type='application/json')
+
+    assert response.status_code == HTTPStatus.BAD_REQUEST
+
+    req_data = {'update': 'status', 'status': 2}
+
+    project = create_project(client, jwt)
+    response = client.patch(PROJECTINFO_API + '/' + str(project['id']),
+                            data=json.dumps(req_data), headers=headers, content_type='application/json')
+
+    assert response.status_code == HTTPStatus.BAD_REQUEST

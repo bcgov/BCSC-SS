@@ -44,6 +44,6 @@ class BaseModel():
         for key in columns:
             exists = key in values
             if exists:
-                val = getattr(self, key, None)
-                if val is not None:
+                val = getattr(self, key, '~skip~it~')
+                if val != '~skip~it~':
                     setattr(self, key, values[key])

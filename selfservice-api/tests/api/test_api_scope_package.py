@@ -13,27 +13,12 @@
 # limitations under the License.
 """Tests API endpoints for scope package."""
 
-import json
 from http import HTTPStatus
 
-from ..api import API_URI_PREFIX
-from ..helper.auth import ss_client_auth_header
+from ..helper.api_create_data import _get_scope_packages_
 
 
 def test_scope_packages(client, jwt, session):
     """Assert that the endpoint returns the success status for scope packages."""
-    response = _get_scope_packages_(client, jwt, session)
+    response = _get_scope_packages_(client, jwt)
     assert response.status_code == HTTPStatus.OK
-
-
-def get_scope_packages(client, jwt, session):
-    """Get algorithms and return scope_package object."""
-    response = _get_scope_packages_(client, jwt, session)
-    return json.loads(response.data)
-
-
-def _get_scope_packages_(client, jwt, session):
-    """Get algorithms and return response object."""
-    headers = ss_client_auth_header(jwt)
-    response = client.get(API_URI_PREFIX + 'scope-package', headers=headers)
-    return response
