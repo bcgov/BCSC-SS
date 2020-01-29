@@ -19,7 +19,8 @@ from flask import g, request
 from flask_restplus import Namespace, Resource, cors
 from marshmallow import ValidationError
 
-from ..models.project import Project
+from ..models import Project, TechnicalReq
+from ..models.enums.project import ProjectStatus
 from ..schemas.project import ProjectSchema
 from ..utils.auth import jwt
 from ..utils.util import cors_preflight
@@ -52,8 +53,8 @@ class ProjectResource(Resource):
         return response, status
 
 
-@cors_preflight('GET,OPTIONS')
-@API.route('/<int:project_id>', methods=['GET', 'OPTIONS'])
+@cors_preflight('GET,PATCH,OPTIONS')
+@API.route('/<int:project_id>', methods=['GET', 'PATCH', 'OPTIONS'])
 class ProjectResourceById(Resource):
     """Resource for managing get project by id."""
 
@@ -65,3 +66,34 @@ class ProjectResourceById(Resource):
         project = Project.find_by_id(project_id)
 
         return ProjectSchema().dump(project), HTTPStatus.OK
+
+    @staticmethod
+    @cors.crossdomain(origin='*')
+    @jwt.requires_auth
+    def patch(project_id):
+        """Update project status."""
+        project_patch_json = request.get_json()
+
+        project = Project.find_by_id(project_id)
+        token_info = g.jwt_oidc_token_info
+        if 'update' in project_patch_json:
+            if project_patch_json['update'] == 'status' and \
+                    ProjectResourceById._validate_before_status_update_(project, project_patch_json.get('status')):
+
+                project.update_status(token_info.get('sub'), project_patch_json['status'])
+                return 'Updated successfully', HTTPStatus.OK
+
+        return 'Update failed', HTTPStatus.BAD_REQUEST
+
+    @staticmethod
+    def _validate_before_status_update_(project: Project, status):
+        """Validate the project details before updating status."""
+        if project is not None:
+            if status == ProjectStatus.DevSubmitted:
+                technical_req = TechnicalReq.find_by_project_id(project.id)
+                if technical_req is not None and \
+                    technical_req.scope_package_id is not None and \
+                        technical_req.no_of_test_account is not None:
+                    return True
+
+        return False

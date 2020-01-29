@@ -86,3 +86,10 @@ class Project(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
     def find_by_id(cls, project_id) -> Project:
         """Find project that matches the provided id."""
         return cls.query.filter_by(id=project_id).first()
+
+    def update_status(self, oauth_id: str, project_status: int):
+        """Update project status."""
+        current_user = User.find_by_oauth_id(oauth_id)
+        project_info = {'modified_by': current_user.id, 'status': project_status}
+        self.update_from_dict(['modified_by', 'status'], project_info)
+        self.commit()
