@@ -74,7 +74,7 @@
           <Button
             :disabled="!slectedNumber"
             :loading="isLoading"
-            class="white--text submit-package ml-6"
+            class="white--text submit-account ml-6"
             depressed
             @click="submitTestAccount"
           >{{$t('testAccount.Next')}}</Button>

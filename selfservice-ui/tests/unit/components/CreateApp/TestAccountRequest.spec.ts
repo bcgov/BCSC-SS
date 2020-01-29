@@ -50,7 +50,7 @@ describe('TestAccountRequest.vue', () => {
   it('select on package on click ', () => {
     const wrapper = mountFunction({});
     const event = jest.fn();
-    const button = wrapper.find('.select-package');
+    const button = wrapper.find('.test-account');
     wrapper.vm.$on('action-btn:clicked', event);
     button.trigger('click');
 
@@ -60,7 +60,7 @@ describe('TestAccountRequest.vue', () => {
   it('submit form with selected package on submit click ', () => {
     const wrapper = mountFunction({});
     const event = jest.fn();
-    const button = wrapper.find('.submit-package');
+    const button = wrapper.find('.submit-account');
     wrapper.vm.$on('action-btn:clicked', event);
     button.trigger('click');
 
