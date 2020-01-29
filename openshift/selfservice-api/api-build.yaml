@@ -8,17 +8,18 @@ objects:
 - kind: ImageStream
   apiVersion: v1
   metadata:
-    name: "${API_NAME}"
+    name: "${API_NAME}-${TAG_NAME}"
 - kind: BuildConfig
   apiVersion: v1
   metadata:
-    name: "${API_NAME}-build"
+    name: "${API_NAME}-build-${TAG_NAME}"
     labels:
-      app: "${API_NAME}-build"
+      app: "${API_NAME}-build-${TAG_NAME}"
   spec:
     triggers:
-    - type: ImageChange
-    - type: ConfigChange
+    - type: Github
+      github:
+        secret: bcsc-ss
     runPolicy: Serial
     source:
       type: Git
@@ -35,7 +36,7 @@ objects:
     output:
       to:
         kind: ImageStreamTag
-        name: "${API_NAME}:${OUTPUT_IMAGE_TAG}"
+        name: "${API_NAME}-${TAG_NAME}:${OUTPUT_IMAGE_TAG}"
     
 parameters:
 - name: API_NAME
@@ -82,5 +83,10 @@ parameters:
 - name: OUTPUT_IMAGE_TAG
   displayName: Output Image Tag
   description: The tag given to the built image.
+  required: true
+  value: dev
+- name: TAG_NAME
+  displayName: Name
+  description: The name assigned to all of the resources defined in this template.
   required: true
   value: dev

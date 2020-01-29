@@ -77,7 +77,7 @@ objects:
         from:
           kind: ImageStreamTag
           namespace: "${IMAGE_NAMESPACE}"
-          name: "${API_NAME}:${TAG_NAME}"
+          name: "${API_NAME}-${TAG_NAME}:${TAG_NAME}"
     - type: ConfigChange
     replicas: "${REPLICAS}"
     test: false
@@ -94,7 +94,7 @@ objects:
       spec:
         containers:
         - name: "${API_NAME}"
-          image: "${API_NAME}"
+          image: "${API_NAME}-${TAG_NAME}"
           imagePullPolicy: Always
           command:
             - gunicorn
