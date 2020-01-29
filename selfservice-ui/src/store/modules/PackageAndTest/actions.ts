@@ -30,7 +30,6 @@ export const actions: ActionTree<PackageState, RootState> = {
   async addPackagetoProject({ commit, rootState }, data) {
     commit('SET_LOADING', true);
     const { projectId, slectedPackage } = data;
-    // const packageData =
     await PackageAndTest.updatePackageProject(projectId, slectedPackage);
     // commit('SET_PACKAGELIST', packageData.data.scopePackage);
     router.push(`/project/${projectId}/test-account/`);
@@ -51,8 +50,6 @@ export const actions: ActionTree<PackageState, RootState> = {
       noOfTestAccount,
       noteTestAccount
     );
-    // commit('SET_PACKAGELIST', packageData.data.scopePackage);
-
     // router.push('/project/test-account/' + projectId);
     commit('SET_LOADING', false);
   }

@@ -15,7 +15,6 @@ const router = new VueRouter({
     {
       path: '/',
       name: 'home',
-      // meta: { requiresAuth: false, roles: ['ss_admin', 'offline_access'] },
       component: Home
     },
     {

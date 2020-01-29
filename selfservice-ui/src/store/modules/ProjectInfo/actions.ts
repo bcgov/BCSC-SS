@@ -76,7 +76,7 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
   async updateProjectInfo({ commit, dispatch }, data: any) {
     commit('SET_LOADING', true);
     try {
-      const projectinfo = await ProjectInfoService.updateProjectInfo(data);
+      await ProjectInfoService.updateProjectInfo(data);
       commit('SET_LOADING', false);
       commit('SET_PROJECTINFO_SUCCESSFULLY', true);
       commit('SET_PROJECTINFO_ERROR', false);
