@@ -107,7 +107,7 @@ def tagImage(srcHash, destination, imageStream){
 
 def deployAndVerify(srcHash, destination, imageStream){
   echo "Deploying ${imageStream} to ${destination}"
-  tagImage(srcHash, destination, imageStream)
+  // tagImage(srcHash, destination, imageStream)
   // verify deployment
   openshiftVerifyDeployment(
     deploymentConfig: "${imageStream}", 
