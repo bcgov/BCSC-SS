@@ -23,7 +23,8 @@ describe('AddProjectInfo.vue', () => {
     });
     wrapper = shallowMount(AddProjectInfo, {
       localVue,
-      store
+      store,
+      mocks: { $t: jest.fn(() => {}) } // tslint:disable-line
     });
   });
 
