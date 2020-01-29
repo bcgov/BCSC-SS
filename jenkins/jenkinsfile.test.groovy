@@ -21,8 +21,8 @@ WEB_IMAGESTREAM_NAME = common.WEB_NAME + "-" + common.web_environments.test.tag
 WEB_NAME = common.WEB_NAME
 
 // Selfservice-db parameters
-DB_BUILD = common.DB_NAME + "-build-" + common.web_environments.test.tag
-DB_IMAGESTREAM_NAME = common.DB_NAME + "-" + common.web_environments.test.tag
+DB_BUILD = common.DB_NAME + "-build-"
+DB_IMAGESTREAM_NAME = common.DB_NAME
 
 // SelfService-Api parameters
 API_BUILD = common.API_NAME + "-build-" + common.web_environments.test.tag
