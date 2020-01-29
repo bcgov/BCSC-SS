@@ -6,7 +6,7 @@
         <v-btn icon @click="$router.push('/project/')" aria-label="Back Button">
           <v-icon>mdi-arrow-left</v-icon>
         </v-btn>
-        <v-toolbar-title>Project information</v-toolbar-title>
+        <v-toolbar-title>{{$t('projectInfo.ProjectInfoTitle')}}</v-toolbar-title>
         <v-spacer></v-spacer>
       </v-app-bar>
       <v-form ref="form" v-model="form">
@@ -14,23 +14,23 @@
           <v-row dense>
             <v-col cols="12" md="12">
               <v-card class="pa-4 pt-6">
-                <v-card-title class="headline">Project information</v-card-title>
-                <v-card-subtitle class="text-left">Tell us about your Project</v-card-subtitle>
+                <v-card-title class="headline">{{$t('projectInfo.ProjectInfoTitle')}}</v-card-title>
+                <v-card-subtitle class="text-left">{{$t('projectInfo.ProjectInfoTitleInfo')}}</v-card-subtitle>
                 <Input
                   v-model="organizationName"
                   counter="100"
-                  label="Organization name"
+                  :label="$t('projectInfo.OrganizationName')"
                   type="text"
                   :rules="[
-                    rules.required,
-                    rules.length(2),
-                    rules.maxLength(100)
-                  ]"
+                rules.required,
+                rules.length(2),
+                rules.maxLength(100)
+                ]"
                 />
                 <Input
                   v-model="projectName"
                   counter="100"
-                  label="Project name"
+                  :label="$t('projectInfo.projectName')"
                   type="text"
                   :rules="[
                     rules.required,
@@ -40,7 +40,7 @@
                 />
                 <TextArea
                   v-model="description"
-                  label="Description"
+                  :label="$t('projectInfo.Description')"
                   type="text"
                   :rules="[rules.required]"
                 />
@@ -49,26 +49,39 @@
 
             <v-col cols="12">
               <v-card class="pa-4 pt-6">
-                <v-card-title class="headline">Project Roles</v-card-title>
-                <v-card-subtitle class="text-left">Tell us about your role in this project</v-card-subtitle>
+                <v-card-title class="headline">{{$t('projectInfo.ProjectRoles')}}</v-card-title>
+                <v-card-subtitle class="text-left">{{$t('projectInfo.RolesTitleInfo')}}</v-card-subtitle>
                 <v-radio-group v-model.number="myRole" row>
-                  I am
+                  {{$t('projectInfo.Iam')}}
                   <v-radio label="Developer" v-bind:value="1"></v-radio>
                   <v-radio label="Manager" v-bind:value="2"></v-radio>
-                  <v-radio label="CTO" v-bind:value="3"></v-radio>For this project
+                  <v-radio label="CTO" v-bind:value="3"></v-radio>
+                  {{$t('projectInfo.ForProject')}}
                 </v-radio-group>
               </v-card>
             </v-col>
 
             <!-- <v-form ref="form" v-model="form" class="pa-4 pt-6"> -->
             <v-col cols="12" sm="6" v-if="myRole !== 2">
-              <ProjectUsers :userDetails="users[1]" :rules="rules" title="Manager" />
+              <ProjectUsers
+                :userDetails="users[1]"
+                :rules="rules"
+                :title="$t('projectInfo.ManagerRole')"
+              />
             </v-col>
             <v-col cols="12" sm="6" v-if="myRole !== 3">
-              <ProjectUsers :userDetails="users[2]" :rules="rules" title="CTO" />
+              <ProjectUsers
+                :userDetails="users[2]"
+                :rules="rules"
+                :title="$t('projectInfo.CTORole')"
+              />
             </v-col>
             <v-col cols="12" sm="6" v-if="myRole !== 1">
-              <ProjectUsers :userDetails="users[0]" :rules="rules" title="Developer" />
+              <ProjectUsers
+                :userDetails="users[0]"
+                :rules="rules"
+                :title="$t('projectInfo.DeveloperRole')"
+              />
             </v-col>
 
             <v-col cols="12">
@@ -84,7 +97,7 @@
                     color="indigo accent-4"
                     depressed
                     @click="addProjectInfo"
-                  >Next</Button>
+                  >{{$t('Next')}}</Button>
                 </v-card-actions>
               </v-card>
             </v-col>
@@ -170,8 +183,6 @@ export default class AddProjectInfo extends Vue {
       return user.role !== this.myRole;
     });
 
-    // const usersList = this.users.splice(1, 2);
-    // console.log('usersList', usersList);
     const data: ProjectInfoModel = {
       organizationName: this.organizationName,
       projectName: this.projectName,

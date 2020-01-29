@@ -15,7 +15,6 @@ const router = new VueRouter({
     {
       path: '/',
       name: 'home',
-      // meta: { requiresAuth: false, roles: ['ss_admin', 'offline_access'] },
       component: Home
     },
     {
@@ -34,7 +33,15 @@ const router = new VueRouter({
         import(/* webpackChunkName: "About" */ '../views/About.vue')
     },
     {
-      path: '/project/:step?/:id?',
+      path: '/project/info',
+      name: 'project-info',
+      meta: { requiresAuth: true, roles: ['ss_client', 'ss_admin'] },
+      props: true,
+      component: () =>
+        import(/* webpackChunkName: "project" */ '../views/Project.vue')
+    },
+    {
+      path: '/project/:id?/:step?',
       name: 'project',
       meta: { requiresAuth: true, roles: ['ss_client', 'idir', 'ss_admin'] },
       props: true,
