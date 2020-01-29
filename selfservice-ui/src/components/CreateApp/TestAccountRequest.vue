@@ -67,7 +67,7 @@
         <v-card-actions class="mx-4">
           <v-spacer></v-spacer>
           <Button
-            @click="$router.push('/project/package/' + projectId)"
+            @click="$router.push(`/project/${projectId}/package/`)"
             aria-label="Back Button"
             secondary
           >{{$t('testAccount.Back')}}</Button>

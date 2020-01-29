@@ -77,9 +77,14 @@
                   <!-- <v-btn text @click="$refs.form.reset()">Clear</v-btn> -->
                   <v-spacer></v-spacer>
                   <Button
+                    @click="$router.push(`/project/${projectId}/info/`)"
+                    aria-label="Back Button"
+                    secondary
+                  >Go Back</Button>
+                  <Button
                     :disabled="!form"
                     :loading="isLoading"
-                    class="white--text submit-req"
+                    class="white--text submit-req ml-6"
                     depressed
                     @click="addTechnicalReq"
                   >Next</Button>
