@@ -16,5 +16,20 @@
     "special_notes": "Special requests or notes for test account creation",
     "Next": "Next",
     "Back": "Go Back"
+  },
+  "projectInfo": {
+    "ProjectInfoTitle": "Project information",
+    "ProjectInfoTitleInfo": "Tell us about your Project",
+    "OrganizationName": "Organization name",
+    "projectName": "project name",
+    "Description": "Description",
+    "ProjectRoles": "Project Roles",
+    "RolesTitleInfo": "Tell us about your role in this project",
+    "Iam": "I am",
+    "ForProject": "For this project",
+    "ManagerRole": "Manager",
+    "CTORole": "CTO",
+    "DeveloperRole": "Developer",
+    "Next": "Next"
   }
 }
