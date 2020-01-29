@@ -31,9 +31,9 @@
           </v-col>
 
           <v-col v-for="(testAccount, idx) in noOfTestAccounts" :key="idx" class="card-width">
-            <v-item v-slot:default="{ active }" :value="testAccount" class="select-package">
+            <v-item v-slot:default="{ active }" :value="testAccount" class="test-account">
               <v-card
-                class="d-flex align-center pa-4 select-package"
+                class="d-flex align-center pa-4 test-account"
                 :class="active ? 'active-bg' : ''"
                 @click="selectedTestAccount(testAccount)"
               >
