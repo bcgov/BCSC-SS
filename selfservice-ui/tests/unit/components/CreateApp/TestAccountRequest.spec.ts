@@ -42,28 +42,28 @@ describe('TestAccountRequest.vue', () => {
   };
 
   it('renders props when passed', () => {
-    const wrapper = mountFunction({});
+    const TestReqWrapper = mountFunction({});
 
-    expect(wrapper.element).toMatchSnapshot();
+    expect(TestReqWrapper.element).toMatchSnapshot();
   });
 
   it('select on package on click ', () => {
-    const wrapper = mountFunction({});
+    const TestReqWrapper = mountFunction({});
     const event = jest.fn();
-    const button = wrapper.find('.test-account');
-    wrapper.vm.$on('action-btn:clicked', event);
+    const button = TestReqWrapper.find('.test-account');
+    TestReqWrapper.vm.$on('action-btn:clicked', event);
     button.trigger('click');
 
-    expect(wrapper.element).toMatchSnapshot();
+    expect(TestReqWrapper.element).toMatchSnapshot();
   });
 
   it('submit form with selected package on submit click ', () => {
-    const wrapper = mountFunction({});
+    const TestReqWrapper = mountFunction({});
     const event = jest.fn();
-    const button = wrapper.find('.submit-account');
-    wrapper.vm.$on('action-btn:clicked', event);
+    const button = TestReqWrapper.find('.submit-account');
+    TestReqWrapper.vm.$on('action-btn:clicked', event);
     button.trigger('click');
 
-    expect(wrapper.element).toMatchSnapshot();
+    expect(TestReqWrapper.element).toMatchSnapshot();
   });
 });
