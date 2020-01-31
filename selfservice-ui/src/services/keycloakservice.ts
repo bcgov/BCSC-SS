@@ -103,7 +103,12 @@ export default class KeycloakService {
     return KeycloakService.keycloak;
   }
 
-  public static init(next: any, silentCheckSsoRedirectUri: string, roles: []) {
+  public static init(
+    next: any,
+    silentCheckSsoRedirectUri: string,
+    roles: [],
+    fromUrl: string = ''
+  ) {
     const storeState = store.state;
     const isLoggedin = storeState.KeyCloakModule.authenticated;
     if (isLoggedin) {
@@ -118,7 +123,8 @@ export default class KeycloakService {
           store.dispatch('KeyCloakModule/setKeyCloakAuth', {
             keycloak: KeycloakService.keycloak,
             path: silentCheckSsoRedirectUri,
-            next
+            next,
+            fromUrl
           });
 
           store.dispatch(

@@ -97,7 +97,7 @@
                     color="indigo accent-4"
                     depressed
                     @click="addProjectInfo"
-                  >{{$t('Next')}}</Button>
+                  >{{$t('projectInfo.Next')}}</Button>
                 </v-card-actions>
               </v-card>
             </v-col>
