@@ -75,16 +75,13 @@ router.beforeEach((to, from, next) => {
     } else if (to.name === 'login') {
       const { redirect = '/login' } = to.params;
       KeycloakService.init(next, redirect, to.meta.roles, '/login');
-      // debugger;
     } else if (sessionStorage.getItem('keycloak_token')) {
       KeycloakService.init(next, to.path, to.meta.roles);
-      // debugger;
     } else {
       next({
         name: 'login',
         params: { redirect: to.path }
       });
-      // KeycloakService.init(next, '/login', to.meta.roles);
     }
   } else {
     next();
