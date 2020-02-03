@@ -40,7 +40,7 @@
                 <div
                   v-for="(redirectUri, index) in redirectUris"
                   v-bind:key="index"
-                  class="row v-form pa-4 pt-6"
+                  class="row v-form px-4"
                 >
                   <v-text-field
                     v-model="redirectUris[index]"
@@ -50,6 +50,7 @@
                     @blur="addUri"
                     append-icon="mdi-minus"
                     @click:append="clearUri(index)"
+                    @click:prepend="addUri"
                     :rules="[rules.url]"
                     class="addUri"
                     outlined
@@ -62,6 +63,7 @@
                   label="JWKS URL"
                   type="text"
                   :rules="[rules.required, rules.url, rules.maxLength(500)]"
+                  class="pt-6"
                 />
                 <div class="row">
                   <div class="col-5">
