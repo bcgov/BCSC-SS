@@ -162,9 +162,13 @@ deploy  code challenge project to multiple environments to Local (Docker Compose
 
 ## Openshift
 
-####  Pipeline Architecture
+####  System Architecture
 
-`Please update Architecture`
+<img src="./openshift/SystemArchitecture.png" width=400>
+
+#### Branching Strategy
+
+Branching and release strategy: [Branching_and_release.pdf](./openshift/branching_and_release.pdf)
 
 #### prerequisites
 
