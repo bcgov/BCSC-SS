@@ -18,6 +18,7 @@
                 <v-card-subtitle
                   class="text-left padding-0"
                 >{{$t('projectInfo.ProjectInfoTitleInfo')}}</v-card-subtitle>
+                <v-card-title class="font-regular padding-0">{{$t('projectInfo.ProjectOrgTitle')}}</v-card-title>
                 <Input
                   v-model="organizationName"
                   counter="100"
@@ -46,6 +47,7 @@
                   type="text"
                   :rules="[rules.required]"
                   outlined
+                  :hint="$t('projectInfo.DescriptionHint')"
                 />
               </v-card>
             </v-col>
@@ -55,7 +57,7 @@
                 <v-card-title class="headline padding-0">{{$t('projectInfo.ProjectRoles')}}</v-card-title>
                 <v-card-subtitle class="text-left padding-0">{{$t('projectInfo.RolesTitleInfo')}}</v-card-subtitle>
                 <v-radio-group v-model.number="myRole" row color="black">
-                  <span class="mr-2">{{$t('projectInfo.Iam')}}</span>
+                  <span class="mr-2">{{$t('projectInfo.myRole')}}</span>
                   <v-radio class="black-color" v-bind:value="1">
                     <template v-slot:label>
                       <span class="black-color">Developer</span>
@@ -71,7 +73,6 @@
                       <span class="black-color">CTO</span>
                     </template>
                   </v-radio>
-                  {{$t('projectInfo.ForProject')}}
                 </v-radio-group>
               </v-card>
             </v-col>

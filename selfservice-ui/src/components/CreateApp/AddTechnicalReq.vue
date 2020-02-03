@@ -25,7 +25,7 @@
                 >-->
                 <v-card-title
                   class="headline padding-0 text-capitalize"
-                >{{ getSingleProjectInfo && getSingleProjectInfo.projectName }}</v-card-title>
+                >Project name: {{ getSingleProjectInfo && getSingleProjectInfo.projectName }}</v-card-title>
 
                 <Input
                   v-model="clientUri"
@@ -35,7 +35,9 @@
                   :rules="[rules.required, rules.url, rules.maxLength(500)]"
                 />
                 <!-- <div class="col-12"> -->
-                <v-card-subtitle class="text-left padding-0">Input redirect values</v-card-subtitle>
+                <v-card-subtitle
+                  class="text-left padding-0"
+                >Input the URL(s) of your redirect location(s). You may have multiple values. If you do have multiple redirects, use one field for each URL.</v-card-subtitle>
                 <!-- </div> -->
                 <div
                   v-for="(redirectUri, index) in redirectUris"
@@ -57,6 +59,9 @@
                   ></v-text-field>
                   <!-- :rules="[rules.required]" -->
                 </div>
+                <v-card-subtitle
+                  class="text-left padding-0"
+                >The JSON Web Key Set (JWKS) is a set of keys containing the public keys that are used to verify the JSON Web Token (JWT) issued by the authorization server and signed using the RS256 signing algorithm.</v-card-subtitle>
                 <Input
                   v-model="jwksUri"
                   counter="500"
