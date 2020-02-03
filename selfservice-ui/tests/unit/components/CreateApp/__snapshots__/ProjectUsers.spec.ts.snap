@@ -2,18 +2,18 @@
 
 exports[`ProjectUsers.vue renders props when passed 1`] = `
 <v-card-stub
-  class="v-form pa-4 pt-6"
+  class="v-form pa-8 pt-6 ma-3"
   loaderheight="4"
   tag="div"
 >
   <v-card-title-stub
-    class="headline"
+    class="headline padding-0"
   >
     
   </v-card-title-stub>
    
   <v-card-subtitle-stub
-    class="text-left"
+    class="text-left padding-0"
   >
     Tell us about your 
   </v-card-subtitle-stub>

@@ -24,7 +24,7 @@
                   >Tell us about your Project</v-card-subtitle
                 >-->
                 <v-card-title
-                  class="headline"
+                  class="headline padding-0 text-capitalize"
                 >{{ getSingleProjectInfo && getSingleProjectInfo.projectName }}</v-card-title>
 
                 <Input
@@ -34,6 +34,9 @@
                   type="text"
                   :rules="[rules.required, rules.url, rules.maxLength(500)]"
                 />
+                <!-- <div class="col-12"> -->
+                <v-card-subtitle class="text-left padding-0">Input redirect values</v-card-subtitle>
+                <!-- </div> -->
                 <div
                   v-for="(redirectUri, index) in redirectUris"
                   v-bind:key="index"
@@ -49,6 +52,7 @@
                     @click:append="clearUri(index)"
                     :rules="[rules.url]"
                     class="addUri"
+                    outlined
                   ></v-text-field>
                   <!-- :rules="[rules.required]" -->
                 </div>
@@ -59,18 +63,28 @@
                   type="text"
                   :rules="[rules.required, rules.url, rules.maxLength(500)]"
                 />
-                <Select
-                  v-model="idTokenSignedResponseAlg"
-                  label="ID Token Signature Algorithm"
-                  :items="tokenAlgoritham"
-                  :rules="[rules.required]"
-                />
-                <Select
-                  v-model="userinfoSignedResponseAlg"
-                  label="User Info Signed Response Algorithm"
-                  :items="userAlgoritham"
-                  :rules="[rules.required]"
-                />
+                <div class="row">
+                  <div class="col-5">
+                    <Select
+                      v-model="idTokenSignedResponseAlg"
+                      label="ID Token Signature Algorithm"
+                      :items="tokenAlgoritham"
+                      :rules="[rules.required]"
+                      outlined
+                    />
+                  </div>
+                  <v-spacer />
+                  <div class="col-5">
+                    <Select
+                      v-model="userinfoSignedResponseAlg"
+                      label="User Info Signed Response Algorithm"
+                      :items="userAlgoritham"
+                      :rules="[rules.required]"
+                      outlined
+                      class="col-6"
+                    />
+                  </div>
+                </div>
                 <!-- </v-form> -->
                 <v-divider></v-divider>
                 <v-card-actions>
@@ -224,3 +238,8 @@ export default class AddTechnicalReq extends Vue {
   }
 }
 </script>
+<style lang="scss" scoped>
+.padding-0 {
+  padding-left: 0px !important;
+}
+</style>

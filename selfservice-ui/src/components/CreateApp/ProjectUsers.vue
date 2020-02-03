@@ -1,11 +1,9 @@
 /** * CreateApp of app */
 
 <template>
-  <v-card class="v-form pa-4 pt-6">
-    <v-card-title class="headline">{{ title }}</v-card-title>
-    <v-card-subtitle class="text-left"
-      >Tell us about your {{ title }}</v-card-subtitle
-    >
+  <v-card class="v-form pa-8 pt-6 ma-3">
+    <v-card-title class="headline padding-0">{{ title }}</v-card-title>
+    <v-card-subtitle class="text-left padding-0">Tell us about your {{ title }}</v-card-subtitle>
     <Input
       v-model="userDetails.firstName"
       label="First Name"
@@ -61,4 +59,7 @@ export default class ProjectUsers extends Vue {
 
 <style lang="scss" scoped>
 @import './../../assets/styles/theme.scss';
+.padding-0 {
+  padding-left: 0px !important;
+}
 </style>

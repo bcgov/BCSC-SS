@@ -2,7 +2,7 @@
 
 <template>
   <v-card class="mx-auto" style="max-width: 80%;">
-    <v-toolbar flat class="bc-subtitle" dark>
+    <v-toolbar flat class="bc-subtitle padding-0" dark>
       <v-btn icon @click="$router.push('/project/package/' + projectId)" aria-label="Back Button">
         <v-icon>mdi-arrow-left</v-icon>
       </v-btn>
