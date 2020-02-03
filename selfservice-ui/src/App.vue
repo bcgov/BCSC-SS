@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <Header />
+    <Header :verticalMenu="verticalMenu" />
     <v-content>
       <v-container fluid class="main-content">
         <router-view />
@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import Header from '@/components/Header/Header.vue';
 import Footer from '@/components/Footer/Footer.vue';
 
@@ -21,7 +21,18 @@ import Footer from '@/components/Footer/Footer.vue';
     Footer
   }
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  private sidebarMenuList = ['Home'];
+  private verticalMenu: boolean = false;
+  constructor() {
+    super();
+  }
+
+  private created() {
+    const { showVerticalMenu = false } = this.$route.meta;
+    this.verticalMenu = showVerticalMenu || false;
+  }
+}
 </script>
 
 <style lang="scss">
