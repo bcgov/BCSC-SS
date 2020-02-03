@@ -2,16 +2,12 @@ import { mount, createLocalVue } from '@vue/test-utils';
 import TestAccountRequest from '@/components/CreateApp/TestAccountRequest.vue';
 import Vuetify from 'vuetify';
 import Vuex from 'vuex';
-import i18n from '@/i18n';
-// import Vue from 'vue';
 
 describe('TestAccountRequest.vue', () => {
   let vuetify: any;
   const localVue = createLocalVue();
-  // tslint:disable-next-line
-  const $t = jest.fn(() => {});
 
-  localVue.use(Vuetify);
+  const $t = localVue.use(Vuetify);
   localVue.use(Vuex);
   vuetify = new Vuetify();
   const store = new Vuex.Store({
@@ -36,7 +32,7 @@ describe('TestAccountRequest.vue', () => {
       store,
       vuetify,
       localVue,
-      mocks: { $t },
+      mocks: { $t: jest.fn(() => {}) }, // tslint:disable-line
       ...options
     });
   };

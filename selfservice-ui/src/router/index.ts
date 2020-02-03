@@ -15,7 +15,6 @@ const router = new VueRouter({
     {
       path: '/',
       name: 'home',
-      // meta: { requiresAuth: false, roles: ['ss_admin', 'offline_access'] },
       component: Home
     },
     {
@@ -34,7 +33,15 @@ const router = new VueRouter({
         import(/* webpackChunkName: "About" */ '../views/About.vue')
     },
     {
-      path: '/project/:step?/:id?',
+      path: '/project/info',
+      name: 'project-info',
+      meta: { requiresAuth: true, roles: ['ss_client', 'ss_admin'] },
+      props: true,
+      component: () =>
+        import(/* webpackChunkName: "project" */ '../views/Project.vue')
+    },
+    {
+      path: '/project/:id?/:step?',
       name: 'project',
       meta: { requiresAuth: true, roles: ['ss_client', 'idir', 'ss_admin'] },
       props: true,
@@ -56,6 +63,7 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   // redirect to login page if not logged in and trying to access a restricted page
   // check login status
+
   const isLoggedin = store.state.KeyCloakModule.authenticated;
   if (to.meta.requiresAuth) {
     if (isLoggedin) {
@@ -64,11 +72,16 @@ router.beforeEach((to, from, next) => {
       } else {
         next({ name: 'Unauthorized' });
       }
+    } else if (to.name === 'login') {
+      const { redirect = '/login' } = to.params;
+      KeycloakService.init(next, redirect, to.meta.roles, '/login');
     } else if (sessionStorage.getItem('keycloak_token')) {
       KeycloakService.init(next, to.path, to.meta.roles);
-      // debugger;
     } else {
-      KeycloakService.init(next, '/login', to.meta.roles);
+      next({
+        name: 'login',
+        params: { redirect: to.path }
+      });
     }
   } else {
     next();

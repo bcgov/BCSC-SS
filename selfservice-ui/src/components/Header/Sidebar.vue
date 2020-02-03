@@ -3,16 +3,10 @@
 <template>
   <v-card class="mx-auto">
     <v-navigation-drawer app clipped fixed height="100%" permanent>
-      <!-- v-model="drawer" -->
-      <v-list dark="">
+      <v-list dark>
         <v-list-item>
           <v-list-item-content>
-            <v-list-item-title class="title">
-              Self Service
-            </v-list-item-title>
-            <!-- <v-list-item-subtitle>
-              subtext
-            </v-list-item-subtitle> -->
+            <v-list-item-title class="title">Self Service</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
 
@@ -26,9 +20,7 @@
 
             <v-list-item-content>
               <v-list-item-title :to="item.title">
-                <Link :to="item.link">
-                  {{ item.title }}
-                </Link>
+                <Link :to="item.link">{{ item.title }}</Link>
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
@@ -54,7 +46,7 @@ export default class Sidebar extends Vue {
   @Prop() private drawer!: boolean;
   private items: any = [
     { title: 'Dashboard', icon: 'mdi-view-dashboard', link: '/' },
-    { title: 'Create Project', icon: 'mdi-plus-circle', link: '/project' },
+    { title: 'Create Project', icon: 'mdi-plus-circle', link: '/project/info' },
     { title: 'About', icon: 'mdi-help-box', link: '/about' }
   ];
 }
