@@ -36,12 +36,12 @@ Our vision: Make it easier for public organizations to offer the widely used BC 
 
 
 * `selfservice-api`: Selfservice-api is an python application and runs a backend functionality and will be an dockerized application. API directory consists Dockerfile, flask api, tests.
-  ## Technology Stack
+  ##### Technology Stack
   * Python, Flask
   * Postgres - SQLAlchemy, psycop2-binary & alembic
 
 * `selfservice-ui`: Selfservice-UI is a frontend Vue application exposed over https:443.
-  ## Technology Stack
+  ##### Technology Stack
   * Vue, Vuex, Vuetify, webpack, vue-i18n
   * Styleguidist, keycloak-js, babel
   * Jest, Istanbul
