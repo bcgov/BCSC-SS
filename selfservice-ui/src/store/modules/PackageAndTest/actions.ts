@@ -50,7 +50,7 @@ export const actions: ActionTree<PackageState, RootState> = {
       noOfTestAccount,
       noteTestAccount
     );
-    // router.push('/project/test-account/' + projectId);
+    router.push(`/project/${projectId}/summary/`);
     commit('SET_LOADING', false);
   }
 };
