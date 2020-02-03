@@ -15,7 +15,9 @@ const router = new VueRouter({
     {
       path: '/',
       name: 'home',
-      component: Home
+      meta: { showVerticalMenu: true },
+      component: Home,
+      props: true
     },
     {
       path: '/login',

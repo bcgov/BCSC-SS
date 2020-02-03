@@ -1,7 +1,7 @@
 /** * Header of app */
 
 <template>
-  <v-card class="mx-auto">
+  <v-card class="mx-auto" :class="className">
     <v-navigation-drawer app clipped fixed height="100%" permanent>
       <v-list dark>
         <v-list-item>
@@ -44,6 +44,8 @@ const KeyCloakModule = namespace('KeyCloakModule');
 })
 export default class Sidebar extends Vue {
   @Prop() private drawer!: boolean;
+  @Prop({ default: '' }) private className!: boolean;
+
   private items: any = [
     { title: 'Dashboard', icon: 'mdi-view-dashboard', link: '/' },
     { title: 'Create Project', icon: 'mdi-plus-circle', link: '/project/info' },

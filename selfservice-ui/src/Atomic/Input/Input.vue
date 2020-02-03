@@ -11,6 +11,7 @@ important action on your service, such as Download or Submit. */
     v-bind="$attrs"
     @blur="$emit('blur')"
     class="input"
+    outlined
   ></v-text-field>
   <!-- outlined -->
 </template>

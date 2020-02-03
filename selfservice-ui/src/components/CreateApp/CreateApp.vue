@@ -6,6 +6,7 @@
     <AddProjectInfo v-if="step === 'info'" :id="id" />
     <PackageSelect v-if="step === 'package'" :id="id" />
     <TestAccountRequest v-if="step === 'test-account'" :id="id" />
+    <ProjectSummary v-if="step === 'summary'" :id="id" />
   </div>
 </template>
 
@@ -15,13 +16,15 @@ import AddProjectInfo from '@/components/CreateApp/AddProjectInfo.vue';
 import AddTechnicalReq from '@/components/CreateApp/AddTechnicalReq.vue';
 import PackageSelect from '@/components/CreateApp/PackageSelect.vue';
 import TestAccountRequest from '@/components/CreateApp/TestAccountRequest.vue';
+import ProjectSummary from '@/components/CreateApp/ProjectSummary.vue';
 
 @Component({
   components: {
     AddProjectInfo,
     AddTechnicalReq,
     PackageSelect,
-    TestAccountRequest
+    TestAccountRequest,
+    ProjectSummary
   }
 })
 export default class CreateApp extends Vue {
