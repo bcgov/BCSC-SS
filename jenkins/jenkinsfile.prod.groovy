@@ -30,6 +30,10 @@ API_NAME = common.API_NAME
 
 
 
+stage('Approval Stage for BC Service Card Self Service') {
+  timeout(time:7, unit: 'DAYS'){ input "Would you like to BC Service Card Application to ${common.web_environments.prod.tag}?"}
+}
+
 stage('Build ' + WEB_IMAGESTREAM_NAME) {
   node{
     openshift.withProject() {
