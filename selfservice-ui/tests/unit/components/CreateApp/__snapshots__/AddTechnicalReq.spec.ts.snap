@@ -62,7 +62,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
               <div
                 class="v-card__title headline padding-0 text-capitalize"
               >
-                
+                Project name: 
               </div>
                
               <div
@@ -132,7 +132,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
               <div
                 class="v-card__subtitle text-left padding-0"
               >
-                Input redirect values
+                Input the URL(s) of your redirect location(s). You may have multiple values. If you do have multiple redirects, use one field for each URL.
               </div>
                
               <div
@@ -202,6 +202,12 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                     </div>
                   </div>
                 </div>
+              </div>
+               
+              <div
+                class="v-card__subtitle text-left padding-0"
+              >
+                The JSON Web Key Set (JWKS) is a set of keys containing the public keys that are used to verify the JSON Web Token (JWT) issued by the authorization server and signed using the RS256 signing algorithm.
               </div>
                
               <div
@@ -589,7 +595,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
               <div
                 class="v-card__title headline padding-0 text-capitalize"
               >
-                
+                Project name: 
               </div>
                
               <div
@@ -659,7 +665,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
               <div
                 class="v-card__subtitle text-left padding-0"
               >
-                Input redirect values
+                Input the URL(s) of your redirect location(s). You may have multiple values. If you do have multiple redirects, use one field for each URL.
               </div>
                
               <div
@@ -729,6 +735,12 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                     </div>
                   </div>
                 </div>
+              </div>
+               
+              <div
+                class="v-card__subtitle text-left padding-0"
+              >
+                The JSON Web Key Set (JWKS) is a set of keys containing the public keys that are used to verify the JSON Web Token (JWT) issued by the authorization server and signed using the RS256 signing algorithm.
               </div>
                
               <div
@@ -1116,7 +1128,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
               <div
                 class="v-card__title headline padding-0 text-capitalize"
               >
-                
+                Project name: 
               </div>
                
               <div
@@ -1186,7 +1198,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
               <div
                 class="v-card__subtitle text-left padding-0"
               >
-                Input redirect values
+                Input the URL(s) of your redirect location(s). You may have multiple values. If you do have multiple redirects, use one field for each URL.
               </div>
                
               <div
@@ -1256,6 +1268,12 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                     </div>
                   </div>
                 </div>
+              </div>
+               
+              <div
+                class="v-card__subtitle text-left padding-0"
+              >
+                The JSON Web Key Set (JWKS) is a set of keys containing the public keys that are used to verify the JSON Web Token (JWT) issued by the authorization server and signed using the RS256 signing algorithm.
               </div>
                
               <div
