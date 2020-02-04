@@ -54,25 +54,30 @@ exports[`AddProjectInfo.vue renders props when passed 1`] = `
             tag="div"
           >
             <v-card-stub
-              class="pa-4 pt-6"
+              class="pa-8 pt-6 ma-3"
               loaderheight="4"
               tag="div"
             >
               <v-card-title-stub
-                class="headline"
+                class="headline padding-0"
               >
                 
               </v-card-title-stub>
                
               <v-card-subtitle-stub
-                class="text-left"
+                class="text-left padding-0"
+              />
+               
+              <v-card-title-stub
+                class="font-regular padding-0"
               >
                 
-              </v-card-subtitle-stub>
+              </v-card-title-stub>
                
               <input-stub
                 counter="100"
                 label=""
+                outlined="true"
                 rules="v => !!v || 'This field is required',v => (v || '').length >= len || 'Invalid character length, required ' + len,v => (v || '').length <= len || 'Invalid character length, max length ' + len"
                 type="text"
                 value=""
@@ -81,6 +86,7 @@ exports[`AddProjectInfo.vue renders props when passed 1`] = `
               <input-stub
                 counter="100"
                 label=""
+                outlined="true"
                 rules="v => !!v || 'This field is required',v => (v || '').length >= len || 'Invalid character length, required ' + len,v => (v || '').length <= len || 'Invalid character length, max length ' + len"
                 type="text"
                 value=""
@@ -89,6 +95,7 @@ exports[`AddProjectInfo.vue renders props when passed 1`] = `
               <textarea-stub
                 counter=""
                 label=""
+                outlined=""
                 rules="v => !!v || 'This field is required'"
                 type="text"
                 value=""
@@ -101,18 +108,18 @@ exports[`AddProjectInfo.vue renders props when passed 1`] = `
             tag="div"
           >
             <v-card-stub
-              class="pa-4 pt-6"
+              class="pa-8 pt-6 ma-3"
               loaderheight="4"
               tag="div"
             >
               <v-card-title-stub
-                class="headline"
+                class="headline padding-0"
               >
                 
               </v-card-title-stub>
                
               <v-card-subtitle-stub
-                class="text-left"
+                class="text-left padding-0"
               >
                 
               </v-card-subtitle-stub>
@@ -120,6 +127,7 @@ exports[`AddProjectInfo.vue renders props when passed 1`] = `
               <v-radio-group-stub
                 activeclass="v-item--active"
                 backgroundcolor=""
+                color="black"
                 column="true"
                 errorcount="1"
                 errormessages=""
@@ -154,11 +162,14 @@ exports[`AddProjectInfo.vue renders props when passed 1`] = `
   });
 }"
               >
-                
-                
-                
+                <span
+                  class="mr-2"
+                >
+                  
+                </span>
+                 
                 <v-radio-stub
-                  label="Developer"
+                  class="black-color"
                   officon="$radioOff"
                   onicon="$radioOn"
                   ripple="true"
@@ -174,15 +185,11 @@ exports[`AddProjectInfo.vue renders props when passed 1`] = `
                 />
                  
                 <v-radio-stub
-                  label="CTO"
                   officon="$radioOff"
                   onicon="$radioOn"
                   ripple="true"
                   value="3"
                 />
-                
-                
-              
               </v-radio-group-stub>
             </v-card-stub>
           </v-col-stub>

@@ -10,7 +10,8 @@ describe('Sidebar.vue', () => {
     localVue.use(vuetify);
 
     wrapper = shallowMount(Sidebar, {
-      localVue
+      localVue,
+      mocks: { $t: jest.fn(() => {}) } // tslint:disable-line
     });
   });
 

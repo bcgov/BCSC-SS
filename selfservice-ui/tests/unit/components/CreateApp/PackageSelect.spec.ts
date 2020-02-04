@@ -45,6 +45,7 @@ describe('PackageSelect.vue', () => {
       store,
       vuetify,
       localVue,
+      mocks: { $t: jest.fn(() => {}) }, // tslint:disable-line
       ...options
     });
   };

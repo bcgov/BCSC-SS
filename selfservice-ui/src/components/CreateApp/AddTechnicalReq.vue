@@ -5,10 +5,10 @@
     <v-alert type="error" v-if="errorStatus">Something went wrong...</v-alert>-->
     <v-card class="mx-auto">
       <v-app-bar dark class="bc-subtitle">
-        <v-btn icon @click="$router.push('/project/info/' + projectId)" aria-label="Back Button">
+        <v-btn icon @click="$router.push(`/project/${projectId}/info/`)" aria-label="Back Button">
           <v-icon>mdi-arrow-left</v-icon>
         </v-btn>
-        <v-toolbar-title>Technical requirments</v-toolbar-title>
+        <v-toolbar-title>{{$t('technicalRequirements.technicalTitle')}}</v-toolbar-title>
         <v-spacer></v-spacer>
       </v-app-bar>
 
@@ -24,53 +24,74 @@
                   >Tell us about your Project</v-card-subtitle
                 >-->
                 <v-card-title
-                  class="headline"
-                >{{ getSingleProjectInfo && getSingleProjectInfo.projectName }}</v-card-title>
+                  class="headline padding-0 text-capitalize"
+                >{{$t('technicalRequirements.projectName')}}{{ getSingleProjectInfo && getSingleProjectInfo.projectName }}</v-card-title>
 
                 <Input
                   v-model="clientUri"
                   counter="500"
-                  label="Application URL"
+                  :label="$t('technicalRequirements.labelApplicationUrl')"
                   type="text"
                   :rules="[rules.required, rules.url, rules.maxLength(500)]"
                 />
+                <!-- <div class="col-12"> -->
+                <v-card-subtitle
+                  class="text-left padding-0"
+                >{{$t('technicalRequirements.inputUrlText')}}</v-card-subtitle>
+                <!-- </div> -->
                 <div
                   v-for="(redirectUri, index) in redirectUris"
                   v-bind:key="index"
-                  class="row v-form pa-4 pt-6"
+                  class="row v-form px-4"
                 >
                   <v-text-field
                     v-model="redirectUris[index]"
-                    label="Redirect URI values"
+                    :label="$t('technicalRequirements.labelRedirectUrl')"
                     type="text"
                     filled
                     @blur="addUri"
                     append-icon="mdi-minus"
                     @click:append="clearUri(index)"
+                    @click:prepend="addUri"
                     :rules="[rules.url]"
                     class="addUri"
+                    outlined
                   ></v-text-field>
                   <!-- :rules="[rules.required]" -->
                 </div>
+                <v-card-subtitle
+                  class="text-left padding-0"
+                >{{$t('technicalRequirements.JWKSText')}}</v-card-subtitle>
                 <Input
                   v-model="jwksUri"
                   counter="500"
-                  label="JWKS URL"
+                  :label="$t('technicalRequirements.labelJWKSUrl')"
                   type="text"
                   :rules="[rules.required, rules.url, rules.maxLength(500)]"
+                  class="pt-6"
                 />
-                <Select
-                  v-model="idTokenSignedResponseAlg"
-                  label="ID Token Signature Algorithm"
-                  :items="tokenAlgoritham"
-                  :rules="[rules.required]"
-                />
-                <Select
-                  v-model="userinfoSignedResponseAlg"
-                  label="User Info Signed Response Algorithm"
-                  :items="userAlgoritham"
-                  :rules="[rules.required]"
-                />
+                <div class="row">
+                  <div class="col-5">
+                    <Select
+                      v-model="idTokenSignedResponseAlg"
+                      :label="$t('technicalRequirements.labelIdTokenSignedResponseAlg')"
+                      :items="tokenAlgoritham"
+                      :rules="[rules.required]"
+                      outlined
+                    />
+                  </div>
+                  <v-spacer />
+                  <div class="col-5">
+                    <Select
+                      v-model="userinfoSignedResponseAlg"
+                      :label="$t('technicalRequirements.labelUserinfoSignedResponseAlg')"
+                      :items="userAlgoritham"
+                      :rules="[rules.required]"
+                      outlined
+                      class="col-6"
+                    />
+                  </div>
+                </div>
                 <!-- </v-form> -->
                 <v-divider></v-divider>
                 <v-card-actions>
@@ -80,14 +101,14 @@
                     @click="$router.push(`/project/${projectId}/info/`)"
                     aria-label="Back Button"
                     secondary
-                  >Go Back</Button>
+                  >{{$t('technicalRequirements.btnBack')}}</Button>
                   <Button
                     :disabled="!form"
                     :loading="isLoading"
                     class="white--text submit-req ml-6"
                     depressed
                     @click="addTechnicalReq"
-                  >Next</Button>
+                  >Next{{$t('technicalRequirements.next')}}</Button>
                 </v-card-actions>
               </v-card>
             </v-col>
@@ -224,3 +245,8 @@ export default class AddTechnicalReq extends Vue {
   }
 }
 </script>
+<style lang="scss" scoped>
+.padding-0 {
+  padding-left: 0px !important;
+}
+</style>

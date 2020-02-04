@@ -13,9 +13,13 @@
         <v-container>
           <v-row dense>
             <v-col cols="12" md="12">
-              <v-card class="pa-4 pt-6">
-                <v-card-title class="headline">{{$t('projectInfo.ProjectInfoTitle')}}</v-card-title>
-                <v-card-subtitle class="text-left">{{$t('projectInfo.ProjectInfoTitleInfo')}}</v-card-subtitle>
+              <v-card class="pa-8 pt-6 ma-3">
+                <v-card-title class="headline padding-0">{{$t('projectInfo.ProjectInfoTitle')}}</v-card-title>
+                <v-card-subtitle
+                  class="text-left padding-0"
+                  v-html="$t('projectInfo.ProjectInfoTitleInfo')"
+                ></v-card-subtitle>
+                <v-card-title class="font-regular padding-0">{{$t('projectInfo.ProjectOrgTitle')}}</v-card-title>
                 <Input
                   v-model="organizationName"
                   counter="100"
@@ -43,20 +47,33 @@
                   :label="$t('projectInfo.Description')"
                   type="text"
                   :rules="[rules.required]"
+                  outlined
+                  :hint="$t('projectInfo.DescriptionHint')"
                 />
               </v-card>
             </v-col>
 
             <v-col cols="12">
-              <v-card class="pa-4 pt-6">
-                <v-card-title class="headline">{{$t('projectInfo.ProjectRoles')}}</v-card-title>
-                <v-card-subtitle class="text-left">{{$t('projectInfo.RolesTitleInfo')}}</v-card-subtitle>
-                <v-radio-group v-model.number="myRole" row>
-                  {{$t('projectInfo.Iam')}}
-                  <v-radio label="Developer" v-bind:value="1"></v-radio>
-                  <v-radio label="Manager" v-bind:value="2"></v-radio>
-                  <v-radio label="CTO" v-bind:value="3"></v-radio>
-                  {{$t('projectInfo.ForProject')}}
+              <v-card class="pa-8 pt-6 ma-3">
+                <v-card-title class="headline padding-0">{{$t('projectInfo.ProjectRoles')}}</v-card-title>
+                <v-card-subtitle class="text-left padding-0">{{$t('projectInfo.RolesTitleInfo')}}</v-card-subtitle>
+                <v-radio-group v-model.number="myRole" row color="black">
+                  <span class="mr-2">{{$t('projectInfo.myRole')}}</span>
+                  <v-radio class="black-color" v-bind:value="1">
+                    <template v-slot:label>
+                      <span class="black-color">Developer</span>
+                    </template>
+                  </v-radio>
+                  <v-radio label="Manager" v-bind:value="2">
+                    <template v-slot:label>
+                      <span class="black-color">Manager</span>
+                    </template>
+                  </v-radio>
+                  <v-radio v-bind:value="3">
+                    <template v-slot:label>
+                      <span class="black-color">CTO</span>
+                    </template>
+                  </v-radio>
                 </v-radio-group>
               </v-card>
             </v-col>
@@ -97,7 +114,7 @@
                     color="indigo accent-4"
                     depressed
                     @click="addProjectInfo"
-                  >{{$t('Next')}}</Button>
+                  >{{$t('projectInfo.Next')}}</Button>
                 </v-card-actions>
               </v-card>
             </v-col>
@@ -223,3 +240,12 @@ export default class AddProjectInfo extends Vue {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.padding-0 {
+  padding-left: 0px !important;
+}
+.black-color {
+  color: #000 !important;
+}
+</style>

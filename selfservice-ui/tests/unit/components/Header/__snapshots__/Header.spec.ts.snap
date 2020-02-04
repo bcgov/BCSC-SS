@@ -19,7 +19,7 @@ exports[`Header.vue Logout user on logout button onlick  1`] = `
       <div
         class="v-toolbar__title"
       >
-        BCSC SELF SERVICE
+        
       </div>
        
       <div
@@ -86,21 +86,6 @@ exports[`Header.vue Logout user on logout button onlick  1`] = `
         <div
           class="v-list v-sheet v-sheet--tile theme--dark"
         >
-          <div
-            class="v-list-item theme--dark"
-            tabindex="-1"
-          >
-            <div
-              class="v-list-item__content"
-            >
-              <div
-                class="v-list-item__title title"
-              >
-                Self Service
-              </div>
-            </div>
-          </div>
-           
           <hr
             aria-orientation="horizontal"
             class="v-divider theme--dark"
@@ -227,7 +212,7 @@ exports[`Header.vue Toggle menu onlick  1`] = `
       <div
         class="v-toolbar__title"
       >
-        BCSC SELF SERVICE
+        
       </div>
        
       <div
@@ -294,21 +279,6 @@ exports[`Header.vue Toggle menu onlick  1`] = `
         <div
           class="v-list v-sheet v-sheet--tile theme--dark"
         >
-          <div
-            class="v-list-item theme--dark"
-            tabindex="-1"
-          >
-            <div
-              class="v-list-item__content"
-            >
-              <div
-                class="v-list-item__title title"
-              >
-                Self Service
-              </div>
-            </div>
-          </div>
-           
           <hr
             aria-orientation="horizontal"
             class="v-divider theme--dark"
@@ -435,7 +405,7 @@ exports[`Header.vue renders props when passed 1`] = `
       <div
         class="v-toolbar__title"
       >
-        BCSC SELF SERVICE
+        
       </div>
        
       <div
@@ -502,21 +472,6 @@ exports[`Header.vue renders props when passed 1`] = `
         <div
           class="v-list v-sheet v-sheet--tile theme--dark"
         >
-          <div
-            class="v-list-item theme--dark"
-            tabindex="-1"
-          >
-            <div
-              class="v-list-item__content"
-            >
-              <div
-                class="v-list-item__title title"
-              >
-                Self Service
-              </div>
-            </div>
-          </div>
-           
           <hr
             aria-orientation="horizontal"
             class="v-divider theme--dark"

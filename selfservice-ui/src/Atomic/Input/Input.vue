@@ -11,6 +11,7 @@ important action on your service, such as Download or Submit. */
     v-bind="$attrs"
     @blur="$emit('blur')"
     class="input"
+    :outlined="outlined"
   ></v-text-field>
   <!-- outlined -->
 </template>
@@ -66,6 +67,13 @@ export default class Input extends Vue {
     default: false
   })
   private required!: boolean;
+  /**
+   *  outlined
+   */
+  @Prop({
+    default: true
+  })
+  private outlined!: boolean;
 
   /**
    * input
