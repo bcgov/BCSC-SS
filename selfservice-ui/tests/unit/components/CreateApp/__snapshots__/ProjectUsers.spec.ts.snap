@@ -21,6 +21,7 @@ exports[`ProjectUsers.vue renders props when passed 1`] = `
   <input-stub
     counter=""
     label="First Name"
+    outlined="true"
     rules="v => !!v || 'This field is required',v => (v || '').length >= len || 'Invalid character length, required ' + len,v => (v || '').length <= len || 'Invalid character length, max length ' + len"
     type="text"
     value=""
@@ -29,6 +30,7 @@ exports[`ProjectUsers.vue renders props when passed 1`] = `
   <input-stub
     counter=""
     label="Last Name"
+    outlined="true"
     rules="v => !!v || 'This field is required',v => (v || '').length >= len || 'Invalid character length, required ' + len,v => (v || '').length <= len || 'Invalid character length, max length ' + len"
     type="text"
     value=""
@@ -37,6 +39,7 @@ exports[`ProjectUsers.vue renders props when passed 1`] = `
   <input-stub
     counter=""
     label="Work email"
+    outlined="true"
     rules="v => !!v || 'This field is required',v => /^\\\\w+([.-]?\\\\w+)*@\\\\w+([.-]?\\\\w+)*(\\\\.\\\\w{2,10})+$/.test(v) || 'E-mail must be valid',v => (v || '').length <= len || 'Invalid character length, max length ' + len"
     type="text"
     value=""
@@ -45,6 +48,7 @@ exports[`ProjectUsers.vue renders props when passed 1`] = `
   <input-stub
     counter=""
     label="Phone"
+    outlined="true"
     rules="v => !!v || 'This field is required',v => (v || '').length <= len || 'Invalid character length, max length ' + len"
     type="text"
     value=""

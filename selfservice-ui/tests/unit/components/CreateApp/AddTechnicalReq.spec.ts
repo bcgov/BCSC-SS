@@ -45,6 +45,7 @@ describe('AddTechnicalReq.vue', () => {
       vuetify,
       localVue,
       sync: false,
+      mocks: { $t: jest.fn(() => {}) }, // tslint:disable-line
       ...options
     });
   };

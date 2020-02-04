@@ -34,7 +34,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
         <div
           class="v-toolbar__title"
         >
-          Technical requirments
+          
         </div>
          
         <div
@@ -62,7 +62,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
               <div
                 class="v-card__title headline padding-0 text-capitalize"
               >
-                Project name: 
+                
               </div>
                
               <div
@@ -95,13 +95,6 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                     <div
                       class="v-text-field__slot"
                     >
-                      <label
-                        class="v-label theme--light"
-                        for="input-13"
-                        style="left: 0px; position: absolute;"
-                      >
-                        Application URL
-                      </label>
                       <input
                         id="input-13"
                         type="text"
@@ -132,14 +125,14 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
               <div
                 class="v-card__subtitle text-left padding-0"
               >
-                Input the URL(s) of your redirect location(s). You may have multiple values. If you do have multiple redirects, use one field for each URL.
+                
               </div>
                
               <div
                 class="row v-form px-4"
               >
                 <div
-                  class="v-input addUri theme--light v-text-field v-text-field--filled v-text-field--enclosed v-text-field--outlined"
+                  class="v-input addUri theme--light v-text-field v-text-field--single-line v-text-field--filled v-text-field--enclosed v-text-field--outlined"
                 >
                   <div
                     class="v-input__control"
@@ -150,9 +143,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                       <fieldset
                         aria-hidden="true"
                       >
-                        <legend
-                          style="width: 0px;"
-                        >
+                        <legend>
                           <span>
                             ​
                           </span>
@@ -161,13 +152,6 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                       <div
                         class="v-text-field__slot"
                       >
-                        <label
-                          class="v-label theme--light"
-                          for="input-16"
-                          style="left: 0px; position: absolute;"
-                        >
-                          Redirect URI values
-                        </label>
                         <input
                           id="input-16"
                           type="text"
@@ -207,7 +191,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
               <div
                 class="v-card__subtitle text-left padding-0"
               >
-                The JSON Web Key Set (JWKS) is a set of keys containing the public keys that are used to verify the JSON Web Token (JWT) issued by the authorization server and signed using the RS256 signing algorithm.
+                
               </div>
                
               <div
@@ -240,13 +224,6 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                     <div
                       class="v-text-field__slot"
                     >
-                      <label
-                        class="v-label theme--light"
-                        for="input-21"
-                        style="left: 0px; position: absolute;"
-                      >
-                        JWKS URL
-                      </label>
                       <input
                         id="input-21"
                         type="text"
@@ -310,13 +287,6 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                         <div
                           class="v-select__slot"
                         >
-                          <label
-                            class="v-label v-label--active theme--light"
-                            for="input-25"
-                            style="left: 0px; position: absolute;"
-                          >
-                            ID Token Signature Algorithm
-                          </label>
                           <div
                             class="v-select__selections"
                           >
@@ -415,13 +385,6 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                         <div
                           class="v-select__slot"
                         >
-                          <label
-                            class="v-label v-label--active theme--light"
-                            for="input-33"
-                            style="left: 0px; position: absolute;"
-                          >
-                            User Info Signed Response Algorithm
-                          </label>
                           <div
                             class="v-select__selections"
                           >
@@ -506,7 +469,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                   <span
                     class="v-btn__content"
                   >
-                    Go Back
+                    
                   </span>
                 </button>
                  
@@ -567,7 +530,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
         <div
           class="v-toolbar__title"
         >
-          Technical requirments
+          
         </div>
          
         <div
@@ -595,7 +558,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
               <div
                 class="v-card__title headline padding-0 text-capitalize"
               >
-                Project name: 
+                
               </div>
                
               <div
@@ -628,13 +591,6 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                     <div
                       class="v-text-field__slot"
                     >
-                      <label
-                        class="v-label theme--light"
-                        for="input-56"
-                        style="left: 0px; position: absolute;"
-                      >
-                        Application URL
-                      </label>
                       <input
                         id="input-56"
                         type="text"
@@ -665,14 +621,14 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
               <div
                 class="v-card__subtitle text-left padding-0"
               >
-                Input the URL(s) of your redirect location(s). You may have multiple values. If you do have multiple redirects, use one field for each URL.
+                
               </div>
                
               <div
                 class="row v-form px-4"
               >
                 <div
-                  class="v-input addUri theme--light v-text-field v-text-field--filled v-text-field--enclosed v-text-field--outlined"
+                  class="v-input addUri theme--light v-text-field v-text-field--single-line v-text-field--filled v-text-field--enclosed v-text-field--outlined"
                 >
                   <div
                     class="v-input__control"
@@ -683,9 +639,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                       <fieldset
                         aria-hidden="true"
                       >
-                        <legend
-                          style="width: 0px;"
-                        >
+                        <legend>
                           <span>
                             ​
                           </span>
@@ -694,13 +648,6 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                       <div
                         class="v-text-field__slot"
                       >
-                        <label
-                          class="v-label theme--light"
-                          for="input-59"
-                          style="left: 0px; position: absolute;"
-                        >
-                          Redirect URI values
-                        </label>
                         <input
                           id="input-59"
                           type="text"
@@ -740,7 +687,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
               <div
                 class="v-card__subtitle text-left padding-0"
               >
-                The JSON Web Key Set (JWKS) is a set of keys containing the public keys that are used to verify the JSON Web Token (JWT) issued by the authorization server and signed using the RS256 signing algorithm.
+                
               </div>
                
               <div
@@ -773,13 +720,6 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                     <div
                       class="v-text-field__slot"
                     >
-                      <label
-                        class="v-label theme--light"
-                        for="input-64"
-                        style="left: 0px; position: absolute;"
-                      >
-                        JWKS URL
-                      </label>
                       <input
                         id="input-64"
                         type="text"
@@ -843,13 +783,6 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                         <div
                           class="v-select__slot"
                         >
-                          <label
-                            class="v-label v-label--active theme--light"
-                            for="input-68"
-                            style="left: 0px; position: absolute;"
-                          >
-                            ID Token Signature Algorithm
-                          </label>
                           <div
                             class="v-select__selections"
                           >
@@ -948,13 +881,6 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                         <div
                           class="v-select__slot"
                         >
-                          <label
-                            class="v-label v-label--active theme--light"
-                            for="input-76"
-                            style="left: 0px; position: absolute;"
-                          >
-                            User Info Signed Response Algorithm
-                          </label>
                           <div
                             class="v-select__selections"
                           >
@@ -1039,7 +965,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                   <span
                     class="v-btn__content"
                   >
-                    Go Back
+                    
                   </span>
                 </button>
                  
@@ -1100,7 +1026,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
         <div
           class="v-toolbar__title"
         >
-          Technical requirments
+          
         </div>
          
         <div
@@ -1128,7 +1054,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
               <div
                 class="v-card__title headline padding-0 text-capitalize"
               >
-                Project name: 
+                
               </div>
                
               <div
@@ -1161,13 +1087,6 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                     <div
                       class="v-text-field__slot"
                     >
-                      <label
-                        class="v-label theme--light"
-                        for="input-99"
-                        style="left: 0px; position: absolute;"
-                      >
-                        Application URL
-                      </label>
                       <input
                         id="input-99"
                         type="text"
@@ -1198,14 +1117,14 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
               <div
                 class="v-card__subtitle text-left padding-0"
               >
-                Input the URL(s) of your redirect location(s). You may have multiple values. If you do have multiple redirects, use one field for each URL.
+                
               </div>
                
               <div
                 class="row v-form px-4"
               >
                 <div
-                  class="v-input addUri theme--light v-text-field v-text-field--filled v-text-field--enclosed v-text-field--outlined"
+                  class="v-input addUri theme--light v-text-field v-text-field--single-line v-text-field--filled v-text-field--enclosed v-text-field--outlined"
                 >
                   <div
                     class="v-input__control"
@@ -1216,9 +1135,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                       <fieldset
                         aria-hidden="true"
                       >
-                        <legend
-                          style="width: 0px;"
-                        >
+                        <legend>
                           <span>
                             ​
                           </span>
@@ -1227,13 +1144,6 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                       <div
                         class="v-text-field__slot"
                       >
-                        <label
-                          class="v-label theme--light"
-                          for="input-102"
-                          style="left: 0px; position: absolute;"
-                        >
-                          Redirect URI values
-                        </label>
                         <input
                           id="input-102"
                           type="text"
@@ -1273,7 +1183,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
               <div
                 class="v-card__subtitle text-left padding-0"
               >
-                The JSON Web Key Set (JWKS) is a set of keys containing the public keys that are used to verify the JSON Web Token (JWT) issued by the authorization server and signed using the RS256 signing algorithm.
+                
               </div>
                
               <div
@@ -1306,13 +1216,6 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                     <div
                       class="v-text-field__slot"
                     >
-                      <label
-                        class="v-label theme--light"
-                        for="input-107"
-                        style="left: 0px; position: absolute;"
-                      >
-                        JWKS URL
-                      </label>
                       <input
                         id="input-107"
                         type="text"
@@ -1376,13 +1279,6 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                         <div
                           class="v-select__slot"
                         >
-                          <label
-                            class="v-label v-label--active theme--light"
-                            for="input-111"
-                            style="left: 0px; position: absolute;"
-                          >
-                            ID Token Signature Algorithm
-                          </label>
                           <div
                             class="v-select__selections"
                           >
@@ -1481,13 +1377,6 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                         <div
                           class="v-select__slot"
                         >
-                          <label
-                            class="v-label v-label--active theme--light"
-                            for="input-119"
-                            style="left: 0px; position: absolute;"
-                          >
-                            User Info Signed Response Algorithm
-                          </label>
                           <div
                             class="v-select__selections"
                           >
@@ -1572,7 +1461,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                   <span
                     class="v-btn__content"
                   >
-                    Go Back
+                    
                   </span>
                 </button>
                  

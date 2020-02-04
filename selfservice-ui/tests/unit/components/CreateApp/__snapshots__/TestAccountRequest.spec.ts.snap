@@ -14,7 +14,6 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
       style="height: 64px;"
     >
       <button
-        aria-label="Back Button"
         class="v-btn v-btn--flat v-btn--icon v-btn--round theme--dark v-size--default"
         type="button"
       >
@@ -304,7 +303,6 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
         />
          
         <button
-          aria-label="Back Button"
           class="btn v-btn v-btn--contained theme--light v-size--default secondary normal"
           name="button"
           type="button"
@@ -348,7 +346,6 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
       style="height: 64px;"
     >
       <button
-        aria-label="Back Button"
         class="v-btn v-btn--flat v-btn--icon v-btn--round theme--dark v-size--default"
         type="button"
       >
@@ -638,7 +635,6 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
         />
          
         <button
-          aria-label="Back Button"
           class="btn v-btn v-btn--contained theme--light v-size--default secondary normal"
           name="button"
           type="button"
@@ -682,7 +678,6 @@ exports[`TestAccountRequest.vue submit form with selected package on submit clic
       style="height: 64px;"
     >
       <button
-        aria-label="Back Button"
         class="v-btn v-btn--flat v-btn--icon v-btn--round theme--dark v-size--default"
         type="button"
       >
@@ -972,7 +967,6 @@ exports[`TestAccountRequest.vue submit form with selected package on submit clic
         />
          
         <button
-          aria-label="Back Button"
           class="btn v-btn v-btn--contained theme--light v-size--default secondary normal"
           name="button"
           type="button"
