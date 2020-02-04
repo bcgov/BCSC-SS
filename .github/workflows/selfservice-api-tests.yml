@@ -1,6 +1,6 @@
 name: BCSC_SS API integration tests
 
-on: [push, pull_request]
+on: [pull_request]
 
 jobs:
   selfservice-api-integration-test:
