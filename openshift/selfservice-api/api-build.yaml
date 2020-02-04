@@ -87,6 +87,7 @@ parameters:
   value: dev
 - name: TAG_NAME
   displayName: Name
-  description: The name assigned to all of the resources defined in this template.
+  description: The name assigned to all of the resources defined in this templates.
   required: true
   value: dev
+  
