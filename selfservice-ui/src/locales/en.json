@@ -9,17 +9,10 @@
   "PACKAGE_ADD_MESSAGE": "Package  added successfully",
   "PACKAGE_UPDATE_MESSAGE": "Package Updated successfully",
   "PACKAGE_DELETE_MESSAGE": "Package  Deleted successfully",
-  "testAccount": {
-    "pagetitle": "Test Accounts",
-    "pageinfo": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
-    "how_many_test_account": "How many test accounts do you require?",
-    "special_notes": "Special requests or notes for test account creation",
-    "Next": "Next",
-    "Back": "Go Back"
-  },
+  "main": { "siteTitle": "BC Services Card Self Service" },
   "projectInfo": {
     "ProjectInfoTitle": "Project information",
-    "ProjectInfoTitleInfo": "To receive access to the BC Services Card login API to use with your web application, we need to gather some information about the application you’re working with.    Collecting this information allows us to understand the purpose of your application or project within your organization and provide proper assistance to you as you move through from development to the live access request. ",
+    "ProjectInfoTitleInfo": "<p>To receive access to the BC Services Card login API to use with your web application, we need to gather some information about the application you’re working with.  </p><p>  Collecting this information allows us to understand the purpose of your application or project within your organization and provide proper assistance to you as you move through from development to the live access request. </p>",
     "ProjectOrgTitle": "This API is available for organizations that fall within the BC Broader Public Sector (BPS).",
     "OrganizationName": "Organization name",
     "projectName": "Project name",
@@ -33,5 +26,37 @@
     "CTORole": "CTO",
     "DeveloperRole": "Developer",
     "Next": "Next"
+  },
+  "technicalRequirements": {
+    "technicalTitle": "Technical requirements",
+    "projectName": "Project name:",
+    "inputUrlText": "Input the URL(s) of your redirect location(s). You may have multiple values. If you do have multiple redirects, use one field for each URL.",
+    "labelApplicationUrl": "Application URL",
+    "labelRedirectUrl": "Redirect URI values",
+    "JWKSText": "The JSON Web Key Set (JWKS) is a set of keys containing the public keys that are used to verify the JSON Web Token (JWT) issued by the authorization server and signed using the RS256 signing algorithm.",
+    "labelJWKSUrl": "JWKS URL",
+    "labelIdTokenSignedResponseAlg": "ID Token Signature Algorithm",
+    "labelUserinfoSignedResponseAlg": "User Info Signed Response Algorithm",
+    "btnBack": "Go Back",
+    "next": "Next"
+  },
+  "selectPackage": {
+    "pagetitle": "Select Package",
+    "choosePackage": "Choosing a package level",
+    "package1": "Package 1 - best fit for organizations looking for a digital signature",
+    "package2": "Package 2 - best fit for organizations who want to know who the user is and communicate directly with their users electronically",
+    "package3": "Package 3 - best fit for organizations who want to know who the user is and communicate directly with their users non-electronically",
+    "how_many_test_account": "How many test accounts do you require?",
+    "special_notes": "Special requests or notes for test account creation",
+    "Next": "Next",
+    "Back": "Go Back"
+  },
+  "testAccount": {
+    "pagetitle": "Test Accounts",
+    "pageinfo": "In order to test your configuration, we would like to know how many test accounts you need for {package}. Please note the test data provided to you will be randomized unless you indicate you have preferred customization. If you select the randomized test account, you can expect the test accounts immediately or within X days.",
+    "how_many_test_account": "How many test accounts do you require?",
+    "special_notes": "Special requests or notes for test account creation",
+    "Next": "Next",
+    "Back": "Go Back"
   }
 }

@@ -3,10 +3,14 @@
 <template>
   <v-card class="mx-auto" style="max-width: 80%;">
     <v-toolbar flat class="bc-subtitle" dark>
-      <v-btn icon @click="$router.push('/project/technical/' + projectId)" aria-label="Back Button">
+      <v-btn
+        icon
+        @click="$router.push(`/project/${projectId}/technical/`)"
+        aria-label="Back Button"
+      >
         <v-icon>mdi-arrow-left</v-icon>
       </v-btn>
-      <v-toolbar-title>Select Package</v-toolbar-title>
+      <v-toolbar-title>{{$t('selectPackage.pagetitle')}}</v-toolbar-title>
       <div class="flex-grow-1"></div>
       <v-col class="col-lg-4 col-md-5 col-8">
         <v-alert type="error" v-if="errorStatus" class="alert-top">Something went wrong...</v-alert>
@@ -19,10 +23,10 @@
         <v-row class="ma-5">
           <v-col cols="12" flat>
             <v-card flat>
-              <v-list-item-content>Choosing a package level</v-list-item-content>
-              <v-list-item-content>Package 1 - best fit for organizations looking for a digital signature</v-list-item-content>
-              <v-list-item-content>Package 2 - best fit for organizations who want to know who the user is and communicate directly with their users electronically</v-list-item-content>
-              <v-list-item-content>Package 3 - best fit for organizations who want to know who the user is and communicate directly with their users non-electronically</v-list-item-content>
+              <v-list-item-content>{{$t('selectPackage.choosePackage')}}</v-list-item-content>
+              <v-list-item-content>{{$t('selectPackage.package1')}}</v-list-item-content>
+              <v-list-item-content>{{$t('selectPackage.package2')}}</v-list-item-content>
+              <v-list-item-content>{{$t('selectPackage.package3')}}</v-list-item-content>
             </v-card>
           </v-col>
 

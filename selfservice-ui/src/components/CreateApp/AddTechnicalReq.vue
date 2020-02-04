@@ -8,7 +8,7 @@
         <v-btn icon @click="$router.push(`/project/${projectId}/info/`)" aria-label="Back Button">
           <v-icon>mdi-arrow-left</v-icon>
         </v-btn>
-        <v-toolbar-title>Technical requirments</v-toolbar-title>
+        <v-toolbar-title>{{$t('technicalRequirements.technicalTitle')}}</v-toolbar-title>
         <v-spacer></v-spacer>
       </v-app-bar>
 
@@ -25,19 +25,19 @@
                 >-->
                 <v-card-title
                   class="headline padding-0 text-capitalize"
-                >Project name: {{ getSingleProjectInfo && getSingleProjectInfo.projectName }}</v-card-title>
+                >{{$t('technicalRequirements.projectName')}}{{ getSingleProjectInfo && getSingleProjectInfo.projectName }}</v-card-title>
 
                 <Input
                   v-model="clientUri"
                   counter="500"
-                  label="Application URL"
+                  :label="$t('technicalRequirements.labelApplicationUrl')"
                   type="text"
                   :rules="[rules.required, rules.url, rules.maxLength(500)]"
                 />
                 <!-- <div class="col-12"> -->
                 <v-card-subtitle
                   class="text-left padding-0"
-                >Input the URL(s) of your redirect location(s). You may have multiple values. If you do have multiple redirects, use one field for each URL.</v-card-subtitle>
+                >{{$t('technicalRequirements.inputUrlText')}}</v-card-subtitle>
                 <!-- </div> -->
                 <div
                   v-for="(redirectUri, index) in redirectUris"
@@ -46,7 +46,7 @@
                 >
                   <v-text-field
                     v-model="redirectUris[index]"
-                    label="Redirect URI values"
+                    :label="$t('technicalRequirements.labelRedirectUrl')"
                     type="text"
                     filled
                     @blur="addUri"
@@ -61,11 +61,11 @@
                 </div>
                 <v-card-subtitle
                   class="text-left padding-0"
-                >The JSON Web Key Set (JWKS) is a set of keys containing the public keys that are used to verify the JSON Web Token (JWT) issued by the authorization server and signed using the RS256 signing algorithm.</v-card-subtitle>
+                >{{$t('technicalRequirements.JWKSText')}}</v-card-subtitle>
                 <Input
                   v-model="jwksUri"
                   counter="500"
-                  label="JWKS URL"
+                  :label="$t('technicalRequirements.labelJWKSUrl')"
                   type="text"
                   :rules="[rules.required, rules.url, rules.maxLength(500)]"
                   class="pt-6"
@@ -74,7 +74,7 @@
                   <div class="col-5">
                     <Select
                       v-model="idTokenSignedResponseAlg"
-                      label="ID Token Signature Algorithm"
+                      :label="$t('technicalRequirements.labelIdTokenSignedResponseAlg')"
                       :items="tokenAlgoritham"
                       :rules="[rules.required]"
                       outlined
@@ -84,7 +84,7 @@
                   <div class="col-5">
                     <Select
                       v-model="userinfoSignedResponseAlg"
-                      label="User Info Signed Response Algorithm"
+                      :label="$t('technicalRequirements.labelUserinfoSignedResponseAlg')"
                       :items="userAlgoritham"
                       :rules="[rules.required]"
                       outlined
@@ -101,14 +101,14 @@
                     @click="$router.push(`/project/${projectId}/info/`)"
                     aria-label="Back Button"
                     secondary
-                  >Go Back</Button>
+                  >{{$t('technicalRequirements.btnBack')}}</Button>
                   <Button
                     :disabled="!form"
                     :loading="isLoading"
                     class="white--text submit-req ml-6"
                     depressed
                     @click="addTechnicalReq"
-                  >Next</Button>
+                  >Next{{$t('technicalRequirements.next')}}</Button>
                 </v-card-actions>
               </v-card>
             </v-col>
