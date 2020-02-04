@@ -31,7 +31,7 @@ exports[`PackageSelect.vue renders props when passed 1`] = `
       <div
         class="v-toolbar__title"
       >
-        Select Package
+        
       </div>
        
       <div
@@ -75,25 +75,25 @@ exports[`PackageSelect.vue renders props when passed 1`] = `
             <div
               class="v-list-item__content"
             >
-              Choosing a package level
+              
             </div>
              
             <div
               class="v-list-item__content"
             >
-              Package 1 - best fit for organizations looking for a digital signature
+              
             </div>
              
             <div
               class="v-list-item__content"
             >
-              Package 2 - best fit for organizations who want to know who the user is and communicate directly with their users electronically
+              
             </div>
              
             <div
               class="v-list-item__content"
             >
-              Package 3 - best fit for organizations who want to know who the user is and communicate directly with their users non-electronically
+              
             </div>
           </div>
         </div>
@@ -332,7 +332,7 @@ exports[`PackageSelect.vue select on package on click  1`] = `
       <div
         class="v-toolbar__title"
       >
-        Select Package
+        
       </div>
        
       <div
@@ -376,25 +376,25 @@ exports[`PackageSelect.vue select on package on click  1`] = `
             <div
               class="v-list-item__content"
             >
-              Choosing a package level
+              
             </div>
              
             <div
               class="v-list-item__content"
             >
-              Package 1 - best fit for organizations looking for a digital signature
+              
             </div>
              
             <div
               class="v-list-item__content"
             >
-              Package 2 - best fit for organizations who want to know who the user is and communicate directly with their users electronically
+              
             </div>
              
             <div
               class="v-list-item__content"
             >
-              Package 3 - best fit for organizations who want to know who the user is and communicate directly with their users non-electronically
+              
             </div>
           </div>
         </div>
@@ -633,7 +633,7 @@ exports[`PackageSelect.vue submit form with selected package on submit click  1`
       <div
         class="v-toolbar__title"
       >
-        Select Package
+        
       </div>
        
       <div
@@ -677,25 +677,25 @@ exports[`PackageSelect.vue submit form with selected package on submit click  1`
             <div
               class="v-list-item__content"
             >
-              Choosing a package level
+              
             </div>
              
             <div
               class="v-list-item__content"
             >
-              Package 1 - best fit for organizations looking for a digital signature
+              
             </div>
              
             <div
               class="v-list-item__content"
             >
-              Package 2 - best fit for organizations who want to know who the user is and communicate directly with their users electronically
+              
             </div>
              
             <div
               class="v-list-item__content"
             >
-              Package 3 - best fit for organizations who want to know who the user is and communicate directly with their users non-electronically
+              
             </div>
           </div>
         </div>

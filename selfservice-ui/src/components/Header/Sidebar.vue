@@ -4,12 +4,6 @@
   <v-card class="mx-auto" :class="className">
     <v-navigation-drawer app clipped fixed height="100%" permanent>
       <v-list dark>
-        <v-list-item>
-          <v-list-item-content>
-            <v-list-item-title class="title">Self Service</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-
         <v-divider></v-divider>
 
         <v-list dense nav>

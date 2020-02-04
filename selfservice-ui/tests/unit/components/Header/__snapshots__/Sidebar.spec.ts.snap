@@ -23,19 +23,6 @@ exports[`Sidebar.vue renders props when passed 1`] = `
       tag="div"
       tile="true"
     >
-      <v-list-item-stub
-        activeclass=""
-        tag="div"
-      >
-        <v-list-item-content-stub>
-          <v-list-item-title-stub
-            class="title"
-          >
-            Self Service
-          </v-list-item-title-stub>
-        </v-list-item-content-stub>
-      </v-list-item-stub>
-       
       <v-divider-stub />
        
       <v-list-stub

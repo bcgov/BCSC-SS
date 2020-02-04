@@ -17,7 +17,8 @@
                 <v-card-title class="headline padding-0">{{$t('projectInfo.ProjectInfoTitle')}}</v-card-title>
                 <v-card-subtitle
                   class="text-left padding-0"
-                >{{$t('projectInfo.ProjectInfoTitleInfo')}}</v-card-subtitle>
+                  v-html="$t('projectInfo.ProjectInfoTitleInfo')"
+                ></v-card-subtitle>
                 <v-card-title class="font-regular padding-0">{{$t('projectInfo.ProjectOrgTitle')}}</v-card-title>
                 <Input
                   v-model="organizationName"

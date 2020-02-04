@@ -3,7 +3,11 @@
 <template>
   <v-card class="mx-auto" style="max-width: 80%;">
     <v-toolbar flat class="bc-subtitle padding-0" dark>
-      <v-btn icon @click="$router.push(`/project/${projectId}/package/`)" aria-label="Back Button">
+      <v-btn
+        icon
+        @click="$router.push(`/project/${projectId}/package/`)"
+        :aria-label="$t('testAccount.Back')"
+      >
         <v-icon>mdi-arrow-left</v-icon>
       </v-btn>
       <v-toolbar-title>{{$t('testAccount.pagetitle')}}</v-toolbar-title>
@@ -20,7 +24,7 @@
           <v-col cols="12" flat>
             <v-card flat>
               <!-- <v-list-item-content>BCSC Test Account</v-list-item-content> -->
-              <v-list-item-content>{{$t('testAccount.pageinfo')}}</v-list-item-content>
+              <v-list-item-content>{{$t('testAccount.pageinfo',{package:'package'})}}</v-list-item-content>
             </v-card>
           </v-col>
 
@@ -68,7 +72,7 @@
           <v-spacer></v-spacer>
           <Button
             @click="$router.push(`/project/${projectId}/package/`)"
-            aria-label="Back Button"
+            :aria-label="$t('testAccount.Back')"
             secondary
           >{{$t('testAccount.Back')}}</Button>
           <Button

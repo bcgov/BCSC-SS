@@ -17,7 +17,7 @@
       />
       <!-- </a> -->
       <!-- <h1 class="text">BC SERVICE CARD</h1> -->
-      <v-toolbar-title>BCSC SELF SERVICE</v-toolbar-title>
+      <v-toolbar-title>{{$t('main.siteTitle')}}</v-toolbar-title>
       <!-- </div> -->
 
       <v-spacer></v-spacer>
@@ -50,7 +50,7 @@
     >
       <ul>
         <li class="d-sm-none">
-          <v-btn text to="/about" link dark class="mr-2 login-btn">Login</v-btn>
+          <v-btn text to="/" link dark class="mr-2 login-btn">Login</v-btn>
         </li>
         <li>
           <router-link to="/">Home</router-link>
