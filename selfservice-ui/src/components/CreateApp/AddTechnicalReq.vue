@@ -151,8 +151,8 @@ export default class AddTechnicalReq extends Vue {
   public getSingleTechnicalReq!: any;
   @TechnicalReqModule.Action('updateTechnicalReq')
   public updateTechnicalReqStore!: any;
-  @TechnicalReqModule.Action('loadSingleTechnicalReq')
-  public loadSingleTechnicalReq!: any;
+  @TechnicalReqModule.Action('loadTechnicalReqDetails')
+  public loadTechnicalReqDetails!: any;
 
   @ProjectInfoModule.Getter('getSingleProjectInfo')
   public getSingleProjectInfo!: any;
@@ -221,7 +221,7 @@ export default class AddTechnicalReq extends Vue {
     this.isEditmode = false;
     if (this.action && this.action === 'edit' && this.id !== 0) {
       this.isEditmode = true;
-      this.loadSingleTechnicalReq(this.id);
+      this.loadTechnicalReqDetails(this.id);
     }
 
     if (this.getSingleProjectInfo && this.getSingleProjectInfo.id) {

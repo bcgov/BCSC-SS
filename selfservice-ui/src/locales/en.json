@@ -58,5 +58,23 @@
     "special_notes": "Special requests or notes for test account creation",
     "Next": "Next",
     "Back": "Go Back"
+  },
+  "summaryPage": {
+    "pagetitle": "Summary",
+    "subTitle": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries",
+    "projectInfoTitle": "Project information",
+    "labelProjectTitle": "project Title",
+    "labelOrganizationName": "Organization Name",
+    "labelTechnicalContact": "Technical Contact",
+    "labelManagerContact": "Manager Contact",
+    "labelCtoContact": "CTO Contact",
+    "Next": "Next",
+    "Back": "Go Back",
+    "technicalReqTitle": "Technical requirement",
+    "labelApplicationUrl": "Application URL",
+    "labelRedirectUrl": "Redirect URI values",
+    "labelJWKSUrl": "JWKS URL",
+    "labelIdTokenSignedResponseAlg": "ID Token Signature Algorithm",
+    "labelUserinfoSignedResponseAlg": "User Info Signed Response Algorithm"
   }
 }
