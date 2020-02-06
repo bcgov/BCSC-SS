@@ -75,6 +75,12 @@
     "labelRedirectUrl": "Redirect URI values",
     "labelJWKSUrl": "JWKS URL",
     "labelIdTokenSignedResponseAlg": "ID Token Signature Algorithm",
-    "labelUserinfoSignedResponseAlg": "User Info Signed Response Algorithm"
+    "labelUserinfoSignedResponseAlg": "User Info Signed Response Algorithm",
+    "packageTestTitle": "Data packages",
+    "labelDataPackageReqd": "Data package requested",
+    "labelTestAccounts": "Test accounts",
+    "labelSpecialReq": "Special request",
+    "submitRequest": "Submit request",
+    "goBack": "Go Back"
   }
 }
