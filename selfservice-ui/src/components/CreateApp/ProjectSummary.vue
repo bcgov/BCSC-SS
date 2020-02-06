@@ -134,9 +134,7 @@
                 >mdi-pencil</v-icon>-->
               </v-card-title>
             </v-toolbar>
-            {{getPackageList}}
-            {{getPackageList.length}}
-            {{selectedPackage}}
+
             <v-list dense v-if="getPackageList.length > 0">
               <v-list-item>
                 <v-list-item-content>{{$t('summaryPage.labelDataPackageReqd')}}</v-list-item-content>
