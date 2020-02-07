@@ -38,39 +38,82 @@
               </v-card-title>
             </v-toolbar>
 
-            <v-list dense class="pl-5">
+            <v-list dense class="px-5">
               <v-list-item>
                 <v-list-item-content>{{$t('summaryPage.labelOrganizationName')}}</v-list-item-content>
-                <v-list-item-content
-                  class="align-end"
-                >{{projectInfo && projectInfo.organizationName}}</v-list-item-content>
+                <v-list-item-content class="align-end">
+                  <div>
+                    <v-icon small class="mr-1">mdi-office-building</v-icon>
+                    {{projectInfo && projectInfo.organizationName}}
+                  </div>
+                </v-list-item-content>
               </v-list-item>
+              <v-divider></v-divider>
               <v-list-item>
                 <v-list-item-content>{{$t('summaryPage.labelProjectTitle')}}</v-list-item-content>
-                <v-list-item-content class="align-end">{{ projectInfo.projectName}}</v-list-item-content>
-              </v-list-item>
-              <v-list-item>
-                <v-list-item-content>{{$t('summaryPage.labelTechnicalContact')}}</v-list-item-content>
                 <v-list-item-content class="align-end">
-                  <div>{{selectedTechnical.firstName }} {{selectedTechnical.lastName }}</div>
-                  <div>{{selectedTechnical.phone }}</div>
-                  <div>{{selectedTechnical.email }}</div>
+                  <div>
+                    <v-icon small class="mr-1">mdi-apps</v-icon>
+                    {{ projectInfo.projectName}}
+                  </div>
                 </v-list-item-content>
               </v-list-item>
+              <v-divider></v-divider>
               <v-list-item>
-                <v-list-item-content>{{$t('summaryPage.labelManagerContact')}}</v-list-item-content>
+                <v-list-item-content
+                  class="align-self-start"
+                >{{$t('summaryPage.labelTechnicalContact')}}</v-list-item-content>
                 <v-list-item-content class="align-end">
-                  <div>{{selectedManager.firstName}} {{selectedManager.lastName }}</div>
-                  <div>{{selectedManager.phone }}</div>
-                  <div>{{selectedManager.email }}</div>
+                  <div>
+                    <v-icon small class="mr-1">mdi-account</v-icon>
+                    {{selectedTechnical.firstName }} {{selectedTechnical.lastName }}
+                  </div>
+                  <div v-if="selectedTechnical.phone !==''" class="ml-6">
+                    <!-- <v-icon small class="mr-1">mdi-cellphone-basic</v-icon> -->
+                    {{selectedTechnical.phone }}
+                  </div>
+                  <div v-if="selectedManager.email !==''" class="ml-6">
+                    <!-- <v-icon small class="mr-1">mdi-email</v-icon> -->
+                    {{selectedTechnical.email }}
+                  </div>
                 </v-list-item-content>
               </v-list-item>
+              <v-divider></v-divider>
               <v-list-item>
-                <v-list-item-content>{{$t('summaryPage.labelCtoContact')}}</v-list-item-content>
+                <v-list-item-content
+                  class="align-self-start"
+                >{{$t('summaryPage.labelManagerContact')}}</v-list-item-content>
                 <v-list-item-content class="align-end">
-                  <div>{{selectedCto.firstName}} {{selectedCto.lastName }}</div>
-                  <div>{{selectedManager.phone }}</div>
-                  <div>{{selectedManager.email }}</div>
+                  <div>
+                    <v-icon small class="mr-1">mdi-account</v-icon>
+                    {{selectedManager.firstName}} {{selectedManager.lastName }}
+                  </div>
+                  <div v-if="selectedManager.phone !==''" class="ml-6">
+                    <!-- <v-icon small class="mr-1">mdi-cellphone-basic</v-icon> -->
+                    {{selectedManager.phone }}
+                  </div>
+                  <div v-if="selectedManager.email !==''" class="ml-6">
+                    <!-- <v-icon small class="mr-1">mdi-email</v-icon> -->
+                    {{selectedManager.email }}
+                  </div>
+                </v-list-item-content>
+              </v-list-item>
+              <v-divider></v-divider>
+              <v-list-item>
+                <v-list-item-content class="align-self-start">{{$t('summaryPage.labelCtoContact')}}</v-list-item-content>
+                <v-list-item-content class="align-end">
+                  <div>
+                    <v-icon small class="mr-1">mdi-account</v-icon>
+                    {{selectedCto.firstName}} {{selectedCto.lastName }}
+                  </div>
+                  <div class="ml-6">
+                    <!-- <v-icon small class="mr-1">mdi-cellphone-basic</v-icon> -->
+                    {{selectedManager.phone }}
+                  </div>
+                  <div class="ml-6">
+                    <!-- <v-icon small class="mr-1">mdi-email</v-icon> -->
+                    {{selectedManager.email }}
+                  </div>
                 </v-list-item-content>
               </v-list-item>
             </v-list>
@@ -88,35 +131,58 @@
                 >mdi-pencil</v-icon>
               </v-card-title>
             </v-toolbar>
-            <v-list dense class="pl-5">
+            <v-list dense class="px-5">
               <v-list-item>
                 <v-list-item-content>{{$t('summaryPage.labelApplicationUrl')}}</v-list-item-content>
-                <v-list-item-content class="align-end">{{technicalReq.clientUri}}</v-list-item-content>
-              </v-list-item>
-
-              <v-list-item>
-                <v-list-item-content>{{$t('summaryPage.labelRedirectUrl')}}</v-list-item-content>
                 <v-list-item-content class="align-end">
-                  <div
-                    v-for="redirectUri in technicalReq.redirectUris"
-                    :key="redirectUri"
-                  >{{redirectUri}}</div>
+                  <div>
+                    <v-icon small class="mr-1">mdi-link</v-icon>
+                    {{technicalReq.clientUri}}
+                  </div>
                 </v-list-item-content>
               </v-list-item>
+              <v-divider></v-divider>
+              <v-list-item>
+                <v-list-item-content class="align-self-start">{{$t('summaryPage.labelRedirectUrl')}}</v-list-item-content>
+                <v-list-item-content class="align-end">
+                  <div v-for="redirectUri in technicalReq.redirectUris" :key="redirectUri">
+                    <v-icon small class="mr-1">mdi-link</v-icon>
+                    {{redirectUri}}
+                  </div>
+                </v-list-item-content>
+              </v-list-item>
+              <v-divider></v-divider>
               <v-list-item>
                 <v-list-item-content>{{$t('summaryPage.labelJWKSUrl')}}</v-list-item-content>
-                <v-list-item-content class="align-end">{{ technicalReq.jwksUri}}</v-list-item-content>
+                <v-list-item-content class="align-end">
+                  <div>
+                    <v-icon small class="mr-1">mdi-link</v-icon>
+                    {{ technicalReq.jwksUri}}
+                  </div>
+                </v-list-item-content>
               </v-list-item>
+              <v-divider></v-divider>
               <v-list-item>
                 <v-list-item-content>{{$t('summaryPage.labelIdTokenSignedResponseAlg')}}</v-list-item-content>
                 <v-list-item-content class="align-end">
-                  <v-list-item-content class="align-end">{{ technicalReq.idTokenSignedResponseAlg}}</v-list-item-content>
+                  <v-list-item-content class="align-end">
+                    <div>
+                      <v-icon small class="mr-1">mdi-shield-key</v-icon>
+                      {{ technicalReq.idTokenSignedResponseAlg}}
+                    </div>
+                  </v-list-item-content>
                 </v-list-item-content>
               </v-list-item>
+              <v-divider></v-divider>
               <v-list-item>
                 <v-list-item-content>{{$t('summaryPage.labelUserinfoSignedResponseAlg')}}</v-list-item-content>
                 <v-list-item-content class="align-end">
-                  <v-list-item-content class="align-end">{{ technicalReq.userinfoSignedResponseAlg}}</v-list-item-content>
+                  <v-list-item-content class="align-end">
+                    <div>
+                      <v-icon small class="mr-1">mdi-shield-key</v-icon>
+                      {{ technicalReq.userinfoSignedResponseAlg}}
+                    </div>
+                  </v-list-item-content>
                 </v-list-item-content>
               </v-list-item>
             </v-list>
@@ -135,11 +201,14 @@
               </v-card-title>
             </v-toolbar>
 
-            <v-list dense v-if="getPackageList.length > 0">
+            <v-list dense v-if="getPackageList.length > 0" class="px-5">
               <v-list-item>
-                <v-list-item-content>{{$t('summaryPage.labelDataPackageReqd')}}</v-list-item-content>
+                <v-list-item-content
+                  class="align-self-start"
+                >{{$t('summaryPage.labelDataPackageReqd')}}</v-list-item-content>
                 <v-list-item-content class="align-end">
                   <div>
+                    <v-icon small class="mr-1">mdi-package-variant</v-icon>
                     {{selectedPackage.packageName}}
                     <v-icon
                       small
@@ -157,11 +226,12 @@
                   </div>
                 </v-list-item-content>
               </v-list-item>
-
+              <v-divider></v-divider>
               <v-list-item>
                 <v-list-item-content>{{$t('summaryPage.labelTestAccounts')}}</v-list-item-content>
                 <v-list-item-content class="align-end">
                   <div>
+                    <v-icon small class="mr-1">mdi-account-badge-horizontal</v-icon>
                     {{ technicalReq.noOfTestAccount}}
                     <v-icon
                       small
@@ -171,6 +241,7 @@
                   </div>
                 </v-list-item-content>
               </v-list-item>
+              <v-divider></v-divider>
               <v-list-item>
                 <v-list-item-content>{{$t('summaryPage.labelSpecialReq')}}</v-list-item-content>
                 <v-list-item-content class="align-end">{{ technicalReq.noteTestAccount}}</v-list-item-content>
