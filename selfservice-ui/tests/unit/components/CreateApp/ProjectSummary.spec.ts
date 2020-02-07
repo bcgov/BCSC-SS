@@ -7,7 +7,6 @@ describe('ProjectSummary.vue', () => {
   let vuetify: any;
   const localVue = createLocalVue();
 
-  const $t = localVue.use(Vuetify);
   localVue.use(Vuex);
   vuetify = new Vuetify();
   const store = new Vuex.Store({
