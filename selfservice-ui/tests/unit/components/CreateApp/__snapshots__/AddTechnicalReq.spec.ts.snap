@@ -483,7 +483,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                   <span
                     class="v-btn__content"
                   >
-                    Next
+                    
                   </span>
                 </button>
               </div>
@@ -979,7 +979,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                   <span
                     class="v-btn__content"
                   >
-                    Next
+                    
                   </span>
                 </button>
               </div>
@@ -1475,7 +1475,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                   <span
                     class="v-btn__content"
                   >
-                    Next
+                    
                   </span>
                 </button>
               </div>
