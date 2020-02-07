@@ -147,12 +147,12 @@ export default class AddTechnicalReq extends Vue {
   @TechnicalReqModule.Getter('errorStatus') public errorStatus!: boolean;
   @TechnicalReqModule.Action('addTechnicalReq')
   public addTechnicalReqStore!: any;
-  @TechnicalReqModule.Getter('getSingleTechnicalReq')
-  public getSingleTechnicalReq!: any;
+  @TechnicalReqModule.Getter('getTechnicalReq')
+  public getTechnicalReq!: any;
   @TechnicalReqModule.Action('updateTechnicalReq')
   public updateTechnicalReqStore!: any;
-  @TechnicalReqModule.Action('loadSingleTechnicalReq')
-  public loadSingleTechnicalReq!: any;
+  @TechnicalReqModule.Action('loadTechnicalReqDetails')
+  public loadTechnicalReqDetails!: any;
 
   @ProjectInfoModule.Getter('getSingleProjectInfo')
   public getSingleProjectInfo!: any;
@@ -176,8 +176,8 @@ export default class AddTechnicalReq extends Vue {
   /* istanbul ignore next */
   private rules = validationRules;
 
-  @Watch('getSingleTechnicalReq')
-  private ongetSingleTechnicalReqChanged(val: any) {
+  @Watch('getTechnicalReq')
+  private ongetTechnicalReqChanged(val: any) {
     this.updteEdit(val);
   }
 
@@ -221,7 +221,7 @@ export default class AddTechnicalReq extends Vue {
     this.isEditmode = false;
     if (this.action && this.action === 'edit' && this.id !== 0) {
       this.isEditmode = true;
-      this.loadSingleTechnicalReq(this.id);
+      this.loadTechnicalReqDetails(this.id);
     }
 
     if (this.getSingleProjectInfo && this.getSingleProjectInfo.id) {

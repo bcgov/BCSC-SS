@@ -114,6 +114,7 @@
                     color="indigo accent-4"
                     depressed
                     @click="addProjectInfo"
+                    @keyup.enter="addProjectInfo"
                   >{{$t('projectInfo.Next')}}</Button>
                 </v-card-actions>
               </v-card>

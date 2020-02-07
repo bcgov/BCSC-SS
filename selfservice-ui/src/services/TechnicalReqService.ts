@@ -5,14 +5,12 @@ export class TechnicalReqService {
   public static async getTechnicalReqs() {
     return await axios.get(TECHNICALREQ_URL);
   }
-  public static async getTechnicalReqById(id: string) {
-    return await axios.get(TECHNICALREQ_URL + '/' + id);
+  public static async getTechnicalReqByProjectId(id: string) {
+    const techUrl = this.getUrl(id);
+    return await axios.get(techUrl);
   }
   public static async createTechnicalReq(technicalreqModel: any) {
-    const techUrl = TECHNICALREQ_URL.replace(
-      '<projectId>',
-      technicalreqModel.projectId
-    );
+    const techUrl = this.getUrl(technicalreqModel.projectId);
 
     return await axios.post(techUrl, technicalreqModel);
   }
@@ -22,7 +20,11 @@ export class TechnicalReqService {
       technicalreqModel
     );
   }
-  public static async deleteTechnicalReq(id: string) {
-    return await axios.delete(TECHNICALREQ_URL + '/' + id);
+  // public static async deleteTechnicalReq(id: string) {
+  //   return await axios.delete(TECHNICALREQ_URL + '/' + id);
+  // }
+
+  public static getUrl(projectId: any) {
+    return TECHNICALREQ_URL.replace('<projectId>', projectId);
   }
 }

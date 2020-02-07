@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProjectSummary.vue renders props when passed 1`] = `
+<v-card
+  class="mx-auto"
+  style="max-width: 80%;"
+>
+  <v-toolbar
+    class="bc-subtitle padding-0"
+    dark=""
+    flat=""
+  >
+    <v-btn
+      aria-label="Back Button"
+      icon=""
+    >
+      <v-icon>
+        mdi-arrow-left
+      </v-icon>
+    </v-btn>
+     
+    <v-toolbar-title>
+      
+    </v-toolbar-title>
+     
+    <div
+      class="flex-grow-1"
+    />
+     
+    <div
+      class="flex-grow-1"
+    />
+  </v-toolbar>
+   
+  <v-container>
+    <v-container>
+      <v-layout
+        align-center=""
+        d-flex=""
+        justify-center=""
+        row=""
+        wrap=""
+      >
+        <div
+          class="mt-10"
+          col="4"
+        >
+          <v-progress-linear
+            class="loading"
+            height="6"
+            indeterminate=""
+            rounded=""
+          />
+          We know waiting sucks
+      
+          <br />
+          but trust me it’s worth it
+    
+        </div>
+      </v-layout>
+    </v-container>
+     
+    <!---->
+  </v-container>
+   
+  <v-divider />
+</v-card>
+`;

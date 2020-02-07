@@ -19,11 +19,11 @@ export const getters: GetterTree<TechnicalReqState, RootState> = {
     return state.errorStatus;
   },
   /**
-   * getSingleTechnicalReq
+   * getTechnicalReq
    * @param {*} state
    * @returns  {object} technicalreq
    */
-  getSingleTechnicalReq(state) {
+  getTechnicalReq(state) {
     return state.singleTechnicalReq;
   },
   /**
