@@ -108,7 +108,7 @@
                     class="white--text submit-req ml-6"
                     depressed
                     @click="addTechnicalReq"
-                  >Next{{$t('technicalRequirements.next')}}</Button>
+                  >{{$t('technicalRequirements.next')}}</Button>
                 </v-card-actions>
               </v-card>
             </v-col>
