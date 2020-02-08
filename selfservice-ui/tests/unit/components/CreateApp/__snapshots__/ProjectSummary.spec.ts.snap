@@ -1,27 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ProjectSummary.vue renders props when passed 1`] = `
-<v-card
+<v-card-stub
   class="mx-auto"
+  loaderheight="4"
   style="max-width: 80%;"
+  tag="div"
 >
-  <v-toolbar
+  <v-toolbar-stub
     class="bc-subtitle padding-0"
-    dark=""
-    flat=""
+    dark="true"
+    extensionheight="48"
+    flat="true"
+    src=""
+    tag="header"
+    tile="true"
   >
-    <v-btn
+    <v-btn-stub
+      activeclass=""
       aria-label="Back Button"
-      icon=""
+      icon="true"
+      tag="button"
+      type="button"
     >
-      <v-icon>
+      <v-icon-stub>
         mdi-arrow-left
-      </v-icon>
-    </v-btn>
+      </v-icon-stub>
+    </v-btn-stub>
      
-    <v-toolbar-title>
+    <v-toolbar-title-stub>
       
-    </v-toolbar-title>
+    </v-toolbar-title-stub>
      
     <div
       class="flex-grow-1"
@@ -30,39 +39,69 @@ exports[`ProjectSummary.vue renders props when passed 1`] = `
     <div
       class="flex-grow-1"
     />
-  </v-toolbar>
+  </v-toolbar-stub>
    
-  <v-container>
-    <v-container>
-      <v-layout
-        align-center=""
-        d-flex=""
-        justify-center=""
-        row=""
-        wrap=""
-      >
-        <div
-          class="mt-10"
-          col="4"
-        >
-          <v-progress-linear
-            class="loading"
-            height="6"
-            indeterminate=""
-            rounded=""
-          />
-          We know waiting sucks
-      
-          <br />
-          but trust me it’s worth it
-    
-        </div>
-      </v-layout>
-    </v-container>
+  <v-container-stub
+    tag="div"
+  >
+    <loading-stub />
      
     <!---->
-  </v-container>
+  </v-container-stub>
    
-  <v-divider />
-</v-card>
+  <v-divider-stub />
+</v-card-stub>
+`;
+
+exports[`ProjectSummary.vue renders props when passed with gettors 1`] = `
+<v-card-stub
+  class="mx-auto"
+  loaderheight="4"
+  style="max-width: 80%;"
+  tag="div"
+>
+  <v-toolbar-stub
+    class="bc-subtitle padding-0"
+    dark="true"
+    extensionheight="48"
+    flat="true"
+    src=""
+    tag="header"
+    tile="true"
+  >
+    <v-btn-stub
+      activeclass=""
+      aria-label="Back Button"
+      icon="true"
+      tag="button"
+      type="button"
+    >
+      <v-icon-stub>
+        mdi-arrow-left
+      </v-icon-stub>
+    </v-btn-stub>
+     
+    <v-toolbar-title-stub>
+      
+    </v-toolbar-title-stub>
+     
+    <div
+      class="flex-grow-1"
+    />
+     
+    <div
+      class="flex-grow-1"
+    />
+  </v-toolbar-stub>
+   
+  <v-container-stub
+    tag="div"
+  >
+    <loading-stub />
+     
+    <!---->
+  </v-container-stub>
+   
+  <v-divider-stub />
+</v-card-stub>
 `;

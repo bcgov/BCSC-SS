@@ -29,7 +29,8 @@ describe('AddTechnicalReq.vue', () => {
         namespaced: true,
         state: {},
         getters: {
-          getSingleTechnicalReq: jest.fn()
+          getSingleTechnicalReq: jest.fn(),
+          getTechnicalReq: jest.fn()
         },
         actions: {
           getSingleTechnicalReq: jest.fn(),
