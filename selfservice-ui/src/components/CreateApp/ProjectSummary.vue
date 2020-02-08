@@ -20,7 +20,6 @@
       <v-row class="ma-5" v-if="!isLoading">
         <v-col cols="12" flat>
           <v-card flat>
-            <!-- <v-list-item-content>Summary Page</v-list-item-content> -->
             <v-card-subtitle class="text-left padding-0" v-html="$t('summaryPage.subTitle')"></v-card-subtitle>
           </v-card>
         </v-col>
@@ -68,14 +67,11 @@
                     <v-icon small class="mr-1">mdi-account</v-icon>
                     {{selectedTechnical.firstName }} {{selectedTechnical.lastName }}
                   </div>
-                  <div v-if="selectedTechnical.phone !==''" class="ml-6">
-                    <!-- <v-icon small class="mr-1">mdi-cellphone-basic</v-icon> -->
-                    {{selectedTechnical.phone }}
-                  </div>
-                  <div v-if="selectedManager.email !==''" class="ml-6">
-                    <!-- <v-icon small class="mr-1">mdi-email</v-icon> -->
-                    {{selectedTechnical.email }}
-                  </div>
+                  <div
+                    v-if="selectedTechnical.phone !==''"
+                    class="ml-6"
+                  >{{selectedTechnical.phone }}</div>
+                  <div v-if="selectedManager.email !==''" class="ml-6">{{selectedTechnical.email }}</div>
                 </v-list-item-content>
               </v-list-item>
               <v-divider></v-divider>
@@ -88,14 +84,8 @@
                     <v-icon small class="mr-1">mdi-account</v-icon>
                     {{selectedManager.firstName}} {{selectedManager.lastName }}
                   </div>
-                  <div v-if="selectedManager.phone !==''" class="ml-6">
-                    <!-- <v-icon small class="mr-1">mdi-cellphone-basic</v-icon> -->
-                    {{selectedManager.phone }}
-                  </div>
-                  <div v-if="selectedManager.email !==''" class="ml-6">
-                    <!-- <v-icon small class="mr-1">mdi-email</v-icon> -->
-                    {{selectedManager.email }}
-                  </div>
+                  <div v-if="selectedManager.phone !==''" class="ml-6">{{selectedManager.phone }}</div>
+                  <div v-if="selectedManager.email !==''" class="ml-6">{{selectedManager.email }}</div>
                 </v-list-item-content>
               </v-list-item>
               <v-divider></v-divider>
@@ -106,14 +96,8 @@
                     <v-icon small class="mr-1">mdi-account</v-icon>
                     {{selectedCto.firstName}} {{selectedCto.lastName }}
                   </div>
-                  <div class="ml-6">
-                    <!-- <v-icon small class="mr-1">mdi-cellphone-basic</v-icon> -->
-                    {{selectedManager.phone }}
-                  </div>
-                  <div class="ml-6">
-                    <!-- <v-icon small class="mr-1">mdi-email</v-icon> -->
-                    {{selectedManager.email }}
-                  </div>
+                  <div class="ml-6">{{selectedManager.phone }}</div>
+                  <div class="ml-6">{{selectedManager.email }}</div>
                 </v-list-item-content>
               </v-list-item>
             </v-list>
@@ -191,14 +175,7 @@
         <v-col cols="12" flat>
           <v-card class="mt-5">
             <v-toolbar dense color="#38598a" dark>
-              <v-card-title>
-                {{$t('summaryPage.packageTestTitle')}}
-                <!-- <v-icon
-                  small
-                  class="ml-3"
-                  @click="$router.push(`/project/${projectId}/technical`)"
-                >mdi-pencil</v-icon>-->
-              </v-card-title>
+              <v-card-title>{{$t('summaryPage.packageTestTitle')}}</v-card-title>
             </v-toolbar>
 
             <v-list dense v-if="getPackageList.length > 0" class="px-5">
@@ -281,7 +258,7 @@ import { ProjectUserModel } from '@/models/ProjectInfoModel';
 import Button from '@/Atomic/Button/Button.vue';
 import TextArea from '@/Atomic/TextArea/TextArea.vue';
 import Loading from '@/Atomic/Loading/Loading.vue';
-// const PackageAndTestModule = namespace('PackageAndTestModule');
+
 const TechnicalReqModule = namespace('TechnicalReqModule');
 const ProjectInfoModule = namespace('ProjectInfoModule');
 const PackageAndTestModule = namespace('PackageAndTestModule');
@@ -309,7 +286,6 @@ export default class TestAccountRequest extends Vue {
   @PackageAndTestModule.Action('loadPackage') public loadPackage!: any;
   @PackageAndTestModule.Getter('getPackageList') public getPackageList!: [];
 
-  // private slectedNumber: number = 1;
   private isLoading: boolean = true;
   private projectId: number = this.id || 0;
   private selectedTechnical: ProjectUserModel = {
