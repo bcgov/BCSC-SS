@@ -1,4 +1,4 @@
-import { mount, createLocalVue } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import ProjectSummary from '@/components/CreateApp/ProjectSummary.vue';
 import Vuetify from 'vuetify';
 import Vuex from 'vuex';
@@ -100,10 +100,9 @@ describe('ProjectSummary.vue', () => {
   });
 
   const mountFunction = (options: any) => {
-    return mount(ProjectSummary, {
+    return shallowMount(ProjectSummary, {
       store,
       vuetify,
-      // localVue,
       mocks: { $t: jest.fn(() => {}) }, // tslint:disable-line
       ...options
     });
@@ -111,10 +110,10 @@ describe('ProjectSummary.vue', () => {
 
   it('renders props when passed with gettors', () => {
     const projectSummary = mountFunction({});
-
     expect(projectSummary.element).toMatchSnapshot();
   });
 });
+
 describe('ProjectSummary.vue', () => {
   it('renders props when passed', () => {
     const store = new Vuex.Store({
@@ -154,10 +153,9 @@ describe('ProjectSummary.vue', () => {
         }
       }
     });
-    const projectSummary = mount(ProjectSummary, {
+    const projectSummary = shallowMount(ProjectSummary, {
       vuetify,
       store,
-      // localVue,
       mocks: { $t: jest.fn(() => {}) } // tslint:disable-line
     });
     expect(projectSummary.element).toMatchSnapshot();
