@@ -311,10 +311,8 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                             >
                               <i
                                 aria-hidden="true"
-                                class="v-icon notranslate material-icons theme--light"
-                              >
-                                $dropdown
-                              </i>
+                                class="v-icon notranslate mdi mdi-menu-down theme--light"
+                              />
                             </div>
                           </div>
                           <input
@@ -409,10 +407,8 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                             >
                               <i
                                 aria-hidden="true"
-                                class="v-icon notranslate material-icons theme--light"
-                              >
-                                $dropdown
-                              </i>
+                                class="v-icon notranslate mdi mdi-menu-down theme--light"
+                              />
                             </div>
                           </div>
                           <input
@@ -807,10 +803,8 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                             >
                               <i
                                 aria-hidden="true"
-                                class="v-icon notranslate material-icons theme--light"
-                              >
-                                $dropdown
-                              </i>
+                                class="v-icon notranslate mdi mdi-menu-down theme--light"
+                              />
                             </div>
                           </div>
                           <input
@@ -905,10 +899,8 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                             >
                               <i
                                 aria-hidden="true"
-                                class="v-icon notranslate material-icons theme--light"
-                              >
-                                $dropdown
-                              </i>
+                                class="v-icon notranslate mdi mdi-menu-down theme--light"
+                              />
                             </div>
                           </div>
                           <input
@@ -1303,10 +1295,8 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                             >
                               <i
                                 aria-hidden="true"
-                                class="v-icon notranslate material-icons theme--light"
-                              >
-                                $dropdown
-                              </i>
+                                class="v-icon notranslate mdi mdi-menu-down theme--light"
+                              />
                             </div>
                           </div>
                           <input
@@ -1401,10 +1391,8 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                             >
                               <i
                                 aria-hidden="true"
-                                class="v-icon notranslate material-icons theme--light"
-                              >
-                                $dropdown
-                              </i>
+                                class="v-icon notranslate mdi mdi-menu-down theme--light"
+                              />
                             </div>
                           </div>
                           <input

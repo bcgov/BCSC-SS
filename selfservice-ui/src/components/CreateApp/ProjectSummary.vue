@@ -146,7 +146,7 @@
                 <v-list-item-content class="align-self-start">{{$t('summaryPage.labelRedirectUrl')}}</v-list-item-content>
                 <v-list-item-content class="align-end">
                   <div v-for="redirectUri in technicalReq.redirectUris" :key="redirectUri">
-                    <v-icon small class="mr-1">mdi-link</v-icon>
+                    <v-icon small class="mr-1" v-if="redirectUri !==''">mdi-link</v-icon>
                     {{redirectUri}}
                   </div>
                 </v-list-item-content>
