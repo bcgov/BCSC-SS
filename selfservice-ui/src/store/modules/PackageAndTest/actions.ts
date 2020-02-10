@@ -52,19 +52,5 @@ export const actions: ActionTree<PackageState, RootState> = {
     );
     router.push(`/project/${projectId}/summary/`);
     commit('SET_LOADING', false);
-  },
-
-  /**
-   * submitProject to server
-   * @param {*} { commit }
-   */
-
-  async submitProject({ commit, rootState }, data) {
-    commit('SET_LOADING', true);
-    const { projectId } = data;
-    // const packageData =
-    await PackageAndTest.updateStatusOfProject(projectId, 2);
-    // router.push(`/project/${projectId}/summary/`);
-    commit('SET_LOADING', false);
   }
 };

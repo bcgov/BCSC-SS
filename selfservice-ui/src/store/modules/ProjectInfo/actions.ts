@@ -89,25 +89,18 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
       commit('SET_PROJECTINFOMESSAGE', '');
     }
   },
+
   /**
-   * remove projectinfo
-   * @param  {} {commit, dispatch}
-   * @param  {} projectinfo   list
+   * submitProject to server
+   * @param {*} { commit }
    */
-  async removeProjectInfo({ commit, dispatch }, id: any) {
+
+  async submitProject({ commit, rootState }, data) {
     commit('SET_LOADING', true);
-    try {
-      await ProjectInfoService.deleteProjectInfo(id);
-      commit('SET_LOADING', false);
-      commit('SET_PROJECTINFO_SUCCESSFULLY', true);
-      commit('SET_PROJECTINFO_MESSAGE', i18n.t('PROJECTINFO_DELETE_MESSAGE'));
-      commit('SET_PROJECTINFO_ERROR', false);
-      dispatch('loadProjectInfo');
-    } catch {
-      commit('SET_LOADING', false);
-      commit('SET_PROJECTINFO_SUCCESSFULLY', false);
-      commit('SET_PROJECTINFO_ERROR', true);
-      commit('SET_PROJECTINFO_MESSAGE', '');
-    }
+    const { projectId } = data;
+    // const packageData =
+    await ProjectInfoService.updateStatusOfProject(projectId, 2);
+    // router.push(`/project/${projectId}/summary/`);
+    commit('SET_LOADING', false);
   }
 };

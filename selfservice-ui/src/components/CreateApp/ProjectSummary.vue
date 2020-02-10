@@ -274,10 +274,9 @@
           </v-card>
         </v-col>
         <v-col cols="12">
-          <v-card flat class="ma-5">
+          <v-card flat class="mt-1">
             <v-divider></v-divider>
-            <v-card-actions>
-              <!-- <v-btn text @click="$refs.form.reset()">Clear</v-btn> -->
+            <v-card-actions class="mt-2 py-2 px-0">
               <v-spacer></v-spacer>
               <Button
                 @click="$router.push(`/project/${projectId}/test-account/`)"
@@ -300,7 +299,7 @@
     </v-container>
     <v-divider></v-divider>
     <div class="text-center">
-      <v-dialog v-model="dialog" width="70%" class="text-left">
+      <v-dialog v-model="dialog" persistent width="70%" class="text-left">
         <v-card>
           <v-card-title class="bc-subtitle padding-0" primary-title>{{
             $t('summaryPage.disclaimerTitle')
@@ -366,7 +365,7 @@ export default class TestAccountRequest extends Vue {
 
   @PackageAndTestModule.Action('loadPackage') public loadPackage!: any;
   @PackageAndTestModule.Getter('getPackageList') public getPackageList!: [];
-  @PackageAndTestModule.Action('submitProject') public submitProject!: any;
+  @ProjectInfoModule.Action('submitProject') public submitProject!: any;
 
   private isLoading: boolean = true;
   private projectId: number = this.id || 0;

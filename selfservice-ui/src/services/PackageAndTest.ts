@@ -38,16 +38,4 @@ export class PackageAndTest {
       update: 'test-account'
     });
   }
-  /**
-   * update project status
-   * @param  {string} projectId
-   * @param  {number} status
-   */
-  public static async updateStatusOfProject(projectId: string, status: number) {
-    const data = {
-      status,
-      update: 'status'
-    };
-    return await axios.patch(`${PROJECTINFO_URL}/${projectId}`, data);
-  }
 }
