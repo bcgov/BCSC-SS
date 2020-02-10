@@ -1,5 +1,9 @@
 import axios from '@/lib/axios';
-import { PACKAGE_URL, TECHNICALREQ_URL } from '@/config/api-endpoints';
+import {
+  PACKAGE_URL,
+  TECHNICALREQ_URL,
+  PROJECTINFO_URL
+} from '@/config/api-endpoints';
 export class PackageAndTest {
   public static async getPackages() {
     return await axios.get(PACKAGE_URL);
@@ -33,5 +37,17 @@ export class PackageAndTest {
       noteTestAccount,
       update: 'test-account'
     });
+  }
+  /**
+   * update project status
+   * @param  {string} projectId
+   * @param  {number} status
+   */
+  public static async updateStatusOfProject(projectId: string, status: number) {
+    const data = {
+      status,
+      update: 'status'
+    };
+    return await axios.patch(`${PROJECTINFO_URL}/${projectId}`, data);
   }
 }
