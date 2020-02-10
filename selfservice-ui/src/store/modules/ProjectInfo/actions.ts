@@ -97,10 +97,14 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
 
   async submitProject({ commit, rootState }, data) {
     commit('SET_LOADING', true);
-    const { projectId } = data;
-    // const packageData =
-    await ProjectInfoService.updateStatusOfProject(projectId, 2);
-    // router.push(`/project/${projectId}/summary/`);
-    commit('SET_LOADING', false);
+    try {
+      const { projectId } = data;
+      // const packageData =
+      await ProjectInfoService.updateStatusOfProject(projectId, 2);
+      // router.push(`/project/${projectId}/summary/`);
+      commit('SET_LOADING', false);
+    } catch {
+      commit('SET_LOADING', false);
+    }
   }
 };
