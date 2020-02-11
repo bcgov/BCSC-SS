@@ -73,28 +73,14 @@ exports[`PackageSelect.vue renders props when passed 1`] = `
             class="v-card v-card--flat v-sheet theme--light"
           >
             <div
-              class="v-list-item__content"
+              class="v-list-item__content headline"
             >
               
             </div>
              
             <div
               class="v-list-item__content"
-            >
-              
-            </div>
-             
-            <div
-              class="v-list-item__content"
-            >
-              
-            </div>
-             
-            <div
-              class="v-list-item__content"
-            >
-              
-            </div>
+            />
           </div>
         </div>
          
@@ -374,28 +360,14 @@ exports[`PackageSelect.vue select on package on click  1`] = `
             class="v-card v-card--flat v-sheet theme--light"
           >
             <div
-              class="v-list-item__content"
+              class="v-list-item__content headline"
             >
               
             </div>
              
             <div
               class="v-list-item__content"
-            >
-              
-            </div>
-             
-            <div
-              class="v-list-item__content"
-            >
-              
-            </div>
-             
-            <div
-              class="v-list-item__content"
-            >
-              
-            </div>
+            />
           </div>
         </div>
          
@@ -675,28 +647,14 @@ exports[`PackageSelect.vue submit form with selected package on submit click  1`
             class="v-card v-card--flat v-sheet theme--light"
           >
             <div
-              class="v-list-item__content"
+              class="v-list-item__content headline"
             >
               
             </div>
              
             <div
               class="v-list-item__content"
-            >
-              
-            </div>
-             
-            <div
-              class="v-list-item__content"
-            >
-              
-            </div>
-             
-            <div
-              class="v-list-item__content"
-            >
-              
-            </div>
+            />
           </div>
         </div>
          

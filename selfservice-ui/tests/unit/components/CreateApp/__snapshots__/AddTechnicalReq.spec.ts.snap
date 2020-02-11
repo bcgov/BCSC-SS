@@ -57,10 +57,26 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
             class="col-md-12 col-12"
           >
             <div
-              class="pa-4 pt-6 v-card v-sheet theme--light"
+              class="pa-4 pt-6 mb-4 v-card v-sheet theme--light"
             >
               <div
                 class="v-card__title headline padding-0 text-capitalize"
+              >
+                
+              </div>
+               
+              <div
+                class="v-card__subtitle text-left padding-0"
+              >
+                
+              </div>
+            </div>
+             
+            <div
+              class="pa-4 pt-6 v-card v-sheet theme--light"
+            >
+              <div
+                class="v-card__subtitle text-left padding-0"
               >
                 
               </div>
@@ -96,7 +112,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                       class="v-text-field__slot"
                     >
                       <input
-                        id="input-13"
+                        id="input-14"
                         type="text"
                       />
                     </div>
@@ -153,7 +169,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                         class="v-text-field__slot"
                       >
                         <input
-                          id="input-16"
+                          id="input-17"
                           type="text"
                         />
                       </div>
@@ -225,7 +241,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                       class="v-text-field__slot"
                     >
                       <input
-                        id="input-21"
+                        id="input-22"
                         type="text"
                       />
                     </div>
@@ -269,7 +285,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                       <div
                         aria-expanded="false"
                         aria-haspopup="listbox"
-                        aria-owns="list-25"
+                        aria-owns="list-26"
                         class="v-input__slot"
                         role="button"
                       >
@@ -298,7 +314,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                             <input
                               aria-readonly="true"
                               autocomplete="off"
-                              id="input-25"
+                              id="input-26"
                               readonly="readonly"
                               type="text"
                             />
@@ -365,7 +381,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                       <div
                         aria-expanded="false"
                         aria-haspopup="listbox"
-                        aria-owns="list-33"
+                        aria-owns="list-34"
                         class="v-input__slot"
                         role="button"
                       >
@@ -394,7 +410,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                             <input
                               aria-readonly="true"
                               autocomplete="off"
-                              id="input-33"
+                              id="input-34"
                               readonly="readonly"
                               type="text"
                             />
@@ -549,10 +565,26 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
             class="col-md-12 col-12"
           >
             <div
-              class="pa-4 pt-6 v-card v-sheet theme--light"
+              class="pa-4 pt-6 mb-4 v-card v-sheet theme--light"
             >
               <div
                 class="v-card__title headline padding-0 text-capitalize"
+              >
+                
+              </div>
+               
+              <div
+                class="v-card__subtitle text-left padding-0"
+              >
+                
+              </div>
+            </div>
+             
+            <div
+              class="pa-4 pt-6 v-card v-sheet theme--light"
+            >
+              <div
+                class="v-card__subtitle text-left padding-0"
               >
                 
               </div>
@@ -588,7 +620,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                       class="v-text-field__slot"
                     >
                       <input
-                        id="input-56"
+                        id="input-58"
                         type="text"
                       />
                     </div>
@@ -645,7 +677,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                         class="v-text-field__slot"
                       >
                         <input
-                          id="input-59"
+                          id="input-61"
                           type="text"
                         />
                       </div>
@@ -717,7 +749,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                       class="v-text-field__slot"
                     >
                       <input
-                        id="input-64"
+                        id="input-66"
                         type="text"
                       />
                     </div>
@@ -761,7 +793,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                       <div
                         aria-expanded="false"
                         aria-haspopup="listbox"
-                        aria-owns="list-68"
+                        aria-owns="list-70"
                         class="v-input__slot"
                         role="button"
                       >
@@ -790,7 +822,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                             <input
                               aria-readonly="true"
                               autocomplete="off"
-                              id="input-68"
+                              id="input-70"
                               readonly="readonly"
                               type="text"
                             />
@@ -857,7 +889,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                       <div
                         aria-expanded="false"
                         aria-haspopup="listbox"
-                        aria-owns="list-76"
+                        aria-owns="list-78"
                         class="v-input__slot"
                         role="button"
                       >
@@ -886,7 +918,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                             <input
                               aria-readonly="true"
                               autocomplete="off"
-                              id="input-76"
+                              id="input-78"
                               readonly="readonly"
                               type="text"
                             />
@@ -1041,10 +1073,26 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
             class="col-md-12 col-12"
           >
             <div
-              class="pa-4 pt-6 v-card v-sheet theme--light"
+              class="pa-4 pt-6 mb-4 v-card v-sheet theme--light"
             >
               <div
                 class="v-card__title headline padding-0 text-capitalize"
+              >
+                
+              </div>
+               
+              <div
+                class="v-card__subtitle text-left padding-0"
+              >
+                
+              </div>
+            </div>
+             
+            <div
+              class="pa-4 pt-6 v-card v-sheet theme--light"
+            >
+              <div
+                class="v-card__subtitle text-left padding-0"
               >
                 
               </div>
@@ -1080,7 +1128,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                       class="v-text-field__slot"
                     >
                       <input
-                        id="input-99"
+                        id="input-102"
                         type="text"
                       />
                     </div>
@@ -1137,7 +1185,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                         class="v-text-field__slot"
                       >
                         <input
-                          id="input-102"
+                          id="input-105"
                           type="text"
                         />
                       </div>
@@ -1209,7 +1257,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                       class="v-text-field__slot"
                     >
                       <input
-                        id="input-107"
+                        id="input-110"
                         type="text"
                       />
                     </div>
@@ -1253,7 +1301,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                       <div
                         aria-expanded="false"
                         aria-haspopup="listbox"
-                        aria-owns="list-111"
+                        aria-owns="list-114"
                         class="v-input__slot"
                         role="button"
                       >
@@ -1282,7 +1330,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                             <input
                               aria-readonly="true"
                               autocomplete="off"
-                              id="input-111"
+                              id="input-114"
                               readonly="readonly"
                               type="text"
                             />
@@ -1349,7 +1397,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                       <div
                         aria-expanded="false"
                         aria-haspopup="listbox"
-                        aria-owns="list-119"
+                        aria-owns="list-122"
                         class="v-input__slot"
                         role="button"
                       >
@@ -1378,7 +1426,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                             <input
                               aria-readonly="true"
                               autocomplete="off"
-                              id="input-119"
+                              id="input-122"
                               readonly="readonly"
                               type="text"
                             />
