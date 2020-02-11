@@ -5,10 +5,16 @@
     <v-alert type="error" v-if="errorStatus">Something went wrong...</v-alert>-->
     <v-card class="mx-auto">
       <v-app-bar dark class="bc-subtitle">
-        <v-btn icon @click="$router.push(`/project/${projectId}/info/`)" aria-label="Back Button">
+        <v-btn
+          icon
+          @click="$router.push(`/project/${projectId}/info/`)"
+          aria-label="Back Button"
+        >
           <v-icon>mdi-arrow-left</v-icon>
         </v-btn>
-        <v-toolbar-title>{{$t('technicalRequirements.technicalTitle')}}</v-toolbar-title>
+        <v-toolbar-title>{{
+          $t('technicalRequirements.technicalTitle')
+        }}</v-toolbar-title>
         <v-spacer></v-spacer>
       </v-app-bar>
 
@@ -16,17 +22,22 @@
         <v-container>
           <v-row dense>
             <v-col cols="12" md="12">
-              <v-card class="pa-4 pt-6">
+              <v-card class="pa-4 pt-6 mb-4">
                 <!-- <v-card-title class="headline"
                   >Technical information</v-card-title
                 >-->
-                <!-- <v-card-subtitle class="text-left"
-                  >Tell us about your Project</v-card-subtitle
-                >-->
-                <v-card-title
-                  class="headline padding-0 text-capitalize"
-                >{{$t('technicalRequirements.projectName')}}{{ getSingleProjectInfo && getSingleProjectInfo.projectName }}</v-card-title>
 
+                <v-card-title class="headline padding-0 text-capitalize">{{
+                  getSingleProjectInfo && getSingleProjectInfo.projectName
+                }}</v-card-title>
+                <v-card-subtitle class="text-left padding-0">{{
+                  $t('technicalRequirements.technicalTitleInfo')
+                }}</v-card-subtitle>
+              </v-card>
+              <v-card class="pa-4 pt-6">
+                <v-card-subtitle class="text-left padding-0">{{
+                  $t('technicalRequirements.inputAppText')
+                }}</v-card-subtitle>
                 <Input
                   v-model="clientUri"
                   counter="500"
@@ -35,9 +46,9 @@
                   :rules="[rules.required, rules.url, rules.maxLength(500)]"
                 />
                 <!-- <div class="col-12"> -->
-                <v-card-subtitle
-                  class="text-left padding-0"
-                >{{$t('technicalRequirements.inputUrlText')}}</v-card-subtitle>
+                <v-card-subtitle class="text-left padding-0">{{
+                  $t('technicalRequirements.inputUrlText')
+                }}</v-card-subtitle>
                 <!-- </div> -->
                 <div
                   v-for="(redirectUri, index) in redirectUris"
@@ -59,9 +70,9 @@
                   ></v-text-field>
                   <!-- :rules="[rules.required]" -->
                 </div>
-                <v-card-subtitle
-                  class="text-left padding-0"
-                >{{$t('technicalRequirements.JWKSText')}}</v-card-subtitle>
+                <v-card-subtitle class="text-left padding-0">{{
+                  $t('technicalRequirements.JWKSText')
+                }}</v-card-subtitle>
                 <Input
                   v-model="jwksUri"
                   counter="500"
@@ -74,7 +85,11 @@
                   <div class="col-5">
                     <Select
                       v-model="idTokenSignedResponseAlg"
-                      :label="$t('technicalRequirements.labelIdTokenSignedResponseAlg')"
+                      :label="
+                        $t(
+                          'technicalRequirements.labelIdTokenSignedResponseAlg'
+                        )
+                      "
                       :items="tokenAlgoritham"
                       :rules="[rules.required]"
                       outlined
@@ -84,7 +99,11 @@
                   <div class="col-5">
                     <Select
                       v-model="userinfoSignedResponseAlg"
-                      :label="$t('technicalRequirements.labelUserinfoSignedResponseAlg')"
+                      :label="
+                        $t(
+                          'technicalRequirements.labelUserinfoSignedResponseAlg'
+                        )
+                      "
                       :items="userAlgoritham"
                       :rules="[rules.required]"
                       outlined
@@ -101,14 +120,16 @@
                     @click="$router.push(`/project/${projectId}/info/`)"
                     aria-label="Back Button"
                     secondary
-                  >{{$t('technicalRequirements.btnBack')}}</Button>
+                    >{{ $t('technicalRequirements.btnBack') }}</Button
+                  >
                   <Button
                     :disabled="!form"
                     :loading="isLoading"
                     class="white--text submit-req ml-6"
                     depressed
                     @click="addTechnicalReq"
-                  >{{$t('technicalRequirements.next')}}</Button>
+                    >{{ $t('technicalRequirements.next') }}</Button
+                  >
                 </v-card-actions>
               </v-card>
             </v-col>
