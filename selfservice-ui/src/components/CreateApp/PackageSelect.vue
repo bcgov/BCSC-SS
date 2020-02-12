@@ -10,10 +10,12 @@
       >
         <v-icon>mdi-arrow-left</v-icon>
       </v-btn>
-      <v-toolbar-title>{{$t('selectPackage.pagetitle')}}</v-toolbar-title>
+      <v-toolbar-title>{{ $t('selectPackage.pagetitle') }}</v-toolbar-title>
       <div class="flex-grow-1"></div>
       <v-col class="col-lg-4 col-md-5 col-8">
-        <v-alert type="error" v-if="errorStatus" class="alert-top">Something went wrong...</v-alert>
+        <v-alert type="error" v-if="errorStatus" class="alert-top"
+          >Something went wrong...</v-alert
+        >
       </v-col>
       <div class="flex-grow-1"></div>
     </v-toolbar>
@@ -23,15 +25,32 @@
         <v-row class="ma-5">
           <v-col cols="12" flat>
             <v-card flat>
-              <v-list-item-content>{{$t('selectPackage.choosePackage')}}</v-list-item-content>
-              <v-list-item-content>{{$t('selectPackage.package1')}}</v-list-item-content>
-              <v-list-item-content>{{$t('selectPackage.package2')}}</v-list-item-content>
-              <v-list-item-content>{{$t('selectPackage.package3')}}</v-list-item-content>
+              <v-list-item-content class="headline">{{
+                $t('selectPackage.choosePackage')
+              }}</v-list-item-content>
+              <v-list-item-content
+                v-html="$t('selectPackage.pagetitleInfo')"
+              ></v-list-item-content>
+              <!-- <v-list-item-content>{{
+                $t('selectPackage.package2')
+              }}</v-list-item-content>
+              <v-list-item-content>{{
+                $t('selectPackage.package3')
+              }}</v-list-item-content> -->
             </v-card>
           </v-col>
 
-          <v-col v-for="(packageData, idx) in getPackageList" :key="idx" cols="12" md="12">
-            <v-item v-slot:default="{ active }" :value="packageData.id" class="select-package">
+          <v-col
+            v-for="(packageData, idx) in getPackageList"
+            :key="idx"
+            cols="12"
+            md="12"
+          >
+            <v-item
+              v-slot:default="{ active }"
+              :value="packageData.id"
+              class="select-package"
+            >
               <v-card
                 class="d-flex align-center pa-4 select-package"
                 :class="active ? 'active-bg' : ''"
@@ -40,14 +59,10 @@
                 <v-list-item three-line>
                   <v-list-item-content>
                     <v-list-item-title class="headline mb-1">
-                      {{
-                      packageData.packageName
-                      }}
+                      {{ packageData.packageName }}
                     </v-list-item-title>
                     <v-list-item-subtitle>
-                      {{
-                      packageData.description
-                      }}
+                      {{ packageData.description }}
                     </v-list-item-subtitle>
                     <v-list-item-subtitle
                       v-for="claimName in packageData.claimNames"
@@ -60,10 +75,15 @@
                 </v-list-item>
                 <v-spacer></v-spacer>
                 <div v-if="!active" class="text-center mr-5">
-                  <v-icon color="#eae9e9" x-large>mdi-check-circle-outline</v-icon>
+                  <v-icon color="#eae9e9" x-large
+                    >mdi-check-circle-outline</v-icon
+                  >
                   <!-- Select this package -->
                 </div>
-                <div v-if="active" class="display-3 flex-grow-1 text-center mr-5">
+                <div
+                  v-if="active"
+                  class="display-3 flex-grow-1 text-center mr-5"
+                >
                   <v-icon color="green" x-large>mdi-check-circle</v-icon>
                 </div>
                 <!-- </v-scroll-y-transition> -->
@@ -83,7 +103,8 @@
             @click="$router.push(`/project/${projectId}/technical/`)"
             aria-label="Back Button"
             secondary
-          >Go Back</Button>
+            >Go Back</Button
+          >
           <Button
             :disabled="!slectedPackage"
             :loading="isLoading"
@@ -91,7 +112,8 @@
             color="indigo accent-4"
             depressed
             @click="submitPackage"
-          >Next</Button>
+            >Next</Button
+          >
         </v-card-actions>
       </v-card>
     </v-col>

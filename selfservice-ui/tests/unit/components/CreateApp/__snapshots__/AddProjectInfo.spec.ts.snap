@@ -68,11 +68,11 @@ exports[`AddProjectInfo.vue renders props when passed 1`] = `
                 class="text-left padding-0"
               />
                
-              <v-card-title-stub
-                class="font-regular padding-0"
+              <v-card-subtitle-stub
+                class="font-weight-bold text-left padding-0"
               >
                 
-              </v-card-title-stub>
+              </v-card-subtitle-stub>
                
               <input-stub
                 counter="100"

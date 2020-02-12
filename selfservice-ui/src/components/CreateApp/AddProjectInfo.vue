@@ -6,7 +6,9 @@
         <v-btn icon @click="$router.push('/project/')" aria-label="Back Button">
           <v-icon>mdi-arrow-left</v-icon>
         </v-btn>
-        <v-toolbar-title>{{$t('projectInfo.ProjectInfoTitle')}}</v-toolbar-title>
+        <v-toolbar-title>{{
+          $t('projectInfo.ProjectInfoTitle')
+        }}</v-toolbar-title>
         <v-spacer></v-spacer>
       </v-app-bar>
       <v-form ref="form" v-model="form">
@@ -14,22 +16,26 @@
           <v-row dense>
             <v-col cols="12" md="12">
               <v-card class="pa-8 pt-6 ma-3">
-                <v-card-title class="headline padding-0">{{$t('projectInfo.ProjectInfoTitle')}}</v-card-title>
+                <v-card-title class="headline padding-0">{{
+                  $t('projectInfo.ProjectInfoTitle')
+                }}</v-card-title>
                 <v-card-subtitle
                   class="text-left padding-0"
                   v-html="$t('projectInfo.ProjectInfoTitleInfo')"
                 ></v-card-subtitle>
-                <v-card-title class="font-regular padding-0">{{$t('projectInfo.ProjectOrgTitle')}}</v-card-title>
+                <v-card-subtitle class="font-weight-bold text-left padding-0">{{
+                  $t('projectInfo.ProjectOrgTitle')
+                }}</v-card-subtitle>
                 <Input
                   v-model="organizationName"
                   counter="100"
                   :label="$t('projectInfo.OrganizationName')"
                   type="text"
                   :rules="[
-                rules.required,
-                rules.length(2),
-                rules.maxLength(100)
-                ]"
+                    rules.required,
+                    rules.length(2),
+                    rules.maxLength(100)
+                  ]"
                 />
                 <Input
                   v-model="projectName"
@@ -55,23 +61,33 @@
 
             <v-col cols="12">
               <v-card class="pa-8 pt-6 ma-3">
-                <v-card-title class="headline padding-0">{{$t('projectInfo.ProjectRoles')}}</v-card-title>
-                <v-card-subtitle class="text-left padding-0">{{$t('projectInfo.RolesTitleInfo')}}</v-card-subtitle>
+                <v-card-title class="headline padding-0">{{
+                  $t('projectInfo.ProjectRoles')
+                }}</v-card-title>
+                <v-card-subtitle class="text-left padding-0">{{
+                  $t('projectInfo.RolesTitleInfo')
+                }}</v-card-subtitle>
                 <v-radio-group v-model.number="myRole" row color="black">
-                  <span class="mr-2">{{$t('projectInfo.myRole')}}</span>
+                  <span class="mr-2">{{ $t('projectInfo.myRole') }}</span>
                   <v-radio class="black-color" v-bind:value="1">
                     <template v-slot:label>
-                      <span class="black-color">Developer</span>
+                      <span class="black-color">{{
+                        $t('projectInfo.DeveloperRole')
+                      }}</span>
                     </template>
                   </v-radio>
                   <v-radio label="Manager" v-bind:value="2">
                     <template v-slot:label>
-                      <span class="black-color">Manager</span>
+                      <span class="black-color">{{
+                        $t('projectInfo.ManagerRole')
+                      }}</span>
                     </template>
                   </v-radio>
                   <v-radio v-bind:value="3">
                     <template v-slot:label>
-                      <span class="black-color">CTO</span>
+                      <span class="black-color">{{
+                        $t('projectInfo.CTORole')
+                      }}</span>
                     </template>
                   </v-radio>
                 </v-radio-group>
@@ -115,7 +131,8 @@
                     depressed
                     @click="addProjectInfo"
                     @keyup.enter="addProjectInfo"
-                  >{{$t('projectInfo.Next')}}</Button>
+                    >{{ $t('projectInfo.Next') }}</Button
+                  >
                 </v-card-actions>
               </v-card>
             </v-col>
