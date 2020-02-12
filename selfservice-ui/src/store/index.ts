@@ -6,6 +6,7 @@ import ProjectInfoModule from './modules/ProjectInfo';
 import TechnicalReqModule from './modules/TechnicalReq';
 
 import PackageAndTestModule from './modules/PackageAndTest';
+import ClientIdModule from './modules/ClientID';
 Vue.use(Vuex);
 
 /**
@@ -16,7 +17,8 @@ const store: StoreOptions<RootState> = {
     KeyCloakModule,
     ProjectInfoModule,
     TechnicalReqModule,
-    PackageAndTestModule
+    PackageAndTestModule,
+    ClientIdModule
   },
   strict: true
 };
