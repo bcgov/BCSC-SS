@@ -42,7 +42,7 @@
             </v-card>
             <v-item class="client-id" :value="getApiData.clientId">
               <v-card
-                class="d-flex align-center px-5 client-id v-card--link"
+                class="d-flex align-center px-5 client-id-copy v-card--link"
                 @click="docopy(getApiData.clientId)"
               >
                 <v-list-item two-line>
