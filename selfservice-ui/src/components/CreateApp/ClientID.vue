@@ -22,7 +22,8 @@
     <v-divider></v-divider>
     <v-item-group>
       <v-container>
-        <v-row class="ma-5">
+        <Loading v-if="isLoading" />
+        <v-row class="ma-5" v-else>
           <v-snackbar v-model="snackbar" :timeout="timeout">
             {{ text }}
             <v-btn color="blue" text @click="snackbar = false">
@@ -122,9 +123,14 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
+import Loading from '@/Atomic/Loading/Loading.vue';
 const ClientIdModule = namespace('ClientIdModule');
 
-@Component
+@Component({
+  components: {
+    Loading
+  }
+})
 export default class ClientIDDetails extends Vue {
   @Prop({ default: 0 })
   public id!: number;
@@ -132,8 +138,8 @@ export default class ClientIDDetails extends Vue {
   @ClientIdModule.Action('getClientIdDetails')
   public getClientIdDetails!: any;
   @ClientIdModule.Getter('getApiData') public getApiData!: [];
+  @ClientIdModule.Getter('isLoading') public isLoading!: boolean;
 
-  private isLoading: boolean = false;
   private projectId: number = this.id || 0;
   private snackbar: boolean = false;
   private text: string = 'Copied';

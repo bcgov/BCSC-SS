@@ -11,6 +11,9 @@ export const getters: GetterTree<ClientIdState, RootState> = {
    * @param {*} state
    * @returns  {object} package
    */
+  isLoading(state) {
+    return state.loading;
+  },
 
   getApiData(state) {
     return state.apiData;
