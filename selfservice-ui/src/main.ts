@@ -11,8 +11,10 @@ import '@/assets/styles/base.scss';
 import '@/assets/styles/layout.scss';
 import '@/assets/styles/overrides.scss';
 import i18n from './i18n';
+import VueClipboard from 'vue-clipboard2';
 
 Vue.config.productionTip = false;
+Vue.use(VueClipboard);
 
 new Vue({
   router,

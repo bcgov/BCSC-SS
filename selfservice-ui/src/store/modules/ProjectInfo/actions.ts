@@ -101,7 +101,7 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
       const { projectId } = data;
       // const packageData =
       await ProjectInfoService.updateStatusOfProject(projectId, 2);
-      // router.push(`/project/${projectId}/summary/`);
+      router.push(`/project/${projectId}/api-key/`);
       commit('SET_LOADING', false);
     } catch {
       commit('SET_LOADING', false);

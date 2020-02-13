@@ -7,6 +7,7 @@
     <PackageSelect v-if="step === 'package'" :id="id" />
     <TestAccountRequest v-if="step === 'test-account'" :id="id" />
     <ProjectSummary v-if="step === 'summary'" :id="id" />
+    <ClientID v-if="step === 'api-key'" :id="id" />
   </div>
 </template>
 
@@ -17,6 +18,7 @@ import AddTechnicalReq from '@/components/CreateApp/AddTechnicalReq.vue';
 import PackageSelect from '@/components/CreateApp/PackageSelect.vue';
 import TestAccountRequest from '@/components/CreateApp/TestAccountRequest.vue';
 import ProjectSummary from '@/components/CreateApp/ProjectSummary.vue';
+import ClientID from '@/components/CreateApp/ClientID.vue';
 
 @Component({
   components: {
@@ -24,7 +26,8 @@ import ProjectSummary from '@/components/CreateApp/ProjectSummary.vue';
     AddTechnicalReq,
     PackageSelect,
     TestAccountRequest,
-    ProjectSummary
+    ProjectSummary,
+    ClientID
   }
 })
 export default class CreateApp extends Vue {
