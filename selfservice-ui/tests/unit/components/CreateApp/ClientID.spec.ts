@@ -1,4 +1,4 @@
-import { shallowMount, mount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import ClientID from '@/components/CreateApp/ClientID.vue';
 import Vuetify from 'vuetify';
 import Vuex from 'vuex';
