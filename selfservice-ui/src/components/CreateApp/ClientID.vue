@@ -6,7 +6,7 @@
       <v-btn
         icon
         @click="$router.push(`/project/${projectId}/summary/`)"
-        aria-label="Back Button"
+        :aria-label="$t('ClientID.Back')"
       >
         <v-icon>mdi-arrow-left</v-icon>
       </v-btn>
@@ -20,12 +20,14 @@
       <div class="flex-grow-1"></div>
     </v-toolbar>
     <v-divider></v-divider>
-    <v-item-group mandatory :value="slectedPackage">
+    <v-item-group>
       <v-container>
         <v-row class="ma-5">
           <v-snackbar v-model="snackbar" :timeout="timeout">
             {{ text }}
-            <v-btn color="blue" text @click="snackbar = false">Close</v-btn>
+            <v-btn color="blue" text @click="snackbar = false">
+              {{ $t('ClientID.labelSnackbarClose') }}</v-btn
+            >
           </v-snackbar>
 
           <v-col cols="12" md="12">
@@ -38,35 +40,22 @@
               ></v-list-item-content>
             </v-card>
             <v-item class="client-id" :value="getApiData.clientId">
-              <!-- v-slot:default="{ active }" -->
-              <!-- :value="packageData.id" -->
-              <v-card class="d-flex align-center pa-4 client-id v-card--link">
-                <v-list-item three-line>
-                  <v-list-item-content>
-                    <v-list-item-title
-                      class="title mb-1"
-                      @click="docopy(getApiData.clientId)"
-                    >
+              <v-card
+                class="d-flex align-center px-5 client-id v-card--link"
+                @click="docopy(getApiData.clientId)"
+              >
+                <v-list-item two-line>
+                  <v-list-item-action>
+                    <v-list-item-title class="title mb-1">
                       {{ getApiData.clientId }}
                     </v-list-item-title>
-                    <!-- <v-list-item-subtitle>
-                      {{ packageData.description }}
-                    </v-list-item-subtitle> -->
-                    <!-- <v-list-item-subtitle
-                      v-for="claimName in packageData.claimNames"
-                      :key="claimName"
-                    >
-                      <v-icon color="#eae9e9" x-small>mdi-content-copy</v-icon>
-                      {{ claimName }}
-                    </v-list-item-subtitle> -->
-                  </v-list-item-content>
+                  </v-list-item-action>
                 </v-list-item>
                 <v-spacer></v-spacer>
 
                 <div class="display-3 flex-grow-1 text-center mr-5">
-                  <v-icon color="#eae9e9" x-large>mdi-content-copy</v-icon>
+                  <v-icon color="#eae9e9" large>mdi-content-copy</v-icon>
                 </div>
-                <!-- </v-scroll-y-transition> -->
               </v-card>
             </v-item>
           </v-col>
@@ -81,34 +70,22 @@
               ></v-list-item-content>
             </v-card>
             <v-item class="client-id" :value="getApiData.clientSecret">
-              <!-- :value="packageData.id" -->
-              <v-card class="d-flex align-center pa-4 client-id v-card--link">
-                <v-list-item three-line>
+              <v-card
+                class="d-flex align-center px-4 client-id v-card--link"
+                @click="docopy(getApiData.clientSecret)"
+              >
+                <v-list-item two-line>
                   <v-list-item-content>
-                    <v-list-item-title
-                      class="title mb-1"
-                      @click="docopy(getApiData.clientSecret)"
-                    >
+                    <v-list-item-title class="title mb-1">
                       {{ getApiData.clientSecret }}
                     </v-list-item-title>
-                    <!-- <v-list-item-subtitle>
-                      {{ packageData.description }}
-                    </v-list-item-subtitle> -->
-                    <!-- <v-list-item-subtitle
-                      v-for="claimName in packageData.claimNames"
-                      :key="claimName"
-                    >
-                      <v-icon color="#eae9e9" x-small>mdi-content-copy</v-icon>
-                      {{ claimName }}
-                    </v-list-item-subtitle> -->
                   </v-list-item-content>
                 </v-list-item>
                 <v-spacer></v-spacer>
 
                 <div class="display-3 flex-grow-1 text-center mr-5">
-                  <v-icon color="#eae9e9" x-large>mdi-content-copy</v-icon>
+                  <v-icon color="#eae9e9" large>mdi-content-copy</v-icon>
                 </div>
-                <!-- </v-scroll-y-transition> -->
               </v-card>
             </v-item>
           </v-col>
@@ -122,24 +99,18 @@
               ></v-list-item-content>
             </v-card>
             <v-item class="client-id" :value="getApiData.clientSecret">
-              <!-- :value="packageData.id" -->
               <v-card class="d-flex align-center pa-4 client-id v-card--link">
-                <v-list-item three-line>
+                <v-list-item two-line>
                   <v-list-item-content>
                     <v-list-item-title
                       class="subtitle-1	 mb-1"
-                      v-for="accounts in getApiData.testUserAccounts"
+                      v-for="account in getApiData.testUserAccounts"
                     >
-                      {{ accounts.userName }} , {{ accounts.idKey }}
+                      {{ account.userName }} , {{ account.idKey }}
                     </v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
                 <v-spacer></v-spacer>
-
-                <!-- <div class="display-3 flex-grow-1 text-center mr-5">
-                  <v-icon color="#eae9e9" x-large>mdi-content-copy</v-icon>
-                </div> -->
-                <!-- </v-scroll-y-transition> -->
               </v-card>
             </v-item>
           </v-col>
@@ -149,7 +120,7 @@
   </v-card>
 </template>
 <script lang="ts">
-import { Component, Vue, Watch, Prop } from 'vue-property-decorator';
+import { Component, Vue, Prop } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
 const ClientIdModule = namespace('ClientIdModule');
 
@@ -162,34 +133,19 @@ export default class ClientIDDetails extends Vue {
   public getClientIdDetails!: any;
   @ClientIdModule.Getter('getApiData') public getApiData!: [];
 
-  // @PackageAndTestModule.Action('addPackagetoProject')
-
-  private slectedPackage: number = 1;
   private isLoading: boolean = false;
   private projectId: number = this.id || 0;
   private snackbar: boolean = false;
   private text: string = 'Copied';
   private timeout: number = 2000;
 
-  private addPackagetoProject!: any;
   public docopy(message: any) {
     this.$copyText(message);
     this.snackbar = true;
-    // alert('copied');
   }
 
   private mounted() {
     this.getClientIdDetails();
-  }
-  private selectedPackage(packageVal: number) {
-    this.slectedPackage = packageVal;
-  }
-  private submitPackage() {
-    // add package to project com ehere
-    this.addPackagetoProject({
-      slectedPackage: this.slectedPackage,
-      projectId: this.projectId
-    });
   }
 }
 </script>
