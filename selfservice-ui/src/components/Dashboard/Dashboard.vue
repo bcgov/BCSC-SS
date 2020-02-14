@@ -3,13 +3,6 @@
 <template>
   <v-card class="mx-auto" style="max-width: 80%;">
     <v-toolbar flat class="bc-subtitle" dark>
-      <v-btn
-        icon
-        @click="$router.push(`/project/${projectId}/technical/`)"
-        aria-label="Back Button"
-      >
-        <v-icon>mdi-arrow-left</v-icon>
-      </v-btn>
       <v-toolbar-title>{{ $t('dashboard.pagetitle') }}</v-toolbar-title>
       <div class="flex-grow-1"></div>
       <!-- <v-col class="col-lg-4 col-md-5 col-8">
@@ -18,6 +11,9 @@
         >
       </v-col> -->
       <div class="flex-grow-1"></div>
+      <v-icon x-large @click="$router.push(`/project/info`)"
+        >mdi-plus-circle</v-icon
+      >
     </v-toolbar>
     <v-divider></v-divider>
     <!-- <v-item-group mandatory :value="slectedPackage"> -->
