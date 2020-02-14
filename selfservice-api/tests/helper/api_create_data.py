@@ -25,7 +25,9 @@ API_URI_PREFIX = '/api/v1/'
 USER_API = API_URI_PREFIX + 'user'
 PROJECTINFO_API = API_URI_PREFIX + 'project/info'
 TECHNICALREQ_API = API_URI_PREFIX + 'project/:project_id/technical-req'
+OIDCCONFIG_API = API_URI_PREFIX + 'project/:project_id/oidc-config'
 SCOPEPACKAGE_API = API_URI_PREFIX + 'scope-package'
+
 # User: Start
 
 
@@ -103,6 +105,16 @@ def _get_project_(client, jwt):
 
     return response
 
+
+def _get_all_project_(client, jwt):
+    """Get all projects and return response object."""
+    headers = ss_client_auth_header(jwt)
+    create_project(client, jwt)
+
+    response = client.get(PROJECTINFO_API, headers=headers, content_type='application/json')
+
+    return response
+
 # Project Info: End
 # Technical Req: Start
 
@@ -176,22 +188,38 @@ def _get_technical_req_(client, jwt, project_id):
 
     return response
 
-
 # Technical Req: End
 # Scope Package: Start
 
 
 def get_scope_packages(client, jwt):
-    """Get algorithms and return scope_package object."""
+    """Get scope package and return object."""
     response = _get_scope_packages_(client, jwt)
     return json.loads(response.data)
 
 
 def _get_scope_packages_(client, jwt):
-    """Get algorithms and return response object."""
+    """Get scope package and return response object."""
     headers = ss_client_auth_header(jwt)
     response = client.get(SCOPEPACKAGE_API, headers=headers)
     return response
 
-
 # Scope Package: End
+# OIDC Config: Start
+
+
+def get_oidc_config(client, jwt):
+    """Get oidc config and return object."""
+    response = _get_oidc_config_(client, jwt)
+    return json.loads(response.data)
+
+
+def _get_oidc_config_(client, jwt):
+    """Get oidc config and return response object."""
+    headers = ss_client_auth_header(jwt)
+    technical_req = create_technical_req(client, jwt)
+
+    response = client.get(OIDCCONFIG_API.replace(':project_id', str(technical_req['projectId'])), headers=headers)
+    return response
+
+# OIDC Config: End
