@@ -1,22 +1,17 @@
-/** * CreateApp of app */
+/** * Dashboard of app */
 
 <template>
   <v-card class="mx-auto" style="max-width: 80%;">
     <v-toolbar flat class="bc-subtitle" dark>
       <v-toolbar-title>{{ $t('dashboard.pagetitle') }}</v-toolbar-title>
       <div class="flex-grow-1"></div>
-      <!-- <v-col class="col-lg-4 col-md-5 col-8">
-        <v-alert type="error" v-if="errorStatus" class="alert-top"
-          >Something went wrong...</v-alert
-        >
-      </v-col> -->
+
       <div class="flex-grow-1"></div>
       <v-icon x-large @click="$router.push(`/project/info`)"
         >mdi-plus-circle</v-icon
       >
     </v-toolbar>
     <v-divider></v-divider>
-    <!-- <v-item-group mandatory :value="slectedPackage"> -->
     <v-container>
       <v-row class="ma-5">
         <v-col cols="12" md="12">
