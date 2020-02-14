@@ -145,7 +145,7 @@
   </v-card>
 </template>
 <script lang="ts">
-import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
+import { Component, Vue, Prop } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
 import Loading from '@/Atomic/Loading/Loading.vue';
 const ClientIdModule = namespace('ClientIdModule');
