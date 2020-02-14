@@ -1,28 +1,28 @@
 import axios from '@/lib/axios';
-import {
-  PACKAGE_URL,
-  TECHNICALREQ_URL,
-  PROJECTINFO_URL
-} from '@/config/api-endpoints';
+import { OIDCCONFIG_URL } from '@/config/api-endpoints';
+import { getUrl } from '@/lib/helpers';
+
 export default class ClientID {
-  public static async getApiData() {
+  public static async getApiData(id: number) {
     // return await axios.get(PACKAGE_URL);
-    const apiData = {
-      data: {
-        clientId: 'abcd',
-        clientSecret: 'test',
-        testUserAccounts: [
-          {
-            userName: 'test user',
-            idKey: 'test id key'
-          },
-          {
-            userName: 'test user',
-            idKey: 'test id key'
-          }
-        ]
-      }
-    };
-    return apiData;
+    const oidcURL = getUrl(OIDCCONFIG_URL, id);
+    return await axios.get(oidcURL);
+    // const apiData = {
+    //   data: {
+    //     clientId: 'abcd',
+    //     clientSecret: 'test',
+    //     testUserAccounts: [
+    //       {
+    //         userName: 'test user',
+    //         idKey: 'test id key'
+    //       },
+    //       {
+    //         userName: 'test user',
+    //         idKey: 'test id key'
+    //       }
+    //     ]
+    //   }
+    // };
+    // return apiData;
   }
 }
