@@ -55,20 +55,11 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
-import AddProjectInfo from '@/components/CreateApp/AddProjectInfo.vue';
 import { Getter, namespace, Action } from 'vuex-class';
 const ProjectInfoModule = namespace('ProjectInfoModule');
 
-@Component({
-  components: {
-    AddProjectInfo
-  }
-})
+@Component
 export default class Dashboard extends Vue {
-  @Prop({ default: 'info' })
-  public step!: string;
-  @Prop({ default: '' })
-  public id!: number;
   @ProjectInfoModule.Getter('getProjectInfoList')
   public projectInfoList!: any;
   @ProjectInfoModule.Action('loadProjectInfo')
