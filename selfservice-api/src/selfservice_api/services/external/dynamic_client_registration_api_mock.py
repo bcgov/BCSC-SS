@@ -36,7 +36,7 @@ class DynamicClientRegistrationApiMock():
         response.registration_access_token = binascii.hexlify(os.urandom(24))
         response.registration_client_uri = 'https://idtest.gov.bc.ca/oauth2/register/' + response.client_id
         response.client_id_issued_at = json.dumps(datetime.now().strftime('%Y-%m-%dT%H:%M:%SZ'))
-        response.client_secret_expires_at = int((datetime.now() + timedelta(days=100)).strftime('%s'))
+        response.client_secret_expires_at = int((datetime.now() + timedelta(days=100)).strftime('%f'))
         response.client_name = request.client_name
         response.client_uri = request.client_uri
         response.redirect_uris = request.redirect_uris
