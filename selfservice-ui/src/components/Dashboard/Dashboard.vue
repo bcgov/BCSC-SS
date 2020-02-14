@@ -19,19 +19,19 @@
             <template v-slot:default>
               <thead>
                 <tr>
-                  <th>
+                  <th :scope="$t('dashboard.tblTitleProjectName')">
                     {{ $t('dashboard.tblTitleProjectName') }}
                   </th>
-                  <th>
+                  <th :scope="$t('dashboard.tblTitleProjectId')">
                     {{ $t('dashboard.tblTitleProjectId') }}
                   </th>
-                  <th>
+                  <th :scope="$t('dashboard.tblTitlCreated')">
                     {{ $t('dashboard.tblTitlCreated') }}
                   </th>
-                  <th>
+                  <th :scope="$t('dashboard.tblTitleProjectStatus')">
                     {{ $t('dashboard.tblTitleProjectStatus') }}
                   </th>
-                  <th>
+                  <th :scope="$t('dashboard.tblTitleProjectActions')">
                     {{ $t('dashboard.tblTitleProjectActions') }}
                   </th>
                 </tr>
