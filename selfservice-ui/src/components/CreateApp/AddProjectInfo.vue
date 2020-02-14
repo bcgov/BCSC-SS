@@ -3,7 +3,11 @@
   <v-card class="mx-auto" style="max-width: 80%;">
     <v-card class="mx-auto">
       <v-app-bar dark class="bc-subtitle">
-        <v-btn icon @click="$router.push('/project/')" aria-label="Back Button">
+        <v-btn
+          icon
+          @click="$router.push('/dashboard/')"
+          aria-label="Back Button"
+        >
           <v-icon>mdi-arrow-left</v-icon>
         </v-btn>
         <v-toolbar-title>{{
