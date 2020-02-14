@@ -20,34 +20,34 @@
     <v-container>
       <v-row class="ma-5">
         <v-col cols="12" md="12">
-          <v-simple-table>
+          <v-simple-table class="text-left">
             <template v-slot:default>
               <thead>
                 <tr>
-                  <th class="text-left">
+                  <th>
                     {{ $t('dashboard.tblTitleProjectName') }}
                   </th>
-                  <th class="text-left">
+                  <th>
                     {{ $t('dashboard.tblTitleProjectId') }}
                   </th>
-                  <th class="text-left">
+                  <th>
                     {{ $t('dashboard.tblTitlCreated') }}
                   </th>
-                  <th class="text-left">
+                  <th>
                     {{ $t('dashboard.tblTitleProjectStatus') }}
                   </th>
-                  <th class="text-left">
+                  <th>
                     {{ $t('dashboard.tblTitleProjectActions') }}
                   </th>
                 </tr>
               </thead>
               <tbody>
                 <tr v-for="project in projectInfoList" :key="project.id">
-                  <td class="text-left">{{ project.projectName }}</td>
-                  <td class="text-left">{{ project.id }}</td>
-                  <td class="text-left">{{ project.createdAt }}</td>
-                  <td class="text-left">{{ project.status }}</td>
-                  <td class="text-left">view</td>
+                  <td>{{ project.projectName }}</td>
+                  <td>{{ project.id }}</td>
+                  <td>{{ project.createdAt }}</td>
+                  <td>{{ project.status }}</td>
+                  <td>view</td>
                 </tr>
               </tbody>
             </template>
