@@ -93,3 +93,24 @@ class Project(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
         project_info = {'modified_by': current_user.id, 'status': project_status}
         self.update_from_dict(['modified_by', 'status'], project_info)
         self.commit()
+
+    @classmethod
+    def find_by_user(cls, oauth_id: str):
+        """Fetch projects by user."""
+        current_user = User.find_by_oauth_id(oauth_id)
+        result_proxy = db.session.execute("""SELECT
+                TO_CHAR(project.created, 'Mon dd yyyy') as created,
+                project.id,
+                project.project_name as name,
+                project.status,
+                project_users_association.role
+            FROM project
+                JOIN project_users_association ON project.id = project_users_association.project_id
+            WHERE project_users_association.user_id = """ + str(current_user.id))
+
+        result = []
+        for row in result_proxy:
+            row_as_dict = dict(row)
+            result.append(row_as_dict)
+
+        return result
