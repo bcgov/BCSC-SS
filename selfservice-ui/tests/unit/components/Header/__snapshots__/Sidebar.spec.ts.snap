@@ -38,6 +38,29 @@ exports[`Sidebar.vue renders props when passed 1`] = `
         >
           <v-list-item-icon-stub>
             <v-icon-stub>
+              mdi-home
+            </v-icon-stub>
+          </v-list-item-icon-stub>
+           
+          <v-list-item-content-stub>
+            <v-list-item-title-stub
+              to="Home"
+            >
+              <link-stub
+                to="/"
+              >
+                Home
+              </link-stub>
+            </v-list-item-title-stub>
+          </v-list-item-content-stub>
+        </v-list-item-stub>
+        <v-list-item-stub
+          activeclass=""
+          link="true"
+          tag="div"
+        >
+          <v-list-item-icon-stub>
+            <v-icon-stub>
               mdi-view-dashboard
             </v-icon-stub>
           </v-list-item-icon-stub>
@@ -47,7 +70,7 @@ exports[`Sidebar.vue renders props when passed 1`] = `
               to="Dashboard"
             >
               <link-stub
-                to="/"
+                to="/dashboard"
               >
                 Dashboard
               </link-stub>
