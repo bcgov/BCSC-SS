@@ -10,7 +10,7 @@ import { RootState } from '../../types';
  */
 export const state: ClientIdState = {
   apiData: [],
-  loading: false,
+  loading: true,
   successStatus: false,
   errorStatus: false,
   message: ''
