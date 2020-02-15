@@ -98,7 +98,7 @@ exports[`ClientID.vue renders props when passed with gettors 1`] = `
                   class="v-list-item__title title mb-1"
                 >
                   
-                    abcd
+                    
                   
                 </div>
               </div>
@@ -152,7 +152,7 @@ exports[`ClientID.vue renders props when passed with gettors 1`] = `
                   class="v-list-item__title title mb-1"
                 >
                   
-                    test
+                    
                   
                 </div>
               </div>
@@ -197,26 +197,7 @@ exports[`ClientID.vue renders props when passed with gettors 1`] = `
             <div
               class="v-list-item v-list-item--two-line theme--light"
               tabindex="-1"
-            >
-              <div
-                class="v-list-item__content"
-              >
-                <div
-                  class="v-list-item__title subtitle-1	 mb-1"
-                >
-                  
-                    test user , test id key
-                  
-                </div>
-                <div
-                  class="v-list-item__title subtitle-1	 mb-1"
-                >
-                  
-                    test user , test id key
-                  
-                </div>
-              </div>
-            </div>
+            />
              
             <div
               class="spacer"
@@ -354,7 +335,7 @@ exports[`ClientID.vue renders props when passed with gettors 2`] = `
                   class="v-list-item__title title mb-1"
                 >
                   
-                    abcd
+                    
                   
                 </div>
               </div>
@@ -408,7 +389,7 @@ exports[`ClientID.vue renders props when passed with gettors 2`] = `
                   class="v-list-item__title title mb-1"
                 >
                   
-                    test
+                    
                   
                 </div>
               </div>
@@ -453,26 +434,7 @@ exports[`ClientID.vue renders props when passed with gettors 2`] = `
             <div
               class="v-list-item v-list-item--two-line theme--light"
               tabindex="-1"
-            >
-              <div
-                class="v-list-item__content"
-              >
-                <div
-                  class="v-list-item__title subtitle-1	 mb-1"
-                >
-                  
-                    test user , test id key
-                  
-                </div>
-                <div
-                  class="v-list-item__title subtitle-1	 mb-1"
-                >
-                  
-                    test user , test id key
-                  
-                </div>
-              </div>
-            </div>
+            />
              
             <div
               class="spacer"

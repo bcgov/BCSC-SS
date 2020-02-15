@@ -14,9 +14,9 @@ export const actions: ActionTree<ClientIdState, RootState> = {
    * load getApiDetails from server and set to store
    * @param {*} { commit }
    */
-  async getClientIdDetails({ commit }) {
+  async getClientIdDetails({ commit }, id: number) {
     commit('SET_LOADING', true);
-    const apiData = await ClientID.getApiData();
+    const apiData = await ClientID.getApiData(id);
 
     commit('SET_APIDETAILS', apiData.data);
     commit('SET_LOADING', false);
