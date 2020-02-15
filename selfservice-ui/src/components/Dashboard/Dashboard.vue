@@ -19,11 +19,17 @@
             <template v-slot:default>
               <thead>
                 <tr>
+                  <th :scope="$t('dashboard.tblTitleSi')">
+                    {{ $t('dashboard.tblTitleSi') }}
+                  </th>
                   <th :scope="$t('dashboard.tblTitleProjectName')">
                     {{ $t('dashboard.tblTitleProjectName') }}
                   </th>
                   <th :scope="$t('dashboard.tblTitleProjectId')">
                     {{ $t('dashboard.tblTitleProjectId') }}
+                  </th>
+                  <th :scope="$t('dashboard.tblTitlrole')">
+                    {{ $t('dashboard.tblTitlrole') }}
                   </th>
                   <th :scope="$t('dashboard.tblTitlCreated')">
                     {{ $t('dashboard.tblTitlCreated') }}
@@ -37,12 +43,22 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="project in projectInfoList" :key="project.id">
-                  <td>{{ project.projectName }}</td>
+                <tr v-for="(project, idx) in projectInfoList" :key="project.id">
+                  <td>{{ idx + 1 }}</td>
+                  <td>{{ project.name }}</td>
                   <td>{{ project.id }}</td>
-                  <td>{{ project.createdAt }}</td>
+                  <td>{{ project.Developer }}</td>
+                  <td>{{ project.created }}</td>
                   <td>{{ project.status }}</td>
-                  <td>view</td>
+                  <td>
+                    <v-icon
+                      @click="$router.push(`/project/${project.id}/summary`)"
+                      >mdi-eye</v-icon
+                    >
+                    <v-icon @click="$router.push(`/project/${project.id}/info`)"
+                      >mdi-pencil-circle</v-icon
+                    >
+                  </td>
                 </tr>
               </tbody>
             </template>

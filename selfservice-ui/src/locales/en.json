@@ -105,10 +105,12 @@
   },
   "dashboard": {
     "pagetitle": "My projects",
+    "tblTitleSi": "#",
     "tblTitleProjectName": "Project name",
     "tblTitleProjectId": "Project Id",
     "tblTitlCreated": "created",
     "tblTitleProjectStatus": "Project status",
-    "tblTitleProjectActions": "Actions"
+    "tblTitleProjectActions": "Actions",
+    "tblTitlrole": "Role"
   }
 }
