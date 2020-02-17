@@ -6,9 +6,19 @@ services:
     image: postgres:11
     restart: always
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=1qazxSw2
-      - POSTGRES_DB=postgres
+      DATABASE_HOST: localhost
+      DATABASE_NAME: postgres
+      DATABASE_PORT: 5432
+      DATABASE_TEST_HOST: localhost
+      DATABASE_TEST_NAME: postgres
+      DATABASE_TEST_PORT: 5432
+      DATABASE_TEST_USERNAME: postgres
+      DATABASE_TEST_USER: postgres
+      DATABASE_USERNAME: postgres
+      ADMIN_PASSWORD: postgres@123
+      DATABASE_ADMIN_PASSWORD: postgres@123
+      DATABASE_PASSWORD: postgres@123
+      DATABASE_TEST_PASSWORD: postgres@123
     healthcheck:
       test: ['CMD-SHELL', 'pg_isready -U postgres']
       interval: 10s
