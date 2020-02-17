@@ -20,9 +20,10 @@
       <div class="flex-grow-1"></div>
     </v-toolbar>
     <v-divider></v-divider>
+
     <v-item-group>
       <v-container>
-        <Loading v-if="isLoading" />
+        <Loading v-if="isLoading && getApiData === 0" />
         <v-row class="ma-5" v-else>
           <v-snackbar v-model="snackbar" :timeout="timeout">
             {{ text }}
@@ -40,15 +41,24 @@
                 v-html="$t('ClientID.titleApiKeyInfo')"
               ></v-list-item-content>
             </v-card>
-            <v-item class="client-id" :value="getApiData.clientId">
+            <v-item
+              class="client-id"
+              :value="getApiData.oidcConfig && getApiData.oidcConfig.clientId"
+            >
               <v-card
                 class="d-flex align-center px-5 client-id-copy v-card--link"
-                @click="docopy(getApiData.clientId)"
+                @click="
+                  docopy(
+                    getApiData.oidcConfig && getApiData.oidcConfig.clientId
+                  )
+                "
               >
                 <v-list-item two-line>
                   <v-list-item-action>
                     <v-list-item-title class="title mb-1">
-                      {{ getApiData.clientId }}
+                      {{
+                        getApiData.oidcConfig && getApiData.oidcConfig.clientId
+                      }}
                     </v-list-item-title>
                   </v-list-item-action>
                 </v-list-item>
@@ -70,15 +80,27 @@
                 v-html="$t('ClientID.titleClientSecretInfo')"
               ></v-list-item-content>
             </v-card>
-            <v-item class="client-id" :value="getApiData.clientSecret">
+            <v-item
+              class="client-id"
+              :value="
+                getApiData.oidcConfig && getApiData.oidcConfig.clientSecret
+              "
+            >
               <v-card
                 class="d-flex align-center px-4 client-id v-card--link"
-                @click="docopy(getApiData.clientSecret)"
+                @click="
+                  docopy(
+                    getApiData.oidcConfig && getApiData.oidcConfig.clientSecret
+                  )
+                "
               >
                 <v-list-item two-line>
                   <v-list-item-content>
                     <v-list-item-title class="title mb-1">
-                      {{ getApiData.clientSecret }}
+                      {{
+                        getApiData.oidcConfig &&
+                          getApiData.oidcConfig.clientSecret
+                      }}
                     </v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
@@ -99,15 +121,17 @@
                 v-html="$t('ClientID.titleTestAccountInfo')"
               ></v-list-item-content>
             </v-card>
-            <v-item class="client-id" :value="getApiData.clientSecret">
+            <v-item class="client-id">
               <v-card class="d-flex align-center pa-4 client-id v-card--link">
                 <v-list-item two-line>
-                  <v-list-item-content>
+                  <v-list-item-content
+                    v-if="getApiData && getApiData.testAccount"
+                  >
                     <v-list-item-title
                       class="subtitle-1	 mb-1"
-                      v-for="account in getApiData.testUserAccounts"
+                      v-for="account in getApiData.testAccount"
                     >
-                      {{ account.userName }} , {{ account.idKey }}
+                      {{ account.cardNumber }} , {{ account.passcode }}
                     </v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
@@ -151,7 +175,7 @@ export default class ClientIDDetails extends Vue {
   }
 
   private mounted() {
-    this.getClientIdDetails();
+    this.getClientIdDetails(this.projectId);
   }
 }
 </script>

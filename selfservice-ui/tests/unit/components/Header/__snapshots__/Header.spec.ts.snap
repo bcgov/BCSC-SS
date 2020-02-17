@@ -104,6 +104,35 @@ exports[`Header.vue Logout user on logout button onlick  1`] = `
               >
                 <i
                   aria-hidden="true"
+                  class="v-icon notranslate mdi mdi-home theme--dark"
+                />
+              </div>
+               
+              <div
+                class="v-list-item__content"
+              >
+                <div
+                  class="v-list-item__title"
+                  to="Home"
+                >
+                  <a
+                    class="router-link-main router-link-exact-active router-link-active"
+                    href="#/"
+                  >
+                    Home
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div
+              class="v-list-item v-list-item--link theme--dark"
+              tabindex="0"
+            >
+              <div
+                class="v-list-item__icon"
+              >
+                <i
+                  aria-hidden="true"
                   class="v-icon notranslate mdi mdi-view-dashboard theme--dark"
                 />
               </div>
@@ -116,8 +145,8 @@ exports[`Header.vue Logout user on logout button onlick  1`] = `
                   to="Dashboard"
                 >
                   <a
-                    class="router-link-main router-link-exact-active router-link-active"
-                    href="#/"
+                    class="router-link-main"
+                    href="#/dashboard"
                   >
                     Dashboard
                   </a>
@@ -297,6 +326,35 @@ exports[`Header.vue Toggle menu onlick  1`] = `
               >
                 <i
                   aria-hidden="true"
+                  class="v-icon notranslate mdi mdi-home theme--dark"
+                />
+              </div>
+               
+              <div
+                class="v-list-item__content"
+              >
+                <div
+                  class="v-list-item__title"
+                  to="Home"
+                >
+                  <a
+                    class="router-link-main router-link-exact-active router-link-active"
+                    href="#/"
+                  >
+                    Home
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div
+              class="v-list-item v-list-item--link theme--dark"
+              tabindex="0"
+            >
+              <div
+                class="v-list-item__icon"
+              >
+                <i
+                  aria-hidden="true"
                   class="v-icon notranslate mdi mdi-view-dashboard theme--dark"
                 />
               </div>
@@ -309,8 +367,8 @@ exports[`Header.vue Toggle menu onlick  1`] = `
                   to="Dashboard"
                 >
                   <a
-                    class="router-link-main router-link-exact-active router-link-active"
-                    href="#/"
+                    class="router-link-main"
+                    href="#/dashboard"
                   >
                     Dashboard
                   </a>
@@ -490,6 +548,35 @@ exports[`Header.vue renders props when passed 1`] = `
               >
                 <i
                   aria-hidden="true"
+                  class="v-icon notranslate mdi mdi-home theme--dark"
+                />
+              </div>
+               
+              <div
+                class="v-list-item__content"
+              >
+                <div
+                  class="v-list-item__title"
+                  to="Home"
+                >
+                  <a
+                    class="router-link-main router-link-exact-active router-link-active"
+                    href="#/"
+                  >
+                    Home
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div
+              class="v-list-item v-list-item--link theme--dark"
+              tabindex="0"
+            >
+              <div
+                class="v-list-item__icon"
+              >
+                <i
+                  aria-hidden="true"
                   class="v-icon notranslate mdi mdi-view-dashboard theme--dark"
                 />
               </div>
@@ -502,8 +589,8 @@ exports[`Header.vue renders props when passed 1`] = `
                   to="Dashboard"
                 >
                   <a
-                    class="router-link-main router-link-exact-active router-link-active"
-                    href="#/"
+                    class="router-link-main"
+                    href="#/dashboard"
                   >
                     Dashboard
                   </a>

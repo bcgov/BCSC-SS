@@ -40,9 +40,14 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
    */
   async loadProjectInfo({ commit }) {
     commit('SET_LOADING', true);
-    const projectinfo = await ProjectInfoService.getProjectInfos();
-    commit('SET_PROJECTINFOLIST', projectinfo.data);
-    commit('SET_LOADING', false);
+    try {
+      const projectinfo = await ProjectInfoService.getProjectInfos();
+      commit('SET_PROJECTINFOLIST', projectinfo.data.projects);
+      commit('SET_LOADING', false);
+    } catch {
+      commit('SET_PROJECTINFO_ERROR', true);
+      commit('SET_LOADING', false);
+    }
   },
   /**
    * clear message
@@ -101,7 +106,7 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
       const { projectId } = data;
       // const packageData =
       await ProjectInfoService.updateStatusOfProject(projectId, 2);
-      router.push(`/project/${projectId}/api-key/`);
+      // router.push(`/project/${projectId}/summary/`);
       commit('SET_LOADING', false);
     } catch {
       commit('SET_LOADING', false);

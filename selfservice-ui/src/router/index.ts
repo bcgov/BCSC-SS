@@ -35,6 +35,14 @@ const router = new VueRouter({
         import(/* webpackChunkName: "About" */ '../views/About.vue')
     },
     {
+      path: '/dashboard',
+      name: 'dashboard',
+      meta: { requiresAuth: true, roles: ['ss_client', 'idir', 'ss_admin'] },
+      props: true,
+      component: () =>
+        import(/* webpackChunkName: "dashboard" */ '../views/Dashboard.vue')
+    },
+    {
       path: '/project/info',
       name: 'project-info',
       meta: { requiresAuth: true, roles: ['ss_client', 'ss_admin'] },
