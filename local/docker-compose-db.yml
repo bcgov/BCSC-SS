@@ -6,10 +6,8 @@ services:
     image: postgres:11
     restart: always
     environment:
-      DATABASE_HOST: localhost
       DATABASE_NAME: postgres
       DATABASE_PORT: 5432
-      DATABASE_TEST_HOST: localhost
       DATABASE_TEST_NAME: postgres
       DATABASE_TEST_PORT: 5432
       DATABASE_TEST_USERNAME: postgres
