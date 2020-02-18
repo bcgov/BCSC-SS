@@ -3,9 +3,9 @@ kind: Template
 apiVersion: v1
 metadata:
   annotations:
-    description: Deployment template for a selfservice api service.
+    description: Deployment template for a notify api service.
     tags: "${API_NAME}"
-  name: "${API_NAME}-test-deploy"
+  name: "${API_NAME}-deploy"
 objects:
 - kind: DeploymentConfig
   apiVersion: v1
@@ -24,6 +24,27 @@ objects:
         timeoutSeconds: 600
         maxUnavailable: 25%
         maxSurge: 25%
+        pre:
+          failurePolicy: Abort
+          execNewPod:
+            command:
+            - "/bin/bash"
+            - "-c"
+            - "python manage.py db upgrade"
+            env:
+            - name: DATABASE_ADMIN_PASSWORD
+              value: "postgres"
+            - name: DATABASE_USERNAME
+              value: "postgres"
+            - name: DATABASE_PASSWORD
+              value: "postgres"
+            - name: DATABASE_NAME
+              value: "postgres"
+            - name: DATABASE_HOST
+              value: "patroni-persistent-master.oultzp-test.svc.cluster.local"
+            - name: DATABASE_PORT
+              value: "5432"
+            containerName: "${API_NAME}"
     triggers:
     - type: ImageChange
       imageChangeParams:
@@ -33,7 +54,7 @@ objects:
         from:
           kind: ImageStreamTag
           namespace: "${IMAGE_NAMESPACE}"
-          name: "${API_NAME}:${TAG_NAME}"
+          name: "selfservice-api-test:test"
     - type: ConfigChange
     replicas: "${REPLICAS}"
     test: false
@@ -50,12 +71,13 @@ objects:
       spec:
         containers:
         - name: "${API_NAME}"
-          image: "${API_NAME}"
+          image: "selfservice-api-test:test"
           imagePullPolicy: Always
           command:
-            - "/bin/bash"
-            - "-c"
-            - "python setup.py test"
+            - gunicorn
+            - '-b'
+            - :5000
+            - selfservice_api:create_app()
           ports:
           - containerPort: 5000
             protocol: TCP
@@ -70,9 +92,9 @@ objects:
           - name: DATABASE_PASSWORD
             value: "postgres"
           - name: DATABASE_NAME
-            value: "patroni-persistent"
+            value: "postgres"
           - name: DATABASE_HOST
-            value: "patroni-persistent.oultzp-tools.svc.cluster.local"
+            value: "patroni-persistent-master.oultzp-test.svc.cluster.local"
           - name: DATABASE_PORT
             value: "5432"
           - name: JWT_OIDC_ALGORITHMS
@@ -202,7 +224,7 @@ parameters:
   description: The name assigned to all of the OpenShift resources associated to the
     server instance.
   required: true
-  value: selfservice-api
+  value: ssapi
 - name: APP_GROUP
   displayName: App Group
   description: The name assigned to all of the deployments in this project.
@@ -218,12 +240,7 @@ parameters:
   displayName: Environment TAG name
   description: The TAG name for this environment, e.g., dev, test, prod
   required: true
-  value: dev
-- name: DB_TAG_NAME
-  displayName: Environment TAG name
-  description: The TAG name for this environment, e.g., dev, test, prod
-  required: true
-  value: prod
+  value: test
 - name: DB_NAME
   displayName: Database App Name
   description: A valid database app name used by the service.
