@@ -106,7 +106,7 @@ class Project(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
                 project_users_association.role
             FROM project
                 JOIN project_users_association ON project.id = project_users_association.project_id
-            WHERE project_users_association.user_id = """ + str(current_user.id))
+            WHERE project_users_association.user_id = """ + str(current_user.id) + ' ORDER BY project.created DESC')
 
         result = []
         for row in result_proxy:
