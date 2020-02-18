@@ -55,7 +55,9 @@
                       @click="$router.push(`/project/${project.id}/summary`)"
                       >mdi-eye</v-icon
                     >
-                    <v-icon @click="$router.push(`/project/${project.id}/info`)"
+                    <v-icon
+                      @click="$router.push(`/project/${project.id}/info`)"
+                      class="ml-2"
                       >mdi-pencil-circle</v-icon
                     >
                   </td>
