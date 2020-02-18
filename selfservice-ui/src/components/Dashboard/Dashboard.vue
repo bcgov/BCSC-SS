@@ -7,9 +7,7 @@
       <div class="flex-grow-1"></div>
 
       <div class="flex-grow-1"></div>
-      <!-- <v-icon x-large @click="$router.push(`/project/info`)"
-        >mdi-plus-circle</v-icon
-      > -->
+
       <v-btn
         class="ma-2"
         fab
