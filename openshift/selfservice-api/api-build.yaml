@@ -90,4 +90,3 @@ parameters:
   description: The name assigned to all of the resources defined in this templates.
   required: true
   value: dev
-  
