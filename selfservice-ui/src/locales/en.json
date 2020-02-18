@@ -95,11 +95,11 @@
   "ClientID": {
     "pagetitle": "API Key / Client ID",
     "titleApiKey": "Client ID",
-    "titleApiKeyInfo": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ",
+    "titleApiKeyInfo": "This is a unique identifier for your project. Any request to access the BC Services Card system must have this to identify your application.",
     "titleClientSecret": "Client secret",
-    "titleClientSecretInfo": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ",
+    "titleClientSecretInfo": "This is a secret or password which is to be used together with the Client ID to obtain a token from the BC Services Card system for ongoing authorization.",
     "titleTestAccount": "Test user accounts",
-    "titleTestAccountInfo": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ",
+    "titleTestAccountInfo": "<p>These are account numbers with associated passphrases which can be used as test logins to the BC Services Card. </p><p><br /></p><p>The test accounts are provided in the format of ID #, ID key</p>",
     "labelSnackbarClose": "Close",
     "Back": "Go Back"
   },
