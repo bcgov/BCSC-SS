@@ -42,6 +42,7 @@ describe('Header.vue', () => {
       localVue,
       router,
       store,
+      mocks: { $t: jest.fn(() => {}) }, // tslint:disable-line
       ...options
     });
   };

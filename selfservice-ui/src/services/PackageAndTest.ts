@@ -1,5 +1,9 @@
 import axios from '@/lib/axios';
-import { PACKAGE_URL, TECHNICALREQ_URL } from '@/config/api-endpoints';
+import {
+  PACKAGE_URL,
+  TECHNICALREQ_URL,
+  PROJECTINFO_URL
+} from '@/config/api-endpoints';
 export class PackageAndTest {
   public static async getPackages() {
     return await axios.get(PACKAGE_URL);

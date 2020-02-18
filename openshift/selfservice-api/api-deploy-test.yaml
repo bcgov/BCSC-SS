@@ -64,60 +64,17 @@ objects:
               name: ${API_NAME}-${TAG_NAME}-config
           env:
           - name: DATABASE_ADMIN_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: "${DB_NAME}-${DB_TAG_NAME}-secret"
-                key: DATABASE_ADMIN_PASSWORD
+            value: "postgres"
           - name: DATABASE_USERNAME
-            valueFrom:
-              configMapKeyRef:
-                name: "${DB_NAME}-${DB_TAG_NAME}-config"
-                key: DATABASE_USERNAME
+            value: "postgres"
           - name: DATABASE_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: "${DB_NAME}-${DB_TAG_NAME}-secret"
-                key: DATABASE_PASSWORD
+            value: "postgres"
           - name: DATABASE_NAME
-            valueFrom:
-              configMapKeyRef:
-                name: "${DB_NAME}-${DB_TAG_NAME}-config"
-                key: DATABASE_NAME
+            value: "patroni-persistent"
           - name: DATABASE_HOST
-            valueFrom:
-              configMapKeyRef:
-                name: "${DB_NAME}-${DB_TAG_NAME}-config"
-                key: DATABASE_HOST
+            value: "patroni-persistent.oultzp-tools.svc.cluster.local"
           - name: DATABASE_PORT
-            valueFrom:
-              configMapKeyRef:
-                name: "${DB_NAME}-${DB_TAG_NAME}-config"
-                key: DATABASE_PORT
-          - name: DATABASE_TEST_USERNAME
-            valueFrom:
-              configMapKeyRef:
-                name: "${DB_NAME}-${DB_TAG_NAME}-config"
-                key: DATABASE_TEST_USER
-          - name: DATABASE_TEST_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: "${DB_NAME}-${DB_TAG_NAME}-secret"
-                key: DATABASE_TEST_PASSWORD
-          - name: DATABASE_TEST_NAME
-            valueFrom:
-              configMapKeyRef:
-                name: "${DB_NAME}-${DB_TAG_NAME}-config"
-                key: DATABASE_TEST_NAME
-          - name: DATABASE_TEST_HOST
-            valueFrom:
-              configMapKeyRef:
-                name: "${DB_NAME}-${DB_TAG_NAME}-config"
-                key: DATABASE_TEST_HOST
-          - name: DATABASE_TEST_PORT
-            valueFrom:
-              configMapKeyRef:
-                name: "${DB_NAME}-${DB_TAG_NAME}-config"
-                key: DATABASE_TEST_PORT
+            value: "5432"
           - name: JWT_OIDC_ALGORITHMS
             valueFrom:
               configMapKeyRef:
@@ -158,11 +115,6 @@ objects:
               configMapKeyRef:
                 name: "${API_NAME}-${TAG_NAME}-config"
                 key: JWT_OIDC_WELL_KNOWN_CONFIG
-          - name: DATABASE_URL
-            valueFrom:
-              configMapKeyRef:
-                name: "${DB_NAME}-${DB_TAG_NAME}-config"
-                key: DATABASE_URL
           resources:
             requests:
               cpu: "${CPU_REQUEST}"
@@ -235,7 +187,7 @@ objects:
     tls:
       termination: edge
     wildcardPolicy: None
-    host: "${API_NAME}-${TAG_NAME}.pathfinder.gov.bc.ca"
+    host: "${API_NAME}-tools.pathfinder.gov.bc.ca"
   status:
     ingress:
     - host:

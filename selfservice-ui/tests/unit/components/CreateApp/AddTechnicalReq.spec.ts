@@ -29,7 +29,8 @@ describe('AddTechnicalReq.vue', () => {
         namespaced: true,
         state: {},
         getters: {
-          getSingleTechnicalReq: jest.fn()
+          getSingleTechnicalReq: jest.fn(),
+          getTechnicalReq: jest.fn()
         },
         actions: {
           getSingleTechnicalReq: jest.fn(),
@@ -45,6 +46,7 @@ describe('AddTechnicalReq.vue', () => {
       vuetify,
       localVue,
       sync: false,
+      mocks: { $t: jest.fn(() => {}) }, // tslint:disable-line
       ...options
     });
   };

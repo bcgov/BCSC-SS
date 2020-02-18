@@ -19,3 +19,5 @@ from .user import User
 from .project import Project
 from .scope_package import ScopePackage
 from .technical_req import TechnicalReq
+from .oidc_config import OIDCConfig
+from .test_account import TestAccount

@@ -15,7 +15,9 @@ const router = new VueRouter({
     {
       path: '/',
       name: 'home',
-      component: Home
+      meta: { showVerticalMenu: true },
+      component: Home,
+      props: true
     },
     {
       path: '/login',
@@ -31,6 +33,14 @@ const router = new VueRouter({
       props: true,
       component: () =>
         import(/* webpackChunkName: "About" */ '../views/About.vue')
+    },
+    {
+      path: '/dashboard',
+      name: 'dashboard',
+      meta: { requiresAuth: true, roles: ['ss_client', 'idir', 'ss_admin'] },
+      props: true,
+      component: () =>
+        import(/* webpackChunkName: "dashboard" */ '../views/Dashboard.vue')
     },
     {
       path: '/project/info',

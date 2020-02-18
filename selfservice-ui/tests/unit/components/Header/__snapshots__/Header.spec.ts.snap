@@ -19,7 +19,7 @@ exports[`Header.vue Logout user on logout button onlick  1`] = `
       <div
         class="v-toolbar__title"
       >
-        BCSC SELF SERVICE
+        
       </div>
        
       <div
@@ -86,21 +86,6 @@ exports[`Header.vue Logout user on logout button onlick  1`] = `
         <div
           class="v-list v-sheet v-sheet--tile theme--dark"
         >
-          <div
-            class="v-list-item theme--dark"
-            tabindex="-1"
-          >
-            <div
-              class="v-list-item__content"
-            >
-              <div
-                class="v-list-item__title title"
-              >
-                Self Service
-              </div>
-            </div>
-          </div>
-           
           <hr
             aria-orientation="horizontal"
             class="v-divider theme--dark"
@@ -110,6 +95,35 @@ exports[`Header.vue Logout user on logout button onlick  1`] = `
           <div
             class="v-list v-sheet v-sheet--tile theme--dark v-list--dense v-list--nav"
           >
+            <div
+              class="v-list-item v-list-item--link theme--dark"
+              tabindex="0"
+            >
+              <div
+                class="v-list-item__icon"
+              >
+                <i
+                  aria-hidden="true"
+                  class="v-icon notranslate mdi mdi-home theme--dark"
+                />
+              </div>
+               
+              <div
+                class="v-list-item__content"
+              >
+                <div
+                  class="v-list-item__title"
+                  to="Home"
+                >
+                  <a
+                    class="router-link-main router-link-exact-active router-link-active"
+                    href="#/"
+                  >
+                    Home
+                  </a>
+                </div>
+              </div>
+            </div>
             <div
               class="v-list-item v-list-item--link theme--dark"
               tabindex="0"
@@ -131,8 +145,8 @@ exports[`Header.vue Logout user on logout button onlick  1`] = `
                   to="Dashboard"
                 >
                   <a
-                    class="router-link-main router-link-exact-active router-link-active"
-                    href="#/"
+                    class="router-link-main"
+                    href="#/dashboard"
                   >
                     Dashboard
                   </a>
@@ -227,7 +241,7 @@ exports[`Header.vue Toggle menu onlick  1`] = `
       <div
         class="v-toolbar__title"
       >
-        BCSC SELF SERVICE
+        
       </div>
        
       <div
@@ -294,21 +308,6 @@ exports[`Header.vue Toggle menu onlick  1`] = `
         <div
           class="v-list v-sheet v-sheet--tile theme--dark"
         >
-          <div
-            class="v-list-item theme--dark"
-            tabindex="-1"
-          >
-            <div
-              class="v-list-item__content"
-            >
-              <div
-                class="v-list-item__title title"
-              >
-                Self Service
-              </div>
-            </div>
-          </div>
-           
           <hr
             aria-orientation="horizontal"
             class="v-divider theme--dark"
@@ -318,6 +317,35 @@ exports[`Header.vue Toggle menu onlick  1`] = `
           <div
             class="v-list v-sheet v-sheet--tile theme--dark v-list--dense v-list--nav"
           >
+            <div
+              class="v-list-item v-list-item--link theme--dark"
+              tabindex="0"
+            >
+              <div
+                class="v-list-item__icon"
+              >
+                <i
+                  aria-hidden="true"
+                  class="v-icon notranslate mdi mdi-home theme--dark"
+                />
+              </div>
+               
+              <div
+                class="v-list-item__content"
+              >
+                <div
+                  class="v-list-item__title"
+                  to="Home"
+                >
+                  <a
+                    class="router-link-main router-link-exact-active router-link-active"
+                    href="#/"
+                  >
+                    Home
+                  </a>
+                </div>
+              </div>
+            </div>
             <div
               class="v-list-item v-list-item--link theme--dark"
               tabindex="0"
@@ -339,8 +367,8 @@ exports[`Header.vue Toggle menu onlick  1`] = `
                   to="Dashboard"
                 >
                   <a
-                    class="router-link-main router-link-exact-active router-link-active"
-                    href="#/"
+                    class="router-link-main"
+                    href="#/dashboard"
                   >
                     Dashboard
                   </a>
@@ -435,7 +463,7 @@ exports[`Header.vue renders props when passed 1`] = `
       <div
         class="v-toolbar__title"
       >
-        BCSC SELF SERVICE
+        
       </div>
        
       <div
@@ -502,21 +530,6 @@ exports[`Header.vue renders props when passed 1`] = `
         <div
           class="v-list v-sheet v-sheet--tile theme--dark"
         >
-          <div
-            class="v-list-item theme--dark"
-            tabindex="-1"
-          >
-            <div
-              class="v-list-item__content"
-            >
-              <div
-                class="v-list-item__title title"
-              >
-                Self Service
-              </div>
-            </div>
-          </div>
-           
           <hr
             aria-orientation="horizontal"
             class="v-divider theme--dark"
@@ -526,6 +539,35 @@ exports[`Header.vue renders props when passed 1`] = `
           <div
             class="v-list v-sheet v-sheet--tile theme--dark v-list--dense v-list--nav"
           >
+            <div
+              class="v-list-item v-list-item--link theme--dark"
+              tabindex="0"
+            >
+              <div
+                class="v-list-item__icon"
+              >
+                <i
+                  aria-hidden="true"
+                  class="v-icon notranslate mdi mdi-home theme--dark"
+                />
+              </div>
+               
+              <div
+                class="v-list-item__content"
+              >
+                <div
+                  class="v-list-item__title"
+                  to="Home"
+                >
+                  <a
+                    class="router-link-main router-link-exact-active router-link-active"
+                    href="#/"
+                  >
+                    Home
+                  </a>
+                </div>
+              </div>
+            </div>
             <div
               class="v-list-item v-list-item--link theme--dark"
               tabindex="0"
@@ -547,8 +589,8 @@ exports[`Header.vue renders props when passed 1`] = `
                   to="Dashboard"
                 >
                   <a
-                    class="router-link-main router-link-exact-active router-link-active"
-                    href="#/"
+                    class="router-link-main"
+                    href="#/dashboard"
                   >
                     Dashboard
                   </a>

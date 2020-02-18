@@ -24,7 +24,7 @@ module.exports = {
       babelConfig: true
     }
   },
-
+  setupFilesAfterEnv: ['./jest.setup.ts'],
   collectCoverage: true,
   collectCoverageFrom: ['src/**/*.{js,vue}', '!src/main.js'],
   coverageReporters: ['json', 'lcov', 'text', 'clover', 'html']

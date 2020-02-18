@@ -2,14 +2,20 @@
 
 <template>
   <v-card class="mx-auto" style="max-width: 80%;">
-    <v-toolbar flat class="bc-subtitle" dark>
-      <v-btn icon @click="$router.push('/project/package/' + projectId)" aria-label="Back Button">
+    <v-toolbar flat class="bc-subtitle padding-0" dark>
+      <v-btn
+        icon
+        @click="$router.push(`/project/${projectId}/package/`)"
+        :aria-label="$t('testAccount.Back')"
+      >
         <v-icon>mdi-arrow-left</v-icon>
       </v-btn>
-      <v-toolbar-title>{{$t('testAccount.pagetitle')}}</v-toolbar-title>
+      <v-toolbar-title>{{ $t('testAccount.pagetitle') }}</v-toolbar-title>
       <div class="flex-grow-1"></div>
       <v-col class="col-lg-4 col-md-5 col-8">
-        <v-alert type="error" v-if="errorStatus" class="alert-top">Something went wrong...</v-alert>
+        <v-alert type="error" v-if="errorStatus" class="alert-top"
+          >Something went wrong...</v-alert
+        >
       </v-col>
       <div class="flex-grow-1"></div>
     </v-toolbar>
@@ -20,18 +26,30 @@
           <v-col cols="12" flat>
             <v-card flat>
               <!-- <v-list-item-content>BCSC Test Account</v-list-item-content> -->
-              <v-list-item-content>{{$t('testAccount.pageinfo')}}</v-list-item-content>
+              <v-list-item-content>{{
+                $t('testAccount.pageinfo', { package: 'package' })
+              }}</v-list-item-content>
             </v-card>
           </v-col>
 
           <v-col cols="12" flat>
             <v-card flat>
-              <v-list-item-content>{{$t('testAccount.how_many_test_account')}}</v-list-item-content>
+              <v-list-item-content>{{
+                $t('testAccount.how_many_test_account')
+              }}</v-list-item-content>
             </v-card>
           </v-col>
 
-          <v-col v-for="(testAccount, idx) in noOfTestAccounts" :key="idx" class="card-width">
-            <v-item v-slot:default="{ active }" :value="testAccount" class="test-account">
+          <v-col
+            v-for="(testAccount, idx) in noOfTestAccounts"
+            :key="idx"
+            class="card-width"
+          >
+            <v-item
+              v-slot:default="{ active }"
+              :value="testAccount"
+              class="test-account"
+            >
               <v-card
                 class="d-flex align-center pa-4 test-account"
                 :class="active ? 'active-bg' : ''"
@@ -39,7 +57,9 @@
               >
                 <v-list-item>
                   <v-list-item-content class="text-center">
-                    <v-list-item-title class="headline">{{testAccount}}</v-list-item-title>
+                    <v-list-item-title class="headline">{{
+                      testAccount
+                    }}</v-list-item-title>
                     <v-list-item-subtitle></v-list-item-subtitle>
                   </v-list-item-content>
                 </v-list-item>
@@ -49,7 +69,13 @@
           </v-col>
           <v-col cols="12" flat>
             <v-card flat>
-              <v-list-item-content>{{$t('testAccount.special_notes')}}</v-list-item-content>
+              <v-list-item-content>{{
+                $t('testAccount.special_notes')
+              }}</v-list-item-content>
+              <v-list-item-content
+                class="subtitle-1"
+                v-html="$t('testAccount.specialNotesInfo')"
+              ></v-list-item-content>
               <TextArea
                 v-model="notes"
                 :label="$t('testAccount.special_notes')"
@@ -68,16 +94,18 @@
           <v-spacer></v-spacer>
           <Button
             @click="$router.push(`/project/${projectId}/package/`)"
-            aria-label="Back Button"
+            :aria-label="$t('testAccount.Back')"
             secondary
-          >{{$t('testAccount.Back')}}</Button>
+            >{{ $t('testAccount.Back') }}</Button
+          >
           <Button
             :disabled="!slectedNumber"
             :loading="isLoading"
             class="white--text submit-account ml-6"
             depressed
             @click="submitTestAccount"
-          >{{$t('testAccount.Next')}}</Button>
+            >{{ $t('testAccount.Next') }}</Button
+          >
         </v-card-actions>
       </v-card>
     </v-col>

@@ -17,7 +17,7 @@
       />
       <!-- </a> -->
       <!-- <h1 class="text">BC SERVICE CARD</h1> -->
-      <v-toolbar-title>BCSC SELF SERVICE</v-toolbar-title>
+      <v-toolbar-title>{{ $t('main.siteTitle') }}</v-toolbar-title>
       <!-- </div> -->
 
       <v-spacer></v-spacer>
@@ -25,12 +25,13 @@
 
       <v-btn
         text
-        to="/about"
+        to="/dashboard"
         link
         dark
         class="d-none d-sm-flex login-btn side-right-margin"
         v-if="!isLoggedin"
-      >Login</v-btn>
+        >Login</v-btn
+      >
 
       <v-toolbar-title v-if="isLoggedin">
         Welcome {{ userProfile.firstName }} {{ userProfile.lastName }}
@@ -38,7 +39,14 @@
           <span class="mr-2 logout" color="white">Logout</span>
         </v-btn>
       </v-toolbar-title>
-      <v-btn text to="/" link dark class="mr-2 d-sm-none toggleMenu" @click="toggleMenu">
+      <v-btn
+        text
+        to="/"
+        link
+        dark
+        class="mr-2 d-sm-none toggleMenu"
+        @click="toggleMenu"
+      >
         <v-icon>mdi-menu</v-icon>
       </v-btn>
     </v-app-bar>
@@ -50,23 +58,28 @@
     >
       <ul>
         <li class="d-sm-none">
-          <v-btn text to="/about" link dark class="mr-2 login-btn">Login</v-btn>
+          <v-btn text to="/" link dark class="mr-2 login-btn">Login</v-btn>
         </li>
         <li>
           <router-link to="/">Home</router-link>
         </li>
 
         <li>
-          <router-link to="about">About</router-link>
+          <router-link to="dashboard">Dashboard</router-link>
+        </li>
+        <li>
+          <router-link to="/project/info">Create Project</router-link>
         </li>
       </ul>
     </nav>
-    <Sidebar v-if="showSideMenu" :drawer="drawer" />
+    <template class="abcd" :class="{ 'active-menu': showMenu }">
+      <Sidebar v-if="showSideMenu" :drawer="drawer" />
+    </template>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
 import Sidebar from './Sidebar.vue';
 const KeyCloakModule = namespace('KeyCloakModule');
@@ -77,13 +90,21 @@ const KeyCloakModule = namespace('KeyCloakModule');
   }
 })
 export default class Header extends Vue {
+  @Prop({ default: false }) private verticalMenu!: boolean;
+
   @KeyCloakModule.Getter('userProfile') private userProfile!: [];
   @KeyCloakModule.Action('setLogout') private setLogout!: any;
   @KeyCloakModule.Getter('isLoggedin') private isLoggedin!: boolean;
 
   private showMenu: boolean = false;
   private drawer: boolean = false;
-  private showSideMenu: boolean = true;
+  private showSideMenu: boolean = !this.verticalMenu;
+
+  @Watch('$route', { immediate: true, deep: true })
+  private onUrlChange(newVal: any) {
+    const { showVerticalMenu = false } = newVal.meta;
+    this.showSideMenu = !showVerticalMenu || false;
+  }
   /**
    * toggleMenu
    * @description : toggling mobile menu
