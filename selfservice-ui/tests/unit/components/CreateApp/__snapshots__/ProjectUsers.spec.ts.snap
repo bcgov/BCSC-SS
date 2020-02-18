@@ -20,7 +20,7 @@ exports[`ProjectUsers.vue renders props when passed 1`] = `
    
   <input-stub
     counter=""
-    label="First Name"
+    label="First name"
     outlined="true"
     rules="v => !!v || 'This field is required',v => (v || '').length >= len || 'Invalid character length, required ' + len,v => (v || '').length <= len || 'Invalid character length, max length ' + len"
     type="text"
@@ -29,7 +29,7 @@ exports[`ProjectUsers.vue renders props when passed 1`] = `
    
   <input-stub
     counter=""
-    label="Last Name"
+    label="Last name"
     outlined="true"
     rules="v => !!v || 'This field is required',v => (v || '').length >= len || 'Invalid character length, required ' + len,v => (v || '').length <= len || 'Invalid character length, max length ' + len"
     type="text"
