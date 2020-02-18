@@ -16,7 +16,7 @@ docker-compose -f docker-compose-db.yml up -d
 attempts=0
 until docker container exec local_bcsc_db_1 psql -U postgres -c 'SELECT 1' > /dev/null 2>&1; do
   ((attempts=attempts+1))
-  if [ $attempts -ge 10 ]; then
+  if [ $attempts -ge 100 ]; then
     echo "Failed to connect to PostgreSQL after 10 attempts, aborting"
     exit 1
   fi
