@@ -62,7 +62,7 @@
                       {{ packageData.packageName }}
                     </v-list-item-title>
                     <v-list-item-subtitle>
-                      {{ packageData.description }}
+                      {{ $t('selectPackage.description') }}
                     </v-list-item-subtitle>
                     <v-list-item-subtitle
                       v-for="claimName in packageData.claimNames"
@@ -70,6 +70,9 @@
                     >
                       <v-icon color="#969798" x-small>mdi-check-circle</v-icon>
                       {{ claimName }}
+                    </v-list-item-subtitle>
+                    <v-list-item-subtitle class="mt-3">
+                      {{ packageData.description }}
                     </v-list-item-subtitle>
                   </v-list-item-content>
                 </v-list-item>

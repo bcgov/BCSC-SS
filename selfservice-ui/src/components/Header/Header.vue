@@ -17,7 +17,7 @@
       />
       <!-- </a> -->
       <!-- <h1 class="text">BC SERVICE CARD</h1> -->
-      <v-toolbar-title>{{$t('main.siteTitle')}}</v-toolbar-title>
+      <v-toolbar-title>{{ $t('main.siteTitle') }}</v-toolbar-title>
       <!-- </div> -->
 
       <v-spacer></v-spacer>
@@ -25,12 +25,13 @@
 
       <v-btn
         text
-        to="/about"
+        to="/dashboard"
         link
         dark
         class="d-none d-sm-flex login-btn side-right-margin"
         v-if="!isLoggedin"
-      >Login</v-btn>
+        >Login</v-btn
+      >
 
       <v-toolbar-title v-if="isLoggedin">
         Welcome {{ userProfile.firstName }} {{ userProfile.lastName }}
@@ -38,7 +39,14 @@
           <span class="mr-2 logout" color="white">Logout</span>
         </v-btn>
       </v-toolbar-title>
-      <v-btn text to="/" link dark class="mr-2 d-sm-none toggleMenu" @click="toggleMenu">
+      <v-btn
+        text
+        to="/"
+        link
+        dark
+        class="mr-2 d-sm-none toggleMenu"
+        @click="toggleMenu"
+      >
         <v-icon>mdi-menu</v-icon>
       </v-btn>
     </v-app-bar>
@@ -57,7 +65,7 @@
         </li>
 
         <li>
-          <router-link to="about">About</router-link>
+          <router-link to="dashboard">Dashboard</router-link>
         </li>
         <li>
           <router-link to="/project/info">Create Project</router-link>
