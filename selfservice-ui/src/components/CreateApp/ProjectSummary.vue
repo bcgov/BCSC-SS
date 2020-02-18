@@ -20,10 +20,10 @@
       <v-row class="ma-5" v-if="!isLoading">
         <v-col cols="12" flat>
           <v-card flat>
-            <v-card-subtitle
+            <v-list-item-content
               class="text-left padding-0"
               v-html="$t('summaryPage.subTitle')"
-            ></v-card-subtitle>
+            ></v-list-item-content>
           </v-card>
         </v-col>
         <v-col cols="12" flat>

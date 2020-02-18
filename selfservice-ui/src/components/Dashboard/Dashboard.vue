@@ -7,14 +7,21 @@
       <div class="flex-grow-1"></div>
 
       <div class="flex-grow-1"></div>
-      <v-icon x-large @click="$router.push(`/project/info`)"
-        >mdi-plus-circle</v-icon
+
+      <v-btn
+        class="ma-2"
+        fab
+        dark
+        color="#fba30e"
+        @click="$router.push(`/project/info`)"
       >
+        <v-icon dark large>mdi-plus</v-icon>
+      </v-btn>
     </v-toolbar>
     <v-divider></v-divider>
     <v-container>
       <v-row class="ma-5">
-        <v-col cols="12" md="12">
+        <v-col cols="12" md="12" v-if="projectInfoList.length > 0">
           <v-simple-table class="text-left">
             <template v-slot:default>
               <thead>
@@ -25,9 +32,9 @@
                   <th :scope="$t('dashboard.tblTitleProjectName')">
                     {{ $t('dashboard.tblTitleProjectName') }}
                   </th>
-                  <th :scope="$t('dashboard.tblTitleProjectId')">
+                  <!-- <th :scope="$t('dashboard.tblTitleProjectId')">
                     {{ $t('dashboard.tblTitleProjectId') }}
-                  </th>
+                  </th> -->
                   <th :scope="$t('dashboard.tblTitlrole')">
                     {{ $t('dashboard.tblTitlrole') }}
                   </th>
@@ -46,8 +53,8 @@
                 <tr v-for="(project, idx) in projectInfoList" :key="project.id">
                   <td>{{ idx + 1 }}</td>
                   <td>{{ project.name }}</td>
-                  <td>{{ project.id }}</td>
-                  <td>{{ project.Developer }}</td>
+                  <!-- <td>{{ project.id }}</td> -->
+                  <td>{{ project.role }}</td>
                   <td>{{ project.created }}</td>
                   <td>{{ project.status }}</td>
                   <td>
@@ -60,11 +67,21 @@
                       class="ml-2"
                       >mdi-pencil-circle</v-icon
                     >
+                    <v-icon
+                      @click="$router.push(`/project/${project.id}/api-key`)"
+                      class="ml-2"
+                      >mdi-file-key-outline</v-icon
+                    >
                   </td>
                 </tr>
               </tbody>
             </template>
           </v-simple-table>
+        </v-col>
+        <v-col cols="12" md="12" v-else>
+          <v-card flat class="text-left"
+            ><v-card-text>{{ $t('dashboard.noData') }}</v-card-text></v-card
+          >
         </v-col>
       </v-row>
     </v-container>

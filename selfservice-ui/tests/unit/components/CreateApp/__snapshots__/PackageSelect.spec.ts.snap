@@ -110,7 +110,7 @@ exports[`PackageSelect.vue renders props when passed 1`] = `
                   class="v-list-item__subtitle"
                 >
                   
-                    This package contains the following data:
+                    
                   
                 </div>
                  
@@ -136,6 +136,14 @@ exports[`PackageSelect.vue renders props when passed 1`] = `
                   />
                   
                     Surname
+                  
+                </div>
+                 
+                <div
+                  class="v-list-item__subtitle mt-3"
+                >
+                  
+                    This package contains the following data:
                   
                 </div>
               </div>
@@ -184,7 +192,7 @@ exports[`PackageSelect.vue renders props when passed 1`] = `
                   class="v-list-item__subtitle"
                 >
                   
-                    This package contains the following data:
+                    
                   
                 </div>
                  
@@ -210,6 +218,14 @@ exports[`PackageSelect.vue renders props when passed 1`] = `
                   />
                   
                     Surname
+                  
+                </div>
+                 
+                <div
+                  class="v-list-item__subtitle mt-3"
+                >
+                  
+                    This package contains the following data:
                   
                 </div>
               </div>
@@ -397,7 +413,7 @@ exports[`PackageSelect.vue select on package on click  1`] = `
                   class="v-list-item__subtitle"
                 >
                   
-                    This package contains the following data:
+                    
                   
                 </div>
                  
@@ -423,6 +439,14 @@ exports[`PackageSelect.vue select on package on click  1`] = `
                   />
                   
                     Surname
+                  
+                </div>
+                 
+                <div
+                  class="v-list-item__subtitle mt-3"
+                >
+                  
+                    This package contains the following data:
                   
                 </div>
               </div>
@@ -471,7 +495,7 @@ exports[`PackageSelect.vue select on package on click  1`] = `
                   class="v-list-item__subtitle"
                 >
                   
-                    This package contains the following data:
+                    
                   
                 </div>
                  
@@ -497,6 +521,14 @@ exports[`PackageSelect.vue select on package on click  1`] = `
                   />
                   
                     Surname
+                  
+                </div>
+                 
+                <div
+                  class="v-list-item__subtitle mt-3"
+                >
+                  
+                    This package contains the following data:
                   
                 </div>
               </div>
@@ -684,7 +716,7 @@ exports[`PackageSelect.vue submit form with selected package on submit click  1`
                   class="v-list-item__subtitle"
                 >
                   
-                    This package contains the following data:
+                    
                   
                 </div>
                  
@@ -710,6 +742,14 @@ exports[`PackageSelect.vue submit form with selected package on submit click  1`
                   />
                   
                     Surname
+                  
+                </div>
+                 
+                <div
+                  class="v-list-item__subtitle mt-3"
+                >
+                  
+                    This package contains the following data:
                   
                 </div>
               </div>
@@ -758,7 +798,7 @@ exports[`PackageSelect.vue submit form with selected package on submit click  1`
                   class="v-list-item__subtitle"
                 >
                   
-                    This package contains the following data:
+                    
                   
                 </div>
                  
@@ -784,6 +824,14 @@ exports[`PackageSelect.vue submit form with selected package on submit click  1`
                   />
                   
                     Surname
+                  
+                </div>
+                 
+                <div
+                  class="v-list-item__subtitle mt-3"
+                >
+                  
+                    This package contains the following data:
                   
                 </div>
               </div>
