@@ -91,3 +91,25 @@ def factory_project_technical_req(is_model=False):
         return camel2snake(technical_req)
     else:
         return technical_req
+
+
+def factory_project_oidc_config():
+    """JSON data to create oidc config."""
+    oidc_config = {
+        'project_id': 0,
+        'client_id': 'ee72e9abab',
+        'client_secret': '6DjuDS_w7cbFfkotp1l0AumgjJ5Ng8j8lpUCezuC',
+        'registration_access_token': '633537303539616631306330306235663',
+        'registration_client_uri': 'https://idtest.gov.bc.ca/oauth2/register/ee72e9abab',
+        'client_id_issued_at': '2020-02-13T15:52:52Z',
+        'client_secret_expires_at': 658464,
+        'token_endpoint_auth_method': 'client_secret_post',
+        'application_type': 'web',
+        'subject_type': 'pairwise',
+        'sector_identifier_uri': 'urn:org:example:client',
+        'id_token_encrypted_response_alg': 'RS256',
+        'id_token_encrypted_response_enc': 'RS256',
+        'userinfo_encrypted_response_alg': 'RS256',
+        'userinfo_encrypted_response_enc': 'RS256'
+    }
+    return oidc_config
