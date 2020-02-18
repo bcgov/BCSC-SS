@@ -16,7 +16,7 @@
 import json
 from http import HTTPStatus
 
-from ..helper.api_create_data import (PROJECTINFO_API, _create_project_, _get_project_,  # noqa: I001
+from ..helper.api_create_data import (PROJECTINFO_API, _create_project_, _get_project_, _get_all_project_,  # noqa: I001
                                       create_project, create_technical_req_with_additional, create_user)  # noqa: I001
 from ..helper.auth import ss_client_auth_header
 
@@ -58,6 +58,12 @@ def test_post_project_validation(client, jwt, session):
     assert response.status_code == HTTPStatus.BAD_REQUEST
 
 
+def test_get_all_project(client, jwt, session):
+    """Assert that the endpoint returns the success status."""
+    response = _get_all_project_(client, jwt)
+    assert response.status_code == HTTPStatus.OK
+
+
 def test_get_project(client, jwt, session):
     """Assert that the endpoint returns the success status."""
     response = _get_project_(client, jwt)
@@ -74,6 +80,10 @@ def test_patch_project_status(client, jwt, session):
                             data=json.dumps(req_data), headers=headers, content_type='application/json')
 
     assert response.status_code == HTTPStatus.OK
+
+    # check the skip condition on oidc config
+    response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
+                            data=json.dumps(req_data), headers=headers, content_type='application/json')
 
 
 def test_patch_project_status_validation(client, jwt, session):
