@@ -12,9 +12,26 @@ exports[`Authorize.vue renders without crashing 1`] = `
     tag="div"
     wrap=""
   >
+    <div
+      class="mt-10"
+      col="4"
+    >
+      <v-progress-linear-stub
+        active="true"
+        buffervalue="100"
+        class="loading"
+        color="primary"
+        height="6"
+        indeterminate="true"
+        rounded="true"
+        value="0"
+      />
+      We know waiting sucks
+      
+      <br />
+      but trust me it’s worth it
     
-    Authorizing...
-  
+    </div>
   </v-layout-stub>
 </v-container-stub>
 `;

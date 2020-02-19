@@ -10,7 +10,8 @@ describe('App.vue', () => {
 
     wrapper = shallowMount(App, {
       localVue,
-      stubs: ['router-view']
+      stubs: ['router-view'],
+      mocks: { $route: { meta: { showVerticalMenu: false } } }
     });
   });
 

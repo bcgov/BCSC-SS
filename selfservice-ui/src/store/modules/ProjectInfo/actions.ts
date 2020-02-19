@@ -25,7 +25,7 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
       commit('SET_PROJECTINFO_MESSAGE', i18n.t('PROJECTINFO_ADD_MESSAGE'));
       commit('SET_EDIT_PROJECTINFO', projectinfo.data);
       const id = projectinfo.data.id;
-      router.push('/project/technical/' + id);
+      router.push(`/project/${id}/technical/`);
       // dispatch('loadProjectInfo');
     } catch {
       commit('SET_PROJECTINFO_SUCCESSFULLY', false);
@@ -40,9 +40,14 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
    */
   async loadProjectInfo({ commit }) {
     commit('SET_LOADING', true);
-    const projectinfo = await ProjectInfoService.getProjectInfos();
-    commit('SET_PROJECTINFOLIST', projectinfo.data);
-    commit('SET_LOADING', false);
+    try {
+      const projectinfo = await ProjectInfoService.getProjectInfos();
+      commit('SET_PROJECTINFOLIST', projectinfo.data.projects);
+      commit('SET_LOADING', false);
+    } catch {
+      commit('SET_PROJECTINFO_ERROR', true);
+      commit('SET_LOADING', false);
+    }
   },
   /**
    * clear message
@@ -76,7 +81,7 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
   async updateProjectInfo({ commit, dispatch }, data: any) {
     commit('SET_LOADING', true);
     try {
-      const projectinfo = await ProjectInfoService.updateProjectInfo(data);
+      await ProjectInfoService.updateProjectInfo(data);
       commit('SET_LOADING', false);
       commit('SET_PROJECTINFO_SUCCESSFULLY', true);
       commit('SET_PROJECTINFO_ERROR', false);
@@ -89,25 +94,22 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
       commit('SET_PROJECTINFOMESSAGE', '');
     }
   },
+
   /**
-   * remove projectinfo
-   * @param  {} {commit, dispatch}
-   * @param  {} projectinfo   list
+   * submitProject to server
+   * @param {*} { commit }
    */
-  async removeProjectInfo({ commit, dispatch }, id: any) {
+
+  async submitProject({ commit, rootState }, data) {
     commit('SET_LOADING', true);
     try {
-      await ProjectInfoService.deleteProjectInfo(id);
+      const { projectId } = data;
+      // const packageData =
+      await ProjectInfoService.updateStatusOfProject(projectId, 2);
+      router.push(`/project/${projectId}/api-key/`);
       commit('SET_LOADING', false);
-      commit('SET_PROJECTINFO_SUCCESSFULLY', true);
-      commit('SET_PROJECTINFO_MESSAGE', i18n.t('PROJECTINFO_DELETE_MESSAGE'));
-      commit('SET_PROJECTINFO_ERROR', false);
-      dispatch('loadProjectInfo');
     } catch {
       commit('SET_LOADING', false);
-      commit('SET_PROJECTINFO_SUCCESSFULLY', false);
-      commit('SET_PROJECTINFO_ERROR', true);
-      commit('SET_PROJECTINFO_MESSAGE', '');
     }
   }
 };

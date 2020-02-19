@@ -13,6 +13,7 @@
 # limitations under the License.
 """This exports all of the schemas used by the application."""
 
+from .oidc_config import OIDCConfigSchema
 from .project import ProjectSchema
 from .technical_req import (TechnicalReqPackageSchema, TechnicalReqRequestSchema,  # noqa: I001
                             TechnicalReqResponseSchema, TechnicalReqTestAccountSchema)  # noqa: I001

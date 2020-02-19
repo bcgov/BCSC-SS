@@ -1,0 +1,163 @@
+---
+kind: Template
+apiVersion: v1
+metadata:
+  name: "${API_NAME}-configmap-template"
+  creationTimestamp: 
+objects:
+- kind: ConfigMap
+  apiVersion: v1
+  metadata:
+    name: "${API_NAME}-dev-config"
+    labels:
+      app: "${API_NAME}"
+      template: "${API_NAME}-deploy"
+  data:
+    JWT_OIDC_WELL_KNOWN_CONFIG: "${JWTOIDCWELLKNOWNCONFIG_DEV}"
+    JWT_OIDC_ISSUER: "${JWTOIDCISSUER_DEV}"
+    JWT_OIDC_CACHING_ENABLED: "${JWTOIDCCACHINGENABLED}"
+    JWT_OIDC_AUDIENCE: "${KEYCLOAKCLIENT}"
+    JWT_OIDC_CLIENT_SECRET: "${KEYCLOAKCLIENTSECRET_DEV}"
+    JWT_OIDC_ALGORITHMS: "${KEYCLOAKALGORITHMS}"
+    JWT_OIDC_JWKS_URI: "${JWTOIDCJWKSURI_DEV}"
+    JWT_OIDC_JWKS_CACHE_TIMEOUT: "${JWTOIDCJWKSCACHETIMEOUT}"
+- kind: ConfigMap
+  apiVersion: v1
+  metadata:
+    name: "${API_NAME}-test-config"
+    labels:
+      app: "${API_NAME}"
+      template: "${API_NAME}-deploy"
+  data:
+    JWT_OIDC_WELL_KNOWN_CONFIG: "${JWTOIDCWELLKNOWNCONFIG_TEST}"
+    JWT_OIDC_ISSUER: "${JWTOIDCISSUER_TEST}"
+    JWT_OIDC_AUDIENCE: "${KEYCLOAKCLIENT}"
+    JWT_OIDC_CLIENT_SECRET: "${KEYCLOAKCLIENTSECRET_TEST}"
+    JWT_OIDC_ALGORITHMS: "${KEYCLOAKALGORITHMS}"
+    JWT_OIDC_JWKS_URI: "${JWTOIDCJWKSURI_TEST}"
+    JWT_OIDC_CACHING_ENABLED: "${JWTOIDCCACHINGENABLED}"
+    JWT_OIDC_JWKS_CACHE_TIMEOUT: "${JWTOIDCJWKSCACHETIMEOUT}"
+- kind: ConfigMap
+  apiVersion: v1
+  metadata:
+    name: "${API_NAME}-prod-config"
+    labels:
+      app: "${API_NAME}"
+      template: "${API_NAME}-deploy"
+  data:
+    JWT_OIDC_WELL_KNOWN_CONFIG: "${JWTOIDCWELLKNOWNCONFIG_PROD}"
+    JWT_OIDC_ISSUER: "${JWTOIDCISSUER_PROD}"
+    JWT_OIDC_AUDIENCE: "${KEYCLOAKCLIENT}"
+    JWT_OIDC_CLIENT_SECRET: "${KEYCLOAKCLIENTSECRET_PROD}"
+    JWT_OIDC_ALGORITHMS: "${KEYCLOAKALGORITHMS}"
+    JWT_OIDC_JWKS_URI: "${JWTOIDCJWKSURI_PROD}"
+    JWT_OIDC_CACHING_ENABLED: "${JWTOIDCCACHINGENABLED}"
+    JWT_OIDC_JWKS_CACHE_TIMEOUT: "${JWTOIDCJWKSCACHETIMEOUT}"
+parameters:
+- name: WEB_NAME
+  displayName: Name
+  description: The name assigned to all of the resources defined in this template.
+  required: true
+  value: selfservice-ui
+- name: API_NAME
+  displayName: Name
+  description: The name assigned to all of the resources defined in this template.
+  required: true
+  value: ssapi
+- name: KEYCLOAKURL_DEV
+  displayName: keycloak Url - Dev
+  description: keycloak Url - Dev
+  required: true
+  value: 'https://sso-dev.pathfinder.gov.bc.ca/auth'
+- name: KEYCLOAKURL_TEST
+  displayName: keycloak Url - Test
+  description: keycloak Url - Test
+  required: true
+  value: 'https://sso-test.pathfinder.gov.bc.ca/auth'
+- name: KEYCLOAKURL_PROD
+  displayName: keycloak Url - Prod
+  description: keycloak Url - Prod
+  required: true
+  value: 'https://sso.pathfinder.gov.bc.ca/auth/'
+- name: KEYCLOAKREALM
+  displayName: keycloak Realm
+  description: Keycloak realm for
+  required: true
+  value: '1gw8g24z'
+- name: KEYCLOAKCLIENT
+  displayName: keycloak Url
+  description: keycloak Url.
+  required: true
+  value: 'bcscss'
+- name: KEYCLOAKCLIENTSECRET_DEV
+  displayName: keycloak Client Secret - Dev
+  description: keycloak Client Secret - Dev
+  value: ''
+- name: KEYCLOAKCLIENTSECRET_TEST
+  displayName: keycloak Client Secret - Test
+  description: keycloak Client Secret - Test
+  value: ''
+- name: KEYCLOAKCLIENTSECRET_PROD
+  displayName: keycloak Client Secret - Prod
+  description: keycloak Client Secret - Prod
+  value: ''
+- name: KEYCLOAKALGORITHMS
+  displayName: keycloak Algorithms
+  description: keycloak Algorithms
+  required: true
+  value: 'RS256'
+- name: JWTOIDCWELLKNOWNCONFIG_DEV
+  displayName: keycloak Algorithms
+  description: keycloak Algorithms
+  required: true
+  value: 'https://sso-dev.pathfinder.gov.bc.ca/auth/realms/1gw8g24z/.well-known/openid-configuration'
+- name: JWTOIDCWELLKNOWNCONFIG_TEST
+  displayName: keycloak Algorithms
+  description: keycloak Algorithms
+  required: true
+  value: 'https://sso-test.pathfinder.gov.bc.ca/auth/realms/1gw8g24z/.well-known/openid-configuration'
+- name: JWTOIDCWELLKNOWNCONFIG_PROD
+  displayName: keycloak Algorithms
+  description: keycloak Algorithms
+  required: true
+  value: 'https://sso.pathfinder.gov.bc.ca/auth/realms/1gw8g24z/.well-known/openid-configuration'
+- name: JWTOIDCCACHINGENABLED
+  displayName: keycloak Algorithms
+  description: keycloak Algorithms
+  required: true
+  value: 'true'
+- name: JWTOIDCJWKSCACHETIMEOUT
+  displayName: JWT OICS Token timeout
+  description: keycloak Algorithms
+  required: true
+  value: '300'
+- name: JWTOIDCISSUER_DEV
+  displayName: JWT oidc issuer Dev
+  description: JWT oidc issuer Dev
+  required: true
+  value: 'https://sso-dev.pathfinder.gov.bc.ca/auth/realms/1gw8g24z'
+- name: JWTOIDCISSUER_TEST
+  displayName: JWT oidc issuer test
+  description: JWT oidc issuer test
+  required: true
+  value: 'https://sso-test.pathfinder.gov.bc.ca/auth/realms/1gw8g24z'
+- name: JWTOIDCISSUER_PROD
+  displayName: JWT oidc issuer Prod
+  description: JWT oidc issuer Prod
+  required: true
+  value: 'https://sso.pathfinder.gov.bc.ca/auth/realms/1gw8g24z'
+- name: JWTOIDCJWKSURI_DEV
+  displayName: JWT oidc issuer Dev
+  description: JWT oidc issuer Dev
+  required: true
+  value: 'https://sso-dev.pathfinder.gov.bc.ca/auth/realms/1gw8g24z/protocol/openid-connect/certs'
+- name: JWTOIDCJWKSURI_TEST
+  displayName: JWT oidc issuer test
+  description: JWT oidc issuer test
+  required: true
+  value: 'https://sso-test.pathfinder.gov.bc.ca/auth/realms/1gw8g24z/protocol/openid-connect/certs'
+- name: JWTOIDCJWKSURI_PROD
+  displayName: JWT oidc issuer Prod
+  description: JWT oidc issuer Prod
+  required: true
+  value: 'https://sso.pathfinder.gov.bc.ca/auth/realms/1gw8g24z/protocol/openid-connect/certs'

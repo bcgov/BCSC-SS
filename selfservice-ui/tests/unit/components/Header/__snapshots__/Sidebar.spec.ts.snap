@@ -23,21 +23,6 @@ exports[`Sidebar.vue renders props when passed 1`] = `
       tag="div"
       tile="true"
     >
-      <v-list-item-stub
-        activeclass=""
-        tag="div"
-      >
-        <v-list-item-content-stub>
-          <v-list-item-title-stub
-            class="title"
-          >
-            
-            Self Service
-          
-          </v-list-item-title-stub>
-        </v-list-item-content-stub>
-      </v-list-item-stub>
-       
       <v-divider-stub />
        
       <v-list-stub
@@ -46,6 +31,29 @@ exports[`Sidebar.vue renders props when passed 1`] = `
         tag="div"
         tile="true"
       >
+        <v-list-item-stub
+          activeclass=""
+          link="true"
+          tag="div"
+        >
+          <v-list-item-icon-stub>
+            <v-icon-stub>
+              mdi-home
+            </v-icon-stub>
+          </v-list-item-icon-stub>
+           
+          <v-list-item-content-stub>
+            <v-list-item-title-stub
+              to="Home"
+            >
+              <link-stub
+                to="/"
+              >
+                Home
+              </link-stub>
+            </v-list-item-title-stub>
+          </v-list-item-content-stub>
+        </v-list-item-stub>
         <v-list-item-stub
           activeclass=""
           link="true"
@@ -62,11 +70,9 @@ exports[`Sidebar.vue renders props when passed 1`] = `
               to="Dashboard"
             >
               <link-stub
-                to="/"
+                to="/dashboard"
               >
-                
                 Dashboard
-              
               </link-stub>
             </v-list-item-title-stub>
           </v-list-item-content-stub>
@@ -87,11 +93,9 @@ exports[`Sidebar.vue renders props when passed 1`] = `
               to="Create Project"
             >
               <link-stub
-                to="/project"
+                to="/project/info"
               >
-                
                 Create Project
-              
               </link-stub>
             </v-list-item-title-stub>
           </v-list-item-content-stub>
@@ -114,9 +118,7 @@ exports[`Sidebar.vue renders props when passed 1`] = `
               <link-stub
                 to="/about"
               >
-                
                 About
-              
               </link-stub>
             </v-list-item-title-stub>
           </v-list-item-content-stub>

@@ -31,7 +31,7 @@ exports[`PackageSelect.vue renders props when passed 1`] = `
       <div
         class="v-toolbar__title"
       >
-        Select Package
+        
       </div>
        
       <div
@@ -73,28 +73,14 @@ exports[`PackageSelect.vue renders props when passed 1`] = `
             class="v-card v-card--flat v-sheet theme--light"
           >
             <div
-              class="v-list-item__content"
+              class="v-list-item__content headline"
             >
-              Choosing a package level
+              
             </div>
              
             <div
               class="v-list-item__content"
-            >
-              Package 1 - best fit for organizations looking for a digital signature
-            </div>
-             
-            <div
-              class="v-list-item__content"
-            >
-              Package 2 - best fit for organizations who want to know who the user is and communicate directly with their users electronically
-            </div>
-             
-            <div
-              class="v-list-item__content"
-            >
-              Package 3 - best fit for organizations who want to know who the user is and communicate directly with their users non-electronically
-            </div>
+            />
           </div>
         </div>
          
@@ -124,7 +110,7 @@ exports[`PackageSelect.vue renders props when passed 1`] = `
                   class="v-list-item__subtitle"
                 >
                   
-                    This package contains the following data:
+                    
                   
                 </div>
                  
@@ -150,6 +136,14 @@ exports[`PackageSelect.vue renders props when passed 1`] = `
                   />
                   
                     Surname
+                  
+                </div>
+                 
+                <div
+                  class="v-list-item__subtitle mt-3"
+                >
+                  
+                    This package contains the following data:
                   
                 </div>
               </div>
@@ -198,7 +192,7 @@ exports[`PackageSelect.vue renders props when passed 1`] = `
                   class="v-list-item__subtitle"
                 >
                   
-                    This package contains the following data:
+                    
                   
                 </div>
                  
@@ -224,6 +218,14 @@ exports[`PackageSelect.vue renders props when passed 1`] = `
                   />
                   
                     Surname
+                  
+                </div>
+                 
+                <div
+                  class="v-list-item__subtitle mt-3"
+                >
+                  
+                    This package contains the following data:
                   
                 </div>
               </div>
@@ -270,7 +272,20 @@ exports[`PackageSelect.vue renders props when passed 1`] = `
         />
          
         <button
-          class="btn white--text submit-package v-btn v-btn--depressed theme--light v-size--default indigo accent-4 primary normal"
+          aria-label="Back Button"
+          class="btn v-btn v-btn--contained theme--light v-size--default secondary normal"
+          name="button"
+          type="button"
+        >
+          <span
+            class="v-btn__content"
+          >
+            Go Back
+          </span>
+        </button>
+         
+        <button
+          class="btn white--text submit-package ml-6 v-btn v-btn--depressed theme--light v-size--default indigo accent-4 primary normal"
           color="indigo accent-4"
           depressed=""
           name="button"
@@ -319,7 +334,7 @@ exports[`PackageSelect.vue select on package on click  1`] = `
       <div
         class="v-toolbar__title"
       >
-        Select Package
+        
       </div>
        
       <div
@@ -361,28 +376,14 @@ exports[`PackageSelect.vue select on package on click  1`] = `
             class="v-card v-card--flat v-sheet theme--light"
           >
             <div
-              class="v-list-item__content"
+              class="v-list-item__content headline"
             >
-              Choosing a package level
+              
             </div>
              
             <div
               class="v-list-item__content"
-            >
-              Package 1 - best fit for organizations looking for a digital signature
-            </div>
-             
-            <div
-              class="v-list-item__content"
-            >
-              Package 2 - best fit for organizations who want to know who the user is and communicate directly with their users electronically
-            </div>
-             
-            <div
-              class="v-list-item__content"
-            >
-              Package 3 - best fit for organizations who want to know who the user is and communicate directly with their users non-electronically
-            </div>
+            />
           </div>
         </div>
          
@@ -412,7 +413,7 @@ exports[`PackageSelect.vue select on package on click  1`] = `
                   class="v-list-item__subtitle"
                 >
                   
-                    This package contains the following data:
+                    
                   
                 </div>
                  
@@ -438,6 +439,14 @@ exports[`PackageSelect.vue select on package on click  1`] = `
                   />
                   
                     Surname
+                  
+                </div>
+                 
+                <div
+                  class="v-list-item__subtitle mt-3"
+                >
+                  
+                    This package contains the following data:
                   
                 </div>
               </div>
@@ -486,7 +495,7 @@ exports[`PackageSelect.vue select on package on click  1`] = `
                   class="v-list-item__subtitle"
                 >
                   
-                    This package contains the following data:
+                    
                   
                 </div>
                  
@@ -512,6 +521,14 @@ exports[`PackageSelect.vue select on package on click  1`] = `
                   />
                   
                     Surname
+                  
+                </div>
+                 
+                <div
+                  class="v-list-item__subtitle mt-3"
+                >
+                  
+                    This package contains the following data:
                   
                 </div>
               </div>
@@ -558,7 +575,20 @@ exports[`PackageSelect.vue select on package on click  1`] = `
         />
          
         <button
-          class="btn white--text submit-package v-btn v-btn--depressed theme--light v-size--default indigo accent-4 primary normal"
+          aria-label="Back Button"
+          class="btn v-btn v-btn--contained theme--light v-size--default secondary normal"
+          name="button"
+          type="button"
+        >
+          <span
+            class="v-btn__content"
+          >
+            Go Back
+          </span>
+        </button>
+         
+        <button
+          class="btn white--text submit-package ml-6 v-btn v-btn--depressed theme--light v-size--default indigo accent-4 primary normal"
           color="indigo accent-4"
           depressed=""
           name="button"
@@ -607,7 +637,7 @@ exports[`PackageSelect.vue submit form with selected package on submit click  1`
       <div
         class="v-toolbar__title"
       >
-        Select Package
+        
       </div>
        
       <div
@@ -649,28 +679,14 @@ exports[`PackageSelect.vue submit form with selected package on submit click  1`
             class="v-card v-card--flat v-sheet theme--light"
           >
             <div
-              class="v-list-item__content"
+              class="v-list-item__content headline"
             >
-              Choosing a package level
+              
             </div>
              
             <div
               class="v-list-item__content"
-            >
-              Package 1 - best fit for organizations looking for a digital signature
-            </div>
-             
-            <div
-              class="v-list-item__content"
-            >
-              Package 2 - best fit for organizations who want to know who the user is and communicate directly with their users electronically
-            </div>
-             
-            <div
-              class="v-list-item__content"
-            >
-              Package 3 - best fit for organizations who want to know who the user is and communicate directly with their users non-electronically
-            </div>
+            />
           </div>
         </div>
          
@@ -700,7 +716,7 @@ exports[`PackageSelect.vue submit form with selected package on submit click  1`
                   class="v-list-item__subtitle"
                 >
                   
-                    This package contains the following data:
+                    
                   
                 </div>
                  
@@ -726,6 +742,14 @@ exports[`PackageSelect.vue submit form with selected package on submit click  1`
                   />
                   
                     Surname
+                  
+                </div>
+                 
+                <div
+                  class="v-list-item__subtitle mt-3"
+                >
+                  
+                    This package contains the following data:
                   
                 </div>
               </div>
@@ -774,7 +798,7 @@ exports[`PackageSelect.vue submit form with selected package on submit click  1`
                   class="v-list-item__subtitle"
                 >
                   
-                    This package contains the following data:
+                    
                   
                 </div>
                  
@@ -800,6 +824,14 @@ exports[`PackageSelect.vue submit form with selected package on submit click  1`
                   />
                   
                     Surname
+                  
+                </div>
+                 
+                <div
+                  class="v-list-item__subtitle mt-3"
+                >
+                  
+                    This package contains the following data:
                   
                 </div>
               </div>
@@ -846,7 +878,20 @@ exports[`PackageSelect.vue submit form with selected package on submit click  1`
         />
          
         <button
-          class="btn white--text submit-package v-btn v-btn--depressed theme--light v-size--default indigo accent-4 primary normal"
+          aria-label="Back Button"
+          class="btn v-btn v-btn--contained theme--light v-size--default secondary normal"
+          name="button"
+          type="button"
+        >
+          <span
+            class="v-btn__content"
+          >
+            Go Back
+          </span>
+        </button>
+         
+        <button
+          class="btn white--text submit-package ml-6 v-btn v-btn--depressed theme--light v-size--default indigo accent-4 primary normal"
           color="indigo accent-4"
           depressed=""
           name="button"

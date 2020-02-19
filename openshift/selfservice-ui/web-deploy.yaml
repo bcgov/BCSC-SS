@@ -89,7 +89,7 @@ objects:
         from:
           kind: ImageStreamTag
           namespace: "${IMAGE_NAMESPACE}"
-          name: "${WEB_NAME}:${TAG_NAME}"
+          name: "${WEB_NAME}-${TAG_NAME}:${TAG_NAME}"
 - apiVersion: v1
   kind: Service
   metadata:

@@ -1,6 +1,6 @@
 name: BCSC_SS API integration tests
 
-on: [push, pull_request]
+on: [pull_request]
 
 jobs:
   selfservice-api-integration-test:
@@ -14,7 +14,9 @@ jobs:
       DATABASE_TEST_NAME: postgres
       DATABASE_TEST_PORT: 5432
       DATABASE_TEST_USERNAME: postgres
+      DATABASE_TEST_USER: postgres
       DATABASE_USERNAME: postgres
+      DATABASE_USER: postgres
       ADMIN_PASSWORD: postgres@123
       DATABASE_ADMIN_PASSWORD: postgres@123
       DATABASE_PASSWORD: postgres@123

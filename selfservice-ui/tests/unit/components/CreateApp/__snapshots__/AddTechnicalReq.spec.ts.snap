@@ -34,7 +34,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
         <div
           class="v-toolbar__title"
         >
-          Technical requirments
+          
         </div>
          
         <div
@@ -57,16 +57,32 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
             class="col-md-12 col-12"
           >
             <div
-              class="pa-4 pt-6 v-card v-sheet theme--light"
+              class="pa-4 pt-6 mb-4 v-card v-sheet theme--light"
             >
               <div
-                class="v-card__title headline"
+                class="v-card__title headline padding-0 text-capitalize"
               >
                 
               </div>
                
               <div
-                class="v-input input theme--light v-text-field"
+                class="v-card__subtitle text-left padding-0"
+              >
+                
+              </div>
+            </div>
+             
+            <div
+              class="pa-4 pt-6 v-card v-sheet theme--light"
+            >
+              <div
+                class="v-card__subtitle text-left padding-0"
+              >
+                
+              </div>
+               
+              <div
+                class="v-input input theme--light v-text-field v-text-field--enclosed v-text-field--outlined"
                 rules="v => !!v || 'This field is required',v => {
     if (v === '') {
       return true;
@@ -81,18 +97,22 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                   <div
                     class="v-input__slot"
                   >
+                    <fieldset
+                      aria-hidden="true"
+                    >
+                      <legend
+                        style="width: 0px;"
+                      >
+                        <span>
+                          ​
+                        </span>
+                      </legend>
+                    </fieldset>
                     <div
                       class="v-text-field__slot"
                     >
-                      <label
-                        class="v-label theme--light"
-                        for="input-13"
-                        style="left: 0px; position: absolute;"
-                      >
-                        Application URL
-                      </label>
                       <input
-                        id="input-13"
+                        id="input-14"
                         type="text"
                       />
                     </div>
@@ -119,10 +139,16 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
               </div>
                
               <div
-                class="row v-form pa-4 pt-6"
+                class="v-card__subtitle text-left padding-0"
+              >
+                
+              </div>
+               
+              <div
+                class="row v-form px-4"
               >
                 <div
-                  class="v-input addUri theme--light v-text-field v-text-field--filled v-text-field--enclosed"
+                  class="v-input addUri theme--light v-text-field v-text-field--single-line v-text-field--filled v-text-field--enclosed v-text-field--outlined"
                 >
                   <div
                     class="v-input__control"
@@ -130,18 +156,20 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                     <div
                       class="v-input__slot"
                     >
+                      <fieldset
+                        aria-hidden="true"
+                      >
+                        <legend>
+                          <span>
+                            ​
+                          </span>
+                        </legend>
+                      </fieldset>
                       <div
                         class="v-text-field__slot"
                       >
-                        <label
-                          class="v-label theme--light"
-                          for="input-16"
-                          style="left: 0px; position: absolute;"
-                        >
-                          Redirect URI values
-                        </label>
                         <input
-                          id="input-16"
+                          id="input-17"
                           type="text"
                         />
                       </div>
@@ -177,7 +205,13 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
               </div>
                
               <div
-                class="v-input input theme--light v-text-field"
+                class="v-card__subtitle text-left padding-0"
+              >
+                
+              </div>
+               
+              <div
+                class="v-input input pt-6 theme--light v-text-field v-text-field--enclosed v-text-field--outlined"
                 rules="v => !!v || 'This field is required',v => {
     if (v === '') {
       return true;
@@ -192,18 +226,22 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                   <div
                     class="v-input__slot"
                   >
+                    <fieldset
+                      aria-hidden="true"
+                    >
+                      <legend
+                        style="width: 0px;"
+                      >
+                        <span>
+                          ​
+                        </span>
+                      </legend>
+                    </fieldset>
                     <div
                       class="v-text-field__slot"
                     >
-                      <label
-                        class="v-label theme--light"
-                        for="input-21"
-                        style="left: 0px; position: absolute;"
-                      >
-                        JWKS URL
-                      </label>
                       <input
-                        id="input-21"
+                        id="input-22"
                         type="text"
                       />
                     </div>
@@ -230,170 +268,192 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
               </div>
                
               <div
-                class="v-input v-input--is-label-active v-input--is-dirty theme--light v-text-field v-select"
-                rules="v => !!v || 'This field is required'"
-                value="RS256"
+                class="row"
               >
                 <div
-                  class="v-input__control"
+                  class="col-5"
                 >
                   <div
-                    aria-expanded="false"
-                    aria-haspopup="listbox"
-                    aria-owns="list-25"
-                    class="v-input__slot"
-                    role="button"
+                    class="v-input v-input--is-label-active v-input--is-dirty theme--light v-text-field v-text-field--enclosed v-text-field--outlined v-select"
+                    outlined=""
+                    rules="v => !!v || 'This field is required'"
+                    value="RS256"
                   >
                     <div
-                      class="v-select__slot"
+                      class="v-input__control"
                     >
-                      <label
-                        class="v-label v-label--active theme--light"
-                        for="input-25"
-                        style="left: 0px; position: absolute;"
-                      >
-                        ID Token Signature Algorithm
-                      </label>
                       <div
-                        class="v-select__selections"
+                        aria-expanded="false"
+                        aria-haspopup="listbox"
+                        aria-owns="list-26"
+                        class="v-input__slot"
+                        role="button"
                       >
-                        <div
-                          class="v-select__selection v-select__selection--comma"
+                        <fieldset
+                          aria-hidden="true"
                         >
-                          RS256
-                        </div>
-                        <input
-                          aria-readonly="true"
-                          autocomplete="off"
-                          id="input-25"
-                          readonly="readonly"
-                          type="text"
-                        />
-                      </div>
-                      <div
-                        class="v-input__append-inner"
-                      >
-                        <div
-                          class="v-input__icon v-input__icon--append"
-                        >
-                          <i
-                            aria-hidden="true"
-                            class="v-icon notranslate material-icons theme--light"
+                          <legend
+                            style="width: 0px;"
                           >
-                            $dropdown
-                          </i>
+                            <span>
+                              ​
+                            </span>
+                          </legend>
+                        </fieldset>
+                        <div
+                          class="v-select__slot"
+                        >
+                          <div
+                            class="v-select__selections"
+                          >
+                            <div
+                              class="v-select__selection v-select__selection--comma"
+                            >
+                              RS256
+                            </div>
+                            <input
+                              aria-readonly="true"
+                              autocomplete="off"
+                              id="input-26"
+                              readonly="readonly"
+                              type="text"
+                            />
+                          </div>
+                          <div
+                            class="v-input__append-inner"
+                          >
+                            <div
+                              class="v-input__icon v-input__icon--append"
+                            >
+                              <i
+                                aria-hidden="true"
+                                class="v-icon notranslate mdi mdi-menu-down theme--light"
+                              />
+                            </div>
+                          </div>
+                          <input
+                            type="hidden"
+                            value="RS256"
+                          />
+                        </div>
+                        <div
+                          class="v-menu"
+                        >
+                          <div
+                            class="v-menu__content theme--light "
+                            style="max-height: 304px; min-width: 0px; max-width: auto; top: 12px; left: 0px; transform-origin: top left; z-index: 0; display: none;"
+                          />
                         </div>
                       </div>
-                      <input
-                        type="hidden"
-                        value="RS256"
-                      />
-                    </div>
-                    <div
-                      class="v-menu"
-                    >
                       <div
-                        class="v-menu__content theme--light "
-                        style="max-height: 304px; min-width: 0px; max-width: auto; top: 12px; left: 0px; transform-origin: top left; z-index: 0; display: none;"
-                      />
-                    </div>
-                  </div>
-                  <div
-                    class="v-text-field__details"
-                  >
-                    <div
-                      class="v-messages theme--light"
-                    >
-                      <span
-                        class="v-messages__wrapper"
-                        name="message-transition"
-                        tag="div"
-                      />
+                        class="v-text-field__details"
+                      >
+                        <div
+                          class="v-messages theme--light"
+                        >
+                          <span
+                            class="v-messages__wrapper"
+                            name="message-transition"
+                            tag="div"
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-               
-              <div
-                class="v-input v-input--is-label-active v-input--is-dirty theme--light v-text-field v-select"
-                rules="v => !!v || 'This field is required'"
-                value="RS256"
-              >
+                 
                 <div
-                  class="v-input__control"
+                  class="spacer"
+                />
+                 
+                <div
+                  class="col-5"
                 >
                   <div
-                    aria-expanded="false"
-                    aria-haspopup="listbox"
-                    aria-owns="list-33"
-                    class="v-input__slot"
-                    role="button"
+                    class="v-input col-6 v-input--is-label-active v-input--is-dirty theme--light v-text-field v-text-field--enclosed v-text-field--outlined v-select"
+                    outlined=""
+                    rules="v => !!v || 'This field is required'"
+                    value="RS256"
                   >
                     <div
-                      class="v-select__slot"
+                      class="v-input__control"
                     >
-                      <label
-                        class="v-label v-label--active theme--light"
-                        for="input-33"
-                        style="left: 0px; position: absolute;"
-                      >
-                        User Info Signed Response Algorithm
-                      </label>
                       <div
-                        class="v-select__selections"
+                        aria-expanded="false"
+                        aria-haspopup="listbox"
+                        aria-owns="list-34"
+                        class="v-input__slot"
+                        role="button"
                       >
-                        <div
-                          class="v-select__selection v-select__selection--comma"
+                        <fieldset
+                          aria-hidden="true"
                         >
-                          RS256
-                        </div>
-                        <input
-                          aria-readonly="true"
-                          autocomplete="off"
-                          id="input-33"
-                          readonly="readonly"
-                          type="text"
-                        />
-                      </div>
-                      <div
-                        class="v-input__append-inner"
-                      >
-                        <div
-                          class="v-input__icon v-input__icon--append"
-                        >
-                          <i
-                            aria-hidden="true"
-                            class="v-icon notranslate material-icons theme--light"
+                          <legend
+                            style="width: 0px;"
                           >
-                            $dropdown
-                          </i>
+                            <span>
+                              ​
+                            </span>
+                          </legend>
+                        </fieldset>
+                        <div
+                          class="v-select__slot"
+                        >
+                          <div
+                            class="v-select__selections"
+                          >
+                            <div
+                              class="v-select__selection v-select__selection--comma"
+                            >
+                              RS256
+                            </div>
+                            <input
+                              aria-readonly="true"
+                              autocomplete="off"
+                              id="input-34"
+                              readonly="readonly"
+                              type="text"
+                            />
+                          </div>
+                          <div
+                            class="v-input__append-inner"
+                          >
+                            <div
+                              class="v-input__icon v-input__icon--append"
+                            >
+                              <i
+                                aria-hidden="true"
+                                class="v-icon notranslate mdi mdi-menu-down theme--light"
+                              />
+                            </div>
+                          </div>
+                          <input
+                            type="hidden"
+                            value="RS256"
+                          />
+                        </div>
+                        <div
+                          class="v-menu"
+                        >
+                          <div
+                            class="v-menu__content theme--light "
+                            style="max-height: 304px; min-width: 0px; max-width: auto; top: 12px; left: 0px; transform-origin: top left; z-index: 0; display: none;"
+                          />
                         </div>
                       </div>
-                      <input
-                        type="hidden"
-                        value="RS256"
-                      />
-                    </div>
-                    <div
-                      class="v-menu"
-                    >
                       <div
-                        class="v-menu__content theme--light "
-                        style="max-height: 304px; min-width: 0px; max-width: auto; top: 12px; left: 0px; transform-origin: top left; z-index: 0; display: none;"
-                      />
-                    </div>
-                  </div>
-                  <div
-                    class="v-text-field__details"
-                  >
-                    <div
-                      class="v-messages theme--light"
-                    >
-                      <span
-                        class="v-messages__wrapper"
-                        name="message-transition"
-                        tag="div"
-                      />
+                        class="v-text-field__details"
+                      >
+                        <div
+                          class="v-messages theme--light"
+                        >
+                          <span
+                            class="v-messages__wrapper"
+                            name="message-transition"
+                            tag="div"
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -413,8 +473,21 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                 />
                  
                 <button
+                  aria-label="Back Button"
+                  class="btn v-btn v-btn--contained theme--light v-size--default secondary normal"
+                  name="button"
+                  type="button"
+                >
+                  <span
+                    class="v-btn__content"
+                  >
+                    
+                  </span>
+                </button>
+                 
+                <button
                   aria-disabled="true"
-                  class="btn white--text submit-req v-btn v-btn--depressed theme--light v-size--default primary normal disabled"
+                  class="btn white--text submit-req ml-6 v-btn v-btn--depressed theme--light v-size--default primary normal disabled"
                   depressed=""
                   name="button"
                   type="button"
@@ -422,7 +495,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                   <span
                     class="v-btn__content"
                   >
-                    Next
+                    
                   </span>
                 </button>
               </div>
@@ -469,7 +542,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
         <div
           class="v-toolbar__title"
         >
-          Technical requirments
+          
         </div>
          
         <div
@@ -492,16 +565,32 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
             class="col-md-12 col-12"
           >
             <div
-              class="pa-4 pt-6 v-card v-sheet theme--light"
+              class="pa-4 pt-6 mb-4 v-card v-sheet theme--light"
             >
               <div
-                class="v-card__title headline"
+                class="v-card__title headline padding-0 text-capitalize"
               >
                 
               </div>
                
               <div
-                class="v-input input theme--light v-text-field"
+                class="v-card__subtitle text-left padding-0"
+              >
+                
+              </div>
+            </div>
+             
+            <div
+              class="pa-4 pt-6 v-card v-sheet theme--light"
+            >
+              <div
+                class="v-card__subtitle text-left padding-0"
+              >
+                
+              </div>
+               
+              <div
+                class="v-input input theme--light v-text-field v-text-field--enclosed v-text-field--outlined"
                 rules="v => !!v || 'This field is required',v => {
     if (v === '') {
       return true;
@@ -516,18 +605,22 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                   <div
                     class="v-input__slot"
                   >
+                    <fieldset
+                      aria-hidden="true"
+                    >
+                      <legend
+                        style="width: 0px;"
+                      >
+                        <span>
+                          ​
+                        </span>
+                      </legend>
+                    </fieldset>
                     <div
                       class="v-text-field__slot"
                     >
-                      <label
-                        class="v-label theme--light"
-                        for="input-54"
-                        style="left: 0px; position: absolute;"
-                      >
-                        Application URL
-                      </label>
                       <input
-                        id="input-54"
+                        id="input-58"
                         type="text"
                       />
                     </div>
@@ -554,10 +647,16 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
               </div>
                
               <div
-                class="row v-form pa-4 pt-6"
+                class="v-card__subtitle text-left padding-0"
+              >
+                
+              </div>
+               
+              <div
+                class="row v-form px-4"
               >
                 <div
-                  class="v-input addUri theme--light v-text-field v-text-field--filled v-text-field--enclosed"
+                  class="v-input addUri theme--light v-text-field v-text-field--single-line v-text-field--filled v-text-field--enclosed v-text-field--outlined"
                 >
                   <div
                     class="v-input__control"
@@ -565,18 +664,20 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                     <div
                       class="v-input__slot"
                     >
+                      <fieldset
+                        aria-hidden="true"
+                      >
+                        <legend>
+                          <span>
+                            ​
+                          </span>
+                        </legend>
+                      </fieldset>
                       <div
                         class="v-text-field__slot"
                       >
-                        <label
-                          class="v-label theme--light"
-                          for="input-57"
-                          style="left: 0px; position: absolute;"
-                        >
-                          Redirect URI values
-                        </label>
                         <input
-                          id="input-57"
+                          id="input-61"
                           type="text"
                         />
                       </div>
@@ -612,7 +713,13 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
               </div>
                
               <div
-                class="v-input input theme--light v-text-field"
+                class="v-card__subtitle text-left padding-0"
+              >
+                
+              </div>
+               
+              <div
+                class="v-input input pt-6 theme--light v-text-field v-text-field--enclosed v-text-field--outlined"
                 rules="v => !!v || 'This field is required',v => {
     if (v === '') {
       return true;
@@ -627,18 +734,22 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                   <div
                     class="v-input__slot"
                   >
+                    <fieldset
+                      aria-hidden="true"
+                    >
+                      <legend
+                        style="width: 0px;"
+                      >
+                        <span>
+                          ​
+                        </span>
+                      </legend>
+                    </fieldset>
                     <div
                       class="v-text-field__slot"
                     >
-                      <label
-                        class="v-label theme--light"
-                        for="input-62"
-                        style="left: 0px; position: absolute;"
-                      >
-                        JWKS URL
-                      </label>
                       <input
-                        id="input-62"
+                        id="input-66"
                         type="text"
                       />
                     </div>
@@ -665,170 +776,192 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
               </div>
                
               <div
-                class="v-input v-input--is-label-active v-input--is-dirty theme--light v-text-field v-select"
-                rules="v => !!v || 'This field is required'"
-                value="RS256"
+                class="row"
               >
                 <div
-                  class="v-input__control"
+                  class="col-5"
                 >
                   <div
-                    aria-expanded="false"
-                    aria-haspopup="listbox"
-                    aria-owns="list-66"
-                    class="v-input__slot"
-                    role="button"
+                    class="v-input v-input--is-label-active v-input--is-dirty theme--light v-text-field v-text-field--enclosed v-text-field--outlined v-select"
+                    outlined=""
+                    rules="v => !!v || 'This field is required'"
+                    value="RS256"
                   >
                     <div
-                      class="v-select__slot"
+                      class="v-input__control"
                     >
-                      <label
-                        class="v-label v-label--active theme--light"
-                        for="input-66"
-                        style="left: 0px; position: absolute;"
-                      >
-                        ID Token Signature Algorithm
-                      </label>
                       <div
-                        class="v-select__selections"
+                        aria-expanded="false"
+                        aria-haspopup="listbox"
+                        aria-owns="list-70"
+                        class="v-input__slot"
+                        role="button"
                       >
-                        <div
-                          class="v-select__selection v-select__selection--comma"
+                        <fieldset
+                          aria-hidden="true"
                         >
-                          RS256
-                        </div>
-                        <input
-                          aria-readonly="true"
-                          autocomplete="off"
-                          id="input-66"
-                          readonly="readonly"
-                          type="text"
-                        />
-                      </div>
-                      <div
-                        class="v-input__append-inner"
-                      >
-                        <div
-                          class="v-input__icon v-input__icon--append"
-                        >
-                          <i
-                            aria-hidden="true"
-                            class="v-icon notranslate material-icons theme--light"
+                          <legend
+                            style="width: 0px;"
                           >
-                            $dropdown
-                          </i>
+                            <span>
+                              ​
+                            </span>
+                          </legend>
+                        </fieldset>
+                        <div
+                          class="v-select__slot"
+                        >
+                          <div
+                            class="v-select__selections"
+                          >
+                            <div
+                              class="v-select__selection v-select__selection--comma"
+                            >
+                              RS256
+                            </div>
+                            <input
+                              aria-readonly="true"
+                              autocomplete="off"
+                              id="input-70"
+                              readonly="readonly"
+                              type="text"
+                            />
+                          </div>
+                          <div
+                            class="v-input__append-inner"
+                          >
+                            <div
+                              class="v-input__icon v-input__icon--append"
+                            >
+                              <i
+                                aria-hidden="true"
+                                class="v-icon notranslate mdi mdi-menu-down theme--light"
+                              />
+                            </div>
+                          </div>
+                          <input
+                            type="hidden"
+                            value="RS256"
+                          />
+                        </div>
+                        <div
+                          class="v-menu"
+                        >
+                          <div
+                            class="v-menu__content theme--light "
+                            style="max-height: 304px; min-width: 0px; max-width: auto; top: 12px; left: 0px; transform-origin: top left; z-index: 0; display: none;"
+                          />
                         </div>
                       </div>
-                      <input
-                        type="hidden"
-                        value="RS256"
-                      />
-                    </div>
-                    <div
-                      class="v-menu"
-                    >
                       <div
-                        class="v-menu__content theme--light "
-                        style="max-height: 304px; min-width: 0px; max-width: auto; top: 12px; left: 0px; transform-origin: top left; z-index: 0; display: none;"
-                      />
-                    </div>
-                  </div>
-                  <div
-                    class="v-text-field__details"
-                  >
-                    <div
-                      class="v-messages theme--light"
-                    >
-                      <span
-                        class="v-messages__wrapper"
-                        name="message-transition"
-                        tag="div"
-                      />
+                        class="v-text-field__details"
+                      >
+                        <div
+                          class="v-messages theme--light"
+                        >
+                          <span
+                            class="v-messages__wrapper"
+                            name="message-transition"
+                            tag="div"
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-               
-              <div
-                class="v-input v-input--is-label-active v-input--is-dirty theme--light v-text-field v-select"
-                rules="v => !!v || 'This field is required'"
-                value="RS256"
-              >
+                 
                 <div
-                  class="v-input__control"
+                  class="spacer"
+                />
+                 
+                <div
+                  class="col-5"
                 >
                   <div
-                    aria-expanded="false"
-                    aria-haspopup="listbox"
-                    aria-owns="list-74"
-                    class="v-input__slot"
-                    role="button"
+                    class="v-input col-6 v-input--is-label-active v-input--is-dirty theme--light v-text-field v-text-field--enclosed v-text-field--outlined v-select"
+                    outlined=""
+                    rules="v => !!v || 'This field is required'"
+                    value="RS256"
                   >
                     <div
-                      class="v-select__slot"
+                      class="v-input__control"
                     >
-                      <label
-                        class="v-label v-label--active theme--light"
-                        for="input-74"
-                        style="left: 0px; position: absolute;"
-                      >
-                        User Info Signed Response Algorithm
-                      </label>
                       <div
-                        class="v-select__selections"
+                        aria-expanded="false"
+                        aria-haspopup="listbox"
+                        aria-owns="list-78"
+                        class="v-input__slot"
+                        role="button"
                       >
-                        <div
-                          class="v-select__selection v-select__selection--comma"
+                        <fieldset
+                          aria-hidden="true"
                         >
-                          RS256
-                        </div>
-                        <input
-                          aria-readonly="true"
-                          autocomplete="off"
-                          id="input-74"
-                          readonly="readonly"
-                          type="text"
-                        />
-                      </div>
-                      <div
-                        class="v-input__append-inner"
-                      >
-                        <div
-                          class="v-input__icon v-input__icon--append"
-                        >
-                          <i
-                            aria-hidden="true"
-                            class="v-icon notranslate material-icons theme--light"
+                          <legend
+                            style="width: 0px;"
                           >
-                            $dropdown
-                          </i>
+                            <span>
+                              ​
+                            </span>
+                          </legend>
+                        </fieldset>
+                        <div
+                          class="v-select__slot"
+                        >
+                          <div
+                            class="v-select__selections"
+                          >
+                            <div
+                              class="v-select__selection v-select__selection--comma"
+                            >
+                              RS256
+                            </div>
+                            <input
+                              aria-readonly="true"
+                              autocomplete="off"
+                              id="input-78"
+                              readonly="readonly"
+                              type="text"
+                            />
+                          </div>
+                          <div
+                            class="v-input__append-inner"
+                          >
+                            <div
+                              class="v-input__icon v-input__icon--append"
+                            >
+                              <i
+                                aria-hidden="true"
+                                class="v-icon notranslate mdi mdi-menu-down theme--light"
+                              />
+                            </div>
+                          </div>
+                          <input
+                            type="hidden"
+                            value="RS256"
+                          />
+                        </div>
+                        <div
+                          class="v-menu"
+                        >
+                          <div
+                            class="v-menu__content theme--light "
+                            style="max-height: 304px; min-width: 0px; max-width: auto; top: 12px; left: 0px; transform-origin: top left; z-index: 0; display: none;"
+                          />
                         </div>
                       </div>
-                      <input
-                        type="hidden"
-                        value="RS256"
-                      />
-                    </div>
-                    <div
-                      class="v-menu"
-                    >
                       <div
-                        class="v-menu__content theme--light "
-                        style="max-height: 304px; min-width: 0px; max-width: auto; top: 12px; left: 0px; transform-origin: top left; z-index: 0; display: none;"
-                      />
-                    </div>
-                  </div>
-                  <div
-                    class="v-text-field__details"
-                  >
-                    <div
-                      class="v-messages theme--light"
-                    >
-                      <span
-                        class="v-messages__wrapper"
-                        name="message-transition"
-                        tag="div"
-                      />
+                        class="v-text-field__details"
+                      >
+                        <div
+                          class="v-messages theme--light"
+                        >
+                          <span
+                            class="v-messages__wrapper"
+                            name="message-transition"
+                            tag="div"
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -848,8 +981,21 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                 />
                  
                 <button
+                  aria-label="Back Button"
+                  class="btn v-btn v-btn--contained theme--light v-size--default secondary normal"
+                  name="button"
+                  type="button"
+                >
+                  <span
+                    class="v-btn__content"
+                  >
+                    
+                  </span>
+                </button>
+                 
+                <button
                   aria-disabled="true"
-                  class="btn white--text submit-req v-btn v-btn--depressed theme--light v-size--default primary normal disabled"
+                  class="btn white--text submit-req ml-6 v-btn v-btn--depressed theme--light v-size--default primary normal disabled"
                   depressed=""
                   name="button"
                   type="button"
@@ -857,7 +1003,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                   <span
                     class="v-btn__content"
                   >
-                    Next
+                    
                   </span>
                 </button>
               </div>
@@ -904,7 +1050,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
         <div
           class="v-toolbar__title"
         >
-          Technical requirments
+          
         </div>
          
         <div
@@ -927,16 +1073,32 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
             class="col-md-12 col-12"
           >
             <div
-              class="pa-4 pt-6 v-card v-sheet theme--light"
+              class="pa-4 pt-6 mb-4 v-card v-sheet theme--light"
             >
               <div
-                class="v-card__title headline"
+                class="v-card__title headline padding-0 text-capitalize"
               >
                 
               </div>
                
               <div
-                class="v-input input theme--light v-text-field"
+                class="v-card__subtitle text-left padding-0"
+              >
+                
+              </div>
+            </div>
+             
+            <div
+              class="pa-4 pt-6 v-card v-sheet theme--light"
+            >
+              <div
+                class="v-card__subtitle text-left padding-0"
+              >
+                
+              </div>
+               
+              <div
+                class="v-input input theme--light v-text-field v-text-field--enclosed v-text-field--outlined"
                 rules="v => !!v || 'This field is required',v => {
     if (v === '') {
       return true;
@@ -951,18 +1113,22 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                   <div
                     class="v-input__slot"
                   >
+                    <fieldset
+                      aria-hidden="true"
+                    >
+                      <legend
+                        style="width: 0px;"
+                      >
+                        <span>
+                          ​
+                        </span>
+                      </legend>
+                    </fieldset>
                     <div
                       class="v-text-field__slot"
                     >
-                      <label
-                        class="v-label theme--light"
-                        for="input-95"
-                        style="left: 0px; position: absolute;"
-                      >
-                        Application URL
-                      </label>
                       <input
-                        id="input-95"
+                        id="input-102"
                         type="text"
                       />
                     </div>
@@ -989,10 +1155,16 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
               </div>
                
               <div
-                class="row v-form pa-4 pt-6"
+                class="v-card__subtitle text-left padding-0"
+              >
+                
+              </div>
+               
+              <div
+                class="row v-form px-4"
               >
                 <div
-                  class="v-input addUri theme--light v-text-field v-text-field--filled v-text-field--enclosed"
+                  class="v-input addUri theme--light v-text-field v-text-field--single-line v-text-field--filled v-text-field--enclosed v-text-field--outlined"
                 >
                   <div
                     class="v-input__control"
@@ -1000,18 +1172,20 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                     <div
                       class="v-input__slot"
                     >
+                      <fieldset
+                        aria-hidden="true"
+                      >
+                        <legend>
+                          <span>
+                            ​
+                          </span>
+                        </legend>
+                      </fieldset>
                       <div
                         class="v-text-field__slot"
                       >
-                        <label
-                          class="v-label theme--light"
-                          for="input-98"
-                          style="left: 0px; position: absolute;"
-                        >
-                          Redirect URI values
-                        </label>
                         <input
-                          id="input-98"
+                          id="input-105"
                           type="text"
                         />
                       </div>
@@ -1047,7 +1221,13 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
               </div>
                
               <div
-                class="v-input input theme--light v-text-field"
+                class="v-card__subtitle text-left padding-0"
+              >
+                
+              </div>
+               
+              <div
+                class="v-input input pt-6 theme--light v-text-field v-text-field--enclosed v-text-field--outlined"
                 rules="v => !!v || 'This field is required',v => {
     if (v === '') {
       return true;
@@ -1062,18 +1242,22 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                   <div
                     class="v-input__slot"
                   >
+                    <fieldset
+                      aria-hidden="true"
+                    >
+                      <legend
+                        style="width: 0px;"
+                      >
+                        <span>
+                          ​
+                        </span>
+                      </legend>
+                    </fieldset>
                     <div
                       class="v-text-field__slot"
                     >
-                      <label
-                        class="v-label theme--light"
-                        for="input-103"
-                        style="left: 0px; position: absolute;"
-                      >
-                        JWKS URL
-                      </label>
                       <input
-                        id="input-103"
+                        id="input-110"
                         type="text"
                       />
                     </div>
@@ -1100,170 +1284,192 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
               </div>
                
               <div
-                class="v-input v-input--is-label-active v-input--is-dirty theme--light v-text-field v-select"
-                rules="v => !!v || 'This field is required'"
-                value="RS256"
+                class="row"
               >
                 <div
-                  class="v-input__control"
+                  class="col-5"
                 >
                   <div
-                    aria-expanded="false"
-                    aria-haspopup="listbox"
-                    aria-owns="list-107"
-                    class="v-input__slot"
-                    role="button"
+                    class="v-input v-input--is-label-active v-input--is-dirty theme--light v-text-field v-text-field--enclosed v-text-field--outlined v-select"
+                    outlined=""
+                    rules="v => !!v || 'This field is required'"
+                    value="RS256"
                   >
                     <div
-                      class="v-select__slot"
+                      class="v-input__control"
                     >
-                      <label
-                        class="v-label v-label--active theme--light"
-                        for="input-107"
-                        style="left: 0px; position: absolute;"
-                      >
-                        ID Token Signature Algorithm
-                      </label>
                       <div
-                        class="v-select__selections"
+                        aria-expanded="false"
+                        aria-haspopup="listbox"
+                        aria-owns="list-114"
+                        class="v-input__slot"
+                        role="button"
                       >
-                        <div
-                          class="v-select__selection v-select__selection--comma"
+                        <fieldset
+                          aria-hidden="true"
                         >
-                          RS256
-                        </div>
-                        <input
-                          aria-readonly="true"
-                          autocomplete="off"
-                          id="input-107"
-                          readonly="readonly"
-                          type="text"
-                        />
-                      </div>
-                      <div
-                        class="v-input__append-inner"
-                      >
-                        <div
-                          class="v-input__icon v-input__icon--append"
-                        >
-                          <i
-                            aria-hidden="true"
-                            class="v-icon notranslate material-icons theme--light"
+                          <legend
+                            style="width: 0px;"
                           >
-                            $dropdown
-                          </i>
+                            <span>
+                              ​
+                            </span>
+                          </legend>
+                        </fieldset>
+                        <div
+                          class="v-select__slot"
+                        >
+                          <div
+                            class="v-select__selections"
+                          >
+                            <div
+                              class="v-select__selection v-select__selection--comma"
+                            >
+                              RS256
+                            </div>
+                            <input
+                              aria-readonly="true"
+                              autocomplete="off"
+                              id="input-114"
+                              readonly="readonly"
+                              type="text"
+                            />
+                          </div>
+                          <div
+                            class="v-input__append-inner"
+                          >
+                            <div
+                              class="v-input__icon v-input__icon--append"
+                            >
+                              <i
+                                aria-hidden="true"
+                                class="v-icon notranslate mdi mdi-menu-down theme--light"
+                              />
+                            </div>
+                          </div>
+                          <input
+                            type="hidden"
+                            value="RS256"
+                          />
+                        </div>
+                        <div
+                          class="v-menu"
+                        >
+                          <div
+                            class="v-menu__content theme--light "
+                            style="max-height: 304px; min-width: 0px; max-width: auto; top: 12px; left: 0px; transform-origin: top left; z-index: 0; display: none;"
+                          />
                         </div>
                       </div>
-                      <input
-                        type="hidden"
-                        value="RS256"
-                      />
-                    </div>
-                    <div
-                      class="v-menu"
-                    >
                       <div
-                        class="v-menu__content theme--light "
-                        style="max-height: 304px; min-width: 0px; max-width: auto; top: 12px; left: 0px; transform-origin: top left; z-index: 0; display: none;"
-                      />
-                    </div>
-                  </div>
-                  <div
-                    class="v-text-field__details"
-                  >
-                    <div
-                      class="v-messages theme--light"
-                    >
-                      <span
-                        class="v-messages__wrapper"
-                        name="message-transition"
-                        tag="div"
-                      />
+                        class="v-text-field__details"
+                      >
+                        <div
+                          class="v-messages theme--light"
+                        >
+                          <span
+                            class="v-messages__wrapper"
+                            name="message-transition"
+                            tag="div"
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-               
-              <div
-                class="v-input v-input--is-label-active v-input--is-dirty theme--light v-text-field v-select"
-                rules="v => !!v || 'This field is required'"
-                value="RS256"
-              >
+                 
                 <div
-                  class="v-input__control"
+                  class="spacer"
+                />
+                 
+                <div
+                  class="col-5"
                 >
                   <div
-                    aria-expanded="false"
-                    aria-haspopup="listbox"
-                    aria-owns="list-115"
-                    class="v-input__slot"
-                    role="button"
+                    class="v-input col-6 v-input--is-label-active v-input--is-dirty theme--light v-text-field v-text-field--enclosed v-text-field--outlined v-select"
+                    outlined=""
+                    rules="v => !!v || 'This field is required'"
+                    value="RS256"
                   >
                     <div
-                      class="v-select__slot"
+                      class="v-input__control"
                     >
-                      <label
-                        class="v-label v-label--active theme--light"
-                        for="input-115"
-                        style="left: 0px; position: absolute;"
-                      >
-                        User Info Signed Response Algorithm
-                      </label>
                       <div
-                        class="v-select__selections"
+                        aria-expanded="false"
+                        aria-haspopup="listbox"
+                        aria-owns="list-122"
+                        class="v-input__slot"
+                        role="button"
                       >
-                        <div
-                          class="v-select__selection v-select__selection--comma"
+                        <fieldset
+                          aria-hidden="true"
                         >
-                          RS256
-                        </div>
-                        <input
-                          aria-readonly="true"
-                          autocomplete="off"
-                          id="input-115"
-                          readonly="readonly"
-                          type="text"
-                        />
-                      </div>
-                      <div
-                        class="v-input__append-inner"
-                      >
-                        <div
-                          class="v-input__icon v-input__icon--append"
-                        >
-                          <i
-                            aria-hidden="true"
-                            class="v-icon notranslate material-icons theme--light"
+                          <legend
+                            style="width: 0px;"
                           >
-                            $dropdown
-                          </i>
+                            <span>
+                              ​
+                            </span>
+                          </legend>
+                        </fieldset>
+                        <div
+                          class="v-select__slot"
+                        >
+                          <div
+                            class="v-select__selections"
+                          >
+                            <div
+                              class="v-select__selection v-select__selection--comma"
+                            >
+                              RS256
+                            </div>
+                            <input
+                              aria-readonly="true"
+                              autocomplete="off"
+                              id="input-122"
+                              readonly="readonly"
+                              type="text"
+                            />
+                          </div>
+                          <div
+                            class="v-input__append-inner"
+                          >
+                            <div
+                              class="v-input__icon v-input__icon--append"
+                            >
+                              <i
+                                aria-hidden="true"
+                                class="v-icon notranslate mdi mdi-menu-down theme--light"
+                              />
+                            </div>
+                          </div>
+                          <input
+                            type="hidden"
+                            value="RS256"
+                          />
+                        </div>
+                        <div
+                          class="v-menu"
+                        >
+                          <div
+                            class="v-menu__content theme--light "
+                            style="max-height: 304px; min-width: 0px; max-width: auto; top: 12px; left: 0px; transform-origin: top left; z-index: 0; display: none;"
+                          />
                         </div>
                       </div>
-                      <input
-                        type="hidden"
-                        value="RS256"
-                      />
-                    </div>
-                    <div
-                      class="v-menu"
-                    >
                       <div
-                        class="v-menu__content theme--light "
-                        style="max-height: 304px; min-width: 0px; max-width: auto; top: 12px; left: 0px; transform-origin: top left; z-index: 0; display: none;"
-                      />
-                    </div>
-                  </div>
-                  <div
-                    class="v-text-field__details"
-                  >
-                    <div
-                      class="v-messages theme--light"
-                    >
-                      <span
-                        class="v-messages__wrapper"
-                        name="message-transition"
-                        tag="div"
-                      />
+                        class="v-text-field__details"
+                      >
+                        <div
+                          class="v-messages theme--light"
+                        >
+                          <span
+                            class="v-messages__wrapper"
+                            name="message-transition"
+                            tag="div"
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1283,8 +1489,21 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                 />
                  
                 <button
+                  aria-label="Back Button"
+                  class="btn v-btn v-btn--contained theme--light v-size--default secondary normal"
+                  name="button"
+                  type="button"
+                >
+                  <span
+                    class="v-btn__content"
+                  >
+                    
+                  </span>
+                </button>
+                 
+                <button
                   aria-disabled="true"
-                  class="btn white--text submit-req v-btn v-btn--depressed theme--light v-size--default primary normal disabled"
+                  class="btn white--text submit-req ml-6 v-btn v-btn--depressed theme--light v-size--default primary normal disabled"
                   depressed=""
                   name="button"
                   type="button"
@@ -1292,7 +1511,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                   <span
                     class="v-btn__content"
                   >
-                    Next
+                    
                   </span>
                 </button>
               </div>

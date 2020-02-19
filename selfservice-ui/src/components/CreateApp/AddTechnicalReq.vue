@@ -5,10 +5,16 @@
     <v-alert type="error" v-if="errorStatus">Something went wrong...</v-alert>-->
     <v-card class="mx-auto">
       <v-app-bar dark class="bc-subtitle">
-        <v-btn icon @click="$router.push('/project/info/' + projectId)" aria-label="Back Button">
+        <v-btn
+          icon
+          @click="$router.push(`/project/${projectId}/info/`)"
+          aria-label="Back Button"
+        >
           <v-icon>mdi-arrow-left</v-icon>
         </v-btn>
-        <v-toolbar-title>Technical requirments</v-toolbar-title>
+        <v-toolbar-title>{{
+          $t('technicalRequirements.technicalTitle')
+        }}</v-toolbar-title>
         <v-spacer></v-spacer>
       </v-app-bar>
 
@@ -16,73 +22,114 @@
         <v-container>
           <v-row dense>
             <v-col cols="12" md="12">
-              <v-card class="pa-4 pt-6">
+              <v-card class="pa-4 pt-6 mb-4">
                 <!-- <v-card-title class="headline"
                   >Technical information</v-card-title
                 >-->
-                <!-- <v-card-subtitle class="text-left"
-                  >Tell us about your Project</v-card-subtitle
-                >-->
-                <v-card-title
-                  class="headline"
-                >{{ getSingleProjectInfo && getSingleProjectInfo.projectName }}</v-card-title>
 
+                <v-card-title class="headline padding-0 text-capitalize">{{
+                  getSingleProjectInfo && getSingleProjectInfo.projectName
+                }}</v-card-title>
+                <v-card-subtitle class="text-left padding-0">{{
+                  $t('technicalRequirements.technicalTitleInfo')
+                }}</v-card-subtitle>
+              </v-card>
+              <v-card class="pa-4 pt-6">
+                <v-card-subtitle class="text-left padding-0">{{
+                  $t('technicalRequirements.inputAppText')
+                }}</v-card-subtitle>
                 <Input
                   v-model="clientUri"
                   counter="500"
-                  label="Application URL"
+                  :label="$t('technicalRequirements.labelApplicationUrl')"
                   type="text"
                   :rules="[rules.required, rules.url, rules.maxLength(500)]"
                 />
+                <!-- <div class="col-12"> -->
+                <v-card-subtitle class="text-left padding-0">{{
+                  $t('technicalRequirements.inputUrlText')
+                }}</v-card-subtitle>
+                <!-- </div> -->
                 <div
                   v-for="(redirectUri, index) in redirectUris"
                   v-bind:key="index"
-                  class="row v-form pa-4 pt-6"
+                  class="row v-form px-4"
                 >
                   <v-text-field
                     v-model="redirectUris[index]"
-                    label="Redirect URI values"
+                    :label="$t('technicalRequirements.labelRedirectUrl')"
                     type="text"
                     filled
                     @blur="addUri"
                     append-icon="mdi-minus"
                     @click:append="clearUri(index)"
+                    @click:prepend="addUri"
                     :rules="[rules.url]"
                     class="addUri"
+                    outlined
                   ></v-text-field>
                   <!-- :rules="[rules.required]" -->
                 </div>
+                <v-card-subtitle class="text-left padding-0">{{
+                  $t('technicalRequirements.JWKSText')
+                }}</v-card-subtitle>
                 <Input
                   v-model="jwksUri"
                   counter="500"
-                  label="JWKS URL"
+                  :label="$t('technicalRequirements.labelJWKSUrl')"
                   type="text"
                   :rules="[rules.required, rules.url, rules.maxLength(500)]"
+                  class="pt-6"
                 />
-                <Select
-                  v-model="idTokenSignedResponseAlg"
-                  label="ID Token Signature Algorithm"
-                  :items="tokenAlgoritham"
-                  :rules="[rules.required]"
-                />
-                <Select
-                  v-model="userinfoSignedResponseAlg"
-                  label="User Info Signed Response Algorithm"
-                  :items="userAlgoritham"
-                  :rules="[rules.required]"
-                />
+                <div class="row">
+                  <div class="col-5">
+                    <Select
+                      v-model="idTokenSignedResponseAlg"
+                      :label="
+                        $t(
+                          'technicalRequirements.labelIdTokenSignedResponseAlg'
+                        )
+                      "
+                      :items="tokenAlgoritham"
+                      :rules="[rules.required]"
+                      outlined
+                    />
+                  </div>
+                  <v-spacer />
+                  <div class="col-5">
+                    <Select
+                      v-model="userinfoSignedResponseAlg"
+                      :label="
+                        $t(
+                          'technicalRequirements.labelUserinfoSignedResponseAlg'
+                        )
+                      "
+                      :items="userAlgoritham"
+                      :rules="[rules.required]"
+                      outlined
+                      class="col-6"
+                    />
+                  </div>
+                </div>
                 <!-- </v-form> -->
                 <v-divider></v-divider>
                 <v-card-actions>
                   <!-- <v-btn text @click="$refs.form.reset()">Clear</v-btn> -->
                   <v-spacer></v-spacer>
                   <Button
+                    @click="$router.push(`/project/${projectId}/info/`)"
+                    aria-label="Back Button"
+                    secondary
+                    >{{ $t('technicalRequirements.btnBack') }}</Button
+                  >
+                  <Button
                     :disabled="!form"
                     :loading="isLoading"
-                    class="white--text submit-req"
+                    class="white--text submit-req ml-6"
                     depressed
                     @click="addTechnicalReq"
-                  >Next</Button>
+                    >{{ $t('technicalRequirements.next') }}</Button
+                  >
                 </v-card-actions>
               </v-card>
             </v-col>
@@ -121,12 +168,12 @@ export default class AddTechnicalReq extends Vue {
   @TechnicalReqModule.Getter('errorStatus') public errorStatus!: boolean;
   @TechnicalReqModule.Action('addTechnicalReq')
   public addTechnicalReqStore!: any;
-  @TechnicalReqModule.Getter('getSingleTechnicalReq')
-  public getSingleTechnicalReq!: any;
+  @TechnicalReqModule.Getter('getTechnicalReq')
+  public getTechnicalReq!: any;
   @TechnicalReqModule.Action('updateTechnicalReq')
   public updateTechnicalReqStore!: any;
-  @TechnicalReqModule.Action('loadSingleTechnicalReq')
-  public loadSingleTechnicalReq!: any;
+  @TechnicalReqModule.Action('loadTechnicalReqDetails')
+  public loadTechnicalReqDetails!: any;
 
   @ProjectInfoModule.Getter('getSingleProjectInfo')
   public getSingleProjectInfo!: any;
@@ -150,8 +197,8 @@ export default class AddTechnicalReq extends Vue {
   /* istanbul ignore next */
   private rules = validationRules;
 
-  @Watch('getSingleTechnicalReq')
-  private ongetSingleTechnicalReqChanged(val: any) {
+  @Watch('getTechnicalReq')
+  private ongetTechnicalReqChanged(val: any) {
     this.updteEdit(val);
   }
 
@@ -195,7 +242,7 @@ export default class AddTechnicalReq extends Vue {
     this.isEditmode = false;
     if (this.action && this.action === 'edit' && this.id !== 0) {
       this.isEditmode = true;
-      this.loadSingleTechnicalReq(this.id);
+      this.loadTechnicalReqDetails(this.id);
     }
 
     if (this.getSingleProjectInfo && this.getSingleProjectInfo.id) {
@@ -219,3 +266,8 @@ export default class AddTechnicalReq extends Vue {
   }
 }
 </script>
+<style lang="scss" scoped>
+.padding-0 {
+  padding-left: 0px !important;
+}
+</style>

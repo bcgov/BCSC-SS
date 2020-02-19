@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProjectUsers.vue renders props when passed 1`] = `
+<v-card-stub
+  class="v-form pa-8 pt-6 ma-3"
+  loaderheight="4"
+  tag="div"
+>
+  <v-card-title-stub
+    class="headline padding-0"
+  >
+    
+  </v-card-title-stub>
+   
+  <v-card-subtitle-stub
+    class="text-left padding-0"
+  >
+    Tell us about your 
+  </v-card-subtitle-stub>
+   
+  <input-stub
+    counter=""
+    label="First name"
+    outlined="true"
+    rules="v => !!v || 'This field is required',v => (v || '').length >= len || 'Invalid character length, required ' + len,v => (v || '').length <= len || 'Invalid character length, max length ' + len"
+    type="text"
+    value=""
+  />
+   
+  <input-stub
+    counter=""
+    label="Last name"
+    outlined="true"
+    rules="v => !!v || 'This field is required',v => (v || '').length >= len || 'Invalid character length, required ' + len,v => (v || '').length <= len || 'Invalid character length, max length ' + len"
+    type="text"
+    value=""
+  />
+   
+  <input-stub
+    counter=""
+    label="Work email"
+    outlined="true"
+    rules="v => !!v || 'This field is required',v => /^\\\\w+([.-]?\\\\w+)*@\\\\w+([.-]?\\\\w+)*(\\\\.\\\\w{2,10})+$/.test(v) || 'E-mail must be valid',v => (v || '').length <= len || 'Invalid character length, max length ' + len"
+    type="text"
+    value=""
+  />
+   
+  <input-stub
+    counter=""
+    label="Phone"
+    outlined="true"
+    rules="v => !!v || 'This field is required',v => (v || '').length <= len || 'Invalid character length, max length ' + len"
+    type="text"
+    value=""
+  />
+</v-card-stub>
+`;

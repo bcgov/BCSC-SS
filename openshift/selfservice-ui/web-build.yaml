@@ -8,13 +8,13 @@ objects:
 - kind: ImageStream
   apiVersion: v1
   metadata:
-    name: "${WEB_NAME}"
+    name: "${WEB_NAME}-${TAG_NAME}"
 - kind: BuildConfig
   apiVersion: v1
   metadata:
-    name: "${WEB_NAME}-build"
+    name: "${WEB_NAME}-build-${TAG_NAME}"
     labels:
-      app: "${WEB_NAME}-build"
+      app: "${WEB_NAME}-build-${TAG_NAME}"
   spec:
     triggers:
     - type: Github
@@ -34,30 +34,19 @@ objects:
       dockerStrategy:
         dockerfilePath: "${DOCKER_FILE_PATH}"
         buildArgs:
-        - name: API_BASE_URL
-          valueFrom:
-            configMapKeyRef:
-              name: "${WEB_NAME}-${TAG_NAME}-config"
-              key: API_URL
-        - name: KEYCLOAK_URL
-          valueFrom:
-            configMapKeyRef:
-              name: "${WEB_NAME}-${TAG_NAME}-config"
-              key: KEYCLOAK_URL
-        - name: KEYCLOAK_REALM
-          valueFrom:
-            configMapKeyRef:
-              name: "${WEB_NAME}-${TAG_NAME}-config"
-              key: KEYCLOAK_REALM
-        - name: KEYCLOAK_CLIENT
-          valueFrom:
-            configMapKeyRef:
-              name: "${WEB_NAME}-${TAG_NAME}-config"
-              key: KEYCLOAK_CLIENT
+        buildArgs:
+        - name: "API_BASE_URL"
+          value: ${API_BASE_URL}
+        - name: "KEYCLOAK_URL"
+          value: ${KEYCLOAK_URL}
+        - name: "KEYCLOAK_REALM"
+          value: ${KEYCLOAK_REALM}
+        - name: "KEYCLOAK_CLIENT"
+          value: ${KEYCLOAK_CLIENT}
     output:
       to:
         kind: ImageStreamTag
-        name: "${WEB_NAME}:${OUTPUT_IMAGE_TAG}"
+        name: "${WEB_NAME}-${TAG_NAME}:${OUTPUT_IMAGE_TAG}"
     resources:
       limits:
         cpu: '1'
@@ -65,8 +54,6 @@ objects:
       requests:
         cpu: '1'
         memory: 4Gi
-    postCommit:
-      script: npm run test:unit
 parameters:
 - name: WEB_NAME
   displayName: Name
@@ -124,3 +111,15 @@ parameters:
   description: The tag given to the built image.
   required: true
   value: dev
+- name: API_BASE_URL
+  required: true
+  value: "https://selfservice-api-dev.pathfinder.gov.bc.ca/api/v1/"
+- name: KEYCLOAK_URL
+  required: true
+  value: "https://sso-dev.pathfinder.gov.bc.ca/auth"
+- name: KEYCLOAK_REALM
+  required: true
+  value: "1gw8g24z"
+- name: KEYCLOAK_CLIENT
+  required: true
+  value: "bcscss"

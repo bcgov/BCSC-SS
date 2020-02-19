@@ -1,21 +1,9 @@
 /** * Header of app */
 
 <template>
-  <v-card class="mx-auto">
+  <v-card class="mx-auto" :class="className">
     <v-navigation-drawer app clipped fixed height="100%" permanent>
-      <!-- v-model="drawer" -->
-      <v-list dark="">
-        <v-list-item>
-          <v-list-item-content>
-            <v-list-item-title class="title">
-              Self Service
-            </v-list-item-title>
-            <!-- <v-list-item-subtitle>
-              subtext
-            </v-list-item-subtitle> -->
-          </v-list-item-content>
-        </v-list-item>
-
+      <v-list dark>
         <v-divider></v-divider>
 
         <v-list dense nav>
@@ -26,9 +14,7 @@
 
             <v-list-item-content>
               <v-list-item-title :to="item.title">
-                <Link :to="item.link">
-                  {{ item.title }}
-                </Link>
+                <Link :to="item.link">{{ item.title }}</Link>
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
@@ -52,9 +38,12 @@ const KeyCloakModule = namespace('KeyCloakModule');
 })
 export default class Sidebar extends Vue {
   @Prop() private drawer!: boolean;
+  @Prop({ default: '' }) private className!: boolean;
+
   private items: any = [
-    { title: 'Dashboard', icon: 'mdi-view-dashboard', link: '/' },
-    { title: 'Create Project', icon: 'mdi-plus-circle', link: '/project' },
+    { title: 'Home', icon: 'mdi-home', link: '/' },
+    { title: 'Dashboard', icon: 'mdi-view-dashboard', link: '/dashboard' },
+    { title: 'Create Project', icon: 'mdi-plus-circle', link: '/project/info' },
     { title: 'About', icon: 'mdi-help-box', link: '/about' }
   ];
 }

@@ -2,7 +2,7 @@
 
 exports[`Input.vue renders props when passed 1`] = `
 <div
-  class="v-input input v-input--is-label-active v-input--is-dirty theme--light v-text-field"
+  class="v-input input v-input--is-label-active v-input--is-dirty theme--light v-text-field v-text-field--enclosed v-text-field--outlined"
   input="function mockConstructor() {
         return fn.apply(this, arguments);
       }"
@@ -13,6 +13,17 @@ exports[`Input.vue renders props when passed 1`] = `
     <div
       class="v-input__slot"
     >
+      <fieldset
+        aria-hidden="true"
+      >
+        <legend
+          style="width: 0px;"
+        >
+          <span>
+            ​
+          </span>
+        </legend>
+      </fieldset>
       <div
         class="v-text-field__slot"
       >
@@ -49,7 +60,7 @@ exports[`Input.vue renders props when passed 1`] = `
 
 exports[`Input.vue renders props when passed 2`] = `
 <div
-  class="v-input input v-input--is-label-active v-input--is-dirty theme--light v-text-field"
+  class="v-input input v-input--is-label-active v-input--is-dirty theme--light v-text-field v-text-field--enclosed v-text-field--outlined"
   input="function mockConstructor() {
         return fn.apply(this, arguments);
       }"
@@ -60,6 +71,17 @@ exports[`Input.vue renders props when passed 2`] = `
     <div
       class="v-input__slot"
     >
+      <fieldset
+        aria-hidden="true"
+      >
+        <legend
+          style="width: 0px;"
+        >
+          <span>
+            ​
+          </span>
+        </legend>
+      </fieldset>
       <div
         class="v-text-field__slot"
       >

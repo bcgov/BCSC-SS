@@ -23,6 +23,7 @@ That are used to expose operational health information about the service, and me
 from flask_restplus import Api
 
 from .meta import API as META_API
+from .oidc_config import API as OIDC_CONFIG_API
 from .ops import API as OPS_API
 from .project import API as PROJECT_API
 from .scope_package import API as SCOPEPACKAGE_API
@@ -56,3 +57,4 @@ API.add_namespace(PROJECT_API, path='/project/info')
 API.add_namespace(TECHNICALREQ_API, path='/project/<int:project_id>/technical-req')
 API.add_namespace(VALUES_API, path='/values')
 API.add_namespace(SCOPEPACKAGE_API, path='/scope-package')
+API.add_namespace(OIDC_CONFIG_API, path='/project/<int:project_id>/oidc-config')
