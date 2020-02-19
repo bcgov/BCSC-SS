@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboard.vue renders props when passed with gettors 1`] = `
+<v-card-stub
+  class="mx-auto"
+  loaderheight="4"
+  style="max-width: 80%;"
+  tag="div"
+>
+  <v-toolbar-stub
+    class="bc-subtitle"
+    dark="true"
+    extensionheight="48"
+    flat="true"
+    src=""
+    tag="header"
+    tile="true"
+  >
+    <v-toolbar-title-stub>
+      
+    </v-toolbar-title-stub>
+     
+    <div
+      class="flex-grow-1"
+    />
+     
+    <div
+      class="flex-grow-1"
+    />
+     
+    <v-btn-stub
+      activeclass=""
+      class="ma-2"
+      color="#fba30e"
+      dark="true"
+      fab="true"
+      tag="button"
+      type="button"
+    >
+      <v-icon-stub
+        dark=""
+        large=""
+      >
+        mdi-plus
+      </v-icon-stub>
+    </v-btn-stub>
+  </v-toolbar-stub>
+   
+  <v-divider-stub />
+   
+  <v-container-stub
+    tag="div"
+  >
+    <v-row-stub
+      class="ma-5"
+      tag="div"
+    >
+      <v-col-stub
+        cols="12"
+        md="12"
+        tag="div"
+      >
+        <v-card-stub
+          class="text-left"
+          flat="true"
+          loaderheight="4"
+          tag="div"
+        >
+          <v-card-text-stub>
+            
+          </v-card-text-stub>
+        </v-card-stub>
+      </v-col-stub>
+    </v-row-stub>
+  </v-container-stub>
+</v-card-stub>
+`;
