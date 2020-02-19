@@ -21,6 +21,7 @@ class ScopePackage(db.Model):  # pylint: disable=too-few-public-methods
 
     id = db.Column(db.Integer, primary_key=True)
     package_name = db.Column(db.String(50), nullable=False)
+    package_code = db.Column(db.String(10), nullable=True)
     description = db.Column(db.Text(), nullable=False)
     claim_names = db.Column(db.JSON, nullable=False)
     scope = db.Column(db.String(100), nullable=False)

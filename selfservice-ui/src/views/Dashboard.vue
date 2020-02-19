@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Dashboard :step="step" :id="id" />
+    <Dashboard />
   </div>
 </template>
 
@@ -14,10 +14,5 @@ import Dashboard from '@/components/Dashboard/Dashboard.vue';
     Dashboard
   }
 })
-export default class DashboardHome extends Vue {
-  @Prop({ default: 'info' })
-  public step!: string;
-  @Prop({ default: '' })
-  public id!: string;
-}
+export default class DashboardHome extends Vue {}
 </script>

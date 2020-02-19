@@ -3,16 +3,18 @@
 <template>
   <v-card class="v-form pa-8 pt-6 ma-3">
     <v-card-title class="headline padding-0">{{ title }}</v-card-title>
-    <v-card-subtitle class="text-left padding-0">Tell us about your {{ title }}</v-card-subtitle>
+    <v-card-subtitle class="text-left padding-0"
+      >Tell us about your {{ title }}</v-card-subtitle
+    >
     <Input
       v-model="userDetails.firstName"
-      label="First Name"
+      label="First name"
       :rules="[rules.required, rules.length(2), rules.maxLength(250)]"
       type="text"
     />
     <Input
       v-model="userDetails.lastName"
-      label="Last Name"
+      label="Last name"
       :rules="[rules.required, rules.length(2), rules.maxLength(250)]"
       type="text"
     />
