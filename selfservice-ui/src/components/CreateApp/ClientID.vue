@@ -5,7 +5,7 @@
     <v-toolbar flat class="bc-subtitle" dark>
       <v-btn
         icon
-        @click="$router.push(`/project/${projectId}/summary/`)"
+        @click="$router.push(`/dashboard/`)"
         :aria-label="$t('ClientID.Back')"
       >
         <v-icon>mdi-arrow-left</v-icon>
