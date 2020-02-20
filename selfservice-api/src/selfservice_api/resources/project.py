@@ -67,8 +67,8 @@ class ProjectResource(Resource):
         return response, status
 
 
-@cors_preflight('GET,PATCH,OPTIONS')
-@API.route('/<int:project_id>', methods=['GET', 'PATCH', 'OPTIONS'])
+@cors_preflight('GET,PUT,PATCH,OPTIONS')
+@API.route('/<int:project_id>', methods=['GET', 'PUT', 'PATCH', 'OPTIONS'])
 class ProjectResourceById(Resource):
     """Resource for managing get project by id."""
 
@@ -80,6 +80,26 @@ class ProjectResourceById(Resource):
         project = Project.find_by_id(project_id)
 
         return ProjectSchema().dump(project), HTTPStatus.OK
+
+    @staticmethod
+    @cors.crossdomain(origin='*')
+    @jwt.requires_auth
+    def put(project_id):
+        """Update project details."""
+        project_json = request.get_json()
+
+        try:
+            project_schema = ProjectSchema()
+            dict_data = project_schema.load(project_json)
+
+            project = Project.find_by_id(project_id)
+            token_info = g.jwt_oidc_token_info
+            project.update(token_info.get('sub'), dict_data)
+            response, status = 'Updated successfully', HTTPStatus.OK
+        except ValidationError as project_err:
+            response, status = {'message': str(project_err.messages)}, \
+                HTTPStatus.BAD_REQUEST
+        return response, status
 
     @staticmethod
     @cors.crossdomain(origin='*')
