@@ -42,7 +42,10 @@ class UserResource(Resource):
         user = User.find_by_oauth_id(token_info.get('sub'))
 
         verified = False
-        email_required = not token_info.get('provider') == 'idir'
+        fields_required = {
+            'email': not token_info.get('provider') == 'idir',
+            'phone': True
+        }
         user_dump = None
         if user is not None:
             verified = True
@@ -51,10 +54,15 @@ class UserResource(Resource):
             # Check again with email id if email is available in token.
             user = User.find_by_email(token_info.get('email'))
             user_dump = UserSchema().dump(user)
+        else:
+            user_dump = {
+                'firstName': token_info.get('given_name'),
+                'lastName': token_info.get('family_name')
+            }
 
         return jsonify({
             'verified': verified,
-            'emailRequired': email_required,
+            'fieldsRequired': fields_required,
             'user': user_dump
         }), HTTPStatus.OK
 
