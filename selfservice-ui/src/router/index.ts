@@ -43,6 +43,14 @@ const router = new VueRouter({
         import(/* webpackChunkName: "dashboard" */ '../views/Dashboard.vue')
     },
     {
+      path: '/complete-profile',
+      name: 'completeProfile',
+      meta: { requiresAuth: true, roles: ['ss_client', 'idir', 'ss_admin'] },
+      props: true,
+      component: () =>
+        import(/* webpackChunkName: "Profile" */ '../views/Profile.vue')
+    },
+    {
       path: '/project/info',
       name: 'project-info',
       meta: { requiresAuth: true, roles: ['ss_client', 'ss_admin'] },
@@ -77,7 +85,15 @@ router.beforeEach((to, from, next) => {
   const isLoggedin = store.state.KeyCloakModule.authenticated;
   if (to.meta.requiresAuth) {
     if (isLoggedin) {
-      if (KeycloakService.checkPermission(to.meta.roles)) {
+      if (
+        !store.state.KeyCloakModule.isVerfied &&
+        to.name !== 'completeProfile'
+      ) {
+        next({
+          name: 'completeProfile'
+        });
+        // }
+      } else if (KeycloakService.checkPermission(to.meta.roles)) {
         next();
       } else {
         next({ name: 'Unauthorized' });

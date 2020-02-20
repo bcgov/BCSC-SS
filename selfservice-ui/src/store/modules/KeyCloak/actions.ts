@@ -33,11 +33,22 @@ export const actions: ActionTree<KeyCloakState, RootState> = {
       commit('SET_TOKEN');
       sessionStorage.setItem('keycloak_token', token);
       try {
-        const user = await UserService.createUser();
-        dispatch('setUserProfile', user.data);
-        if (path) {
+        const user = await UserService.getUser();
+        if (user && user.data && user.data.verified) {
+          dispatch('isVerified', true);
+          dispatch('setUserProfile', user.data.user);
           dispatch('userRedirect', { path, next, fromUrl });
+        } else {
+          dispatch('filedsToShow', {
+            email: user.data.emailRequired,
+            phone: true
+          });
+          dispatch('isVerified', false);
+          router.push({ path: '/complete-profile' });
         }
+        // if (path) {
+        //   dispatch('userRedirect', { path, next, fromUrl });
+        // }
         // if (user.data && user.data.firstTimeLogin) {
         //   router.push({ path: '/profile' });
         // } else {
@@ -98,13 +109,42 @@ export const actions: ActionTree<KeyCloakState, RootState> = {
    * @param {*} keycloak
    */
   userRedirect(store: any, { path, next, fromUrl }) {
-    if (fromUrl === '/login' && path === '/login') {
+    if (fromUrl === '/complete-profile' && path === '/complete-profile') {
+      router.push({ path: '/dashboard' });
+    } else if (fromUrl === '/login' && path === '/login') {
       // if (store.state.isClient || store.state.isAdmin) {
-      router.push({ path: '/project' });
+      router.push({ path: '/dashboard' });
     } else if (fromUrl === '/login' && path !== '/login') {
       router.push({ path });
     } else {
       next();
     }
+  },
+
+  async updateProfile(state: any, profile: any) {
+    const { dispatch } = state;
+    const user = await UserService.createUser(profile.email, profile.phone);
+    dispatch('setUserProfile', user.data);
+    dispatch('userRedirect', {
+      path: '/complete-profile',
+      next: 'null',
+      fromUrl: '/complete-profile'
+    });
+  },
+  /**
+   * isVerified
+   * @param {*} { commit }
+   * @param {*} status
+   */
+  isVerified({ commit }: any, status: any) {
+    commit('SET_USER_VERFIED', status);
+  },
+  /**
+   * filedsToShow
+   * @param {*} { commit }
+   * @param {*} status
+   */
+  filedsToShow({ commit }: any, fields: any) {
+    commit('SET_FIELDS_TO_SHOW', fields);
   }
 };
