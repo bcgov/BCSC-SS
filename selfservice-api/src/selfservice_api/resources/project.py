@@ -116,10 +116,12 @@ class ProjectResourceById(Resource):
         project = Project.find_by_id(project_id)
         token_info = g.jwt_oidc_token_info
         if 'update' in project_patch_json:
+            project_status = project_patch_json['status']
             if project_patch_json['update'] == 'status' and \
                     ProjectResourceById._validate_before_status_update_(project, project_patch_json.get('status')):
 
-                project.update_status(token_info.get('sub'), project_patch_json['status'])
+                if project.status < project_status:
+                    project.update_status(token_info.get('sub'), project_status)
                 ProjectResourceById._dynamic_api_call_(project)
                 return 'Updated successfully', HTTPStatus.OK
 
@@ -129,7 +131,7 @@ class ProjectResourceById(Resource):
     def _validate_before_status_update_(project: Project, status):
         """Validate the project details before updating status."""
         if project is not None:
-            if status == ProjectStatus.DevSubmitted:
+            if status == ProjectStatus.Development:
                 technical_req = TechnicalReq.find_by_project_id(project.id)
                 if technical_req is not None and \
                     technical_req.scope_package_id is not None and \
