@@ -48,7 +48,7 @@ const router = new VueRouter({
       meta: { requiresAuth: true, roles: ['ss_client', 'idir', 'ss_admin'] },
       props: true,
       component: () =>
-        import(/* webpackChunkName: "Profile" */ '../views/Profile.vue')
+        import(/* webpackChunkName: "completeProfile" */ '../views/Profile.vue')
     },
     {
       path: '/project/info',
