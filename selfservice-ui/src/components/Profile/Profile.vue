@@ -12,11 +12,11 @@
         <v-row class="ma-5">
           <v-col cols="12" md="12">
             <v-card-subtitle
-              class="text-left padding-0 bc-padding-0"
+              class="text-left padding-0 bc-padding-left-0"
               v-html="$t('profile.titlePageInfo')"
             ></v-card-subtitle>
 
-            <v-card-title class="text-left bc-padding-0">
+            <v-card-title class="text-left bc-padding-left-0">
               {{ userProfile.firstName }}
               {{ userProfile.lastName }}</v-card-title
             >
