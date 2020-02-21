@@ -36,8 +36,14 @@ class ProjectUsersAssociation(BaseModel, db.Model):
     @classmethod
     def find_by_project_and_user_id(cls, project_id: str, user_id: str) -> ProjectUsersAssociation:
         """Find association instance by project and user id."""
-        return cls.query.filter(ProjectUsersAssociation.project_id == project_id &
-                                ProjectUsersAssociation.user_id == user_id).first()
+        return cls.query.filter((ProjectUsersAssociation.project_id == project_id) &
+                                (ProjectUsersAssociation.user_id == user_id)).first()
+
+    @classmethod
+    def delete_by_project_id(cls, project_id: str):
+        """Delete association by project id."""
+        cls.query.filter(ProjectUsersAssociation.project_id == project_id).delete()
+        cls.commit()
 
 
 class Project(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
@@ -105,7 +111,7 @@ class Project(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
         self.update_from_dict(['modified_by', 'organization_name', 'project_name', 'description'],
                               project_info)
         self.commit()
-        # TODO: delete project association
+        ProjectUsersAssociation.delete_by_project_id(self.id)
         self.__create_or_map_users__(project_info)
 
     def __update_association__(self, user_id, role):
