@@ -60,5 +60,11 @@ export const mutations: MutationTree<KeyCloakState> = {
   SET_USER_ROLES(state, { isAdmin, isClient }) {
     state.isAdmin = isAdmin;
     state.isClient = isClient;
+  },
+  SET_USER_VERFIED(state, isVerfied: boolean) {
+    state.isVerfied = isVerfied;
+  },
+  SET_FIELDS_TO_SHOW(state, fields: any) {
+    state.fields = fields;
   }
 };
