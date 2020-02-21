@@ -53,12 +53,12 @@ class UserResource(Resource):
         elif token_info.get('email') is not None:
             # Check again with email id if email is available in token.
             user = User.find_by_email(token_info.get('email'))
-            user_dump = UserSchema().dump(user)
-        else:
-            user_dump = {
-                'firstName': token_info.get('given_name'),
-                'lastName': token_info.get('family_name')
-            }
+            user_dump = UserSchema().dump(user) if user is not None else None
+
+        user_dump = {
+            'firstName': token_info.get('given_name'),
+            'lastName': token_info.get('family_name')
+        } if user_dump is None else user_dump
 
         return jsonify({
             'verified': verified,
