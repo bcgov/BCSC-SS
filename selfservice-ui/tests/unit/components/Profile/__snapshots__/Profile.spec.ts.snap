@@ -1,0 +1,104 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Profile.vue renders props when passed with gettors 1`] = `
+<v-card-stub
+  class="mx-auto card-width"
+  loaderheight="4"
+  tag="div"
+>
+  <v-toolbar-stub
+    class="bc-subtitle"
+    dark="true"
+    extensionheight="48"
+    flat="true"
+    src=""
+    tag="header"
+    tile="true"
+  >
+    <v-toolbar-title-stub>
+      
+    </v-toolbar-title-stub>
+     
+    <div
+      class="flex-grow-1"
+    />
+  </v-toolbar-stub>
+   
+  <v-divider-stub />
+   
+  <v-form-stub>
+    <v-container-stub
+      tag="div"
+    >
+      <v-row-stub
+        class="ma-5"
+        tag="div"
+      >
+        <v-col-stub
+          cols="12"
+          md="12"
+          tag="div"
+        >
+          <v-card-subtitle-stub
+            class="text-left padding-0 bc-padding-left-0"
+          />
+           
+          <v-card-title-stub
+            class="text-left bc-padding-left-0"
+          >
+            
+            john
+            Deo
+          </v-card-title-stub>
+           
+          <input-stub
+            counter=""
+            label=""
+            outlined="true"
+            rules="v => !!v || 'This field is required',v => /^\\\\w+([.-]?\\\\w+)*@\\\\w+([.-]?\\\\w+)*(\\\\.\\\\w{2,10})+$/.test(v) || 'E-mail must be valid',v => (v || '').length >= len || 'Invalid character length, required ' + len,v => (v || '').length <= len || 'Invalid character length, max length ' + len"
+            type="text"
+            value=""
+          />
+           
+          <input-stub
+            counter=""
+            label=""
+            outlined="true"
+            rules="v => !!v || 'This field is required',v => (v || '').length >= len || 'Invalid character length, required ' + len,v => (v || '').length <= len || 'Invalid character length, max length ' + len"
+            type="text"
+            value=""
+          />
+        </v-col-stub>
+         
+        <v-col-stub
+          cols="12"
+          tag="div"
+        >
+          <v-card-stub
+            flat="true"
+            loaderheight="4"
+            tag="div"
+          >
+            <v-divider-stub />
+             
+            <v-card-actions-stub>
+              <v-spacer-stub />
+               
+              <button-stub
+                class="white--text"
+                color="indigo accent-4"
+                depressed=""
+                disabled="true"
+                name="button"
+                type="button"
+              >
+                
+              </button-stub>
+            </v-card-actions-stub>
+          </v-card-stub>
+        </v-col-stub>
+      </v-row-stub>
+    </v-container-stub>
+  </v-form-stub>
+</v-card-stub>
+`;

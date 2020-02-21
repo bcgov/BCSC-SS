@@ -6,4 +6,6 @@ export interface KeyCloakState {
   profile: [];
   isAdmin: boolean;
   isClient: boolean;
+  isVerfied: boolean;
+  fields: [];
 }
