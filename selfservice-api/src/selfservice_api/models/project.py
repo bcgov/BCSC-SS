@@ -33,6 +33,18 @@ class ProjectUsersAssociation(BaseModel, db.Model):
     user = db.relationship('User', lazy=True, backref=db.backref('projects', lazy=True))
     project = db.relationship('Project', lazy=True, backref=db.backref('users', lazy='subquery'))
 
+    @classmethod
+    def find_by_project_and_user_id(cls, project_id: str, user_id: str) -> ProjectUsersAssociation:
+        """Find association instance by project and user id."""
+        return cls.query.filter((ProjectUsersAssociation.project_id == project_id) &
+                                (ProjectUsersAssociation.user_id == user_id)).first()
+
+    @classmethod
+    def delete_by_project_id(cls, project_id: str):
+        """Delete association by project id."""
+        cls.query.filter(ProjectUsersAssociation.project_id == project_id).delete()
+        cls.commit()
+
 
 class Project(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
     """This class manages project information."""
@@ -76,16 +88,34 @@ class Project(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
 
     def __create_association__(self, user_id, role):
         """Create an association between user and project."""
-        association = ProjectUsersAssociation()
-        association.user_id = user_id
-        association.project_id = self.id
-        association.role = role
-        association.save()
+        association = ProjectUsersAssociation.find_by_project_and_user_id(self.id, user_id)
+        if association is None:
+            association = ProjectUsersAssociation()
+            association.user_id = user_id
+            association.project_id = self.id
+            association.role = role
+            association.save()
+        else:
+            association.role = role
+            association.save()
 
     @classmethod
     def find_by_id(cls, project_id) -> Project:
         """Find project that matches the provided id."""
         return cls.query.filter_by(id=project_id).first()
+
+    def update(self, oauth_id: str, project_info: dict):
+        """Update project."""
+        current_user = User.find_by_oauth_id(oauth_id)
+        project_info['modified_by'] = current_user.id
+        self.update_from_dict(['modified_by', 'organization_name', 'project_name', 'description'],
+                              project_info)
+        self.commit()
+        ProjectUsersAssociation.delete_by_project_id(self.id)
+        self.__create_or_map_users__(project_info)
+
+    def __update_association__(self, user_id, role):
+        """Update an association on project."""
 
     def update_status(self, oauth_id: str, project_status: int):
         """Update project status."""

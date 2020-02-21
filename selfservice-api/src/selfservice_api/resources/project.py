@@ -19,7 +19,7 @@ from flask import g, jsonify, request
 from flask_restplus import Namespace, Resource, cors
 from marshmallow import ValidationError
 
-from ..models import OIDCConfig, Project, TechnicalReq
+from ..models import OIDCConfig, Project, TechnicalReq, User
 from ..models.enums import ProjectRoles, ProjectStatus
 from ..schemas.project import ProjectSchema
 from ..services.external import DynamicClientRegistrationService
@@ -67,8 +67,8 @@ class ProjectResource(Resource):
         return response, status
 
 
-@cors_preflight('GET,PATCH,OPTIONS')
-@API.route('/<int:project_id>', methods=['GET', 'PATCH', 'OPTIONS'])
+@cors_preflight('GET,PUT,PATCH,OPTIONS')
+@API.route('/<int:project_id>', methods=['GET', 'PUT', 'PATCH', 'OPTIONS'])
 class ProjectResourceById(Resource):
     """Resource for managing get project by id."""
 
@@ -77,9 +77,33 @@ class ProjectResourceById(Resource):
     @jwt.requires_auth
     def get(project_id):
         """Get project details."""
+        token_info = g.jwt_oidc_token_info
+        user = User.find_by_oauth_id(token_info.get('sub'))
         project = Project.find_by_id(project_id)
+        project_dump = ProjectSchema().dump(project)
+        for project_users in project.users:
+            if project_users.user_id == user.id:
+                project_dump['my_role'] = project_users.role
+        return project_dump, HTTPStatus.OK
 
-        return ProjectSchema().dump(project), HTTPStatus.OK
+    @staticmethod
+    @cors.crossdomain(origin='*')
+    @jwt.requires_auth
+    def put(project_id):
+        """Update project details."""
+        project_json = request.get_json()
+
+        try:
+            project_schema = ProjectSchema()
+            dict_data = project_schema.load(project_json)
+
+            project = Project.find_by_id(project_id)
+            token_info = g.jwt_oidc_token_info
+            project.update(token_info.get('sub'), dict_data)
+            response, status = 'Updated successfully', HTTPStatus.OK
+        except ValidationError as project_err:
+            response, status = {'message': str(project_err.messages)}, HTTPStatus.BAD_REQUEST
+        return response, status
 
     @staticmethod
     @cors.crossdomain(origin='*')
@@ -94,7 +118,9 @@ class ProjectResourceById(Resource):
             if project_patch_json['update'] == 'status' and \
                     ProjectResourceById._validate_before_status_update_(project, project_patch_json.get('status')):
 
-                project.update_status(token_info.get('sub'), project_patch_json['status'])
+                project_status = project_patch_json['status']
+                if project.status < project_status:
+                    project.update_status(token_info.get('sub'), project_status)
                 ProjectResourceById._dynamic_api_call_(project)
                 return 'Updated successfully', HTTPStatus.OK
 
@@ -104,7 +130,7 @@ class ProjectResourceById(Resource):
     def _validate_before_status_update_(project: Project, status):
         """Validate the project details before updating status."""
         if project is not None:
-            if status == ProjectStatus.DevSubmitted:
+            if status == ProjectStatus.Development:
                 technical_req = TechnicalReq.find_by_project_id(project.id)
                 if technical_req is not None and \
                     technical_req.scope_package_id is not None and \
