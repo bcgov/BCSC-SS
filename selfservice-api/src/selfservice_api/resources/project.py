@@ -19,7 +19,7 @@ from flask import g, jsonify, request
 from flask_restplus import Namespace, Resource, cors
 from marshmallow import ValidationError
 
-from ..models import OIDCConfig, Project, TechnicalReq
+from ..models import OIDCConfig, Project, TechnicalReq, User
 from ..models.enums import ProjectRoles, ProjectStatus
 from ..schemas.project import ProjectSchema
 from ..services.external import DynamicClientRegistrationService
@@ -77,9 +77,14 @@ class ProjectResourceById(Resource):
     @jwt.requires_auth
     def get(project_id):
         """Get project details."""
+        token_info = g.jwt_oidc_token_info
+        user = User.find_by_oauth_id(token_info.get('sub'))
         project = Project.find_by_id(project_id)
-
-        return ProjectSchema().dump(project), HTTPStatus.OK
+        project_dump = ProjectSchema().dump(project)
+        for project_users in project.users:
+            if project_users.user_id == user.id:
+                project_dump['my_role'] = project_users.role
+        return project_dump, HTTPStatus.OK
 
     @staticmethod
     @cors.crossdomain(origin='*')
