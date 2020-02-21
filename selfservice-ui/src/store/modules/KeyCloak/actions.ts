@@ -39,10 +39,7 @@ export const actions: ActionTree<KeyCloakState, RootState> = {
           dispatch('setUserProfile', user.data.user);
           dispatch('userRedirect', { path, next, fromUrl });
         } else {
-          dispatch('filedsToShow', {
-            email: user.data.emailRequired,
-            phone: true
-          });
+          dispatch('filedsToShow', user.data.fieldsRequired);
           dispatch('isVerified', false);
           router.push({ path: '/complete-profile' });
         }
@@ -110,7 +107,7 @@ export const actions: ActionTree<KeyCloakState, RootState> = {
    */
   userRedirect(store: any, { path, next, fromUrl }) {
     if (fromUrl === '/complete-profile' && path === '/complete-profile') {
-      router.push({ path: '/dashboard' });
+      router.push({ name: 'dashboard' });
     } else if (fromUrl === '/login' && path === '/login') {
       // if (store.state.isClient || store.state.isAdmin) {
       router.push({ path: '/dashboard' });
@@ -125,6 +122,7 @@ export const actions: ActionTree<KeyCloakState, RootState> = {
     const { dispatch } = state;
     const user = await UserService.createUser(profile.email, profile.phone);
     dispatch('setUserProfile', user.data);
+    dispatch('isVerified', true);
     dispatch('userRedirect', {
       path: '/complete-profile',
       next: 'null',

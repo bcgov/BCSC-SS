@@ -1,22 +1,10 @@
-/** * Dashboard of app */
+/** * Complete Profile of app */
 
 <template>
-  <v-card class="mx-auto" style="max-width: 80%;">
+  <v-card class="mx-auto card-width">
     <v-toolbar flat class="bc-subtitle" dark>
       <v-toolbar-title>{{ $t('profile.pagetitle') }}</v-toolbar-title>
       <div class="flex-grow-1"></div>
-
-      <div class="flex-grow-1"></div>
-
-      <v-btn
-        class="ma-2"
-        fab
-        dark
-        color="#fba30e"
-        @click="$router.push(`/project/info`)"
-      >
-        <v-icon dark large>mdi-plus</v-icon>
-      </v-btn>
     </v-toolbar>
     <v-divider></v-divider>
     <v-form ref="form" v-model="form">
@@ -29,18 +17,21 @@
             ></v-card-subtitle>
             <Input
               v-model="email"
-              counter="100"
               :label="$t('profile.labelEmail')"
               type="text"
-              :rules="[rules.required, rules.length(2), rules.maxLength(100)]"
+              :rules="[
+                rules.required,
+                rules.email,
+                rules.length(2),
+                rules.maxLength(250)
+              ]"
               v-if="filedsToShow.email"
             />
             <Input
               v-model="phone"
-              counter="100"
               :label="$t('profile.labelPhone')"
               type="text"
-              :rules="[rules.required, rules.length(2), rules.maxLength(100)]"
+              :rules="[rules.required, rules.length(9), rules.maxLength(15)]"
               v-if="filedsToShow.phone"
             />
           </v-col>
@@ -105,4 +96,10 @@ export default class Dashboard extends Vue {
 
 <style lang="scss" scoped>
 @import './../../assets/styles/theme.scss';
+.card-width {
+  max-width: 80%;
+  @include lg {
+    max-width: 50%;
+  }
+}
 </style>
