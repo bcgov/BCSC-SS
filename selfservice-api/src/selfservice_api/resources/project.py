@@ -102,8 +102,7 @@ class ProjectResourceById(Resource):
             project.update(token_info.get('sub'), dict_data)
             response, status = 'Updated successfully', HTTPStatus.OK
         except ValidationError as project_err:
-            response, status = {'message': str(project_err.messages)}, \
-                HTTPStatus.BAD_REQUEST
+            response, status = {'message': str(project_err.messages)}, HTTPStatus.BAD_REQUEST
         return response, status
 
     @staticmethod
