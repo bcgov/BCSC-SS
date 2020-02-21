@@ -40,17 +40,10 @@ export const actions: ActionTree<KeyCloakState, RootState> = {
           dispatch('userRedirect', { path, next, fromUrl });
         } else {
           dispatch('filedsToShow', user.data.fieldsRequired);
+          dispatch('setUserProfile', user.data.user);
           dispatch('isVerified', false);
           router.push({ path: '/complete-profile' });
         }
-        // if (path) {
-        //   dispatch('userRedirect', { path, next, fromUrl });
-        // }
-        // if (user.data && user.data.firstTimeLogin) {
-        //   router.push({ path: '/profile' });
-        // } else {
-        //   dispatch('userRedirect', path);
-        // }
       } catch {
         if (path) {
           dispatch('userRedirect', { path, next, fromUrl });

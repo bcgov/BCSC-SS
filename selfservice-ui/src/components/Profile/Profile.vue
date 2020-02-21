@@ -12,9 +12,14 @@
         <v-row class="ma-5">
           <v-col cols="12" md="12">
             <v-card-subtitle
-              class="text-left padding-0"
+              class="text-left padding-0 bc-padding-0"
               v-html="$t('profile.titlePageInfo')"
             ></v-card-subtitle>
+
+            <v-card-title class="text-left bc-padding-0">
+              {{ userProfile.firstName }}
+              {{ userProfile.lastName }}</v-card-title
+            >
             <Input
               v-model="email"
               :label="$t('profile.labelEmail')"
@@ -39,7 +44,6 @@
             <v-card flat>
               <v-divider></v-divider>
               <v-card-actions>
-                <!-- <v-btn text @click="$refs.form.reset()">Clear</v-btn> -->
                 <v-spacer></v-spacer>
                 <Button
                   :disabled="!form"
@@ -71,11 +75,12 @@ const KeyCloakModule = namespace('KeyCloakModule');
 @Component({ components: { Input, Button } })
 export default class Dashboard extends Vue {
   @KeyCloakModule.Getter('filedsToShow')
-  public filedsToShow!: any;
+  private filedsToShow!: any;
   @KeyCloakModule.Action('updateProfile')
-  public updateProfile!: any;
+  private updateProfile!: any;
+  @KeyCloakModule.Getter('userProfile') private userProfile!: [];
   @KeyCloakModule.Action('errorStatus')
-  public errorStatus!: any;
+  private errorStatus!: any;
 
   private form: boolean = false;
 
@@ -84,9 +89,6 @@ export default class Dashboard extends Vue {
   private email: string = '';
   private phone: string = '';
 
-  // private mounted() {
-  //   this.loadProjectInfo();
-  // }
   private completeProfile() {
     const profile = { email: this.email, phone: this.phone };
     this.updateProfile(profile);
