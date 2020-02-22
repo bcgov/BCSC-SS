@@ -83,7 +83,7 @@ class ProjectResourceById(Resource):
         project_dump = ProjectSchema().dump(project)
         for project_users in project.users:
             if project_users.user_id == user.id:
-                project_dump['my_role'] = project_users.role
+                project_dump['myRole'] = project_users.role
         return project_dump, HTTPStatus.OK
 
     @staticmethod
