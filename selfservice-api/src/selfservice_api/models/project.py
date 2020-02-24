@@ -28,6 +28,7 @@ class ProjectUsersAssociation(BaseModel, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     project_id = db.Column(db.Integer, db.ForeignKey('project.id'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    ref_no = db.Column(db.String(20), nullable=True)
     role = db.Column(db.Integer, nullable=False)
 
     user = db.relationship('User', lazy=True, backref=db.backref('projects', lazy=True))
@@ -113,6 +114,7 @@ class Project(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
         self.commit()
         ProjectUsersAssociation.delete_by_project_id(self.id)
         self.__create_or_map_users__(project_info)
+        self.__create_association__(current_user.id, project_info['my_role'])
 
     def __update_association__(self, user_id, role):
         """Update an association on project."""
