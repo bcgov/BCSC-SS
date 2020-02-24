@@ -31,6 +31,15 @@ def test_none_create_from_dict(session):
     assert oidc_config is None
 
 
+def test_update(session):
+    """Assert oidc config update from the provided dictionary."""
+    oidc_config = create_oidc_config(session)
+    oidc_config_info = factory_project_oidc_config()
+    oidc_config_info['project_id'] = oidc_config.project_id
+    oidc_config.update(oidc_config_info)
+    assert oidc_config.id is not None
+
+
 def test_find_by_project_id(session):
     """Assert oidc config instance that matches the provided id."""
     oidc_config = create_oidc_config(session)

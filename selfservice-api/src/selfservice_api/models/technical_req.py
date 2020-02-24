@@ -67,6 +67,8 @@ class TechnicalReq(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):  # 
         """Update technical requirement."""
         current_user = User.find_by_oauth_id(oauth_id)
         technical_req_info['modified_by'] = current_user.id
-        self.update_from_dict(['modified_by', 'scope_package_id', 'no_of_test_account', 'note_test_account'],
+        self.update_from_dict(['modified_by', 'scope_package_id', 'no_of_test_account', 'note_test_account',
+                               'client_uri', 'redirect_uris', 'jwks_uri', 'id_token_signed_response_alg',
+                               'userinfo_signed_response_alg'],
                               technical_req_info)
         self.commit()
