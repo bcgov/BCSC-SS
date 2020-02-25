@@ -17,6 +17,9 @@ describe('Profile.vue', () => {
           }),
           userProfile: jest.fn(() => {
             return { firstName: 'john', lastName: 'Deo' };
+          }),
+          errorStatus: jest.fn(() => {
+            return false;
           })
         },
         actions: {

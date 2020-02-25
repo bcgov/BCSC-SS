@@ -234,6 +234,8 @@ exports[`AddProjectInfo.vue renders props when passed 1`] = `
               <v-card-actions-stub>
                 <v-spacer-stub />
                  
+                <!---->
+                 
                 <button-stub
                   class="white--text"
                   color="indigo accent-4"

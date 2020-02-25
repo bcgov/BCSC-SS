@@ -30,6 +30,7 @@
                 <v-card-subtitle class="font-weight-bold text-left padding-0">{{
                   $t('projectInfo.ProjectOrgTitle')
                 }}</v-card-subtitle>
+
                 <Input
                   v-model="organizationName"
                   counter="100"
@@ -73,21 +74,24 @@
                 }}</v-card-subtitle>
                 <v-radio-group v-model.number="myRole" row color="black">
                   <span class="mr-2">{{ $t('projectInfo.myRole') }}</span>
-                  <v-radio class="black-color" v-bind:value="1">
+                  <v-radio
+                    class="black-color"
+                    v-bind:value="projectRoles.developer"
+                  >
                     <template v-slot:label>
                       <span class="black-color">{{
                         $t('projectInfo.DeveloperRole')
                       }}</span>
                     </template>
                   </v-radio>
-                  <v-radio label="Manager" v-bind:value="2">
+                  <v-radio label="Manager" v-bind:value="projectRoles.manager">
                     <template v-slot:label>
                       <span class="black-color">{{
                         $t('projectInfo.ManagerRole')
                       }}</span>
                     </template>
                   </v-radio>
-                  <v-radio v-bind:value="3">
+                  <v-radio v-bind:value="projectRoles.cto">
                     <template v-slot:label>
                       <span class="black-color">{{
                         $t('projectInfo.CTORole')
@@ -98,24 +102,25 @@
               </v-card>
             </v-col>
 
-            <!-- <v-form ref="form" v-model="form" class="pa-4 pt-6"> -->
-            <v-col cols="12" sm="6" v-if="myRole !== 2">
+            <v-col cols="12" sm="6" v-if="myRole !== projectRoles.manager">
               <ProjectUsers
-                :userDetails="users[1]"
+                :userDetails="getUserDetailsByRole(users, projectRoles.manager)"
                 :rules="rules"
                 :title="$t('projectInfo.ManagerRole')"
               />
             </v-col>
-            <v-col cols="12" sm="6" v-if="myRole !== 3">
+            <v-col cols="12" sm="6" v-if="myRole !== projectRoles.cto">
               <ProjectUsers
-                :userDetails="users[2]"
+                :userDetails="getUserDetailsByRole(users, projectRoles.cto)"
                 :rules="rules"
                 :title="$t('projectInfo.CTORole')"
               />
             </v-col>
-            <v-col cols="12" sm="6" v-if="myRole !== 1">
+            <v-col cols="12" sm="6" v-if="myRole !== projectRoles.developer">
               <ProjectUsers
-                :userDetails="users[0]"
+                :userDetails="
+                  getUserDetailsByRole(users, projectRoles.developer)
+                "
                 :rules="rules"
                 :title="$t('projectInfo.DeveloperRole')"
               />
@@ -125,17 +130,29 @@
               <v-card flat>
                 <v-divider></v-divider>
                 <v-card-actions>
-                  <!-- <v-btn text @click="$refs.form.reset()">Clear</v-btn> -->
                   <v-spacer></v-spacer>
+                  <Button
+                    @click="$router.push(`/project/${id}/summary/`)"
+                    aria-label="Back Button"
+                    secondary
+                    v-if="isEditmode"
+                    >{{ $t('projectInfo.btnCancel') }}</Button
+                  >
                   <Button
                     :disabled="!form"
                     :loading="isLoading"
                     class="white--text"
                     color="indigo accent-4"
                     depressed
-                    @click="addProjectInfo"
-                    @keyup.enter="addProjectInfo"
-                    >{{ $t('projectInfo.Next') }}</Button
+                    @click="submitProjectInfo"
+                    @keyup.enter="submitProjectInfo"
+                    >{{
+                      $t(
+                        isEditmode
+                          ? 'projectInfo.btnsaveChanges'
+                          : 'projectInfo.btnNext'
+                      )
+                    }}</Button
                   >
                 </v-card-actions>
               </v-card>
@@ -155,6 +172,7 @@ import TextArea from '@/Atomic/TextArea/TextArea.vue';
 import Button from '@/Atomic/Button/Button.vue';
 import ProjectUsers from './ProjectUsers.vue';
 import validationRules from '@/config/validationRules';
+import { projectRoles } from '@/constants/enums';
 
 const ProjectInfoModule = namespace('ProjectInfoModule');
 
@@ -189,24 +207,24 @@ export default class AddProjectInfo extends Vue {
       phone: '',
       firstName: '',
       lastName: '',
-      role: 1
+      role: projectRoles.developer
     },
     {
       email: '',
       phone: '',
       firstName: '',
       lastName: '',
-      role: 2
+      role: projectRoles.manager
     },
     {
       email: '',
       phone: '',
       firstName: '',
       lastName: '',
-      role: 3
+      role: projectRoles.cto
     }
   ];
-
+  private projectRoles: any = projectRoles;
   private isEditmode: boolean = false;
   /* istanbul ignore next */
   private rules = validationRules;
@@ -216,7 +234,7 @@ export default class AddProjectInfo extends Vue {
     this.updteEdit(val);
   }
 
-  private addProjectInfo() {
+  private submitProjectInfo() {
     // to fix change below line
     const selectedUserIdx = this.users.filter(user => {
       return user.role !== this.myRole;
@@ -240,12 +258,16 @@ export default class AddProjectInfo extends Vue {
     // this.$router.push('/project/technical/');
   }
 
+  private getUserDetailsByRole(users: any, selectedRole: number) {
+    return users.find((userData: any) => userData.role === selectedRole);
+  }
+
   private updteEdit(val: any) {
     this.organizationName = val.organizationName;
     this.projectName = val.projectName;
     this.description = val.description;
     this.myRole = val.myRole;
-    this.users = this.users;
+    this.users = val.users;
     // this.id = val.id;
     this.isEditmode = true;
   }
@@ -257,9 +279,9 @@ export default class AddProjectInfo extends Vue {
       this.loadSingleProjectInfo(this.id);
     }
   }
-  private input(value: string) {
-    // console.log('value', value);
-  }
+  // private input(value: string) {
+  //   // console.log('value', value);
+  // }
 }
 </script>
 

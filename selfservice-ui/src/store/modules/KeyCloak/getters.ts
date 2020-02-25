@@ -45,5 +45,11 @@ export const getters: GetterTree<KeyCloakState, RootState> = {
   },
   filedsToShow(state) {
     return state.fields;
+  },
+  successStatus(state) {
+    return state.successStatus;
+  },
+  errorStatus(state) {
+    return state.errorStatus;
   }
 };

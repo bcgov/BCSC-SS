@@ -16,7 +16,9 @@ export const state: KeyCloakState = {
   isAdmin: false,
   isClient: false,
   isVerfied: false,
-  fields: []
+  fields: [],
+  successStatus: false,
+  errorStatus: false
 };
 
 //  namespaced module
