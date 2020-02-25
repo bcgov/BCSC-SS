@@ -5,11 +5,7 @@
     <v-alert type="error" v-if="errorStatus">Something went wrong...</v-alert>-->
     <v-card class="mx-auto">
       <v-app-bar dark class="bc-subtitle">
-        <v-btn
-          icon
-          @click="$router.push(`/project/${projectId}/info/`)"
-          aria-label="Back Button"
-        >
+        <v-btn icon @click="goBack()" aria-label="Back Button">
           <v-icon>mdi-arrow-left</v-icon>
         </v-btn>
         <v-toolbar-title>{{
@@ -117,7 +113,7 @@
                   <!-- <v-btn text @click="$refs.form.reset()">Clear</v-btn> -->
                   <v-spacer></v-spacer>
                   <Button
-                    @click="$router.push(`/project/${projectId}/info/`)"
+                    @click="goBack()"
                     aria-label="Back Button"
                     secondary
                     >{{ $t('technicalRequirements.btnBack') }}</Button
@@ -154,6 +150,7 @@ import {
 import { TechnicalReqModel } from '@/models/TechnicalReqModel';
 const TechnicalReqModule = namespace('TechnicalReqModule');
 const ProjectInfoModule = namespace('ProjectInfoModule');
+const SharedModule = namespace('SharedModule');
 
 @Component({
   components: { Input, Button, Select }
@@ -179,6 +176,8 @@ export default class AddTechnicalReq extends Vue {
   public getSingleProjectInfo!: any;
   @ProjectInfoModule.Action('loadSingleProjectInfo')
   public loadSingleProjectInfo!: any;
+  @SharedModule.Action('rediectFromSummaryPage')
+  public rediectFromSummaryPage!: boolean;
 
   public form: boolean = false;
   private isLoading: boolean = false;
@@ -223,8 +222,6 @@ export default class AddTechnicalReq extends Vue {
     } else {
       this.addTechnicalReqStore(data);
     }
-    // (this.$refs.form as HTMLFormElement).reset();
-    // this.$router.push('/technicalreq/');
   }
 
   private updteEdit(val: any) {
@@ -263,6 +260,10 @@ export default class AddTechnicalReq extends Vue {
     if (!this.blockRemoval) {
       this.redirectUris.splice(uriId, 1);
     }
+  }
+  private goBack() {
+    this.rediectFromSummaryPage(false);
+    this.$router.push(`/project/${this.projectId}/info/`);
   }
 }
 </script>
