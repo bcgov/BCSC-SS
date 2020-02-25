@@ -30,6 +30,7 @@
                 <v-card-subtitle class="font-weight-bold text-left padding-0">{{
                   $t('projectInfo.ProjectOrgTitle')
                 }}</v-card-subtitle>
+
                 <Input
                   v-model="organizationName"
                   counter="100"
@@ -101,21 +102,21 @@
             <!-- <v-form ref="form" v-model="form" class="pa-4 pt-6"> -->
             <v-col cols="12" sm="6" v-if="myRole !== 2">
               <ProjectUsers
-                :userDetails="users[1]"
+                :userDetails="getUserDetailsByRole(users, 2)"
                 :rules="rules"
                 :title="$t('projectInfo.ManagerRole')"
               />
             </v-col>
             <v-col cols="12" sm="6" v-if="myRole !== 3">
               <ProjectUsers
-                :userDetails="users[2]"
+                :userDetails="getUserDetailsByRole(users, 3)"
                 :rules="rules"
                 :title="$t('projectInfo.CTORole')"
               />
             </v-col>
             <v-col cols="12" sm="6" v-if="myRole !== 1">
               <ProjectUsers
-                :userDetails="users[0]"
+                :userDetails="getUserDetailsByRole(users, 1)"
                 :rules="rules"
                 :title="$t('projectInfo.DeveloperRole')"
               />
@@ -128,14 +129,27 @@
                   <!-- <v-btn text @click="$refs.form.reset()">Clear</v-btn> -->
                   <v-spacer></v-spacer>
                   <Button
+                    @click="$router.push(`/project/${id}/summary/`)"
+                    aria-label="Back Button"
+                    secondary
+                    v-if="isEditmode"
+                    >{{ $t('projectInfo.btnCancel') }}</Button
+                  >
+                  <Button
                     :disabled="!form"
                     :loading="isLoading"
                     class="white--text"
                     color="indigo accent-4"
                     depressed
-                    @click="addProjectInfo"
-                    @keyup.enter="addProjectInfo"
-                    >{{ $t('projectInfo.Next') }}</Button
+                    @click="submitProjectInfo"
+                    @keyup.enter="submitProjectInfo"
+                    >{{
+                      $t(
+                        isEditmode
+                          ? 'projectInfo.btnsaveChanges'
+                          : 'projectInfo.btnNext'
+                      )
+                    }}</Button
                   >
                 </v-card-actions>
               </v-card>
@@ -216,7 +230,7 @@ export default class AddProjectInfo extends Vue {
     this.updteEdit(val);
   }
 
-  private addProjectInfo() {
+  private submitProjectInfo() {
     // to fix change below line
     const selectedUserIdx = this.users.filter(user => {
       return user.role !== this.myRole;
@@ -240,12 +254,16 @@ export default class AddProjectInfo extends Vue {
     // this.$router.push('/project/technical/');
   }
 
+  private getUserDetailsByRole(users: any, selectedRole: number) {
+    return users.find((userData: any) => userData.role === selectedRole);
+  }
+
   private updteEdit(val: any) {
     this.organizationName = val.organizationName;
     this.projectName = val.projectName;
     this.description = val.description;
     this.myRole = val.myRole;
-    this.users = this.users;
+    this.users = val.users;
     // this.id = val.id;
     this.isEditmode = true;
   }
@@ -257,9 +275,9 @@ export default class AddProjectInfo extends Vue {
       this.loadSingleProjectInfo(this.id);
     }
   }
-  private input(value: string) {
-    // console.log('value', value);
-  }
+  // private input(value: string) {
+  //   // console.log('value', value);
+  // }
 }
 </script>
 

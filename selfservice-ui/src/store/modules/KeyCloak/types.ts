@@ -8,4 +8,6 @@ export interface KeyCloakState {
   isClient: boolean;
   isVerfied: boolean;
   fields: [];
+  errorStatus: boolean;
+  successStatus: boolean;
 }

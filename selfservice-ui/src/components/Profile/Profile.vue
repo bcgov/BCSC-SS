@@ -2,12 +2,16 @@
 
 <template>
   <v-card class="mx-auto card-width">
-    <v-toolbar flat class="bc-subtitle" dark>
+    <v-alert type="error" v-if="errorStatus">
+      Something went wrong...
+    </v-alert>
+    <v-toolbar flat class="bc-subtitle" dark v-if="!errorStatus">
       <v-toolbar-title>{{ $t('profile.pagetitle') }}</v-toolbar-title>
       <div class="flex-grow-1"></div>
     </v-toolbar>
     <v-divider></v-divider>
-    <v-form ref="form" v-model="form">
+
+    <v-form ref="form" v-model="form" v-if="!errorStatus">
       <v-container>
         <v-row class="ma-5">
           <v-col cols="12" md="12">
@@ -79,7 +83,7 @@ export default class Dashboard extends Vue {
   @KeyCloakModule.Action('updateProfile')
   private updateProfile!: any;
   @KeyCloakModule.Getter('userProfile') private userProfile!: [];
-  @KeyCloakModule.Action('errorStatus')
+  @KeyCloakModule.Getter('errorStatus')
   private errorStatus!: any;
 
   private form: boolean = false;

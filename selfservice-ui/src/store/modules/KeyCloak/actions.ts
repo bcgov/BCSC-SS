@@ -44,7 +44,9 @@ export const actions: ActionTree<KeyCloakState, RootState> = {
           dispatch('isVerified', false);
           router.push({ path: '/complete-profile' });
         }
+        commit('SET_USER_ERROR', false);
       } catch {
+        commit('SET_USER_ERROR', true);
         if (path) {
           dispatch('userRedirect', { path, next, fromUrl });
         }

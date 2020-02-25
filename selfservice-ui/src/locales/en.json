@@ -25,7 +25,9 @@
     "ManagerRole": "Manager",
     "CTORole": "Executive Sponsor",
     "DeveloperRole": "Developer",
-    "Next": "Next"
+    "btnNext": "Next",
+    "btnsaveChanges": "Save Changes",
+    "btnCancel": "Cancel"
   },
   "technicalRequirements": {
     "technicalTitle": "Technical Requirements",
