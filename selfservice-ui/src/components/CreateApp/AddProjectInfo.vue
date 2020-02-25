@@ -135,20 +135,20 @@
                     @click="$router.push(`/project/${id}/summary/`)"
                     aria-label="Back Button"
                     secondary
-                    v-if="isEditmode"
+                    v-if="showWizardExperience()"
                     >{{ $t('projectInfo.btnCancel') }}</Button
                   >
                   <Button
                     :disabled="!form"
                     :loading="isLoading"
-                    class="white--text"
+                    class="white--text submit-project"
                     color="indigo accent-4"
                     depressed
                     @click="submitProjectInfo"
                     @keyup.enter="submitProjectInfo"
                     >{{
                       $t(
-                        isEditmode
+                        showWizardExperience()
                           ? 'projectInfo.btnsaveChanges'
                           : 'projectInfo.btnNext'
                       )
@@ -175,6 +175,7 @@ import validationRules from '@/config/validationRules';
 import { projectRoles } from '@/constants/enums';
 
 const ProjectInfoModule = namespace('ProjectInfoModule');
+const SharedModule = namespace('SharedModule');
 
 @Component({ components: { Input, TextArea, Button, ProjectUsers } })
 export default class AddProjectInfo extends Vue {
@@ -194,6 +195,11 @@ export default class AddProjectInfo extends Vue {
   public updateProjectInfoStore!: any;
   @ProjectInfoModule.Action('loadSingleProjectInfo')
   public loadSingleProjectInfo!: any;
+
+  @SharedModule.Getter('isRedirectFromSummaryPage')
+  public isRedirectFromSummaryPage!: boolean;
+  @SharedModule.Action('rediectFromSummaryPage')
+  public rediectFromSummaryPage!: any;
 
   public form: boolean = false;
   private isLoading: boolean = false;
@@ -248,14 +254,13 @@ export default class AddProjectInfo extends Vue {
       users: selectedUserIdx
     };
 
-    if (this.isEditmode) {
+    if (this.showWizardExperience()) {
       data.id = this.id;
       this.updateProjectInfoStore(data);
     } else {
       this.addProjectInfoStore(data);
     }
-    // (this.$refs.form as HTMLFormElement).reset();
-    // this.$router.push('/project/technical/');
+    this.rediectFromSummaryPage(true);
   }
 
   private getUserDetailsByRole(users: any, selectedRole: number) {
@@ -279,9 +284,10 @@ export default class AddProjectInfo extends Vue {
       this.loadSingleProjectInfo(this.id);
     }
   }
-  // private input(value: string) {
-  //   // console.log('value', value);
-  // }
+
+  private showWizardExperience() {
+    return this.isEditmode && this.isRedirectFromSummaryPage;
+  }
 }
 </script>
 
