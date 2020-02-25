@@ -99,7 +99,6 @@
               </v-card>
             </v-col>
 
-            <!-- <v-form ref="form" v-model="form" class="pa-4 pt-6"> -->
             <v-col cols="12" sm="6" v-if="myRole !== 2">
               <ProjectUsers
                 :userDetails="getUserDetailsByRole(users, 2)"
@@ -126,7 +125,6 @@
               <v-card flat>
                 <v-divider></v-divider>
                 <v-card-actions>
-                  <!-- <v-btn text @click="$refs.form.reset()">Clear</v-btn> -->
                   <v-spacer></v-spacer>
                   <Button
                     @click="$router.push(`/project/${id}/summary/`)"

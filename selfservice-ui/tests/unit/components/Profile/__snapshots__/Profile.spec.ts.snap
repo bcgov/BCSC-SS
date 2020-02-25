@@ -6,6 +6,8 @@ exports[`Profile.vue renders props when passed with gettors 1`] = `
   loaderheight="4"
   tag="div"
 >
+  <!---->
+   
   <v-toolbar-stub
     class="bc-subtitle"
     dark="true"
