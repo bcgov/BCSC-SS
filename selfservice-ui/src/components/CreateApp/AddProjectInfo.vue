@@ -74,21 +74,24 @@
                 }}</v-card-subtitle>
                 <v-radio-group v-model.number="myRole" row color="black">
                   <span class="mr-2">{{ $t('projectInfo.myRole') }}</span>
-                  <v-radio class="black-color" v-bind:value="1">
+                  <v-radio
+                    class="black-color"
+                    v-bind:value="projectRoles.developer"
+                  >
                     <template v-slot:label>
                       <span class="black-color">{{
                         $t('projectInfo.DeveloperRole')
                       }}</span>
                     </template>
                   </v-radio>
-                  <v-radio label="Manager" v-bind:value="2">
+                  <v-radio label="Manager" v-bind:value="projectRoles.manager">
                     <template v-slot:label>
                       <span class="black-color">{{
                         $t('projectInfo.ManagerRole')
                       }}</span>
                     </template>
                   </v-radio>
-                  <v-radio v-bind:value="3">
+                  <v-radio v-bind:value="projectRoles.cto">
                     <template v-slot:label>
                       <span class="black-color">{{
                         $t('projectInfo.CTORole')
@@ -99,23 +102,25 @@
               </v-card>
             </v-col>
 
-            <v-col cols="12" sm="6" v-if="myRole !== 2">
+            <v-col cols="12" sm="6" v-if="myRole !== projectRoles.manager">
               <ProjectUsers
-                :userDetails="getUserDetailsByRole(users, 2)"
+                :userDetails="getUserDetailsByRole(users, projectRoles.manager)"
                 :rules="rules"
                 :title="$t('projectInfo.ManagerRole')"
               />
             </v-col>
-            <v-col cols="12" sm="6" v-if="myRole !== 3">
+            <v-col cols="12" sm="6" v-if="myRole !== projectRoles.cto">
               <ProjectUsers
-                :userDetails="getUserDetailsByRole(users, 3)"
+                :userDetails="getUserDetailsByRole(users, projectRoles.cto)"
                 :rules="rules"
                 :title="$t('projectInfo.CTORole')"
               />
             </v-col>
-            <v-col cols="12" sm="6" v-if="myRole !== 1">
+            <v-col cols="12" sm="6" v-if="myRole !== projectRoles.developer">
               <ProjectUsers
-                :userDetails="getUserDetailsByRole(users, 1)"
+                :userDetails="
+                  getUserDetailsByRole(users, projectRoles.developer)
+                "
                 :rules="rules"
                 :title="$t('projectInfo.DeveloperRole')"
               />
@@ -167,6 +172,7 @@ import TextArea from '@/Atomic/TextArea/TextArea.vue';
 import Button from '@/Atomic/Button/Button.vue';
 import ProjectUsers from './ProjectUsers.vue';
 import validationRules from '@/config/validationRules';
+import { projectRoles } from '@/constants/enums';
 
 const ProjectInfoModule = namespace('ProjectInfoModule');
 
@@ -218,7 +224,7 @@ export default class AddProjectInfo extends Vue {
       role: 3
     }
   ];
-
+  private projectRoles: any = projectRoles;
   private isEditmode: boolean = false;
   /* istanbul ignore next */
   private rules = validationRules;
