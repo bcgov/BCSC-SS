@@ -28,17 +28,10 @@ class ProjectUsersAssociation(BaseModel, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     project_id = db.Column(db.Integer, db.ForeignKey('project.id'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    ref_no = db.Column(db.String(20), nullable=True)
     role = db.Column(db.Integer, nullable=False)
 
     user = db.relationship('User', lazy=True, backref=db.backref('projects', lazy=True))
     project = db.relationship('Project', lazy=True, backref=db.backref('users', lazy='subquery'))
-
-    @classmethod
-    def find_by_project_and_user_id(cls, project_id: str, user_id: str) -> ProjectUsersAssociation:
-        """Find association instance by project and user id."""
-        return cls.query.filter((ProjectUsersAssociation.project_id == project_id) &
-                                (ProjectUsersAssociation.user_id == user_id)).first()
 
     @classmethod
     def delete_by_project_id(cls, project_id: str):
@@ -54,6 +47,7 @@ class Project(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
     organization_name = db.Column(db.String(100), nullable=False)
     project_name = db.Column(db.String(100), nullable=False)
     description = db.Column(db.Text(), nullable=False)
+    ref_no = db.Column(db.String(20), nullable=True)
 
     status = db.Column(db.Integer(), nullable=False)
 
@@ -89,16 +83,11 @@ class Project(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
 
     def __create_association__(self, user_id, role):
         """Create an association between user and project."""
-        association = ProjectUsersAssociation.find_by_project_and_user_id(self.id, user_id)
-        if association is None:
-            association = ProjectUsersAssociation()
-            association.user_id = user_id
-            association.project_id = self.id
-            association.role = role
-            association.save()
-        else:
-            association.role = role
-            association.save()
+        association = ProjectUsersAssociation()
+        association.user_id = user_id
+        association.project_id = self.id
+        association.role = role
+        association.save()
 
     @classmethod
     def find_by_id(cls, project_id) -> Project:
@@ -135,6 +124,7 @@ class Project(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
                 project.id,
                 project.project_name as name,
                 project.status,
+                project.ref_no as reference,
                 project_users_association.role
             FROM project
                 JOIN project_users_association ON project.id = project_users_association.project_id
