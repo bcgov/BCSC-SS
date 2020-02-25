@@ -41,6 +41,28 @@ def test_post_technical_req_validation(client, jwt, session):
     assert response.status_code == HTTPStatus.BAD_REQUEST
 
 
+def test_put_technical_req(client, jwt, session):
+    """Assert that the endpoint returns the success status."""
+    headers = ss_client_auth_header(jwt)
+    technical_req = create_technical_req(client, jwt)
+
+    response = client.put(TECHNICALREQ_API.replace(':project_id', str(technical_req['projectId'])),
+                          data=json.dumps(technical_req), headers=headers, content_type='application/json')
+    assert response.status_code == HTTPStatus.OK
+
+
+def test_put_technical_req_validation(client, jwt, session):
+    """Assert that the endpoint returns the failure status."""
+    headers = ss_client_auth_header(jwt)
+    technical_req = create_technical_req(client, jwt)
+    req_data = {}
+
+    response = client.put(TECHNICALREQ_API.replace(':project_id', str(technical_req['projectId'])),
+                          data=json.dumps(req_data), headers=headers, content_type='application/json')
+
+    assert response.status_code == HTTPStatus.BAD_REQUEST
+
+
 def test_patch_technical_req_package(client, jwt, session):
     """Assert that the endpoint returns the success status."""
     technical_req = create_technical_req(client, jwt)
