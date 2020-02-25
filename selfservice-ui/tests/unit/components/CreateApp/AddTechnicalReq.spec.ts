@@ -37,6 +37,16 @@ describe('AddTechnicalReq.vue', () => {
           getSingleTechnicalReq: jest.fn(),
           addTechnicalReq: jest.fn()
         }
+      },
+      SharedModule: {
+        namespaced: true,
+        state: {},
+        getters: {
+          isRedirectFromSummaryPage: jest.fn()
+        },
+        actions: {
+          rediectFromSummaryPage: jest.fn()
+        }
       }
     }
   });
