@@ -28,9 +28,7 @@ class ProjectStatus(IntEnum):
     """This Enum provides the list of Project Status."""
 
     Draft = 1
-    DevSubmitted = 2
-    DevApproved = 3
-    DevActivated = 4
+    Development = 2
 
 
 class Algorithms(Enum):

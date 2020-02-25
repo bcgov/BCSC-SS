@@ -342,6 +342,7 @@ import Loading from '@/Atomic/Loading/Loading.vue';
 const TechnicalReqModule = namespace('TechnicalReqModule');
 const ProjectInfoModule = namespace('ProjectInfoModule');
 const PackageAndTestModule = namespace('PackageAndTestModule');
+const SharedModule = namespace('SharedModule');
 
 @Component({
   components: {
@@ -366,6 +367,8 @@ export default class TestAccountRequest extends Vue {
   @PackageAndTestModule.Action('loadPackage') public loadPackage!: any;
   @PackageAndTestModule.Getter('getPackageList') public getPackageList!: [];
   @ProjectInfoModule.Action('submitProject') public submitProject!: any;
+  @SharedModule.Action('rediectFromSummaryPage')
+  public rediectFromSummaryPage!: any;
 
   private isLoading: boolean = true;
   private projectId: number = this.id || 0;
@@ -460,6 +463,7 @@ export default class TestAccountRequest extends Vue {
       this.loadTechnicalReqDetails(this.id);
     }
     this.loadPackage();
+    this.rediectFromSummaryPage(true);
   }
 }
 </script>

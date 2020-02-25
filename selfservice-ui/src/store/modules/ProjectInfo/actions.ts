@@ -81,12 +81,14 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
   async updateProjectInfo({ commit, dispatch }, data: any) {
     commit('SET_LOADING', true);
     try {
+      const { id } = data;
       await ProjectInfoService.updateProjectInfo(data);
       commit('SET_LOADING', false);
       commit('SET_PROJECTINFO_SUCCESSFULLY', true);
       commit('SET_PROJECTINFO_ERROR', false);
       commit('SET_PROJECTINFO_MESSAGE', i18n.t('PROJECTINFO_UPDATE_MESSAGE'));
       dispatch('loadProjectInfo');
+      router.push(`/project/${id}/summary/`);
     } catch {
       commit('SET_LOADING', false);
       commit('SET_PROJECTINFO_SUCCESSFULLY', false);

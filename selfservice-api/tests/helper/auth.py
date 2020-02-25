@@ -41,6 +41,7 @@ class TestJwtClaims(dict, Enum):
         'family_name': 'ss_client',
         'email': 'developer@email.com',
         'preferred_username': 'ssclientdeveloper',
+        'provider': 'bcsc',
         'realm_access': {
             'roles': [
                 'ss_client'
@@ -55,6 +56,7 @@ class TestJwtClaims(dict, Enum):
         'family_name': 'ss_client',
         'email': 'manager@email.com',
         'preferred_username': 'ssclientmanager',
+        'provider': 'bcsc',
         'realm_access': {
             'roles': [
                 'ss_client'
@@ -69,6 +71,7 @@ class TestJwtClaims(dict, Enum):
         'family_name': 'ss_client',
         'email': 'cto@email.com',
         'preferred_username': 'ssclientcto',
+        'provider': 'bcsc',
         'realm_access': {
             'roles': [
                 'ss_client'
@@ -82,6 +85,7 @@ class TestJwtClaims(dict, Enum):
         'given_name': 'admin',
         'family_name': 'ss',
         'preferred_username': 'ssadmin',
+        'provider': 'idir',
         'realm_access': {
             'roles': [
                 'ss_admin'

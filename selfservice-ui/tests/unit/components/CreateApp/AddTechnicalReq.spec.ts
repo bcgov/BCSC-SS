@@ -2,9 +2,10 @@ import { mount, createLocalVue } from '@vue/test-utils';
 import AddTechnicalReq from '@/components/CreateApp/AddTechnicalReq.vue';
 import Vuetify from 'vuetify';
 import Vuex from 'vuex';
+let vuetify: any;
+vuetify = new Vuetify();
 
 describe('AddTechnicalReq.vue', () => {
-  let vuetify: any;
   let wrapper: any;
   const localVue = createLocalVue();
 
@@ -35,6 +36,16 @@ describe('AddTechnicalReq.vue', () => {
         actions: {
           getSingleTechnicalReq: jest.fn(),
           addTechnicalReq: jest.fn()
+        }
+      },
+      SharedModule: {
+        namespaced: true,
+        state: {},
+        getters: {
+          isRedirectFromSummaryPage: jest.fn()
+        },
+        actions: {
+          rediectFromSummaryPage: jest.fn()
         }
       }
     }

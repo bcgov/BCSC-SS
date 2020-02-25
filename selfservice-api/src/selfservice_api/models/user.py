@@ -46,6 +46,12 @@ class User(AuditDateTimeMixin, BaseModel, db.Model):
             return user
         return None
 
+    def update(self, user_info: dict):
+        """Update user."""
+        self.update_from_dict(['email', 'phone', 'first_name', 'last_name', 'oauth_id'],
+                              user_info)
+        self.commit()
+
     @classmethod
     def find_by_email(cls, email) -> User:
         """Find user instance that matches the email."""
