@@ -6,9 +6,9 @@ import { SharedState } from './types';
  */
 export const mutations: MutationTree<SharedState> = {
   /**
-   * Sets loading
+   * Sets redirect from summary page or not
    * @param {*} state
-   * @param {boolean} flag - loading
+   * @param {boolean} flag
    */
 
   SET_REDIRECT_FROM(state, flag: boolean) {

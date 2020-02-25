@@ -6,7 +6,7 @@ import { SharedState } from './types';
 import { RootState } from '../../types';
 
 /**
- * projectinfo state
+ * Sharedmodule state
  */
 export const state: SharedState = {
   isSummaryPage: true
@@ -14,7 +14,7 @@ export const state: SharedState = {
 
 const namespaced: boolean = true;
 
-const ProjectInfoModule: Module<SharedState, RootState> = {
+const SharedModule: Module<SharedState, RootState> = {
   namespaced,
   state,
   getters,
@@ -22,4 +22,4 @@ const ProjectInfoModule: Module<SharedState, RootState> = {
   mutations
 };
 
-export default ProjectInfoModule;
+export default SharedModule;

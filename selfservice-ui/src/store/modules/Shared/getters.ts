@@ -7,7 +7,7 @@ import { RootState } from '../../types';
  */
 export const getters: GetterTree<SharedState, RootState> = {
   /**
-   * projectinfo
+   * isRedirectFromSummaryPage
    * @param {*} state
    * @returns  {boolean} summary page redirect
    */

@@ -2,12 +2,8 @@ import { ActionTree } from 'vuex';
 import { SharedState } from './types';
 import { RootState } from '../../types';
 
-import i18n from '../../../i18n';
-// import { ProjectInfoService } from '@/services/ProjectInfoService';
-import router from '@/router';
-
 /**
- * projectinfo Actions
+ * shared Actions
  *
  */
 export const actions: ActionTree<SharedState, RootState> = {
