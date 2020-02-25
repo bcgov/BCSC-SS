@@ -7,10 +7,6 @@ let vuetify: any;
 vuetify = new Vuetify();
 
 describe('AddProjectInfo.vue', () => {
-  // beforeEach(() => {
-
-  // vuetify.use(vuetify);
-  // localVue.use(Vuex);
   const store = new Vuex.Store({
     modules: {
       ProjectInfoModule: {
@@ -45,16 +41,6 @@ describe('AddProjectInfo.vue', () => {
       ...options
     });
   };
-  const mountFunction = (options: any) => {
-    return mount(AddProjectInfo, {
-      vuetify,
-      store,
-      mocks: { $t: jest.fn(() => {}) }, // tslint:disable-line
-      sync: false,
-      ...options
-    });
-  };
-  // });
 
   it('renders props when passed', () => {
     const projectInfo = shallowMountFunction({});
