@@ -207,21 +207,21 @@ export default class AddProjectInfo extends Vue {
       phone: '',
       firstName: '',
       lastName: '',
-      role: 1
+      role: projectRoles.developer
     },
     {
       email: '',
       phone: '',
       firstName: '',
       lastName: '',
-      role: 2
+      role: projectRoles.manager
     },
     {
       email: '',
       phone: '',
       firstName: '',
       lastName: '',
-      role: 3
+      role: projectRoles.cto
     }
   ];
   private projectRoles: any = projectRoles;
