@@ -78,9 +78,10 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
    * @param  {} {commit, dispatch}
    * @param  {} projectinfo   list
    */
-  async updateProjectInfo({ commit, dispatch }, data: any) {
+  async updateProjectInfo({ commit, dispatch }, { data, redirect }) {
     commit('SET_LOADING', true);
     try {
+      // const { data, redirect } = projectData;
       const { id } = data;
       await ProjectInfoService.updateProjectInfo(data);
       commit('SET_LOADING', false);
@@ -88,7 +89,7 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
       commit('SET_PROJECTINFO_ERROR', false);
       commit('SET_PROJECTINFO_MESSAGE', i18n.t('PROJECTINFO_UPDATE_MESSAGE'));
       dispatch('loadProjectInfo');
-      router.push(`/project/${id}/summary/`);
+      router.push(`/project/${id}/${redirect}/`);
     } catch {
       commit('SET_LOADING', false);
       commit('SET_PROJECTINFO_SUCCESSFULLY', false);

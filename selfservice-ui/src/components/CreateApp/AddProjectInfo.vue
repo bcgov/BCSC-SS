@@ -20,16 +20,17 @@
           <v-row dense>
             <v-col cols="12" md="12">
               <v-card class="pa-8 pt-6 ma-3">
-                <v-card-title class="headline padding-0">{{
+                <v-card-title class="headline bc-padding-left-0">{{
                   $t('projectInfo.ProjectInfoTitle')
                 }}</v-card-title>
                 <v-card-subtitle
-                  class="text-left padding-0"
+                  class="text-left bc-padding-left-0"
                   v-html="$t('projectInfo.ProjectInfoTitleInfo')"
                 ></v-card-subtitle>
-                <v-card-subtitle class="font-weight-bold text-left padding-0">{{
-                  $t('projectInfo.ProjectOrgTitle')
-                }}</v-card-subtitle>
+                <v-card-subtitle
+                  class="font-weight-bold text-left bc-padding-left-0"
+                  >{{ $t('projectInfo.ProjectOrgTitle') }}</v-card-subtitle
+                >
 
                 <Input
                   v-model="organizationName"
@@ -66,10 +67,10 @@
 
             <v-col cols="12">
               <v-card class="pa-8 pt-6 ma-3">
-                <v-card-title class="headline padding-0">{{
+                <v-card-title class="headline bc-padding-left-0">{{
                   $t('projectInfo.ProjectRoles')
                 }}</v-card-title>
-                <v-card-subtitle class="text-left padding-0">{{
+                <v-card-subtitle class="text-left bc-padding-left-0">{{
                   $t('projectInfo.RolesTitleInfo')
                 }}</v-card-subtitle>
                 <v-radio-group v-model.number="myRole" row color="black">
@@ -130,12 +131,13 @@
               <v-card flat>
                 <v-divider></v-divider>
                 <v-card-actions>
+                  {{ showWizardExperience() }}
                   <v-spacer></v-spacer>
                   <Button
                     @click="$router.push(`/project/${id}/summary/`)"
                     aria-label="Back Button"
                     secondary
-                    v-if="showWizardExperience()"
+                    v-if="!showWizardExperience()"
                     >{{ $t('projectInfo.btnCancel') }}</Button
                   >
                   <Button
@@ -149,8 +151,8 @@
                     >{{
                       $t(
                         showWizardExperience()
-                          ? 'projectInfo.btnsaveChanges'
-                          : 'projectInfo.btnNext'
+                          ? 'projectInfo.btnNext'
+                          : 'projectInfo.btnsaveChanges'
                       )
                     }}</Button
                   >
@@ -254,9 +256,10 @@ export default class AddProjectInfo extends Vue {
       users: selectedUserIdx
     };
 
-    if (this.showWizardExperience()) {
+    if (this.isEditmode) {
       data.id = this.id;
-      this.updateProjectInfoStore(data);
+      const redirect = this.showWizardExperience() ? 'technical' : 'summary';
+      this.updateProjectInfoStore({ data, redirect });
     } else {
       this.addProjectInfoStore(data);
     }
@@ -286,15 +289,12 @@ export default class AddProjectInfo extends Vue {
   }
 
   private showWizardExperience() {
-    return this.isEditmode && this.isRedirectFromSummaryPage;
+    return this.isEditmode && !this.isRedirectFromSummaryPage;
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.padding-0 {
-  padding-left: 0px !important;
-}
 .black-color {
   color: #000 !important;
 }

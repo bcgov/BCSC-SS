@@ -15,7 +15,8 @@
       </v-app-bar>
 
       <v-form ref="form" v-model="form" class="pa-4 pt-6">
-        <v-container>
+        <Loading v-if="isLoading" />
+        <v-container v-else>
           <v-row dense>
             <v-col cols="12" md="12">
               <v-card class="pa-4 pt-6 mb-4">
@@ -23,15 +24,18 @@
                   >Technical information</v-card-title
                 >-->
 
-                <v-card-title class="headline padding-0 text-capitalize">{{
-                  getSingleProjectInfo && getSingleProjectInfo.projectName
-                }}</v-card-title>
-                <v-card-subtitle class="text-left padding-0">{{
+                <v-card-title
+                  class="headline bc-padding-left-0 text-capitalize"
+                  >{{
+                    getSingleProjectInfo && getSingleProjectInfo.projectName
+                  }}</v-card-title
+                >
+                <v-card-subtitle class="text-left bc-padding-left-0">{{
                   $t('technicalRequirements.technicalTitleInfo')
                 }}</v-card-subtitle>
               </v-card>
               <v-card class="pa-4 pt-6">
-                <v-card-subtitle class="text-left padding-0">{{
+                <v-card-subtitle class="text-left bc-padding-left-0">{{
                   $t('technicalRequirements.inputAppText')
                 }}</v-card-subtitle>
                 <Input
@@ -42,31 +46,26 @@
                   :rules="[rules.required, rules.url, rules.maxLength(500)]"
                 />
                 <!-- <div class="col-12"> -->
-                <v-card-subtitle class="text-left padding-0">{{
+                <v-card-subtitle class="text-left bc-padding-left-0">{{
                   $t('technicalRequirements.inputUrlText')
                 }}</v-card-subtitle>
                 <!-- </div> -->
-                <div
+                <!-- <div
                   v-for="(redirectUri, index) in redirectUris"
                   v-bind:key="index"
                   class="row v-form px-4"
-                >
-                  <v-text-field
-                    v-model="redirectUris[index]"
-                    :label="$t('technicalRequirements.labelRedirectUrl')"
-                    type="text"
-                    filled
-                    @blur="addUri"
-                    append-icon="mdi-minus"
-                    @click:append="clearUri(index)"
-                    @click:prepend="addUri"
-                    :rules="[rules.url]"
-                    class="addUri"
-                    outlined
-                  ></v-text-field>
-                  <!-- :rules="[rules.required]" -->
-                </div>
-                <v-card-subtitle class="text-left padding-0">{{
+                > -->
+                <v-text-field
+                  v-model="redirectUris[0]"
+                  :label="$t('technicalRequirements.labelRedirectUrl')"
+                  type="text"
+                  :rules="[rules.url]"
+                  class="addUri"
+                  outlined
+                ></v-text-field>
+                <!-- :rules="[rules.required]" -->
+                <!-- </div> -->
+                <v-card-subtitle class="text-left bc-padding-left-0">{{
                   $t('technicalRequirements.JWKSText')
                 }}</v-card-subtitle>
                 <Input
@@ -116,7 +115,13 @@
                     @click="goBack()"
                     aria-label="Back Button"
                     secondary
-                    >{{ $t('technicalRequirements.btnBack') }}</Button
+                    >{{
+                      $t(
+                        showWizardExperience()
+                          ? 'technicalRequirements.btnBack'
+                          : 'technicalRequirements.btnCancel'
+                      )
+                    }}</Button
                   >
                   <Button
                     :disabled="!form"
@@ -124,7 +129,13 @@
                     class="white--text submit-req ml-6"
                     depressed
                     @click="addTechnicalReq"
-                    >{{ $t('technicalRequirements.next') }}</Button
+                    >{{
+                      $t(
+                        showWizardExperience()
+                          ? 'technicalRequirements.btnNext'
+                          : 'technicalRequirements.btnsaveChanges'
+                      )
+                    }}</Button
                   >
                 </v-card-actions>
               </v-card>
@@ -142,6 +153,7 @@ import Input from '@/Atomic/Input/Input.vue';
 import Button from '@/Atomic/Button/Button.vue';
 import Select from '@/Atomic/Select/Select.vue';
 import validationRules from '@/config/validationRules';
+import Loading from '@/Atomic/Loading/Loading.vue';
 
 import {
   tokenSignatureAlgoritham,
@@ -153,7 +165,7 @@ const ProjectInfoModule = namespace('ProjectInfoModule');
 const SharedModule = namespace('SharedModule');
 
 @Component({
-  components: { Input, Button, Select }
+  components: { Input, Button, Select, Loading }
 })
 export default class AddTechnicalReq extends Vue {
   @Prop({ default: 0 })
@@ -171,17 +183,21 @@ export default class AddTechnicalReq extends Vue {
   public updateTechnicalReqStore!: any;
   @TechnicalReqModule.Action('loadTechnicalReqDetails')
   public loadTechnicalReqDetails!: any;
+  @TechnicalReqModule.Getter('isLoading') public isLoading!: boolean;
 
   @ProjectInfoModule.Getter('getSingleProjectInfo')
   public getSingleProjectInfo!: any;
   @ProjectInfoModule.Action('loadSingleProjectInfo')
   public loadSingleProjectInfo!: any;
   @SharedModule.Action('rediectFromSummaryPage')
-  public rediectFromSummaryPage!: boolean;
+  public rediectFromSummaryPage!: any;
+  @SharedModule.Getter('isRedirectFromSummaryPage')
+  public isRedirectFromSummaryPage!: boolean;
 
   public form: boolean = false;
-  private isLoading: boolean = false;
+  // private isLoading: boolean = this.isLoading;
   private projectId: number = this.id || 0;
+  private TechnicalReqId: number = 0;
   private clientUri: string = '';
   private redirectUris: any = [''];
   private jwksUri: string = '';
@@ -216,8 +232,8 @@ export default class AddTechnicalReq extends Vue {
       userinfoSignedResponseAlg: this.userinfoSignedResponseAlg
     };
 
-    if (this.isEditmode) {
-      data.id = this.id;
+    if (this.isEditmode && this.TechnicalReqId !== 0) {
+      data.id = this.TechnicalReqId;
       this.updateTechnicalReqStore(data);
     } else {
       this.addTechnicalReqStore(data);
@@ -225,50 +241,53 @@ export default class AddTechnicalReq extends Vue {
   }
 
   private updteEdit(val: any) {
-    this.projectId = val.projectId;
+    this.projectId = val.projectId || this.projectId;
     this.clientUri = val.clientUri;
-    this.redirectUris = val.redirectUris;
+    this.redirectUris = val.redirectUris || this.redirectUris;
     this.jwksUri = val.jwksUri;
-    this.idTokenSignedResponseAlg = val.idTokenSignedResponseAlg;
-    this.userinfoSignedResponseAlg = val.userinfoSignedResponseAlg;
-    this.id = val.id;
+    this.idTokenSignedResponseAlg =
+      val.idTokenSignedResponseAlg || this.idTokenSignedResponseAlg;
+    this.userinfoSignedResponseAlg =
+      val.userinfoSignedResponseAlg || this.userinfoSignedResponseAlg;
+    this.TechnicalReqId = val.id || 0;
     this.isEditmode = true;
   }
 
   private mounted() {
     this.isEditmode = false;
-    if (this.action && this.action === 'edit' && this.id !== 0) {
+
+    if (this.id !== 0) {
       this.isEditmode = true;
       this.loadTechnicalReqDetails(this.id);
     }
-
     if (this.getSingleProjectInfo && this.getSingleProjectInfo.id) {
       this.projectId = this.getSingleProjectInfo.id;
     } else {
       this.loadSingleProjectInfo(this.id);
     }
   }
-  private addUri() {
-    const checkEmptyLines = this.redirectUris.filter((uri: any) => uri === '');
-    if (checkEmptyLines.length >= 1 && this.redirectUris.length > 0) {
-      return;
-    }
-    this.redirectUris.push('');
-  }
-  private clearUri(uriId: number) {
-    this.blockRemoval = this.redirectUris.length <= 1;
-    if (!this.blockRemoval) {
-      this.redirectUris.splice(uriId, 1);
-    }
-  }
   private goBack() {
+    const redirectPage = this.showWizardExperience() ? 'info' : 'summary';
     this.rediectFromSummaryPage(false);
-    this.$router.push(`/project/${this.projectId}/info/`);
+    this.$router.push(`/project/${this.projectId}/${redirectPage}/`);
   }
+  private showWizardExperience() {
+    return this.isEditmode && !this.isRedirectFromSummaryPage;
+  }
+
+  // commented out now only one redirect URL
+  // private addUri() {
+  //   const checkEmptyLines = this.redirectUris.filter((uri: any) => uri === '');
+  //   if (checkEmptyLines.length >= 1 && this.redirectUris.length > 0) {
+  //     return;
+  //   }
+  //   this.redirectUris.push('');
+  // }
+  // private clearUri(uriId: number) {
+  //   this.blockRemoval = this.redirectUris.length <= 1;
+  //   if (!this.blockRemoval) {
+  //     this.redirectUris.splice(uriId, 1);
+  //   }
+  // }
 }
 </script>
-<style lang="scss" scoped>
-.padding-0 {
-  padding-left: 0px !important;
-}
-</style>
