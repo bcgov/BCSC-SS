@@ -59,17 +59,17 @@ exports[`AddProjectInfo.vue renders edit props when passed 1`] = `
               tag="div"
             >
               <v-card-title-stub
-                class="headline padding-0"
+                class="headline bc-padding-left-0"
               >
                 
               </v-card-title-stub>
                
               <v-card-subtitle-stub
-                class="text-left padding-0"
+                class="text-left bc-padding-left-0"
               />
                
               <v-card-subtitle-stub
-                class="font-weight-bold text-left padding-0"
+                class="font-weight-bold text-left bc-padding-left-0"
               >
                 
               </v-card-subtitle-stub>
@@ -113,13 +113,13 @@ exports[`AddProjectInfo.vue renders edit props when passed 1`] = `
               tag="div"
             >
               <v-card-title-stub
-                class="headline padding-0"
+                class="headline bc-padding-left-0"
               >
                 
               </v-card-title-stub>
                
               <v-card-subtitle-stub
-                class="text-left padding-0"
+                class="text-left bc-padding-left-0"
               >
                 
               </v-card-subtitle-stub>
@@ -232,6 +232,9 @@ exports[`AddProjectInfo.vue renders edit props when passed 1`] = `
               <v-divider-stub />
                
               <v-card-actions-stub>
+                
+                true
+                
                 <v-spacer-stub />
                  
                 <!---->
@@ -315,17 +318,17 @@ exports[`AddProjectInfo.vue renders props when passed 1`] = `
               tag="div"
             >
               <v-card-title-stub
-                class="headline padding-0"
+                class="headline bc-padding-left-0"
               >
                 
               </v-card-title-stub>
                
               <v-card-subtitle-stub
-                class="text-left padding-0"
+                class="text-left bc-padding-left-0"
               />
                
               <v-card-subtitle-stub
-                class="font-weight-bold text-left padding-0"
+                class="font-weight-bold text-left bc-padding-left-0"
               >
                 
               </v-card-subtitle-stub>
@@ -369,13 +372,13 @@ exports[`AddProjectInfo.vue renders props when passed 1`] = `
               tag="div"
             >
               <v-card-title-stub
-                class="headline padding-0"
+                class="headline bc-padding-left-0"
               >
                 
               </v-card-title-stub>
                
               <v-card-subtitle-stub
-                class="text-left padding-0"
+                class="text-left bc-padding-left-0"
               >
                 
               </v-card-subtitle-stub>
@@ -488,9 +491,19 @@ exports[`AddProjectInfo.vue renders props when passed 1`] = `
               <v-divider-stub />
                
               <v-card-actions-stub>
+                
+                false
+                
                 <v-spacer-stub />
                  
-                <!---->
+                <button-stub
+                  aria-label="Back Button"
+                  name="button"
+                  secondary=""
+                  type="button"
+                >
+                  
+                </button-stub>
                  
                 <button-stub
                   class="white--text submit-project"
