@@ -3,11 +3,7 @@
 <template>
   <v-card class="mx-auto" style="max-width: 80%;">
     <v-toolbar flat class="bc-subtitle" dark>
-      <v-btn
-        icon
-        @click="$router.push(`/project/${projectId}/technical/`)"
-        aria-label="Back Button"
-      >
+      <v-btn icon @click="goBack()" aria-label="Back Button">
         <v-icon>mdi-arrow-left</v-icon>
       </v-btn>
       <v-toolbar-title>{{ $t('selectPackage.pagetitle') }}</v-toolbar-title>
@@ -102,10 +98,7 @@
         <v-card-actions>
           <!-- <v-btn text @click="$refs.form.reset()">Clear</v-btn> -->
           <v-spacer></v-spacer>
-          <Button
-            @click="$router.push(`/project/${projectId}/technical/`)"
-            aria-label="Back Button"
-            secondary
+          <Button @click="goBack()" aria-label="Back Button" secondary
             >Go Back</Button
           >
           <Button
@@ -127,6 +120,7 @@ import { Component, Vue, Watch, Prop } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
 import Button from '@/Atomic/Button/Button.vue';
 const PackageAndTestModule = namespace('PackageAndTestModule');
+const SharedModule = namespace('SharedModule');
 
 @Component({
   components: {
@@ -143,6 +137,8 @@ export default class ListPackage extends Vue {
   @PackageAndTestModule.Action('clearStatus') public clearStatus!: any;
   @PackageAndTestModule.Action('addPackagetoProject')
   public addPackagetoProject!: any;
+  @SharedModule.Action('rediectFromSummaryPage')
+  public rediectFromSummaryPage!: any;
 
   private slectedPackage: number = 1;
   private isLoading: boolean = false;
@@ -165,6 +161,11 @@ export default class ListPackage extends Vue {
       slectedPackage: this.slectedPackage,
       projectId: this.projectId
     });
+  }
+
+  private goBack() {
+    this.rediectFromSummaryPage(false);
+    this.$router.push(`/project/${this.projectId}/technical/`);
   }
 }
 </script>

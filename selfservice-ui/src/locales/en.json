@@ -26,7 +26,7 @@
     "CTORole": "Executive Sponsor",
     "DeveloperRole": "Developer",
     "btnNext": "Next",
-    "btnsaveChanges": "Save Changes",
+    "btnSaveChanges": "Save Changes",
     "btnCancel": "Cancel"
   },
   "technicalRequirements": {
@@ -35,14 +35,16 @@
     "projectName": "Project name:",
     "inputAppText": "Add the URL of your application home page, or where users will go to understand what your application does.",
     "inputUrlText": "Input the URL(s) of your redirect location(s). These are potential URL addresses to which we could redirect your application on successful user authentication. If you have multiple redirects, use one field for each URL.",
-    "labelApplicationUrl": "Application URL",
+    "labelApplicationUrl": "Home page URL",
     "labelRedirectUrl": "Redirect URI values",
     "JWKSText": "Input the URL to your JSON Web Key Set (JWKS). The BC Services Card implementation of OIDC requires you to implement a URL from which your JWKS can be obtained. You also need to tell us which cryptographic algorithms we should use for ID tokens and user information signed responses. (default is RS256).",
     "labelJWKSUrl": "JWKS URL",
     "labelIdTokenSignedResponseAlg": "ID token signature algorithm",
     "labelUserinfoSignedResponseAlg": "User info signed response algorithm",
     "btnBack": "Go Back",
-    "next": "Next"
+    "btnNext": "Next",
+    "btnCancel": "Cancel",
+    "btnSaveChanges": "Save Changes"
   },
   "selectPackage": {
     "pagetitle": "Select Package",

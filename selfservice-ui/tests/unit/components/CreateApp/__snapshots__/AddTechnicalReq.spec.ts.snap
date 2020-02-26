@@ -60,13 +60,13 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
               class="pa-4 pt-6 mb-4 v-card v-sheet theme--light"
             >
               <div
-                class="v-card__title headline padding-0 text-capitalize"
+                class="v-card__title headline bc-padding-left-0 text-capitalize"
               >
                 
               </div>
                
               <div
-                class="v-card__subtitle text-left padding-0"
+                class="v-card__subtitle text-left bc-padding-left-0"
               >
                 
               </div>
@@ -76,7 +76,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
               class="pa-4 pt-6 v-card v-sheet theme--light"
             >
               <div
-                class="v-card__subtitle text-left padding-0"
+                class="v-card__subtitle text-left bc-padding-left-0"
               >
                 
               </div>
@@ -139,73 +139,58 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
               </div>
                
               <div
-                class="v-card__subtitle text-left padding-0"
+                class="v-card__subtitle text-left bc-padding-left-0"
               >
                 
               </div>
                
               <div
-                class="row v-form px-4"
+                class="v-input addUri theme--light v-text-field v-text-field--enclosed v-text-field--outlined"
               >
                 <div
-                  class="v-input addUri theme--light v-text-field v-text-field--single-line v-text-field--filled v-text-field--enclosed v-text-field--outlined"
+                  class="v-input__control"
                 >
                   <div
-                    class="v-input__control"
+                    class="v-input__slot"
+                  >
+                    <fieldset
+                      aria-hidden="true"
+                    >
+                      <legend
+                        style="width: 0px;"
+                      >
+                        <span>
+                          ​
+                        </span>
+                      </legend>
+                    </fieldset>
+                    <div
+                      class="v-text-field__slot"
+                    >
+                      <input
+                        id="input-17"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    class="v-text-field__details"
                   >
                     <div
-                      class="v-input__slot"
+                      class="v-messages theme--light"
                     >
-                      <fieldset
-                        aria-hidden="true"
-                      >
-                        <legend>
-                          <span>
-                            ​
-                          </span>
-                        </legend>
-                      </fieldset>
-                      <div
-                        class="v-text-field__slot"
-                      >
-                        <input
-                          id="input-17"
-                          type="text"
-                        />
-                      </div>
-                      <div
-                        class="v-input__append-inner"
-                      >
-                        <div
-                          class="v-input__icon v-input__icon--append"
-                        >
-                          <i
-                            class="v-icon notranslate v-icon--link mdi mdi-minus theme--light"
-                            role="button"
-                            tabindex="0"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      class="v-text-field__details"
-                    >
-                      <div
-                        class="v-messages theme--light"
-                      >
-                        <span
-                          class="v-messages__wrapper"
-                          name="message-transition"
-                          tag="div"
-                        />
-                      </div>
+                      <span
+                        class="v-messages__wrapper"
+                        name="message-transition"
+                        tag="div"
+                      />
                     </div>
                   </div>
                 </div>
               </div>
                
               <div
-                class="v-card__subtitle text-left padding-0"
+                class="v-card__subtitle text-left bc-padding-left-0"
               >
                 
               </div>
@@ -241,7 +226,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                       class="v-text-field__slot"
                     >
                       <input
-                        id="input-22"
+                        id="input-21"
                         type="text"
                       />
                     </div>
@@ -285,7 +270,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                       <div
                         aria-expanded="false"
                         aria-haspopup="listbox"
-                        aria-owns="list-26"
+                        aria-owns="list-25"
                         class="v-input__slot"
                         role="button"
                       >
@@ -314,7 +299,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                             <input
                               aria-readonly="true"
                               autocomplete="off"
-                              id="input-26"
+                              id="input-25"
                               readonly="readonly"
                               type="text"
                             />
@@ -381,7 +366,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                       <div
                         aria-expanded="false"
                         aria-haspopup="listbox"
-                        aria-owns="list-34"
+                        aria-owns="list-33"
                         class="v-input__slot"
                         role="button"
                       >
@@ -410,7 +395,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                             <input
                               aria-readonly="true"
                               autocomplete="off"
-                              id="input-34"
+                              id="input-33"
                               readonly="readonly"
                               type="text"
                             />
@@ -568,13 +553,13 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
               class="pa-4 pt-6 mb-4 v-card v-sheet theme--light"
             >
               <div
-                class="v-card__title headline padding-0 text-capitalize"
+                class="v-card__title headline bc-padding-left-0 text-capitalize"
               >
                 
               </div>
                
               <div
-                class="v-card__subtitle text-left padding-0"
+                class="v-card__subtitle text-left bc-padding-left-0"
               >
                 
               </div>
@@ -584,7 +569,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
               class="pa-4 pt-6 v-card v-sheet theme--light"
             >
               <div
-                class="v-card__subtitle text-left padding-0"
+                class="v-card__subtitle text-left bc-padding-left-0"
               >
                 
               </div>
@@ -620,7 +605,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                       class="v-text-field__slot"
                     >
                       <input
-                        id="input-58"
+                        id="input-57"
                         type="text"
                       />
                     </div>
@@ -647,73 +632,58 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
               </div>
                
               <div
-                class="v-card__subtitle text-left padding-0"
+                class="v-card__subtitle text-left bc-padding-left-0"
               >
                 
               </div>
                
               <div
-                class="row v-form px-4"
+                class="v-input addUri theme--light v-text-field v-text-field--enclosed v-text-field--outlined"
               >
                 <div
-                  class="v-input addUri theme--light v-text-field v-text-field--single-line v-text-field--filled v-text-field--enclosed v-text-field--outlined"
+                  class="v-input__control"
                 >
                   <div
-                    class="v-input__control"
+                    class="v-input__slot"
+                  >
+                    <fieldset
+                      aria-hidden="true"
+                    >
+                      <legend
+                        style="width: 0px;"
+                      >
+                        <span>
+                          ​
+                        </span>
+                      </legend>
+                    </fieldset>
+                    <div
+                      class="v-text-field__slot"
+                    >
+                      <input
+                        id="input-60"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    class="v-text-field__details"
                   >
                     <div
-                      class="v-input__slot"
+                      class="v-messages theme--light"
                     >
-                      <fieldset
-                        aria-hidden="true"
-                      >
-                        <legend>
-                          <span>
-                            ​
-                          </span>
-                        </legend>
-                      </fieldset>
-                      <div
-                        class="v-text-field__slot"
-                      >
-                        <input
-                          id="input-61"
-                          type="text"
-                        />
-                      </div>
-                      <div
-                        class="v-input__append-inner"
-                      >
-                        <div
-                          class="v-input__icon v-input__icon--append"
-                        >
-                          <i
-                            class="v-icon notranslate v-icon--link mdi mdi-minus theme--light"
-                            role="button"
-                            tabindex="0"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      class="v-text-field__details"
-                    >
-                      <div
-                        class="v-messages theme--light"
-                      >
-                        <span
-                          class="v-messages__wrapper"
-                          name="message-transition"
-                          tag="div"
-                        />
-                      </div>
+                      <span
+                        class="v-messages__wrapper"
+                        name="message-transition"
+                        tag="div"
+                      />
                     </div>
                   </div>
                 </div>
               </div>
                
               <div
-                class="v-card__subtitle text-left padding-0"
+                class="v-card__subtitle text-left bc-padding-left-0"
               >
                 
               </div>
@@ -749,7 +719,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                       class="v-text-field__slot"
                     >
                       <input
-                        id="input-66"
+                        id="input-64"
                         type="text"
                       />
                     </div>
@@ -793,7 +763,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                       <div
                         aria-expanded="false"
                         aria-haspopup="listbox"
-                        aria-owns="list-70"
+                        aria-owns="list-68"
                         class="v-input__slot"
                         role="button"
                       >
@@ -822,7 +792,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                             <input
                               aria-readonly="true"
                               autocomplete="off"
-                              id="input-70"
+                              id="input-68"
                               readonly="readonly"
                               type="text"
                             />
@@ -889,7 +859,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                       <div
                         aria-expanded="false"
                         aria-haspopup="listbox"
-                        aria-owns="list-78"
+                        aria-owns="list-76"
                         class="v-input__slot"
                         role="button"
                       >
@@ -918,7 +888,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                             <input
                               aria-readonly="true"
                               autocomplete="off"
-                              id="input-78"
+                              id="input-76"
                               readonly="readonly"
                               type="text"
                             />
@@ -1076,13 +1046,13 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
               class="pa-4 pt-6 mb-4 v-card v-sheet theme--light"
             >
               <div
-                class="v-card__title headline padding-0 text-capitalize"
+                class="v-card__title headline bc-padding-left-0 text-capitalize"
               >
                 
               </div>
                
               <div
-                class="v-card__subtitle text-left padding-0"
+                class="v-card__subtitle text-left bc-padding-left-0"
               >
                 
               </div>
@@ -1092,7 +1062,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
               class="pa-4 pt-6 v-card v-sheet theme--light"
             >
               <div
-                class="v-card__subtitle text-left padding-0"
+                class="v-card__subtitle text-left bc-padding-left-0"
               >
                 
               </div>
@@ -1128,7 +1098,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                       class="v-text-field__slot"
                     >
                       <input
-                        id="input-102"
+                        id="input-100"
                         type="text"
                       />
                     </div>
@@ -1155,73 +1125,58 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
               </div>
                
               <div
-                class="v-card__subtitle text-left padding-0"
+                class="v-card__subtitle text-left bc-padding-left-0"
               >
                 
               </div>
                
               <div
-                class="row v-form px-4"
+                class="v-input addUri theme--light v-text-field v-text-field--enclosed v-text-field--outlined"
               >
                 <div
-                  class="v-input addUri theme--light v-text-field v-text-field--single-line v-text-field--filled v-text-field--enclosed v-text-field--outlined"
+                  class="v-input__control"
                 >
                   <div
-                    class="v-input__control"
+                    class="v-input__slot"
+                  >
+                    <fieldset
+                      aria-hidden="true"
+                    >
+                      <legend
+                        style="width: 0px;"
+                      >
+                        <span>
+                          ​
+                        </span>
+                      </legend>
+                    </fieldset>
+                    <div
+                      class="v-text-field__slot"
+                    >
+                      <input
+                        id="input-103"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    class="v-text-field__details"
                   >
                     <div
-                      class="v-input__slot"
+                      class="v-messages theme--light"
                     >
-                      <fieldset
-                        aria-hidden="true"
-                      >
-                        <legend>
-                          <span>
-                            ​
-                          </span>
-                        </legend>
-                      </fieldset>
-                      <div
-                        class="v-text-field__slot"
-                      >
-                        <input
-                          id="input-105"
-                          type="text"
-                        />
-                      </div>
-                      <div
-                        class="v-input__append-inner"
-                      >
-                        <div
-                          class="v-input__icon v-input__icon--append"
-                        >
-                          <i
-                            class="v-icon notranslate v-icon--link mdi mdi-minus theme--light"
-                            role="button"
-                            tabindex="0"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      class="v-text-field__details"
-                    >
-                      <div
-                        class="v-messages theme--light"
-                      >
-                        <span
-                          class="v-messages__wrapper"
-                          name="message-transition"
-                          tag="div"
-                        />
-                      </div>
+                      <span
+                        class="v-messages__wrapper"
+                        name="message-transition"
+                        tag="div"
+                      />
                     </div>
                   </div>
                 </div>
               </div>
                
               <div
-                class="v-card__subtitle text-left padding-0"
+                class="v-card__subtitle text-left bc-padding-left-0"
               >
                 
               </div>
@@ -1257,7 +1212,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                       class="v-text-field__slot"
                     >
                       <input
-                        id="input-110"
+                        id="input-107"
                         type="text"
                       />
                     </div>
@@ -1301,7 +1256,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                       <div
                         aria-expanded="false"
                         aria-haspopup="listbox"
-                        aria-owns="list-114"
+                        aria-owns="list-111"
                         class="v-input__slot"
                         role="button"
                       >
@@ -1330,7 +1285,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                             <input
                               aria-readonly="true"
                               autocomplete="off"
-                              id="input-114"
+                              id="input-111"
                               readonly="readonly"
                               type="text"
                             />
@@ -1397,7 +1352,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                       <div
                         aria-expanded="false"
                         aria-haspopup="listbox"
-                        aria-owns="list-122"
+                        aria-owns="list-119"
                         class="v-input__slot"
                         role="button"
                       >
@@ -1426,7 +1381,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                             <input
                               aria-readonly="true"
                               autocomplete="off"
-                              id="input-122"
+                              id="input-119"
                               readonly="readonly"
                               type="text"
                             />
