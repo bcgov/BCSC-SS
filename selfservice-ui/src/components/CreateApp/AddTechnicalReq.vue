@@ -1,7 +1,7 @@
 /** * Add TechnicalReq */
 <template>
   <v-card class="mx-auto" style="max-width: 80%;">
-    <!--  <v-alert type="success" v-if="successStatus">TechnicalReq {{isEditmode ? 'Updated' : 'Added'}} succesfully</v-alert>
+    <!--  <v-alert type="success" v-if="successStatus">TechnicalReq {{isEditMode ? 'Updated' : 'Added'}} succesfully</v-alert>
     <v-alert type="error" v-if="errorStatus">Something went wrong...</v-alert>-->
     <v-card class="mx-auto">
       <v-app-bar dark class="bc-subtitle">
@@ -133,7 +133,7 @@
                       $t(
                         showWizardExperience()
                           ? 'technicalRequirements.btnNext'
-                          : 'technicalRequirements.btnsaveChanges'
+                          : 'technicalRequirements.btnSaveChanges'
                       )
                     }}</Button
                   >
@@ -208,7 +208,7 @@ export default class AddTechnicalReq extends Vue {
   private blockRemoval = true;
 
   // private id: string = '';
-  private isEditmode: boolean = false;
+  private isEditMode: boolean = false;
   /* istanbul ignore next */
   private rules = validationRules;
 
@@ -232,7 +232,7 @@ export default class AddTechnicalReq extends Vue {
       userinfoSignedResponseAlg: this.userinfoSignedResponseAlg
     };
 
-    if (this.isEditmode && this.TechnicalReqId !== 0) {
+    if (this.isEditMode && this.TechnicalReqId !== 0) {
       data.id = this.TechnicalReqId;
       this.updateTechnicalReqStore(data);
     } else {
@@ -250,14 +250,14 @@ export default class AddTechnicalReq extends Vue {
     this.userinfoSignedResponseAlg =
       val.userinfoSignedResponseAlg || this.userinfoSignedResponseAlg;
     this.TechnicalReqId = val.id || 0;
-    this.isEditmode = true;
+    this.isEditMode = true;
   }
 
   private mounted() {
-    this.isEditmode = false;
+    this.isEditMode = false;
 
     if (this.id !== 0) {
-      this.isEditmode = true;
+      this.isEditMode = true;
       this.loadTechnicalReqDetails(this.id);
     }
     if (this.getSingleProjectInfo && this.getSingleProjectInfo.id) {
@@ -272,7 +272,7 @@ export default class AddTechnicalReq extends Vue {
     this.$router.push(`/project/${this.projectId}/${redirectPage}/`);
   }
   private showWizardExperience() {
-    return this.isEditmode && !this.isRedirectFromSummaryPage;
+    return this.isEditMode && !this.isRedirectFromSummaryPage;
   }
 
   // commented out now only one redirect URL

@@ -152,7 +152,7 @@
                       $t(
                         showWizardExperience()
                           ? 'projectInfo.btnNext'
-                          : 'projectInfo.btnsaveChanges'
+                          : 'projectInfo.btnSaveChanges'
                       )
                     }}</Button
                   >
@@ -233,7 +233,7 @@ export default class AddProjectInfo extends Vue {
     }
   ];
   private projectRoles: any = projectRoles;
-  private isEditmode: boolean = false;
+  private isEditMode: boolean = false;
   /* istanbul ignore next */
   private rules = validationRules;
 
@@ -256,10 +256,9 @@ export default class AddProjectInfo extends Vue {
       users: selectedUserIdx
     };
 
-    if (this.isEditmode) {
+    if (this.isEditMode) {
       data.id = this.id;
-      const redirect = this.showWizardExperience() ? 'technical' : 'summary';
-      this.updateProjectInfoStore({ data, redirect });
+      this.updateProjectInfoStore(data);
     } else {
       this.addProjectInfoStore(data);
     }
@@ -277,19 +276,19 @@ export default class AddProjectInfo extends Vue {
     this.myRole = val.myRole;
     this.users = val.users;
     // this.id = val.id;
-    this.isEditmode = true;
+    this.isEditMode = true;
   }
 
   private mounted() {
-    this.isEditmode = false;
+    this.isEditMode = false;
     if (this.id !== '') {
-      this.isEditmode = true;
+      this.isEditMode = true;
       this.loadSingleProjectInfo(this.id);
     }
   }
 
   private showWizardExperience() {
-    return this.isEditmode && !this.isRedirectFromSummaryPage;
+    return this.isEditMode && !this.isRedirectFromSummaryPage;
   }
 }
 </script>

@@ -78,10 +78,12 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
    * @param  {} {commit, dispatch}
    * @param  {} projectinfo   list
    */
-  async updateProjectInfo({ commit, dispatch }, { data, redirect }) {
+  async updateProjectInfo({ commit, dispatch, rootState }, data) {
     commit('SET_LOADING', true);
     try {
       // const { data, redirect } = projectData;
+      const isRedirectFromSummaryPage = rootState.SharedModule.isSummaryPage;
+      const redirect = !isRedirectFromSummaryPage ? 'technical' : 'summary';
       const { id } = data;
       await ProjectInfoService.updateProjectInfo(data);
       commit('SET_LOADING', false);

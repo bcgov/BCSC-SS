@@ -26,7 +26,7 @@
     "CTORole": "Executive Sponsor",
     "DeveloperRole": "Developer",
     "btnNext": "Next",
-    "btnsaveChanges": "Save Changes",
+    "btnSaveChanges": "Save Changes",
     "btnCancel": "Cancel"
   },
   "technicalRequirements": {
@@ -44,7 +44,7 @@
     "btnBack": "Go Back",
     "btnNext": "Next",
     "btnCancel": "Cancel",
-    "btnsaveChanges": "Save Changes"
+    "btnSaveChanges": "Save Changes"
   },
   "selectPackage": {
     "pagetitle": "Select Package",
