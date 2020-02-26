@@ -20,10 +20,6 @@
           <v-row dense>
             <v-col cols="12" md="12">
               <v-card class="pa-4 pt-6 mb-4">
-                <!-- <v-card-title class="headline"
-                  >Technical information</v-card-title
-                >-->
-
                 <v-card-title
                   class="headline bc-padding-left-0 text-capitalize"
                   >{{
@@ -109,7 +105,6 @@
                 <!-- </v-form> -->
                 <v-divider></v-divider>
                 <v-card-actions>
-                  <!-- <v-btn text @click="$refs.form.reset()">Clear</v-btn> -->
                   <v-spacer></v-spacer>
                   <Button
                     @click="goBack()"
@@ -128,7 +123,7 @@
                     :loading="isLoading"
                     class="white--text submit-req ml-6"
                     depressed
-                    @click="addTechnicalReq"
+                    @click="addTechnicalReq()"
                     >{{
                       $t(
                         showWizardExperience()
@@ -195,7 +190,6 @@ export default class AddTechnicalReq extends Vue {
   public isRedirectFromSummaryPage!: boolean;
 
   public form: boolean = false;
-  // private isLoading: boolean = this.isLoading;
   private projectId: number = this.id || 0;
   private TechnicalReqId: number = 0;
   private clientUri: string = '';
@@ -272,7 +266,10 @@ export default class AddTechnicalReq extends Vue {
     this.$router.push(`/project/${this.projectId}/${redirectPage}/`);
   }
   private showWizardExperience() {
-    return this.isEditMode && !this.isRedirectFromSummaryPage;
+    if (this.isEditMode && this.isRedirectFromSummaryPage) {
+      return false;
+    }
+    return true;
   }
 
   // commented out now only one redirect URL

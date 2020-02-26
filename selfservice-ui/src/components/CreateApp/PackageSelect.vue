@@ -3,7 +3,7 @@
 <template>
   <v-card class="mx-auto" style="max-width: 80%;">
     <v-toolbar flat class="bc-subtitle" dark>
-      <v-btn icon @click="goBack()" aria-label="Back Button">
+      <v-btn icon @click="goBack()" :aria-label="$t('selectPackage.btnBack')">
         <v-icon>mdi-arrow-left</v-icon>
       </v-btn>
       <v-toolbar-title>{{ $t('selectPackage.pagetitle') }}</v-toolbar-title>
@@ -98,8 +98,12 @@
         <v-card-actions>
           <!-- <v-btn text @click="$refs.form.reset()">Clear</v-btn> -->
           <v-spacer></v-spacer>
-          <Button @click="goBack()" aria-label="Back Button" secondary
-            >Go Back</Button
+          <Button
+            @click="goBack()"
+            :aria-label="$t('selectPackage.btnBack')"
+            secondary
+          >
+            {{ $t('selectPackage.btnBack') }}</Button
           >
           <Button
             :disabled="!slectedPackage"
@@ -108,7 +112,7 @@
             color="indigo accent-4"
             depressed
             @click="submitPackage"
-            >Next</Button
+            >{{ $t('selectPackage.btnNext') }}</Button
           >
         </v-card-actions>
       </v-card>

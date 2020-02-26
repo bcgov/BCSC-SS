@@ -261,7 +261,6 @@ export default class AddProjectInfo extends Vue {
     } else {
       this.addProjectInfoStore(data);
     }
-    this.rediectFromSummaryPage(true);
   }
 
   private getUserDetailsByRole(users: any, selectedRole: number) {
@@ -287,7 +286,10 @@ export default class AddProjectInfo extends Vue {
   }
 
   private showWizardExperience() {
-    return this.isEditMode && !this.isRedirectFromSummaryPage;
+    if (this.isEditMode && this.isRedirectFromSummaryPage) {
+      return false;
+    }
+    return true;
   }
 }
 </script>

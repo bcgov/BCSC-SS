@@ -14,7 +14,7 @@ export const actions: ActionTree<TechnicalReqState, RootState> = {
    * @param  {} {commit, dispatch}
    * @param  {} technicalreq  list
    */
-  async addTechnicalReq({ commit, rootState }, data) {
+  async addTechnicalReq({ commit, rootState, dispatch }, data) {
     commit('SET_LOADING', true);
     try {
       await TechnicalReqService.createTechnicalReq(data);
@@ -26,7 +26,8 @@ export const actions: ActionTree<TechnicalReqState, RootState> = {
       // dispatch('loadTechnicalReq');
       const projectId =
         data.projectId || rootState.ProjectInfoModule.singleProjectInfo;
-      router.push(`/project/${projectId}/package/`);
+      dispatch('redirect', projectId);
+      // router.push(`/project/${projectId}/package/`);
     } catch {
       commit('SET_TECHNICALREQ_SUCCESSFULLY', false);
       commit('SET_TECHNICALREQ_ERROR', true);
@@ -67,7 +68,7 @@ export const actions: ActionTree<TechnicalReqState, RootState> = {
    * @param  {} technicalreq   list
    */
   async updateTechnicalReq(state, data: any) {
-    const { commit, rootState } = state;
+    const { commit, rootState, dispatch } = state;
     const isRedirectFromSummaryPage =
       state.rootState.SharedModule.isSummaryPage;
     commit('SET_LOADING', true);
@@ -77,16 +78,20 @@ export const actions: ActionTree<TechnicalReqState, RootState> = {
       commit('SET_TECHNICALREQ_SUCCESSFULLY', true);
       commit('SET_TECHNICALREQ_ERROR', false);
       commit('SET_TECHNICALREQ_MESSAGE', i18n.t('TECHNICALREQ_UPDATE_MESSAGE'));
-
-      const nextPage = isRedirectFromSummaryPage ? 'summary' : 'package';
       const projectId =
         data.projectId || rootState.ProjectInfoModule.singleProjectInfo;
-      router.push(`/project/${projectId}/${nextPage}/`);
+      dispatch('redirect', projectId);
     } catch {
       commit('SET_LOADING', false);
       commit('SET_TECHNICALREQ_SUCCESSFULLY', false);
       commit('SET_TECHNICALREQ_ERROR', true);
       commit('SET_TECHNICALREQMESSAGE', '');
     }
+  },
+  redirect(state, projectId) {
+    const isRedirectFromSummaryPage =
+      state.rootState.SharedModule.isSummaryPage;
+    const nextPage = isRedirectFromSummaryPage ? 'summary' : 'package';
+    router.push(`/project/${projectId}/${nextPage}/`);
   }
 };
