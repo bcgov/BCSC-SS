@@ -131,7 +131,6 @@
               <v-card flat>
                 <v-divider></v-divider>
                 <v-card-actions>
-                  {{ showWizardExperience() }}
                   <v-spacer></v-spacer>
                   <Button
                     @click="$router.push(`/project/${id}/summary/`)"

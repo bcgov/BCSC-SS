@@ -232,9 +232,6 @@ exports[`AddProjectInfo.vue renders edit props when passed 1`] = `
               <v-divider-stub />
                
               <v-card-actions-stub>
-                
-                true
-                
                 <v-spacer-stub />
                  
                 <!---->
@@ -491,9 +488,6 @@ exports[`AddProjectInfo.vue renders props when passed 1`] = `
               <v-divider-stub />
                
               <v-card-actions-stub>
-                
-                false
-                
                 <v-spacer-stub />
                  
                 <button-stub
