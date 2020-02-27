@@ -184,8 +184,8 @@ export default class AddTechnicalReq extends Vue {
   public getSingleProjectInfo!: any;
   @ProjectInfoModule.Action('loadSingleProjectInfo')
   public loadSingleProjectInfo!: any;
-  @SharedModule.Action('rediectFromSummaryPage')
-  public rediectFromSummaryPage!: any;
+  @SharedModule.Action('redirectFromSummaryPage')
+  public redirectFromSummaryPage!: any;
   @SharedModule.Getter('isRedirectFromSummaryPage')
   public isRedirectFromSummaryPage!: boolean;
 
@@ -262,7 +262,7 @@ export default class AddTechnicalReq extends Vue {
   }
   private goBack() {
     const redirectPage = this.showWizardExperience() ? 'info' : 'summary';
-    this.rediectFromSummaryPage(false);
+    this.redirectFromSummaryPage(false);
     this.$router.push(`/project/${this.projectId}/${redirectPage}/`);
   }
   private showWizardExperience() {

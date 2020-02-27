@@ -11,7 +11,7 @@ export const actions: ActionTree<SharedState, RootState> = {
    * @param  {} {commit}
    * @param  {} flag redirectfromsummary page
    */
-  async rediectFromSummaryPage({ commit }, flag: boolean) {
+  async redirectFromSummaryPage({ commit }, flag: boolean) {
     commit('SET_REDIRECT_FROM', flag);
   }
 };

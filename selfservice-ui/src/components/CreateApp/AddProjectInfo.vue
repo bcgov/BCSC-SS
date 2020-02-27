@@ -199,8 +199,8 @@ export default class AddProjectInfo extends Vue {
 
   @SharedModule.Getter('isRedirectFromSummaryPage')
   public isRedirectFromSummaryPage!: boolean;
-  @SharedModule.Action('rediectFromSummaryPage')
-  public rediectFromSummaryPage!: any;
+  @SharedModule.Action('redirectFromSummaryPage')
+  public redirectFromSummaryPage!: any;
 
   public form: boolean = false;
   private isLoading: boolean = false;
@@ -259,11 +259,11 @@ export default class AddProjectInfo extends Vue {
       data.id = this.id;
       this.updateProjectInfoStore(data);
       if (!this.showWizardExperience()) {
-        this.rediectFromSummaryPage(true);
+        this.redirectFromSummaryPage(true);
       }
     } else {
       this.addProjectInfoStore(data);
-      this.rediectFromSummaryPage(false);
+      this.redirectFromSummaryPage(false);
     }
   }
 

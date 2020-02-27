@@ -27,7 +27,7 @@ describe('AddProjectInfo.vue', () => {
           isRedirectFromSummaryPage: jest.fn()
         },
         actions: {
-          rediectFromSummaryPage: jest.fn()
+          redirectFromSummaryPage: jest.fn()
         }
       }
     }

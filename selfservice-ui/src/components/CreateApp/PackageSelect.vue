@@ -142,8 +142,8 @@ export default class ListPackage extends Vue {
   @PackageAndTestModule.Action('clearStatus') public clearStatus!: any;
   @PackageAndTestModule.Action('addPackagetoProject')
   public addPackagetoProject!: any;
-  @SharedModule.Action('rediectFromSummaryPage')
-  public rediectFromSummaryPage!: any;
+  @SharedModule.Action('redirectFromSummaryPage')
+  public redirectFromSummaryPage!: any;
 
   @TechnicalReqModule.Action('loadTechnicalReqDetails')
   public loadTechnicalReqDetails!: any;
@@ -183,7 +183,7 @@ export default class ListPackage extends Vue {
   }
 
   private goBack() {
-    this.rediectFromSummaryPage(false);
+    this.redirectFromSummaryPage(false);
     this.$router.push(`/project/${this.projectId}/technical/`);
   }
 }
