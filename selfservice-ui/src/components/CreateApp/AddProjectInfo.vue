@@ -258,8 +258,12 @@ export default class AddProjectInfo extends Vue {
     if (this.isEditMode) {
       data.id = this.id;
       this.updateProjectInfoStore(data);
+      if (!this.showWizardExperience()) {
+        this.rediectFromSummaryPage(true);
+      }
     } else {
       this.addProjectInfoStore(data);
+      this.rediectFromSummaryPage(false);
     }
   }
 
