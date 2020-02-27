@@ -208,6 +208,26 @@ objects:
               configMapKeyRef:
                 name: "${DB_NAME}-${TAG_NAME}-config"
                 key: DATABASE_URL
+          - name: DYNAMIC_PROD_API_URL
+            valueFrom:
+              configMapKeyRef:
+                name: "${API_NAME}-${TAG_NAME}-config"
+                key: DYNAMIC_PROD_API_URL
+          - name: DYNAMIC_TEST_API_URL
+            valueFrom:
+              configMapKeyRef:
+                name: "${API_NAME}-${TAG_NAME}-config"
+                key: DYNAMIC_TEST_API_URL
+          - name: DYNAMIC_PROD_API_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: "${API_NAME}-${TAG_NAME}-secret"
+                key: DYNAMIC_PROD_API_TOKEN
+          - name: DYNAMIC_TEST_API_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: "${API_NAME}-${TAG_NAME}-secret"
+                key: DYNAMIC_TEST_API_TOKEN
           resources:
             requests:
               cpu: "${CPU_REQUEST}"
@@ -316,7 +336,7 @@ parameters:
   displayName: Database App Name
   description: A valid database app name used by the service.
   required: true
-  value: selfservice-db
+  value: patroni-persistent
 - name: CPU_REQUEST
   displayName: Resources CPU Request
   description: The resources CPU request (in cores) for this build.
