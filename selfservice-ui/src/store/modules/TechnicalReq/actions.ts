@@ -24,9 +24,9 @@ export const actions: ActionTree<TechnicalReqState, RootState> = {
       commit('SET_TECHNICALREQ_ERROR', false);
       commit('SET_TECHNICALREQ_MESSAGE', i18n.t('TECHNICALREQ_ADD_MESSAGE'));
       // dispatch('loadTechnicalReq');
-      const id =
+      const projectId =
         data.projectId || rootState.ProjectInfoModule.singleProjectInfo;
-      router.push(`/project/${id}/package/`);
+      router.push(`/project/${projectId}/package/`);
     } catch {
       commit('SET_TECHNICALREQ_SUCCESSFULLY', false);
       commit('SET_TECHNICALREQ_ERROR', true);
@@ -34,16 +34,6 @@ export const actions: ActionTree<TechnicalReqState, RootState> = {
     }
   },
 
-  /**
-   * load technicalreq from server and set to store
-   * @param {*} { commit }
-   */
-  async loadTechnicalReq({ commit }) {
-    commit('SET_LOADING', true);
-    const technicalreq = await TechnicalReqService.getTechnicalReqs();
-    commit('SET_TECHNICALREQLIST', technicalreq.data);
-    commit('SET_LOADING', false);
-  },
   /**
    * clear message
    * @param {*} { commit }
@@ -54,12 +44,11 @@ export const actions: ActionTree<TechnicalReqState, RootState> = {
     commit('SET_TECHNICALREQ_MESSAGE', '');
   },
   /**
-   * load single technicalreq   by id from server and set to store
+   * load single technicalreq   by project id from server and set to store
    * @param {*} { commit }
    */
   async loadTechnicalReqDetails({ commit }, id) {
     commit('SET_LOADING', true);
-
     try {
       const technicalreq = await TechnicalReqService.getTechnicalReqByProjectId(
         id
@@ -69,6 +58,7 @@ export const actions: ActionTree<TechnicalReqState, RootState> = {
     } catch {
       commit('SET_TECHNICALREQ_SUCCESSFULLY', false);
       commit('SET_TECHNICALREQ_ERROR', true);
+      commit('SET_LOADING', false);
     }
   },
   /**
@@ -76,7 +66,10 @@ export const actions: ActionTree<TechnicalReqState, RootState> = {
    * @param  {} {commit, dispatch}
    * @param  {} technicalreq   list
    */
-  async updateTechnicalReq({ commit, dispatch }, data: any) {
+  async updateTechnicalReq(state, data: any) {
+    const { commit, rootState } = state;
+    const isRedirectFromSummaryPage =
+      state.rootState.SharedModule.isSummaryPage;
     commit('SET_LOADING', true);
     try {
       const technicalreq = await TechnicalReqService.updateTechnicalReq(data);
@@ -84,33 +77,16 @@ export const actions: ActionTree<TechnicalReqState, RootState> = {
       commit('SET_TECHNICALREQ_SUCCESSFULLY', true);
       commit('SET_TECHNICALREQ_ERROR', false);
       commit('SET_TECHNICALREQ_MESSAGE', i18n.t('TECHNICALREQ_UPDATE_MESSAGE'));
-      dispatch('loadTechnicalReq');
+
+      const nextPage = isRedirectFromSummaryPage ? 'summary' : 'package';
+      const projectId =
+        data.projectId || rootState.ProjectInfoModule.singleProjectInfo;
+      router.push(`/project/${projectId}/${nextPage}/`);
     } catch {
       commit('SET_LOADING', false);
       commit('SET_TECHNICALREQ_SUCCESSFULLY', false);
       commit('SET_TECHNICALREQ_ERROR', true);
       commit('SET_TECHNICALREQMESSAGE', '');
-    }
-  },
-  /**
-   * remove technicalreq
-   * @param  {} {commit, dispatch}
-   * @param  {} technicalreq   list
-   */
-  async removeTechnicalReq({ commit, dispatch }, id: any) {
-    commit('SET_LOADING', true);
-    try {
-      // await TechnicalReqService.deleteTechnicalReq(id);
-      commit('SET_LOADING', false);
-      commit('SET_TECHNICALREQ_SUCCESSFULLY', true);
-      commit('SET_TECHNICALREQ_MESSAGE', i18n.t('TECHNICALREQ_DELETE_MESSAGE'));
-      commit('SET_TECHNICALREQ_ERROR', false);
-      dispatch('loadTechnicalReq');
-    } catch {
-      commit('SET_LOADING', false);
-      commit('SET_TECHNICALREQ_SUCCESSFULLY', false);
-      commit('SET_TECHNICALREQ_ERROR', true);
-      commit('SET_TECHNICALREQ_MESSAGE', '');
     }
   }
 };
