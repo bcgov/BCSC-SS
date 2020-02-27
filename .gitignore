@@ -1,2 +1,3 @@
 openshift/sefservice-ui/secretmap.yaml
 local/.env
+openshift/selfservice-api/param/api_secretmap.env
