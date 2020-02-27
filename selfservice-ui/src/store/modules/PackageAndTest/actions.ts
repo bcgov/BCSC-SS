@@ -32,7 +32,6 @@ export const actions: ActionTree<PackageState, RootState> = {
     const { projectId, slectedPackage } = data;
     await PackageAndTest.updatePackageProject(projectId, slectedPackage);
     // commit('SET_PACKAGELIST', packageData.data.scopePackage);
-    // router.push(`/project/${projectId}/test-account/`);
     dispatch('redirect', { projectId, nextPageTogo: 'test-account' });
     commit('SET_LOADING', false);
   },
