@@ -27,7 +27,6 @@ export const actions: ActionTree<TechnicalReqState, RootState> = {
       const projectId =
         data.projectId || rootState.ProjectInfoModule.singleProjectInfo;
       dispatch('redirect', projectId);
-      // router.push(`/project/${projectId}/package/`);
     } catch {
       commit('SET_TECHNICALREQ_SUCCESSFULLY', false);
       commit('SET_TECHNICALREQ_ERROR', true);
@@ -69,8 +68,6 @@ export const actions: ActionTree<TechnicalReqState, RootState> = {
    */
   async updateTechnicalReq(state, data: any) {
     const { commit, rootState, dispatch } = state;
-    const isRedirectFromSummaryPage =
-      state.rootState.SharedModule.isSummaryPage;
     commit('SET_LOADING', true);
     try {
       const technicalreq = await TechnicalReqService.updateTechnicalReq(data);
