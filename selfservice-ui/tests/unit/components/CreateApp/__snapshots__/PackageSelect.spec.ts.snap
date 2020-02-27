@@ -14,7 +14,6 @@ exports[`PackageSelect.vue renders props when passed 1`] = `
       style="height: 64px;"
     >
       <button
-        aria-label="Back Button"
         class="v-btn v-btn--flat v-btn--icon v-btn--round theme--dark v-size--default"
         type="button"
       >
@@ -272,7 +271,6 @@ exports[`PackageSelect.vue renders props when passed 1`] = `
         />
          
         <button
-          aria-label="Back Button"
           class="btn v-btn v-btn--contained theme--light v-size--default secondary normal"
           name="button"
           type="button"
@@ -280,7 +278,8 @@ exports[`PackageSelect.vue renders props when passed 1`] = `
           <span
             class="v-btn__content"
           >
-            Go Back
+            
+          
           </span>
         </button>
          
@@ -294,7 +293,7 @@ exports[`PackageSelect.vue renders props when passed 1`] = `
           <span
             class="v-btn__content"
           >
-            Next
+            
           </span>
         </button>
       </div>
@@ -317,7 +316,6 @@ exports[`PackageSelect.vue select on package on click  1`] = `
       style="height: 64px;"
     >
       <button
-        aria-label="Back Button"
         class="v-btn v-btn--flat v-btn--icon v-btn--round theme--dark v-size--default"
         type="button"
       >
@@ -575,7 +573,6 @@ exports[`PackageSelect.vue select on package on click  1`] = `
         />
          
         <button
-          aria-label="Back Button"
           class="btn v-btn v-btn--contained theme--light v-size--default secondary normal"
           name="button"
           type="button"
@@ -583,7 +580,8 @@ exports[`PackageSelect.vue select on package on click  1`] = `
           <span
             class="v-btn__content"
           >
-            Go Back
+            
+          
           </span>
         </button>
          
@@ -597,7 +595,7 @@ exports[`PackageSelect.vue select on package on click  1`] = `
           <span
             class="v-btn__content"
           >
-            Next
+            
           </span>
         </button>
       </div>
@@ -620,7 +618,6 @@ exports[`PackageSelect.vue submit form with selected package on submit click  1`
       style="height: 64px;"
     >
       <button
-        aria-label="Back Button"
         class="v-btn v-btn--flat v-btn--icon v-btn--round theme--dark v-size--default"
         type="button"
       >
@@ -878,7 +875,6 @@ exports[`PackageSelect.vue submit form with selected package on submit click  1`
         />
          
         <button
-          aria-label="Back Button"
           class="btn v-btn v-btn--contained theme--light v-size--default secondary normal"
           name="button"
           type="button"
@@ -886,7 +882,8 @@ exports[`PackageSelect.vue submit form with selected package on submit click  1`
           <span
             class="v-btn__content"
           >
-            Go Back
+            
+          
           </span>
         </button>
          
@@ -900,7 +897,7 @@ exports[`PackageSelect.vue submit form with selected package on submit click  1`
           <span
             class="v-btn__content"
           >
-            Next
+            
           </span>
         </button>
       </div>

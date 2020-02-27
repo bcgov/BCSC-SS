@@ -367,8 +367,8 @@ export default class TestAccountRequest extends Vue {
   @PackageAndTestModule.Action('loadPackage') public loadPackage!: any;
   @PackageAndTestModule.Getter('getPackageList') public getPackageList!: [];
   @ProjectInfoModule.Action('submitProject') public submitProject!: any;
-  @SharedModule.Action('rediectFromSummaryPage')
-  public rediectFromSummaryPage!: any;
+  @SharedModule.Action('redirectFromSummaryPage')
+  public redirectFromSummaryPage!: any;
 
   private isLoading: boolean = true;
   private projectId: number = this.id || 0;
@@ -463,7 +463,7 @@ export default class TestAccountRequest extends Vue {
       this.loadTechnicalReqDetails(this.id);
     }
     this.loadPackage();
-    this.rediectFromSummaryPage(true);
+    this.redirectFromSummaryPage(true);
   }
 }
 </script>

@@ -117,6 +117,7 @@ import { Getter, namespace, Action } from 'vuex-class';
 import Button from '@/Atomic/Button/Button.vue';
 import TextArea from '@/Atomic/TextArea/TextArea.vue';
 const PackageAndTestModule = namespace('PackageAndTestModule');
+const TechnicalReqModule = namespace('TechnicalReqModule');
 
 @Component({
   components: {
@@ -135,16 +136,27 @@ export default class TestAccountRequest extends Vue {
   @PackageAndTestModule.Action('addTestAccountRequestToProject')
   public addTestAccountRequestToProject!: any;
 
+  @TechnicalReqModule.Action('loadTechnicalReqDetails')
+  public loadTechnicalReqDetails!: any;
+  @TechnicalReqModule.Getter('getTechnicalReq')
+  public getTechnicalReq!: any;
+  @TechnicalReqModule.Getter('isLoading') public isLoading!: boolean;
+
   private noOfTestAccounts: any = [1, 2, 3, 5];
   private notes: string = '';
 
   private slectedNumber: number = 1;
-  private isLoading: boolean = false;
+  // private isLoading: boolean = false;
   private projectId: number = this.id || 0;
 
   @Watch('successStatus')
   private onStatusChanged(val: any, oldVal: any) {
     setTimeout(this.clearStatus, 3000);
+  }
+  @Watch('getTechnicalReq')
+  private ongetTechnicalReqChanged(val: any) {
+    this.slectedNumber = val.noOfTestAccount;
+    this.notes = val.noteTestAccount;
   }
 
   private selectedTestAccount(packageVal: number) {
@@ -157,6 +169,13 @@ export default class TestAccountRequest extends Vue {
       noteTestAccount: this.notes,
       projectId: this.projectId
     });
+  }
+
+  private mounted() {
+    if (this.id !== 0) {
+      // this.isEditMode = true;
+      this.loadTechnicalReqDetails(this.id);
+    }
   }
 }
 </script>
