@@ -27,12 +27,13 @@ export const actions: ActionTree<PackageState, RootState> = {
    * @param {*} { commit }
    */
 
-  async addPackagetoProject({ commit, rootState }, data) {
+  async addPackagetoProject({ commit, dispatch }, data) {
     commit('SET_LOADING', true);
     const { projectId, slectedPackage } = data;
     await PackageAndTest.updatePackageProject(projectId, slectedPackage);
     // commit('SET_PACKAGELIST', packageData.data.scopePackage);
-    router.push(`/project/${projectId}/test-account/`);
+    // router.push(`/project/${projectId}/test-account/`);
+    dispatch('redirect', { projectId, nextPageTogo: 'test-account' });
     commit('SET_LOADING', false);
   },
 
@@ -52,5 +53,11 @@ export const actions: ActionTree<PackageState, RootState> = {
     );
     router.push(`/project/${projectId}/summary/`);
     commit('SET_LOADING', false);
+  },
+  redirect(state, { projectId, nextPageTogo }) {
+    const isRedirectFromSummaryPage =
+      state.rootState.SharedModule.isSummaryPage;
+    const nextPage = isRedirectFromSummaryPage ? 'summary' : nextPageTogo;
+    router.push(`/project/${projectId}/${nextPage}/`);
   }
 };

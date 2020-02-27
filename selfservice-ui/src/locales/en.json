@@ -56,8 +56,10 @@
     "package3": "Package 3 - best fit for organizations who want to know who the user is and communicate directly with their users non-electronically",
     "how_many_test_account": "How many test accounts do you require?",
     "special_notes": "Special requests or notes for test account creation",
+    "btnBack": "Go Back",
     "btnNext": "Next",
-    "btnBack": "Go Back"
+    "btnCancel": "Cancel",
+    "btnSaveChanges": "Save Changes"
   },
   "testAccount": {
     "pagetitle": "Test Accounts",
@@ -65,8 +67,10 @@
     "how_many_test_account": "Choose the number of test user accounts you require",
     "special_notes": "Special requests or notes",
     "specialNotesInfo": "<p>If you have any special requests regarding the data contained in these test accounts, please include that information in this space.</p></p>(For example: all users must have a different city in the address block)</p>",
-    "Next": "Next",
-    "Back": "Go Back"
+    "btnBack": "Go Back",
+    "btnNext": "Next",
+    "btnCancel": "Cancel",
+    "btnSaveChanges": "Save Changes"
   },
   "summaryPage": {
     "pagetitle": "Summary",
