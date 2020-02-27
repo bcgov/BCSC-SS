@@ -97,28 +97,28 @@ stage("Deploy" + WEB_IMAGESTREAM_NAME + "to ${common.web_environments.prod.name}
   }
 }
 
-// Deploying DB to prod
-stage("Deploy to" + DB_NAME + "${common.db_environments.prod.name}") {
-  def environment = common.db_environments.prod.tag
-  db_tag = "prod"
-  def url = common.db_environments.prod.url
-  node{
-    try{
-      // Tag the images for deployment based on the image's hash
-      DB_IMAGE_HASH = common.getLaprodHash(DB_IMAGESTREAM_NAME, db_tag)          
-      echo ">> DB_IMAGE_HASH: ${DB_IMAGE_HASH}"
+// // Deploying DB to prod
+// stage("Deploy to" + DB_NAME + "${common.db_environments.prod.name}") {
+//   def environment = common.db_environments.prod.tag
+//   db_tag = "prod"
+//   def url = common.db_environments.prod.url
+//   node{
+//     try{
+//       // Tag the images for deployment based on the image's hash
+//       DB_IMAGE_HASH = common.getLaprodHash(DB_IMAGESTREAM_NAME, db_tag)          
+//       echo ">> DB_IMAGE_HASH: ${DB_IMAGE_HASH}"
 
-      common.deployAndVerify(DB_IMAGE_HASH,environment,DB_IMAGESTREAM_NAME)
+//       common.deployAndVerify(DB_IMAGE_HASH,environment,DB_IMAGESTREAM_NAME)
 
-      // DB Deployment Success notification
-      common.successNotificaiton(ROCKETCHAT_TOKEN, DB_IMAGESTREAM_NAME, DEPLOYMENT_PHASE )
-    }catch(error){
-      // DB Deployment Failure notification
-      common.failureNotificaiton(ROCKETCHAT_TOKEN, DB_IMAGESTREAM_NAME, DEPLOYMENT_PHASE )
-      throw error
-    }
-}
-}
+//       // DB Deployment Success notification
+//       common.successNotificaiton(ROCKETCHAT_TOKEN, DB_IMAGESTREAM_NAME, DEPLOYMENT_PHASE )
+//     }catch(error){
+//       // DB Deployment Failure notification
+//       common.failureNotificaiton(ROCKETCHAT_TOKEN, DB_IMAGESTREAM_NAME, DEPLOYMENT_PHASE )
+//       throw error
+//     }
+// }
+// }
 
 // Deploying API to prod
 stage("Deploy to" + API_NAME + "${common.api_environments.prod.name}") {

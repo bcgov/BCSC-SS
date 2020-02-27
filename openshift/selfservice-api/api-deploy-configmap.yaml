@@ -21,6 +21,8 @@ objects:
     JWT_OIDC_ALGORITHMS: "${KEYCLOAKALGORITHMS}"
     JWT_OIDC_JWKS_URI: "${JWTOIDCJWKSURI_DEV}"
     JWT_OIDC_JWKS_CACHE_TIMEOUT: "${JWTOIDCJWKSCACHETIMEOUT}"
+    DYNAMIC_TEST_API_URL: "${DYNAMIC_TEST_API_URL}"
+    DYNAMIC_PROD_API_URL: "${DYNAMIC_PROD_API_URL}"
 - kind: ConfigMap
   apiVersion: v1
   metadata:
@@ -37,6 +39,8 @@ objects:
     JWT_OIDC_JWKS_URI: "${JWTOIDCJWKSURI_TEST}"
     JWT_OIDC_CACHING_ENABLED: "${JWTOIDCCACHINGENABLED}"
     JWT_OIDC_JWKS_CACHE_TIMEOUT: "${JWTOIDCJWKSCACHETIMEOUT}"
+    DYNAMIC_TEST_API_URL: "${DYNAMIC_TEST_API_URL}"
+    DYNAMIC_PROD_API_URL: "${DYNAMIC_PROD_API_URL}"
 - kind: ConfigMap
   apiVersion: v1
   metadata:
@@ -53,6 +57,8 @@ objects:
     JWT_OIDC_JWKS_URI: "${JWTOIDCJWKSURI_PROD}"
     JWT_OIDC_CACHING_ENABLED: "${JWTOIDCCACHINGENABLED}"
     JWT_OIDC_JWKS_CACHE_TIMEOUT: "${JWTOIDCJWKSCACHETIMEOUT}"
+    DYNAMIC_TEST_API_URL: "${DYNAMIC_TEST_API_URL}"
+    DYNAMIC_PROD_API_URL: "${DYNAMIC_PROD_API_URL}"
 parameters:
 - name: WEB_NAME
   displayName: Name
@@ -161,3 +167,11 @@ parameters:
   description: JWT oidc issuer Prod
   required: true
   value: 'https://sso.pathfinder.gov.bc.ca/auth/realms/1gw8g24z/protocol/openid-connect/certs'
+- name: DYNAMIC_TEST_API_URL
+  description: Dynamic API Test Url.
+  required: true
+  value: "https://idtest.gov.bc.ca"
+- name: DYNAMIC_PROD_API_URL
+  description: Dynamic API Prod Url.
+  required: true
+  value: "https://idtest.gov.bc.ca"
