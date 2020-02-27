@@ -1,3 +1,5 @@
 openshift/sefservice-ui/secretmap.yaml
 local/.env
-openshift/selfservice-api/param/api_secretmap.env
+openshift/selfservice-api/param/dev_api_secretmap.env
+openshift/selfservice-api/param/test_api_secretmap.env
+openshift/selfservice-api/param/prod_api_secretmap.env
