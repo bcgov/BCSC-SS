@@ -23,6 +23,19 @@ describe('TestAccountRequest.vue', () => {
         actions: {
           addTestAccountRequestToProject: jest.fn()
         }
+      },
+      TechnicalReqModule: {
+        namespaced: true,
+        state: {},
+        getters: {
+          getSingleTechnicalReq: jest.fn(),
+          getTechnicalReq: jest.fn(),
+          isLoading: jest.fn()
+        },
+        actions: {
+          getSingleTechnicalReq: jest.fn(),
+          addTechnicalReq: jest.fn()
+        }
       }
     }
   });
