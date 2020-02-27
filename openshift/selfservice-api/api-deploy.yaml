@@ -227,7 +227,7 @@ objects:
             valueFrom:
               secretKeyRef:
                 name: "${API_NAME}-${TAG_NAME}-secret"
-                key: DYNAMIC_PROD_API_TOKEN
+                key: DYNAMIC_TEST_API_TOKEN
           resources:
             requests:
               cpu: "${CPU_REQUEST}"
