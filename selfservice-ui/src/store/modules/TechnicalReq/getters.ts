@@ -7,6 +7,14 @@ import { RootState } from '../../types';
  */
 export const getters: GetterTree<TechnicalReqState, RootState> = {
   /**
+   * isLoading
+   * @param {*} state
+   * @returns {boolean} - lading status
+   */
+  isLoading(state) {
+    return state.loading;
+  },
+  /**
    * technicalreq
    * @param {*} state
    * @returns  {object} technicalreq
