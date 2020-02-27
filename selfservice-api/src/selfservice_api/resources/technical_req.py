@@ -29,8 +29,8 @@ from ..utils.util import cors_preflight
 API = Namespace('TechnicalReq', description='Technical Requirement')
 
 
-@cors_preflight('GET,POST,PATCH,OPTIONS')
-@API.route('', methods=['GET', 'POST', 'PATCH', 'OPTIONS'])
+@cors_preflight('GET,POST,PUT,PATCH,OPTIONS')
+@API.route('', methods=['GET', 'POST', 'PUT', 'PATCH', 'OPTIONS'])
 class TechnicalReqResource(Resource):
     """Resource for managing create technical requirement."""
 
@@ -61,6 +61,25 @@ class TechnicalReqResource(Resource):
         technical_req = TechnicalReq.find_by_project_id(project_id)
 
         return TechnicalReqResponseSchema().dump(technical_req), HTTPStatus.OK
+
+    @staticmethod
+    @cors.crossdomain(origin='*')
+    @jwt.requires_auth
+    def put(project_id):
+        """Update technical requirement using the request body."""
+        technical_req_json = request.get_json()
+
+        try:
+            token_info = g.jwt_oidc_token_info
+            technical_req_schema = TechnicalReqRequestSchema()
+            dict_data = technical_req_schema.load(technical_req_json)
+            dict_data['project_id'] = project_id
+            technical_req = TechnicalReq.find_by_project_id(project_id)
+            technical_req.update(token_info.get('sub'), dict_data)
+            response, status = 'Updated successfully', HTTPStatus.OK
+        except ValidationError as technical_req_err:
+            response, status = {'message': str(technical_req_err.messages)}, HTTPStatus.BAD_REQUEST
+        return response, status
 
     @staticmethod
     @cors.crossdomain(origin='*')

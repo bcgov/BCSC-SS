@@ -9,7 +9,7 @@
     <Input
       v-model="userDetails.firstName"
       label="First name"
-      :rules="[rules.required, rules.length(2), rules.maxLength(250)]"
+      :rules="[rules.required, rules.length(3), rules.maxLength(250)]"
       type="text"
     />
     <Input

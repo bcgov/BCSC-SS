@@ -25,7 +25,9 @@
     "ManagerRole": "Manager",
     "CTORole": "Executive Sponsor",
     "DeveloperRole": "Developer",
-    "Next": "Next"
+    "btnNext": "Next",
+    "btnsaveChanges": "Save Changes",
+    "btnCancel": "Cancel"
   },
   "technicalRequirements": {
     "technicalTitle": "Technical Requirements",
@@ -113,5 +115,12 @@
     "tblTitleProjectActions": "Actions",
     "tblTitlrole": "Role",
     "noData": "There are no projects to view. Add one to start "
+  },
+  "profile": {
+    "pagetitle": "Complete Profile",
+    "titlePageInfo": "After you add your contact information, you will receive a confirmation email. Only users from the broader public sector or BC Government will be approved for access.",
+    "labelEmail": "Email (work)",
+    "labelPhone": "Phone",
+    "btnContinue": "Continue"
   }
 }

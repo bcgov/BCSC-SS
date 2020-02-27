@@ -33,6 +33,12 @@ class ProjectUsersAssociation(BaseModel, db.Model):
     user = db.relationship('User', lazy=True, backref=db.backref('projects', lazy=True))
     project = db.relationship('Project', lazy=True, backref=db.backref('users', lazy='subquery'))
 
+    @classmethod
+    def delete_by_project_id(cls, project_id: str):
+        """Delete association by project id."""
+        cls.query.filter(ProjectUsersAssociation.project_id == project_id).delete()
+        cls.commit()
+
 
 class Project(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
     """This class manages project information."""
@@ -41,6 +47,7 @@ class Project(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
     organization_name = db.Column(db.String(100), nullable=False)
     project_name = db.Column(db.String(100), nullable=False)
     description = db.Column(db.Text(), nullable=False)
+    ref_no = db.Column(db.String(20), nullable=True)
 
     status = db.Column(db.Integer(), nullable=False)
 
@@ -87,6 +94,20 @@ class Project(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
         """Find project that matches the provided id."""
         return cls.query.filter_by(id=project_id).first()
 
+    def update(self, oauth_id: str, project_info: dict):
+        """Update project."""
+        current_user = User.find_by_oauth_id(oauth_id)
+        project_info['modified_by'] = current_user.id
+        self.update_from_dict(['modified_by', 'organization_name', 'project_name', 'description'],
+                              project_info)
+        self.commit()
+        ProjectUsersAssociation.delete_by_project_id(self.id)
+        self.__create_or_map_users__(project_info)
+        self.__create_association__(current_user.id, project_info['my_role'])
+
+    def __update_association__(self, user_id, role):
+        """Update an association on project."""
+
     def update_status(self, oauth_id: str, project_status: int):
         """Update project status."""
         current_user = User.find_by_oauth_id(oauth_id)
@@ -103,6 +124,7 @@ class Project(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
                 project.id,
                 project.project_name as name,
                 project.status,
+                project.ref_no as reference,
                 project_users_association.role
             FROM project
                 JOIN project_users_association ON project.id = project_users_association.project_id

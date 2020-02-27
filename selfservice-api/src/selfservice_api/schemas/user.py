@@ -26,7 +26,7 @@ class UserSchema(Schema):
 
     id = fields.Int()
     email = fields.Email(required=True, validate=validate.Length(min=5, max=250))
-    phone = fields.Str(validate=validate.Length(max=15))
+    phone = fields.Str(required=True, validate=validate.Length(max=15))
     first_name = fields.Str(data_key='firstName', required=True, validate=validate.Length(min=3, max=250))
     last_name = fields.Str(data_key='lastName', required=True, validate=validate.Length(min=2, max=250))
     oauth_id = fields.Str(data_key='oauthId', required=True, validate=validate.Length(min=3, max=100))
