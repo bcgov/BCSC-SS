@@ -125,6 +125,7 @@ import { Getter, namespace, Action } from 'vuex-class';
 import Button from '@/Atomic/Button/Button.vue';
 const PackageAndTestModule = namespace('PackageAndTestModule');
 const SharedModule = namespace('SharedModule');
+const TechnicalReqModule = namespace('TechnicalReqModule');
 
 @Component({
   components: {
@@ -144,17 +145,31 @@ export default class ListPackage extends Vue {
   @SharedModule.Action('rediectFromSummaryPage')
   public rediectFromSummaryPage!: any;
 
+  @TechnicalReqModule.Action('loadTechnicalReqDetails')
+  public loadTechnicalReqDetails!: any;
+  @TechnicalReqModule.Getter('getTechnicalReq')
+  public getTechnicalReq!: any;
+  @TechnicalReqModule.Getter('isLoading') public isLoading!: boolean;
+
   private slectedPackage: number = 1;
-  private isLoading: boolean = false;
+  // private isLoading: boolean = false;
   private projectId: number = this.id || 0;
 
   @Watch('successStatus')
   private onStatusChanged(val: any, oldVal: any) {
     setTimeout(this.clearStatus, 3000);
   }
+  @Watch('getTechnicalReq')
+  private ongetTechnicalReqChanged(val: any) {
+    this.slectedPackage = val.scopePackageId;
+  }
 
   private mounted() {
     this.loadPackage();
+    if (this.id !== 0) {
+      // this.isEditMode = true;
+      this.loadTechnicalReqDetails(this.id);
+    }
   }
   private selectedPackage(packageVal: number) {
     this.slectedPackage = packageVal;
