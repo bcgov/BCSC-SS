@@ -104,9 +104,17 @@ class CreateRequestModel:  # pylint: disable=too-few-public-methods
     OIDC Connect Discovery."""
     userinfo_encrypted_response_enc: str
 
+    """api_url and api_token are required to make dynamic api call."""
+    api_url: str
+    api_token: str
+
 
 class CreateResponseModel:  # pylint: disable=too-few-public-methods
     """Client Registration Response Model."""
+
+    def __init__(self, _dict: dict):
+        """Initialize response."""
+        self.__dict__ = _dict
 
     """The assigned unique client identifier."""  # pylint: disable=pointless-string-statement
     client_id: str
@@ -132,7 +140,7 @@ class CreateResponseModel:  # pylint: disable=too-few-public-methods
     client_id_issued_at: str
 
     """The date the client secret expires."""
-    client_secret_expires_at: int
+    client_secret_expires_at: str
 
     """Name of the Client that will be presented to the end user during
     authentication."""
