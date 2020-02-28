@@ -115,14 +115,6 @@ objects:
               configMapKeyRef:
                 name: "${API_NAME}-${TAG_NAME}-config"
                 key: JWT_OIDC_WELL_KNOWN_CONFIG
-          - name: DYNAMIC_PROD_API_URL
-            value: "TESTING"
-          - name: DYNAMIC_TEST_API_URL
-            value: "TESTING"
-          - name: DYNAMIC_PROD_API_TOKEN
-            value: "TESTING_TOKEN"
-          - name: DYNAMIC_TEST_API_TOKEN
-            value: "TESTING_TOKEN"
           resources:
             requests:
               cpu: "${CPU_REQUEST}"
