@@ -90,3 +90,21 @@ def test_prod_config_jwks_cache(monkeypatch):
     monkeypatch.setenv(key, 'ack')
     reload(config)
     assert config.ProdConfig().JWT_OIDC_JWKS_CACHE_TIMEOUT == 300
+
+
+def test_dynamic_api_url(monkeypatch):
+    """Assert that the Config is correct.
+
+    The object either uses the DYNAMIC_TEST_API_URL and DYNAMIC_PROD_API_URL with trailing /.
+    """
+    key = 'DYNAMIC_TEST_API_URL'
+
+    monkeypatch.delenv(key)
+    monkeypatch.setenv(key, 'DYNAMIC_TEST_API_URL/')
+    reload(config)
+
+    key = 'DYNAMIC_PROD_API_URL'
+
+    monkeypatch.delenv(key)
+    monkeypatch.setenv(key, 'DYNAMIC_PROD_API_URL/')
+    reload(config)
