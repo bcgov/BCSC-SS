@@ -25,7 +25,9 @@ def upgrade():
     op.drop_column('oidc_config', 'id_token_encrypted_response_alg')
     op.drop_column('oidc_config', 'userinfo_encrypted_response_enc')
 
+    op.alter_column('oidc_config', 'client_secret', type_=sa.VARCHAR(length=500))
     op.alter_column('oidc_config', 'registration_access_token', type_=sa.VARCHAR(length=5000))
+    op.alter_column('oidc_config', 'client_secret_expires_at', type_=sa.VARCHAR(length=100))
 
     test_account = table('test_account',
                          column('card_number', sa.String),

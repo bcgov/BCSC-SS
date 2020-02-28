@@ -28,7 +28,7 @@ class OIDCConfig(BaseModel, db.Model):
     client_id = db.Column(db.String(100))
     client_secret = db.Column(db.String(500))
 
-    registration_access_token = db.Column(db.String(2000))
+    registration_access_token = db.Column(db.String(5000))
     registration_client_uri = db.Column(db.String(500))
 
     client_id_issued_at = db.Column(db.String(100))
