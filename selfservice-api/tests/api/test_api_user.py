@@ -25,6 +25,12 @@ def test_post_user(client, jwt, session):
     assert response.status_code == HTTPStatus.CREATED
 
 
+def test_post_user_validation(client, jwt, session):
+    """Assert that the endpoint returns the bad request."""
+    response = _create_user_(client, jwt, invalid_data=True)
+    assert response.status_code == HTTPStatus.BAD_REQUEST
+
+
 def test_get_user(client, jwt, session):
     """Assert that the endpoint returns the success status."""
     response = _get_user_(client, jwt)

@@ -55,9 +55,9 @@ def app_ctx(event_loop):  # pylint: disable=unused-argument
 
 
 @pytest.fixture
-def config(app_):
+def config(app):  # pylint: disable=redefined-outer-name
     """Return the application config."""
-    return app_.config
+    return app.config
 
 
 @pytest.fixture(scope='function')
