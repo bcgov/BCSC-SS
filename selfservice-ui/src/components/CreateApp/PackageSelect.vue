@@ -103,7 +103,13 @@
             :aria-label="$t('selectPackage.btnBack')"
             secondary
           >
-            {{ $t('selectPackage.btnBack') }}</Button
+            {{
+              $t(
+                showWizardExperience()
+                  ? 'selectPackage.btnBack'
+                  : 'selectPackage.btnCancel'
+              )
+            }}</Button
           >
           <Button
             :disabled="!slectedPackage"
@@ -112,7 +118,13 @@
             color="indigo accent-4"
             depressed
             @click="submitPackage"
-            >{{ $t('selectPackage.btnNext') }}</Button
+            >{{
+              $t(
+                showWizardExperience()
+                  ? 'selectPackage.btnNext'
+                  : 'selectPackage.btnSaveChanges'
+              )
+            }}</Button
           >
         </v-card-actions>
       </v-card>
@@ -144,6 +156,8 @@ export default class ListPackage extends Vue {
   public addPackagetoProject!: any;
   @SharedModule.Action('redirectFromSummaryPage')
   public redirectFromSummaryPage!: any;
+  @SharedModule.Getter('isRedirectFromSummaryPage')
+  public isRedirectFromSummaryPage!: boolean;
 
   @TechnicalReqModule.Action('loadTechnicalReqDetails')
   public loadTechnicalReqDetails!: any;
@@ -183,8 +197,15 @@ export default class ListPackage extends Vue {
   }
 
   private goBack() {
+    const redirectPage = this.showWizardExperience() ? 'technical' : 'summary';
     this.redirectFromSummaryPage(false);
-    this.$router.push(`/project/${this.projectId}/technical/`);
+    this.$router.push(`/project/${this.projectId}/${redirectPage}/`);
+  }
+  private showWizardExperience() {
+    if (this.isRedirectFromSummaryPage) {
+      return false;
+    }
+    return true;
   }
 }
 </script>

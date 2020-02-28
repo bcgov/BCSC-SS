@@ -3,11 +3,7 @@
 <template>
   <v-card class="mx-auto" style="max-width: 80%;">
     <v-toolbar flat class="bc-subtitle padding-0" dark>
-      <v-btn
-        icon
-        @click="$router.push(`/project/${projectId}/test-account/`)"
-        aria-label="Back Button"
-      >
+      <v-btn icon @click="goBack()" :aria-label="$t('summaryPage.goBack')">
         <v-icon>mdi-arrow-left</v-icon>
       </v-btn>
       <v-toolbar-title>{{ $t('summaryPage.pagetitle') }}</v-toolbar-title>
@@ -279,8 +275,8 @@
             <v-card-actions class="mt-2 py-2 px-0">
               <v-spacer></v-spacer>
               <Button
-                @click="$router.push(`/project/${projectId}/test-account/`)"
-                aria-label="Back Button"
+                @click="goBack()"
+                :aria-label="$t('summaryPage.goBack')"
                 secondary
                 >{{ $t('summaryPage.goBack') }}</Button
               >
@@ -464,6 +460,11 @@ export default class TestAccountRequest extends Vue {
     }
     this.loadPackage();
     this.redirectFromSummaryPage(true);
+  }
+
+  private goBack() {
+    this.redirectFromSummaryPage(false);
+    this.$router.push(`/project/${this.projectId}/test-account`);
   }
 }
 </script>
