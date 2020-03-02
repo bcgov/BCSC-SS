@@ -123,7 +123,7 @@ describe('PackageSelect.vue from summary page', () => {
   localVue.use(VueRouter);
   localVue.use(Vuex);
   vuetify = new Vuetify();
-  const store = new Vuex.Store({
+  const storeData = new Vuex.Store({
     modules: {
       PackageAndTestModule: {
         namespaced: true,
@@ -180,7 +180,7 @@ describe('PackageSelect.vue from summary page', () => {
 
   const mountFunction = (options: any) => {
     return mount(PackageSelect, {
-      store,
+      storeData,
       vuetify,
       localVue,
       router1,
