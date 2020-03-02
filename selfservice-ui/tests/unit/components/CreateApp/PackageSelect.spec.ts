@@ -180,7 +180,7 @@ describe('PackageSelect.vue from summary page', () => {
 
   const mountFunction = (options: any) => {
     return mount(PackageSelect, {
-      storeData,
+      store: storeData,
       vuetify,
       localVue,
       router1,
