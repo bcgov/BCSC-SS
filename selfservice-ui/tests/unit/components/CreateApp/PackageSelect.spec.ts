@@ -114,9 +114,9 @@ describe('PackageSelect.vue', () => {
   });
 });
 
-describe('PackageSelect.vue', () => {
+describe('PackageSelect.vue from summary page', () => {
   let vuetify: any;
-  const router = new VueRouter();
+  const router1 = new VueRouter();
   const localVue = createLocalVue();
 
   localVue.use(Vuetify);
@@ -131,7 +131,7 @@ describe('PackageSelect.vue', () => {
         getters: {
           getPackageList: () => [
             {
-              claimNames: ['Given name', 'Surname'],
+              claimNames: ['name', 'Surname'],
               description: 'This package contains the following data:',
               id: 1,
               packageName: 'Package 1'
@@ -183,7 +183,7 @@ describe('PackageSelect.vue', () => {
       store,
       vuetify,
       localVue,
-      router,
+      router1,
       mocks: { $t: jest.fn(() => {}) }, // tslint:disable-line
       ...options
     });
