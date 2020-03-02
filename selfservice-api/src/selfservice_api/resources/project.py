@@ -15,14 +15,14 @@
 
 from http import HTTPStatus
 
-from flask import g, jsonify, request
+from flask import current_app, g, jsonify, request
 from flask_restplus import Namespace, Resource, cors
 from marshmallow import ValidationError
 
 from ..models import OIDCConfig, Project, TechnicalReq, User
 from ..models.enums import ProjectRoles, ProjectStatus
 from ..schemas.project import ProjectSchema
-from ..services.external import DynamicClientRegistrationService
+from ..services.external import get_dynamic_api
 from ..services.external.models import CreateRequestModel, CreateResponseModel, UpdateRequestModel, UpdateResponseModel
 from ..utils.auth import jwt
 from ..utils.util import cors_preflight
@@ -118,10 +118,19 @@ class ProjectResourceById(Resource):
                     ProjectResourceById._validate_before_status_update_(project, project_patch_json.get('status')):
 
                 project_status = project_patch_json['status']
-                if project.status < project_status:
-                    project.update_status(token_info.get('sub'), project_status)
-                ProjectResourceById._dynamic_api_call_(project)
-                return 'Updated successfully', HTTPStatus.OK
+                is_success = False
+                # Decide which api to call
+                if project_status == ProjectStatus.Development:
+                    is_success = ProjectResourceById._dynamic_api_call_(project, False)
+
+                if is_success:
+                    if project.status < project_status:
+                        project.update_status(token_info.get('sub'), project_status)
+
+                    response, status = 'Updated successfully', HTTPStatus.OK
+                else:
+                    response, status = 'OIDC Failed', HTTPStatus.INTERNAL_SERVER_ERROR
+                return response, status
 
         return 'Update failed', HTTPStatus.BAD_REQUEST
 
@@ -139,7 +148,7 @@ class ProjectResourceById(Resource):
         return False
 
     @staticmethod
-    def _dynamic_api_call_(project: Project):
+    def _dynamic_api_call_(project: Project, is_prod: bool):
         """Generate OIDC config for this project."""
         oidc_config = OIDCConfig.find_by_project_id(project.id)
         if oidc_config is None:
@@ -165,18 +174,40 @@ class ProjectResourceById(Resource):
         api_request.userinfo_encrypted_response_alg = None
         api_request.userinfo_encrypted_response_enc = None
 
-        if oidc_config is None:
-            api_response: CreateResponseModel = DynamicClientRegistrationService.create(api_request)
-            OIDCConfig.create_from_dict(ProjectResourceById._map_response_to_oidc_config_(project, api_response))
+        if is_prod:
+            api_request.api_url = current_app.config.get('DYNAMIC_PROD_API_URL')
+            api_request.api_token = current_app.config.get('DYNAMIC_PROD_API_TOKEN')
         else:
+            api_request.api_url = current_app.config.get('DYNAMIC_TEST_API_URL')
+            api_request.api_token = current_app.config.get('DYNAMIC_TEST_API_TOKEN')
+
+        api_call_succeeded = True
+        dynamic_api = get_dynamic_api()
+        if oidc_config is None:
+            api_response: CreateResponseModel = dynamic_api.create(api_request)
+
+            if api_response is not None:
+                OIDCConfig.create_from_dict(
+                    ProjectResourceById._map_response_to_oidc_config_(False, project, api_response))
+            else:
+                api_call_succeeded = False
+        else:
+            api_request.client_id = oidc_config.client_id
             api_response: UpdateResponseModel = \
-                DynamicClientRegistrationService.update(oidc_config.registration_access_token, api_request)
-            oidc_config.update(ProjectResourceById._map_response_to_oidc_config_(project, api_response))
+                dynamic_api.update(oidc_config.registration_access_token, api_request)
+
+            if api_response is not None:
+                oidc_config.update(
+                    ProjectResourceById._map_response_to_oidc_config_(True, project, api_response))
+            else:
+                api_call_succeeded = False
+
+        return api_call_succeeded
 
     @staticmethod
-    def _map_response_to_oidc_config_(project, api_response):
+    def _map_response_to_oidc_config_(is_update: bool, project, api_response):
         """Map response to OIDC config."""
-        return {
+        data = {
             'project_id': project.id,
             'client_id': api_response.client_id,
             'client_secret': api_response.client_secret,
@@ -184,12 +215,11 @@ class ProjectResourceById(Resource):
             'registration_client_uri': api_response.registration_client_uri,
             'client_id_issued_at': api_response.client_id_issued_at,
             'client_secret_expires_at': api_response.client_secret_expires_at,
-            'token_endpoint_auth_method': api_response.token_endpoint_auth_method,
-            'application_type': api_response.application_type,
-            'subject_type': api_response.subject_type,
-            'sector_identifier_uri': api_response.sector_identifier_uri,
-            'id_token_encrypted_response_alg': api_response.id_token_encrypted_response_alg,
-            'id_token_encrypted_response_enc': api_response.id_token_encrypted_response_enc,
-            'userinfo_encrypted_response_alg': api_response.userinfo_encrypted_response_alg,
-            'userinfo_encrypted_response_enc': api_response.userinfo_encrypted_response_enc
+            'token_endpoint_auth_method': api_response.token_endpoint_auth_method
         }
+
+        if not is_update:
+            data['application_type'] = api_response.application_type
+            data['subject_type'] = api_response.subject_type
+
+        return data
