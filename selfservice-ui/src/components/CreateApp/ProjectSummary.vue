@@ -3,11 +3,7 @@
 <template>
   <v-card class="mx-auto" style="max-width: 80%;">
     <v-toolbar flat class="bc-subtitle padding-0" dark>
-      <v-btn
-        icon
-        @click="$router.push(`/project/${projectId}/test-account/`)"
-        aria-label="Back Button"
-      >
+      <v-btn icon @click="goBack()" :aria-label="$t('summaryPage.goBack')">
         <v-icon>mdi-arrow-left</v-icon>
       </v-btn>
       <v-toolbar-title>{{ $t('summaryPage.pagetitle') }}</v-toolbar-title>
@@ -279,8 +275,8 @@
             <v-card-actions class="mt-2 py-2 px-0">
               <v-spacer></v-spacer>
               <Button
-                @click="$router.push(`/project/${projectId}/test-account/`)"
-                aria-label="Back Button"
+                @click="goBack()"
+                :aria-label="$t('summaryPage.goBack')"
                 secondary
                 >{{ $t('summaryPage.goBack') }}</Button
               >
@@ -367,8 +363,8 @@ export default class TestAccountRequest extends Vue {
   @PackageAndTestModule.Action('loadPackage') public loadPackage!: any;
   @PackageAndTestModule.Getter('getPackageList') public getPackageList!: [];
   @ProjectInfoModule.Action('submitProject') public submitProject!: any;
-  @SharedModule.Action('rediectFromSummaryPage')
-  public rediectFromSummaryPage!: any;
+  @SharedModule.Action('redirectFromSummaryPage')
+  public redirectFromSummaryPage!: any;
 
   private isLoading: boolean = true;
   private projectId: number = this.id || 0;
@@ -448,22 +444,15 @@ export default class TestAccountRequest extends Vue {
   }
 
   private mounted() {
-    if (
-      this.projectInfo &&
-      this.projectInfo.id &&
-      this.technicalReq &&
-      this.technicalReq.id
-    ) {
-      this.projectId = this.projectInfo.id;
-      this.isLoading = false;
-      this.setUsers(this.projectInfo);
-    } else {
-      this.isLoading = true;
-      this.loadSingleProjectInfo(this.id);
-      this.loadTechnicalReqDetails(this.id);
-    }
+    this.loadSingleProjectInfo(this.id);
+    this.loadTechnicalReqDetails(this.id);
     this.loadPackage();
-    this.rediectFromSummaryPage(true);
+    this.redirectFromSummaryPage(true);
+  }
+
+  private goBack() {
+    this.redirectFromSummaryPage(false);
+    this.$router.push(`/project/${this.projectId}/test-account`);
   }
 }
 </script>

@@ -11,17 +11,20 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""Exposes all of the services used to communicate external API."""
+"""This manages test account Response Schema."""
 
-from flask import current_app
-
-from .dynamic_client_registration import DynamicClientRegistrationService
-from .dynamic_client_registration_api_mock import DynamicClientRegistrationApiMock
+from marshmallow import EXCLUDE, Schema, fields
 
 
-def get_dynamic_api():
-    """Switching to mock to skip dynamic api call while integration testing."""
-    if current_app.config.get('TESTING'):  # pylint: disable=no-else-return
-        return DynamicClientRegistrationApiMock
-    else:
-        return DynamicClientRegistrationService
+class TestAccountSchema(Schema):
+    """This class manages test account response schema."""
+
+    class Meta:  # pylint: disable=too-few-public-methods
+        """Exclude unknown fields in the deserialized output."""
+
+        unknown = EXCLUDE
+
+    id = fields.Int()
+    card_number = fields.Str(data_key='cardNumber')
+    passcode = fields.Str(data_key='passcode')
+    attributes = fields.Raw(data_key='attributes')

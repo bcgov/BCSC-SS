@@ -472,8 +472,9 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                  
                 <button
                   aria-disabled="true"
-                  class="btn white--text submit-req ml-6 v-btn v-btn--depressed theme--light v-size--default primary normal disabled"
+                  class="btn white--text submit-req ml-6 v-btn v-btn--depressed v-btn--disabled theme--light v-size--default primary normal disabled"
                   depressed=""
+                  disabled="disabled"
                   name="button"
                   type="button"
                 >
@@ -965,8 +966,9 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                  
                 <button
                   aria-disabled="true"
-                  class="btn white--text submit-req ml-6 v-btn v-btn--depressed theme--light v-size--default primary normal disabled"
+                  class="btn white--text submit-req ml-6 v-btn v-btn--depressed v-btn--disabled theme--light v-size--default primary normal disabled"
                   depressed=""
+                  disabled="disabled"
                   name="button"
                   type="button"
                 >
@@ -1458,8 +1460,9 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                  
                 <button
                   aria-disabled="true"
-                  class="btn white--text submit-req ml-6 v-btn v-btn--depressed theme--light v-size--default primary normal disabled"
+                  class="btn white--text submit-req ml-6 v-btn v-btn--depressed v-btn--disabled theme--light v-size--default primary normal disabled"
                   depressed=""
+                  disabled="disabled"
                   name="button"
                   type="button"
                 >

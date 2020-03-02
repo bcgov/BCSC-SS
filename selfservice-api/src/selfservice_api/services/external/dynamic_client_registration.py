@@ -18,9 +18,13 @@ describes the required fields, assumptions and constraints for
 creating, updating, deleting and viewing a client configuration.
 """
 
-from .dynamic_client_registration_api_mock import DynamicClientRegistrationApiMock
-from .models.dynamic_client_create import CreateRequestModel
-from .models.dynamic_client_update import UpdateRequestModel
+import json
+
+import requests
+
+from .models.dynamic_client_create import CreateRequestModel, CreateResponseModel
+from .models.dynamic_client_get import GetResponseModel
+from .models.dynamic_client_update import UpdateRequestModel, UpdateResponseModel
 
 
 class DynamicClientRegistrationService():
@@ -29,21 +33,61 @@ class DynamicClientRegistrationService():
     @staticmethod
     def create(request: CreateRequestModel):
         """Client Registration Request for a new client at the BCSC OpenID Provider."""
-        response = DynamicClientRegistrationApiMock.create(request)
+        url = request.api_url + '/oauth2/register'
+        headers = DynamicClientRegistrationService._get_header_(request.api_token)
 
-        return response
+        del request.api_url
+        del request.api_token
+
+        response = requests.post(url, headers=headers, data=json.dumps(request.__dict__))
+        data = None
+        if response.ok:
+            data = CreateResponseModel(response.json())
+
+        return data
 
     @staticmethod
-    def get(registration_access_token: str):
+    def get(client_id: str, registration_access_token: str, api_url: str):
         """Get Registration Request for an existing client at the BCSC OpenID Provider."""
-        return DynamicClientRegistrationApiMock.get(registration_access_token)
+        url = api_url + '/oauth2/register/' + client_id
+        headers = DynamicClientRegistrationService._get_header_(registration_access_token)
+
+        response = requests.get(url, headers=headers)
+        data = None
+        if response.ok:
+            data = GetResponseModel(response.json())
+
+        return data
 
     @staticmethod
     def update(registration_access_token: str, request: UpdateRequestModel):
         """Update Registration Request for an existing client at the BCSC OpenID Provider."""
-        return DynamicClientRegistrationApiMock.update(registration_access_token, request)
+        url = request.api_url + '/oauth2/register/' + request.client_id
+        headers = DynamicClientRegistrationService._get_header_(registration_access_token)
+
+        del request.api_url
+        del request.api_token
+
+        response = requests.put(url, headers=headers, data=json.dumps(request.__dict__))
+        data = None
+        if response.ok:
+            data = UpdateResponseModel(response.json())
+
+        return data
 
     @staticmethod
-    def delete():
+    def delete(client_id: str, registration_access_token: str, api_url: str):
         """Delete Registration Request for a new client at the BCSC OpenID Provider."""
-        return True
+        url = api_url + '/oauth2/register/' + client_id
+        headers = DynamicClientRegistrationService._get_header_(registration_access_token)
+
+        response = requests.delete(url, headers=headers)
+        return response.ok
+
+    @staticmethod
+    def _get_header_(token):
+        """Generate header."""
+        return {
+            'Authorization': 'Bearer ' + token,
+            'Content-Type': 'application/json'
+        }

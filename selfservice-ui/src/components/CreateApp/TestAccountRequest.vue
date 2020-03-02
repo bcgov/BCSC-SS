@@ -3,11 +3,7 @@
 <template>
   <v-card class="mx-auto" style="max-width: 80%;">
     <v-toolbar flat class="bc-subtitle padding-0" dark>
-      <v-btn
-        icon
-        @click="$router.push(`/project/${projectId}/package/`)"
-        :aria-label="$t('testAccount.Back')"
-      >
+      <v-btn icon @click="goBack()" :aria-label="$t('testAccount.Back')">
         <v-icon>mdi-arrow-left</v-icon>
       </v-btn>
       <v-toolbar-title>{{ $t('testAccount.pagetitle') }}</v-toolbar-title>
@@ -93,10 +89,16 @@
         <v-card-actions class="mx-4">
           <v-spacer></v-spacer>
           <Button
-            @click="$router.push(`/project/${projectId}/package/`)"
-            :aria-label="$t('testAccount.Back')"
+            @click="goBack()"
+            :aria-label="$t('testAccount.btnBack')"
             secondary
-            >{{ $t('testAccount.Back') }}</Button
+            >{{
+              $t(
+                showWizardExperience()
+                  ? 'testAccount.btnBack'
+                  : 'testAccount.btnCancel'
+              )
+            }}</Button
           >
           <Button
             :disabled="!slectedNumber"
@@ -104,7 +106,13 @@
             class="white--text submit-account ml-6"
             depressed
             @click="submitTestAccount"
-            >{{ $t('testAccount.Next') }}</Button
+            >{{
+              $t(
+                showWizardExperience()
+                  ? 'testAccount.btnNext'
+                  : 'testAccount.btnSaveChanges'
+              )
+            }}</Button
           >
         </v-card-actions>
       </v-card>
@@ -117,6 +125,8 @@ import { Getter, namespace, Action } from 'vuex-class';
 import Button from '@/Atomic/Button/Button.vue';
 import TextArea from '@/Atomic/TextArea/TextArea.vue';
 const PackageAndTestModule = namespace('PackageAndTestModule');
+const TechnicalReqModule = namespace('TechnicalReqModule');
+const SharedModule = namespace('SharedModule');
 
 @Component({
   components: {
@@ -135,16 +145,32 @@ export default class TestAccountRequest extends Vue {
   @PackageAndTestModule.Action('addTestAccountRequestToProject')
   public addTestAccountRequestToProject!: any;
 
+  @TechnicalReqModule.Action('loadTechnicalReqDetails')
+  public loadTechnicalReqDetails!: any;
+  @TechnicalReqModule.Getter('getTechnicalReq')
+  public getTechnicalReq!: any;
+  @TechnicalReqModule.Getter('isLoading') public isLoading!: boolean;
+
+  @SharedModule.Action('redirectFromSummaryPage')
+  public redirectFromSummaryPage!: any;
+  @SharedModule.Getter('isRedirectFromSummaryPage')
+  public isRedirectFromSummaryPage!: boolean;
+
   private noOfTestAccounts: any = [1, 2, 3, 5];
   private notes: string = '';
 
   private slectedNumber: number = 1;
-  private isLoading: boolean = false;
+  // private isLoading: boolean = false;
   private projectId: number = this.id || 0;
 
   @Watch('successStatus')
   private onStatusChanged(val: any, oldVal: any) {
     setTimeout(this.clearStatus, 3000);
+  }
+  @Watch('getTechnicalReq')
+  private ongetTechnicalReqChanged(val: any) {
+    this.slectedNumber = val.noOfTestAccount || this.slectedNumber;
+    this.notes = val.noteTestAccount || this.notes;
   }
 
   private selectedTestAccount(packageVal: number) {
@@ -157,6 +183,25 @@ export default class TestAccountRequest extends Vue {
       noteTestAccount: this.notes,
       projectId: this.projectId
     });
+  }
+
+  private mounted() {
+    if (this.id !== 0) {
+      // this.isEditMode = true;
+      this.loadTechnicalReqDetails(this.id);
+    }
+  }
+
+  private goBack() {
+    const redirectPage = this.showWizardExperience() ? 'package' : 'summary';
+    this.redirectFromSummaryPage(false);
+    this.$router.push(`/project/${this.projectId}/${redirectPage}/`);
+  }
+  private showWizardExperience() {
+    if (this.isRedirectFromSummaryPage) {
+      return false;
+    }
+    return true;
   }
 }
 </script>
