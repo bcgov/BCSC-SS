@@ -1,0 +1,13 @@
+name: ZAP
+on: [pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: owasp/zap2docker-stable
+      options: --user root
+    steps:
+      - uses: actions/checkout@v1
+      - name: run zap - Dev
+        if: always()
+        run: zap-baseline.py -t https://selfservice-dev.pathfinder.gov.bc.ca/ -g gen.conf -r DevZapreport.html
