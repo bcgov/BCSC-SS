@@ -18,7 +18,6 @@ exports[`ProjectSummary.vue renders props when passed 1`] = `
   >
     <v-btn-stub
       activeclass=""
-      aria-label="Back Button"
       icon="true"
       tag="button"
       type="button"
@@ -131,7 +130,6 @@ exports[`ProjectSummary.vue renders props when passed with gettors 1`] = `
   >
     <v-btn-stub
       activeclass=""
-      aria-label="Back Button"
       icon="true"
       tag="button"
       type="button"

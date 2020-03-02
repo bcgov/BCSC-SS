@@ -199,8 +199,8 @@ export default class AddProjectInfo extends Vue {
 
   @SharedModule.Getter('isRedirectFromSummaryPage')
   public isRedirectFromSummaryPage!: boolean;
-  @SharedModule.Action('rediectFromSummaryPage')
-  public rediectFromSummaryPage!: any;
+  @SharedModule.Action('redirectFromSummaryPage')
+  public redirectFromSummaryPage!: any;
 
   public form: boolean = false;
   private isLoading: boolean = false;
@@ -258,10 +258,13 @@ export default class AddProjectInfo extends Vue {
     if (this.isEditMode) {
       data.id = this.id;
       this.updateProjectInfoStore(data);
+      if (!this.showWizardExperience()) {
+        this.redirectFromSummaryPage(true);
+      }
     } else {
       this.addProjectInfoStore(data);
+      this.redirectFromSummaryPage(false);
     }
-    this.rediectFromSummaryPage(true);
   }
 
   private getUserDetailsByRole(users: any, selectedRole: number) {
@@ -287,7 +290,10 @@ export default class AddProjectInfo extends Vue {
   }
 
   private showWizardExperience() {
-    return this.isEditMode && !this.isRedirectFromSummaryPage;
+    if (this.isEditMode && this.isRedirectFromSummaryPage) {
+      return false;
+    }
+    return true;
   }
 }
 </script>

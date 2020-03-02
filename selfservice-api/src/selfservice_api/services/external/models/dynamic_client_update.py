@@ -19,6 +19,9 @@ from .dynamic_client_create import CreateRequestModel, CreateResponseModel
 class UpdateRequestModel(CreateRequestModel):  # pylint: disable=too-few-public-methods
     """Client Registration Request Model."""
 
+    """Client identifier of OIDC Config."""  # pylint: disable=pointless-string-statement
+    client_id: str
+
 
 class UpdateResponseModel(CreateResponseModel):  # pylint: disable=too-few-public-methods
     """Client Registration Response Model."""

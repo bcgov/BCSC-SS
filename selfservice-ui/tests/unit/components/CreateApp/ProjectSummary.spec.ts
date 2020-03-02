@@ -103,7 +103,7 @@ describe('ProjectSummary.vue', () => {
           isRedirectFromSummaryPage: jest.fn()
         },
         actions: {
-          rediectFromSummaryPage: jest.fn()
+          redirectFromSummaryPage: jest.fn()
         }
       }
     }
@@ -168,7 +168,7 @@ describe('ProjectSummary.vue', () => {
             isRedirectFromSummaryPage: jest.fn()
           },
           actions: {
-            rediectFromSummaryPage: jest.fn()
+            redirectFromSummaryPage: jest.fn()
           }
         }
       }

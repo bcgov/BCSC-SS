@@ -31,7 +31,8 @@ describe('AddTechnicalReq.vue', () => {
         state: {},
         getters: {
           getSingleTechnicalReq: jest.fn(),
-          getTechnicalReq: jest.fn()
+          getTechnicalReq: jest.fn(),
+          isLoading: jest.fn()
         },
         actions: {
           getSingleTechnicalReq: jest.fn(),
@@ -45,7 +46,7 @@ describe('AddTechnicalReq.vue', () => {
           isRedirectFromSummaryPage: jest.fn()
         },
         actions: {
-          rediectFromSummaryPage: jest.fn()
+          redirectFromSummaryPage: jest.fn()
         }
       }
     }

@@ -12,6 +12,7 @@ important action on your service, such as Download or Submit. */
       disabled !== false ? 'disabled' : ''
     ]"
     :aria-disabled="disabled"
+    :disabled="disabled"
     @click="click"
     v-bind="$attrs"
   >
@@ -175,5 +176,11 @@ export default class Button extends Vue {
 .disabled {
   cursor: not-allowed;
   opacity: 0.3;
+}
+.secondary.theme--light.v-btn.v-btn--disabled:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
+  background-color: $BCgovFontColorInverted !important;
+}
+.primary.theme--light.v-btn.v-btn--disabled:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
+  background-color: $BCgovBlue5 !important;
 }
 </style>
