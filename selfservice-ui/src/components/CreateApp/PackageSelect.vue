@@ -99,9 +99,10 @@
           <!-- <v-btn text @click="$refs.form.reset()">Clear</v-btn> -->
           <v-spacer></v-spacer>
           <Button
-            @click="goBack()"
+            @click="goBack"
             :aria-label="$t('selectPackage.btnBack')"
             secondary
+            class="back-btn"
           >
             {{
               $t(

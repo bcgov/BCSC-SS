@@ -36,6 +36,18 @@ describe('TestAccountRequest.vue', () => {
           getSingleTechnicalReq: jest.fn(),
           addTechnicalReq: jest.fn()
         }
+      },
+      SharedModule: {
+        namespaced: true,
+        state: {},
+        getters: {
+          isRedirectFromSummaryPage: jest.fn(() => {
+            return false;
+          })
+        },
+        actions: {
+          redirectFromSummaryPage: jest.fn()
+        }
       }
     }
   });
