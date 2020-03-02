@@ -16,12 +16,7 @@ export class TechnicalReqService {
     return await axios.post(techUrl, technicalreqModel);
   }
   public static async updateTechnicalReq(technicalreqModel: TechnicalReqModel) {
-    return await axios.put(
-      TECHNICALREQ_URL + '/' + technicalreqModel.id,
-      technicalreqModel
-    );
+    const techUrl = getUrl(TECHNICALREQ_URL, technicalreqModel.projectId);
+    return await axios.put(techUrl, technicalreqModel);
   }
-  // public static async deleteTechnicalReq(id: string) {
-  //   return await axios.delete(TECHNICALREQ_URL + '/' + id);
-  // }
 }
