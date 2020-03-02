@@ -175,7 +175,7 @@ export default class ListPackage extends Vue {
   }
   @Watch('getTechnicalReq')
   private ongetTechnicalReqChanged(val: any) {
-    this.slectedPackage = val.scopePackageId;
+    this.slectedPackage = val.scopePackageId || this.slectedPackage;
   }
 
   private mounted() {

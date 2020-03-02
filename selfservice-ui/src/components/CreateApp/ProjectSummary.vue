@@ -444,20 +444,8 @@ export default class TestAccountRequest extends Vue {
   }
 
   private mounted() {
-    if (
-      this.projectInfo &&
-      this.projectInfo.id &&
-      this.technicalReq &&
-      this.technicalReq.id
-    ) {
-      this.projectId = this.projectInfo.id;
-      this.isLoading = false;
-      this.setUsers(this.projectInfo);
-    } else {
-      this.isLoading = true;
-      this.loadSingleProjectInfo(this.id);
-      this.loadTechnicalReqDetails(this.id);
-    }
+    this.loadSingleProjectInfo(this.id);
+    this.loadTechnicalReqDetails(this.id);
     this.loadPackage();
     this.redirectFromSummaryPage(true);
   }
