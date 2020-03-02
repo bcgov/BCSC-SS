@@ -5,6 +5,46 @@ import Vuex from 'vuex';
 import VueRouter from 'vue-router';
 // import Vue from 'vue';
 
+const PackageAndTestModule = {
+  namespaced: true,
+  state: {},
+  getters: {
+    getPackageList: () => [
+      {
+        claimNames: ['Given name', 'Surname'],
+        description: 'This package contains the following data:',
+        id: 1,
+        packageName: 'Package 1'
+      },
+      {
+        claimNames: ['Given name', 'Surname'],
+        description: 'This package contains the following data:',
+        id: 2,
+        packageName: 'Package 2'
+      }
+    ],
+    isLoggedin: jest.fn(),
+    successStatus: jest.fn(),
+    errorStatus: jest.fn()
+  },
+  actions: { addPackagetoProject: jest.fn(), loadPackage: jest.fn() }
+};
+
+const TechnicalReqModule = {
+  namespaced: true,
+  state: {},
+  getters: {
+    getSingleTechnicalReq: jest.fn(),
+    getTechnicalReq: jest.fn(),
+    isLoading: jest.fn()
+  },
+  actions: {
+    getSingleTechnicalReq: jest.fn(),
+    addTechnicalReq: jest.fn(),
+    loadTechnicalReqDetails: jest.fn()
+  }
+};
+
 describe('PackageSelect.vue', () => {
   let vuetify: any;
   const router = new VueRouter();
@@ -16,43 +56,8 @@ describe('PackageSelect.vue', () => {
   vuetify = new Vuetify();
   const store = new Vuex.Store({
     modules: {
-      PackageAndTestModule: {
-        namespaced: true,
-        state: {},
-        getters: {
-          getPackageList: () => [
-            {
-              claimNames: ['Given name', 'Surname'],
-              description: 'This package contains the following data:',
-              id: 1,
-              packageName: 'Package 1'
-            },
-            {
-              claimNames: ['Given name', 'Surname'],
-              description: 'This package contains the following data:',
-              id: 2,
-              packageName: 'Package 2'
-            }
-          ],
-          isLoggedin: jest.fn(),
-          successStatus: jest.fn(),
-          errorStatus: jest.fn()
-        },
-        actions: { addPackagetoProject: jest.fn(), loadPackage: jest.fn() }
-      },
-      TechnicalReqModule: {
-        namespaced: true,
-        state: {},
-        getters: {
-          getSingleTechnicalReq: jest.fn(),
-          getTechnicalReq: jest.fn(),
-          isLoading: jest.fn()
-        },
-        actions: {
-          getSingleTechnicalReq: jest.fn(),
-          addTechnicalReq: jest.fn()
-        }
-      },
+      PackageAndTestModule,
+      TechnicalReqModule,
       SharedModule: {
         namespaced: true,
         state: {},
@@ -125,44 +130,8 @@ describe('PackageSelect.vue from summary page', () => {
   vuetify = new Vuetify();
   const storeData = new Vuex.Store({
     modules: {
-      PackageAndTestModule: {
-        namespaced: true,
-        state: {},
-        getters: {
-          getPackageList: () => [
-            {
-              claimNames: ['name', 'Surname'],
-              description: 'This package contains the following data:',
-              id: 1,
-              packageName: 'Package 1'
-            },
-            {
-              claimNames: ['Given name', 'Surname'],
-              description: 'This package contains the following data:',
-              id: 2,
-              packageName: 'Package 2'
-            }
-          ],
-          isLoggedin: jest.fn(),
-          successStatus: jest.fn(),
-          errorStatus: jest.fn()
-        },
-        actions: { addPackagetoProject: jest.fn(), loadPackage: jest.fn() }
-      },
-      TechnicalReqModule: {
-        namespaced: true,
-        state: {},
-        getters: {
-          getSingleTechnicalReq: jest.fn(),
-          getTechnicalReq: jest.fn(),
-          isLoading: jest.fn()
-        },
-        actions: {
-          getSingleTechnicalReq: jest.fn(),
-          addTechnicalReq: jest.fn(),
-          loadTechnicalReqDetails: jest.fn()
-        }
-      },
+      PackageAndTestModule,
+      TechnicalReqModule,
       SharedModule: {
         namespaced: true,
         state: {},

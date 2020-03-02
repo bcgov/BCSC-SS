@@ -48,8 +48,8 @@
   },
   "selectPackage": {
     "pagetitle": "Select Package",
-    "pagetitleInfo": "<p>Data packages are collections of user attributes (or “scopes” ) which can be returned on successful authentication. <p></p> Select the most appropriate package for your use case, noting that the more attributes you require, the greater the overhead of complying with privacy regulations.</p>",
-    "choosePackage": "Select your data package",
+    "pagetitleInfo": "<p>OIDC scopes are collections of user attributes which can be returned on successful authentication.</p>Select the most appropriate package of scopes for your use case, noting that the more attributes you require, the greater the overhead of complying with privacy regulations.</p><p><br /></p><p>The following standard scopes are supported :</p><p><ul ><li class='my-1'>openid - Unique identifier </li><li class='my-1'>profile - Given name and surname</li><li class='my-1'>email - Email address</li><li class='my-1'>address - Physical address (Street, locality, state or province, postal code and country) </li></ul></p>",
+    "choosePackage": "Select your scope package",
     "description": "This package contains the following data:",
     "package1": "Package 1 - best fit for organizations looking for a digital signature",
     "package2": "Package 2 - best fit for organizations who want to know who the user is and communicate directly with their users electronically",
