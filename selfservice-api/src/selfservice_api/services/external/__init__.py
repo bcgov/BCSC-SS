@@ -13,4 +13,15 @@
 # limitations under the License.
 """Exposes all of the services used to communicate external API."""
 
+from flask import current_app
+
 from .dynamic_client_registration import DynamicClientRegistrationService
+from .dynamic_client_registration_api_mock import DynamicClientRegistrationApiMock
+
+
+def get_dynamic_api():
+    """Switching to mock to skip dynamic api call while integration testing."""
+    if current_app.config.get('TESTING'):  # pylint: disable=no-else-return
+        return DynamicClientRegistrationApiMock
+    else:
+        return DynamicClientRegistrationService

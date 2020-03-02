@@ -110,7 +110,7 @@ def test_patch_project_status(client, jwt, session):
                             data=json.dumps(req_data), headers=headers, content_type='application/json')
 
 
-def test_patch_project_status_validation(client, jwt, session):
+def test_patch_project_status_validation(client, jwt, session, config):
     """Assert that the endpoint returns the failure status."""
     headers = ss_client_auth_header(jwt)
     req_data = {}
@@ -150,3 +150,27 @@ def test_patch_project_status_validation(client, jwt, session):
                             data=json.dumps(req_data), headers=headers, content_type='application/json')
 
     assert response.status_code == HTTPStatus.BAD_REQUEST
+
+    # Dynamic OIDC None response: Start
+    config['dynamic_api_return_none'] = True
+    req_data = {'update': 'status', 'status': 2}
+    response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
+                            data=json.dumps(req_data), headers=headers, content_type='application/json')
+
+    assert response.status_code == HTTPStatus.INTERNAL_SERVER_ERROR
+
+    # call again to cover update api call
+    config.pop('dynamic_api_return_none')
+
+    response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
+                            data=json.dumps(req_data), headers=headers, content_type='application/json')
+
+    assert response.status_code == HTTPStatus.OK
+
+    config['dynamic_api_return_none'] = True
+    response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
+                            data=json.dumps(req_data), headers=headers, content_type='application/json')
+
+    assert response.status_code == HTTPStatus.INTERNAL_SERVER_ERROR
+    config.pop('dynamic_api_return_none')
+    # Dynamic OIDC None response: End

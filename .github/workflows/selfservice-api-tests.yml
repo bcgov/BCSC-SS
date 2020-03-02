@@ -28,7 +28,10 @@ jobs:
       JWT_OIDC_JWKS_CACHE_TIMEOUT: 300
       JWT_OIDC_JWKS_URI: https://sso-dev.pathfinder.gov.bc.ca/auth/realms/1gw8g24z/protocol/openid-connect/certs 
       JWT_OIDC_WELL_KNOWN_CONFIG: https://sso-dev.pathfinder.gov.bc.ca/auth/realms/1gw8g24z/.well-known/openid-configuration 
-
+      DYNAMIC_TEST_API_URL: TESTING
+      DYNAMIC_TEST_API_TOKEN: TESTING_TOKEN
+      DYNAMIC_PROD_API_URL: TESTING
+      DYNAMIC_PROD_API_TOKEN: TESTING_TOKEN
 
     steps:
       - uses: actions/checkout@v1
