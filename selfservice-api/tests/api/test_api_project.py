@@ -17,8 +17,9 @@ import json
 from http import HTTPStatus
 
 from ..helper.api_create_data import (PROJECTINFO_API, _create_project_, _get_project_, _get_all_project_,  # noqa: I001
-                                      create_project, create_technical_req_with_additional, create_user,  # noqa: I001
-                                      get_project)  # noqa: I001
+                                    _update_technical_req_with_test_account_,  # noqa: I001
+                                    create_project, create_technical_req_with_additional, create_user,  # noqa: I001
+                                    get_project)  # noqa: I001
 from ..helper.auth import ss_client_auth_header
 
 from selfservice_api.models.enums import ProjectRoles
@@ -105,12 +106,19 @@ def test_patch_project_status(client, jwt, session):
 
     assert response.status_code == HTTPStatus.OK
 
-    # check the skip condition on oidc config
+    # check the update condition on test account
+    _update_technical_req_with_test_account_(client, jwt, str(technical_req['projectId']), 2)
+
+    response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
+                            data=json.dumps(req_data), headers=headers, content_type='application/json')
+
+    _update_technical_req_with_test_account_(client, jwt, str(technical_req['projectId']), 5)
+
     response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
                             data=json.dumps(req_data), headers=headers, content_type='application/json')
 
 
-def test_patch_project_status_validation(client, jwt, session, config):
+def test_patch_project_status_validation(client, jwt, session):
     """Assert that the endpoint returns the failure status."""
     headers = ss_client_auth_header(jwt)
     req_data = {}
@@ -151,6 +159,12 @@ def test_patch_project_status_validation(client, jwt, session, config):
 
     assert response.status_code == HTTPStatus.BAD_REQUEST
 
+
+def test_patch_project_status_oidc_and_test_account(client, jwt, session, config):
+    """Assert that the endpoint returns the failure status."""
+    headers = ss_client_auth_header(jwt)
+    technical_req = create_technical_req_with_additional(client, jwt)
+
     # Dynamic OIDC None response: Start
     config['dynamic_api_return_none'] = True
     req_data = {'update': 'status', 'status': 2}
@@ -173,4 +187,5 @@ def test_patch_project_status_validation(client, jwt, session, config):
 
     assert response.status_code == HTTPStatus.INTERNAL_SERVER_ERROR
     config.pop('dynamic_api_return_none')
+
     # Dynamic OIDC None response: End

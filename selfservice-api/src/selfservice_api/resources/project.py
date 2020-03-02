@@ -19,7 +19,7 @@ from flask import current_app, g, jsonify, request
 from flask_restplus import Namespace, Resource, cors
 from marshmallow import ValidationError
 
-from ..models import OIDCConfig, Project, TechnicalReq, User
+from ..models import OIDCConfig, Project, TechnicalReq, TestAccount, User
 from ..models.enums import ProjectRoles, ProjectStatus
 from ..schemas.project import ProjectSchema
 from ..services.external import get_dynamic_api
@@ -201,6 +201,9 @@ class ProjectResourceById(Resource):
                     ProjectResourceById._map_response_to_oidc_config_(True, project, api_response))
             else:
                 api_call_succeeded = False
+
+        if not is_prod:
+            TestAccount.map_test_accounts(project.id, technical_req.no_of_test_account)
 
         return api_call_succeeded
 
