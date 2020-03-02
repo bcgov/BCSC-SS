@@ -10,4 +10,4 @@ jobs:
       - uses: actions/checkout@v1
       - name: run zap - Dev
         if: always()
-        run: zap-baseline.py -t https://selfservice-dev.pathfinder.gov.bc.ca/ -g gen.conf -r DevZapreport.html
+        run: zap-full-scan.py -t https://selfservice-dev.pathfinder.gov.bc.ca/
