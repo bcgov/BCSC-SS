@@ -11,7 +11,7 @@ jobs:
       - run: pwd && ls -l
       - run: pip install --upgrade pip github3.py
       - run: pip3 install --upgrade pip github3.py
-      - run: apt install mutt
+      - run: sudo apt-get install mutt
       - name: run zap baseline scan
         run: zap-baseline.py -t https://selfservice-dev.pathfinder.gov.bc.ca/ -g gen.conf -r zapdevreport.html
       - run: pwd && ls -l /zap/wrk/
