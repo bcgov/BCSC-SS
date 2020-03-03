@@ -1,16 +1,19 @@
-name: Zap 
-on: [pull_request]
+name: ZAP
+on: push
 jobs:
- build:
+  scan:
     runs-on: ubuntu-latest
-    steps:    
-    - name: Run the OWASP baseline scanner
-      run: docker run -t owasp/zap2docker-weekly zap-baseline.py -t https://selfservice-dev.pathfinder.gov.bc.ca/ | tee zapScanResults.txt
-    - name: Upload scan results
-      uses: actions/upload-artifact@v1
-      with:
-          name: zapScanResults
-          path: zapScanResults.txt
-    - name: Get result summary
-      id: result_summary
-      run: echo "##[set-output name=value;]$(cat zapScanResults.txt | tail -1)"
+    container:
+      image: owasp/zap2docker-stable
+      options: --user root -v ${{ github.workspace }}:/zap/wrk/:rw
+    steps:
+      - uses: actions/checkout@v2
+      - run: pwd && ls -l
+      - run: pip install --upgrade pip github3.py
+      - run: pip3 install --upgrade pip github3.py
+      - run: apt install mutt
+      - name: run zap baseline scan
+        run: zap-baseline.py -t https://selfservice-dev.pathfinder.gov.bc.ca/ -g gen.conf -r zapdevreport.html
+      - run: pwd && ls -l /zap/wrk/
+      - run: cat /zap/wrk/zapdevreport.html
+      - run: echo "zap testing message" | mutt -s "zap report" -a /zap/wrk/zapdevreport.html -- kulpreet.singh@aot-technologies.com
