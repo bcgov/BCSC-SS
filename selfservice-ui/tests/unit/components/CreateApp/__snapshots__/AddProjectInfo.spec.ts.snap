@@ -35,6 +35,8 @@ exports[`AddProjectInfo.vue renders edit props when passed 1`] = `
        
       <v-toolbar-title-stub>
         
+        
+      
       </v-toolbar-title-stub>
        
       <v-spacer-stub />
@@ -62,6 +64,8 @@ exports[`AddProjectInfo.vue renders edit props when passed 1`] = `
                 class="headline bc-padding-left-0"
               >
                 
+                
+              
               </v-card-title-stub>
                
               <v-card-subtitle-stub
@@ -116,12 +120,16 @@ exports[`AddProjectInfo.vue renders edit props when passed 1`] = `
                 class="headline bc-padding-left-0"
               >
                 
+                
+              
               </v-card-title-stub>
                
               <v-card-subtitle-stub
                 class="text-left bc-padding-left-0"
               >
                 
+                
+              
               </v-card-subtitle-stub>
                
               <v-radio-group-stub
@@ -245,6 +253,8 @@ exports[`AddProjectInfo.vue renders edit props when passed 1`] = `
                   type="button"
                 >
                   
+                  
+                
                 </button-stub>
               </v-card-actions-stub>
             </v-card-stub>
@@ -291,6 +301,8 @@ exports[`AddProjectInfo.vue renders props when passed 1`] = `
        
       <v-toolbar-title-stub>
         
+        
+      
       </v-toolbar-title-stub>
        
       <v-spacer-stub />
@@ -318,6 +330,8 @@ exports[`AddProjectInfo.vue renders props when passed 1`] = `
                 class="headline bc-padding-left-0"
               >
                 
+                
+              
               </v-card-title-stub>
                
               <v-card-subtitle-stub
@@ -372,12 +386,16 @@ exports[`AddProjectInfo.vue renders props when passed 1`] = `
                 class="headline bc-padding-left-0"
               >
                 
+                
+              
               </v-card-title-stub>
                
               <v-card-subtitle-stub
                 class="text-left bc-padding-left-0"
               >
                 
+                
+              
               </v-card-subtitle-stub>
                
               <v-radio-group-stub
@@ -501,6 +519,8 @@ exports[`AddProjectInfo.vue renders props when passed 1`] = `
                   type="button"
                 >
                   
+                  
+                
                 </button-stub>
               </v-card-actions-stub>
             </v-card-stub>
