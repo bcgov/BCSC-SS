@@ -79,7 +79,7 @@
                     class="ml-6"
                   >{{ selectedTechnical.phone }}</div>
                   <div
-                    v-if="selectedManager.email !== ''"
+                    v-if="selectedTechnical.email !== ''"
                     class="ml-6"
                   >{{ selectedTechnical.email }}</div>
                 </v-list-item-content>
