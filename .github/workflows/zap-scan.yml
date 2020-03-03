@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: owasp/zap2docker-stable
-      volumes: "/zap/wrk/"
+      volumes: /zap/wrk/
       options: --user root
     steps:
       - uses: actions/checkout@v1
