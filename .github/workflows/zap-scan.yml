@@ -6,8 +6,12 @@ jobs:
     container:
       image: owasp/zap2docker-stable
       options: --user root
+      volumes:
+        - '/zap/wrk/'
     steps:
       - uses: actions/checkout@v1
       - name: run zap - Dev
+        with:
+          entrypoint: /zap/wrk/
         if: always()
-        run: zap-full-scan.py -t https://selfservice-dev.pathfinder.gov.bc.ca/
+        run: zap-baseline.py -t https://selfservice-dev.pathfinder.gov.bc.ca/ -g gen.conf -r DevZapreport.html
