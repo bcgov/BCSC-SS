@@ -16,4 +16,4 @@ jobs:
       - run: pwd && ls -l /zap/wrk/
       - run: cat /zap/wrk/zapdevreport.html
       - run: apt-get update && apt-get install -q -y bsd-mailx
-      - run: echo "ZAP Scan Report" | mailx -s "ZAP Scan Report" -r "kulpreet.singh@gov.bc.ca" -a /zap/wrk/zapdevreport.html
+      - run: echo "ZAP Scan Report" | mailx -s "ZAP Scan Report" -r "kulpreet.singh@gov.bc.ca" -a /zap/wrk/zapdevreport.html kulpreet.singh@gov.bc.ca
