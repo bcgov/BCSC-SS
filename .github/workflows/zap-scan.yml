@@ -12,7 +12,7 @@ jobs:
       - run: pip install --upgrade pip github3.py
       - run: pip3 install --upgrade pip github3.py
       - name: run zap baseline scan
-        run: zap-baseline.py -t https://selfservice-dev.pathfinder.gov.bc.ca/ -g gen.conf -r zapdevreport.html || || echo 0
+        run: zap-baseline.py -t https://selfservice-dev.pathfinder.gov.bc.ca/ -g gen.conf -r zapdevreport.html || echo 0
       - run: pwd && ls -l /zap/wrk/
       - run: cat /zap/wrk/zapdevreport.html
       - run: echo "ZAP Scan Report" | mail -s "ZAP Scan Report" -r "kulpreet.singh@gov.bc.ca" -a /zap/wrk/zapdevreport.html kulpreet.singh@gov.bc.ca
