@@ -79,6 +79,9 @@ class Project(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
             user = User.find_by_email(project_user['email'])
             if user is None:
                 user = User.create_from_dict(project_user)
+            elif user.oauth_id is None:
+                user.update(project_user)
+
             self.__create_association__(user.id, project_user['role'])
 
     def __create_association__(self, user_id, role):
