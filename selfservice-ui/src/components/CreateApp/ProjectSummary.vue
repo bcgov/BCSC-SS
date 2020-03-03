@@ -16,10 +16,7 @@
       <v-row class="ma-5" v-if="!isLoading">
         <v-col cols="12" flat>
           <v-card flat>
-            <v-list-item-content
-              class="text-left padding-0"
-              v-html="$t('summaryPage.subTitle')"
-            ></v-list-item-content>
+            <v-list-item-content class="text-left padding-0" v-html="$t('summaryPage.subTitle')"></v-list-item-content>
           </v-card>
         </v-col>
         <v-col cols="12" flat>
@@ -32,16 +29,17 @@
                   small
                   class="ml-3"
                   @click="$router.push(`/project/${projectId}/info`)"
-                  >mdi-pencil</v-icon
-                >
+                >mdi-pencil</v-icon>
               </v-card-title>
             </v-toolbar>
 
             <v-list dense class="px-5">
               <v-list-item>
-                <v-list-item-content>{{
+                <v-list-item-content>
+                  {{
                   $t('summaryPage.labelOrganizationName')
-                }}</v-list-item-content>
+                  }}
+                </v-list-item-content>
                 <v-list-item-content class="align-end">
                   <div>
                     <v-icon small class="mr-1">mdi-office-building</v-icon>
@@ -51,9 +49,11 @@
               </v-list-item>
               <v-divider></v-divider>
               <v-list-item>
-                <v-list-item-content>{{
+                <v-list-item-content>
+                  {{
                   $t('summaryPage.labelProjectTitle')
-                }}</v-list-item-content>
+                  }}
+                </v-list-item-content>
                 <v-list-item-content class="align-end">
                   <div>
                     <v-icon small class="mr-1">mdi-apps</v-icon>
@@ -63,54 +63,58 @@
               </v-list-item>
               <v-divider></v-divider>
               <v-list-item>
-                <v-list-item-content class="align-self-start">{{
+                <v-list-item-content class="align-self-start">
+                  {{
                   $t('summaryPage.labelTechnicalContact')
-                }}</v-list-item-content>
+                  }}
+                </v-list-item-content>
                 <v-list-item-content class="align-end">
                   <div>
                     <v-icon small class="mr-1">mdi-account</v-icon>
                     {{ selectedTechnical.firstName }}
                     {{ selectedTechnical.lastName }}
                   </div>
-                  <div v-if="selectedTechnical.phone !== ''" class="ml-6">
-                    {{ selectedTechnical.phone }}
-                  </div>
-                  <div v-if="selectedManager.email !== ''" class="ml-6">
-                    {{ selectedTechnical.email }}
-                  </div>
+                  <div
+                    v-if="selectedTechnical.phone !== ''"
+                    class="ml-6"
+                  >{{ selectedTechnical.phone }}</div>
+                  <div
+                    v-if="selectedManager.email !== ''"
+                    class="ml-6"
+                  >{{ selectedTechnical.email }}</div>
                 </v-list-item-content>
               </v-list-item>
               <v-divider></v-divider>
               <v-list-item>
-                <v-list-item-content class="align-self-start">{{
+                <v-list-item-content class="align-self-start">
+                  {{
                   $t('summaryPage.labelManagerContact')
-                }}</v-list-item-content>
+                  }}
+                </v-list-item-content>
                 <v-list-item-content class="align-end">
                   <div>
                     <v-icon small class="mr-1">mdi-account</v-icon>
                     {{ selectedManager.firstName }}
                     {{ selectedManager.lastName }}
                   </div>
-                  <div v-if="selectedManager.phone !== ''" class="ml-6">
-                    {{ selectedManager.phone }}
-                  </div>
-                  <div v-if="selectedManager.email !== ''" class="ml-6">
-                    {{ selectedManager.email }}
-                  </div>
+                  <div v-if="selectedManager.phone !== ''" class="ml-6">{{ selectedManager.phone }}</div>
+                  <div v-if="selectedManager.email !== ''" class="ml-6">{{ selectedManager.email }}</div>
                 </v-list-item-content>
               </v-list-item>
               <v-divider></v-divider>
               <v-list-item>
-                <v-list-item-content class="align-self-start">{{
+                <v-list-item-content class="align-self-start">
+                  {{
                   $t('summaryPage.labelCtoContact')
-                }}</v-list-item-content>
+                  }}
+                </v-list-item-content>
                 <v-list-item-content class="align-end">
                   <div>
                     <v-icon small class="mr-1">mdi-account</v-icon>
                     {{ selectedCto.firstName }} {{ selectedCto.lastName }}
                   </div>
-                  <div class="ml-6">{{ selectedManager.phone }}</div>
-                  <div class="ml-6">{{ selectedManager.email }}</div>
+                  <div class="ml-6">{{ selectedCto.phone }}</div>
+                  <div class="ml-6">{{ selectedCto.email }}</div>
                 </v-list-item-content>
               </v-list-item>
             </v-list>
@@ -125,15 +129,16 @@
                   small
                   class="ml-3"
                   @click="$router.push(`/project/${projectId}/technical`)"
-                  >mdi-pencil</v-icon
-                >
+                >mdi-pencil</v-icon>
               </v-card-title>
             </v-toolbar>
             <v-list dense class="px-5">
               <v-list-item>
-                <v-list-item-content>{{
+                <v-list-item-content>
+                  {{
                   $t('summaryPage.labelApplicationUrl')
-                }}</v-list-item-content>
+                  }}
+                </v-list-item-content>
                 <v-list-item-content class="align-end">
                   <div>
                     <v-icon small class="mr-1">mdi-link</v-icon>
@@ -143,26 +148,25 @@
               </v-list-item>
               <v-divider></v-divider>
               <v-list-item>
-                <v-list-item-content class="align-self-start">{{
+                <v-list-item-content class="align-self-start">
+                  {{
                   $t('summaryPage.labelRedirectUrl')
-                }}</v-list-item-content>
+                  }}
+                </v-list-item-content>
                 <v-list-item-content class="align-end">
-                  <div
-                    v-for="redirectUri in technicalReq.redirectUris"
-                    :key="redirectUri"
-                  >
-                    <v-icon small class="mr-1" v-if="redirectUri !== ''"
-                      >mdi-link</v-icon
-                    >
+                  <div v-for="redirectUri in technicalReq.redirectUris" :key="redirectUri">
+                    <v-icon small class="mr-1" v-if="redirectUri !== ''">mdi-link</v-icon>
                     {{ redirectUri }}
                   </div>
                 </v-list-item-content>
               </v-list-item>
               <v-divider></v-divider>
               <v-list-item>
-                <v-list-item-content>{{
+                <v-list-item-content>
+                  {{
                   $t('summaryPage.labelJWKSUrl')
-                }}</v-list-item-content>
+                  }}
+                </v-list-item-content>
                 <v-list-item-content class="align-end">
                   <div>
                     <v-icon small class="mr-1">mdi-link</v-icon>
@@ -172,9 +176,11 @@
               </v-list-item>
               <v-divider></v-divider>
               <v-list-item>
-                <v-list-item-content>{{
+                <v-list-item-content>
+                  {{
                   $t('summaryPage.labelIdTokenSignedResponseAlg')
-                }}</v-list-item-content>
+                  }}
+                </v-list-item-content>
                 <v-list-item-content class="align-end">
                   <v-list-item-content class="align-end">
                     <div>
@@ -186,9 +192,11 @@
               </v-list-item>
               <v-divider></v-divider>
               <v-list-item>
-                <v-list-item-content>{{
+                <v-list-item-content>
+                  {{
                   $t('summaryPage.labelUserinfoSignedResponseAlg')
-                }}</v-list-item-content>
+                  }}
+                </v-list-item-content>
                 <v-list-item-content class="align-end">
                   <v-list-item-content class="align-end">
                     <div>
@@ -204,16 +212,20 @@
         <v-col cols="12" flat>
           <v-card class="mt-5">
             <v-toolbar dense color="#38598a" dark>
-              <v-card-title>{{
+              <v-card-title>
+                {{
                 $t('summaryPage.packageTestTitle')
-              }}</v-card-title>
+                }}
+              </v-card-title>
             </v-toolbar>
 
             <v-list dense v-if="getPackageList.length > 0" class="px-5">
               <v-list-item>
-                <v-list-item-content class="align-self-start">{{
+                <v-list-item-content class="align-self-start">
+                  {{
                   $t('summaryPage.labelDataPackageReqd')
-                }}</v-list-item-content>
+                  }}
+                </v-list-item-content>
                 <v-list-item-content class="align-end">
                   <div>
                     <v-icon small class="mr-1">mdi-package-variant</v-icon>
@@ -222,8 +234,7 @@
                       small
                       class="ml-3"
                       @click="$router.push(`/project/${projectId}/package`)"
-                      >mdi-pencil</v-icon
-                    >
+                    >mdi-pencil</v-icon>
                   </div>
                   <div
                     v-for="claimName in selectedPackage.claimNames"
@@ -237,14 +248,14 @@
               </v-list-item>
               <v-divider></v-divider>
               <v-list-item>
-                <v-list-item-content>{{
+                <v-list-item-content>
+                  {{
                   $t('summaryPage.labelTestAccounts')
-                }}</v-list-item-content>
+                  }}
+                </v-list-item-content>
                 <v-list-item-content class="align-end">
                   <div>
-                    <v-icon small class="mr-1"
-                      >mdi-account-badge-horizontal</v-icon
-                    >
+                    <v-icon small class="mr-1">mdi-account-badge-horizontal</v-icon>
                     {{ technicalReq.noOfTestAccount }}
                     <v-icon
                       small
@@ -252,19 +263,22 @@
                       @click="
                         $router.push(`/project/${projectId}/test-account`)
                       "
-                      >mdi-pencil</v-icon
-                    >
+                    >mdi-pencil</v-icon>
                   </div>
                 </v-list-item-content>
               </v-list-item>
               <v-divider></v-divider>
               <v-list-item>
-                <v-list-item-content>{{
+                <v-list-item-content>
+                  {{
                   $t('summaryPage.labelSpecialReq')
-                }}</v-list-item-content>
-                <v-list-item-content class="align-end">{{
+                  }}
+                </v-list-item-content>
+                <v-list-item-content class="align-end">
+                  {{
                   technicalReq.noteTestAccount
-                }}</v-list-item-content>
+                  }}
+                </v-list-item-content>
               </v-list-item>
             </v-list>
           </v-card>
@@ -278,16 +292,14 @@
                 @click="goBack()"
                 :aria-label="$t('summaryPage.goBack')"
                 secondary
-                >{{ $t('summaryPage.goBack') }}</Button
-              >
+              >{{ $t('summaryPage.goBack') }}</Button>
               <Button
                 :loading="isLoading"
                 class="white--text submit-package ml-6"
                 color="indigo accent-4"
                 depressed
                 @click="dialog = true"
-                >{{ $t('summaryPage.submitRequest') }}</Button
-              >
+              >{{ $t('summaryPage.submitRequest') }}</Button>
             </v-card-actions>
           </v-card>
         </v-col>
@@ -297,9 +309,11 @@
     <div class="text-center">
       <v-dialog v-model="dialog" persistent width="70%" class="text-left">
         <v-card>
-          <v-card-title class="bc-subtitle padding-0" primary-title>{{
+          <v-card-title class="bc-subtitle padding-0" primary-title>
+            {{
             $t('summaryPage.disclaimerTitle')
-          }}</v-card-title>
+            }}
+          </v-card-title>
 
           <v-card-text class="text-left">
             <div v-html="$t('summaryPage.disclaimerContent')"></div>
@@ -313,14 +327,12 @@
               @click="dialog = false"
               aria-label="Back Button"
               secondary
-              >{{ $t('summaryPage.btnAgreeBack') }}</Button
-            >
+            >{{ $t('summaryPage.btnAgreeBack') }}</Button>
             <Button
               class="white--text submit-package ml-6"
               depressed
               @click="submitFinalRequest"
-              >{{ $t('summaryPage.btnAgree') }}</Button
-            >
+            >{{ $t('summaryPage.btnAgree') }}</Button>
           </v-card-actions>
         </v-card>
       </v-dialog>
