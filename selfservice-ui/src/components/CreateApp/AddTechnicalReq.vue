@@ -8,9 +8,11 @@
         <v-btn icon @click="goBack()" aria-label="Back Button">
           <v-icon>mdi-arrow-left</v-icon>
         </v-btn>
-        <v-toolbar-title>{{
+        <v-toolbar-title>
+          {{
           $t('technicalRequirements.technicalTitle')
-        }}</v-toolbar-title>
+          }}
+        </v-toolbar-title>
         <v-spacer></v-spacer>
       </v-app-bar>
 
@@ -20,20 +22,23 @@
           <v-row dense>
             <v-col cols="12" md="12">
               <v-card class="pa-4 pt-6 mb-4">
-                <v-card-title
-                  class="headline bc-padding-left-0 text-capitalize"
-                  >{{
-                    getSingleProjectInfo && getSingleProjectInfo.projectName
-                  }}</v-card-title
-                >
-                <v-card-subtitle class="text-left bc-padding-left-0">{{
+                <v-card-title class="headline bc-padding-left-0 text-capitalize">
+                  {{
+                  getSingleProjectInfo && getSingleProjectInfo.projectName
+                  }}
+                </v-card-title>
+                <v-card-subtitle class="text-left bc-padding-left-0">
+                  {{
                   $t('technicalRequirements.technicalTitleInfo')
-                }}</v-card-subtitle>
+                  }}
+                </v-card-subtitle>
               </v-card>
               <v-card class="pa-4 pt-6">
-                <v-card-subtitle class="text-left bc-padding-left-0">{{
+                <v-card-subtitle class="text-left bc-padding-left-0">
+                  {{
                   $t('technicalRequirements.inputAppText')
-                }}</v-card-subtitle>
+                  }}
+                </v-card-subtitle>
                 <Input
                   v-model="clientUri"
                   counter="500"
@@ -42,15 +47,18 @@
                   :rules="[rules.required, rules.url, rules.maxLength(500)]"
                 />
                 <!-- <div class="col-12"> -->
-                <v-card-subtitle class="text-left bc-padding-left-0">{{
+                <v-card-subtitle class="text-left bc-padding-left-0">
+                  {{
                   $t('technicalRequirements.inputUrlText')
-                }}</v-card-subtitle>
+                  }}
+                </v-card-subtitle>
                 <!-- </div> -->
                 <!-- <div
                   v-for="(redirectUri, index) in redirectUris"
                   v-bind:key="index"
                   class="row v-form px-4"
-                > -->
+                >-->
+
                 <v-text-field
                   v-model="redirectUris[0]"
                   :label="$t('technicalRequirements.labelRedirectUrl')"
@@ -61,9 +69,11 @@
                 ></v-text-field>
                 <!-- :rules="[rules.required]" -->
                 <!-- </div> -->
-                <v-card-subtitle class="text-left bc-padding-left-0">{{
+                <v-card-subtitle class="text-left bc-padding-left-0">
+                  {{
                   $t('technicalRequirements.JWKSText')
-                }}</v-card-subtitle>
+                  }}
+                </v-card-subtitle>
                 <Input
                   v-model="jwksUri"
                   counter="500"
@@ -106,32 +116,30 @@
                 <v-divider></v-divider>
                 <v-card-actions>
                   <v-spacer></v-spacer>
-                  <Button
-                    @click="goBack()"
-                    aria-label="Back Button"
-                    secondary
-                    >{{
-                      $t(
-                        showWizardExperience()
-                          ? 'technicalRequirements.btnBack'
-                          : 'technicalRequirements.btnCancel'
-                      )
-                    }}</Button
-                  >
+                  <Button @click="goBack()" aria-label="Back Button" secondary>
+                    {{
+                    $t(
+                    showWizardExperience()
+                    ? 'technicalRequirements.btnBack'
+                    : 'technicalRequirements.btnCancel'
+                    )
+                    }}
+                  </Button>
                   <Button
                     :disabled="!form"
                     :loading="isLoading"
                     class="white--text submit-req ml-6"
                     depressed
                     @click="addTechnicalReq()"
-                    >{{
-                      $t(
-                        showWizardExperience()
-                          ? 'technicalRequirements.btnNext'
-                          : 'technicalRequirements.btnSaveChanges'
-                      )
-                    }}</Button
                   >
+                    {{
+                    $t(
+                    showWizardExperience()
+                    ? 'technicalRequirements.btnNext'
+                    : 'technicalRequirements.btnSaveChanges'
+                    )
+                    }}
+                  </Button>
                 </v-card-actions>
               </v-card>
             </v-col>
