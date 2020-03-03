@@ -1,14 +1,16 @@
-name: ZAP
+name: Zap 
 on: [pull_request]
 jobs:
-  build:
+ build:
     runs-on: ubuntu-latest
-    container:
-      image: owasp/zap2docker-stable
-      volumes: /zap/wrk/
-      options: --user root
-    steps:
-      - uses: actions/checkout@v1
-      - name: run zap - Dev
-        if: always()
-        run: zap-baseline.py -t https://selfservice-dev.pathfinder.gov.bc.ca/ -g gen.conf -r DevZapreport.html
+    steps:    
+    - name: Run the OWASP baseline scanner
+      run: docker run -t owasp/zap2docker-weekly zap-baseline.py -t https://selfservice-dev.pathfinder.gov.bc.ca/ | tee zapScanResults.txt
+    - name: Upload scan results
+      uses: actions/upload-artifact@v1
+      with:
+          name: zapScanResults
+          path: zapScanResults.txt
+    - name: Get result summary
+      id: result_summary
+      run: echo "##[set-output name=value;]$(cat zapScanResults.txt | tail -1)"
