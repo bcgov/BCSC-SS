@@ -95,6 +95,16 @@ describe('ProjectSummary.vue', () => {
         actions: {
           loadPackage: jest.fn()
         }
+      },
+      SharedModule: {
+        namespaced: true,
+        state: {},
+        getters: {
+          isRedirectFromSummaryPage: jest.fn()
+        },
+        actions: {
+          redirectFromSummaryPage: jest.fn()
+        }
       }
     }
   });
@@ -149,6 +159,16 @@ describe('ProjectSummary.vue', () => {
           },
           actions: {
             loadPackage: jest.fn()
+          }
+        },
+        SharedModule: {
+          namespaced: true,
+          state: {},
+          getters: {
+            isRedirectFromSummaryPage: jest.fn()
+          },
+          actions: {
+            redirectFromSummaryPage: jest.fn()
           }
         }
       }

@@ -9,7 +9,7 @@ With All props
 With msg props
 
 ```js
-<HelloWorld msg='Hello world' />
+<HelloWorld msg='Hello world - Kulpreet' />
 ```
 
 With devmsg props

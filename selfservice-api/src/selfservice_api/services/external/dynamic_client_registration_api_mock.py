@@ -17,7 +17,9 @@ import binascii
 import json
 import os
 import secrets
-from datetime import datetime, timedelta
+from datetime import datetime
+
+from flask import current_app
 
 from .models.dynamic_client_create import CreateRequestModel, CreateResponseModel
 from .models.dynamic_client_get import GetResponseModel
@@ -30,13 +32,16 @@ class DynamicClientRegistrationApiMock():
     @staticmethod
     def create(request: CreateRequestModel):
         """Client Registration Request for a new client at the BCSC OpenID Provider."""
-        response = CreateResponseModel()
+        if current_app.config.get('dynamic_api_return_none'):
+            return None
+
+        response = CreateResponseModel({})
         response.client_id = secrets.token_hex(5)
         response.client_secret = secrets.token_urlsafe(30)
         response.registration_access_token = binascii.hexlify(os.urandom(24))
-        response.registration_client_uri = 'https://idtest.gov.bc.ca/oauth2/register/' + response.client_id
+        response.registration_client_uri = request.api_url + '/oauth2/register/' + response.client_id
         response.client_id_issued_at = json.dumps(datetime.now().strftime('%Y-%m-%dT%H:%M:%SZ'))
-        response.client_secret_expires_at = int((datetime.now() + timedelta(days=100)).strftime('%f'))
+        response.client_secret_expires_at = '0'
         response.client_name = request.client_name
         response.client_uri = request.client_uri
         response.redirect_uris = request.redirect_uris
@@ -61,15 +66,18 @@ class DynamicClientRegistrationApiMock():
         return response
 
     @staticmethod
-    def get(registration_access_token: str):
+    def get(client_id: str, registration_access_token: str, api_url: str):
         """Get Registration Request for an existing client at the BCSC OpenID Provider."""
-        response = GetResponseModel()
-        response.client_id = secrets.token_hex(5)
+        if current_app.config.get('dynamic_api_return_none'):
+            return None
+
+        response = GetResponseModel({})
+        response.client_id = client_id
         response.client_secret = secrets.token_urlsafe(30)
         response.registration_access_token = registration_access_token
-        response.registration_client_uri = 'https://idtest.gov.bc.ca/oauth2/register/' + response.client_id
+        response.registration_client_uri = api_url + '/oauth2/register/' + response.client_id
         response.client_id_issued_at = json.dumps(datetime.now().strftime('%Y-%m-%dT%H:%M:%SZ'))
-        response.client_secret_expires_at = int((datetime.now() + timedelta(days=100)).strftime('%s'))
+        response.client_secret_expires_at = '0'
         response.client_name = 'client 1'
         response.client_uri = 'client uri 1'
         response.redirect_uris = []
@@ -91,13 +99,16 @@ class DynamicClientRegistrationApiMock():
     @staticmethod
     def update(registration_access_token: str, request: UpdateRequestModel):
         """Update Registration Request for an existing client at the BCSC OpenID Provider."""
-        response = UpdateResponseModel()
-        response.client_id = secrets.token_hex(5)
+        if current_app.config.get('dynamic_api_return_none'):
+            return None
+
+        response = UpdateResponseModel({})
+        response.client_id = request.client_id
         response.client_secret = secrets.token_urlsafe(30)
         response.registration_access_token = registration_access_token
-        response.registration_client_uri = 'https://idtest.gov.bc.ca/oauth2/register/' + response.client_id
+        response.registration_client_uri = request.api_url + '/oauth2/register/' + response.client_id
         response.client_id_issued_at = json.dumps(datetime.now().strftime('%Y-%m-%dT%H:%M:%SZ'))
-        response.client_secret_expires_at = int((datetime.now() + timedelta(days=100)).strftime('%s'))
+        response.client_secret_expires_at = '0'
         response.client_name = request.client_name
         response.client_uri = request.client_uri
         response.redirect_uris = request.redirect_uris
@@ -122,6 +133,6 @@ class DynamicClientRegistrationApiMock():
         return response
 
     @staticmethod
-    def delete():
+    def delete(client_id: str, registration_access_token: str, api_url: str):  # pylint: disable=unused-argument
         """Delete Registration Request for a new client at the BCSC OpenID Provider."""
         return True

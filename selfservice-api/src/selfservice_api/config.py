@@ -93,6 +93,15 @@ class _Config():  # pylint: disable=too-few-public-methods
     except ValueError:
         JWT_OIDC_JWKS_CACHE_TIMEOUT = 300
 
+    DYNAMIC_TEST_API_URL = os.getenv('DYNAMIC_TEST_API_URL')
+    if DYNAMIC_TEST_API_URL and DYNAMIC_TEST_API_URL.endswith('/'):
+        DYNAMIC_TEST_API_URL = DYNAMIC_TEST_API_URL[:-1]
+    DYNAMIC_TEST_API_TOKEN = os.getenv('DYNAMIC_TEST_API_TOKEN')
+    DYNAMIC_PROD_API_URL = os.getenv('DYNAMIC_PROD_API_URL')
+    if DYNAMIC_PROD_API_URL and DYNAMIC_PROD_API_URL.endswith('/'):
+        DYNAMIC_PROD_API_URL = DYNAMIC_PROD_API_URL[:-1]
+    DYNAMIC_PROD_API_TOKEN = os.getenv('DYNAMIC_PROD_API_TOKEN')
+
     TESTING = False
     DEBUG = False
 
@@ -176,6 +185,11 @@ class TestConfig(_Config):  # pylint: disable=too-few-public-methods
     NrQw+2OdQACBJiEHsdZzAkBcsTk7frTH4yGx0VfHxXDPjfTj4wmD6gZIlcIr9lZg
     4H8UZcVFN95vEKxJiLRjAmj6g273pu9kK4ymXNEjWWJn
     -----END RSA PRIVATE KEY-----"""
+
+    DYNAMIC_TEST_API_URL = 'TESTING'
+    DYNAMIC_TEST_API_TOKEN = 'TESTING_TOKEN'
+    DYNAMIC_PROD_API_URL = 'TESTING'
+    DYNAMIC_PROD_API_TOKEN = 'TESTING_TOKEN'
 
 
 class ProdConfig(_Config):  # pylint: disable=too-few-public-methods

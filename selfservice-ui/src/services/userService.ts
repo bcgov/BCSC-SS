@@ -13,13 +13,12 @@ export class UserService {
     );
   }
   /**
-   * get user by id
+   * get user
    * @static
-   * @param {string} id
    * @returns
    */
-  public static async getUserById(id: string) {
-    return await axios.get(USER_URL + '/' + id);
+  public static async getUser() {
+    return await axios.get(USER_URL);
   }
   /**
    * create user with token
@@ -27,8 +26,11 @@ export class UserService {
    * @static
    * @returns
    */
-  public static async createUser() {
-    return await axios.post(USER_URL);
+  public static async createUser(email: string, phone: string) {
+    return await axios.post(USER_URL, {
+      email,
+      phone
+    });
   }
   /**
    * update user with id

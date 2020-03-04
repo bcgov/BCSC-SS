@@ -15,7 +15,7 @@
 
 import json
 
-from .auth import ss_client_auth_header
+from .auth import TestJwtClaims, ss_client_auth_header
 from .request_data import factory_project_info, factory_project_technical_req
 
 from selfservice_api.models.enums import ProjectRoles
@@ -41,10 +41,19 @@ def create_user(client, jwt, project_role='developer'):
     return user
 
 
-def _create_user_(client, jwt, project_role='developer'):
+def _create_user_(client, jwt, project_role='developer', invalid_data=False):
     """Create user and return response object."""
     headers = ss_client_auth_header(jwt, project_role=project_role)
-    response = client.post(USER_API,
+    claims = TestJwtClaims['ss_client_' + project_role]
+    if invalid_data:
+        req_data = {}
+    else:
+        req_data = {
+            'email': claims['email'],
+            'phone': '5689732156'
+        }
+
+    response = client.post(USER_API, data=json.dumps(req_data),
                            headers=headers, content_type='application/json')
     return response
 
@@ -144,12 +153,12 @@ def _update_technical_req_with_package_(client, jwt, project_id):
     return response
 
 
-def _update_technical_req_with_test_account_(client, jwt, project_id):
+def _update_technical_req_with_test_account_(client, jwt, project_id, no_of_test_account=5):
     """Update technical requirement with test account and return response."""
     headers = ss_client_auth_header(jwt)
     req_data = {
         'update': 'test-account',
-        'noOfTestAccount': 5,
+        'noOfTestAccount': no_of_test_account,
         'noteTestAccount': 'renmarks'
     }
 

@@ -17,4 +17,5 @@ from .oidc_config import OIDCConfigSchema
 from .project import ProjectSchema
 from .technical_req import (TechnicalReqPackageSchema, TechnicalReqRequestSchema,  # noqa: I001
                             TechnicalReqResponseSchema, TechnicalReqTestAccountSchema)  # noqa: I001
+from .test_account import TestAccountSchema
 from .user import UserSchema

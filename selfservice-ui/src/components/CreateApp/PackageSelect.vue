@@ -3,11 +3,7 @@
 <template>
   <v-card class="mx-auto" style="max-width: 80%;">
     <v-toolbar flat class="bc-subtitle" dark>
-      <v-btn
-        icon
-        @click="$router.push(`/project/${projectId}/technical/`)"
-        aria-label="Back Button"
-      >
+      <v-btn icon @click="goBack()" :aria-label="$t('selectPackage.btnBack')">
         <v-icon>mdi-arrow-left</v-icon>
       </v-btn>
       <v-toolbar-title>{{ $t('selectPackage.pagetitle') }}</v-toolbar-title>
@@ -103,10 +99,18 @@
           <!-- <v-btn text @click="$refs.form.reset()">Clear</v-btn> -->
           <v-spacer></v-spacer>
           <Button
-            @click="$router.push(`/project/${projectId}/technical/`)"
-            aria-label="Back Button"
+            @click="goBack"
+            :aria-label="$t('selectPackage.btnBack')"
             secondary
-            >Go Back</Button
+            class="back-btn"
+          >
+            {{
+              $t(
+                showWizardExperience()
+                  ? 'selectPackage.btnBack'
+                  : 'selectPackage.btnCancel'
+              )
+            }}</Button
           >
           <Button
             :disabled="!slectedPackage"
@@ -115,7 +119,13 @@
             color="indigo accent-4"
             depressed
             @click="submitPackage"
-            >Next</Button
+            >{{
+              $t(
+                showWizardExperience()
+                  ? 'selectPackage.btnNext'
+                  : 'selectPackage.btnSaveChanges'
+              )
+            }}</Button
           >
         </v-card-actions>
       </v-card>
@@ -127,6 +137,8 @@ import { Component, Vue, Watch, Prop } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
 import Button from '@/Atomic/Button/Button.vue';
 const PackageAndTestModule = namespace('PackageAndTestModule');
+const SharedModule = namespace('SharedModule');
+const TechnicalReqModule = namespace('TechnicalReqModule');
 
 @Component({
   components: {
@@ -143,18 +155,36 @@ export default class ListPackage extends Vue {
   @PackageAndTestModule.Action('clearStatus') public clearStatus!: any;
   @PackageAndTestModule.Action('addPackagetoProject')
   public addPackagetoProject!: any;
+  @SharedModule.Action('redirectFromSummaryPage')
+  public redirectFromSummaryPage!: any;
+  @SharedModule.Getter('isRedirectFromSummaryPage')
+  public isRedirectFromSummaryPage!: boolean;
+
+  @TechnicalReqModule.Action('loadTechnicalReqDetails')
+  public loadTechnicalReqDetails!: any;
+  @TechnicalReqModule.Getter('getTechnicalReq')
+  public getTechnicalReq!: any;
+  @TechnicalReqModule.Getter('isLoading') public isLoading!: boolean;
 
   private slectedPackage: number = 1;
-  private isLoading: boolean = false;
+  // private isLoading: boolean = false;
   private projectId: number = this.id || 0;
 
   @Watch('successStatus')
   private onStatusChanged(val: any, oldVal: any) {
     setTimeout(this.clearStatus, 3000);
   }
+  @Watch('getTechnicalReq')
+  private ongetTechnicalReqChanged(val: any) {
+    this.slectedPackage = val.scopePackageId || this.slectedPackage;
+  }
 
   private mounted() {
     this.loadPackage();
+    if (this.id !== 0) {
+      // this.isEditMode = true;
+      this.loadTechnicalReqDetails(this.id);
+    }
   }
   private selectedPackage(packageVal: number) {
     this.slectedPackage = packageVal;
@@ -165,6 +195,18 @@ export default class ListPackage extends Vue {
       slectedPackage: this.slectedPackage,
       projectId: this.projectId
     });
+  }
+
+  private goBack() {
+    const redirectPage = this.showWizardExperience() ? 'technical' : 'summary';
+    this.redirectFromSummaryPage(false);
+    this.$router.push(`/project/${this.projectId}/${redirectPage}/`);
+  }
+  private showWizardExperience() {
+    if (this.isRedirectFromSummaryPage) {
+      return false;
+    }
+    return true;
   }
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <HelloWorld msg="Hello world" devmsg="Hello Developers" />
+    <HelloWorld msg="BC Services Card   Self-Service" />
   </div>
 </template>
 

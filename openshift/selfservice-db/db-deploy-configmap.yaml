@@ -14,15 +14,15 @@ objects:
       app-group: "${APP_GROUP}"
       template: "${DB_NAME}-deploy"
   data:
-    DATABASE_HOST: "${DB_NAME}.${NAMESPACE}-${TAG_NAME}.svc"
+    DATABASE_HOST: "${DB_NAME}-master.${NAMESPACE}-${TAG_NAME}.svc.cluster.local"
     DATABASE_NAME: "${POSTGRESQL_DATABASE_NAME}"
     DATABASE_USERNAME: "${POSTGRESQL_USER}"
     DATABASE_PORT: "${DATABASE_PORT}"
-    DATABASE_TEST_HOST: "${DB_NAME}.${NAMESPACE}-${TAG_NAME}.svc"
+    DATABASE_TEST_HOST: "${DB_NAME}-master.${NAMESPACE}-${TAG_NAME}.svc.cluster.local"
     DATABASE_TEST_NAME: "${POSTGRESQL_DATABASE_NAME}-test"
     DATABASE_TEST_PORT: "${DATABASE_PORT}"
     DATABASE_TEST_USER: "${POSTGRESQL_USER}-test"
-    DATABASE_URL: "postgresql://${POSTGRESQL_USER}:${POSTGRESQL_PASSWORD}@${DB_NAME}.${NAMESPACE}-${TAG_NAME}.svc:5432/${POSTGRESQL_DATABASE_NAME}"
+    DATABASE_URL: "postgresql://${POSTGRESQL_USER}:${POSTGRESQL_PASSWORD}@${DB_NAME}-master.${NAMESPACE}-${TAG_NAME}.svc:5432/${POSTGRESQL_DATABASE_NAME}"
 - kind: Secret
   apiVersion: v1
   metadata:
@@ -42,7 +42,7 @@ parameters:
   description: The name assigned to all of the OpenShift resources associated to the
     server instance.
   required: true
-  value: selfservice-db
+  value: patroni-persistent
 - name: APP_GROUP
   displayName: App Group
   description: The name assigned to all of the deployments in this project.
@@ -68,13 +68,13 @@ parameters:
   displayName: PostgreSQL Connection Password
   description: Password for the PostgreSQL connection user.  Needs to be basee64 encoded/
   required: true
-  value: "postgres@123"
+  value: "postgres"
 - name: POSTGRESQL_ADMIN_PASSWORD
   displayName: PostgreSQL Admin Password
   description: Password for the 'postgres' PostgreSQL administrative account.  Needs
     to be basee64 encoded.
   required: true
-  value: "postgres@123"
+  value: "postgres"
 - name: DATABASE_PORT
   displayName: Database host port
   description: A valid database host port used by the service.
@@ -84,4 +84,4 @@ parameters:
   displayName: TAG for the namespace & image tagging
   description: TAG for the namespace & image tagging
   required: true
-  value: prod
+  value: dev

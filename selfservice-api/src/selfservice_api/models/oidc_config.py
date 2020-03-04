@@ -26,26 +26,18 @@ class OIDCConfig(BaseModel, db.Model):
     project_id = db.Column(db.Integer, db.ForeignKey('project.id'), nullable=False)
 
     client_id = db.Column(db.String(100))
-    client_secret = db.Column(db.String(100), nullable=True)
+    client_secret = db.Column(db.String(500))
 
-    registration_access_token = db.Column(db.String(100))
+    registration_access_token = db.Column(db.String(5000))
     registration_client_uri = db.Column(db.String(500))
 
     client_id_issued_at = db.Column(db.String(100))
-    client_secret_expires_at = db.Column(db.Integer)
+    client_secret_expires_at = db.Column(db.String(100))
 
     token_endpoint_auth_method = db.Column(db.String(100))
 
     application_type = db.Column(db.String(100))
     subject_type = db.Column(db.String(100))
-
-    sector_identifier_uri = db.Column(db.String(500))
-
-    id_token_encrypted_response_alg = db.Column(db.String(100))
-    id_token_encrypted_response_enc = db.Column(db.String(100))
-
-    userinfo_encrypted_response_alg = db.Column(db.String(100))
-    userinfo_encrypted_response_enc = db.Column(db.String(100))
 
     @classmethod
     def create_from_dict(cls, oidc_config_info: dict) -> OIDCConfig:
@@ -62,15 +54,6 @@ class OIDCConfig(BaseModel, db.Model):
             oidc_config.token_endpoint_auth_method = oidc_config_info['token_endpoint_auth_method']
             oidc_config.application_type = oidc_config_info['application_type']
             oidc_config.subject_type = oidc_config_info['subject_type']
-            oidc_config.sector_identifier_uri = oidc_config_info['sector_identifier_uri']
-            oidc_config.id_token_encrypted_response_alg = \
-                oidc_config_info['id_token_encrypted_response_alg']
-            oidc_config.id_token_encrypted_response_enc = \
-                oidc_config_info['id_token_encrypted_response_enc']
-            oidc_config.userinfo_encrypted_response_alg = \
-                oidc_config_info['userinfo_encrypted_response_alg']
-            oidc_config.userinfo_encrypted_response_enc = \
-                oidc_config_info['userinfo_encrypted_response_enc']
 
             oidc_config.save()
 
@@ -86,9 +69,6 @@ class OIDCConfig(BaseModel, db.Model):
         """Update oidc config."""
         self.update_from_dict(['project_id', 'client_id', 'client_secret', 'registration_access_token',
                                'registration_client_uri', 'client_id_issued_at', 'client_secret_expires_at',
-                               'token_endpoint_auth_method', 'application_type', 'subject_type',
-                               'sector_identifier_uri', 'id_token_encrypted_response_alg',
-                               'id_token_encrypted_response_enc', 'userinfo_encrypted_response_alg',
-                               'userinfo_encrypted_response_enc'],
+                               'token_endpoint_auth_method', 'application_type', 'subject_type'],
                               oidc_config_info)
         self.commit()

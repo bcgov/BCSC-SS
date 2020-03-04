@@ -3,16 +3,14 @@
   <v-card class="mx-auto" style="max-width: 80%;">
     <v-card class="mx-auto">
       <v-app-bar dark class="bc-subtitle">
-        <v-btn
-          icon
-          @click="$router.push('/dashboard/')"
-          aria-label="Back Button"
-        >
+        <v-btn icon @click="$router.push('/dashboard/')" aria-label="Back Button">
           <v-icon>mdi-arrow-left</v-icon>
         </v-btn>
-        <v-toolbar-title>{{
+        <v-toolbar-title>
+          {{
           $t('projectInfo.ProjectInfoTitle')
-        }}</v-toolbar-title>
+          }}
+        </v-toolbar-title>
         <v-spacer></v-spacer>
       </v-app-bar>
       <v-form ref="form" v-model="form">
@@ -20,16 +18,19 @@
           <v-row dense>
             <v-col cols="12" md="12">
               <v-card class="pa-8 pt-6 ma-3">
-                <v-card-title class="headline padding-0">{{
+                <v-card-title class="headline bc-padding-left-0">
+                  {{
                   $t('projectInfo.ProjectInfoTitle')
-                }}</v-card-title>
+                  }}
+                </v-card-title>
                 <v-card-subtitle
-                  class="text-left padding-0"
+                  class="text-left bc-padding-left-0"
                   v-html="$t('projectInfo.ProjectInfoTitleInfo')"
                 ></v-card-subtitle>
-                <v-card-subtitle class="font-weight-bold text-left padding-0">{{
-                  $t('projectInfo.ProjectOrgTitle')
-                }}</v-card-subtitle>
+                <v-card-subtitle
+                  class="font-weight-bold text-left bc-padding-left-0"
+                >{{ $t('projectInfo.ProjectOrgTitle') }}</v-card-subtitle>
+
                 <Input
                   v-model="organizationName"
                   counter="100"
@@ -65,57 +66,68 @@
 
             <v-col cols="12">
               <v-card class="pa-8 pt-6 ma-3">
-                <v-card-title class="headline padding-0">{{
+                <v-card-title class="headline bc-padding-left-0">
+                  {{
                   $t('projectInfo.ProjectRoles')
-                }}</v-card-title>
-                <v-card-subtitle class="text-left padding-0">{{
+                  }}
+                </v-card-title>
+                <v-card-subtitle class="text-left bc-padding-left-0">
+                  {{
                   $t('projectInfo.RolesTitleInfo')
-                }}</v-card-subtitle>
+                  }}
+                </v-card-subtitle>
                 <v-radio-group v-model.number="myRole" row color="black">
                   <span class="mr-2">{{ $t('projectInfo.myRole') }}</span>
-                  <v-radio class="black-color" v-bind:value="1">
+                  <v-radio class="black-color" v-bind:value="projectRoles.developer">
                     <template v-slot:label>
-                      <span class="black-color">{{
+                      <span class="black-color">
+                        {{
                         $t('projectInfo.DeveloperRole')
-                      }}</span>
+                        }}
+                      </span>
                     </template>
                   </v-radio>
-                  <v-radio label="Manager" v-bind:value="2">
+                  <v-radio label="Manager" v-bind:value="projectRoles.manager">
                     <template v-slot:label>
-                      <span class="black-color">{{
+                      <span class="black-color">
+                        {{
                         $t('projectInfo.ManagerRole')
-                      }}</span>
+                        }}
+                      </span>
                     </template>
                   </v-radio>
-                  <v-radio v-bind:value="3">
+                  <v-radio v-bind:value="projectRoles.cto">
                     <template v-slot:label>
-                      <span class="black-color">{{
+                      <span class="black-color">
+                        {{
                         $t('projectInfo.CTORole')
-                      }}</span>
+                        }}
+                      </span>
                     </template>
                   </v-radio>
                 </v-radio-group>
               </v-card>
             </v-col>
 
-            <!-- <v-form ref="form" v-model="form" class="pa-4 pt-6"> -->
-            <v-col cols="12" sm="6" v-if="myRole !== 2">
+            <v-col cols="12" sm="6" v-if="myRole !== projectRoles.manager">
               <ProjectUsers
-                :userDetails="users[1]"
+                :userDetails="getUserDetailsByRole(users, projectRoles.manager)"
                 :rules="rules"
                 :title="$t('projectInfo.ManagerRole')"
               />
             </v-col>
-            <v-col cols="12" sm="6" v-if="myRole !== 3">
+            <v-col cols="12" sm="6" v-if="myRole !== projectRoles.cto">
               <ProjectUsers
-                :userDetails="users[2]"
+                :userDetails="getUserDetailsByRole(users, projectRoles.cto)"
                 :rules="rules"
                 :title="$t('projectInfo.CTORole')"
               />
             </v-col>
-            <v-col cols="12" sm="6" v-if="myRole !== 1">
+            <v-col cols="12" sm="6" v-if="myRole !== projectRoles.developer">
               <ProjectUsers
-                :userDetails="users[0]"
+                :userDetails="
+                  getUserDetailsByRole(users, projectRoles.developer)
+                "
                 :rules="rules"
                 :title="$t('projectInfo.DeveloperRole')"
               />
@@ -125,18 +137,30 @@
               <v-card flat>
                 <v-divider></v-divider>
                 <v-card-actions>
-                  <!-- <v-btn text @click="$refs.form.reset()">Clear</v-btn> -->
                   <v-spacer></v-spacer>
+                  <Button
+                    @click="$router.push(`/project/${id}/summary/`)"
+                    aria-label="Back Button"
+                    secondary
+                    v-if="!showWizardExperience()"
+                  >{{ $t('projectInfo.btnCancel') }}</Button>
                   <Button
                     :disabled="!form"
                     :loading="isLoading"
-                    class="white--text"
+                    class="white--text submit-project"
                     color="indigo accent-4"
                     depressed
-                    @click="addProjectInfo"
-                    @keyup.enter="addProjectInfo"
-                    >{{ $t('projectInfo.Next') }}</Button
+                    @click="submitProjectInfo"
+                    @keyup.enter="submitProjectInfo"
                   >
+                    {{
+                    $t(
+                    showWizardExperience()
+                    ? 'projectInfo.btnNext'
+                    : 'projectInfo.btnSaveChanges'
+                    )
+                    }}
+                  </Button>
                 </v-card-actions>
               </v-card>
             </v-col>
@@ -155,8 +179,10 @@ import TextArea from '@/Atomic/TextArea/TextArea.vue';
 import Button from '@/Atomic/Button/Button.vue';
 import ProjectUsers from './ProjectUsers.vue';
 import validationRules from '@/config/validationRules';
+import { projectRoles } from '@/constants/enums';
 
 const ProjectInfoModule = namespace('ProjectInfoModule');
+const SharedModule = namespace('SharedModule');
 
 @Component({ components: { Input, TextArea, Button, ProjectUsers } })
 export default class AddProjectInfo extends Vue {
@@ -177,6 +203,11 @@ export default class AddProjectInfo extends Vue {
   @ProjectInfoModule.Action('loadSingleProjectInfo')
   public loadSingleProjectInfo!: any;
 
+  @SharedModule.Getter('isRedirectFromSummaryPage')
+  public isRedirectFromSummaryPage!: boolean;
+  @SharedModule.Action('redirectFromSummaryPage')
+  public redirectFromSummaryPage!: any;
+
   public form: boolean = false;
   private isLoading: boolean = false;
   private organizationName: string = '';
@@ -189,25 +220,25 @@ export default class AddProjectInfo extends Vue {
       phone: '',
       firstName: '',
       lastName: '',
-      role: 1
+      role: projectRoles.developer
     },
     {
       email: '',
       phone: '',
       firstName: '',
       lastName: '',
-      role: 2
+      role: projectRoles.manager
     },
     {
       email: '',
       phone: '',
       firstName: '',
       lastName: '',
-      role: 3
+      role: projectRoles.cto
     }
   ];
-
-  private isEditmode: boolean = false;
+  private projectRoles: any = projectRoles;
+  private isEditMode: boolean = false;
   /* istanbul ignore next */
   private rules = validationRules;
 
@@ -216,7 +247,7 @@ export default class AddProjectInfo extends Vue {
     this.updteEdit(val);
   }
 
-  private addProjectInfo() {
+  private submitProjectInfo() {
     // to fix change below line
     const selectedUserIdx = this.users.filter(user => {
       return user.role !== this.myRole;
@@ -230,14 +261,20 @@ export default class AddProjectInfo extends Vue {
       users: selectedUserIdx
     };
 
-    if (this.isEditmode) {
+    if (this.isEditMode) {
       data.id = this.id;
       this.updateProjectInfoStore(data);
+      if (!this.showWizardExperience()) {
+        this.redirectFromSummaryPage(true);
+      }
     } else {
       this.addProjectInfoStore(data);
+      this.redirectFromSummaryPage(false);
     }
-    // (this.$refs.form as HTMLFormElement).reset();
-    // this.$router.push('/project/technical/');
+  }
+
+  private getUserDetailsByRole(users: any, selectedRole: number) {
+    return users.find((userData: any) => userData.role === selectedRole);
   }
 
   private updteEdit(val: any) {
@@ -245,28 +282,29 @@ export default class AddProjectInfo extends Vue {
     this.projectName = val.projectName;
     this.description = val.description;
     this.myRole = val.myRole;
-    this.users = this.users;
+    this.users = val.users;
     // this.id = val.id;
-    this.isEditmode = true;
+    this.isEditMode = true;
   }
 
   private mounted() {
-    this.isEditmode = false;
+    this.isEditMode = false;
     if (this.id !== '') {
-      this.isEditmode = true;
+      this.isEditMode = true;
       this.loadSingleProjectInfo(this.id);
     }
   }
-  private input(value: string) {
-    // console.log('value', value);
+
+  private showWizardExperience() {
+    if (this.isEditMode && this.isRedirectFromSummaryPage) {
+      return false;
+    }
+    return true;
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.padding-0 {
-  padding-left: 0px !important;
-}
 .black-color {
   color: #000 !important;
 }

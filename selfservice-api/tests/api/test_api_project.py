@@ -17,7 +17,9 @@ import json
 from http import HTTPStatus
 
 from ..helper.api_create_data import (PROJECTINFO_API, _create_project_, _get_project_, _get_all_project_,  # noqa: I001
-                                      create_project, create_technical_req_with_additional, create_user)  # noqa: I001
+                                    _update_technical_req_with_test_account_,  # noqa: I001
+                                    create_project, create_technical_req_with_additional, create_user,  # noqa: I001
+                                    get_project)  # noqa: I001
 from ..helper.auth import ss_client_auth_header
 
 from selfservice_api.models.enums import ProjectRoles
@@ -70,6 +72,29 @@ def test_get_project(client, jwt, session):
     assert response.status_code == HTTPStatus.OK
 
 
+def test_put_project_(client, jwt, session):
+    """Assert that the endpoint returns the success status."""
+    headers = ss_client_auth_header(jwt)
+    project = get_project(client, jwt)
+
+    response = client.put(PROJECTINFO_API + '/' + str(project['id']),
+                          data=json.dumps(project), headers=headers, content_type='application/json')
+
+    assert response.status_code == HTTPStatus.OK
+
+
+def test_put_project_validation(client, jwt, session):
+    """Assert that the endpoint returns the failure status."""
+    headers = ss_client_auth_header(jwt)
+    project = get_project(client, jwt)
+    req_data = {}
+
+    response = client.put(PROJECTINFO_API + '/' + str(project['id']), data=json.dumps(req_data),
+                          headers=headers, content_type='application/json')
+
+    assert response.status_code == HTTPStatus.BAD_REQUEST
+
+
 def test_patch_project_status(client, jwt, session):
     """Assert that the endpoint returns the success status."""
     headers = ss_client_auth_header(jwt)
@@ -81,9 +106,18 @@ def test_patch_project_status(client, jwt, session):
 
     assert response.status_code == HTTPStatus.OK
 
-    # check the skip condition on oidc config
+    # check the update condition on test account
+    _update_technical_req_with_test_account_(client, jwt, str(technical_req['projectId']), 2)
+
     response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
                             data=json.dumps(req_data), headers=headers, content_type='application/json')
+    assert response.status_code == HTTPStatus.OK
+
+    _update_technical_req_with_test_account_(client, jwt, str(technical_req['projectId']), 5)
+
+    response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
+                            data=json.dumps(req_data), headers=headers, content_type='application/json')
+    assert response.status_code == HTTPStatus.OK
 
 
 def test_patch_project_status_validation(client, jwt, session):
@@ -126,3 +160,34 @@ def test_patch_project_status_validation(client, jwt, session):
                             data=json.dumps(req_data), headers=headers, content_type='application/json')
 
     assert response.status_code == HTTPStatus.BAD_REQUEST
+
+
+def test_patch_project_status_oidc_and_test_account(client, jwt, session, config):
+    """Assert that the endpoint returns the failure status."""
+    headers = ss_client_auth_header(jwt)
+    technical_req = create_technical_req_with_additional(client, jwt)
+
+    # Dynamic OIDC None response: Start
+    config['dynamic_api_return_none'] = True
+    req_data = {'update': 'status', 'status': 2}
+    response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
+                            data=json.dumps(req_data), headers=headers, content_type='application/json')
+
+    assert response.status_code == HTTPStatus.INTERNAL_SERVER_ERROR
+
+    # call again to cover update api call
+    config.pop('dynamic_api_return_none')
+
+    response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
+                            data=json.dumps(req_data), headers=headers, content_type='application/json')
+
+    assert response.status_code == HTTPStatus.OK
+
+    config['dynamic_api_return_none'] = True
+    response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
+                            data=json.dumps(req_data), headers=headers, content_type='application/json')
+
+    assert response.status_code == HTTPStatus.INTERNAL_SERVER_ERROR
+    config.pop('dynamic_api_return_none')
+
+    # Dynamic OIDC None response: End

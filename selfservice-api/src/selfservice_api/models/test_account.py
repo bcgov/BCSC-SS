@@ -46,9 +46,35 @@ class TestAccount(BaseModel, db.Model):
         return None
 
     @classmethod
-    def find_by_project_id(cls, project_id) -> TestAccount:
+    def map_test_accounts(cls, project_id: int, no_of_accounts: int):
+        """Find available test accounts and map to a project."""
+        project_test_accounts = TestAccount.find_all_by_project_id(project_id)
+        if len(project_test_accounts) == 0:
+            TestAccount._update_project_id_(project_id, no_of_accounts)
+        else:
+            if len(project_test_accounts) < no_of_accounts:
+                required_account = no_of_accounts - len(project_test_accounts)
+                TestAccount._update_project_id_(project_id, required_account)
+            elif len(project_test_accounts) > no_of_accounts:
+                no_of_accounts_to_reomve = len(project_test_accounts) - no_of_accounts
+                for test_account in project_test_accounts:
+                    if no_of_accounts_to_reomve == 0:
+                        break
+                    test_account.update({'project_id': None})
+                    no_of_accounts_to_reomve = no_of_accounts_to_reomve - 1
+
+    @classmethod
+    def _update_project_id_(cls, project_id, no_of_accounts):
+        available_accounts = cls.query.filter(TestAccount.project_id.is_(None)).limit(no_of_accounts).all()
+        for test_account in available_accounts:
+            test_account.project_id = project_id
+
+        db.session.commit()
+
+    @classmethod
+    def find_all_by_project_id(cls, project_id):
         """Find test account that matches the provided id."""
-        return cls.query.filter(TestAccount.project_id == project_id).first()
+        return cls.query.filter(TestAccount.project_id == project_id).all()
 
     def update(self, test_account_info: dict):
         """Update test account."""
