@@ -22,7 +22,6 @@
 
         <v-list-item-content class="align-end">
           <div v-if="technicalReq.noOfTestAccount">
-            <!-- <v-icon small class="mr-1">mdi-account-badge-horizontal</v-icon> -->
             <span class="font-weight-bold">{{ technicalReq.noOfTestAccount }}</span>
             {{$t('summaryPage.labelTestAccountNumber')}}
           </div>
