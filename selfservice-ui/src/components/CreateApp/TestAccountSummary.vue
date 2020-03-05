@@ -60,12 +60,3 @@ export default class ClientIDDetails extends Vue {
 }
 </script>
 
-<style lang="scss" scoped>
-@import './../../assets/styles/theme.scss';
-.active-bg {
-  background-color: $BCgovActiveBg;
-}
-.pad-50 {
-  padding-right: 50px;
-}
-</style>
