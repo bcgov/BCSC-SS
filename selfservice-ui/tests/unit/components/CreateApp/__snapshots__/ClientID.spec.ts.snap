@@ -140,25 +140,25 @@ exports[`ClientID.vue renders props when passed with gettors 1`] = `
                   <th
                     class="text-left"
                   >
-                    Card Number
+                    
                   </th>
                    
                   <th
                     class="text-left"
                   >
-                    Passcode
+                    
                   </th>
                    
                   <th
                     class="text-left"
                   >
-                    Given Name
+                    
                   </th>
                    
                   <th
                     class="text-left"
                   >
-                    Surname
+                    
                   </th>
                 </tr>
               </thead>
@@ -339,25 +339,25 @@ exports[`ClientID.vue renders props when passed with gettors 2`] = `
                   <th
                     class="text-left"
                   >
-                    Card Number
+                    
                   </th>
                    
                   <th
                     class="text-left"
                   >
-                    Passcode
+                    
                   </th>
                    
                   <th
                     class="text-left"
                   >
-                    Given Name
+                    
                   </th>
                    
                   <th
                     class="text-left"
                   >
-                    Surname
+                    
                   </th>
                 </tr>
               </thead>

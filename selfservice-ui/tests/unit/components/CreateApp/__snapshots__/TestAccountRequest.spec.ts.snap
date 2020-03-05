@@ -307,7 +307,7 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
         />
          
         <button
-          class="btn v-btn v-btn--contained theme--light v-size--default secondary normal"
+          class="btn v-btn v-btn--contained theme--light v-size--default secondary-btn normal"
           name="button"
           type="button"
         >
@@ -643,7 +643,7 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
         />
          
         <button
-          class="btn v-btn v-btn--contained theme--light v-size--default secondary normal"
+          class="btn v-btn v-btn--contained theme--light v-size--default secondary-btn normal"
           name="button"
           type="button"
         >
@@ -979,7 +979,7 @@ exports[`TestAccountRequest.vue submit form with selected package on submit clic
         />
          
         <button
-          class="btn v-btn v-btn--contained theme--light v-size--default secondary normal"
+          class="btn v-btn v-btn--contained theme--light v-size--default secondary-btn normal"
           name="button"
           type="button"
         >

@@ -271,7 +271,7 @@ exports[`PackageSelect.vue from summary page renders props when passed and redir
         />
          
         <button
-          class="btn back-btn v-btn v-btn--contained theme--light v-size--default secondary normal"
+          class="btn back-btn v-btn v-btn--contained theme--light v-size--default secondary-btn normal"
           name="button"
           type="button"
         >
@@ -573,7 +573,7 @@ exports[`PackageSelect.vue renders props when passed 1`] = `
         />
          
         <button
-          class="btn back-btn v-btn v-btn--contained theme--light v-size--default secondary normal"
+          class="btn back-btn v-btn v-btn--contained theme--light v-size--default secondary-btn normal"
           name="button"
           type="button"
         >
@@ -875,7 +875,7 @@ exports[`PackageSelect.vue select on package on click  1`] = `
         />
          
         <button
-          class="btn back-btn v-btn v-btn--contained theme--light v-size--default secondary normal"
+          class="btn back-btn v-btn v-btn--contained theme--light v-size--default secondary-btn normal"
           name="button"
           type="button"
         >
@@ -1177,7 +1177,7 @@ exports[`PackageSelect.vue should call gotback on back button click  1`] = `
         />
          
         <button
-          class="btn back-btn v-btn v-btn--contained theme--light v-size--default secondary normal"
+          class="btn back-btn v-btn v-btn--contained theme--light v-size--default secondary-btn normal"
           name="button"
           type="button"
         >
@@ -1479,7 +1479,7 @@ exports[`PackageSelect.vue submit form with selected package on submit click  1`
         />
          
         <button
-          class="btn back-btn v-btn v-btn--contained theme--light v-size--default secondary normal"
+          class="btn back-btn v-btn v-btn--contained theme--light v-size--default secondary-btn normal"
           name="button"
           type="button"
         >
