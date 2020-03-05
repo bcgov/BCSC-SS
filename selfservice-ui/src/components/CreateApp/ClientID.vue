@@ -80,10 +80,22 @@
             <template v-slot:default>
               <thead>
                 <tr>
-                  <th class="text-left">Card Number</th>
-                  <th class="text-left">Passcode</th>
-                  <th class="text-left">Given Name</th>
-                  <th class="text-left">Surname</th>
+                  <th
+                    :scope="$t('ClientID.tblCardNo')"
+                    class="text-left"
+                  >{{$t('ClientID.tblCardNo')}}</th>
+                  <th
+                    :scope="$t('ClientID.tblPassCode')"
+                    class="text-left"
+                  >{{$t('ClientID.tblPassCode')}}</th>
+                  <th
+                    :scope="$t('ClientID.tblGivenName')"
+                    class="text-left"
+                  >{{$t('ClientID.tblGivenName')}}</th>
+                  <th
+                    :scope="$t('ClientID.tblSurName')"
+                    class="text-left"
+                  >{{$t('ClientID.tblSurName')}}</th>
                 </tr>
               </thead>
               <tbody>

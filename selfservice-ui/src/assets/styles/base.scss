@@ -302,3 +302,8 @@ ul.list {
   background-color: $BCgovGold5 !important;
   color: $BCgovBlack !important;
 }
+
+.bc-disabled-section {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
