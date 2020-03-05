@@ -20,8 +20,11 @@
           </v-card>
         </v-col>
         <v-col cols="12" flat>
+          <ClientID :id="projectId" />
+        </v-col>
+        <v-col cols="12" flat>
           <v-card>
-            <v-toolbar dense color="#38598a" dark>
+            <v-toolbar dense class="bc-subtitle-2" dark>
               <v-card-title>
                 {{ $t('summaryPage.projectInfoTitle') }}
                 <v-spacer></v-spacer>
@@ -122,7 +125,7 @@
         </v-col>
         <v-col cols="12" flat>
           <v-card class="mt-5">
-            <v-toolbar dense color="#38598a" dark>
+            <v-toolbar dense class="bc-subtitle-2" dark>
               <v-card-title>
                 {{ $t('summaryPage.technicalReqTitle') }}
                 <v-icon
@@ -211,7 +214,7 @@
         </v-col>
         <v-col cols="12" flat>
           <v-card class="mt-5">
-            <v-toolbar dense color="#38598a" dark>
+            <v-toolbar dense class="bc-subtitle-2" dark>
               <v-card-title>
                 {{
                 $t('summaryPage.packageTestTitle')
@@ -346,6 +349,7 @@ import { ProjectUserModel } from '@/models/ProjectInfoModel';
 import Button from '@/Atomic/Button/Button.vue';
 import TextArea from '@/Atomic/TextArea/TextArea.vue';
 import Loading from '@/Atomic/Loading/Loading.vue';
+import ClientID from '@/components/CreateApp/ClientID.vue';
 
 const TechnicalReqModule = namespace('TechnicalReqModule');
 const ProjectInfoModule = namespace('ProjectInfoModule');
@@ -356,7 +360,8 @@ const SharedModule = namespace('SharedModule');
   components: {
     Button,
     TextArea,
-    Loading
+    Loading,
+    ClientID
   }
 })
 export default class TestAccountRequest extends Vue {
