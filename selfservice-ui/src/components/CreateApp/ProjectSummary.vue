@@ -20,8 +20,11 @@
           </v-card>
         </v-col>
         <v-col cols="12" flat>
+          <ClientID :id="projectId" />
+        </v-col>
+        <v-col cols="12" flat>
           <v-card>
-            <v-toolbar dense color="#38598a" dark>
+            <v-toolbar dense class="bc-subtitle-2" dark>
               <v-card-title>
                 {{ $t('summaryPage.projectInfoTitle') }}
                 <v-spacer></v-spacer>
@@ -122,7 +125,7 @@
         </v-col>
         <v-col cols="12" flat>
           <v-card class="mt-5">
-            <v-toolbar dense color="#38598a" dark>
+            <v-toolbar dense class="bc-subtitle-2" dark>
               <v-card-title>
                 {{ $t('summaryPage.technicalReqTitle') }}
                 <v-icon
@@ -140,7 +143,7 @@
                   }}
                 </v-list-item-content>
                 <v-list-item-content class="align-end">
-                  <div>
+                  <div v-if="technicalReq.clientUri">
                     <v-icon small class="mr-1">mdi-link</v-icon>
                     {{ technicalReq.clientUri }}
                   </div>
@@ -167,8 +170,9 @@
                   $t('summaryPage.labelJWKSUrl')
                   }}
                 </v-list-item-content>
+
                 <v-list-item-content class="align-end">
-                  <div>
+                  <div v-if="technicalReq.jwksUri">
                     <v-icon small class="mr-1">mdi-link</v-icon>
                     {{ technicalReq.jwksUri }}
                   </div>
@@ -183,7 +187,7 @@
                 </v-list-item-content>
                 <v-list-item-content class="align-end">
                   <v-list-item-content class="align-end">
-                    <div>
+                    <div v-if="technicalReq.idTokenSignedResponseAlg">
                       <v-icon small class="mr-1">mdi-shield-key</v-icon>
                       {{ technicalReq.idTokenSignedResponseAlg }}
                     </div>
@@ -199,7 +203,7 @@
                 </v-list-item-content>
                 <v-list-item-content class="align-end">
                   <v-list-item-content class="align-end">
-                    <div>
+                    <div v-if="technicalReq.userinfoSignedResponseAlg">
                       <v-icon small class="mr-1">mdi-shield-key</v-icon>
                       {{ technicalReq.userinfoSignedResponseAlg }}
                     </div>
@@ -209,13 +213,18 @@
             </v-list>
           </v-card>
         </v-col>
-        <v-col cols="12" flat>
+        <v-col cols="12" flat :class="isTechnicalInfoAvailable ? '' : 'bc-disabled-section' ">
           <v-card class="mt-5">
-            <v-toolbar dense color="#38598a" dark>
+            <v-toolbar dense class="bc-subtitle-2" dark>
               <v-card-title>
                 {{
                 $t('summaryPage.packageTestTitle')
                 }}
+                <v-icon
+                  small
+                  class="ml-3"
+                  @click="$router.push(`/project/${projectId}/package`)"
+                >mdi-pencil</v-icon>
               </v-card-title>
             </v-toolbar>
 
@@ -227,14 +236,9 @@
                   }}
                 </v-list-item-content>
                 <v-list-item-content class="align-end">
-                  <div>
+                  <div v-if="selectedPackage.packageName !==''">
                     <v-icon small class="mr-1">mdi-package-variant</v-icon>
                     {{ selectedPackage.packageName }}
-                    <v-icon
-                      small
-                      class="ml-3"
-                      @click="$router.push(`/project/${projectId}/package`)"
-                    >mdi-pencil</v-icon>
                   </div>
                   <div
                     v-for="claimName in selectedPackage.claimNames"
@@ -246,42 +250,12 @@
                   </div>
                 </v-list-item-content>
               </v-list-item>
-              <v-divider></v-divider>
-              <v-list-item>
-                <v-list-item-content>
-                  {{
-                  $t('summaryPage.labelTestAccounts')
-                  }}
-                </v-list-item-content>
-                <v-list-item-content class="align-end">
-                  <div>
-                    <v-icon small class="mr-1">mdi-account-badge-horizontal</v-icon>
-                    {{ technicalReq.noOfTestAccount }}
-                    <v-icon
-                      small
-                      class="ml-3"
-                      @click="
-                        $router.push(`/project/${projectId}/test-account`)
-                      "
-                    >mdi-pencil</v-icon>
-                  </div>
-                </v-list-item-content>
-              </v-list-item>
-              <v-divider></v-divider>
-              <v-list-item>
-                <v-list-item-content>
-                  {{
-                  $t('summaryPage.labelSpecialReq')
-                  }}
-                </v-list-item-content>
-                <v-list-item-content class="align-end">
-                  {{
-                  technicalReq.noteTestAccount
-                  }}
-                </v-list-item-content>
-              </v-list-item>
             </v-list>
           </v-card>
+        </v-col>
+
+        <v-col cols="12" flat :class="isTechnicalInfoAvailable ? '' : 'bc-disabled-section' ">
+          <TestAccountSummary :technicalReq="technicalReq" :projectId="projectId" />
         </v-col>
         <v-col cols="12">
           <v-card flat class="mt-1">
@@ -346,6 +320,8 @@ import { ProjectUserModel } from '@/models/ProjectInfoModel';
 import Button from '@/Atomic/Button/Button.vue';
 import TextArea from '@/Atomic/TextArea/TextArea.vue';
 import Loading from '@/Atomic/Loading/Loading.vue';
+import ClientID from '@/components/CreateApp/ClientID.vue';
+import TestAccountSummary from '@/components/CreateApp/TestAccountSummary.vue';
 
 const TechnicalReqModule = namespace('TechnicalReqModule');
 const ProjectInfoModule = namespace('ProjectInfoModule');
@@ -356,7 +332,9 @@ const SharedModule = namespace('SharedModule');
   components: {
     Button,
     TextArea,
-    Loading
+    Loading,
+    ClientID,
+    TestAccountSummary
   }
 })
 export default class TestAccountRequest extends Vue {
@@ -381,6 +359,7 @@ export default class TestAccountRequest extends Vue {
   private isLoading: boolean = true;
   private projectId: number = this.id || 0;
   private dialog: boolean = false;
+  private isTechnicalInfoAvailable: boolean = false;
   private selectedTechnical: ProjectUserModel = {
     email: '',
     phone: '',
@@ -420,6 +399,7 @@ export default class TestAccountRequest extends Vue {
   private ongetTechnicalReqInfoChanged(val: any) {
     if (this.projectInfo && this.projectInfo.id) {
       this.isLoading = false;
+      this.isTechnicalInfoAvailable = val && val.id ? true : false;
       this.setUsers(this.projectInfo);
     }
   }
