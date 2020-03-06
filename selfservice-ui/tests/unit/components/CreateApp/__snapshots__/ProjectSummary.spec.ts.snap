@@ -75,6 +75,8 @@ exports[`ProjectSummary.vue renders props when passed 1`] = `
           primarytitle=""
         >
           
+          
+        
         </v-card-title-stub>
          
         <v-card-text-stub
@@ -187,6 +189,8 @@ exports[`ProjectSummary.vue renders props when passed with gettors 1`] = `
           primarytitle=""
         >
           
+          
+        
         </v-card-title-stub>
          
         <v-card-text-stub

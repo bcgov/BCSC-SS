@@ -3,16 +3,14 @@
   <v-card class="mx-auto" style="max-width: 80%;">
     <v-card class="mx-auto">
       <v-app-bar dark class="bc-subtitle">
-        <v-btn
-          icon
-          @click="$router.push('/dashboard/')"
-          aria-label="Back Button"
-        >
+        <v-btn icon @click="$router.push('/dashboard/')" aria-label="Back Button">
           <v-icon>mdi-arrow-left</v-icon>
         </v-btn>
-        <v-toolbar-title>{{
+        <v-toolbar-title>
+          {{
           $t('projectInfo.ProjectInfoTitle')
-        }}</v-toolbar-title>
+          }}
+        </v-toolbar-title>
         <v-spacer></v-spacer>
       </v-app-bar>
       <v-form ref="form" v-model="form">
@@ -20,17 +18,18 @@
           <v-row dense>
             <v-col cols="12" md="12">
               <v-card class="pa-8 pt-6 ma-3">
-                <v-card-title class="headline bc-padding-left-0">{{
+                <v-card-title class="headline bc-padding-left-0">
+                  {{
                   $t('projectInfo.ProjectInfoTitle')
-                }}</v-card-title>
+                  }}
+                </v-card-title>
                 <v-card-subtitle
                   class="text-left bc-padding-left-0"
                   v-html="$t('projectInfo.ProjectInfoTitleInfo')"
                 ></v-card-subtitle>
                 <v-card-subtitle
                   class="font-weight-bold text-left bc-padding-left-0"
-                  >{{ $t('projectInfo.ProjectOrgTitle') }}</v-card-subtitle
-                >
+                >{{ $t('projectInfo.ProjectOrgTitle') }}</v-card-subtitle>
 
                 <Input
                   v-model="organizationName"
@@ -67,36 +66,43 @@
 
             <v-col cols="12">
               <v-card class="pa-8 pt-6 ma-3">
-                <v-card-title class="headline bc-padding-left-0">{{
+                <v-card-title class="headline bc-padding-left-0">
+                  {{
                   $t('projectInfo.ProjectRoles')
-                }}</v-card-title>
-                <v-card-subtitle class="text-left bc-padding-left-0">{{
+                  }}
+                </v-card-title>
+                <v-card-subtitle class="text-left bc-padding-left-0">
+                  {{
                   $t('projectInfo.RolesTitleInfo')
-                }}</v-card-subtitle>
+                  }}
+                </v-card-subtitle>
                 <v-radio-group v-model.number="myRole" row color="black">
                   <span class="mr-2">{{ $t('projectInfo.myRole') }}</span>
-                  <v-radio
-                    class="black-color"
-                    v-bind:value="projectRoles.developer"
-                  >
+                  <v-radio class="black-color" v-bind:value="projectRoles.developer">
                     <template v-slot:label>
-                      <span class="black-color">{{
+                      <span class="black-color">
+                        {{
                         $t('projectInfo.DeveloperRole')
-                      }}</span>
+                        }}
+                      </span>
                     </template>
                   </v-radio>
                   <v-radio label="Manager" v-bind:value="projectRoles.manager">
                     <template v-slot:label>
-                      <span class="black-color">{{
+                      <span class="black-color">
+                        {{
                         $t('projectInfo.ManagerRole')
-                      }}</span>
+                        }}
+                      </span>
                     </template>
                   </v-radio>
                   <v-radio v-bind:value="projectRoles.cto">
                     <template v-slot:label>
-                      <span class="black-color">{{
+                      <span class="black-color">
+                        {{
                         $t('projectInfo.CTORole')
-                      }}</span>
+                        }}
+                      </span>
                     </template>
                   </v-radio>
                 </v-radio-group>
@@ -137,8 +143,7 @@
                     aria-label="Back Button"
                     secondary
                     v-if="!showWizardExperience()"
-                    >{{ $t('projectInfo.btnCancel') }}</Button
-                  >
+                  >{{ $t('projectInfo.btnCancel') }}</Button>
                   <Button
                     :disabled="!form"
                     :loading="isLoading"
@@ -147,14 +152,15 @@
                     depressed
                     @click="submitProjectInfo"
                     @keyup.enter="submitProjectInfo"
-                    >{{
-                      $t(
-                        showWizardExperience()
-                          ? 'projectInfo.btnNext'
-                          : 'projectInfo.btnSaveChanges'
-                      )
-                    }}</Button
                   >
+                    {{
+                    $t(
+                    showWizardExperience()
+                    ? 'projectInfo.btnNext'
+                    : 'projectInfo.btnSaveChanges'
+                    )
+                    }}
+                  </Button>
                 </v-card-actions>
               </v-card>
             </v-col>

@@ -99,9 +99,10 @@
           <!-- <v-btn text @click="$refs.form.reset()">Clear</v-btn> -->
           <v-spacer></v-spacer>
           <Button
-            @click="goBack()"
+            @click="goBack"
             :aria-label="$t('selectPackage.btnBack')"
             secondary
+            class="back-btn"
           >
             {{
               $t(
@@ -175,7 +176,7 @@ export default class ListPackage extends Vue {
   }
   @Watch('getTechnicalReq')
   private ongetTechnicalReqChanged(val: any) {
-    this.slectedPackage = val.scopePackageId;
+    this.slectedPackage = val.scopePackageId || this.slectedPackage;
   }
 
   private mounted() {

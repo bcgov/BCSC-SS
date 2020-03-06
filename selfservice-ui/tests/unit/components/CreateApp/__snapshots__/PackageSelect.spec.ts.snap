@@ -1,5 +1,307 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`PackageSelect.vue from summary page renders props when passed and redirect from summary page true 1`] = `
+<div
+  class="mx-auto v-card v-sheet theme--light"
+  style="max-width: 80%;"
+>
+  <header
+    class="bc-subtitle v-sheet v-sheet--tile theme--dark v-toolbar v-toolbar--flat"
+    style="height: 64px;"
+  >
+    <div
+      class="v-toolbar__content"
+      style="height: 64px;"
+    >
+      <button
+        class="v-btn v-btn--flat v-btn--icon v-btn--round theme--dark v-size--default"
+        type="button"
+      >
+        <span
+          class="v-btn__content"
+        >
+          <i
+            aria-hidden="true"
+            class="v-icon notranslate mdi mdi-arrow-left theme--dark"
+          />
+        </span>
+      </button>
+       
+      <div
+        class="v-toolbar__title"
+      >
+        
+      </div>
+       
+      <div
+        class="flex-grow-1"
+      />
+       
+      <div
+        class="col-lg-4 col-md-5 col-8 col"
+      >
+        <!---->
+      </div>
+       
+      <div
+        class="flex-grow-1"
+      />
+    </div>
+  </header>
+   
+  <hr
+    aria-orientation="horizontal"
+    class="v-divider theme--light"
+    role="separator"
+  />
+   
+  <div
+    class="v-item-group theme--light"
+  >
+    <div
+      class="container"
+    >
+      <div
+        class="row ma-5"
+      >
+        <div
+          class="col col-12"
+          flat=""
+        >
+          <div
+            class="v-card v-card--flat v-sheet theme--light"
+          >
+            <div
+              class="v-list-item__content headline"
+            >
+              
+            </div>
+             
+            <div
+              class="v-list-item__content"
+            />
+          </div>
+        </div>
+         
+        <div
+          class="col-md-12 col-12"
+        >
+          <div
+            class="d-flex align-center pa-4 select-package select-package v-card v-card--link v-sheet theme--light active-bg"
+            tabindex="0"
+          >
+            <div
+              class="v-list-item v-list-item--three-line theme--light"
+              tabindex="-1"
+            >
+              <div
+                class="v-list-item__content"
+              >
+                <div
+                  class="v-list-item__title headline mb-1"
+                >
+                  
+                    Package 1
+                  
+                </div>
+                 
+                <div
+                  class="v-list-item__subtitle"
+                >
+                  
+                    
+                  
+                </div>
+                 
+                <div
+                  class="v-list-item__subtitle"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="v-icon notranslate mdi mdi-check-circle theme--light"
+                    style="font-size: 12px; color: rgb(150, 151, 152); caret-color: #969798;"
+                  />
+                  
+                    Given name
+                  
+                </div>
+                <div
+                  class="v-list-item__subtitle"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="v-icon notranslate mdi mdi-check-circle theme--light"
+                    style="font-size: 12px; color: rgb(150, 151, 152); caret-color: #969798;"
+                  />
+                  
+                    Surname
+                  
+                </div>
+                 
+                <div
+                  class="v-list-item__subtitle mt-3"
+                >
+                  
+                    This package contains the following data:
+                  
+                </div>
+              </div>
+            </div>
+             
+            <div
+              class="spacer"
+            />
+             
+            <!---->
+             
+            <div
+              class="display-3 flex-grow-1 text-center mr-5"
+            >
+              <i
+                aria-hidden="true"
+                class="v-icon notranslate mdi mdi-check-circle theme--light green--text"
+                style="font-size: 40px;"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="col-md-12 col-12"
+        >
+          <div
+            class="d-flex align-center pa-4 select-package select-package v-card v-card--link v-sheet theme--light"
+            tabindex="0"
+          >
+            <div
+              class="v-list-item v-list-item--three-line theme--light"
+              tabindex="-1"
+            >
+              <div
+                class="v-list-item__content"
+              >
+                <div
+                  class="v-list-item__title headline mb-1"
+                >
+                  
+                    Package 2
+                  
+                </div>
+                 
+                <div
+                  class="v-list-item__subtitle"
+                >
+                  
+                    
+                  
+                </div>
+                 
+                <div
+                  class="v-list-item__subtitle"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="v-icon notranslate mdi mdi-check-circle theme--light"
+                    style="font-size: 12px; color: rgb(150, 151, 152); caret-color: #969798;"
+                  />
+                  
+                    Given name
+                  
+                </div>
+                <div
+                  class="v-list-item__subtitle"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="v-icon notranslate mdi mdi-check-circle theme--light"
+                    style="font-size: 12px; color: rgb(150, 151, 152); caret-color: #969798;"
+                  />
+                  
+                    Surname
+                  
+                </div>
+                 
+                <div
+                  class="v-list-item__subtitle mt-3"
+                >
+                  
+                    This package contains the following data:
+                  
+                </div>
+              </div>
+            </div>
+             
+            <div
+              class="spacer"
+            />
+             
+            <div
+              class="text-center mr-5"
+            >
+              <i
+                aria-hidden="true"
+                class="v-icon notranslate mdi mdi-check-circle-outline theme--light"
+                style="font-size: 40px; color: rgb(234, 233, 233); caret-color: #eae9e9;"
+              />
+            </div>
+             
+            <!---->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+   
+  <div
+    class="col col-12"
+  >
+    <div
+      class="ma-5 v-card v-card--flat v-sheet theme--light"
+    >
+      <hr
+        aria-orientation="horizontal"
+        class="v-divider theme--light"
+        role="separator"
+      />
+       
+      <div
+        class="v-card__actions"
+      >
+        <div
+          class="spacer"
+        />
+         
+        <button
+          class="btn back-btn v-btn v-btn--contained theme--light v-size--default secondary-btn normal"
+          name="button"
+          type="button"
+        >
+          <span
+            class="v-btn__content"
+          >
+            
+          
+          </span>
+        </button>
+         
+        <button
+          class="btn white--text submit-package ml-6 v-btn v-btn--depressed theme--light v-size--default indigo accent-4 primary normal"
+          color="indigo accent-4"
+          depressed=""
+          name="button"
+          type="button"
+        >
+          <span
+            class="v-btn__content"
+          >
+            
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`PackageSelect.vue renders props when passed 1`] = `
 <div
   class="mx-auto v-card v-sheet theme--light"
@@ -271,7 +573,7 @@ exports[`PackageSelect.vue renders props when passed 1`] = `
         />
          
         <button
-          class="btn v-btn v-btn--contained theme--light v-size--default secondary normal"
+          class="btn back-btn v-btn v-btn--contained theme--light v-size--default secondary-btn normal"
           name="button"
           type="button"
         >
@@ -573,7 +875,309 @@ exports[`PackageSelect.vue select on package on click  1`] = `
         />
          
         <button
-          class="btn v-btn v-btn--contained theme--light v-size--default secondary normal"
+          class="btn back-btn v-btn v-btn--contained theme--light v-size--default secondary-btn normal"
+          name="button"
+          type="button"
+        >
+          <span
+            class="v-btn__content"
+          >
+            
+          
+          </span>
+        </button>
+         
+        <button
+          class="btn white--text submit-package ml-6 v-btn v-btn--depressed theme--light v-size--default indigo accent-4 primary normal"
+          color="indigo accent-4"
+          depressed=""
+          name="button"
+          type="button"
+        >
+          <span
+            class="v-btn__content"
+          >
+            
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`PackageSelect.vue should call gotback on back button click  1`] = `
+<div
+  class="mx-auto v-card v-sheet theme--light"
+  style="max-width: 80%;"
+>
+  <header
+    class="bc-subtitle v-sheet v-sheet--tile theme--dark v-toolbar v-toolbar--flat"
+    style="height: 64px;"
+  >
+    <div
+      class="v-toolbar__content"
+      style="height: 64px;"
+    >
+      <button
+        class="v-btn v-btn--flat v-btn--icon v-btn--round theme--dark v-size--default"
+        type="button"
+      >
+        <span
+          class="v-btn__content"
+        >
+          <i
+            aria-hidden="true"
+            class="v-icon notranslate mdi mdi-arrow-left theme--dark"
+          />
+        </span>
+      </button>
+       
+      <div
+        class="v-toolbar__title"
+      >
+        
+      </div>
+       
+      <div
+        class="flex-grow-1"
+      />
+       
+      <div
+        class="col-lg-4 col-md-5 col-8 col"
+      >
+        <!---->
+      </div>
+       
+      <div
+        class="flex-grow-1"
+      />
+    </div>
+  </header>
+   
+  <hr
+    aria-orientation="horizontal"
+    class="v-divider theme--light"
+    role="separator"
+  />
+   
+  <div
+    class="v-item-group theme--light"
+  >
+    <div
+      class="container"
+    >
+      <div
+        class="row ma-5"
+      >
+        <div
+          class="col col-12"
+          flat=""
+        >
+          <div
+            class="v-card v-card--flat v-sheet theme--light"
+          >
+            <div
+              class="v-list-item__content headline"
+            >
+              
+            </div>
+             
+            <div
+              class="v-list-item__content"
+            />
+          </div>
+        </div>
+         
+        <div
+          class="col-md-12 col-12"
+        >
+          <div
+            class="d-flex align-center pa-4 select-package select-package v-card v-card--link v-sheet theme--light active-bg"
+            tabindex="0"
+          >
+            <div
+              class="v-list-item v-list-item--three-line theme--light"
+              tabindex="-1"
+            >
+              <div
+                class="v-list-item__content"
+              >
+                <div
+                  class="v-list-item__title headline mb-1"
+                >
+                  
+                    Package 1
+                  
+                </div>
+                 
+                <div
+                  class="v-list-item__subtitle"
+                >
+                  
+                    
+                  
+                </div>
+                 
+                <div
+                  class="v-list-item__subtitle"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="v-icon notranslate mdi mdi-check-circle theme--light"
+                    style="font-size: 12px; color: rgb(150, 151, 152); caret-color: #969798;"
+                  />
+                  
+                    Given name
+                  
+                </div>
+                <div
+                  class="v-list-item__subtitle"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="v-icon notranslate mdi mdi-check-circle theme--light"
+                    style="font-size: 12px; color: rgb(150, 151, 152); caret-color: #969798;"
+                  />
+                  
+                    Surname
+                  
+                </div>
+                 
+                <div
+                  class="v-list-item__subtitle mt-3"
+                >
+                  
+                    This package contains the following data:
+                  
+                </div>
+              </div>
+            </div>
+             
+            <div
+              class="spacer"
+            />
+             
+            <!---->
+             
+            <div
+              class="display-3 flex-grow-1 text-center mr-5"
+            >
+              <i
+                aria-hidden="true"
+                class="v-icon notranslate mdi mdi-check-circle theme--light green--text"
+                style="font-size: 40px;"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="col-md-12 col-12"
+        >
+          <div
+            class="d-flex align-center pa-4 select-package select-package v-card v-card--link v-sheet theme--light"
+            tabindex="0"
+          >
+            <div
+              class="v-list-item v-list-item--three-line theme--light"
+              tabindex="-1"
+            >
+              <div
+                class="v-list-item__content"
+              >
+                <div
+                  class="v-list-item__title headline mb-1"
+                >
+                  
+                    Package 2
+                  
+                </div>
+                 
+                <div
+                  class="v-list-item__subtitle"
+                >
+                  
+                    
+                  
+                </div>
+                 
+                <div
+                  class="v-list-item__subtitle"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="v-icon notranslate mdi mdi-check-circle theme--light"
+                    style="font-size: 12px; color: rgb(150, 151, 152); caret-color: #969798;"
+                  />
+                  
+                    Given name
+                  
+                </div>
+                <div
+                  class="v-list-item__subtitle"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="v-icon notranslate mdi mdi-check-circle theme--light"
+                    style="font-size: 12px; color: rgb(150, 151, 152); caret-color: #969798;"
+                  />
+                  
+                    Surname
+                  
+                </div>
+                 
+                <div
+                  class="v-list-item__subtitle mt-3"
+                >
+                  
+                    This package contains the following data:
+                  
+                </div>
+              </div>
+            </div>
+             
+            <div
+              class="spacer"
+            />
+             
+            <div
+              class="text-center mr-5"
+            >
+              <i
+                aria-hidden="true"
+                class="v-icon notranslate mdi mdi-check-circle-outline theme--light"
+                style="font-size: 40px; color: rgb(234, 233, 233); caret-color: #eae9e9;"
+              />
+            </div>
+             
+            <!---->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+   
+  <div
+    class="col col-12"
+  >
+    <div
+      class="ma-5 v-card v-card--flat v-sheet theme--light"
+    >
+      <hr
+        aria-orientation="horizontal"
+        class="v-divider theme--light"
+        role="separator"
+      />
+       
+      <div
+        class="v-card__actions"
+      >
+        <div
+          class="spacer"
+        />
+         
+        <button
+          class="btn back-btn v-btn v-btn--contained theme--light v-size--default secondary-btn normal"
           name="button"
           type="button"
         >
@@ -875,7 +1479,7 @@ exports[`PackageSelect.vue submit form with selected package on submit click  1`
         />
          
         <button
-          class="btn v-btn v-btn--contained theme--light v-size--default secondary normal"
+          class="btn back-btn v-btn v-btn--contained theme--light v-size--default secondary-btn normal"
           name="button"
           type="button"
         >

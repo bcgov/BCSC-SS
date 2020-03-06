@@ -153,12 +153,12 @@ def _update_technical_req_with_package_(client, jwt, project_id):
     return response
 
 
-def _update_technical_req_with_test_account_(client, jwt, project_id):
+def _update_technical_req_with_test_account_(client, jwt, project_id, no_of_test_account=5):
     """Update technical requirement with test account and return response."""
     headers = ss_client_auth_header(jwt)
     req_data = {
         'update': 'test-account',
-        'noOfTestAccount': 5,
+        'noOfTestAccount': no_of_test_account,
         'noteTestAccount': 'renmarks'
     }
 

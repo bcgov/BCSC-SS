@@ -11,11 +11,20 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""This exports all of the schemas used by the application."""
+"""This manages test account Response Schema."""
 
-from .oidc_config import OIDCConfigSchema
-from .project import ProjectSchema
-from .technical_req import (TechnicalReqPackageSchema, TechnicalReqRequestSchema,  # noqa: I001
-                            TechnicalReqResponseSchema, TechnicalReqTestAccountSchema)  # noqa: I001
-from .test_account import TestAccountSchema
-from .user import UserSchema
+from marshmallow import EXCLUDE, Schema, fields
+
+
+class TestAccountSchema(Schema):
+    """This class manages test account response schema."""
+
+    class Meta:  # pylint: disable=too-few-public-methods
+        """Exclude unknown fields in the deserialized output."""
+
+        unknown = EXCLUDE
+
+    id = fields.Int()
+    card_number = fields.Str(data_key='cardNumber')
+    passcode = fields.Str(data_key='passcode')
+    attributes = fields.Raw(data_key='attributes')

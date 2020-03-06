@@ -48,8 +48,8 @@
   },
   "selectPackage": {
     "pagetitle": "Select Package",
-    "pagetitleInfo": "<p>Data packages are collections of user attributes (or “scopes” ) which can be returned on successful authentication. <p></p> Select the most appropriate package for your use case, noting that the more attributes you require, the greater the overhead of complying with privacy regulations.</p>",
-    "choosePackage": "Select your data package",
+    "pagetitleInfo": "<p>OIDC scopes are collections of user attributes which can be returned on successful authentication.</p>Select the most appropriate package of scopes for your use case, noting that the more attributes you require, the greater the overhead of complying with privacy regulations.</p><p><br /></p><p>The following standard scopes are supported :</p><p><ul ><li class='my-1'>openid - Unique identifier </li><li class='my-1'>profile - Given name and surname</li><li class='my-1'>email - Email address</li><li class='my-1'>address - Physical address (Street, locality, state or province, postal code and country) </li></ul></p>",
+    "choosePackage": "Select your scope package",
     "description": "This package contains the following data:",
     "package1": "Package 1 - best fit for organizations looking for a digital signature",
     "package2": "Package 2 - best fit for organizations who want to know who the user is and communicate directly with their users electronically",
@@ -89,16 +89,18 @@
     "labelJWKSUrl": "JWKS URL",
     "labelIdTokenSignedResponseAlg": "ID token signature algorithm",
     "labelUserinfoSignedResponseAlg": "User info signed response algorithm",
-    "packageTestTitle": "Data Packages",
+    "packageTestTitle": "Data Scopes",
     "labelDataPackageReqd": "Data package requested",
     "labelTestAccounts": "Test accounts",
     "labelSpecialReq": "Special request",
+    "labelTestAccountNumber": "Accounts requested",
     "submitRequest": "Submit Request",
     "goBack": "Go Back",
     "disclaimerTitle": "Disclaimer",
     "disclaimerContent": "<h4>Warranty Disclaimer</h4><p></p><p>This information is provided as a public service by the Government of British Columbia, Box 9411, Victoria, British Columbia, Canada V8W 9V1.</p><p>This website and all of the information it contains are provided 'as is' without warranty of any kind, whether express or implied. All implied warranties, including, without limitation, implied warranties of merchantability, fitness for a particular purpose, and non-infringement, are hereby expressly disclaimed. Links and references to any other websites are provided for information only and listing shall not be taken as endorsement of any kind. The Government of British Columbia is not responsible for the content or reliability of the linked websites and does not endorse the content, products, services or views expressed within them.</p><h4>Limitation of Liabilities</h4><p>Under no circumstances will the Government of British Columbia be liable to any person or business entity for any direct, indirect, special, incidental, consequential, or other damages based on any use of this website or any other website to which this site is linked, including, without limitation, any lost profits, business interruption, or loss of programs or information, even if the Government of British Columbia has been specifically advised of the possibility of such damages.</p>",
     "btnAgree": "Agree & Continue",
-    "btnAgreeBack": "Cancel"
+    "btnAgreeBack": "Cancel",
+    "labelTestAccountsTitle": "Test Accounts"
   },
   "ClientID": {
     "pagetitle": "API Key / Client ID",
@@ -107,9 +109,13 @@
     "titleClientSecret": "Client secret",
     "titleClientSecretInfo": "This is a secret or password which is to be used together with the Client ID to obtain a token from the BC Services Card system for ongoing authorization.",
     "titleTestAccount": "Test user accounts",
-    "titleTestAccountInfo": "<p>These are account numbers with associated passphrases which can be used as test logins to the BC Services Card. </p><p><br /></p><p>The test accounts are provided in the format of ID #, ID key</p>",
+    "titleTestAccountInfo": "<p>These are account numbers with associated passphrases which can be used as test logins to the BC Services Card.The test accounts are provided in the format of ID #, ID key</p><p><a href='https://www2.gov.bc.ca/gov/content/governments/services-for-government/information-management-technology/identity-and-authentication-services/bc-services-card-authentication-service/design-develop-test/testing' target='_blank'>Learn more</a></p>",
     "labelSnackbarClose": "Close",
-    "Back": "Go Back"
+    "Back": "Go Back",
+    "tblCardNo": "Card Number",
+    "tblPassCode": "Passcode",
+    "tblGivenName": "Given Name",
+    "tblSurName": "Surname"
   },
   "dashboard": {
     "pagetitle": "Projects",

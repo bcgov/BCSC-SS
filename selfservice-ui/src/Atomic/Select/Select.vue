@@ -3,7 +3,7 @@ action on your service, such as Download or Submit. */
 
 <template>
   <!-- <v-Select :value="value" @input="input" v-bind="$attrs"></v-Select> -->
-  <v-select :items="items" v-bind="$attrs" :label="label"></v-select>
+  <v-select :items="items" v-bind="$attrs" :label="label" @change="input" @input="input"></v-select>
 </template>
 
 <script lang="ts">

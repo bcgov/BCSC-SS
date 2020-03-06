@@ -43,9 +43,9 @@ AUTHORIZATIONS = {
 }
 
 API = Api(
-    title='BC Service Card Self Service API',
+    title='BC Services Card Self Service API',
     version='1.0',
-    description='The API for the BC Service Card Application',
+    description='The API for the BC Services Card Application',
     prefix='/api/v1',
     security=['apikey'],
     authorizations=AUTHORIZATIONS)

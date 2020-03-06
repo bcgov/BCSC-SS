@@ -18,8 +18,8 @@ from http import HTTPStatus
 from flask import jsonify
 from flask_restplus import Namespace, Resource, cors
 
-from ..models import OIDCConfig
-from ..schemas import OIDCConfigSchema
+from ..models import OIDCConfig, TestAccount
+from ..schemas import OIDCConfigSchema, TestAccountSchema
 from ..utils.auth import jwt
 from ..utils.util import cors_preflight
 
@@ -38,14 +38,9 @@ class OIDCConfigResource(Resource):
     def get(project_id):
         """Get oidc config and test account details."""
         oidc_config = OIDCConfig.find_by_project_id(project_id)
+        test_accounts = TestAccount.find_all_by_project_id(project_id)
 
         return jsonify({
             'oidcConfig': OIDCConfigSchema().dump(oidc_config),
-            'testAccount': [{
-                'cardNumber': '1232456',
-                'passcode': '4242'
-            }, {
-                'cardNumber': '654321',
-                'passcode': '2424'
-            }]
+            'testAccount': TestAccountSchema().dump(test_accounts, many=True)
         }), HTTPStatus.OK
