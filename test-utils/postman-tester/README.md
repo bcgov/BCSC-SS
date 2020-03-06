@@ -8,11 +8,16 @@ Follow these steps to quickly test out your access to the BC Services Card OIDC 
 Lets assume that these are called "Client key" and "Client secret". Remember your redirect URL "Redirect URL" and the scopes you have requested. You also need to remember whether you are encrypting or signing  the response or whether you require the response in JWT or JSON format . The signing parameters (id_token_signed_response_alg,  userinfo_signed_response_alg) are linked to the JWKS URL and the encryption parameters (id_token_encrypted_reponse and userinfo_encrypted_response ) determine whether the response is encrypted. 
 
 ### 2. Import the BCSC OAuth 2.0 collection and BCSC environment into Postman
-Click the button below and select the Desktop version of Postman (Chrome extension doesn't support environment variables). This will also install the Collection and Environment we'll be using.
+If you don't have a Desktop version of Postman installed, do so from here :
+
+https://www.postman.com/downloads/
+
+
+Once you have Postman on your desktop,click the button below and select the Desktop version of Postman (Chrome extension doesn't support environment variables). This will also install the Collection and Environment we'll be using.
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/715f6c5fd3d4ce3511f9)
 
-Alternatively, you can download the BCSC OAuth2.0.postman_collection and BCSC 2.0.postman_environment JSON files above and import them via the Import button in the top left of the Postman Workplace sceen.
+Alternatively, you can download the BCSC OAuth2.0.postman_collection and BCSC 2.0.postman_environment JSON files from this github project and import them via the Import button in the top left of the Postman Workplace sceen.
 
 ### 3. Add your environment variables in Postman
 Copy your Client id, Client secret, redirect URI and scopes from the BC Services Card Self Service site into the environment variables in Postman.
@@ -26,7 +31,7 @@ Scopes -> scope
 
  To add these details to the Environment, make sure you have the "BCSC OAuth 2.0" Environment selected in Postman, click the eye button, then edit.
 
-![Environment with some details](images/setenv.PNG)
+![Environment with some details](images/postman-screen-setenv.PNG)
 
 ### 4. Test that your client id and redirect url are ok
 1. Click on the "Basic Authorise Test" GET request under the BCSC OAuth 2.0 Collection
