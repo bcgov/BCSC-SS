@@ -58,5 +58,22 @@ export const mutations: MutationTree<ProjectInfoState> = {
 
   SET_PROJECTINFO_MESSAGE(state, payload: string) {
     state.message = payload;
+  },
+  /**
+   * set stae on success of final submit
+   * @param {*} state
+   * @param {*} payload
+   */
+  SET_PROJECT_SUBMIT_SUCESS(state, payload: any) {
+    state.finalSuccessStatus = payload;
+  },
+
+  /**
+   * set stae on error of final submit
+   * @param {*} state
+   * @param {*} payload
+   */
+  SET_PROJECT_SUBMIT_ERROR(state, payload: any) {
+    state.finalErrorStatus = payload;
   }
 };

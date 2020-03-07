@@ -20,7 +20,9 @@ export const state: ProjectInfoState = {
     description: '',
     users: []
   },
-  message: ''
+  message: '',
+  finalSuccessStatus: false,
+  finalErrorStatus: false
 };
 
 const namespaced: boolean = true;
