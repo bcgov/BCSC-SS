@@ -15,6 +15,8 @@
 
 from __future__ import annotations
 
+from sqlalchemy import and_
+
 from .audit_mixin import AuditDateTimeMixin, AuditUserMixin
 from .base_model import BaseModel
 from .db import db
@@ -38,6 +40,12 @@ class ProjectUsersAssociation(BaseModel, db.Model):
         """Delete association by project id."""
         cls.query.filter(ProjectUsersAssociation.project_id == project_id).delete()
         cls.commit()
+
+    @classmethod
+    def find_all(cls, project_id: str, user_id: str):
+        """Find all by project and user id."""
+        return cls.query.filter(and_(ProjectUsersAssociation.project_id == project_id,
+                                     ProjectUsersAssociation.user_id == user_id)).all()
 
 
 class Project(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
@@ -119,9 +127,13 @@ class Project(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
         self.commit()
 
     @classmethod
-    def find_by_user(cls, oauth_id: str):
-        """Fetch projects by user."""
-        current_user = User.find_by_oauth_id(oauth_id)
+    def find_all_or_by_user(cls, oauth_id=None):
+        """Fetch all projects or by user."""
+        where_condition = ''
+        if oauth_id is not None:
+            current_user = User.find_by_oauth_id(oauth_id)
+            where_condition = ' WHERE project_users_association.user_id = ' + str(current_user.id)
+
         result_proxy = db.session.execute("""SELECT
                 TO_CHAR(project.created, 'Mon dd yyyy') as created,
                 project.id,
@@ -130,8 +142,8 @@ class Project(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
                 project.ref_no as reference,
                 project_users_association.role
             FROM project
-                JOIN project_users_association ON project.id = project_users_association.project_id
-            WHERE project_users_association.user_id = """ + str(current_user.id) + ' ORDER BY project.created DESC')
+                JOIN project_users_association ON project.id = project_users_association.project_id""" +
+                                          where_condition + ' ORDER BY project.created DESC')
 
         result = []
         for row in result_proxy:
