@@ -27,7 +27,10 @@
                   <!-- <th :scope="$t('dashboard.tblTitleProjectId')">
                     {{ $t('dashboard.tblTitleProjectId') }}
                   </th>-->
-                  <th :scope="$t('dashboard.tblTitlrole')">{{ $t('dashboard.tblTitlrole') }}</th>
+                  <th
+                    :scope="$t('dashboard.tblTitlrole')"
+                    v-if="isClient"
+                  >{{ $t('dashboard.tblTitlrole') }}</th>
                   <th :scope="$t('dashboard.tblTitlCreated')">{{ $t('dashboard.tblTitlCreated') }}</th>
                   <th
                     :scope="$t('dashboard.tblTitleProjectStatus')"
@@ -44,7 +47,7 @@
                   <td>{{ idx + 1 }}</td>
                   <td>{{ project.name }}</td>
                   <!-- <td>{{ project.id }}</td> -->
-                  <td>{{ project.role }}</td>
+                  <td v-if="isClient">{{ project.role }}</td>
                   <td>{{ project.created }}</td>
                   <td>{{ project.status }}</td>
                 </tr>
@@ -66,9 +69,13 @@
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
 const ProjectInfoModule = namespace('ProjectInfoModule');
+const KeyCloakModule = namespace('KeyCloakModule');
 
 @Component
 export default class Dashboard extends Vue {
+  @KeyCloakModule.Getter('isClient')
+  public isClient!: any;
+
   @ProjectInfoModule.Getter('getProjectInfoList')
   public projectInfoList!: any;
   @ProjectInfoModule.Action('loadProjectInfo')
