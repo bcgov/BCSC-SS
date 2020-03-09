@@ -42,6 +42,10 @@
                   {{
                   $t('summaryPage.labelOrganizationName')
                   }}
+                  <span
+                    class="small-hint pad-50"
+                    v-html="$t('summaryPage.OrganizationNameHint')"
+                  ></span>
                 </v-list-item-content>
                 <v-list-item-content class="align-end">
                   <div>
@@ -56,6 +60,10 @@
                   {{
                   $t('summaryPage.labelProjectTitle')
                   }}
+                  <span
+                    class="small-hint pad-50"
+                    v-html="$t('summaryPage.projectNameHint')"
+                  ></span>
                 </v-list-item-content>
                 <v-list-item-content class="align-end">
                   <div>

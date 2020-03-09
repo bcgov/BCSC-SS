@@ -17,7 +17,7 @@
     "OrganizationName": "Organization name",
     "projectName": "Project name",
     "Description": "Description",
-    "DescriptionHint": "Please provide a short statement to describe the application that you plan to use with this API.",
+    "DescriptionHint": "Please provide us with a short description of your application and why you need the BC Services Card as a login method",
     "ProjectRoles": "Project Roles",
     "RolesTitleInfo": "In this system, a project consists of one (or more) Developer(s), a Manager and an Executive sponsor. Please provide contact information for each of these roles within your organization in the context of this project.",
     "myRole": "My role in this project is:",
@@ -27,7 +27,9 @@
     "DeveloperRole": "Developer",
     "btnNext": "Next",
     "btnSaveChanges": "Save Changes",
-    "btnCancel": "Cancel"
+    "btnCancel": "Cancel",
+    "OrganizationNameHint": "We need to know which Public Agency you are affiliated with.",
+    "projectNameHint": "Please provide us with a short name of your application which will create a login option with the BC Services Card"
   },
   "technicalRequirements": {
     "technicalTitle": "Technical Requirements",
@@ -102,7 +104,9 @@
     "btnAgreeBack": "Cancel",
     "labelTestAccountsTitle": "Test Accounts",
     "cantSubmitErrorMessage": "Your submission contains incomplete fields. Please edit any sections requiring completion before submitting your request.",
-    "systemError": "Something went wrong while processing your request. Please retry in a few minutes. If the problem persists, please contact the Product Owner."
+    "systemError": "Something went wrong while processing your request. Please retry in a few minutes. If the problem persists, please contact the Product Owner.",
+    "OrganizationNameHint": "We need to know which Public Agency you are affiliated with.",
+    "projectNameHint": "Please provide us with a short name of your application which will create a login option with the BC Services Card"
   },
   "ClientID": {
     "pagetitle": "API Key / Client ID",
