@@ -15,8 +15,10 @@ describe('ClientID.vue', () => {
           isLoading: jest.fn(),
           getApiData: jest.fn(() => {
             return {
-              clientId: 'abcd',
-              clientSecret: 'test',
+              oidcConfig: {
+                clientId: 'abcd',
+                clientSecret: 'test'
+              },
               testUserAccounts: [
                 {
                   userName: 'test user',

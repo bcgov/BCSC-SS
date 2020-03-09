@@ -5,8 +5,7 @@ exports[`Home.vue renders props when passed 1`] = `
   class="home"
 >
   <helloworld-stub
-    devmsg="Hello Developers"
-    msg="Hello world - Welcome to BC Service Card - Selfservice"
+    msg="BC Services Card   Self-Service"
   />
 </div>
 `;

@@ -111,11 +111,13 @@ def test_patch_project_status(client, jwt, session):
 
     response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
                             data=json.dumps(req_data), headers=headers, content_type='application/json')
+    assert response.status_code == HTTPStatus.OK
 
     _update_technical_req_with_test_account_(client, jwt, str(technical_req['projectId']), 5)
 
     response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
                             data=json.dumps(req_data), headers=headers, content_type='application/json')
+    assert response.status_code == HTTPStatus.OK
 
 
 def test_patch_project_status_validation(client, jwt, session):

@@ -35,6 +35,8 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
           class="v-toolbar__title"
         >
           
+        
+      
         </div>
          
         <div
@@ -63,12 +65,16 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                 class="v-card__title headline bc-padding-left-0 text-capitalize"
               >
                 
+                
+              
               </div>
                
               <div
                 class="v-card__subtitle text-left bc-padding-left-0"
               >
                 
+                
+              
               </div>
             </div>
              
@@ -79,6 +85,8 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                 class="v-card__subtitle text-left bc-padding-left-0"
               >
                 
+                
+              
               </div>
                
               <div
@@ -87,7 +95,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
     if (v === '') {
       return true;
     } else {
-      return /^(?:http(s)?:\\\\/\\\\/)?[\\\\w.-]+(?:\\\\.[\\\\w\\\\.-]+)+[\\\\w\\\\-\\\\._~:/?#[\\\\]@!\\\\$&'\\\\(\\\\)\\\\*\\\\+,;=.]+$/.test(v) || ' must be valid URL';
+      return /^(?:http(s)?:\\\\/\\\\/)[\\\\w.-]+(?:\\\\.[\\\\w\\\\.-]+)+[\\\\w\\\\-\\\\._~:/?#[\\\\]@!\\\\$&'\\\\(\\\\)\\\\*\\\\+,;=.]+$/.test(v) || ' must be valid URL';
     }
   },v => (v || '').length <= len || 'Invalid character length, max length ' + len"
               >
@@ -142,6 +150,8 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                 class="v-card__subtitle text-left bc-padding-left-0"
               >
                 
+                
+              
               </div>
                
               <div
@@ -193,6 +203,8 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                 class="v-card__subtitle text-left bc-padding-left-0"
               >
                 
+                
+              
               </div>
                
               <div
@@ -201,7 +213,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
     if (v === '') {
       return true;
     } else {
-      return /^(?:http(s)?:\\\\/\\\\/)?[\\\\w.-]+(?:\\\\.[\\\\w\\\\.-]+)+[\\\\w\\\\-\\\\._~:/?#[\\\\]@!\\\\$&'\\\\(\\\\)\\\\*\\\\+,;=.]+$/.test(v) || ' must be valid URL';
+      return /^(?:http(s)?:\\\\/\\\\/)[\\\\w.-]+(?:\\\\.[\\\\w\\\\.-]+)+[\\\\w\\\\-\\\\._~:/?#[\\\\]@!\\\\$&'\\\\(\\\\)\\\\*\\\\+,;=.]+$/.test(v) || ' must be valid URL';
     }
   },v => (v || '').length <= len || 'Invalid character length, max length ' + len"
               >
@@ -459,7 +471,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                  
                 <button
                   aria-label="Back Button"
-                  class="btn v-btn v-btn--contained theme--light v-size--default secondary normal"
+                  class="btn v-btn v-btn--contained theme--light v-size--default secondary-btn normal"
                   name="button"
                   type="button"
                 >
@@ -467,6 +479,8 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                     class="v-btn__content"
                   >
                     
+                  
+                
                   </span>
                 </button>
                  
@@ -482,6 +496,8 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                     class="v-btn__content"
                   >
                     
+                  
+                
                   </span>
                 </button>
               </div>
@@ -529,6 +545,8 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
           class="v-toolbar__title"
         >
           
+        
+      
         </div>
          
         <div
@@ -557,12 +575,16 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                 class="v-card__title headline bc-padding-left-0 text-capitalize"
               >
                 
+                
+              
               </div>
                
               <div
                 class="v-card__subtitle text-left bc-padding-left-0"
               >
                 
+                
+              
               </div>
             </div>
              
@@ -573,6 +595,8 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                 class="v-card__subtitle text-left bc-padding-left-0"
               >
                 
+                
+              
               </div>
                
               <div
@@ -581,7 +605,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
     if (v === '') {
       return true;
     } else {
-      return /^(?:http(s)?:\\\\/\\\\/)?[\\\\w.-]+(?:\\\\.[\\\\w\\\\.-]+)+[\\\\w\\\\-\\\\._~:/?#[\\\\]@!\\\\$&'\\\\(\\\\)\\\\*\\\\+,;=.]+$/.test(v) || ' must be valid URL';
+      return /^(?:http(s)?:\\\\/\\\\/)[\\\\w.-]+(?:\\\\.[\\\\w\\\\.-]+)+[\\\\w\\\\-\\\\._~:/?#[\\\\]@!\\\\$&'\\\\(\\\\)\\\\*\\\\+,;=.]+$/.test(v) || ' must be valid URL';
     }
   },v => (v || '').length <= len || 'Invalid character length, max length ' + len"
               >
@@ -636,6 +660,8 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                 class="v-card__subtitle text-left bc-padding-left-0"
               >
                 
+                
+              
               </div>
                
               <div
@@ -687,6 +713,8 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                 class="v-card__subtitle text-left bc-padding-left-0"
               >
                 
+                
+              
               </div>
                
               <div
@@ -695,7 +723,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
     if (v === '') {
       return true;
     } else {
-      return /^(?:http(s)?:\\\\/\\\\/)?[\\\\w.-]+(?:\\\\.[\\\\w\\\\.-]+)+[\\\\w\\\\-\\\\._~:/?#[\\\\]@!\\\\$&'\\\\(\\\\)\\\\*\\\\+,;=.]+$/.test(v) || ' must be valid URL';
+      return /^(?:http(s)?:\\\\/\\\\/)[\\\\w.-]+(?:\\\\.[\\\\w\\\\.-]+)+[\\\\w\\\\-\\\\._~:/?#[\\\\]@!\\\\$&'\\\\(\\\\)\\\\*\\\\+,;=.]+$/.test(v) || ' must be valid URL';
     }
   },v => (v || '').length <= len || 'Invalid character length, max length ' + len"
               >
@@ -953,7 +981,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                  
                 <button
                   aria-label="Back Button"
-                  class="btn v-btn v-btn--contained theme--light v-size--default secondary normal"
+                  class="btn v-btn v-btn--contained theme--light v-size--default secondary-btn normal"
                   name="button"
                   type="button"
                 >
@@ -961,6 +989,8 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                     class="v-btn__content"
                   >
                     
+                  
+                
                   </span>
                 </button>
                  
@@ -976,6 +1006,8 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                     class="v-btn__content"
                   >
                     
+                  
+                
                   </span>
                 </button>
               </div>
@@ -1023,6 +1055,8 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
           class="v-toolbar__title"
         >
           
+        
+      
         </div>
          
         <div
@@ -1051,12 +1085,16 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                 class="v-card__title headline bc-padding-left-0 text-capitalize"
               >
                 
+                
+              
               </div>
                
               <div
                 class="v-card__subtitle text-left bc-padding-left-0"
               >
                 
+                
+              
               </div>
             </div>
              
@@ -1067,6 +1105,8 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                 class="v-card__subtitle text-left bc-padding-left-0"
               >
                 
+                
+              
               </div>
                
               <div
@@ -1075,7 +1115,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
     if (v === '') {
       return true;
     } else {
-      return /^(?:http(s)?:\\\\/\\\\/)?[\\\\w.-]+(?:\\\\.[\\\\w\\\\.-]+)+[\\\\w\\\\-\\\\._~:/?#[\\\\]@!\\\\$&'\\\\(\\\\)\\\\*\\\\+,;=.]+$/.test(v) || ' must be valid URL';
+      return /^(?:http(s)?:\\\\/\\\\/)[\\\\w.-]+(?:\\\\.[\\\\w\\\\.-]+)+[\\\\w\\\\-\\\\._~:/?#[\\\\]@!\\\\$&'\\\\(\\\\)\\\\*\\\\+,;=.]+$/.test(v) || ' must be valid URL';
     }
   },v => (v || '').length <= len || 'Invalid character length, max length ' + len"
               >
@@ -1130,6 +1170,8 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                 class="v-card__subtitle text-left bc-padding-left-0"
               >
                 
+                
+              
               </div>
                
               <div
@@ -1181,6 +1223,8 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                 class="v-card__subtitle text-left bc-padding-left-0"
               >
                 
+                
+              
               </div>
                
               <div
@@ -1189,7 +1233,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
     if (v === '') {
       return true;
     } else {
-      return /^(?:http(s)?:\\\\/\\\\/)?[\\\\w.-]+(?:\\\\.[\\\\w\\\\.-]+)+[\\\\w\\\\-\\\\._~:/?#[\\\\]@!\\\\$&'\\\\(\\\\)\\\\*\\\\+,;=.]+$/.test(v) || ' must be valid URL';
+      return /^(?:http(s)?:\\\\/\\\\/)[\\\\w.-]+(?:\\\\.[\\\\w\\\\.-]+)+[\\\\w\\\\-\\\\._~:/?#[\\\\]@!\\\\$&'\\\\(\\\\)\\\\*\\\\+,;=.]+$/.test(v) || ' must be valid URL';
     }
   },v => (v || '').length <= len || 'Invalid character length, max length ' + len"
               >
@@ -1447,7 +1491,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                  
                 <button
                   aria-label="Back Button"
-                  class="btn v-btn v-btn--contained theme--light v-size--default secondary normal"
+                  class="btn v-btn v-btn--contained theme--light v-size--default secondary-btn normal"
                   name="button"
                   type="button"
                 >
@@ -1455,6 +1499,8 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                     class="v-btn__content"
                   >
                     
+                  
+                
                   </span>
                 </button>
                  
@@ -1470,6 +1516,8 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                     class="v-btn__content"
                   >
                     
+                  
+                
                   </span>
                 </button>
               </div>

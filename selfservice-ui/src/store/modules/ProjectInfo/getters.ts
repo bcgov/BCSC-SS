@@ -44,5 +44,12 @@ export const getters: GetterTree<ProjectInfoState, RootState> = {
    */
   getProjectInfoMessage(state) {
     return state.message;
+  },
+
+  getFinalProjectSubmissionStatus(state) {
+    return {
+      finalErrorStatus: state.finalErrorStatus,
+      finalSuccessStatus: state.finalSuccessStatus
+    };
   }
 };

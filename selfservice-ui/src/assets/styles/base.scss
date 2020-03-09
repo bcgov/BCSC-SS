@@ -285,5 +285,25 @@ ul.list {
 }
 
 .bc-subtitle {
-  background-color: #003366 !important;
+  background-color: $BCgovBlue5 !important;
+}
+
+.bc-subtitle-2 {
+  background-color: $BCgovBlue10 !important;
+}
+.pointer {
+  cursor: pointer;
+}
+.small-hint {
+  font-size: 12px;
+  color: gray;
+}
+.bc-subtitle-gold-1 {
+  background-color: $BCgovGold5 !important;
+  color: $BCgovBlack !important;
+}
+
+.bc-disabled-section {
+  opacity: 0.3;
+  cursor: not-allowed;
 }
