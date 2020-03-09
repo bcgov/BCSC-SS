@@ -41,6 +41,8 @@
                     rules.length(2),
                     rules.maxLength(100)
                   ]"
+                  persistent-hint
+                  :hint="$t('projectInfo.OrganizationNameHint')"
                 />
                 <Input
                   v-model="projectName"
@@ -52,6 +54,8 @@
                     rules.length(2),
                     rules.maxLength(100)
                   ]"
+                  persistent-hint
+                  :hint="$t('projectInfo.projectNameHint')"
                 />
                 <TextArea
                   v-model="description"
@@ -59,6 +63,7 @@
                   type="text"
                   :rules="[rules.required]"
                   outlined
+                  persistent-hint
                   :hint="$t('projectInfo.DescriptionHint')"
                 />
               </v-card>
