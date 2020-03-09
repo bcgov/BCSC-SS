@@ -48,11 +48,6 @@ exports[`Input.vue renders props when passed 1`] = `
           tag="div"
         />
       </div>
-      <div
-        class="v-counter theme--light"
-      >
-        4
-      </div>
     </div>
   </div>
 </div>
@@ -105,11 +100,6 @@ exports[`Input.vue renders props when passed 2`] = `
           name="message-transition"
           tag="div"
         />
-      </div>
-      <div
-        class="v-counter theme--light"
-      >
-        5
       </div>
     </div>
   </div>
