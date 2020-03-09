@@ -44,9 +44,10 @@ def create_app(run_mode=os.getenv('FLASK_ENV', 'production')):
     setup_jwt_manager(app, jwt)
 
     @app.after_request
-    def add_version(response):  # pylint: disable=unused-variable
+    def add_additional_headers(response):  # pylint: disable=unused-variable
         version = get_run_version()
         response.headers['API'] = f'selfservice_api/{version}'
+        response.headers['X-Frame-Options'] = 'DENY'
         return response
 
     register_shellcontext(app)
