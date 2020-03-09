@@ -20,7 +20,7 @@ from flask_restplus import Namespace, Resource, cors
 from marshmallow import ValidationError
 
 from ..models import OIDCConfig, Project, TechnicalReq, TestAccount, User
-from ..models.enums import ProjectRoles, ProjectStatus
+from ..models.enums import ProjectStatus
 from ..schemas.project import ProjectSchema
 from ..services.external import get_dynamic_api
 from ..services.external.models import CreateRequestModel, CreateResponseModel, UpdateRequestModel, UpdateResponseModel
@@ -47,10 +47,6 @@ class ProjectResource(Resource):
         if is_client_role():
             oauth_id = token_info.get('sub')
         projects = Project.find_all_or_by_user(oauth_id)
-        for info in projects:
-            info['statusId'] = info['status']
-            info['status'] = ProjectStatus.get_phrase(info['status'])
-            info['role'] = ProjectRoles(info['role']).name
         return jsonify({'projects': projects}), HTTPStatus.OK
 
     @staticmethod

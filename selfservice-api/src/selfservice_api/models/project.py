@@ -20,7 +20,7 @@ from sqlalchemy import and_
 from .audit_mixin import AuditDateTimeMixin, AuditUserMixin
 from .base_model import BaseModel
 from .db import db
-from .enums.project import ProjectStatus
+from .enums.project import ProjectRoles, ProjectStatus
 from .user import User
 
 
@@ -129,25 +129,39 @@ class Project(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
     @classmethod
     def find_all_or_by_user(cls, oauth_id=None):
         """Fetch all projects or by user."""
-        where_condition = ''
         if oauth_id is not None:
             current_user = User.find_by_oauth_id(oauth_id)
-            where_condition = ' WHERE project_users_association.user_id = ' + str(current_user.id)
 
-        result_proxy = db.session.execute("""SELECT
-                TO_CHAR(project.created, 'Mon dd yyyy') as created,
-                project.id,
-                project.project_name as name,
-                project.status,
-                project.ref_no as reference,
-                project_users_association.role
-            FROM project
-                JOIN project_users_association ON project.id = project_users_association.project_id""" +
-                                          where_condition + ' ORDER BY project.created DESC')
+            result_proxy = db.session.execute("""SELECT
+                    TO_CHAR(project.created, 'Mon dd yyyy') as created,
+                    project.id,
+                    project.project_name as name,
+                    project.status,
+                    project.ref_no as reference,
+                    project_users_association.role
+                FROM project
+                    JOIN project_users_association ON project.id = project_users_association.project_id
+                WHERE project_users_association.user_id = """ + str(current_user.id) +
+                                              ' ORDER BY project.created DESC')
+        else:
+            result_proxy = db.session.execute("""SELECT
+                    TO_CHAR(project.created, 'Mon dd yyyy') as created,
+                    project.id,
+                    project.project_name as name,
+                    project.status,
+                    project.ref_no as reference
+                FROM project
+                ORDER BY project.created DESC""")
 
         result = []
         for row in result_proxy:
-            row_as_dict = dict(row)
-            result.append(row_as_dict)
+            info = dict(row)
+
+            info['statusId'] = info['status']
+            info['status'] = ProjectStatus.get_phrase(info['status'])
+            if oauth_id is not None:
+                info['role'] = ProjectRoles(info['role']).name
+
+            result.append(info)
 
         return result
