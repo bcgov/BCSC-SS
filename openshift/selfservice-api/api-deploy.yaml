@@ -361,4 +361,4 @@ parameters:
   displayName: The number of replicas to run
   description: The number of replicas to run in this environment.
   required: true
-  value: '1'
+  value: '2'
