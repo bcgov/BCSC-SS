@@ -2,8 +2,7 @@
 
 exports[`TestAccountRequest.vue renders props when passed 1`] = `
 <div
-  class="mx-auto v-card v-sheet theme--light"
-  style="max-width: 80%;"
+  class="mx-auto outer-card v-card v-sheet theme--light"
 >
   <header
     class="bc-subtitle padding-0 v-sheet v-sheet--tile theme--dark v-toolbar v-toolbar--flat"
@@ -356,8 +355,7 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
 
 exports[`TestAccountRequest.vue select on package on click  1`] = `
 <div
-  class="mx-auto v-card v-sheet theme--light"
-  style="max-width: 80%;"
+  class="mx-auto outer-card v-card v-sheet theme--light"
 >
   <header
     class="bc-subtitle padding-0 v-sheet v-sheet--tile theme--dark v-toolbar v-toolbar--flat"
@@ -710,8 +708,7 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
 
 exports[`TestAccountRequest.vue submit form with selected package on submit click  1`] = `
 <div
-  class="mx-auto v-card v-sheet theme--light"
-  style="max-width: 80%;"
+  class="mx-auto outer-card v-card v-sheet theme--light"
 >
   <header
     class="bc-subtitle padding-0 v-sheet v-sheet--tile theme--dark v-toolbar v-toolbar--flat"

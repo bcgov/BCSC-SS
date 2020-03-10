@@ -1,7 +1,4 @@
 const tokenSignatureAlgoritham = [
-  'HS256',
-  'HS384',
-  'HS512',
   'RS256',
   'RS384',
   'RS512',
@@ -13,9 +10,6 @@ const tokenSignatureAlgoritham = [
   'PS512'
 ];
 const userInfoSignedResponseAlgoritham = [
-  'HS256',
-  'HS384',
-  'HS512',
   'RS256',
   'RS384',
   'RS512',

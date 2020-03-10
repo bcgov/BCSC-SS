@@ -12,7 +12,7 @@
     </v-toolbar>
     <v-list dense class="px-5">
       <v-list-item>
-        <v-list-item-content>
+        <v-list-item-content class="pr-30">
           {{
           $t('ClientID.titleApiKey')
           }}
@@ -22,23 +22,23 @@
           ></span>
         </v-list-item-content>
         <v-list-item-content
-          class="align-end pointer font-weight-bold client-id-copy"
+          class="align-end pointer client-id-copy"
           @click="
                   docopy(
                     getApiData.oidcConfig && getApiData.oidcConfig.clientId
                   )
                 "
         >
-          <div>
+          <code class="code-snippet">
             <v-icon small class="mr-1">mdi-content-copy</v-icon>
             {{ getApiData.oidcConfig && getApiData.oidcConfig.clientId }}
-          </div>
+          </code>
         </v-list-item-content>
       </v-list-item>
       <v-divider></v-divider>
 
       <v-list-item>
-        <v-list-item-content>
+        <v-list-item-content class="pr-30">
           {{
           $t('ClientID.titleClientSecret')
           }}
@@ -48,25 +48,26 @@
           ></span>
         </v-list-item-content>
         <v-list-item-content
-          class="align-end pointer font-weight-bold d-block"
+          class="align-end pointer d-block"
           @click="
                   docopy(
                     getApiData.oidcConfig && getApiData.oidcConfig.clientSecret
                   )
                 "
         >
-          <div class="float-left">
-            <v-icon small class="mr-2">mdi-content-copy</v-icon>
-          </div>
-          <div>
+          <code class="code-snippet">
+            <div class="float-left">
+              <v-icon small class="mr-2">mdi-content-copy</v-icon>
+            </div>
+
             <span>{{ getApiData.oidcConfig && getApiData.oidcConfig.clientSecret }}</span>
-          </div>
+          </code>
         </v-list-item-content>
       </v-list-item>
 
       <v-divider></v-divider>
       <v-list-item>
-        <v-list-item-content class="align-self-start">
+        <v-list-item-content class="align-self-start pr-30">
           {{
           $t('ClientID.titleTestAccount')
           }}
@@ -151,5 +152,10 @@ export default class ClientIDDetails extends Vue {
 }
 .pad-50 {
   padding-right: 50px;
+}
+.code-snippet {
+  min-height: 50px;
+  display: flex;
+  align-items: center;
 }
 </style>

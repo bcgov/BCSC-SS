@@ -38,7 +38,7 @@
 
             <v-list dense class="px-5">
               <v-list-item>
-                <v-list-item-content>
+                <v-list-item-content class="pr-30">
                   {{
                   $t('summaryPage.labelOrganizationName')
                   }}
@@ -56,7 +56,7 @@
               </v-list-item>
               <v-divider></v-divider>
               <v-list-item>
-                <v-list-item-content>
+                <v-list-item-content class="pr-30">
                   {{
                   $t('summaryPage.labelProjectTitle')
                   }}
@@ -74,7 +74,7 @@
               </v-list-item>
               <v-divider></v-divider>
               <v-list-item>
-                <v-list-item-content class="align-self-start">
+                <v-list-item-content class="align-self-start pr-30">
                   {{
                   $t('summaryPage.labelTechnicalContact')
                   }}
@@ -101,7 +101,7 @@
               </v-list-item>
               <v-divider></v-divider>
               <v-list-item>
-                <v-list-item-content class="align-self-start">
+                <v-list-item-content class="align-self-start pr-30">
                   {{
                   $t('summaryPage.labelManagerContact')
                   }}
@@ -122,7 +122,7 @@
               </v-list-item>
               <v-divider></v-divider>
               <v-list-item>
-                <v-list-item-content class="align-self-start">
+                <v-list-item-content class="align-self-start pr-30">
                   {{
                   $t('summaryPage.labelCtoContact')
                   }}
@@ -157,7 +157,7 @@
             </v-toolbar>
             <v-list dense class="px-5">
               <v-list-item>
-                <v-list-item-content>
+                <v-list-item-content class="pr-30">
                   {{
                   $t('summaryPage.labelApplicationUrl')
                   }}
@@ -175,7 +175,7 @@
               </v-list-item>
               <v-divider></v-divider>
               <v-list-item>
-                <v-list-item-content class="align-self-start">
+                <v-list-item-content class="align-self-start pr-30">
                   {{
                   $t('summaryPage.labelRedirectUrl')
                   }}
@@ -193,7 +193,7 @@
               </v-list-item>
               <v-divider></v-divider>
               <v-list-item>
-                <v-list-item-content>
+                <v-list-item-content class="pr-30">
                   {{
                   $t('summaryPage.labelJWKSUrl')
                   }}
@@ -212,7 +212,7 @@
               </v-list-item>
               <v-divider></v-divider>
               <v-list-item>
-                <v-list-item-content>
+                <v-list-item-content class="pr-30">
                   {{
                   $t('summaryPage.labelIdTokenSignedResponseAlg')
                   }}
@@ -232,7 +232,7 @@
               </v-list-item>
               <v-divider></v-divider>
               <v-list-item>
-                <v-list-item-content>
+                <v-list-item-content class="pr-30">
                   {{
                   $t('summaryPage.labelUserinfoSignedResponseAlg')
                   }}
@@ -270,7 +270,7 @@
 
             <v-list dense v-if="getPackageList.length > 0" class="px-5">
               <v-list-item>
-                <v-list-item-content class="align-self-start">
+                <v-list-item-content class="align-self-start pr-30">
                   {{
                   $t('summaryPage.labelDataPackageReqd')
                   }}
