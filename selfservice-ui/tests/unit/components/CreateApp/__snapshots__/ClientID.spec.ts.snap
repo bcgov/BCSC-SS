@@ -40,7 +40,7 @@ exports[`ClientID.vue renders props when passed with gettors 1`] = `
         
         
         <span
-          class="small-hint pad-50"
+          class="small-hint"
         />
       </div>
        
@@ -80,7 +80,7 @@ exports[`ClientID.vue renders props when passed with gettors 1`] = `
         
         
         <span
-          class="small-hint pad-50"
+          class="small-hint"
         />
       </div>
        
@@ -125,7 +125,7 @@ exports[`ClientID.vue renders props when passed with gettors 1`] = `
         
         
         <span
-          class="small-hint pad-50"
+          class="small-hint"
         />
       </div>
        
@@ -237,7 +237,7 @@ exports[`ClientID.vue renders props when passed with gettors 2`] = `
         
         
         <span
-          class="small-hint pad-50"
+          class="small-hint"
         />
       </div>
        
@@ -277,7 +277,7 @@ exports[`ClientID.vue renders props when passed with gettors 2`] = `
         
         
         <span
-          class="small-hint pad-50"
+          class="small-hint"
         />
       </div>
        
@@ -322,7 +322,7 @@ exports[`ClientID.vue renders props when passed with gettors 2`] = `
         
         
         <span
-          class="small-hint pad-50"
+          class="small-hint"
         />
       </div>
        
