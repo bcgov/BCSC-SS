@@ -78,6 +78,10 @@
                   {{
                   $t('summaryPage.labelTechnicalContact')
                   }}
+                  <span
+                    class="small-hint pad-50"
+                    v-html="$t('summaryPage.developerHint')"
+                  ></span>
                 </v-list-item-content>
                 <v-list-item-content class="align-end">
                   <div>
@@ -101,6 +105,10 @@
                   {{
                   $t('summaryPage.labelManagerContact')
                   }}
+                  <span
+                    class="small-hint pad-50"
+                    v-html="$t('summaryPage.managerHint')"
+                  ></span>
                 </v-list-item-content>
                 <v-list-item-content class="align-end">
                   <div>
@@ -118,6 +126,10 @@
                   {{
                   $t('summaryPage.labelCtoContact')
                   }}
+                  <span
+                    class="small-hint pad-50"
+                    v-html="$t('summaryPage.ctoHint')"
+                  ></span>
                 </v-list-item-content>
                 <v-list-item-content class="align-end">
                   <div>

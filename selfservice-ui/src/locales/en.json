@@ -17,7 +17,7 @@
     "OrganizationName": "Organization name",
     "projectName": "Project name",
     "Description": "Description",
-    "DescriptionHint": "Please provide us with a short description of your application and why you need the BC Services Card as a login method",
+
     "ProjectRoles": "Project Roles",
     "RolesTitleInfo": "In this system, a project consists of one (or more) Developer(s), a Manager and an Executive sponsor. Please provide contact information for each of these roles within your organization in the context of this project.",
     "myRole": "My role in this project is:",
@@ -29,7 +29,11 @@
     "btnSaveChanges": "Save Changes",
     "btnCancel": "Cancel",
     "OrganizationNameHint": "We need to know which Public Agency you are affiliated with.",
-    "projectNameHint": "Please provide us with a short name of your application which will create a login option with the BC Services Card"
+    "projectNameHint": "Please provide us with a short name of your application which will create a login option with the BC Services Card",
+    "DescriptionHint": "Please provide us with a short description of your application and why you need the BC Services Card as a login method",
+    "developerHint": "Please provide developer’s contact information who is associated to this request and project. This is a person who understand OIDC and will be able to configure your BPS application for the BC Services Card Login",
+    "managerHint": "Please provide managers contact information who is associated to this request and project. This is a person who will be the main point of contact for the BC Services Card IDIM team and provide updates on the project’s privacy, security, communication and agreement progress.",
+    "ctoHint": "Please provide Executive Sponsor’s contact information who is associated to this request and project. This is a person who will provide attestations to the BC Services Card IDIM team on the compliance and completion of privacy, security, communication and agreement items."
   },
   "technicalRequirements": {
     "technicalTitle": "Technical Requirements",
@@ -106,7 +110,10 @@
     "cantSubmitErrorMessage": "Your submission contains incomplete fields. Please edit any sections requiring completion before submitting your request.",
     "systemError": "Something went wrong while processing your request. Please retry in a few minutes. If the problem persists, please contact the Product Owner.",
     "OrganizationNameHint": "We need to know which Public Agency you are affiliated with.",
-    "projectNameHint": "Please provide us with a short name of your application which will create a login option with the BC Services Card"
+    "projectNameHint": "Please provide us with a short name of your application which will create a login option with the BC Services Card",
+    "developerHint": "Please provide developer’s contact information who is associated to this request and project. This is a person who understand OIDC and will be able to configure your BPS application for the BC Services Card Login",
+    "managerHint": "Please provide managers contact information who is associated to this request and project. This is a person who will be the main point of contact for the BC Services Card IDIM team and provide updates on the project’s privacy, security, communication and agreement progress.",
+    "ctoHint": "Please provide Executive Sponsor’s contact information who is associated to this request and project. This is a person who will provide attestations to the BC Services Card IDIM team on the compliance and completion of privacy, security, communication and agreement items."
   },
   "ClientID": {
     "pagetitle": "API Key / Client ID",
