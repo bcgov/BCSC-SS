@@ -17,7 +17,7 @@
           $t('ClientID.titleApiKey')
           }}
           <span
-            class="small-hint pad-50"
+            class="small-hint"
             v-html="$t('ClientID.titleApiKeyInfo')"
           ></span>
         </v-list-item-content>
@@ -43,7 +43,7 @@
           $t('ClientID.titleClientSecret')
           }}
           <span
-            class="small-hint pad-50"
+            class="small-hint"
             v-html="$t('ClientID.titleClientSecretInfo')"
           ></span>
         </v-list-item-content>
@@ -72,7 +72,7 @@
           $t('ClientID.titleTestAccount')
           }}
           <span
-            class="small-hint pad-50"
+            class="small-hint"
             v-html="$t('ClientID.titleTestAccountInfo')"
           ></span>
         </v-list-item-content>
@@ -150,12 +150,12 @@ export default class ClientIDDetails extends Vue {
 .active-bg {
   background-color: $BCgovActiveBg;
 }
-.pad-50 {
-  padding-right: 50px;
-}
+
 .code-snippet {
   min-height: 50px;
   display: flex;
   align-items: center;
+  color: $BCgovBlack;
+  font-weight: 200 !important;
 }
 </style>
