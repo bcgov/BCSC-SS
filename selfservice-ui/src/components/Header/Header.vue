@@ -15,7 +15,6 @@
         alt="Go to the Government of British Columbia website"
         class="img side-left-margin"
       />
-      <!-- </a> -->
 
       <v-toolbar-title>{{ $t('main.siteTitle') }}</v-toolbar-title>
       <sup aria-label="This application is currently in Beta phase" class="beta-phase-banner">Beta</sup>
