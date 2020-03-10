@@ -573,10 +573,4 @@ export default class TestAccountRequest extends Vue {
 .text-center {
   text-align: center !important;
 }
-.outer-card {
-  max-width: 100%;
-  @include rwd(1500) {
-    max-width: 80%;
-  }
-}
 </style>

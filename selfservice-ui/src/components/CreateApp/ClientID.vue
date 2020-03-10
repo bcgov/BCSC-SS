@@ -89,10 +89,6 @@
                     class="text-left"
                   >{{$t('ClientID.tblPassCode')}}</th>
                   <th
-                    :scope="$t('ClientID.tblGivenName')"
-                    class="text-left"
-                  >{{$t('ClientID.tblGivenName')}}</th>
-                  <th
                     :scope="$t('ClientID.tblSurName')"
                     class="text-left"
                   >{{$t('ClientID.tblSurName')}}</th>
@@ -102,7 +98,6 @@
                 <tr v-for="(account) in getApiData.testAccount" :key="account.cardNumber">
                   <td>{{ account.cardNumber }}</td>
                   <td>{{ account.passcode }}</td>
-                  <td>{{ account.attributes.givenname }}</td>
                   <td>{{ account.attributes.surname }}</td>
                 </tr>
               </tbody>

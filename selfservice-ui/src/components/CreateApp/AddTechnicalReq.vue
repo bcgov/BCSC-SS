@@ -1,6 +1,6 @@
 /** * Add TechnicalReq */
 <template>
-  <v-card class="mx-auto" style="max-width: 80%;">
+  <v-card class="mx-auto outer-card">
     <!--  <v-alert type="success" v-if="successStatus">TechnicalReq {{isEditMode ? 'Updated' : 'Added'}} succesfully</v-alert>
     <v-alert type="error" v-if="errorStatus">Something went wrong...</v-alert>-->
     <v-card class="mx-auto">
