@@ -1,0 +1,81 @@
+version: '3'
+services:
+  db:
+    image: postgres:11
+    ports:
+      - 5434:5432
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=${DB_POSTGRES_USER}
+      - POSTGRES_PASSWORD=${DB_POSTGRES_PASSWORD}
+      - POSTGRES_DB=${DB_POSTGRES_DB}
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U ${DB_POSTGRES_USER}']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  migration:
+    build:
+      context: ./..
+      dockerfile: selfservice-api/Dockerfile
+    image: bscs_ss_api
+    command: python manage.py db upgrade
+    depends_on:
+      - db
+    environment:
+      - DATABASE_USERNAME=${DB_POSTGRES_USER}
+      - DATABASE_PASSWORD=${DB_POSTGRES_PASSWORD}
+      - DATABASE_NAME=${DB_POSTGRES_DB}
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
+      - JWT_OIDC_WELL_KNOWN_CONFIG=${KEYCLOAK_URL}/realms/${KEYCLOAK_REALM}/.well-known/openid-configuration
+      - JWT_OIDC_ISSUER=${KEYCLOAK_URL}/realms/${KEYCLOAK_REALM}
+      - JWT_OIDC_AUDIENCE=${KEYCLOAK_CLIENT}
+      - JWT_OIDC_ALGORITHMS=${KEYCLOAK_ALGORITHMS}
+      - JWT_OIDC_JWKS_URI=${KEYCLOAK_URL}/realms/${KEYCLOAK_REALM}/protocol/openid-connect/certs
+      - JWT_OIDC_CACHING_ENABLED=True
+      - JWT_OIDC_JWKS_CACHE_TIMEOUT=300
+      - DYNAMIC_TEST_API_URL=${DYNAMIC_TEST_API_URL}
+      - DYNAMIC_TEST_API_TOKEN=${DYNAMIC_TEST_API_TOKEN}
+      - DYNAMIC_PROD_API_URL=${DYNAMIC_PROD_API_URL}
+      - DYNAMIC_PROD_API_TOKEN=${DYNAMIC_PROD_API_TOKEN}
+  api:
+    image: bscs_ss_api
+    ports:
+      - '${API_PORT}:5000'
+    command: gunicorn -b :5000 selfservice_api:create_app()
+    depends_on:
+      - migration
+    environment:
+      - DATABASE_USERNAME=${DB_POSTGRES_USER}
+      - DATABASE_PASSWORD=${DB_POSTGRES_PASSWORD}
+      - DATABASE_NAME=${DB_POSTGRES_DB}
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
+      - JWT_OIDC_WELL_KNOWN_CONFIG=${KEYCLOAK_URL}/realms/${KEYCLOAK_REALM}/.well-known/openid-configuration
+      - JWT_OIDC_ISSUER=${KEYCLOAK_URL}/realms/${KEYCLOAK_REALM}
+      - JWT_OIDC_AUDIENCE=${KEYCLOAK_CLIENT}
+      - JWT_OIDC_ALGORITHMS=${KEYCLOAK_ALGORITHMS}
+      - JWT_OIDC_JWKS_URI=${KEYCLOAK_URL}/realms/${KEYCLOAK_REALM}/protocol/openid-connect/certs
+      - JWT_OIDC_CACHING_ENABLED=True
+      - JWT_OIDC_JWKS_CACHE_TIMEOUT=300
+      - DYNAMIC_TEST_API_URL=${DYNAMIC_TEST_API_URL}
+      - DYNAMIC_TEST_API_TOKEN=${DYNAMIC_TEST_API_TOKEN}
+      - DYNAMIC_PROD_API_URL=${DYNAMIC_PROD_API_URL}
+      - DYNAMIC_PROD_API_TOKEN=${DYNAMIC_PROD_API_TOKEN}
+  web:
+    build:
+      context: ./..
+      dockerfile: selfservice-ui/Dockerfile
+      args:
+        - API_BASE_URL=http://localhost:${API_PORT}/api/v1/
+        - KEYCLOAK_URL=${KEYCLOAK_URL}
+        - KEYCLOAK_REALM=${KEYCLOAK_REALM}
+        - KEYCLOAK_CLIENT=${KEYCLOAK_CLIENT}
+    ports:
+      - '${WEB_PORT}:8080'
+    depends_on:
+      - api
+volumes:
+  dbdata:

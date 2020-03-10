@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input.vue renders props when passed 1`] = `
+<div
+  class="v-input input v-input--is-label-active v-input--is-dirty theme--light v-text-field v-text-field--enclosed v-text-field--outlined"
+  input="function mockConstructor() {
+        return fn.apply(this, arguments);
+      }"
+>
+  <div
+    class="v-input__control"
+  >
+    <div
+      class="v-input__slot"
+    >
+      <fieldset
+        aria-hidden="true"
+      >
+        <legend
+          style="width: 0px;"
+        >
+          <span>
+            ​
+          </span>
+        </legend>
+      </fieldset>
+      <div
+        class="v-text-field__slot"
+      >
+        <input
+          id="input-3"
+          input="function mockConstructor() {
+        return fn.apply(this, arguments);
+      }"
+          type="text"
+        />
+      </div>
+    </div>
+    <div
+      class="v-text-field__details"
+    >
+      <div
+        class="v-messages theme--light"
+      >
+        <span
+          class="v-messages__wrapper"
+          name="message-transition"
+          tag="div"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Input.vue renders props when passed 2`] = `
+<div
+  class="v-input input v-input--is-label-active v-input--is-dirty theme--light v-text-field v-text-field--enclosed v-text-field--outlined"
+  input="function mockConstructor() {
+        return fn.apply(this, arguments);
+      }"
+>
+  <div
+    class="v-input__control"
+  >
+    <div
+      class="v-input__slot"
+    >
+      <fieldset
+        aria-hidden="true"
+      >
+        <legend
+          style="width: 0px;"
+        >
+          <span>
+            ​
+          </span>
+        </legend>
+      </fieldset>
+      <div
+        class="v-text-field__slot"
+      >
+        <input
+          id="input-9"
+          input="function mockConstructor() {
+        return fn.apply(this, arguments);
+      }"
+          type="text"
+        />
+      </div>
+    </div>
+    <div
+      class="v-text-field__details"
+    >
+      <div
+        class="v-messages theme--light"
+      >
+        <span
+          class="v-messages__wrapper"
+          name="message-transition"
+          tag="div"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,70 @@
+name: BCSC_SS API integration tests
+
+on: [pull_request]
+
+jobs:
+  selfservice-api-integration-test:
+    runs-on: ubuntu-latest
+
+    env:
+      DATABASE_HOST: localhost
+      DATABASE_NAME: postgres
+      DATABASE_PORT: 5432
+      DATABASE_TEST_HOST: localhost
+      DATABASE_TEST_NAME: postgres
+      DATABASE_TEST_PORT: 5432
+      DATABASE_TEST_USERNAME: postgres
+      DATABASE_TEST_USER: postgres
+      DATABASE_USERNAME: postgres
+      DATABASE_USER: postgres
+      ADMIN_PASSWORD: postgres@123
+      DATABASE_ADMIN_PASSWORD: postgres@123
+      DATABASE_PASSWORD: postgres@123
+      DATABASE_TEST_PASSWORD: postgres@123
+      JWT_OIDC_ALGORITHMS: RS256
+      JWT_OIDC_AUDIENCE: bcscss
+      JWT_OIDC_CACHING_ENABLED: true	
+      JWT_OIDC_ISSUER: https://sso-dev.pathfinder.gov.bc.ca/auth/realms/1gw8g24z 
+      JWT_OIDC_JWKS_CACHE_TIMEOUT: 300
+      JWT_OIDC_JWKS_URI: https://sso-dev.pathfinder.gov.bc.ca/auth/realms/1gw8g24z/protocol/openid-connect/certs 
+      JWT_OIDC_WELL_KNOWN_CONFIG: https://sso-dev.pathfinder.gov.bc.ca/auth/realms/1gw8g24z/.well-known/openid-configuration 
+      DYNAMIC_TEST_API_URL: TESTING
+      DYNAMIC_TEST_API_TOKEN: TESTING_TOKEN
+      DYNAMIC_PROD_API_URL: TESTING
+      DYNAMIC_PROD_API_TOKEN: TESTING_TOKEN
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+      - name: Install dependencies
+        working-directory: selfservice-api
+        run: |
+          python -m pip install --upgrade pip
+          pip install .
+      - name: Lint non-test Source
+        working-directory: selfservice-api
+        run: |
+          pylint src --rcfile=setup.cfg
+          flake8
+      - name: Start a PostgreSQL database with docker-compose
+        working-directory: local
+        run: |
+          sh ready_local_db.sh
+      - name: Execute Unit Tests with PyTest
+        working-directory: selfservice-api
+        run: |
+          pip install .
+          python setup.py test
+      # - name: Upload coverage to Codecov
+      #   uses: codecov/codecov-action@v1
+      #   with:
+      #     token: ${{secrets.CODECOV_TOKEN}}
+      #     flags: python_unittests
+      #     fail_ci_if_error: false
+      - name: Shutdown docker-compose
+        working-directory: local
+        run: |
+          docker-compose -f docker-compose-db.yml down 

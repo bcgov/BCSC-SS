@@ -1,0 +1,688 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header.vue Logout user on logout button onlick  1`] = `
+<div>
+  <header
+    class="header v-sheet v-sheet--tile theme--light v-toolbar v-app-bar v-app-bar--clipped v-app-bar--fixed"
+    style="height: 64px; margin-top: 0px; transform: translateY(0px); left: 0px; right: 0px;"
+  >
+    <div
+      class="v-toolbar__content"
+      style="height: 64px;"
+    >
+      <img
+        alt="Go to the Government of British Columbia website"
+        class="img side-left-margin"
+        src="@/assets/images/bc-logo-horizontal.svg"
+      />
+       
+      <div
+        class="v-toolbar__title"
+      >
+        
+      </div>
+       
+      <sup
+        aria-label="This application is currently in Beta phase"
+        class="beta-phase-banner"
+      >
+        Beta
+      </sup>
+       
+      <div
+        class="spacer"
+      />
+       
+      <div
+        class="spacer"
+      />
+       
+      <!---->
+       
+      <div
+        class="v-toolbar__title"
+      >
+        
+      Welcome user lastName
+      
+        <button
+          class="v-btn v-btn--flat v-btn--text theme--light v-size--default white--text"
+          type="button"
+        >
+          <span
+            class="v-btn__content"
+          >
+            <span
+              class="mr-2 logout"
+              color="white"
+            >
+              Logout
+            </span>
+          </span>
+        </button>
+      </div>
+       
+      <a
+        class="mr-2 d-sm-none toggleMenu v-btn--active v-btn v-btn--flat v-btn--router v-btn--text theme--dark v-size--default"
+        href="#/"
+      >
+        <span
+          class="v-btn__content"
+        >
+          <i
+            aria-hidden="true"
+            class="v-icon notranslate mdi mdi-menu theme--dark"
+          />
+        </span>
+      </a>
+    </div>
+  </header>
+   
+  <!---->
+   
+  <div
+    class="mx-auto v-card v-sheet theme--light"
+  >
+    <nav
+      class="v-navigation-drawer v-navigation-drawer--clipped v-navigation-drawer--fixed v-navigation-drawer--open theme--light"
+      style="height: 100%; top: 64px; max-height: calc(100% - 64px); transform: translateX(0%); width: 256px;"
+    >
+      <div
+        class="v-navigation-drawer__content"
+      >
+        <div
+          class="v-list v-sheet v-sheet--tile theme--dark"
+        >
+          <hr
+            aria-orientation="horizontal"
+            class="v-divider theme--dark"
+            role="separator"
+          />
+           
+          <div
+            class="v-list v-sheet v-sheet--tile theme--dark v-list--dense v-list--nav"
+          >
+            <div
+              class="v-list-item v-list-item--link theme--dark"
+              tabindex="0"
+            >
+              <div
+                class="v-list-item__icon"
+              >
+                <i
+                  aria-hidden="true"
+                  class="v-icon notranslate mdi mdi-home theme--dark"
+                />
+              </div>
+               
+              <div
+                class="v-list-item__content"
+              >
+                <div
+                  class="v-list-item__title"
+                  to="Home"
+                >
+                  <a
+                    class="router-link-main router-link-exact-active router-link-active"
+                    href="#/"
+                  >
+                    Home
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div
+              class="v-list-item v-list-item--link theme--dark"
+              tabindex="0"
+            >
+              <div
+                class="v-list-item__icon"
+              >
+                <i
+                  aria-hidden="true"
+                  class="v-icon notranslate mdi mdi-view-dashboard theme--dark"
+                />
+              </div>
+               
+              <div
+                class="v-list-item__content"
+              >
+                <div
+                  class="v-list-item__title"
+                  to="Dashboard"
+                >
+                  <a
+                    class="router-link-main"
+                    href="#/dashboard"
+                  >
+                    Dashboard
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div
+              class="v-list-item v-list-item--link theme--dark"
+              tabindex="0"
+            >
+              <div
+                class="v-list-item__icon"
+              >
+                <i
+                  aria-hidden="true"
+                  class="v-icon notranslate mdi mdi-plus-circle theme--dark"
+                />
+              </div>
+               
+              <div
+                class="v-list-item__content"
+              >
+                <div
+                  class="v-list-item__title"
+                  to="Create Project"
+                >
+                  <a
+                    class="router-link-main"
+                    href="#/project/info"
+                  >
+                    Create Project
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div
+              class="v-list-item v-list-item--link theme--dark"
+              tabindex="0"
+            >
+              <div
+                class="v-list-item__icon"
+              >
+                <i
+                  aria-hidden="true"
+                  class="v-icon notranslate mdi mdi-help-box theme--dark"
+                />
+              </div>
+               
+              <div
+                class="v-list-item__content"
+              >
+                <div
+                  class="v-list-item__title"
+                  to="About"
+                >
+                  <a
+                    class="router-link-main"
+                    href="#/about"
+                  >
+                    About
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="v-navigation-drawer__border"
+      />
+    </nav>
+  </div>
+</div>
+`;
+
+exports[`Header.vue Toggle menu onlick  1`] = `
+<div>
+  <header
+    class="header v-sheet v-sheet--tile theme--light v-toolbar v-app-bar v-app-bar--clipped v-app-bar--fixed"
+    style="height: 64px; margin-top: 0px; transform: translateY(0px); left: 0px; right: 0px;"
+  >
+    <div
+      class="v-toolbar__content"
+      style="height: 64px;"
+    >
+      <img
+        alt="Go to the Government of British Columbia website"
+        class="img side-left-margin"
+        src="@/assets/images/bc-logo-horizontal.svg"
+      />
+       
+      <div
+        class="v-toolbar__title"
+      >
+        
+      </div>
+       
+      <sup
+        aria-label="This application is currently in Beta phase"
+        class="beta-phase-banner"
+      >
+        Beta
+      </sup>
+       
+      <div
+        class="spacer"
+      />
+       
+      <div
+        class="spacer"
+      />
+       
+      <!---->
+       
+      <div
+        class="v-toolbar__title"
+      >
+        
+      Welcome user lastName
+      
+        <button
+          class="v-btn v-btn--flat v-btn--text theme--light v-size--default white--text"
+          type="button"
+        >
+          <span
+            class="v-btn__content"
+          >
+            <span
+              class="mr-2 logout"
+              color="white"
+            >
+              Logout
+            </span>
+          </span>
+        </button>
+      </div>
+       
+      <a
+        class="mr-2 d-sm-none toggleMenu v-btn--active v-btn v-btn--flat v-btn--router v-btn--text theme--dark v-size--default"
+        href="#/"
+      >
+        <span
+          class="v-btn__content"
+        >
+          <i
+            aria-hidden="true"
+            class="v-icon notranslate mdi mdi-menu theme--dark"
+          />
+        </span>
+      </a>
+    </div>
+  </header>
+   
+  <!---->
+   
+  <div
+    class="mx-auto v-card v-sheet theme--light"
+  >
+    <nav
+      class="v-navigation-drawer v-navigation-drawer--clipped v-navigation-drawer--fixed v-navigation-drawer--open theme--light"
+      style="height: 100%; top: 64px; max-height: calc(100% - 64px); transform: translateX(0%); width: 256px;"
+    >
+      <div
+        class="v-navigation-drawer__content"
+      >
+        <div
+          class="v-list v-sheet v-sheet--tile theme--dark"
+        >
+          <hr
+            aria-orientation="horizontal"
+            class="v-divider theme--dark"
+            role="separator"
+          />
+           
+          <div
+            class="v-list v-sheet v-sheet--tile theme--dark v-list--dense v-list--nav"
+          >
+            <div
+              class="v-list-item v-list-item--link theme--dark"
+              tabindex="0"
+            >
+              <div
+                class="v-list-item__icon"
+              >
+                <i
+                  aria-hidden="true"
+                  class="v-icon notranslate mdi mdi-home theme--dark"
+                />
+              </div>
+               
+              <div
+                class="v-list-item__content"
+              >
+                <div
+                  class="v-list-item__title"
+                  to="Home"
+                >
+                  <a
+                    class="router-link-main router-link-exact-active router-link-active"
+                    href="#/"
+                  >
+                    Home
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div
+              class="v-list-item v-list-item--link theme--dark"
+              tabindex="0"
+            >
+              <div
+                class="v-list-item__icon"
+              >
+                <i
+                  aria-hidden="true"
+                  class="v-icon notranslate mdi mdi-view-dashboard theme--dark"
+                />
+              </div>
+               
+              <div
+                class="v-list-item__content"
+              >
+                <div
+                  class="v-list-item__title"
+                  to="Dashboard"
+                >
+                  <a
+                    class="router-link-main"
+                    href="#/dashboard"
+                  >
+                    Dashboard
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div
+              class="v-list-item v-list-item--link theme--dark"
+              tabindex="0"
+            >
+              <div
+                class="v-list-item__icon"
+              >
+                <i
+                  aria-hidden="true"
+                  class="v-icon notranslate mdi mdi-plus-circle theme--dark"
+                />
+              </div>
+               
+              <div
+                class="v-list-item__content"
+              >
+                <div
+                  class="v-list-item__title"
+                  to="Create Project"
+                >
+                  <a
+                    class="router-link-main"
+                    href="#/project/info"
+                  >
+                    Create Project
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div
+              class="v-list-item v-list-item--link theme--dark"
+              tabindex="0"
+            >
+              <div
+                class="v-list-item__icon"
+              >
+                <i
+                  aria-hidden="true"
+                  class="v-icon notranslate mdi mdi-help-box theme--dark"
+                />
+              </div>
+               
+              <div
+                class="v-list-item__content"
+              >
+                <div
+                  class="v-list-item__title"
+                  to="About"
+                >
+                  <a
+                    class="router-link-main"
+                    href="#/about"
+                  >
+                    About
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="v-navigation-drawer__border"
+      />
+    </nav>
+  </div>
+</div>
+`;
+
+exports[`Header.vue renders props when passed 1`] = `
+<div>
+  <header
+    class="header v-sheet v-sheet--tile theme--light v-toolbar v-app-bar v-app-bar--clipped v-app-bar--fixed"
+    style="height: 64px; margin-top: 0px; transform: translateY(0px); left: 0px; right: 0px;"
+  >
+    <div
+      class="v-toolbar__content"
+      style="height: 64px;"
+    >
+      <img
+        alt="Go to the Government of British Columbia website"
+        class="img side-left-margin"
+        src="@/assets/images/bc-logo-horizontal.svg"
+      />
+       
+      <div
+        class="v-toolbar__title"
+      >
+        
+      </div>
+       
+      <sup
+        aria-label="This application is currently in Beta phase"
+        class="beta-phase-banner"
+      >
+        Beta
+      </sup>
+       
+      <div
+        class="spacer"
+      />
+       
+      <div
+        class="spacer"
+      />
+       
+      <!---->
+       
+      <div
+        class="v-toolbar__title"
+      >
+        
+      Welcome user lastName
+      
+        <button
+          class="v-btn v-btn--flat v-btn--text theme--light v-size--default white--text"
+          type="button"
+        >
+          <span
+            class="v-btn__content"
+          >
+            <span
+              class="mr-2 logout"
+              color="white"
+            >
+              Logout
+            </span>
+          </span>
+        </button>
+      </div>
+       
+      <a
+        class="mr-2 d-sm-none toggleMenu v-btn--active v-btn v-btn--flat v-btn--router v-btn--text theme--dark v-size--default"
+        href="#/"
+      >
+        <span
+          class="v-btn__content"
+        >
+          <i
+            aria-hidden="true"
+            class="v-icon notranslate mdi mdi-menu theme--dark"
+          />
+        </span>
+      </a>
+    </div>
+  </header>
+   
+  <!---->
+   
+  <div
+    class="mx-auto v-card v-sheet theme--light"
+  >
+    <nav
+      class="v-navigation-drawer v-navigation-drawer--clipped v-navigation-drawer--fixed v-navigation-drawer--open theme--light"
+      style="height: 100%; top: 64px; max-height: calc(100% - 64px); transform: translateX(0%); width: 256px;"
+    >
+      <div
+        class="v-navigation-drawer__content"
+      >
+        <div
+          class="v-list v-sheet v-sheet--tile theme--dark"
+        >
+          <hr
+            aria-orientation="horizontal"
+            class="v-divider theme--dark"
+            role="separator"
+          />
+           
+          <div
+            class="v-list v-sheet v-sheet--tile theme--dark v-list--dense v-list--nav"
+          >
+            <div
+              class="v-list-item v-list-item--link theme--dark"
+              tabindex="0"
+            >
+              <div
+                class="v-list-item__icon"
+              >
+                <i
+                  aria-hidden="true"
+                  class="v-icon notranslate mdi mdi-home theme--dark"
+                />
+              </div>
+               
+              <div
+                class="v-list-item__content"
+              >
+                <div
+                  class="v-list-item__title"
+                  to="Home"
+                >
+                  <a
+                    class="router-link-main router-link-exact-active router-link-active"
+                    href="#/"
+                  >
+                    Home
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div
+              class="v-list-item v-list-item--link theme--dark"
+              tabindex="0"
+            >
+              <div
+                class="v-list-item__icon"
+              >
+                <i
+                  aria-hidden="true"
+                  class="v-icon notranslate mdi mdi-view-dashboard theme--dark"
+                />
+              </div>
+               
+              <div
+                class="v-list-item__content"
+              >
+                <div
+                  class="v-list-item__title"
+                  to="Dashboard"
+                >
+                  <a
+                    class="router-link-main"
+                    href="#/dashboard"
+                  >
+                    Dashboard
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div
+              class="v-list-item v-list-item--link theme--dark"
+              tabindex="0"
+            >
+              <div
+                class="v-list-item__icon"
+              >
+                <i
+                  aria-hidden="true"
+                  class="v-icon notranslate mdi mdi-plus-circle theme--dark"
+                />
+              </div>
+               
+              <div
+                class="v-list-item__content"
+              >
+                <div
+                  class="v-list-item__title"
+                  to="Create Project"
+                >
+                  <a
+                    class="router-link-main"
+                    href="#/project/info"
+                  >
+                    Create Project
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div
+              class="v-list-item v-list-item--link theme--dark"
+              tabindex="0"
+            >
+              <div
+                class="v-list-item__icon"
+              >
+                <i
+                  aria-hidden="true"
+                  class="v-icon notranslate mdi mdi-help-box theme--dark"
+                />
+              </div>
+               
+              <div
+                class="v-list-item__content"
+              >
+                <div
+                  class="v-list-item__title"
+                  to="About"
+                >
+                  <a
+                    class="router-link-main"
+                    href="#/about"
+                  >
+                    About
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="v-navigation-drawer__border"
+      />
+    </nav>
+  </div>
+</div>
+`;

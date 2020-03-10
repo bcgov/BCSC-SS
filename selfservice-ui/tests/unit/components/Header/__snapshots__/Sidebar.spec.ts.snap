@@ -1,0 +1,130 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sidebar.vue renders props when passed 1`] = `
+<v-card-stub
+  class="mx-auto"
+  loaderheight="4"
+  tag="div"
+>
+  <v-navigation-drawer-stub
+    app="true"
+    clipped="true"
+    fixed="true"
+    height="100%"
+    minivariantwidth="56"
+    mobilebreakpoint="1264"
+    permanent="true"
+    src=""
+    tag="nav"
+    width="256"
+  >
+    <v-list-stub
+      dark="true"
+      tag="div"
+      tile="true"
+    >
+      <v-divider-stub />
+       
+      <v-list-stub
+        dense="true"
+        nav="true"
+        tag="div"
+        tile="true"
+      >
+        <v-list-item-stub
+          activeclass=""
+          link="true"
+          tag="div"
+        >
+          <v-list-item-icon-stub>
+            <v-icon-stub>
+              mdi-home
+            </v-icon-stub>
+          </v-list-item-icon-stub>
+           
+          <v-list-item-content-stub>
+            <v-list-item-title-stub
+              to="Home"
+            >
+              <link-stub
+                to="/"
+              >
+                Home
+              </link-stub>
+            </v-list-item-title-stub>
+          </v-list-item-content-stub>
+        </v-list-item-stub>
+        <v-list-item-stub
+          activeclass=""
+          link="true"
+          tag="div"
+        >
+          <v-list-item-icon-stub>
+            <v-icon-stub>
+              mdi-view-dashboard
+            </v-icon-stub>
+          </v-list-item-icon-stub>
+           
+          <v-list-item-content-stub>
+            <v-list-item-title-stub
+              to="Dashboard"
+            >
+              <link-stub
+                to="/dashboard"
+              >
+                Dashboard
+              </link-stub>
+            </v-list-item-title-stub>
+          </v-list-item-content-stub>
+        </v-list-item-stub>
+        <v-list-item-stub
+          activeclass=""
+          link="true"
+          tag="div"
+        >
+          <v-list-item-icon-stub>
+            <v-icon-stub>
+              mdi-plus-circle
+            </v-icon-stub>
+          </v-list-item-icon-stub>
+           
+          <v-list-item-content-stub>
+            <v-list-item-title-stub
+              to="Create Project"
+            >
+              <link-stub
+                to="/project/info"
+              >
+                Create Project
+              </link-stub>
+            </v-list-item-title-stub>
+          </v-list-item-content-stub>
+        </v-list-item-stub>
+        <v-list-item-stub
+          activeclass=""
+          link="true"
+          tag="div"
+        >
+          <v-list-item-icon-stub>
+            <v-icon-stub>
+              mdi-help-box
+            </v-icon-stub>
+          </v-list-item-icon-stub>
+           
+          <v-list-item-content-stub>
+            <v-list-item-title-stub
+              to="About"
+            >
+              <link-stub
+                to="/about"
+              >
+                About
+              </link-stub>
+            </v-list-item-title-stub>
+          </v-list-item-content-stub>
+        </v-list-item-stub>
+      </v-list-stub>
+    </v-list-stub>
+  </v-navigation-drawer-stub>
+</v-card-stub>
+`;

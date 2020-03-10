@@ -1,0 +1,227 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProjectSummary.vue renders props when passed 1`] = `
+<v-card-stub
+  class="mx-auto outer-card"
+  loaderheight="4"
+  tag="div"
+>
+  <v-toolbar-stub
+    class="bc-subtitle padding-0"
+    dark="true"
+    extensionheight="48"
+    flat="true"
+    src=""
+    tag="header"
+    tile="true"
+  >
+    <v-btn-stub
+      activeclass=""
+      icon="true"
+      tag="button"
+      type="button"
+    >
+      <v-icon-stub>
+        mdi-arrow-left
+      </v-icon-stub>
+    </v-btn-stub>
+     
+    <v-toolbar-title-stub>
+      
+    </v-toolbar-title-stub>
+     
+    <div
+      class="flex-grow-1"
+    />
+     
+    <div
+      class="flex-grow-1"
+    />
+  </v-toolbar-stub>
+   
+  <v-container-stub
+    tag="div"
+  >
+    <loading-stub />
+     
+    <!---->
+  </v-container-stub>
+   
+  <v-divider-stub />
+   
+  <div
+    class="text-center"
+  >
+    <v-dialog-stub
+      class="text-left"
+      closedelay="0"
+      contentclass=""
+      maxwidth="none"
+      opendelay="0"
+      origin="center center"
+      persistent="true"
+      retainfocus="true"
+      transition="dialog-transition"
+      width="70%"
+    >
+      <v-card-stub
+        loaderheight="4"
+        tag="div"
+      >
+        <v-card-title-stub
+          class="bc-subtitle padding-0"
+          primary-title=""
+          primarytitle=""
+        >
+          
+          
+        
+        </v-card-title-stub>
+         
+        <v-card-text-stub
+          class="text-left"
+        >
+          <div />
+        </v-card-text-stub>
+         
+        <v-divider-stub />
+         
+        <v-card-actions-stub>
+          <v-spacer-stub />
+           
+          <button-stub
+            aria-label="Back Button"
+            name="button"
+            secondary=""
+            type="button"
+          >
+            
+          </button-stub>
+           
+          <button-stub
+            class="white--text submit-package ml-6"
+            depressed=""
+            name="button"
+            type="button"
+          >
+            
+          </button-stub>
+        </v-card-actions-stub>
+      </v-card-stub>
+    </v-dialog-stub>
+  </div>
+</v-card-stub>
+`;
+
+exports[`ProjectSummary.vue renders props when passed with gettors 1`] = `
+<v-card-stub
+  class="mx-auto outer-card"
+  loaderheight="4"
+  tag="div"
+>
+  <v-toolbar-stub
+    class="bc-subtitle padding-0"
+    dark="true"
+    extensionheight="48"
+    flat="true"
+    src=""
+    tag="header"
+    tile="true"
+  >
+    <v-btn-stub
+      activeclass=""
+      icon="true"
+      tag="button"
+      type="button"
+    >
+      <v-icon-stub>
+        mdi-arrow-left
+      </v-icon-stub>
+    </v-btn-stub>
+     
+    <v-toolbar-title-stub>
+      
+    </v-toolbar-title-stub>
+     
+    <div
+      class="flex-grow-1"
+    />
+     
+    <div
+      class="flex-grow-1"
+    />
+  </v-toolbar-stub>
+   
+  <v-container-stub
+    tag="div"
+  >
+    <loading-stub />
+     
+    <!---->
+  </v-container-stub>
+   
+  <v-divider-stub />
+   
+  <div
+    class="text-center"
+  >
+    <v-dialog-stub
+      class="text-left"
+      closedelay="0"
+      contentclass=""
+      maxwidth="none"
+      opendelay="0"
+      origin="center center"
+      persistent="true"
+      retainfocus="true"
+      transition="dialog-transition"
+      width="70%"
+    >
+      <v-card-stub
+        loaderheight="4"
+        tag="div"
+      >
+        <v-card-title-stub
+          class="bc-subtitle padding-0"
+          primary-title=""
+          primarytitle=""
+        >
+          
+          
+        
+        </v-card-title-stub>
+         
+        <v-card-text-stub
+          class="text-left"
+        >
+          <div />
+        </v-card-text-stub>
+         
+        <v-divider-stub />
+         
+        <v-card-actions-stub>
+          <v-spacer-stub />
+           
+          <button-stub
+            aria-label="Back Button"
+            name="button"
+            secondary=""
+            type="button"
+          >
+            
+          </button-stub>
+           
+          <button-stub
+            class="white--text submit-package ml-6"
+            depressed=""
+            name="button"
+            type="button"
+          >
+            
+          </button-stub>
+        </v-card-actions-stub>
+      </v-card-stub>
+    </v-dialog-stub>
+  </div>
+</v-card-stub>
+`;
