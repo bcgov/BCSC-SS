@@ -228,6 +228,26 @@ objects:
               secretKeyRef:
                 name: "${API_NAME}-${TAG_NAME}-secret"
                 key: DYNAMIC_TEST_API_TOKEN
+          - name: MAIL_SERVER
+            valueFrom:
+              configMapKeyRef:
+                name: "${API_NAME}-${TAG_NAME}-config"
+                key: MAIL_SERVER
+          - name: MAIL_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: "${API_NAME}-${TAG_NAME}-config"
+                key: MAIL_PORT
+          - name: EMAIL_SENDER
+            valueFrom:
+              configMapKeyRef:
+                name: "${API_NAME}-${TAG_NAME}-config"
+                key: EMAIL_SENDER
+          - name: EMAIL_REPLY_TO
+            valueFrom:
+              configMapKeyRef:
+                name: "${API_NAME}-${TAG_NAME}-config"
+                key: EMAIL_REPLY_TO
           resources:
             requests:
               cpu: "${CPU_REQUEST}"

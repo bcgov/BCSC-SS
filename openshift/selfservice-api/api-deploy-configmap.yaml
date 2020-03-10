@@ -23,6 +23,10 @@ objects:
     JWT_OIDC_JWKS_CACHE_TIMEOUT: "${JWTOIDCJWKSCACHETIMEOUT}"
     DYNAMIC_TEST_API_URL: "${DYNAMIC_TEST_API_URL}"
     DYNAMIC_PROD_API_URL: "${DYNAMIC_PROD_API_URL}"
+    MAIL_SERVER: "${MAIL_SERVER}"
+    MAIL_PORT: "${MAIL_PORT}"
+    EMAIL_SENDER: "${EMAIL_SENDER}"
+    EMAIL_REPLY_TO: "${EMAIL_REPLY_TO}"
 - kind: ConfigMap
   apiVersion: v1
   metadata:
@@ -41,6 +45,10 @@ objects:
     JWT_OIDC_JWKS_CACHE_TIMEOUT: "${JWTOIDCJWKSCACHETIMEOUT}"
     DYNAMIC_TEST_API_URL: "${DYNAMIC_TEST_API_URL}"
     DYNAMIC_PROD_API_URL: "${DYNAMIC_PROD_API_URL}"
+    MAIL_SERVER: "${MAIL_SERVER}"
+    MAIL_PORT: "${MAIL_PORT}"
+    EMAIL_SENDER: "${EMAIL_SENDER}"
+    EMAIL_REPLY_TO: "${EMAIL_REPLY_TO}"
 - kind: ConfigMap
   apiVersion: v1
   metadata:
@@ -59,6 +67,10 @@ objects:
     JWT_OIDC_JWKS_CACHE_TIMEOUT: "${JWTOIDCJWKSCACHETIMEOUT}"
     DYNAMIC_TEST_API_URL: "${DYNAMIC_TEST_API_URL}"
     DYNAMIC_PROD_API_URL: "${DYNAMIC_PROD_API_URL}"
+    MAIL_SERVER: "${MAIL_SERVER}"
+    MAIL_PORT: "${MAIL_PORT}"
+    EMAIL_SENDER: "${EMAIL_SENDER}"
+    EMAIL_REPLY_TO: "${EMAIL_REPLY_TO}"
 parameters:
 - name: WEB_NAME
   displayName: Name
@@ -175,3 +187,18 @@ parameters:
   description: Dynamic API Prod Url.
   required: true
   value: "https://idtest.gov.bc.ca"
+- name: MAIL_SERVER
+  description: BC GOV MAIL SERVER
+  required: true
+  value: "apps.smtp.gov.bc.ca"
+- name: MAIL_PORT
+  description: BC GOV MAIL SERVER PORT
+  required: true
+  value: "25"
+- name: EMAIL_SENDER
+  description: BC GOV MAIL SERVER
+  required: true
+  value: "noreply@gov.bc.ca"
+- name: EMAIL_REPLY_TO
+  description: BC GOV MAIL SERVER PORT
+  value: ""
