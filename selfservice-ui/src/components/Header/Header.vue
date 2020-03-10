@@ -16,9 +16,9 @@
         class="img side-left-margin"
       />
       <!-- </a> -->
-      <!-- <h1 class="text">BC SERVICE CARD</h1> -->
+
       <v-toolbar-title>{{ $t('main.siteTitle') }}</v-toolbar-title>
-      <!-- </div> -->
+      <sup aria-label="This application is currently in Beta phase" class="beta-phase-banner">Beta</sup>
 
       <v-spacer></v-spacer>
       <v-spacer></v-spacer>
@@ -30,8 +30,7 @@
         dark
         class="d-none d-sm-flex login-btn side-right-margin"
         v-if="!isLoggedin"
-        >Login</v-btn
-      >
+      >Login</v-btn>
 
       <v-toolbar-title v-if="isLoggedin">
         Welcome {{ userProfile.firstName }} {{ userProfile.lastName }}
@@ -39,14 +38,7 @@
           <span class="mr-2 logout" color="white">Logout</span>
         </v-btn>
       </v-toolbar-title>
-      <v-btn
-        text
-        to="/"
-        link
-        dark
-        class="mr-2 d-sm-none toggleMenu"
-        @click="toggleMenu"
-      >
+      <v-btn text to="/" link dark class="mr-2 d-sm-none toggleMenu" @click="toggleMenu">
         <v-icon>mdi-menu</v-icon>
       </v-btn>
     </v-app-bar>
@@ -210,5 +202,12 @@ export default class Header extends Vue {
   background-color: $BCgovGold5;
   color: $BCgovWhite;
   font-size: 18px;
+}
+.beta-phase-banner {
+  color: $BCgovGold5;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 16px;
+  margin-left: 4px;
 }
 </style>
