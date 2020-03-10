@@ -20,11 +20,12 @@ from flask_restplus import Namespace, Resource, cors
 from marshmallow import ValidationError
 
 from ..models import OIDCConfig, Project, TechnicalReq, TestAccount, User
-from ..models.enums import ProjectRoles, ProjectStatus
+from ..models.enums import ProjectStatus
 from ..schemas.project import ProjectSchema
 from ..services.external import get_dynamic_api
 from ..services.external.models import CreateRequestModel, CreateResponseModel, UpdateRequestModel, UpdateResponseModel
-from ..utils.auth import jwt
+from ..utils.auth import is_client_role, jwt
+from ..utils.roles import Role
 from ..utils.util import cors_preflight
 
 
@@ -38,14 +39,14 @@ class ProjectResource(Resource):
 
     @staticmethod
     @cors.crossdomain(origin='*')
-    @jwt.requires_auth
+    @jwt.has_one_of_roles([Role.ss_client, Role.ss_admin])
     def get():
         """Get all project."""
-        oidc_token_info = g.jwt_oidc_token_info
-        projects = Project.find_by_user(oidc_token_info.get('sub'))
-        for info in projects:
-            info['status'] = ProjectStatus(info['status']).name
-            info['role'] = ProjectRoles(info['role']).name
+        token_info = g.jwt_oidc_token_info
+        oauth_id = None
+        if is_client_role():
+            oauth_id = token_info.get('sub')
+        projects = Project.find_all_or_by_user(oauth_id)
         return jsonify({'projects': projects}), HTTPStatus.OK
 
     @staticmethod

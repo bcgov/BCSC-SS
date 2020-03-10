@@ -31,9 +31,9 @@ export default class Input extends Vue {
    *
    */
   @Prop({
-    default: ''
+    default: false
   })
-  private counter!: string | number;
+  private counter!: boolean | string | number;
 
   /**
    * The type for the input.

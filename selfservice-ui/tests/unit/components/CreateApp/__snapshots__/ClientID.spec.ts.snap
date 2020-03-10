@@ -2,206 +2,169 @@
 
 exports[`ClientID.vue renders props when passed with gettors 1`] = `
 <div
-  class="mx-auto v-card v-sheet theme--light"
-  style="max-width: 80%;"
+  class="mx-auto mb-5 v-card v-sheet theme--light"
 >
+  <!---->
+   
+  <!---->
+   
   <header
-    class="bc-subtitle v-sheet v-sheet--tile theme--dark v-toolbar v-toolbar--flat"
-    style="height: 64px;"
+    class="bc-subtitle-gold-1 v-sheet v-sheet--tile theme--dark v-toolbar v-toolbar--dense"
+    style="height: 48px;"
   >
     <div
       class="v-toolbar__content"
-      style="height: 64px;"
+      style="height: 48px;"
     >
-      <button
-        class="v-btn v-btn--flat v-btn--icon v-btn--round theme--dark v-size--default"
-        type="button"
-      >
-        <span
-          class="v-btn__content"
-        >
-          <i
-            aria-hidden="true"
-            class="v-icon notranslate mdi mdi-arrow-left theme--dark"
-          />
-        </span>
-      </button>
-       
       <div
-        class="v-toolbar__title"
+        class="v-card__title"
       >
         
       </div>
-       
-      <div
-        class="flex-grow-1"
-      />
-       
-      <div
-        class="col-lg-4 col-md-5 col-8 col"
-      >
-        <!---->
-      </div>
-       
-      <div
-        class="flex-grow-1"
-      />
     </div>
   </header>
    
-  <hr
-    aria-orientation="horizontal"
-    class="v-divider theme--light"
-    role="separator"
-  />
-   
   <div
-    class="v-item-group theme--light"
+    class="v-list px-5 v-sheet v-sheet--tile theme--light v-list--dense"
+    role="list"
   >
     <div
-      class="container"
+      class="v-list-item theme--light"
+      role="listitem"
+      tabindex="-1"
     >
       <div
-        class="row ma-5"
+        class="v-list-item__content"
       >
-        <!---->
-         
+        
+        
+        
+        <span
+          class="small-hint pad-50"
+        />
+      </div>
+       
+      <div
+        class="v-list-item__content align-end pointer font-weight-bold client-id-copy"
+      >
+        <div>
+          <i
+            aria-hidden="true"
+            class="v-icon notranslate mr-1 mdi mdi-content-copy theme--light"
+            style="font-size: 16px;"
+          />
+          
+          abcd
+        
+        </div>
+      </div>
+    </div>
+     
+    <hr
+      aria-orientation="horizontal"
+      class="v-divider theme--light"
+      role="separator"
+    />
+     
+    <div
+      class="v-list-item theme--light"
+      role="listitem"
+      tabindex="-1"
+    >
+      <div
+        class="v-list-item__content"
+      >
+        
+        
+        
+        <span
+          class="small-hint pad-50"
+        />
+      </div>
+       
+      <div
+        class="v-list-item__content align-end pointer font-weight-bold d-block"
+      >
         <div
-          class="col-md-12 col-12"
+          class="float-left"
         >
-          <div
-            class="v-card v-card--flat v-sheet theme--light"
-          >
-            <div
-              class="v-list-item__content headline"
-            >
-              
-            </div>
-             
-            <div
-              class="v-list-item__content"
-            />
-          </div>
-           
-          <div
-            class="d-flex align-center px-5 client-id-copy v-card--link client-id v-card v-card--link v-sheet theme--light"
-            tabindex="0"
-          >
-            <div
-              class="v-list-item v-list-item--two-line theme--light"
-              tabindex="-1"
-            >
-              <div
-                class="v-list-item__action"
-              >
-                <div
-                  class="v-list-item__title title mb-1"
-                >
-                  
-                    
-                  
-                </div>
-              </div>
-            </div>
-             
-            <div
-              class="spacer"
-            />
-             
-            <div
-              class="display-3 flex-grow-1 text-center mr-5"
-            >
-              <i
-                aria-hidden="true"
-                class="v-icon notranslate mdi mdi-content-copy theme--light"
-                style="font-size: 36px; color: rgb(234, 233, 233); caret-color: #eae9e9;"
-              />
-            </div>
-          </div>
+          <i
+            aria-hidden="true"
+            class="v-icon notranslate mr-2 mdi mdi-content-copy theme--light"
+            style="font-size: 16px;"
+          />
         </div>
          
-        <div
-          class="col-md-12 col-12"
-        >
-          <div
-            class="v-card v-card--flat v-sheet theme--light"
-          >
-            <div
-              class="v-list-item__content headline"
-            >
-              
-            </div>
-             
-            <div
-              class="v-list-item__content"
-            />
-          </div>
-           
-          <div
-            class="d-flex align-center px-4 client-id v-card--link client-id v-card v-card--link v-sheet theme--light"
-            tabindex="0"
-          >
-            <div
-              class="v-list-item v-list-item--two-line theme--light"
-              tabindex="-1"
-            >
-              <div
-                class="v-list-item__content"
-              >
-                <div
-                  class="v-list-item__title title mb-1"
-                >
-                  
-                    
-                  
-                </div>
-              </div>
-            </div>
-             
-            <div
-              class="spacer"
-            />
-             
-            <div
-              class="display-3 flex-grow-1 text-center mr-5"
-            >
-              <i
-                aria-hidden="true"
-                class="v-icon notranslate mdi mdi-content-copy theme--light"
-                style="font-size: 36px; color: rgb(234, 233, 233); caret-color: #eae9e9;"
-              />
-            </div>
-          </div>
+        <div>
+          <span>
+            test
+          </span>
         </div>
-         
+      </div>
+    </div>
+     
+    <hr
+      aria-orientation="horizontal"
+      class="v-divider theme--light"
+      role="separator"
+    />
+     
+    <div
+      class="v-list-item theme--light"
+      role="listitem"
+      tabindex="-1"
+    >
+      <div
+        class="v-list-item__content align-self-start"
+      >
+        
+        
+        
+        <span
+          class="small-hint pad-50"
+        />
+      </div>
+       
+      <div
+        class="v-list-item__content align-self-start"
+      >
         <div
-          class="col-md-12 col-12"
+          class="v-data-table v-data-table--dense theme--light"
         >
           <div
-            class="v-card v-card--flat v-sheet theme--light"
+            class="v-data-table__wrapper"
           >
-            <div
-              class="v-list-item__content headline"
-            >
-              
-            </div>
-             
-            <div
-              class="v-list-item__content"
-            />
-          </div>
-           
-          <div
-            class="d-flex align-center pa-4 client-id v-card--link client-id v-card v-sheet theme--light"
-          >
-            <div
-              class="v-list-item v-list-item--two-line theme--light"
-              tabindex="-1"
-            />
-             
-            <div
-              class="spacer"
-            />
+            <table>
+              <thead>
+                <tr>
+                  <th
+                    class="text-left"
+                  >
+                    
+                  </th>
+                   
+                  <th
+                    class="text-left"
+                  >
+                    
+                  </th>
+                   
+                  <th
+                    class="text-left"
+                  >
+                    
+                  </th>
+                   
+                  <th
+                    class="text-left"
+                  >
+                    
+                  </th>
+                </tr>
+              </thead>
+               
+              <tbody />
+            </table>
           </div>
         </div>
       </div>
@@ -212,233 +175,195 @@ exports[`ClientID.vue renders props when passed with gettors 1`] = `
 
 exports[`ClientID.vue renders props when passed with gettors 2`] = `
 <div
-  class="mx-auto v-card v-sheet theme--light"
-  style="max-width: 80%;"
+  class="mx-auto mb-5 v-card v-sheet theme--light"
 >
+  <div
+    class="v-snack v-snack--active v-snack--bottom"
+    name="v-snack-transition"
+  >
+    <div
+      class="v-snack__wrapper"
+      role="alert"
+    >
+      <div
+        class="v-snack__content"
+      >
+        
+    Copied
+    
+        <button
+          class="v-btn v-btn--flat v-btn--text theme--light v-size--default blue--text"
+          type="button"
+        >
+          <span
+            class="v-btn__content"
+          >
+            
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+   
+  <!---->
+   
   <header
-    class="bc-subtitle v-sheet v-sheet--tile theme--dark v-toolbar v-toolbar--flat"
-    style="height: 64px;"
+    class="bc-subtitle-gold-1 v-sheet v-sheet--tile theme--dark v-toolbar v-toolbar--dense"
+    style="height: 48px;"
   >
     <div
       class="v-toolbar__content"
-      style="height: 64px;"
+      style="height: 48px;"
     >
-      <button
-        class="v-btn v-btn--flat v-btn--icon v-btn--round theme--dark v-size--default"
-        type="button"
-      >
-        <span
-          class="v-btn__content"
-        >
-          <i
-            aria-hidden="true"
-            class="v-icon notranslate mdi mdi-arrow-left theme--dark"
-          />
-        </span>
-      </button>
-       
       <div
-        class="v-toolbar__title"
+        class="v-card__title"
       >
         
       </div>
-       
-      <div
-        class="flex-grow-1"
-      />
-       
-      <div
-        class="col-lg-4 col-md-5 col-8 col"
-      >
-        <!---->
-      </div>
-       
-      <div
-        class="flex-grow-1"
-      />
     </div>
   </header>
    
-  <hr
-    aria-orientation="horizontal"
-    class="v-divider theme--light"
-    role="separator"
-  />
-   
   <div
-    class="v-item-group theme--light"
+    class="v-list px-5 v-sheet v-sheet--tile theme--light v-list--dense"
+    role="list"
   >
     <div
-      class="container"
+      class="v-list-item theme--light"
+      role="listitem"
+      tabindex="-1"
     >
       <div
-        class="row ma-5"
+        class="v-list-item__content"
+      >
+        
+        
+        
+        <span
+          class="small-hint pad-50"
+        />
+      </div>
+       
+      <div
+        class="v-list-item__content align-end pointer font-weight-bold client-id-copy"
+      >
+        <div>
+          <i
+            aria-hidden="true"
+            class="v-icon notranslate mr-1 mdi mdi-content-copy theme--light"
+            style="font-size: 16px;"
+          />
+          
+          abcd
+        
+        </div>
+      </div>
+    </div>
+     
+    <hr
+      aria-orientation="horizontal"
+      class="v-divider theme--light"
+      role="separator"
+    />
+     
+    <div
+      class="v-list-item theme--light"
+      role="listitem"
+      tabindex="-1"
+    >
+      <div
+        class="v-list-item__content"
+      >
+        
+        
+        
+        <span
+          class="small-hint pad-50"
+        />
+      </div>
+       
+      <div
+        class="v-list-item__content align-end pointer font-weight-bold d-block"
       >
         <div
-          class="v-snack v-snack--active v-snack--bottom"
-          name="v-snack-transition"
+          class="float-left"
         >
-          <div
-            class="v-snack__wrapper"
-            role="alert"
-          >
-            <div
-              class="v-snack__content"
-            >
-              
-          Copied
-          
-              <button
-                class="v-btn v-btn--flat v-btn--text theme--light v-size--default blue--text"
-                type="button"
-              >
-                <span
-                  class="v-btn__content"
-                >
-                  
-            
-                </span>
-              </button>
-            </div>
-          </div>
+          <i
+            aria-hidden="true"
+            class="v-icon notranslate mr-2 mdi mdi-content-copy theme--light"
+            style="font-size: 16px;"
+          />
         </div>
          
+        <div>
+          <span>
+            test
+          </span>
+        </div>
+      </div>
+    </div>
+     
+    <hr
+      aria-orientation="horizontal"
+      class="v-divider theme--light"
+      role="separator"
+    />
+     
+    <div
+      class="v-list-item theme--light"
+      role="listitem"
+      tabindex="-1"
+    >
+      <div
+        class="v-list-item__content align-self-start"
+      >
+        
+        
+        
+        <span
+          class="small-hint pad-50"
+        />
+      </div>
+       
+      <div
+        class="v-list-item__content align-self-start"
+      >
         <div
-          class="col-md-12 col-12"
+          class="v-data-table v-data-table--dense theme--light"
         >
           <div
-            class="v-card v-card--flat v-sheet theme--light"
+            class="v-data-table__wrapper"
           >
-            <div
-              class="v-list-item__content headline"
-            >
-              
-            </div>
-             
-            <div
-              class="v-list-item__content"
-            />
-          </div>
-           
-          <div
-            class="d-flex align-center px-5 client-id-copy v-card--link client-id v-card v-card--link v-sheet theme--light"
-            tabindex="0"
-          >
-            <div
-              class="v-list-item v-list-item--two-line theme--light"
-              tabindex="-1"
-            >
-              <div
-                class="v-list-item__action"
-              >
-                <div
-                  class="v-list-item__title title mb-1"
-                >
-                  
+            <table>
+              <thead>
+                <tr>
+                  <th
+                    class="text-left"
+                  >
                     
-                  
-                </div>
-              </div>
-            </div>
-             
-            <div
-              class="spacer"
-            />
-             
-            <div
-              class="display-3 flex-grow-1 text-center mr-5"
-            >
-              <i
-                aria-hidden="true"
-                class="v-icon notranslate mdi mdi-content-copy theme--light"
-                style="font-size: 36px; color: rgb(234, 233, 233); caret-color: #eae9e9;"
-              />
-            </div>
-          </div>
-        </div>
-         
-        <div
-          class="col-md-12 col-12"
-        >
-          <div
-            class="v-card v-card--flat v-sheet theme--light"
-          >
-            <div
-              class="v-list-item__content headline"
-            >
-              
-            </div>
-             
-            <div
-              class="v-list-item__content"
-            />
-          </div>
-           
-          <div
-            class="d-flex align-center px-4 client-id v-card--link client-id v-card v-card--link v-sheet theme--light"
-            tabindex="0"
-          >
-            <div
-              class="v-list-item v-list-item--two-line theme--light"
-              tabindex="-1"
-            >
-              <div
-                class="v-list-item__content"
-              >
-                <div
-                  class="v-list-item__title title mb-1"
-                >
-                  
+                  </th>
+                   
+                  <th
+                    class="text-left"
+                  >
                     
-                  
-                </div>
-              </div>
-            </div>
-             
-            <div
-              class="spacer"
-            />
-             
-            <div
-              class="display-3 flex-grow-1 text-center mr-5"
-            >
-              <i
-                aria-hidden="true"
-                class="v-icon notranslate mdi mdi-content-copy theme--light"
-                style="font-size: 36px; color: rgb(234, 233, 233); caret-color: #eae9e9;"
-              />
-            </div>
-          </div>
-        </div>
-         
-        <div
-          class="col-md-12 col-12"
-        >
-          <div
-            class="v-card v-card--flat v-sheet theme--light"
-          >
-            <div
-              class="v-list-item__content headline"
-            >
-              
-            </div>
-             
-            <div
-              class="v-list-item__content"
-            />
-          </div>
-           
-          <div
-            class="d-flex align-center pa-4 client-id v-card--link client-id v-card v-sheet theme--light"
-          >
-            <div
-              class="v-list-item v-list-item--two-line theme--light"
-              tabindex="-1"
-            />
-             
-            <div
-              class="spacer"
-            />
+                  </th>
+                   
+                  <th
+                    class="text-left"
+                  >
+                    
+                  </th>
+                   
+                  <th
+                    class="text-left"
+                  >
+                    
+                  </th>
+                </tr>
+              </thead>
+               
+              <tbody />
+            </table>
           </div>
         </div>
       </div>

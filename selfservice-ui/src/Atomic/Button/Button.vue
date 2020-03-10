@@ -7,7 +7,7 @@ important action on your service, such as Download or Submit. */
     :type="type"
     :name="name"
     v-bind:class="[
-      secondary !== false ? 'secondary' : 'primary',
+      secondary !== false ? 'secondary-btn' : 'primary',
       dark !== false ? 'dark-calss' : 'normal',
       disabled !== false ? 'disabled' : ''
     ]"
@@ -107,31 +107,31 @@ export default class Button extends Vue {
 .bc-btn:active:not(.disabled) {
   opacity: 1;
 }
-.secondary {
+.secondary-btn {
   background: none !important;
   border: 2px solid $BCgovBlue5;
   color: $BCgovBlue5 !important;
   font-weight: 700;
 }
-.secondary:hover:hover:not(.disabled) {
+.secondary-btn:hover:hover:not(.disabled) {
   opacity: 0.8;
   text-decoration: underline;
 }
-.secondary:focus:hover:not(.disabled) {
+.secondary-btn:focus:hover:not(.disabled) {
   outline-offset: 1px;
   outline: 4px solid $BCgovABlue2;
 }
-.secondary.normal:hover:hover:not(.disabled) {
+.secondary-btn.normal:hover:hover:not(.disabled) {
   background-color: $BCgovBlue5 !important;
   color: $BCgovFontColorInverted !important;
 }
-.secondary.dark-calss {
+.secondary-btn.dark-calss {
   background-color: $BCgovBlue5 !important;
   border: 2px solid $BCgovFontColorInverted;
   color: $BCgovFontColorInverted !important;
 }
 
-.secondary.dark-calss:hover:hover:not(.disabled) {
+.secondary-btn.dark-calss:hover:hover:not(.disabled) {
   text-decoration: underline;
   background-color: $BCgovFontColorInverted !important;
   color: $BCgovFontColorInvertedDark !important;
@@ -177,7 +177,7 @@ export default class Button extends Vue {
   cursor: not-allowed;
   opacity: 0.3;
 }
-.secondary.theme--light.v-btn.v-btn--disabled:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
+.secondary-btn.theme--light.v-btn.v-btn--disabled:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
   background-color: $BCgovFontColorInverted !important;
 }
 .primary.theme--light.v-btn.v-btn--disabled:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {

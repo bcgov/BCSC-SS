@@ -78,8 +78,15 @@ exports[`AddProjectInfo.vue renders edit props when passed 1`] = `
                 
               </v-card-subtitle-stub>
                
+              <v-card-subtitle-stub
+                class="text-left bc-padding-left-0"
+              >
+                
+                
+              
+              </v-card-subtitle-stub>
+               
               <input-stub
-                counter="100"
                 label=""
                 outlined="true"
                 rules="v => !!v || 'This field is required',v => (v || '').length >= len || 'Invalid character length, required ' + len,v => (v || '').length <= len || 'Invalid character length, max length ' + len"
@@ -87,14 +94,29 @@ exports[`AddProjectInfo.vue renders edit props when passed 1`] = `
                 value=""
               />
                
+              <v-card-subtitle-stub
+                class="text-left bc-padding-left-0"
+              >
+                
+                
+              
+              </v-card-subtitle-stub>
+               
               <input-stub
-                counter="100"
                 label=""
                 outlined="true"
                 rules="v => !!v || 'This field is required',v => (v || '').length >= len || 'Invalid character length, required ' + len,v => (v || '').length <= len || 'Invalid character length, max length ' + len"
                 type="text"
                 value=""
               />
+               
+              <v-card-subtitle-stub
+                class="text-left bc-padding-left-0"
+              >
+                
+                
+              
+              </v-card-subtitle-stub>
                
               <textarea-stub
                 counter=""
@@ -344,8 +366,15 @@ exports[`AddProjectInfo.vue renders props when passed 1`] = `
                 
               </v-card-subtitle-stub>
                
+              <v-card-subtitle-stub
+                class="text-left bc-padding-left-0"
+              >
+                
+                
+              
+              </v-card-subtitle-stub>
+               
               <input-stub
-                counter="100"
                 label=""
                 outlined="true"
                 rules="v => !!v || 'This field is required',v => (v || '').length >= len || 'Invalid character length, required ' + len,v => (v || '').length <= len || 'Invalid character length, max length ' + len"
@@ -353,14 +382,29 @@ exports[`AddProjectInfo.vue renders props when passed 1`] = `
                 value=""
               />
                
+              <v-card-subtitle-stub
+                class="text-left bc-padding-left-0"
+              >
+                
+                
+              
+              </v-card-subtitle-stub>
+               
               <input-stub
-                counter="100"
                 label=""
                 outlined="true"
                 rules="v => !!v || 'This field is required',v => (v || '').length >= len || 'Invalid character length, required ' + len,v => (v || '').length <= len || 'Invalid character length, max length ' + len"
                 type="text"
                 value=""
               />
+               
+              <v-card-subtitle-stub
+                class="text-left bc-padding-left-0"
+              >
+                
+                
+              
+              </v-card-subtitle-stub>
                
               <textarea-stub
                 counter=""

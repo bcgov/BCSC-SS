@@ -471,7 +471,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                  
                 <button
                   aria-label="Back Button"
-                  class="btn v-btn v-btn--contained theme--light v-size--default secondary normal"
+                  class="btn v-btn v-btn--contained theme--light v-size--default secondary-btn normal"
                   name="button"
                   type="button"
                 >
@@ -981,7 +981,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                  
                 <button
                   aria-label="Back Button"
-                  class="btn v-btn v-btn--contained theme--light v-size--default secondary normal"
+                  class="btn v-btn v-btn--contained theme--light v-size--default secondary-btn normal"
                   name="button"
                   type="button"
                 >
@@ -1491,7 +1491,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                  
                 <button
                   aria-label="Back Button"
-                  class="btn v-btn v-btn--contained theme--light v-size--default secondary normal"
+                  class="btn v-btn v-btn--contained theme--light v-size--default secondary-btn normal"
                   name="button"
                   type="button"
                 >
