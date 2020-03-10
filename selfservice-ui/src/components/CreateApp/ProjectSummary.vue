@@ -1,7 +1,7 @@
 /** * TestAccountRequest component */
 
 <template>
-  <v-card class="mx-auto" style="max-width: 80%;">
+  <v-card class="mx-auto outer-card">
     <v-toolbar flat class="bc-subtitle padding-0" dark>
       <v-btn icon @click="goBack()" :aria-label="$t('summaryPage.goBack')">
         <v-icon>mdi-arrow-left</v-icon>
@@ -572,5 +572,11 @@ export default class TestAccountRequest extends Vue {
 }
 .text-center {
   text-align: center !important;
+}
+.outer-card {
+  max-width: 100%;
+  @include rwd(1500) {
+    max-width: 80%;
+  }
 }
 </style>
