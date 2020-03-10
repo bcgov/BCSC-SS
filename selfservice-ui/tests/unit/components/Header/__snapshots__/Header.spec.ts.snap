@@ -22,6 +22,13 @@ exports[`Header.vue Logout user on logout button onlick  1`] = `
         
       </div>
        
+      <sup
+        aria-label="This application is currently in Beta phase"
+        class="beta-phase-banner"
+      >
+        Beta
+      </sup>
+       
       <div
         class="spacer"
       />
@@ -244,6 +251,13 @@ exports[`Header.vue Toggle menu onlick  1`] = `
         
       </div>
        
+      <sup
+        aria-label="This application is currently in Beta phase"
+        class="beta-phase-banner"
+      >
+        Beta
+      </sup>
+       
       <div
         class="spacer"
       />
@@ -465,6 +479,13 @@ exports[`Header.vue renders props when passed 1`] = `
       >
         
       </div>
+       
+      <sup
+        aria-label="This application is currently in Beta phase"
+        class="beta-phase-banner"
+      >
+        Beta
+      </sup>
        
       <div
         class="spacer"
