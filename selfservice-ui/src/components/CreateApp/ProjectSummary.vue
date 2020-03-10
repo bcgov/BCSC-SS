@@ -161,6 +161,10 @@
                   {{
                   $t('summaryPage.labelApplicationUrl')
                   }}
+                  <span
+                    class="small-hint pad-50"
+                    v-html="$t('summaryPage.applicationUrlHint')"
+                  ></span>
                 </v-list-item-content>
                 <v-list-item-content class="align-end">
                   <div v-if="technicalReq.clientUri">
@@ -175,6 +179,10 @@
                   {{
                   $t('summaryPage.labelRedirectUrl')
                   }}
+                  <span
+                    class="small-hint pad-50"
+                    v-html="$t('summaryPage.labelRedirectUrlHint')"
+                  ></span>
                 </v-list-item-content>
                 <v-list-item-content class="align-end">
                   <div v-for="redirectUri in technicalReq.redirectUris" :key="redirectUri">
@@ -189,6 +197,10 @@
                   {{
                   $t('summaryPage.labelJWKSUrl')
                   }}
+                  <span
+                    class="small-hint pad-50"
+                    v-html="$t('summaryPage.labelJWKSUrlHint')"
+                  ></span>
                 </v-list-item-content>
 
                 <v-list-item-content class="align-end">
@@ -204,6 +216,10 @@
                   {{
                   $t('summaryPage.labelIdTokenSignedResponseAlg')
                   }}
+                  <span
+                    class="small-hint pad-50"
+                    v-html="$t('summaryPage.labelIdTokenSignedResponseAlgHint')"
+                  ></span>
                 </v-list-item-content>
                 <v-list-item-content class="align-end">
                   <v-list-item-content class="align-end">
@@ -220,6 +236,10 @@
                   {{
                   $t('summaryPage.labelUserinfoSignedResponseAlg')
                   }}
+                  <span
+                    class="small-hint pad-50"
+                    v-html="$t('summaryPage.labelUserinfoSignedResponseAlgHint')"
+                  ></span>
                 </v-list-item-content>
                 <v-list-item-content class="align-end">
                   <v-list-item-content class="align-end">
@@ -254,6 +274,10 @@
                   {{
                   $t('summaryPage.labelDataPackageReqd')
                   }}
+                  <span
+                    class="small-hint pad-50"
+                    v-html="$t('summaryPage.labelDataPackageReqdHint')"
+                  ></span>
                 </v-list-item-content>
                 <v-list-item-content class="align-end">
                   <div v-if="selectedPackage.packageName !==''">
