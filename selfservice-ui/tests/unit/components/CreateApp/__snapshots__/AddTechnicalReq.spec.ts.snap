@@ -2,8 +2,7 @@
 
 exports[`AddTechnicalReq.vue renders props when passed 1`] = `
 <div
-  class="mx-auto v-card v-sheet theme--light"
-  style="max-width: 80%;"
+  class="mx-auto outer-card v-card v-sheet theme--light"
 >
   <div
     class="mx-auto v-card v-sheet theme--light"
@@ -512,8 +511,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
 
 exports[`AddTechnicalReq.vue renders props when passed 2`] = `
 <div
-  class="mx-auto v-card v-sheet theme--light"
-  style="max-width: 80%;"
+  class="mx-auto outer-card v-card v-sheet theme--light"
 >
   <div
     class="mx-auto v-card v-sheet theme--light"
@@ -1022,8 +1020,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
 
 exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
 <div
-  class="mx-auto v-card v-sheet theme--light"
-  style="max-width: 80%;"
+  class="mx-auto outer-card v-card v-sheet theme--light"
 >
   <div
     class="mx-auto v-card v-sheet theme--light"

@@ -2,8 +2,7 @@
 
 exports[`PackageSelect.vue from summary page renders props when passed and redirect from summary page true 1`] = `
 <div
-  class="mx-auto v-card v-sheet theme--light"
-  style="max-width: 80%;"
+  class="mx-auto outer-card v-card v-sheet theme--light"
 >
   <header
     class="bc-subtitle v-sheet v-sheet--tile theme--dark v-toolbar v-toolbar--flat"
@@ -75,6 +74,8 @@ exports[`PackageSelect.vue from summary page renders props when passed and redir
               class="v-list-item__content headline"
             >
               
+              
+            
             </div>
              
             <div
@@ -100,16 +101,12 @@ exports[`PackageSelect.vue from summary page renders props when passed and redir
                 <div
                   class="v-list-item__title headline mb-1"
                 >
-                  
-                    Package 1
-                  
+                  Package 1
                 </div>
                  
                 <div
                   class="v-list-item__subtitle"
                 >
-                  
-                    
                   
                 </div>
                  
@@ -141,9 +138,7 @@ exports[`PackageSelect.vue from summary page renders props when passed and redir
                 <div
                   class="v-list-item__subtitle mt-3"
                 >
-                  
-                    This package contains the following data:
-                  
+                  This package contains the following data:
                 </div>
               </div>
             </div>
@@ -182,16 +177,12 @@ exports[`PackageSelect.vue from summary page renders props when passed and redir
                 <div
                   class="v-list-item__title headline mb-1"
                 >
-                  
-                    Package 2
-                  
+                  Package 2
                 </div>
                  
                 <div
                   class="v-list-item__subtitle"
                 >
-                  
-                    
                   
                 </div>
                  
@@ -223,9 +214,7 @@ exports[`PackageSelect.vue from summary page renders props when passed and redir
                 <div
                   class="v-list-item__subtitle mt-3"
                 >
-                  
-                    This package contains the following data:
-                  
+                  This package contains the following data:
                 </div>
               </div>
             </div>
@@ -280,6 +269,7 @@ exports[`PackageSelect.vue from summary page renders props when passed and redir
           >
             
           
+        
           </span>
         </button>
          
@@ -294,6 +284,8 @@ exports[`PackageSelect.vue from summary page renders props when passed and redir
             class="v-btn__content"
           >
             
+          
+        
           </span>
         </button>
       </div>
@@ -304,8 +296,7 @@ exports[`PackageSelect.vue from summary page renders props when passed and redir
 
 exports[`PackageSelect.vue renders props when passed 1`] = `
 <div
-  class="mx-auto v-card v-sheet theme--light"
-  style="max-width: 80%;"
+  class="mx-auto outer-card v-card v-sheet theme--light"
 >
   <header
     class="bc-subtitle v-sheet v-sheet--tile theme--dark v-toolbar v-toolbar--flat"
@@ -377,6 +368,8 @@ exports[`PackageSelect.vue renders props when passed 1`] = `
               class="v-list-item__content headline"
             >
               
+              
+            
             </div>
              
             <div
@@ -402,16 +395,12 @@ exports[`PackageSelect.vue renders props when passed 1`] = `
                 <div
                   class="v-list-item__title headline mb-1"
                 >
-                  
-                    Package 1
-                  
+                  Package 1
                 </div>
                  
                 <div
                   class="v-list-item__subtitle"
                 >
-                  
-                    
                   
                 </div>
                  
@@ -443,9 +432,7 @@ exports[`PackageSelect.vue renders props when passed 1`] = `
                 <div
                   class="v-list-item__subtitle mt-3"
                 >
-                  
-                    This package contains the following data:
-                  
+                  This package contains the following data:
                 </div>
               </div>
             </div>
@@ -484,16 +471,12 @@ exports[`PackageSelect.vue renders props when passed 1`] = `
                 <div
                   class="v-list-item__title headline mb-1"
                 >
-                  
-                    Package 2
-                  
+                  Package 2
                 </div>
                  
                 <div
                   class="v-list-item__subtitle"
                 >
-                  
-                    
                   
                 </div>
                  
@@ -525,9 +508,7 @@ exports[`PackageSelect.vue renders props when passed 1`] = `
                 <div
                   class="v-list-item__subtitle mt-3"
                 >
-                  
-                    This package contains the following data:
-                  
+                  This package contains the following data:
                 </div>
               </div>
             </div>
@@ -582,6 +563,7 @@ exports[`PackageSelect.vue renders props when passed 1`] = `
           >
             
           
+        
           </span>
         </button>
          
@@ -596,6 +578,8 @@ exports[`PackageSelect.vue renders props when passed 1`] = `
             class="v-btn__content"
           >
             
+          
+        
           </span>
         </button>
       </div>
@@ -606,8 +590,7 @@ exports[`PackageSelect.vue renders props when passed 1`] = `
 
 exports[`PackageSelect.vue select on package on click  1`] = `
 <div
-  class="mx-auto v-card v-sheet theme--light"
-  style="max-width: 80%;"
+  class="mx-auto outer-card v-card v-sheet theme--light"
 >
   <header
     class="bc-subtitle v-sheet v-sheet--tile theme--dark v-toolbar v-toolbar--flat"
@@ -679,6 +662,8 @@ exports[`PackageSelect.vue select on package on click  1`] = `
               class="v-list-item__content headline"
             >
               
+              
+            
             </div>
              
             <div
@@ -704,16 +689,12 @@ exports[`PackageSelect.vue select on package on click  1`] = `
                 <div
                   class="v-list-item__title headline mb-1"
                 >
-                  
-                    Package 1
-                  
+                  Package 1
                 </div>
                  
                 <div
                   class="v-list-item__subtitle"
                 >
-                  
-                    
                   
                 </div>
                  
@@ -745,9 +726,7 @@ exports[`PackageSelect.vue select on package on click  1`] = `
                 <div
                   class="v-list-item__subtitle mt-3"
                 >
-                  
-                    This package contains the following data:
-                  
+                  This package contains the following data:
                 </div>
               </div>
             </div>
@@ -786,16 +765,12 @@ exports[`PackageSelect.vue select on package on click  1`] = `
                 <div
                   class="v-list-item__title headline mb-1"
                 >
-                  
-                    Package 2
-                  
+                  Package 2
                 </div>
                  
                 <div
                   class="v-list-item__subtitle"
                 >
-                  
-                    
                   
                 </div>
                  
@@ -827,9 +802,7 @@ exports[`PackageSelect.vue select on package on click  1`] = `
                 <div
                   class="v-list-item__subtitle mt-3"
                 >
-                  
-                    This package contains the following data:
-                  
+                  This package contains the following data:
                 </div>
               </div>
             </div>
@@ -884,6 +857,7 @@ exports[`PackageSelect.vue select on package on click  1`] = `
           >
             
           
+        
           </span>
         </button>
          
@@ -898,6 +872,8 @@ exports[`PackageSelect.vue select on package on click  1`] = `
             class="v-btn__content"
           >
             
+          
+        
           </span>
         </button>
       </div>
@@ -908,8 +884,7 @@ exports[`PackageSelect.vue select on package on click  1`] = `
 
 exports[`PackageSelect.vue should call gotback on back button click  1`] = `
 <div
-  class="mx-auto v-card v-sheet theme--light"
-  style="max-width: 80%;"
+  class="mx-auto outer-card v-card v-sheet theme--light"
 >
   <header
     class="bc-subtitle v-sheet v-sheet--tile theme--dark v-toolbar v-toolbar--flat"
@@ -981,6 +956,8 @@ exports[`PackageSelect.vue should call gotback on back button click  1`] = `
               class="v-list-item__content headline"
             >
               
+              
+            
             </div>
              
             <div
@@ -1006,16 +983,12 @@ exports[`PackageSelect.vue should call gotback on back button click  1`] = `
                 <div
                   class="v-list-item__title headline mb-1"
                 >
-                  
-                    Package 1
-                  
+                  Package 1
                 </div>
                  
                 <div
                   class="v-list-item__subtitle"
                 >
-                  
-                    
                   
                 </div>
                  
@@ -1047,9 +1020,7 @@ exports[`PackageSelect.vue should call gotback on back button click  1`] = `
                 <div
                   class="v-list-item__subtitle mt-3"
                 >
-                  
-                    This package contains the following data:
-                  
+                  This package contains the following data:
                 </div>
               </div>
             </div>
@@ -1088,16 +1059,12 @@ exports[`PackageSelect.vue should call gotback on back button click  1`] = `
                 <div
                   class="v-list-item__title headline mb-1"
                 >
-                  
-                    Package 2
-                  
+                  Package 2
                 </div>
                  
                 <div
                   class="v-list-item__subtitle"
                 >
-                  
-                    
                   
                 </div>
                  
@@ -1129,9 +1096,7 @@ exports[`PackageSelect.vue should call gotback on back button click  1`] = `
                 <div
                   class="v-list-item__subtitle mt-3"
                 >
-                  
-                    This package contains the following data:
-                  
+                  This package contains the following data:
                 </div>
               </div>
             </div>
@@ -1186,6 +1151,7 @@ exports[`PackageSelect.vue should call gotback on back button click  1`] = `
           >
             
           
+        
           </span>
         </button>
          
@@ -1200,6 +1166,8 @@ exports[`PackageSelect.vue should call gotback on back button click  1`] = `
             class="v-btn__content"
           >
             
+          
+        
           </span>
         </button>
       </div>
@@ -1210,8 +1178,7 @@ exports[`PackageSelect.vue should call gotback on back button click  1`] = `
 
 exports[`PackageSelect.vue submit form with selected package on submit click  1`] = `
 <div
-  class="mx-auto v-card v-sheet theme--light"
-  style="max-width: 80%;"
+  class="mx-auto outer-card v-card v-sheet theme--light"
 >
   <header
     class="bc-subtitle v-sheet v-sheet--tile theme--dark v-toolbar v-toolbar--flat"
@@ -1283,6 +1250,8 @@ exports[`PackageSelect.vue submit form with selected package on submit click  1`
               class="v-list-item__content headline"
             >
               
+              
+            
             </div>
              
             <div
@@ -1308,16 +1277,12 @@ exports[`PackageSelect.vue submit form with selected package on submit click  1`
                 <div
                   class="v-list-item__title headline mb-1"
                 >
-                  
-                    Package 1
-                  
+                  Package 1
                 </div>
                  
                 <div
                   class="v-list-item__subtitle"
                 >
-                  
-                    
                   
                 </div>
                  
@@ -1349,9 +1314,7 @@ exports[`PackageSelect.vue submit form with selected package on submit click  1`
                 <div
                   class="v-list-item__subtitle mt-3"
                 >
-                  
-                    This package contains the following data:
-                  
+                  This package contains the following data:
                 </div>
               </div>
             </div>
@@ -1390,16 +1353,12 @@ exports[`PackageSelect.vue submit form with selected package on submit click  1`
                 <div
                   class="v-list-item__title headline mb-1"
                 >
-                  
-                    Package 2
-                  
+                  Package 2
                 </div>
                  
                 <div
                   class="v-list-item__subtitle"
                 >
-                  
-                    
                   
                 </div>
                  
@@ -1431,9 +1390,7 @@ exports[`PackageSelect.vue submit form with selected package on submit click  1`
                 <div
                   class="v-list-item__subtitle mt-3"
                 >
-                  
-                    This package contains the following data:
-                  
+                  This package contains the following data:
                 </div>
               </div>
             </div>
@@ -1488,6 +1445,7 @@ exports[`PackageSelect.vue submit form with selected package on submit click  1`
           >
             
           
+        
           </span>
         </button>
          
@@ -1502,6 +1460,8 @@ exports[`PackageSelect.vue submit form with selected package on submit click  1`
             class="v-btn__content"
           >
             
+          
+        
           </span>
         </button>
       </div>

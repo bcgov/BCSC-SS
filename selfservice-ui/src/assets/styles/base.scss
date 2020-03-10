@@ -307,3 +307,13 @@ ul.list {
   opacity: 0.3;
   cursor: not-allowed;
 }
+
+.outer-card {
+  max-width: 100%;
+  @include rwd(1500) {
+    max-width: 80%;
+  }
+}
+.pr-30 {
+  padding-right: 30px !important;
+}
