@@ -153,5 +153,17 @@
     "labelEmail": "Email (work)",
     "labelPhone": "Phone",
     "btnContinue": "Continue"
+  },
+  "home": {
+    "pagetitle": "Complete Profile",
+    "txtMainTitle": "Easily implement BC Services Card for online authentication",
+    "txtFitForOrganization": "Is this a fit for your organization?",
+    "txtsubcontent1": "Do you want to use <a href='https://digital.gov.bc.ca' target='_ss'>digital technologies</a> that are transforming the way British Columbians live, work and play?",
+    "txtsubcontent2": "Are you part of a Broader Public Sector organization?",
+    "txtsubcontent3": "Is your organization in need of <a href='https://www2.gov.bc.ca/assets/gov/government/services-for-government-and-broader-public-sector/information-technology-services/standards-files/identity_assurance_standard.pdf' target='_ss' >high assurance authentication?</a>",
+    "txtsubTitle2": "What defines \"broader public sector\"?",
+    "txtsubcontent4": "Broader Public Sector includes the core provincial public service (ministries), health authorities, Crown corporations, K-12 schools, colleges, institutes, teaching universities, and research universities, contracted social service providers. It does not include Federal, local and municipal governments.",
+    "btnLearmore": "Learn more",
+    "txtgetStarted": "Get started"
   }
 }

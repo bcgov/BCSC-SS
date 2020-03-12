@@ -330,7 +330,6 @@
               <Button
                 :loading="isLoading"
                 class="white--text submit-package ml-6"
-                color="indigo accent-4"
                 depressed
                 @click="showDisclimer"
               >{{ $t('summaryPage.submitRequest') }}</Button>
@@ -479,6 +478,7 @@ export default class TestAccountRequest extends Vue {
   @Watch('projectInfo')
   private ongetprojectInfoChanged(val: any) {
     if (this.technicalReq && this.technicalReq.projectId !== 0) {
+      this.isTechnicalInfoAvailable = this.technicalReq.id ? true : false;
       this.isLoading = false;
       this.setUsers(this.projectInfo);
     }
