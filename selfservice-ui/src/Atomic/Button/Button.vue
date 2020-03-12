@@ -76,7 +76,7 @@ export default class Button extends Vue {
   })
   private disabled!: boolean;
   /**
-   *  yellow color button. default will be primary
+   *  custom color button. default will be primary
    */
   @Prop({
     default: ''
