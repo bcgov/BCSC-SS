@@ -275,7 +275,6 @@ exports[`PackageSelect.vue from summary page renders props when passed and redir
          
         <button
           class="btn white--text submit-package ml-6 v-btn v-btn--depressed theme--light v-size--default indigo accent-4 primary normal"
-          color="indigo accent-4"
           depressed=""
           name="button"
           type="button"
@@ -569,7 +568,6 @@ exports[`PackageSelect.vue renders props when passed 1`] = `
          
         <button
           class="btn white--text submit-package ml-6 v-btn v-btn--depressed theme--light v-size--default indigo accent-4 primary normal"
-          color="indigo accent-4"
           depressed=""
           name="button"
           type="button"
@@ -863,7 +861,6 @@ exports[`PackageSelect.vue select on package on click  1`] = `
          
         <button
           class="btn white--text submit-package ml-6 v-btn v-btn--depressed theme--light v-size--default indigo accent-4 primary normal"
-          color="indigo accent-4"
           depressed=""
           name="button"
           type="button"
@@ -1157,7 +1154,6 @@ exports[`PackageSelect.vue should call gotback on back button click  1`] = `
          
         <button
           class="btn white--text submit-package ml-6 v-btn v-btn--depressed theme--light v-size--default indigo accent-4 primary normal"
-          color="indigo accent-4"
           depressed=""
           name="button"
           type="button"
@@ -1451,7 +1447,6 @@ exports[`PackageSelect.vue submit form with selected package on submit click  1`
          
         <button
           class="btn white--text submit-package ml-6 v-btn v-btn--depressed theme--light v-size--default indigo accent-4 primary normal"
-          color="indigo accent-4"
           depressed=""
           name="button"
           type="button"
