@@ -4,8 +4,8 @@
       <v-col cols="12">
         <h1 class="text-center main-headline">{{ $t('home.txtMainTitle') }}</h1>
       </v-col>
-      <v-col cols="12" sm="6" class="home-img"></v-col>
-      <v-col cols="12" sm="6" class="text-left">
+      <v-col cols="12" md="6" class="home-img"></v-col>
+      <v-col cols="12" md="6" class="text-left">
         <v-card flat>
           <h2 class="second-headline">{{$t('home.txtFitForOrganization')}}</h2>
           <div v-html="$t('home.txtsubcontent1')" class="second-sub-content"></div>
@@ -80,6 +80,13 @@ export default class HelloWorld extends Vue {}
 .home-img {
   background-position: center;
   background-image: url('/img/login_with_mobile_card.png');
+  @include lg {
+    background-image: url('/img/login_with_mobile_card-500.png');
+  }
+  @include xl {
+    background-image: url('/img/login_with_mobile_card-640.png');
+  }
+  min-height: 250px;
 }
 .btn-all {
   font-size: 22px;

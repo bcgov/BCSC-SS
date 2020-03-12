@@ -18,8 +18,6 @@ important action on your service, such as Download or Submit. */
     v-bind="$attrs"
     :color="color !== '' ? color : undefined"
   >
-    <!-- color="#fcba19 !important" -->
-    <!-- yellowBtn !== false ? 'yellow-btn':'' -->
     <!-- @slot  Button display name-->
     <slot></slot>
   </v-btn>
