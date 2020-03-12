@@ -160,7 +160,7 @@ class Project(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
             info['statusId'] = info['status']
             info['status'] = ProjectStatus.get_phrase(info['status'])
             if oauth_id is not None:
-                info['role'] = ProjectRoles(info['role']).name
+                info['role'] = ProjectRoles.get_phrase(info['role'])
 
             result.append(info)
 

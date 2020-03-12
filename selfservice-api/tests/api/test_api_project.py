@@ -123,6 +123,7 @@ def test_patch_project_status(client, jwt, session):
 def test_patch_project_status_validation(client, jwt, session):
     """Assert that the endpoint returns the failure status."""
     headers = ss_client_auth_header(jwt)
+    create_user(client, jwt)
     req_data = {}
 
     response = client.patch(PROJECTINFO_API + '/1234',

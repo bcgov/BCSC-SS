@@ -24,7 +24,8 @@ from ..models.enums import ProjectStatus
 from ..schemas.project import ProjectSchema
 from ..services.external import get_dynamic_api
 from ..services.external.models import CreateRequestModel, CreateResponseModel, UpdateRequestModel, UpdateResponseModel
-from ..utils.auth import is_client_role, jwt
+from ..services.notification import EmailService, EmailType
+from ..utils.auth import auth, jwt
 from ..utils.roles import Role
 from ..utils.util import cors_preflight
 
@@ -44,7 +45,7 @@ class ProjectResource(Resource):
         """Get all project."""
         token_info = g.jwt_oidc_token_info
         oauth_id = None
-        if is_client_role():
+        if auth.is_client_role():
             oauth_id = token_info.get('sub')
         projects = Project.find_all_or_by_user(oauth_id)
         return jsonify({'projects': projects}), HTTPStatus.OK
@@ -107,7 +108,7 @@ class ProjectResourceById(Resource):
 
     @staticmethod
     @cors.crossdomain(origin='*')
-    @jwt.requires_auth
+    @auth.require
     def patch(project_id):
         """Update project status."""
         project_patch_json = request.get_json()
@@ -123,6 +124,8 @@ class ProjectResourceById(Resource):
                 # Decide which api to call
                 if project_status == ProjectStatus.Development:
                     is_success = ProjectResourceById._dynamic_api_call_(project, False)
+                    if is_success:
+                        EmailService.save_and_send(EmailType.DEV_REQUEST, {'project_name': project.project_name})
 
                 if is_success:
                     if project.status < project_status:
@@ -151,7 +154,44 @@ class ProjectResourceById(Resource):
     @staticmethod
     def _dynamic_api_call_(project: Project, is_prod: bool):
         """Generate OIDC config for this project."""
+        api_call_succeeded = True
+        dynamic_api = get_dynamic_api()
+
         oidc_config = OIDCConfig.find_by_project_id(project.id)
+        api_request = ProjectResourceById._generate_api_request_(project, is_prod, oidc_config)
+
+        if oidc_config is None:
+            api_response: CreateResponseModel = dynamic_api.create(api_request)
+
+            if api_response is not None:
+                OIDCConfig.create_from_dict(
+                    ProjectResourceById._map_response_to_oidc_config_(False, project, api_response))
+            else:
+                api_call_succeeded = False
+        else:
+            api_request.client_id = oidc_config.client_id
+            api_response: UpdateResponseModel = \
+                dynamic_api.update(oidc_config.registration_access_token, api_request)
+
+            if api_response is not None:
+                oidc_config.update(
+                    ProjectResourceById._map_response_to_oidc_config_(True, project, api_response))
+            else:
+                api_call_succeeded = False
+
+        if not is_prod and api_call_succeeded:
+            technical_req = project.technical_req[0]
+            TestAccount.map_test_accounts(project.id, technical_req.no_of_test_account)
+            trigger_count = current_app.config.get('LIMITED_TEST_ACCOUNT_TRIGGER_COUNT')
+            if TestAccount.get_availability_count() <= trigger_count:
+
+                EmailService.save_and_send(EmailType.TEST_ACCOUNT, {})
+
+        return api_call_succeeded
+
+    @staticmethod
+    def _generate_api_request_(project: Project, is_prod: bool, oidc_config: OIDCConfig):
+        """Create dynaamic api request object."""
         if oidc_config is None:
             api_request = CreateRequestModel()
         else:
@@ -182,31 +222,7 @@ class ProjectResourceById(Resource):
             api_request.api_url = current_app.config.get('DYNAMIC_TEST_API_URL')
             api_request.api_token = current_app.config.get('DYNAMIC_TEST_API_TOKEN')
 
-        api_call_succeeded = True
-        dynamic_api = get_dynamic_api()
-        if oidc_config is None:
-            api_response: CreateResponseModel = dynamic_api.create(api_request)
-
-            if api_response is not None:
-                OIDCConfig.create_from_dict(
-                    ProjectResourceById._map_response_to_oidc_config_(False, project, api_response))
-            else:
-                api_call_succeeded = False
-        else:
-            api_request.client_id = oidc_config.client_id
-            api_response: UpdateResponseModel = \
-                dynamic_api.update(oidc_config.registration_access_token, api_request)
-
-            if api_response is not None:
-                oidc_config.update(
-                    ProjectResourceById._map_response_to_oidc_config_(True, project, api_response))
-            else:
-                api_call_succeeded = False
-
-        if not is_prod:
-            TestAccount.map_test_accounts(project.id, technical_req.no_of_test_account)
-
-        return api_call_succeeded
+        return api_request
 
     @staticmethod
     def _map_response_to_oidc_config_(is_update: bool, project, api_response):

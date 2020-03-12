@@ -14,6 +14,7 @@
 """This exports all of the models used by the application."""
 
 from .db import db, ma
+from .email_queue import EmailQueue
 from .org_whitelist import OrgWhitelist
 from .user import User
 from .project import Project

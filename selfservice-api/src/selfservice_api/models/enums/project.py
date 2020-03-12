@@ -19,9 +19,22 @@ from enum import Enum, IntEnum
 class ProjectRoles(IntEnum):
     """This Enum provides the list of Project Roles."""
 
-    Developer = 1
-    Manager = 2
-    Cto = 3
+    def __new__(cls, value, phrase=''):
+        """Customize the value to include phrase."""
+        obj = int.__new__(cls, value)
+        obj._value_ = value
+
+        obj.phrase = phrase
+        return obj
+
+    Developer = 1, 'Developer'
+    Manager = 2, 'Manager'
+    Cto = 3, 'Executive Sponsor'
+
+    @staticmethod
+    def get_phrase(value):
+        """Get phrase by value."""
+        return ProjectRoles(value).phrase
 
 
 class ProjectStatus(IntEnum):

@@ -11,27 +11,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""Centralized setup of logging for the service."""
+"""Exposes all of the notification services used in the API."""
 
-import logging.config
-import sys
-from os import path
-
-
-def setup_logging(conf):
-    """Create the services logger."""
-    if conf and path.isfile(conf):
-        logging.config.fileConfig(conf)
-        print('Configure logging, from conf:{}'.format(conf), file=sys.stdout)
-    else:
-        print('Unable to configure logging, attempted conf:{}'.format(conf), file=sys.stderr)
-
-
-def log_error(msg):
-    """Log error."""
-    logging.error(msg)
-
-
-def log_info(msg):
-    """Log info."""
-    logging.info(msg)
+from .email import EmailService, mail
+from .email_helper import EmailBody, EmailSubject, EmailType

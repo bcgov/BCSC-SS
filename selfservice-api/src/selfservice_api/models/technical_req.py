@@ -21,7 +21,7 @@ from .db import db
 from .user import User
 
 
-class TechnicalReq(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):  # pylint: disable=too-few-public-methods
+class TechnicalReq(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
     """This class manages technical requirement information."""
 
     id = db.Column(db.Integer, primary_key=True)
