@@ -9,7 +9,7 @@ const tokenSignatureAlgoritham = [
   'PS384',
   'PS512'
 ];
-const userInfoSignedResponseAlgoritham = [
+const signedResponseAlgoritham = [
   'RS256',
   'RS384',
   'RS512',
@@ -20,4 +20,4 @@ const userInfoSignedResponseAlgoritham = [
   'PS384',
   'PS512'
 ];
-export { tokenSignatureAlgoritham, userInfoSignedResponseAlgoritham };
+export { tokenSignatureAlgoritham, signedResponseAlgoritham };

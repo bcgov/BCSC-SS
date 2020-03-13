@@ -85,10 +85,10 @@
                 <div class="row">
                   <div class="col-5">
                     <Select
-                      v-model="idTokenSignedResponseAlg"
+                      v-model="encryptedResponseAlg"
                       :label="
                         $t(
-                          'technicalRequirements.labelIdTokenSignedResponseAlg'
+                          'technicalRequirements.labelencryptedResponseAlg'
                         )
                       "
                       :items="tokenAlgoritham"
@@ -99,10 +99,10 @@
                   <v-spacer />
                   <div class="col-5">
                     <Select
-                      v-model="userinfoSignedResponseAlg"
+                      v-model="signedResponseAlg"
                       :label="
                         $t(
-                          'technicalRequirements.labelUserinfoSignedResponseAlg'
+                          'technicalRequirements.labelsignedResponseAlg'
                         )
                       "
                       :items="userAlgoritham"
@@ -160,7 +160,7 @@ import Loading from '@/Atomic/Loading/Loading.vue';
 
 import {
   tokenSignatureAlgoritham,
-  userInfoSignedResponseAlgoritham
+  signedResponseAlgoritham
 } from '@/constants/algoritham';
 import { TechnicalReqModel } from '@/models/TechnicalReqModel';
 const TechnicalReqModule = namespace('TechnicalReqModule');
@@ -203,10 +203,10 @@ export default class AddTechnicalReq extends Vue {
   private clientUri: string = '';
   private redirectUris: any = [''];
   private jwksUri: string = '';
-  private idTokenSignedResponseAlg: string = 'RS256';
-  private userinfoSignedResponseAlg: string = 'RS256';
+  private encryptedResponseAlg: string = 'RS256';
+  private signedResponseAlg: string = 'RS256';
   private tokenAlgoritham: any = tokenSignatureAlgoritham;
-  private userAlgoritham: any = userInfoSignedResponseAlgoritham;
+  private userAlgoritham: any = signedResponseAlgoritham;
   private blockRemoval = true;
 
   // private id: string = '';
@@ -230,8 +230,8 @@ export default class AddTechnicalReq extends Vue {
       clientUri: this.clientUri,
       redirectUris: this.redirectUris,
       jwksUri: this.jwksUri,
-      idTokenSignedResponseAlg: this.idTokenSignedResponseAlg,
-      userinfoSignedResponseAlg: this.userinfoSignedResponseAlg
+      encryptedResponseAlg: this.encryptedResponseAlg,
+      signedResponseAlg: this.signedResponseAlg
     };
 
     if (this.isEditMode && this.TechnicalReqId !== 0) {
@@ -247,10 +247,9 @@ export default class AddTechnicalReq extends Vue {
     this.clientUri = val.clientUri;
     this.redirectUris = val.redirectUris || this.redirectUris;
     this.jwksUri = val.jwksUri;
-    this.idTokenSignedResponseAlg =
-      val.idTokenSignedResponseAlg || this.idTokenSignedResponseAlg;
-    this.userinfoSignedResponseAlg =
-      val.userinfoSignedResponseAlg || this.userinfoSignedResponseAlg;
+    this.encryptedResponseAlg =
+      val.encryptedResponseAlg || this.encryptedResponseAlg;
+    this.signedResponseAlg = val.signedResponseAlg || this.signedResponseAlg;
     this.TechnicalReqId = val.id || 0;
     this.isEditMode = true;
   }
