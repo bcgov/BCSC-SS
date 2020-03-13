@@ -6,4 +6,6 @@ export interface ProjectInfoState {
   errorStatus?: boolean;
   singleProjectInfo: ProjectInfoModel;
   message: string;
+  finalErrorStatus?: boolean;
+  finalSuccessStatus?: boolean;
 }

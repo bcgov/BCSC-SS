@@ -14,7 +14,7 @@
     </v-toolbar>
     <v-list dense class="px-5">
       <v-list-item>
-        <v-list-item-content>
+        <v-list-item-content class="pr-30">
           {{
           $t('summaryPage.labelTestAccounts')
           }}
@@ -30,7 +30,7 @@
       <v-divider></v-divider>
 
       <v-list-item>
-        <v-list-item-content>
+        <v-list-item-content class="pr-30">
           {{
           $t('summaryPage.labelSpecialReq')
           }}

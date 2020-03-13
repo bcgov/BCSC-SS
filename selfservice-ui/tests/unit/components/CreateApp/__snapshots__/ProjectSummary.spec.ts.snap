@@ -2,9 +2,8 @@
 
 exports[`ProjectSummary.vue renders props when passed 1`] = `
 <v-card-stub
-  class="mx-auto"
+  class="mx-auto outer-card"
   loaderheight="4"
-  style="max-width: 80%;"
   tag="div"
 >
   <v-toolbar-stub
@@ -92,6 +91,7 @@ exports[`ProjectSummary.vue renders props when passed 1`] = `
            
           <button-stub
             aria-label="Back Button"
+            color=""
             name="button"
             secondary=""
             type="button"
@@ -101,6 +101,7 @@ exports[`ProjectSummary.vue renders props when passed 1`] = `
            
           <button-stub
             class="white--text submit-package ml-6"
+            color=""
             depressed=""
             name="button"
             type="button"
@@ -116,9 +117,8 @@ exports[`ProjectSummary.vue renders props when passed 1`] = `
 
 exports[`ProjectSummary.vue renders props when passed with gettors 1`] = `
 <v-card-stub
-  class="mx-auto"
+  class="mx-auto outer-card"
   loaderheight="4"
-  style="max-width: 80%;"
   tag="div"
 >
   <v-toolbar-stub
@@ -206,6 +206,7 @@ exports[`ProjectSummary.vue renders props when passed with gettors 1`] = `
            
           <button-stub
             aria-label="Back Button"
+            color=""
             name="button"
             secondary=""
             type="button"
@@ -215,6 +216,7 @@ exports[`ProjectSummary.vue renders props when passed with gettors 1`] = `
            
           <button-stub
             class="white--text submit-package ml-6"
+            color=""
             depressed=""
             name="button"
             type="button"

@@ -1,6 +1,6 @@
 /** * Project information */
 <template>
-  <v-card class="mx-auto" style="max-width: 80%;">
+  <v-card class="mx-auto outer-card">
     <v-card class="mx-auto">
       <v-app-bar dark class="bc-subtitle">
         <v-btn icon @click="$router.push('/dashboard/')" aria-label="Back Button">
@@ -31,9 +31,13 @@
                   class="font-weight-bold text-left bc-padding-left-0"
                 >{{ $t('projectInfo.ProjectOrgTitle') }}</v-card-subtitle>
 
+                <v-card-subtitle class="text-left bc-padding-left-0">
+                  {{
+                  $t('projectInfo.OrganizationNameHint')
+                  }}
+                </v-card-subtitle>
                 <Input
                   v-model="organizationName"
-                  counter="100"
                   :label="$t('projectInfo.OrganizationName')"
                   type="text"
                   :rules="[
@@ -42,9 +46,13 @@
                     rules.maxLength(100)
                   ]"
                 />
+                <v-card-subtitle class="text-left bc-padding-left-0">
+                  {{
+                  $t('projectInfo.projectNameHint')
+                  }}
+                </v-card-subtitle>
                 <Input
                   v-model="projectName"
-                  counter="100"
                   :label="$t('projectInfo.projectName')"
                   type="text"
                   :rules="[
@@ -53,13 +61,17 @@
                     rules.maxLength(100)
                   ]"
                 />
+                <v-card-subtitle class="text-left bc-padding-left-0">
+                  {{
+                  $t('projectInfo.DescriptionHint')
+                  }}
+                </v-card-subtitle>
                 <TextArea
                   v-model="description"
                   :label="$t('projectInfo.Description')"
                   type="text"
                   :rules="[rules.required]"
                   outlined
-                  :hint="$t('projectInfo.DescriptionHint')"
                 />
               </v-card>
             </v-col>
@@ -114,6 +126,7 @@
                 :userDetails="getUserDetailsByRole(users, projectRoles.manager)"
                 :rules="rules"
                 :title="$t('projectInfo.ManagerRole')"
+                :hint="$t('projectInfo.managerHint')"
               />
             </v-col>
             <v-col cols="12" sm="6" v-if="myRole !== projectRoles.cto">
@@ -121,6 +134,7 @@
                 :userDetails="getUserDetailsByRole(users, projectRoles.cto)"
                 :rules="rules"
                 :title="$t('projectInfo.CTORole')"
+                :hint="$t('projectInfo.ctoHint')"
               />
             </v-col>
             <v-col cols="12" sm="6" v-if="myRole !== projectRoles.developer">
@@ -130,6 +144,7 @@
                 "
                 :rules="rules"
                 :title="$t('projectInfo.DeveloperRole')"
+                :hint="$t('projectInfo.developerHint')"
               />
             </v-col>
 

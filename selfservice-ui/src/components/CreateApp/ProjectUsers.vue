@@ -2,10 +2,8 @@
 
 <template>
   <v-card class="v-form pa-8 pt-6 ma-3">
-    <v-card-title class="headline padding-0">{{ title }}</v-card-title>
-    <v-card-subtitle class="text-left padding-0"
-      >Tell us about your {{ title }}</v-card-subtitle
-    >
+    <v-card-title class="headline bc-padding-left-0">{{ title }}</v-card-title>
+    <v-card-subtitle class="text-left bc-padding-left-0">{{hint}}</v-card-subtitle>
     <Input
       v-model="userDetails.firstName"
       label="First name"
@@ -56,12 +54,14 @@ export default class ProjectUsers extends Vue {
   private title!: string;
   @Prop({})
   private rules!: any;
+  @Prop()
+  private hint!: string;
 }
 </script>
 
 <style lang="scss" scoped>
 @import './../../assets/styles/theme.scss';
-.padding-0 {
+.bc-padding-left-0 {
   padding-left: 0px !important;
 }
 </style>

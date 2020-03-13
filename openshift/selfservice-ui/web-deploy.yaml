@@ -16,7 +16,7 @@ objects:
       app-group: "${APP_GROUP}"
     name: "${WEB_NAME}"
   spec:
-    replicas: 1
+    replicas: 2
     selector:
       app: "${WEB_NAME}"
       deploymentconfig: "${WEB_NAME}"

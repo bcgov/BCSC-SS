@@ -7,19 +7,18 @@ exports[`ProjectUsers.vue renders props when passed 1`] = `
   tag="div"
 >
   <v-card-title-stub
-    class="headline padding-0"
+    class="headline bc-padding-left-0"
   >
     
   </v-card-title-stub>
    
   <v-card-subtitle-stub
-    class="text-left padding-0"
+    class="text-left bc-padding-left-0"
   >
-    Tell us about your 
+    
   </v-card-subtitle-stub>
    
   <input-stub
-    counter=""
     label="First name"
     outlined="true"
     rules="v => !!v || 'This field is required',v => (v || '').length >= len || 'Invalid character length, required ' + len,v => (v || '').length <= len || 'Invalid character length, max length ' + len"
@@ -28,7 +27,6 @@ exports[`ProjectUsers.vue renders props when passed 1`] = `
   />
    
   <input-stub
-    counter=""
     label="Last name"
     outlined="true"
     rules="v => !!v || 'This field is required',v => (v || '').length >= len || 'Invalid character length, required ' + len,v => (v || '').length <= len || 'Invalid character length, max length ' + len"
@@ -37,7 +35,6 @@ exports[`ProjectUsers.vue renders props when passed 1`] = `
   />
    
   <input-stub
-    counter=""
     label="Work email"
     outlined="true"
     rules="v => !!v || 'This field is required',v => /^\\\\w+([.-]?\\\\w+)*@\\\\w+([.-]?\\\\w+)*(\\\\.\\\\w{2,10})+$/.test(v) || 'E-mail must be valid',v => (v || '').length <= len || 'Invalid character length, max length ' + len"
@@ -46,7 +43,6 @@ exports[`ProjectUsers.vue renders props when passed 1`] = `
   />
    
   <input-stub
-    counter=""
     label="Phone"
     outlined="true"
     rules="v => !!v || 'This field is required',v => (v || '').length <= len || 'Invalid character length, max length ' + len"

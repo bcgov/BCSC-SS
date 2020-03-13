@@ -1,19 +1,19 @@
 <template>
-  <div class="home">
-    <HelloWorld msg="BC Services Card   Self-Service" />
-  </div>
+  <v-card flat>
+    <Home />
+  </v-card>
 </template>
 
 <script>
 // @ is an alias to /src
 import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from '@/components/HelloWorld.vue';
+import Home from '@/components/Home/Home.vue';
 
 @Component({
   components: {
-    HelloWorld
+    Home
   }
 })
 // Home goes here
-export default class Home extends Vue {}
+export default class HomePage extends Vue {}
 </script>
