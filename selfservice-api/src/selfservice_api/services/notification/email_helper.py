@@ -60,7 +60,7 @@ class EmailBody:  # pylint: disable=too-few-public-methods
         """Get the email body."""
         root = os.path.dirname(os.path.abspath(__file__))
         templates_dir = os.path.join(root, 'templates')
-        env = Environment(loader=FileSystemLoader(templates_dir))
+        env = Environment(loader=FileSystemLoader(templates_dir), autoescape=True)
         template = env.get_template(email_type.value + '.html')
 
         result = template.render(attributes)
