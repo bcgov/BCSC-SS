@@ -40,14 +40,13 @@ class EmailSubject:  # pylint: disable=too-few-public-methods
         """Get the email subject."""
         subject = cls.__dict__.get(email_type.value)
         if subject:
-            attrs = re.findall(r'\{\{\w+\}\}', subject)
+            attrs = re.findall(r'{{\w+}}', subject)
             for attr in set(attrs):
                 attr_name = attr.replace('{', '').replace('}', '')
                 attr_value = attributes.get(attr_name)
                 subject = subject.replace(attr, attr_value) if attr_value else ''
         else:
             log_error('unknown email subject')
-            raise Exception('unknown email subject')
 
         return subject
 
