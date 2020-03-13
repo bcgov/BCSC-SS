@@ -88,7 +88,7 @@
                       v-model="encryptedResponseAlg"
                       :label="
                         $t(
-                          'technicalRequirements.labelencryptedResponseAlg'
+                          'technicalRequirements.labelEncryptedResponseAlg'
                         )
                       "
                       :items="tokenAlgoritham"
@@ -102,7 +102,7 @@
                       v-model="signedResponseAlg"
                       :label="
                         $t(
-                          'technicalRequirements.labelsignedResponseAlg'
+                          'technicalRequirements.labelSignedResponseAlg'
                         )
                       "
                       :items="userAlgoritham"

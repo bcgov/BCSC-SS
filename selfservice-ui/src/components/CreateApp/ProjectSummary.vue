@@ -214,11 +214,11 @@
               <v-list-item>
                 <v-list-item-content class="pr-30">
                   {{
-                  $t('summaryPage.labelencryptedResponseAlg')
+                  $t('summaryPage.labelEncryptedResponseAlg')
                   }}
                   <span
                     class="small-hint pad-50"
-                    v-html="$t('summaryPage.labelencryptedResponseAlgHint')"
+                    v-html="$t('summaryPage.labelEncryptedResponseAlgHint')"
                   ></span>
                 </v-list-item-content>
                 <v-list-item-content class="align-end">
@@ -234,11 +234,11 @@
               <v-list-item>
                 <v-list-item-content class="pr-30">
                   {{
-                  $t('summaryPage.labelsignedResponseAlg')
+                  $t('summaryPage.labelSignedResponseAlg')
                   }}
                   <span
                     class="small-hint pad-50"
-                    v-html="$t('summaryPage.labelsignedResponseAlgHint')"
+                    v-html="$t('summaryPage.labelSignedResponseAlgHint')"
                   ></span>
                 </v-list-item-content>
                 <v-list-item-content class="align-end">
