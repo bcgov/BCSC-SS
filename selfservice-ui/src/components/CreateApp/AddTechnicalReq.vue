@@ -91,7 +91,7 @@
                           'technicalRequirements.labelEncryptedResponseAlg'
                         )
                       "
-                      :items="tokenAlgoritham"
+                      :items="tokenalgorithm"
                       :rules="[rules.required]"
                       outlined
                     />
@@ -105,7 +105,7 @@
                           'technicalRequirements.labelSignedResponseAlg'
                         )
                       "
-                      :items="userAlgoritham"
+                      :items="useralgorithm"
                       :rules="[rules.required]"
                       outlined
                       class="col-6"
@@ -158,7 +158,7 @@ import Select from '@/Atomic/Select/Select.vue';
 import validationRules from '@/config/validationRules';
 import Loading from '@/Atomic/Loading/Loading.vue';
 
-import { algoritham } from '@/constants/algoritham';
+import { algorithm } from '@/constants/algorithm';
 import { TechnicalReqModel } from '@/models/TechnicalReqModel';
 const TechnicalReqModule = namespace('TechnicalReqModule');
 const ProjectInfoModule = namespace('ProjectInfoModule');
@@ -202,8 +202,8 @@ export default class AddTechnicalReq extends Vue {
   private jwksUri: string = '';
   private encryptedResponseAlg: string = 'RS256';
   private signedResponseAlg: string = 'RS256';
-  private tokenAlgoritham: any = algoritham;
-  private userAlgoritham: any = algoritham;
+  private tokenalgorithm: any = algorithm;
+  private useralgorithm: any = algorithm;
   private blockRemoval = true;
 
   // private id: string = '';

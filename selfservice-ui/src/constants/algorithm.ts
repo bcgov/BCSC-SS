@@ -1,4 +1,4 @@
-const algoritham = [
+const algorithm = [
   'RS256',
   'RS384',
   'RS512',
@@ -9,4 +9,4 @@ const algoritham = [
   'PS384',
   'PS512'
 ];
-export { algoritham };
+export { algorithm };
