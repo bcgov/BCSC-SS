@@ -163,7 +163,6 @@
                     :disabled="!form"
                     :loading="isLoading"
                     class="white--text submit-project"
-                    color="indigo accent-4"
                     depressed
                     @click="submitProjectInfo"
                     @keyup.enter="submitProjectInfo"

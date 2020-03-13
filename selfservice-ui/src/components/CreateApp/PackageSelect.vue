@@ -94,7 +94,6 @@
             :disabled="!slectedPackage"
             :loading="isLoading"
             class="white--text submit-package ml-6"
-            color="indigo accent-4"
             depressed
             @click="submitPackage"
           >
