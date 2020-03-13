@@ -180,7 +180,7 @@ class ProjectResourceById(Resource):
                 api_call_succeeded = False
 
         if not is_prod and api_call_succeeded:
-            technical_req = project.technical_req[0]
+            technical_req: TechnicalReq = project.technical_req[0]
             TestAccount.map_test_accounts(project.id, technical_req.no_of_test_account)
             trigger_count = current_app.config.get('LIMITED_TEST_ACCOUNT_TRIGGER_COUNT')
             if TestAccount.get_availability_count() <= trigger_count:
@@ -202,7 +202,7 @@ class ProjectResourceById(Resource):
         for user_association in project.users:
             api_request.contacts.append(user_association.user.email)
 
-        technical_req = project.technical_req[0]
+        technical_req: TechnicalReq = project.technical_req[0]
         api_request.client_uri = technical_req.client_uri
         api_request.redirect_uris = technical_req.redirect_uris
         api_request.scope = technical_req.scope_package.scope
@@ -210,9 +210,9 @@ class ProjectResourceById(Resource):
         api_request.id_token_signed_response_alg = technical_req.id_token_signed_response_alg
         api_request.userinfo_signed_response_alg = technical_req.userinfo_signed_response_alg
         api_request.token_endpoint_auth_method = None
-        api_request.id_token_encrypted_response_alg = None
+        api_request.id_token_encrypted_response_alg = technical_req.id_token_encrypted_response_alg
         api_request.id_token_encrypted_response_enc = None
-        api_request.userinfo_encrypted_response_alg = None
+        api_request.userinfo_encrypted_response_alg = technical_req.userinfo_encrypted_response_alg
         api_request.userinfo_encrypted_response_enc = None
 
         if is_prod:

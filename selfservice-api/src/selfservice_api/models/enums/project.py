@@ -16,6 +16,15 @@
 from enum import Enum, IntEnum
 
 
+class ExtendedEnum(Enum):
+    """Extended Enum."""
+
+    @classmethod
+    def list(cls):
+        """Get list of values."""
+        return list(map(lambda c: c.value, cls))
+
+
 class ProjectRoles(IntEnum):
     """This Enum provides the list of Project Roles."""
 
@@ -57,7 +66,7 @@ class ProjectStatus(IntEnum):
         return ProjectStatus(value).phrase
 
 
-class Algorithms(Enum):
+class Algorithms(ExtendedEnum):
     """This enum provides the list of Algorithms supported by Dynamic API."""
 
     HS256 = 'HS256'
