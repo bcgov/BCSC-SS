@@ -83,7 +83,7 @@ p {
 
 .theme--light.v-application {
   color: $gray7;
-  background-color: $gray1;
+  background-color: $BCgovWhite;
 }
 
 .form-input {
@@ -95,7 +95,7 @@ p {
     flex: 0 0 auto;
     width: 2.5rem;
     padding: 0.5rem;
-    background-color: $gray1;
+    background-color: $BCgovWhite;
     border-right: 1px solid $gray5;
     text-align: center;
   }
@@ -306,4 +306,19 @@ ul.list {
 .bc-disabled-section {
   opacity: 0.3;
   cursor: not-allowed;
+}
+
+.outer-card {
+  max-width: 100%;
+  @include rwd(1500) {
+    max-width: 80%;
+  }
+}
+.pr-30 {
+  padding-right: 30px !important;
+}
+
+.v-btn:not(.v-btn--round).v-size--default {
+  height: auto;
+  min-height: 36px;
 }

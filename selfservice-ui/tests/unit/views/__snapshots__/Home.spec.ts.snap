@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Home.vue renders props when passed 1`] = `
-<div
-  class="home"
+<v-card-stub
+  flat="true"
+  loaderheight="4"
+  tag="div"
 >
-  <helloworld-stub
-    msg="BC Services Card   Self-Service"
-  />
-</div>
+  <home-stub />
+</v-card-stub>
 `;

@@ -2,9 +2,8 @@
 
 exports[`AddProjectInfo.vue renders edit props when passed 1`] = `
 <v-card-stub
-  class="mx-auto"
+  class="mx-auto outer-card"
   loaderheight="4"
-  style="max-width: 80%;"
   tag="div"
 >
   <v-card-stub
@@ -290,9 +289,8 @@ exports[`AddProjectInfo.vue renders edit props when passed 1`] = `
 
 exports[`AddProjectInfo.vue renders props when passed 1`] = `
 <v-card-stub
-  class="mx-auto"
+  class="mx-auto outer-card"
   loaderheight="4"
-  style="max-width: 80%;"
   tag="div"
 >
   <v-card-stub

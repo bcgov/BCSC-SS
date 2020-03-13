@@ -34,20 +34,22 @@ exports[`ClientID.vue renders props when passed with gettors 1`] = `
       tabindex="-1"
     >
       <div
-        class="v-list-item__content"
+        class="v-list-item__content pr-30"
       >
         
         
         
         <span
-          class="small-hint pad-50"
+          class="small-hint"
         />
       </div>
        
       <div
-        class="v-list-item__content align-end pointer font-weight-bold client-id-copy"
+        class="v-list-item__content align-end pointer client-id-copy"
       >
-        <div>
+        <code
+          class="code-snippet"
+        >
           <i
             aria-hidden="true"
             class="v-icon notranslate mr-1 mdi mdi-content-copy theme--light"
@@ -56,7 +58,7 @@ exports[`ClientID.vue renders props when passed with gettors 1`] = `
           
           abcd
         
-        </div>
+        </code>
       </div>
     </div>
      
@@ -72,34 +74,36 @@ exports[`ClientID.vue renders props when passed with gettors 1`] = `
       tabindex="-1"
     >
       <div
-        class="v-list-item__content"
+        class="v-list-item__content pr-30"
       >
         
         
         
         <span
-          class="small-hint pad-50"
+          class="small-hint"
         />
       </div>
        
       <div
-        class="v-list-item__content align-end pointer font-weight-bold d-block"
+        class="v-list-item__content align-end pointer d-block"
       >
-        <div
-          class="float-left"
+        <code
+          class="code-snippet"
         >
-          <i
-            aria-hidden="true"
-            class="v-icon notranslate mr-2 mdi mdi-content-copy theme--light"
-            style="font-size: 16px;"
-          />
-        </div>
-         
-        <div>
+          <div
+            class="float-left"
+          >
+            <i
+              aria-hidden="true"
+              class="v-icon notranslate mr-2 mdi mdi-content-copy theme--light"
+              style="font-size: 16px;"
+            />
+          </div>
+           
           <span>
             test
           </span>
-        </div>
+        </code>
       </div>
     </div>
      
@@ -115,13 +119,13 @@ exports[`ClientID.vue renders props when passed with gettors 1`] = `
       tabindex="-1"
     >
       <div
-        class="v-list-item__content align-self-start"
+        class="v-list-item__content align-self-start pr-30"
       >
         
         
         
         <span
-          class="small-hint pad-50"
+          class="small-hint"
         />
       </div>
        
@@ -137,12 +141,6 @@ exports[`ClientID.vue renders props when passed with gettors 1`] = `
             <table>
               <thead>
                 <tr>
-                  <th
-                    class="text-left"
-                  >
-                    
-                  </th>
-                   
                   <th
                     class="text-left"
                   >
@@ -233,20 +231,22 @@ exports[`ClientID.vue renders props when passed with gettors 2`] = `
       tabindex="-1"
     >
       <div
-        class="v-list-item__content"
+        class="v-list-item__content pr-30"
       >
         
         
         
         <span
-          class="small-hint pad-50"
+          class="small-hint"
         />
       </div>
        
       <div
-        class="v-list-item__content align-end pointer font-weight-bold client-id-copy"
+        class="v-list-item__content align-end pointer client-id-copy"
       >
-        <div>
+        <code
+          class="code-snippet"
+        >
           <i
             aria-hidden="true"
             class="v-icon notranslate mr-1 mdi mdi-content-copy theme--light"
@@ -255,7 +255,7 @@ exports[`ClientID.vue renders props when passed with gettors 2`] = `
           
           abcd
         
-        </div>
+        </code>
       </div>
     </div>
      
@@ -271,34 +271,36 @@ exports[`ClientID.vue renders props when passed with gettors 2`] = `
       tabindex="-1"
     >
       <div
-        class="v-list-item__content"
+        class="v-list-item__content pr-30"
       >
         
         
         
         <span
-          class="small-hint pad-50"
+          class="small-hint"
         />
       </div>
        
       <div
-        class="v-list-item__content align-end pointer font-weight-bold d-block"
+        class="v-list-item__content align-end pointer d-block"
       >
-        <div
-          class="float-left"
+        <code
+          class="code-snippet"
         >
-          <i
-            aria-hidden="true"
-            class="v-icon notranslate mr-2 mdi mdi-content-copy theme--light"
-            style="font-size: 16px;"
-          />
-        </div>
-         
-        <div>
+          <div
+            class="float-left"
+          >
+            <i
+              aria-hidden="true"
+              class="v-icon notranslate mr-2 mdi mdi-content-copy theme--light"
+              style="font-size: 16px;"
+            />
+          </div>
+           
           <span>
             test
           </span>
-        </div>
+        </code>
       </div>
     </div>
      
@@ -314,13 +316,13 @@ exports[`ClientID.vue renders props when passed with gettors 2`] = `
       tabindex="-1"
     >
       <div
-        class="v-list-item__content align-self-start"
+        class="v-list-item__content align-self-start pr-30"
       >
         
         
         
         <span
-          class="small-hint pad-50"
+          class="small-hint"
         />
       </div>
        
@@ -336,12 +338,6 @@ exports[`ClientID.vue renders props when passed with gettors 2`] = `
             <table>
               <thead>
                 <tr>
-                  <th
-                    class="text-left"
-                  >
-                    
-                  </th>
-                   
                   <th
                     class="text-left"
                   >

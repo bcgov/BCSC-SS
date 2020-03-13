@@ -38,7 +38,7 @@
 
             <v-list dense class="px-5">
               <v-list-item>
-                <v-list-item-content>
+                <v-list-item-content class="pr-30">
                   {{
                   $t('summaryPage.labelOrganizationName')
                   }}
@@ -56,7 +56,7 @@
               </v-list-item>
               <v-divider></v-divider>
               <v-list-item>
-                <v-list-item-content>
+                <v-list-item-content class="pr-30">
                   {{
                   $t('summaryPage.labelProjectTitle')
                   }}
@@ -74,7 +74,7 @@
               </v-list-item>
               <v-divider></v-divider>
               <v-list-item>
-                <v-list-item-content class="align-self-start">
+                <v-list-item-content class="align-self-start pr-30">
                   {{
                   $t('summaryPage.labelTechnicalContact')
                   }}
@@ -101,7 +101,7 @@
               </v-list-item>
               <v-divider></v-divider>
               <v-list-item>
-                <v-list-item-content class="align-self-start">
+                <v-list-item-content class="align-self-start pr-30">
                   {{
                   $t('summaryPage.labelManagerContact')
                   }}
@@ -122,7 +122,7 @@
               </v-list-item>
               <v-divider></v-divider>
               <v-list-item>
-                <v-list-item-content class="align-self-start">
+                <v-list-item-content class="align-self-start pr-30">
                   {{
                   $t('summaryPage.labelCtoContact')
                   }}
@@ -157,10 +157,14 @@
             </v-toolbar>
             <v-list dense class="px-5">
               <v-list-item>
-                <v-list-item-content>
+                <v-list-item-content class="pr-30">
                   {{
                   $t('summaryPage.labelApplicationUrl')
                   }}
+                  <span
+                    class="small-hint pad-50"
+                    v-html="$t('summaryPage.applicationUrlHint')"
+                  ></span>
                 </v-list-item-content>
                 <v-list-item-content class="align-end">
                   <div v-if="technicalReq.clientUri">
@@ -171,10 +175,14 @@
               </v-list-item>
               <v-divider></v-divider>
               <v-list-item>
-                <v-list-item-content class="align-self-start">
+                <v-list-item-content class="align-self-start pr-30">
                   {{
                   $t('summaryPage.labelRedirectUrl')
                   }}
+                  <span
+                    class="small-hint pad-50"
+                    v-html="$t('summaryPage.labelRedirectUrlHint')"
+                  ></span>
                 </v-list-item-content>
                 <v-list-item-content class="align-end">
                   <div v-for="redirectUri in technicalReq.redirectUris" :key="redirectUri">
@@ -185,10 +193,14 @@
               </v-list-item>
               <v-divider></v-divider>
               <v-list-item>
-                <v-list-item-content>
+                <v-list-item-content class="pr-30">
                   {{
                   $t('summaryPage.labelJWKSUrl')
                   }}
+                  <span
+                    class="small-hint pad-50"
+                    v-html="$t('summaryPage.labelJWKSUrlHint')"
+                  ></span>
                 </v-list-item-content>
 
                 <v-list-item-content class="align-end">
@@ -200,10 +212,14 @@
               </v-list-item>
               <v-divider></v-divider>
               <v-list-item>
-                <v-list-item-content>
+                <v-list-item-content class="pr-30">
                   {{
                   $t('summaryPage.labelIdTokenSignedResponseAlg')
                   }}
+                  <span
+                    class="small-hint pad-50"
+                    v-html="$t('summaryPage.labelIdTokenSignedResponseAlgHint')"
+                  ></span>
                 </v-list-item-content>
                 <v-list-item-content class="align-end">
                   <v-list-item-content class="align-end">
@@ -216,10 +232,14 @@
               </v-list-item>
               <v-divider></v-divider>
               <v-list-item>
-                <v-list-item-content>
+                <v-list-item-content class="pr-30">
                   {{
                   $t('summaryPage.labelUserinfoSignedResponseAlg')
                   }}
+                  <span
+                    class="small-hint pad-50"
+                    v-html="$t('summaryPage.labelUserinfoSignedResponseAlgHint')"
+                  ></span>
                 </v-list-item-content>
                 <v-list-item-content class="align-end">
                   <v-list-item-content class="align-end">
@@ -250,10 +270,14 @@
 
             <v-list dense v-if="getPackageList.length > 0" class="px-5">
               <v-list-item>
-                <v-list-item-content class="align-self-start">
+                <v-list-item-content class="align-self-start pr-30">
                   {{
                   $t('summaryPage.labelDataPackageReqd')
                   }}
+                  <span
+                    class="small-hint pad-50"
+                    v-html="$t('summaryPage.labelDataPackageReqdHint')"
+                  ></span>
                 </v-list-item-content>
                 <v-list-item-content class="align-end">
                   <div v-if="selectedPackage.packageName !==''">
@@ -306,7 +330,6 @@
               <Button
                 :loading="isLoading"
                 class="white--text submit-package ml-6"
-                color="indigo accent-4"
                 depressed
                 @click="showDisclimer"
               >{{ $t('summaryPage.submitRequest') }}</Button>
@@ -455,6 +478,7 @@ export default class TestAccountRequest extends Vue {
   @Watch('projectInfo')
   private ongetprojectInfoChanged(val: any) {
     if (this.technicalReq && this.technicalReq.projectId !== 0) {
+      this.isTechnicalInfoAvailable = this.technicalReq.id ? true : false;
       this.isLoading = false;
       this.setUsers(this.projectInfo);
     }
@@ -548,11 +572,5 @@ export default class TestAccountRequest extends Vue {
 }
 .text-center {
   text-align: center !important;
-}
-.outer-card {
-  max-width: 100%;
-  @include rwd(1500) {
-    max-width: 80%;
-  }
 }
 </style>
