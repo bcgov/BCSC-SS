@@ -84,11 +84,18 @@ def factory_project_technical_req(is_model=False):
             'https://someone.com/*'
         ],
         'jwksUri': 'https://someone.com/jwks',
-        'idTokenSignedResponseAlg': 'RS256',
-        'userinfoSignedResponseAlg': 'RS256'
+        'signedResponseAlg': 'RS256',
+        'encryptedResponseAlg': 'RS256'
     }
     if is_model:
-        return camel2snake(technical_req)
+        del technical_req['signedResponseAlg']
+        del technical_req['encryptedResponseAlg']
+        technical_req = camel2snake(technical_req)
+        technical_req['id_token_signed_response_alg'] = 'RS256'
+        technical_req['userinfo_signed_response_alg'] = 'RS256'
+        technical_req['id_token_encrypted_response_alg'] = 'RS256'
+        technical_req['userinfo_encrypted_response_alg'] = 'RS256'
+        return technical_req
     else:
         return technical_req
 

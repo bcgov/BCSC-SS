@@ -16,12 +16,34 @@
 from enum import Enum, IntEnum
 
 
+class ExtendedEnum(Enum):
+    """Extended Enum."""
+
+    @classmethod
+    def list(cls):
+        """Get list of values."""
+        return list(map(lambda c: c.value, cls))
+
+
 class ProjectRoles(IntEnum):
     """This Enum provides the list of Project Roles."""
 
-    Developer = 1
-    Manager = 2
-    Cto = 3
+    def __new__(cls, value, phrase=''):
+        """Customize the value to include phrase."""
+        obj = int.__new__(cls, value)
+        obj._value_ = value
+
+        obj.phrase = phrase
+        return obj
+
+    Developer = 1, 'Developer'
+    Manager = 2, 'Manager'
+    Cto = 3, 'Executive Sponsor'
+
+    @staticmethod
+    def get_phrase(value):
+        """Get phrase by value."""
+        return ProjectRoles(value).phrase
 
 
 class ProjectStatus(IntEnum):
@@ -44,7 +66,7 @@ class ProjectStatus(IntEnum):
         return ProjectStatus(value).phrase
 
 
-class Algorithms(Enum):
+class Algorithms(ExtendedEnum):
     """This enum provides the list of Algorithms supported by Dynamic API."""
 
     HS256 = 'HS256'

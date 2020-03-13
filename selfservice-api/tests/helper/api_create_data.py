@@ -15,7 +15,7 @@
 
 import json
 
-from .auth import TestJwtClaims, ss_client_auth_header
+from .auth import TestJwtClaims, ss_admin_auth_header, ss_client_auth_header
 from .request_data import factory_project_info, factory_project_technical_req
 
 from selfservice_api.models.enums import ProjectRoles
@@ -115,9 +115,9 @@ def _get_project_(client, jwt):
     return response
 
 
-def _get_all_project_(client, jwt):
+def _get_all_project_(client, jwt, is_analyst=False):
     """Get all projects and return response object."""
-    headers = ss_client_auth_header(jwt)
+    headers = ss_admin_auth_header(jwt) if is_analyst else ss_client_auth_header(jwt)
     create_project(client, jwt)
 
     response = client.get(PROJECTINFO_API, headers=headers, content_type='application/json')
