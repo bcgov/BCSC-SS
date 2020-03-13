@@ -60,14 +60,14 @@ describe('ProjectSummary.vue', () => {
             return {
               clientUri: 'app.com',
               id: 15,
-              idTokenSignedResponseAlg: 'RS256',
+              encryptedResponseAlg: 'RS256',
               jwksUri: 'jwks2.com',
               noOfTestAccount: 3,
               noteTestAccount: '',
               projectId: 12,
               redirectUris: ['test.com'],
               scopePackageId: 3,
-              userinfoSignedResponseAlg: 'RS256'
+              signedResponseAlg: 'RS256'
             };
           }),
           errorStatus: jest.fn()

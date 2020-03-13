@@ -267,7 +267,7 @@ exports[`AddProjectInfo.vue renders edit props when passed 1`] = `
                  
                 <button-stub
                   class="white--text submit-project"
-                  color="indigo accent-4"
+                  color=""
                   depressed=""
                   disabled="true"
                   name="button"
@@ -554,7 +554,7 @@ exports[`AddProjectInfo.vue renders props when passed 1`] = `
                  
                 <button-stub
                   class="white--text submit-project"
-                  color="indigo accent-4"
+                  color=""
                   depressed=""
                   disabled="true"
                   name="button"

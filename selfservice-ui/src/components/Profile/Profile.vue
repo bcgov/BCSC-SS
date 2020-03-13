@@ -2,9 +2,7 @@
 
 <template>
   <v-card class="mx-auto card-width">
-    <v-alert type="error" v-if="errorStatus">
-      Something went wrong...
-    </v-alert>
+    <v-alert type="error" v-if="errorStatus">Something went wrong...</v-alert>
     <v-toolbar flat class="bc-subtitle" dark v-if="!errorStatus">
       <v-toolbar-title>{{ $t('profile.pagetitle') }}</v-toolbar-title>
       <div class="flex-grow-1"></div>
@@ -22,8 +20,8 @@
 
             <v-card-title class="text-left bc-padding-left-0">
               {{ userProfile.firstName }}
-              {{ userProfile.lastName }}</v-card-title
-            >
+              {{ userProfile.lastName }}
+            </v-card-title>
             <Input
               v-model="email"
               :label="$t('profile.labelEmail')"
@@ -52,12 +50,10 @@
                 <Button
                   :disabled="!form"
                   class="white--text"
-                  color="indigo accent-4"
                   depressed
                   @click="completeProfile"
                   @keyup.enter="completeProfile"
-                  >{{ $t('profile.btnContinue') }}</Button
-                >
+                >{{ $t('profile.btnContinue') }}</Button>
               </v-card-actions>
             </v-card>
           </v-col>

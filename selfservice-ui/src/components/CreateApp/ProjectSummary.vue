@@ -214,18 +214,18 @@
               <v-list-item>
                 <v-list-item-content class="pr-30">
                   {{
-                  $t('summaryPage.labelIdTokenSignedResponseAlg')
+                  $t('summaryPage.labelEncryptedResponseAlg')
                   }}
                   <span
                     class="small-hint pad-50"
-                    v-html="$t('summaryPage.labelIdTokenSignedResponseAlgHint')"
+                    v-html="$t('summaryPage.labelEncryptedResponseAlgHint')"
                   ></span>
                 </v-list-item-content>
                 <v-list-item-content class="align-end">
                   <v-list-item-content class="align-end">
-                    <div v-if="technicalReq.idTokenSignedResponseAlg">
+                    <div v-if="technicalReq.encryptedResponseAlg">
                       <v-icon small class="mr-1">mdi-shield-key</v-icon>
-                      {{ technicalReq.idTokenSignedResponseAlg }}
+                      {{ technicalReq.encryptedResponseAlg }}
                     </div>
                   </v-list-item-content>
                 </v-list-item-content>
@@ -234,18 +234,18 @@
               <v-list-item>
                 <v-list-item-content class="pr-30">
                   {{
-                  $t('summaryPage.labelUserinfoSignedResponseAlg')
+                  $t('summaryPage.labelSignedResponseAlg')
                   }}
                   <span
                     class="small-hint pad-50"
-                    v-html="$t('summaryPage.labelUserinfoSignedResponseAlgHint')"
+                    v-html="$t('summaryPage.labelSignedResponseAlgHint')"
                   ></span>
                 </v-list-item-content>
                 <v-list-item-content class="align-end">
                   <v-list-item-content class="align-end">
-                    <div v-if="technicalReq.userinfoSignedResponseAlg">
+                    <div v-if="technicalReq.signedResponseAlg">
                       <v-icon small class="mr-1">mdi-shield-key</v-icon>
-                      {{ technicalReq.userinfoSignedResponseAlg }}
+                      {{ technicalReq.signedResponseAlg }}
                     </div>
                   </v-list-item-content>
                 </v-list-item-content>
