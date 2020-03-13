@@ -202,6 +202,7 @@ export default class AddTechnicalReq extends Vue {
   private jwksUri: string = '';
   private encryptedResponseAlg: string = 'RS256';
   private signedResponseAlg: string = 'RS256';
+  private algorithm: any = algorithm;
   private blockRemoval = true;
 
   // private id: string = '';
