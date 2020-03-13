@@ -91,7 +91,7 @@
                           'technicalRequirements.labelEncryptedResponseAlg'
                         )
                       "
-                      :items="tokenalgorithm"
+                      :items="tokenAlgorithm"
                       :rules="[rules.required]"
                       outlined
                     />
@@ -105,7 +105,7 @@
                           'technicalRequirements.labelSignedResponseAlg'
                         )
                       "
-                      :items="useralgorithm"
+                      :items="userAlgorithm"
                       :rules="[rules.required]"
                       outlined
                       class="col-6"
@@ -202,8 +202,8 @@ export default class AddTechnicalReq extends Vue {
   private jwksUri: string = '';
   private encryptedResponseAlg: string = 'RS256';
   private signedResponseAlg: string = 'RS256';
-  private tokenalgorithm: any = algorithm;
-  private useralgorithm: any = algorithm;
+  private tokenAlgorithm: any = algorithm;
+  private userAlgorithm: any = algorithm;
   private blockRemoval = true;
 
   // private id: string = '';
