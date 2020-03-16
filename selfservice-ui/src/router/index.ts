@@ -15,7 +15,7 @@ const router = new VueRouter({
     {
       path: '/',
       name: 'home',
-      meta: { showVerticalMenu: true },
+      meta: { hideMenu: true },
       component: Home,
       props: true
     },

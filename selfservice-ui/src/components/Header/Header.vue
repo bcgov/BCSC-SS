@@ -41,12 +41,7 @@
         <v-icon>mdi-menu</v-icon>
       </v-btn>
     </v-app-bar>
-    <nav
-      class="navigation-main"
-      :class="{ 'active-menu': showMenu }"
-      id="navbar"
-      v-if="!showSideMenu"
-    >
+    <nav class="navigation-main" :class="{ 'active-menu': showMenu }" id="navbar" v-if="!hideMenu">
       <ul>
         <li class="d-sm-none">
           <v-btn text to="/" link dark class="mr-2 login-btn">Login</v-btn>
@@ -56,16 +51,16 @@
         </li>
 
         <li>
-          <router-link to="dashboard">Dashboard</router-link>
+          <router-link to="/dashboard">Dashboard</router-link>
         </li>
         <li>
           <router-link to="/project/info">Create Project</router-link>
         </li>
       </ul>
     </nav>
-    <template class="abcd" :class="{ 'active-menu': showMenu }">
-      <Sidebar v-if="showSideMenu" :drawer="drawer" />
-    </template>
+    <!-- <template class="abcd" :class="{ 'active-menu': showMenu }">
+      <Sidebar v-if="hideMenu" :drawer="drawer" />
+    </template>-->
   </div>
 </template>
 
@@ -81,7 +76,7 @@ const KeyCloakModule = namespace('KeyCloakModule');
   }
 })
 export default class Header extends Vue {
-  @Prop({ default: false }) private verticalMenu!: boolean;
+  @Prop({ default: false }) private hideMenu!: boolean;
 
   @KeyCloakModule.Getter('userProfile') private userProfile!: [];
   @KeyCloakModule.Action('setLogout') private setLogout!: any;
@@ -89,12 +84,12 @@ export default class Header extends Vue {
 
   private showMenu: boolean = false;
   private drawer: boolean = false;
-  private showSideMenu: boolean = !this.verticalMenu;
+  private hideMenuInPage: boolean = !this.hideMenu;
 
   @Watch('$route', { immediate: true, deep: true })
   private onUrlChange(newVal: any) {
-    const { showVerticalMenu = false } = newVal.meta;
-    this.showSideMenu = !showVerticalMenu || false;
+    const { hideMenu = false } = newVal.meta;
+    this.hideMenuInPage = !hideMenu || false;
   }
   /**
    * toggleMenu
