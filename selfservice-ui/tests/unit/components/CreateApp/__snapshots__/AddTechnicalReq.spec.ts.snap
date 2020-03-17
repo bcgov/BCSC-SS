@@ -267,7 +267,35 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                 class="row"
               >
                 <div
-                  class="col-5"
+                  class="col-12 col-md-5"
+                >
+                  <div
+                    class="v-card__subtitle text-left bc-padding-left-0"
+                  >
+                    
+                    
+                  
+                  </div>
+                </div>
+                 
+                <div
+                  class="spacer"
+                />
+                 
+                <div
+                  class="col-12 col-md-5"
+                >
+                  <div
+                    class="v-card__subtitle text-left bc-padding-left-0"
+                  >
+                    
+                    
+                  
+                  </div>
+                </div>
+                 
+                <div
+                  class="col-12 col-md-5"
                 >
                   <div
                     class="v-input v-input--is-label-active v-input--is-dirty theme--light v-text-field v-text-field--enclosed v-text-field--outlined v-select"
@@ -363,7 +391,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                 />
                  
                 <div
-                  class="col-5"
+                  class="col-12 col-md-5"
                 >
                   <div
                     class="v-input col-6 v-input--is-label-active v-input--is-dirty theme--light v-text-field v-text-field--enclosed v-text-field--outlined v-select"
@@ -776,7 +804,35 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                 class="row"
               >
                 <div
-                  class="col-5"
+                  class="col-12 col-md-5"
+                >
+                  <div
+                    class="v-card__subtitle text-left bc-padding-left-0"
+                  >
+                    
+                    
+                  
+                  </div>
+                </div>
+                 
+                <div
+                  class="spacer"
+                />
+                 
+                <div
+                  class="col-12 col-md-5"
+                >
+                  <div
+                    class="v-card__subtitle text-left bc-padding-left-0"
+                  >
+                    
+                    
+                  
+                  </div>
+                </div>
+                 
+                <div
+                  class="col-12 col-md-5"
                 >
                   <div
                     class="v-input v-input--is-label-active v-input--is-dirty theme--light v-text-field v-text-field--enclosed v-text-field--outlined v-select"
@@ -872,7 +928,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                 />
                  
                 <div
-                  class="col-5"
+                  class="col-12 col-md-5"
                 >
                   <div
                     class="v-input col-6 v-input--is-label-active v-input--is-dirty theme--light v-text-field v-text-field--enclosed v-text-field--outlined v-select"
@@ -1285,7 +1341,35 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                 class="row"
               >
                 <div
-                  class="col-5"
+                  class="col-12 col-md-5"
+                >
+                  <div
+                    class="v-card__subtitle text-left bc-padding-left-0"
+                  >
+                    
+                    
+                  
+                  </div>
+                </div>
+                 
+                <div
+                  class="spacer"
+                />
+                 
+                <div
+                  class="col-12 col-md-5"
+                >
+                  <div
+                    class="v-card__subtitle text-left bc-padding-left-0"
+                  >
+                    
+                    
+                  
+                  </div>
+                </div>
+                 
+                <div
+                  class="col-12 col-md-5"
                 >
                   <div
                     class="v-input v-input--is-label-active v-input--is-dirty theme--light v-text-field v-text-field--enclosed v-text-field--outlined v-select"
@@ -1381,7 +1465,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                 />
                  
                 <div
-                  class="col-5"
+                  class="col-12 col-md-5"
                 >
                   <div
                     class="v-input col-6 v-input--is-label-active v-input--is-dirty theme--light v-text-field v-text-field--enclosed v-text-field--outlined v-select"

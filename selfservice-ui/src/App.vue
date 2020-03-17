@@ -26,6 +26,11 @@ export default class App extends Vue {
   constructor() {
     super();
   }
+  @Watch('$route', { immediate: true, deep: true })
+  private onUrlChange(newVal: any) {
+    const { hideMenu = false } = newVal.meta;
+    this.hideMenu = hideMenu || false;
+  }
 
   private created() {
     const { hideMenu = false } = this.$route.meta;

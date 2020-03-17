@@ -83,7 +83,22 @@
                   class="pt-6"
                 />
                 <div class="row">
-                  <div class="col-5">
+                  <div class="col-12 col-md-5">
+                    <v-card-subtitle class="text-left bc-padding-left-0">
+                      {{
+                      $t('technicalRequirements.labelEncryptedResponseAlgHint')
+                      }}
+                    </v-card-subtitle>
+                  </div>
+                  <v-spacer />
+                  <div class="col-12 col-md-5">
+                    <v-card-subtitle class="text-left bc-padding-left-0">
+                      {{
+                      $t('technicalRequirements.labelSignedResponseAlgHint')
+                      }}
+                    </v-card-subtitle>
+                  </div>
+                  <div class="col-12 col-md-5">
                     <Select
                       v-model="encryptedResponseAlg"
                       :label="
@@ -97,7 +112,7 @@
                     />
                   </div>
                   <v-spacer />
-                  <div class="col-5">
+                  <div class="col-12 col-md-5">
                     <Select
                       v-model="signedResponseAlg"
                       :label="

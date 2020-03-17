@@ -9,7 +9,10 @@
   "PACKAGE_ADD_MESSAGE": "Package  added successfully",
   "PACKAGE_UPDATE_MESSAGE": "Package Updated successfully",
   "PACKAGE_DELETE_MESSAGE": "Package  Deleted successfully",
-  "main": { "siteTitle": "BC Services Card Self Service" },
+  "main": {
+    "siteTitle": "BC Services Card Self Service",
+    "loading": "Thank you for your patience<br />as we fulfill your request."
+  },
   "projectInfo": {
     "ProjectInfoTitle": "Project Information",
     "ProjectInfoTitleInfo": "<p>To receive access to the BC Services Card login API to use with your web application, we need to gather some information about the application you’re working with.  </p><p>  Collecting this information allows us to understand the purpose of your application or project within your organization and provide proper assistance to you as you move through from development to the live access request. </p>",
@@ -47,6 +50,8 @@
     "labelJWKSUrl": "JSON Web Key Set (JWKS) URL",
     "labelEncryptedResponseAlg": "Encryption Algorithm",
     "labelSignedResponseAlg": "Signature Algorithm",
+    "labelEncryptedResponseAlgHint": " This is the algorithm you would like us to use for encrypting the returned JWT.",
+    "labelSignedResponseAlgHint": "This is the algorithm you would like us to use for signing the returned JWT. We sign with our private key, our public key is included in the token.",
     "btnBack": "Go Back",
     "btnNext": "Next",
     "btnCancel": "Cancel",
