@@ -38,6 +38,7 @@ export const actions: ActionTree<KeyCloakState, RootState> = {
           dispatch('isVerified', true);
           dispatch('setUserProfile', user.data.user);
           dispatch('userRedirect', { path, next, fromUrl });
+          await UserService.updateUser();
         } else {
           dispatch('filedsToShow', user.data.fieldsRequired);
           dispatch('setUserProfile', user.data.user);

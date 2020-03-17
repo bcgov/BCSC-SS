@@ -33,7 +33,7 @@ class EmailSubject:  # pylint: disable=too-few-public-methods
     """Email subject for each type."""
 
     test_account = 'Test accounts in self service application low'
-    dev_request = 'Development Access Request - API Keys sent'
+    dev_request = '{{project_name}} - Development Access Request - API Keys sent'
 
     @classmethod
     def get(cls, email_type: EmailType, attributes: dict):
