@@ -47,6 +47,8 @@
     "labelJWKSUrl": "JSON Web Key Set (JWKS) URL",
     "labelEncryptedResponseAlg": "Encryption Algorithm",
     "labelSignedResponseAlg": "Signature Algorithm",
+    "labelEncryptedResponseAlgHint": " This is the algorithm you would like us to use for encrypting the returned JWT.",
+    "labelSignedResponseAlgHint": "This is the algorithm you would like us to use for signing the returned JWT. We sign with our private key, our public key is included in the token.",
     "btnBack": "Go Back",
     "btnNext": "Next",
     "btnCancel": "Cancel",
