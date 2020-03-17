@@ -143,8 +143,12 @@
             </v-list>
           </v-card>
         </v-col>
+
         <v-col cols="12" flat>
-          <v-card class="mt-5">
+          <v-card
+            class="mt-5"
+            :class="showCannotSubmitError  && !isTechnicalInfoAvailable ? 'red-border' : '' "
+          >
             <v-toolbar dense class="bc-subtitle-2" dark>
               <v-card-title>
                 {{ $t('summaryPage.technicalReqTitle') }}
@@ -253,8 +257,8 @@
             </v-list>
           </v-card>
         </v-col>
-        <v-col cols="12" flat :class="isTechnicalInfoAvailable ? '' : 'bc-disabled-section' ">
-          <v-card class="mt-5">
+        <v-col cols="12" flat>
+          <v-card class="mt-5" :class="getDataScopeClasses('scopePackageId')">
             <v-toolbar dense class="bc-subtitle-2" dark>
               <v-card-title>
                 {{
@@ -298,8 +302,12 @@
           </v-card>
         </v-col>
 
-        <v-col cols="12" flat :class="isTechnicalInfoAvailable ? '' : 'bc-disabled-section' ">
-          <TestAccountSummary :technicalReq="technicalReq" :projectId="projectId" />
+        <v-col cols="12" flat>
+          <TestAccountSummary
+            :technicalReq="technicalReq"
+            :projectId="projectId"
+            :class="getDataScopeClasses('noOfTestAccount')"
+          />
         </v-col>
         <v-col cols="12">
           <v-alert
@@ -539,6 +547,21 @@ export default class TestAccountRequest extends Vue {
   }
   private submitFinalRequest() {
     this.submitProject({ projectId: this.projectId });
+  }
+
+  private getDataScopeClasses(field: string) {
+    let allowedClass = '';
+    if (!this.isTechnicalInfoAvailable) {
+      allowedClass += 'bc-disabled-section';
+    }
+    if (
+      field &&
+      (!this.technicalReq[field] || this.technicalReq[field] === null) &&
+      this.showCannotSubmitError
+    ) {
+      allowedClass += ' red-border';
+    }
+    return allowedClass;
   }
 
   private mounted() {
