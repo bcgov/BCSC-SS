@@ -31,19 +31,14 @@ class TestAccount(BaseModel, db.Model):
     attributes = db.Column(db.JSON(), nullable=True)
 
     @classmethod
-    def create_from_dict(cls, test_account_info: dict) -> TestAccount:
-        """Create a new test account from the provided dictionary."""
-        if test_account_info:
+    def create_from_dict(cls, test_accounts):
+        """Create test account's from list of dictionary."""
+        for test_account_info in test_accounts:
             test_account = TestAccount()
-            test_account.project_id = test_account_info['project_id']
             test_account.card_number = test_account_info['card_number']
             test_account.passcode = test_account_info['passcode']
             test_account.attributes = test_account_info['attributes']
-
             test_account.save()
-
-            return test_account
-        return None
 
     @classmethod
     def map_test_accounts(cls, project_id: int, no_of_accounts: int):
@@ -83,6 +78,6 @@ class TestAccount(BaseModel, db.Model):
 
     def update(self, test_account_info: dict):
         """Update test account."""
-        self.update_from_dict(['project_id', 'card_number', 'passcode', 'attributes'],
+        self.update_from_dict(['project_id'],
                               test_account_info)
         self.commit()
