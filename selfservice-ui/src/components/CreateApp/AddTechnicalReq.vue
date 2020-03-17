@@ -89,6 +89,16 @@
                       $t('technicalRequirements.labelEncryptedResponseAlgHint')
                       }}
                     </v-card-subtitle>
+                  </div>
+                  <v-spacer />
+                  <div class="col-12 col-md-5">
+                    <v-card-subtitle class="text-left bc-padding-left-0">
+                      {{
+                      $t('technicalRequirements.labelSignedResponseAlgHint')
+                      }}
+                    </v-card-subtitle>
+                  </div>
+                  <div class="col-12 col-md-5">
                     <Select
                       v-model="encryptedResponseAlg"
                       :label="
@@ -99,16 +109,10 @@
                       :items="algorithm"
                       :rules="[rules.required]"
                       outlined
-                      class="mt-6"
                     />
                   </div>
                   <v-spacer />
                   <div class="col-12 col-md-5">
-                    <v-card-subtitle class="text-left bc-padding-left-0">
-                      {{
-                      $t('technicalRequirements.labelSignedResponseAlgHint')
-                      }}
-                    </v-card-subtitle>
                     <Select
                       v-model="signedResponseAlg"
                       :label="
