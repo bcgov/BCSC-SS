@@ -170,5 +170,12 @@
     "txtsubcontent4": "Broader Public Sector includes the core provincial public service (ministries), health authorities, Crown corporations, K-12 schools, colleges, institutes, teaching universities, and research universities, contracted social service providers. It does not include Federal, local and municipal governments.",
     "btnLearmore": "Learn more",
     "txtgetStarted": "Get started"
+  },
+  "testAccountList": {
+    "pagetitle": "Add Test Accounts",
+    "pageinfo": "Some text for add test account",
+    "special_notes": "Past your test accounts without heading",
+    "btnBack": "Go Back",
+    "btnSaveChanges": "Add Test Account"
   }
 }

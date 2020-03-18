@@ -46,15 +46,8 @@
         <li class="d-sm-none">
           <v-btn text to="/" link dark class="mr-2 login-btn">Login</v-btn>
         </li>
-        <li>
-          <router-link to="/">Home</router-link>
-        </li>
-
-        <li>
-          <router-link to="/dashboard">Dashboard</router-link>
-        </li>
-        <li>
-          <router-link to="/project/info">Create Project</router-link>
+        <li v-for="item in items" :key="item.title">
+          <router-link :to="item.link">{{item.title}}</router-link>
         </li>
       </ul>
     </nav>
@@ -85,6 +78,14 @@ export default class Header extends Vue {
   private showMenu: boolean = false;
   private drawer: boolean = false;
   private hideMenuInPage: boolean = !this.hideMenu;
+  private items: any = [
+    { title: 'Home', icon: 'mdi-home', link: '/' },
+    { title: 'Project', link: '/dashboard' },
+    {
+      title: 'Add Test Account',
+      link: '/add-test-account'
+    }
+  ];
 
   @Watch('$route', { immediate: true, deep: true })
   private onUrlChange(newVal: any) {
