@@ -354,7 +354,7 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
                     style="font-size: 16px;"
                   />
                   
-          abcd
+          new client
         
                 </code>
               </div>
@@ -399,7 +399,7 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
                   </div>
                    
                   <span>
-                    test
+                    new secret
                   </span>
                 </code>
               </div>
