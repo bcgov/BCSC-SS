@@ -51,6 +51,7 @@ exports[`Profile.vue renders props when passed with gettors 1`] = `
             
             john
             Deo
+          
           </v-card-title-stub>
            
           <input-stub
@@ -86,7 +87,7 @@ exports[`Profile.vue renders props when passed with gettors 1`] = `
                
               <button-stub
                 class="white--text"
-                color="indigo accent-4"
+                color=""
                 depressed=""
                 disabled="true"
                 name="button"

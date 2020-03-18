@@ -15,8 +15,8 @@
 
 import json
 
-from .auth import TestJwtClaims, ss_client_auth_header
-from .request_data import factory_project_info, factory_project_technical_req
+from .auth import TestJwtClaims, ss_admin_auth_header, ss_client_auth_header
+from .request_data import factory_project_info, factory_project_technical_req, factory_test_account
 
 from selfservice_api.models.enums import ProjectRoles
 
@@ -27,6 +27,7 @@ PROJECTINFO_API = API_URI_PREFIX + 'project/info'
 TECHNICALREQ_API = API_URI_PREFIX + 'project/:project_id/technical-req'
 OIDCCONFIG_API = API_URI_PREFIX + 'project/:project_id/oidc-config'
 SCOPEPACKAGE_API = API_URI_PREFIX + 'scope-package'
+TESTACCOUNT_API = API_URI_PREFIX + 'test-account'
 
 # User: Start
 
@@ -52,6 +53,20 @@ def _create_user_(client, jwt, project_role='developer', invalid_data=False):
             'email': claims['email'],
             'phone': '5689732156'
         }
+
+    response = client.post(USER_API, data=json.dumps(req_data),
+                           headers=headers, content_type='application/json')
+    return response
+
+
+def _create_admin_user_(client, jwt):
+    """Create admin user and return response object."""
+    headers = ss_admin_auth_header(jwt)
+    claims = TestJwtClaims['ss_admin']
+    req_data = {
+        'email': claims['email'],
+        'phone': '5689732156'
+    }
 
     response = client.post(USER_API, data=json.dumps(req_data),
                            headers=headers, content_type='application/json')
@@ -115,9 +130,9 @@ def _get_project_(client, jwt):
     return response
 
 
-def _get_all_project_(client, jwt):
+def _get_all_project_(client, jwt, is_analyst=False):
     """Get all projects and return response object."""
-    headers = ss_client_auth_header(jwt)
+    headers = ss_admin_auth_header(jwt) if is_analyst else ss_client_auth_header(jwt)
     create_project(client, jwt)
 
     response = client.get(PROJECTINFO_API, headers=headers, content_type='application/json')
@@ -232,3 +247,18 @@ def _get_oidc_config_(client, jwt):
     return response
 
 # OIDC Config: End
+# Test Account: Start
+
+
+def _create_test_account_(client, jwt):
+    """Create test account and return response object."""
+    _create_admin_user_(client, jwt)
+
+    headers = ss_admin_auth_header(jwt)
+    request_data = factory_test_account()
+
+    response = client.post(TESTACCOUNT_API, data=json.dumps(request_data),
+                           headers=headers, content_type='application/json')
+    return response
+
+# Test Account: End

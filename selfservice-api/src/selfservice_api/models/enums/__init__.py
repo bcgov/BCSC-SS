@@ -13,4 +13,4 @@
 # limitations under the License.
 """This exports all of the enums used by the application."""
 
-from .project import ProjectRoles, ProjectStatus
+from .project import Algorithms, ProjectRoles, ProjectStatus

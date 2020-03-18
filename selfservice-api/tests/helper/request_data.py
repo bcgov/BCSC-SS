@@ -84,11 +84,18 @@ def factory_project_technical_req(is_model=False):
             'https://someone.com/*'
         ],
         'jwksUri': 'https://someone.com/jwks',
-        'idTokenSignedResponseAlg': 'RS256',
-        'userinfoSignedResponseAlg': 'RS256'
+        'signedResponseAlg': 'RS256',
+        'encryptedResponseAlg': 'RS256'
     }
     if is_model:
-        return camel2snake(technical_req)
+        del technical_req['signedResponseAlg']
+        del technical_req['encryptedResponseAlg']
+        technical_req = camel2snake(technical_req)
+        technical_req['id_token_signed_response_alg'] = 'RS256'
+        technical_req['userinfo_signed_response_alg'] = 'RS256'
+        technical_req['id_token_encrypted_response_alg'] = 'RS256'
+        technical_req['userinfo_encrypted_response_alg'] = 'RS256'
+        return technical_req
     else:
         return technical_req
 
@@ -113,3 +120,12 @@ def factory_project_oidc_config():
         'userinfo_encrypted_response_enc': 'RS256'
     }
     return oidc_config
+
+
+def factory_test_account():
+    """JSON data to create TestAccount."""
+    test_accounts = {
+        'testAccounts': 'SS4BPS201,98901,ONE,SS4BPS Felecia,F,4732 Easy Street,,V9B 3V9,1998-04-30\n \
+            SS4BPS202,,TWO,SS4BPS Benjamin ,M,308-2464 Crimson Vale,Penticton BC V2A 5N1,V2A 5N1,2000-11-18'
+    }
+    return test_accounts

@@ -1,6 +1,6 @@
 /** * Add TechnicalReq */
 <template>
-  <v-card class="mx-auto" style="max-width: 80%;">
+  <v-card class="mx-auto outer-card">
     <!--  <v-alert type="success" v-if="successStatus">TechnicalReq {{isEditMode ? 'Updated' : 'Added'}} succesfully</v-alert>
     <v-alert type="error" v-if="errorStatus">Something went wrong...</v-alert>-->
     <v-card class="mx-auto">
@@ -83,29 +83,44 @@
                   class="pt-6"
                 />
                 <div class="row">
-                  <div class="col-5">
+                  <div class="col-12 col-md-5">
+                    <v-card-subtitle class="text-left bc-padding-left-0">
+                      {{
+                      $t('technicalRequirements.labelEncryptedResponseAlgHint')
+                      }}
+                    </v-card-subtitle>
+                  </div>
+                  <v-spacer />
+                  <div class="col-12 col-md-5">
+                    <v-card-subtitle class="text-left bc-padding-left-0">
+                      {{
+                      $t('technicalRequirements.labelSignedResponseAlgHint')
+                      }}
+                    </v-card-subtitle>
+                  </div>
+                  <div class="col-12 col-md-5">
                     <Select
-                      v-model="idTokenSignedResponseAlg"
+                      v-model="encryptedResponseAlg"
                       :label="
                         $t(
-                          'technicalRequirements.labelIdTokenSignedResponseAlg'
+                          'technicalRequirements.labelEncryptedResponseAlg'
                         )
                       "
-                      :items="tokenAlgoritham"
+                      :items="algorithm"
                       :rules="[rules.required]"
                       outlined
                     />
                   </div>
                   <v-spacer />
-                  <div class="col-5">
+                  <div class="col-12 col-md-5">
                     <Select
-                      v-model="userinfoSignedResponseAlg"
+                      v-model="signedResponseAlg"
                       :label="
                         $t(
-                          'technicalRequirements.labelUserinfoSignedResponseAlg'
+                          'technicalRequirements.labelSignedResponseAlg'
                         )
                       "
-                      :items="userAlgoritham"
+                      :items="algorithm"
                       :rules="[rules.required]"
                       outlined
                       class="col-6"
@@ -158,10 +173,7 @@ import Select from '@/Atomic/Select/Select.vue';
 import validationRules from '@/config/validationRules';
 import Loading from '@/Atomic/Loading/Loading.vue';
 
-import {
-  tokenSignatureAlgoritham,
-  userInfoSignedResponseAlgoritham
-} from '@/constants/algoritham';
+import { algorithm } from '@/constants/algorithm';
 import { TechnicalReqModel } from '@/models/TechnicalReqModel';
 const TechnicalReqModule = namespace('TechnicalReqModule');
 const ProjectInfoModule = namespace('ProjectInfoModule');
@@ -203,10 +215,9 @@ export default class AddTechnicalReq extends Vue {
   private clientUri: string = '';
   private redirectUris: any = [''];
   private jwksUri: string = '';
-  private idTokenSignedResponseAlg: string = 'RS256';
-  private userinfoSignedResponseAlg: string = 'RS256';
-  private tokenAlgoritham: any = tokenSignatureAlgoritham;
-  private userAlgoritham: any = userInfoSignedResponseAlgoritham;
+  private encryptedResponseAlg: string = 'RS256';
+  private signedResponseAlg: string = 'RS256';
+  private algorithm: any = algorithm;
   private blockRemoval = true;
 
   // private id: string = '';
@@ -230,8 +241,8 @@ export default class AddTechnicalReq extends Vue {
       clientUri: this.clientUri,
       redirectUris: this.redirectUris,
       jwksUri: this.jwksUri,
-      idTokenSignedResponseAlg: this.idTokenSignedResponseAlg,
-      userinfoSignedResponseAlg: this.userinfoSignedResponseAlg
+      encryptedResponseAlg: this.encryptedResponseAlg,
+      signedResponseAlg: this.signedResponseAlg
     };
 
     if (this.isEditMode && this.TechnicalReqId !== 0) {
@@ -247,10 +258,9 @@ export default class AddTechnicalReq extends Vue {
     this.clientUri = val.clientUri;
     this.redirectUris = val.redirectUris || this.redirectUris;
     this.jwksUri = val.jwksUri;
-    this.idTokenSignedResponseAlg =
-      val.idTokenSignedResponseAlg || this.idTokenSignedResponseAlg;
-    this.userinfoSignedResponseAlg =
-      val.userinfoSignedResponseAlg || this.userinfoSignedResponseAlg;
+    this.encryptedResponseAlg =
+      val.encryptedResponseAlg || this.encryptedResponseAlg;
+    this.signedResponseAlg = val.signedResponseAlg || this.signedResponseAlg;
     this.TechnicalReqId = val.id || 0;
     this.isEditMode = true;
   }

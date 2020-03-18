@@ -15,6 +15,8 @@
 
 from marshmallow import EXCLUDE, Schema, fields, validate
 
+from ..models.enums import Algorithms
+
 
 class TechnicalReqRequestSchema(Schema):
     """This class manages technical requirement request schema."""
@@ -29,8 +31,19 @@ class TechnicalReqRequestSchema(Schema):
     client_uri = fields.Str(data_key='clientUri', validate=validate.Length(max=500))
     redirect_uris = fields.List(fields.String(), data_key='redirectUris', required=True)
     jwks_uri = fields.Str(data_key='jwksUri', validate=validate.Length(max=500))
-    id_token_signed_response_alg = fields.Str(data_key='idTokenSignedResponseAlg', validate=validate.Length(max=10))
-    userinfo_signed_response_alg = fields.Str(data_key='userinfoSignedResponseAlg', validate=validate.Length(max=10))
+
+    id_token_signed_response_alg = fields.Str(load_only=True, data_key='signedResponseAlg',
+                                              validate=validate.OneOf(Algorithms.list()))
+    userinfo_signed_response_alg = fields.Str(load_only=True, data_key='signedResponseAlg')
+    id_token_encrypted_response_alg = fields.Str(load_only=True, data_key='encryptedResponseAlg',
+                                                 validate=validate.OneOf(Algorithms.list()))
+    userinfo_encrypted_response_alg = fields.Str(load_only=True, data_key='encryptedResponseAlg')
+
+    # Since the discussion of Encryption and Signing continues dumping is changed. May change on upcoming sprint's.
+    dump_signed_response_alg = fields.Str(dump_only=True, data_key='signedResponseAlg',
+                                          attribute='id_token_signed_response_alg')
+    dump_encrypted_response_alg = fields.Str(dump_only=True, data_key='encryptedResponseAlg',
+                                             attribute='id_token_encrypted_response_alg')
 
 
 class TechnicalReqPackageSchema(Schema):

@@ -38,7 +38,7 @@
 
             <v-list dense class="px-5">
               <v-list-item>
-                <v-list-item-content>
+                <v-list-item-content class="pr-30">
                   {{
                   $t('summaryPage.labelOrganizationName')
                   }}
@@ -56,7 +56,7 @@
               </v-list-item>
               <v-divider></v-divider>
               <v-list-item>
-                <v-list-item-content>
+                <v-list-item-content class="pr-30">
                   {{
                   $t('summaryPage.labelProjectTitle')
                   }}
@@ -74,7 +74,7 @@
               </v-list-item>
               <v-divider></v-divider>
               <v-list-item>
-                <v-list-item-content class="align-self-start">
+                <v-list-item-content class="align-self-start pr-30">
                   {{
                   $t('summaryPage.labelTechnicalContact')
                   }}
@@ -101,7 +101,7 @@
               </v-list-item>
               <v-divider></v-divider>
               <v-list-item>
-                <v-list-item-content class="align-self-start">
+                <v-list-item-content class="align-self-start pr-30">
                   {{
                   $t('summaryPage.labelManagerContact')
                   }}
@@ -122,7 +122,7 @@
               </v-list-item>
               <v-divider></v-divider>
               <v-list-item>
-                <v-list-item-content class="align-self-start">
+                <v-list-item-content class="align-self-start pr-30">
                   {{
                   $t('summaryPage.labelCtoContact')
                   }}
@@ -143,8 +143,12 @@
             </v-list>
           </v-card>
         </v-col>
+
         <v-col cols="12" flat>
-          <v-card class="mt-5">
+          <v-card
+            class="mt-5"
+            :class="showCannotSubmitError  && !isTechnicalInfoAvailable ? 'red-border' : '' "
+          >
             <v-toolbar dense class="bc-subtitle-2" dark>
               <v-card-title>
                 {{ $t('summaryPage.technicalReqTitle') }}
@@ -157,10 +161,14 @@
             </v-toolbar>
             <v-list dense class="px-5">
               <v-list-item>
-                <v-list-item-content>
+                <v-list-item-content class="pr-30">
                   {{
                   $t('summaryPage.labelApplicationUrl')
                   }}
+                  <span
+                    class="small-hint pad-50"
+                    v-html="$t('summaryPage.applicationUrlHint')"
+                  ></span>
                 </v-list-item-content>
                 <v-list-item-content class="align-end">
                   <div v-if="technicalReq.clientUri">
@@ -171,10 +179,14 @@
               </v-list-item>
               <v-divider></v-divider>
               <v-list-item>
-                <v-list-item-content class="align-self-start">
+                <v-list-item-content class="align-self-start pr-30">
                   {{
                   $t('summaryPage.labelRedirectUrl')
                   }}
+                  <span
+                    class="small-hint pad-50"
+                    v-html="$t('summaryPage.labelRedirectUrlHint')"
+                  ></span>
                 </v-list-item-content>
                 <v-list-item-content class="align-end">
                   <div v-for="redirectUri in technicalReq.redirectUris" :key="redirectUri">
@@ -185,10 +197,14 @@
               </v-list-item>
               <v-divider></v-divider>
               <v-list-item>
-                <v-list-item-content>
+                <v-list-item-content class="pr-30">
                   {{
                   $t('summaryPage.labelJWKSUrl')
                   }}
+                  <span
+                    class="small-hint pad-50"
+                    v-html="$t('summaryPage.labelJWKSUrlHint')"
+                  ></span>
                 </v-list-item-content>
 
                 <v-list-item-content class="align-end">
@@ -200,32 +216,40 @@
               </v-list-item>
               <v-divider></v-divider>
               <v-list-item>
-                <v-list-item-content>
+                <v-list-item-content class="pr-30">
                   {{
-                  $t('summaryPage.labelIdTokenSignedResponseAlg')
+                  $t('summaryPage.labelEncryptedResponseAlg')
                   }}
+                  <span
+                    class="small-hint pad-50"
+                    v-html="$t('summaryPage.labelEncryptedResponseAlgHint')"
+                  ></span>
                 </v-list-item-content>
                 <v-list-item-content class="align-end">
                   <v-list-item-content class="align-end">
-                    <div v-if="technicalReq.idTokenSignedResponseAlg">
+                    <div v-if="technicalReq.encryptedResponseAlg">
                       <v-icon small class="mr-1">mdi-shield-key</v-icon>
-                      {{ technicalReq.idTokenSignedResponseAlg }}
+                      {{ technicalReq.encryptedResponseAlg }}
                     </div>
                   </v-list-item-content>
                 </v-list-item-content>
               </v-list-item>
               <v-divider></v-divider>
               <v-list-item>
-                <v-list-item-content>
+                <v-list-item-content class="pr-30">
                   {{
-                  $t('summaryPage.labelUserinfoSignedResponseAlg')
+                  $t('summaryPage.labelSignedResponseAlg')
                   }}
+                  <span
+                    class="small-hint pad-50"
+                    v-html="$t('summaryPage.labelSignedResponseAlgHint')"
+                  ></span>
                 </v-list-item-content>
                 <v-list-item-content class="align-end">
                   <v-list-item-content class="align-end">
-                    <div v-if="technicalReq.userinfoSignedResponseAlg">
+                    <div v-if="technicalReq.signedResponseAlg">
                       <v-icon small class="mr-1">mdi-shield-key</v-icon>
-                      {{ technicalReq.userinfoSignedResponseAlg }}
+                      {{ technicalReq.signedResponseAlg }}
                     </div>
                   </v-list-item-content>
                 </v-list-item-content>
@@ -233,8 +257,8 @@
             </v-list>
           </v-card>
         </v-col>
-        <v-col cols="12" flat :class="isTechnicalInfoAvailable ? '' : 'bc-disabled-section' ">
-          <v-card class="mt-5">
+        <v-col cols="12" flat>
+          <v-card class="mt-5" :class="getDataScopeClasses('scopePackageId')">
             <v-toolbar dense class="bc-subtitle-2" dark>
               <v-card-title>
                 {{
@@ -250,10 +274,14 @@
 
             <v-list dense v-if="getPackageList.length > 0" class="px-5">
               <v-list-item>
-                <v-list-item-content class="align-self-start">
+                <v-list-item-content class="align-self-start pr-30">
                   {{
                   $t('summaryPage.labelDataPackageReqd')
                   }}
+                  <span
+                    class="small-hint pad-50"
+                    v-html="$t('summaryPage.labelDataPackageReqdHint')"
+                  ></span>
                 </v-list-item-content>
                 <v-list-item-content class="align-end">
                   <div v-if="selectedPackage.packageName !==''">
@@ -274,8 +302,12 @@
           </v-card>
         </v-col>
 
-        <v-col cols="12" flat :class="isTechnicalInfoAvailable ? '' : 'bc-disabled-section' ">
-          <TestAccountSummary :technicalReq="technicalReq" :projectId="projectId" />
+        <v-col cols="12" flat>
+          <TestAccountSummary
+            :technicalReq="technicalReq"
+            :projectId="projectId"
+            :class="getDataScopeClasses('noOfTestAccount')"
+          />
         </v-col>
         <v-col cols="12">
           <v-alert
@@ -302,11 +334,11 @@
                 @click="goBack()"
                 :aria-label="$t('summaryPage.goBack')"
                 secondary
+                class="back-btn"
               >{{ $t('summaryPage.goBack') }}</Button>
               <Button
                 :loading="isLoading"
                 class="white--text submit-package ml-6"
-                color="indigo accent-4"
                 depressed
                 @click="showDisclimer"
               >{{ $t('summaryPage.submitRequest') }}</Button>
@@ -455,6 +487,7 @@ export default class TestAccountRequest extends Vue {
   @Watch('projectInfo')
   private ongetprojectInfoChanged(val: any) {
     if (this.technicalReq && this.technicalReq.projectId !== 0) {
+      this.isTechnicalInfoAvailable = this.technicalReq.id ? true : false;
       this.isLoading = false;
       this.setUsers(this.projectInfo);
     }
@@ -517,6 +550,21 @@ export default class TestAccountRequest extends Vue {
     this.submitProject({ projectId: this.projectId });
   }
 
+  private getDataScopeClasses(field: string) {
+    let allowedClass = '';
+    if (!this.isTechnicalInfoAvailable) {
+      allowedClass += 'bc-disabled-section';
+    }
+    if (
+      field &&
+      (!this.technicalReq[field] || this.technicalReq[field] === null) &&
+      this.showCannotSubmitError
+    ) {
+      allowedClass += ' red-border';
+    }
+    return allowedClass;
+  }
+
   private mounted() {
     this.loadFullData();
   }
@@ -548,11 +596,5 @@ export default class TestAccountRequest extends Vue {
 }
 .text-center {
   text-align: center !important;
-}
-.outer-card {
-  max-width: 100%;
-  @include rwd(1500) {
-    max-width: 80%;
-  }
 }
 </style>

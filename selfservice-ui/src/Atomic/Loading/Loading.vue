@@ -2,8 +2,8 @@
   <v-container>
     <v-layout d-flex align-center justify-center row wrap>
       <div col="4" class="mt-10">
-        <v-progress-linear class="loading" indeterminate rounded height="6"></v-progress-linear>We know waiting sucks
-        <br />but trust me it’s worth it
+        <v-progress-linear class="loading" indeterminate rounded height="6"></v-progress-linear>
+        <span v-html="$t('main.loading')"></span>
       </div>
     </v-layout>
   </v-container>

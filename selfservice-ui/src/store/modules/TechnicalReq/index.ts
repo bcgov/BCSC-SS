@@ -18,8 +18,8 @@ export const state: TechnicalReqState = {
     clientUri: '',
     redirectUris: [],
     jwksUri: '',
-    idTokenSignedResponseAlg: '',
-    userinfoSignedResponseAlg: ''
+    encryptedResponseAlg: '',
+    signedResponseAlg: ''
   },
   message: ''
 };

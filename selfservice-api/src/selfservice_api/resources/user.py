@@ -21,15 +21,15 @@ from marshmallow import ValidationError
 
 from ..models.user import User
 from ..schemas.user import UserSchema
-from ..utils.auth import jwt
+from ..utils.auth import auth, jwt
 from ..utils.util import cors_preflight
 
 
 API = Namespace('User', description='User')
 
 
-@cors_preflight('GET,POST,OPTIONS')
-@API.route('', methods=['GET', 'POST', 'OPTIONS'])
+@cors_preflight('GET,POST,PUT,OPTIONS')
+@API.route('', methods=['GET', 'POST', 'PUT', 'OPTIONS'])
 class UserResource(Resource):
     """Resource for managing create and get user."""
 
@@ -100,3 +100,17 @@ class UserResource(Resource):
             response, status = {'message': str(err.messages)}, \
                 HTTPStatus.BAD_REQUEST
         return response, status
+
+    @staticmethod
+    @cors.crossdomain(origin='*')
+    @auth.require
+    def put():
+        """Update first name and last name from token."""
+        token_info = g.jwt_oidc_token_info
+        user = g.user
+        user.update({
+            'first_name': token_info.get('given_name'),
+            'last_name': token_info.get('family_name')
+        })
+
+        return 'Updated successfully', HTTPStatus.OK

@@ -9,7 +9,10 @@
   "PACKAGE_ADD_MESSAGE": "Package  added successfully",
   "PACKAGE_UPDATE_MESSAGE": "Package Updated successfully",
   "PACKAGE_DELETE_MESSAGE": "Package  Deleted successfully",
-  "main": { "siteTitle": "BC Services Card Self Service" },
+  "main": {
+    "siteTitle": "BC Services Card Self Service",
+    "loading": "Thank you for your patience<br />as we fulfill your request."
+  },
   "projectInfo": {
     "ProjectInfoTitle": "Project Information",
     "ProjectInfoTitleInfo": "<p>To receive access to the BC Services Card login API to use with your web application, we need to gather some information about the application you’re working with.  </p><p>  Collecting this information allows us to understand the purpose of your application or project within your organization and provide proper assistance to you as you move through from development to the live access request. </p>",
@@ -28,7 +31,7 @@
     "btnNext": "Next",
     "btnSaveChanges": "Save Changes",
     "btnCancel": "Cancel",
-    "OrganizationNameHint": "We need to know which Public Agency you are affiliated with.",
+    "OrganizationNameHint": "BC Services Card login is available to many Public Sector agencies. Please let us know which one you are affiliated with.",
     "projectNameHint": "Please provide us with a short name of your application which will create a login option with the BC Services Card",
     "DescriptionHint": "Please provide us with a short description of your application and why you need the BC Services Card as a login method",
     "developerHint": "Please provide developer’s contact information who is associated to this request and project. This is a person who understand OIDC and will be able to configure your BPS application for the BC Services Card Login",
@@ -44,9 +47,11 @@
     "labelApplicationUrl": "Home page URL",
     "labelRedirectUrl": "Redirect URI values",
     "JWKSText": "Input the URL to your JSON Web Key Set (JWKS). The BC Services Card implementation of OIDC requires you to implement a URL from which your JWKS can be obtained. You also need to tell us which cryptographic algorithms we should use for ID tokens and user information signed responses. (default is RS256).",
-    "labelJWKSUrl": "JWKS URL",
-    "labelIdTokenSignedResponseAlg": "ID token signature algorithm",
-    "labelUserinfoSignedResponseAlg": "User info signed response algorithm",
+    "labelJWKSUrl": "JSON Web Key Set (JWKS) URL",
+    "labelEncryptedResponseAlg": "Encryption Algorithm",
+    "labelSignedResponseAlg": "Signature Algorithm",
+    "labelEncryptedResponseAlgHint": " This is the algorithm you would like us to use for encrypting the returned JWT.",
+    "labelSignedResponseAlgHint": "This is the algorithm you would like us to use for signing the returned JWT. We sign with our private key, our public key is included in the token.",
     "btnBack": "Go Back",
     "btnNext": "Next",
     "btnCancel": "Cancel",
@@ -92,9 +97,9 @@
     "technicalReqTitle": "Technical Requirement",
     "labelApplicationUrl": "Application URL",
     "labelRedirectUrl": "Redirect URL values",
-    "labelJWKSUrl": "JWKS URL",
-    "labelIdTokenSignedResponseAlg": "ID token signature algorithm",
-    "labelUserinfoSignedResponseAlg": "User info signed response algorithm",
+    "labelJWKSUrl": "JSON Web Key Set (JWKS) URL",
+    "labelEncryptedResponseAlg": "Encryption Algorithm",
+    "labelSignedResponseAlg": "Signature Algorithm",
     "packageTestTitle": "Data Scopes",
     "labelDataPackageReqd": "Data package requested",
     "labelTestAccounts": "Test accounts",
@@ -109,11 +114,17 @@
     "labelTestAccountsTitle": "Test Accounts",
     "cantSubmitErrorMessage": "Your submission contains incomplete fields. Please edit any sections requiring completion before submitting your request.",
     "systemError": "Something went wrong while processing your request. Please retry in a few minutes. If the problem persists, please contact the Product Owner.",
-    "OrganizationNameHint": "We need to know which Public Agency you are affiliated with.",
+    "OrganizationNameHint": "This is the name of the Public Sector agency with which you are affiliated.",
     "projectNameHint": "Please provide us with a short name of your application which will create a login option with the BC Services Card",
-    "developerHint": "Please provide developer’s contact information who is associated to this request and project. This is a person who understand OIDC and will be able to configure your BPS application for the BC Services Card Login",
-    "managerHint": "Please provide managers contact information who is associated to this request and project. This is a person who will be the main point of contact for the BC Services Card IDIM team and provide updates on the project’s privacy, security, communication and agreement progress.",
-    "ctoHint": "Please provide Executive Sponsor’s contact information who is associated to this request and project. This is a person who will provide attestations to the BC Services Card IDIM team on the compliance and completion of privacy, security, communication and agreement items."
+    "developerHint": "This is a person who understand OIDC and will be able to configure your BPS application for the BC Services Card Login",
+    "managerHint": "This is a person who will be the main point of contact for the BC Services Card IDIM team and provide updates on the project’s privacy, security, communication and agreement progress.",
+    "ctoHint": "This is a person who will provide attestations to the BC Services Card IDIM team on the compliance and completion of privacy, security, communication and agreement items.",
+    "applicationUrlHint": "This is your application home page, or where users will go to use your application.",
+    "labelRedirectUrlHint": "These are potential URL addresses to which we could redirect your application on successful user authentication. If you have multiple redirects, use one field for each URL.",
+    "labelJWKSUrlHint": "We use your JWKS  public key to encrypt our returned JWT. Warning - If the JWKS does not resolve, the JWT will not be encrypted.",
+    "labelEncryptedResponseAlgHint": "This is the algorithm you would like us to use for encrypting the returned JWT. ",
+    "labelSignedResponseAlgHint": "This is the algorithm you would like us to use for signing the returned JWT. We sign with our private key, our public key is included in the token.",
+    "labelDataPackageReqdHint": "Package of OIDC scopes (or user attributes) made available to your application on successful login"
   },
   "ClientID": {
     "pagetitle": "API Key / Client ID",
@@ -147,5 +158,17 @@
     "labelEmail": "Email (work)",
     "labelPhone": "Phone",
     "btnContinue": "Continue"
+  },
+  "home": {
+    "pagetitle": "Complete Profile",
+    "txtMainTitle": "Easily implement BC Services Card for online authentication",
+    "txtFitForOrganization": "Is this a fit for your organization?",
+    "txtsubcontent1": "Do you want to use <a href='https://digital.gov.bc.ca' target='_ss'>digital technologies</a> that are transforming the way British Columbians live, work and play?",
+    "txtsubcontent2": "Are you part of a Broader Public Sector organization?",
+    "txtsubcontent3": "Is your organization in need of <a href='https://www2.gov.bc.ca/assets/gov/government/services-for-government-and-broader-public-sector/information-technology-services/standards-files/identity_assurance_standard.pdf' target='_ss' >high assurance authentication?</a>",
+    "txtsubTitle2": "What defines \"broader public sector\"?",
+    "txtsubcontent4": "Broader Public Sector includes the core provincial public service (ministries), health authorities, Crown corporations, K-12 schools, colleges, institutes, teaching universities, and research universities, contracted social service providers. It does not include Federal, local and municipal governments.",
+    "btnLearmore": "Learn more",
+    "txtgetStarted": "Get started"
   }
 }

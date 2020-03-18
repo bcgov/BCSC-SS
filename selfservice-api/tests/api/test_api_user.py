@@ -31,6 +31,17 @@ def test_post_user_validation(client, jwt, session):
     assert response.status_code == HTTPStatus.BAD_REQUEST
 
 
+def test_put_user(client, jwt, session):
+    """Assert that the endpoint returns the success status."""
+    response = _create_user_(client, jwt)
+    headers = ss_client_auth_header(jwt)
+
+    response = client.put(USER_API,
+                          headers=headers, content_type='application/json')
+
+    assert response.status_code == HTTPStatus.OK
+
+
 def test_get_user(client, jwt, session):
     """Assert that the endpoint returns the success status."""
     response = _get_user_(client, jwt)

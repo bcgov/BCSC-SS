@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home.vue renders props when passed 1`] = `
+<v-container-stub
+  fluid="true"
+  tag="div"
+>
+  <v-row-stub
+    tag="div"
+  >
+    <v-col-stub
+      cols="12"
+      tag="div"
+    >
+      <h1
+        class="text-center main-headline"
+      >
+        
+      </h1>
+    </v-col-stub>
+     
+    <v-col-stub
+      class="home-img"
+      cols="12"
+      md="6"
+      tag="div"
+    />
+     
+    <v-col-stub
+      class="text-left"
+      cols="12"
+      md="6"
+      tag="div"
+    >
+      <v-card-stub
+        flat="true"
+        loaderheight="4"
+        tag="div"
+      >
+        <h2
+          class="second-headline"
+        >
+          
+        </h2>
+         
+        <div
+          class="second-sub-content"
+        />
+         
+        <div
+          class="second-sub-content"
+        />
+         
+        <div
+          class="second-sub-content"
+        />
+         
+        <h3
+          class="third-h3"
+        >
+          
+        </h3>
+         
+        <div
+          class="subcontent3"
+        />
+         
+        <v-card-actions-stub
+          class="btn-actions"
+        >
+          <button-stub
+            class="btn-all"
+            color="#fcba19 !important"
+            name="button"
+            type="button"
+          >
+            
+          </button-stub>
+           
+          <button-stub
+            class="btn-all getting-start-btn"
+            color=""
+            name="button"
+            type="button"
+          >
+            
+            
+          
+          </button-stub>
+        </v-card-actions-stub>
+      </v-card-stub>
+    </v-col-stub>
+  </v-row-stub>
+</v-container-stub>
+`;

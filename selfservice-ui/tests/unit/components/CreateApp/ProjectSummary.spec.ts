@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils';
+import { shallowMount, mount } from '@vue/test-utils';
 import ProjectSummary from '@/components/CreateApp/ProjectSummary.vue';
 import Vuetify from 'vuetify';
 import Vuex from 'vuex';
@@ -46,6 +46,7 @@ describe('ProjectSummary.vue', () => {
               ]
             };
           }),
+          getFinalProjectSubmissionStatus: jest.fn(),
           errorStatus: jest.fn()
         },
         actions: {
@@ -60,14 +61,14 @@ describe('ProjectSummary.vue', () => {
             return {
               clientUri: 'app.com',
               id: 15,
-              idTokenSignedResponseAlg: 'RS256',
+              encryptedResponseAlg: 'RS256',
               jwksUri: 'jwks2.com',
               noOfTestAccount: 3,
               noteTestAccount: '',
               projectId: 12,
               redirectUris: ['test.com'],
               scopePackageId: 3,
-              userinfoSignedResponseAlg: 'RS256'
+              signedResponseAlg: 'RS256'
             };
           }),
           errorStatus: jest.fn()
@@ -105,12 +106,37 @@ describe('ProjectSummary.vue', () => {
         actions: {
           redirectFromSummaryPage: jest.fn()
         }
+      },
+      ClientIdModule: {
+        namespaced: true,
+        state: {},
+        getters: {
+          isLoading: jest.fn(),
+          getApiData: jest.fn(() => {
+            return {
+              oidcConfig: {
+                clientId: 'new client',
+                clientSecret: 'new secret'
+              },
+              testUserAccounts: [
+                {
+                  userName: 'iuser1',
+                  idKey: 'my key'
+                }
+              ]
+            };
+          }),
+          errorStatus: jest.fn()
+        },
+        actions: {
+          getClientIdDetails: jest.fn()
+        }
       }
     }
   });
 
   const mountFunction = (options: any) => {
-    return shallowMount(ProjectSummary, {
+    return mount(ProjectSummary, {
       store,
       vuetify,
       mocks: { $t: jest.fn(() => {}) }, // tslint:disable-line
@@ -120,6 +146,16 @@ describe('ProjectSummary.vue', () => {
 
   it('renders props when passed with gettors', () => {
     const projectSummary = mountFunction({});
+    expect(projectSummary.element).toMatchSnapshot();
+  });
+
+  it('show modal on click', () => {
+    const projectSummary = mountFunction({});
+
+    projectSummary.setData({ isLoading: false });
+    const button = projectSummary.find('.submit-package');
+    projectSummary.vm.$on('action-btn:clicked', jest.fn());
+    button.trigger('click');
     expect(projectSummary.element).toMatchSnapshot();
   });
 });

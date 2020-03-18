@@ -1,6 +1,6 @@
 /** * Project information */
 <template>
-  <v-card class="mx-auto" style="max-width: 80%;">
+  <v-card class="mx-auto outer-card">
     <v-card class="mx-auto">
       <v-app-bar dark class="bc-subtitle">
         <v-btn icon @click="$router.push('/dashboard/')" aria-label="Back Button">
@@ -163,7 +163,6 @@
                     :disabled="!form"
                     :loading="isLoading"
                     class="white--text submit-project"
-                    color="indigo accent-4"
                     depressed
                     @click="submitProjectInfo"
                     @keyup.enter="submitProjectInfo"

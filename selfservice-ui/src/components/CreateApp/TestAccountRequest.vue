@@ -1,7 +1,7 @@
 /** * TestAccountRequest component */
 
 <template>
-  <v-card class="mx-auto" style="max-width: 80%;">
+  <v-card class="mx-auto outer-card">
     <v-toolbar flat class="bc-subtitle padding-0" dark>
       <v-btn icon @click="goBack()" :aria-label="$t('testAccount.btnBack')">
         <v-icon>mdi-arrow-left</v-icon>
