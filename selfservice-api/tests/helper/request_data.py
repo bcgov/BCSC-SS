@@ -120,3 +120,12 @@ def factory_project_oidc_config():
         'userinfo_encrypted_response_enc': 'RS256'
     }
     return oidc_config
+
+
+def factory_test_account():
+    """JSON data to create TestAccount."""
+    test_accounts = {
+        'testAccounts': 'SS4BPS201,98901,ONE,SS4BPS Felecia,F,4732 Easy Street,,V9B 3V9,1998-04-30\n \
+            SS4BPS202,,TWO,SS4BPS Benjamin ,M,308-2464 Crimson Vale,Penticton BC V2A 5N1,V2A 5N1,2000-11-18'
+    }
+    return test_accounts

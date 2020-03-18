@@ -43,7 +43,7 @@ class TestAccountResource(Resource):
             return 'Unknown data', HTTPStatus.BAD_REQUEST
         test_accounts = TestAccountResource._read_from_csv_data_(data)
 
-        TestAccount.create_from_dict(test_accounts)
+        TestAccount.create_from_list(test_accounts)
         response, status = str(len(test_accounts)) + ' test account created', HTTPStatus.CREATED
 
         return response, status
