@@ -106,23 +106,16 @@ exports[`Header.vue Logout user on logout button onlick  1`] = `
           Home
         </a>
       </li>
-       
       <li>
         <a
           class=""
           href="#/dashboard"
         >
-          Dashboard
+          Project
         </a>
       </li>
-       
       <li>
-        <a
-          class=""
-          href="#/project/info"
-        >
-          Create Project
-        </a>
+        <!---->
       </li>
     </ul>
   </nav>
@@ -235,23 +228,16 @@ exports[`Header.vue Toggle menu onlick  1`] = `
           Home
         </a>
       </li>
-       
       <li>
         <a
           class=""
           href="#/dashboard"
         >
-          Dashboard
+          Project
         </a>
       </li>
-       
       <li>
-        <a
-          class=""
-          href="#/project/info"
-        >
-          Create Project
-        </a>
+        <!---->
       </li>
     </ul>
   </nav>
@@ -364,23 +350,16 @@ exports[`Header.vue renders props when passed 1`] = `
           Home
         </a>
       </li>
-       
       <li>
         <a
           class=""
           href="#/dashboard"
         >
-          Dashboard
+          Project
         </a>
       </li>
-       
       <li>
-        <a
-          class=""
-          href="#/project/info"
-        >
-          Create Project
-        </a>
+        <!---->
       </li>
     </ul>
   </nav>
