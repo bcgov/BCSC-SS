@@ -17,7 +17,6 @@
         <v-row class="mx-4">
           <v-col cols="12" flat>
             <v-card flat>
-              <!-- <v-list-item-content>BCSC Test Account</v-list-item-content> -->
               <v-list-item-content>
                 {{
                 $t('testAccountList.pageinfo')
