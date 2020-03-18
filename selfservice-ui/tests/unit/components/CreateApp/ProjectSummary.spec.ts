@@ -115,17 +115,13 @@ describe('ProjectSummary.vue', () => {
           getApiData: jest.fn(() => {
             return {
               oidcConfig: {
-                clientId: 'abcd',
-                clientSecret: 'test'
+                clientId: 'new client',
+                clientSecret: 'new secret'
               },
               testUserAccounts: [
                 {
-                  userName: 'test user',
-                  idKey: 'test id key'
-                },
-                {
-                  userName: 'test user',
-                  idKey: 'test id key'
+                  userName: 'iuser1',
+                  idKey: 'my key'
                 }
               ]
             };
