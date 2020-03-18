@@ -69,7 +69,7 @@ const router = new VueRouter({
     {
       path: '/add-test-account',
       name: 'testaccount',
-      meta: { requiresAuth: true, roles: ['ss_client', 'idir', 'ss_admin'] },
+      meta: { requiresAuth: true, roles: ['ss_admin'] },
       props: true,
       component: () =>
         import(/* webpackChunkName: "testaccount" */ '../views/TestAccount.vue')

@@ -176,6 +176,8 @@
     "pageinfo": "Some text for add test account",
     "special_notes": "Past your test accounts without heading",
     "btnBack": "Go Back",
-    "btnSaveChanges": "Add Test Account"
+    "btnSaveChanges": "Add Test Account",
+    "errorMessage": "Something went wrong.",
+    "successMessage": "Test Account created"
   }
 }

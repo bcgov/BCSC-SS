@@ -26,7 +26,16 @@
             </v-card>
           </v-col>
           <v-col class="col-12">
-            <v-alert type="error" v-if="errorStatus" class="alert-top">Something went wrong...</v-alert>
+            <v-alert
+              type="error"
+              v-if="errorStatus"
+              class="alert-top text-left"
+            >{{$t('testAccountList.errorMessage')}}</v-alert>
+            <v-alert
+              type="success"
+              class="alert-top text-left"
+              v-if="successStatus"
+            >{{$t('testAccountList.successMessage')}}</v-alert>
           </v-col>
           <v-col cols="12" flat>
             <v-card flat>
@@ -99,10 +108,6 @@ export default class TestAccount extends Vue {
 
   private testAccounts: string = '';
 
-  @Watch('successStatus')
-  private onStatusChanged(val: any, oldVal: any) {
-    setTimeout(this.clearStatus, 3000);
-  }
   // @Watch('getTechnicalReq')
   // private ongetTechnicalReqChanged(val: any) {
   //   this.slectedNumber = val.noOfTestAccount || this.slectedNumber;
@@ -116,7 +121,9 @@ export default class TestAccount extends Vue {
     });
   }
 
-  // private mounted() {}
+  private mounted() {
+    this.clearStatus();
+  }
 }
 </script>
 

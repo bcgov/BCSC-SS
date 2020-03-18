@@ -47,7 +47,7 @@
           <v-btn text to="/" link dark class="mr-2 login-btn">Login</v-btn>
         </li>
         <li v-for="item in items" :key="item.title">
-          <router-link :to="item.link">{{item.title}}</router-link>
+          <router-link :to="item.link" v-if="checkRole(item)">{{item.title}}</router-link>
         </li>
       </ul>
     </nav>
@@ -74,6 +74,8 @@ export default class Header extends Vue {
   @KeyCloakModule.Getter('userProfile') private userProfile!: [];
   @KeyCloakModule.Action('setLogout') private setLogout!: any;
   @KeyCloakModule.Getter('isLoggedin') private isLoggedin!: boolean;
+  @KeyCloakModule.Getter('isAdmin')
+  private isAdmin!: any;
 
   private showMenu: boolean = false;
   private drawer: boolean = false;
@@ -83,7 +85,8 @@ export default class Header extends Vue {
     { title: 'Project', link: '/dashboard' },
     {
       title: 'Add Test Account',
-      link: '/add-test-account'
+      link: '/add-test-account',
+      roles: 'isAdmin'
     }
   ];
 
@@ -106,6 +109,14 @@ export default class Header extends Vue {
    */
   private logout() {
     this.setLogout();
+  }
+  private checkRole(data: any) {
+    if (data && data.roles) {
+      if (data.roles === 'isAdmin') {
+        return this.isAdmin;
+      }
+    }
+    return true;
   }
 }
 </script>
