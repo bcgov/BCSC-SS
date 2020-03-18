@@ -108,14 +108,7 @@ export default class TestAccount extends Vue {
 
   private testAccounts: string = '';
 
-  // @Watch('getTechnicalReq')
-  // private ongetTechnicalReqChanged(val: any) {
-  //   this.slectedNumber = val.noOfTestAccount || this.slectedNumber;
-  //   this.testAccounts = val.noteTestAccount || this.testAccounts;
-  // }
-
   private submitTestAccount() {
-    // add package to project com ehere
     this.addTestAccounts({
       testAccounts: this.testAccounts
     });
