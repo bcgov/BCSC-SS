@@ -334,6 +334,7 @@
                 @click="goBack()"
                 :aria-label="$t('summaryPage.goBack')"
                 secondary
+                class="back-btn"
               >{{ $t('summaryPage.goBack') }}</Button>
               <Button
                 :loading="isLoading"
