@@ -8,11 +8,16 @@
       <div class="flex-grow-1"></div>
     </v-toolbar>
     <v-divider></v-divider>
-
     <v-form ref="form" v-model="form" v-if="!errorStatus">
       <v-container>
         <v-row class="ma-5">
           <v-col cols="12" md="12">
+            <v-alert
+              type="error"
+              class="text-left"
+              v-if="profileErrorStatus"
+              v-html="$t('profile.errorMessageDomain')"
+            ></v-alert>
             <v-card-subtitle
               class="text-left padding-0 bc-padding-left-0"
               v-html="$t('profile.titlePageInfo')"
@@ -64,7 +69,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from 'vue-property-decorator';
+import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
 import Input from '@/Atomic/Input/Input.vue';
 import Button from '@/Atomic/Button/Button.vue';
@@ -81,6 +86,8 @@ export default class Dashboard extends Vue {
   @KeyCloakModule.Getter('userProfile') private userProfile!: [];
   @KeyCloakModule.Getter('errorStatus')
   private errorStatus!: any;
+  @KeyCloakModule.Getter('profileErrorStatus')
+  private profileErrorStatus!: boolean;
 
   private form: boolean = false;
 

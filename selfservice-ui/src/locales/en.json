@@ -157,7 +157,8 @@
     "titlePageInfo": "After you add your contact information, you will receive a confirmation email. Only users from the broader public sector or BC Government will be approved for access.",
     "labelEmail": "Email (work)",
     "labelPhone": "Phone",
-    "btnContinue": "Continue"
+    "btnContinue": "Continue",
+    "errorMessageDomain": "Your email address does not match any of the eligible organizations in our BC Services Card Self Service System. If you believe you or your organization should have access to this system, please contact <a href='mailto:zorin.samji@gov.bc.ca'>IDIM Consulting</a> to be added. "
   },
   "home": {
     "pagetitle": "Complete Profile",

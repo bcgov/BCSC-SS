@@ -51,5 +51,8 @@ export const getters: GetterTree<KeyCloakState, RootState> = {
   },
   errorStatus(state) {
     return state.errorStatus;
+  },
+  profileErrorStatus(state) {
+    return state.profileErrorStatus;
   }
 };
