@@ -10,4 +10,5 @@ export interface KeyCloakState {
   fields: [];
   errorStatus: boolean;
   successStatus: boolean;
+  profileErrorStatus: boolean;
 }

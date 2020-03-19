@@ -19,7 +19,7 @@ from flask import g, jsonify, request
 from flask_restplus import Namespace, Resource, cors
 from marshmallow import ValidationError
 
-from ..models.user import User
+from ..models import OrgWhitelist, User
 from ..schemas.user import UserSchema
 from ..utils.auth import auth, jwt
 from ..utils.util import cors_preflight
@@ -76,9 +76,18 @@ class UserResource(Resource):
 
         try:
             user = User.find_by_oauth_id(token_info.get('sub'))
-
             user_schema = UserSchema()
-            email = token_info.get('email') if token_info.get('provider') == 'idir' else user_json.get('email')
+
+            if token_info.get('provider') == 'idir':
+                email = token_info.get('email')
+            else:
+                email = user_json.get('email')
+                domain = email.split('@').pop() if email and '@' in email else None
+                valid_domain = OrgWhitelist.validate_domain(domain)
+                if not valid_domain:
+                    return {'code': 'domain', 'message': 'Invalid Domain'}, \
+                        HTTPStatus.FORBIDDEN
+
             dict_data = user_schema.load({
                 'email': email,
                 'phone': user_json.get('phone'),

@@ -42,17 +42,20 @@ def create_user(client, jwt, project_role='developer'):
     return user
 
 
-def _create_user_(client, jwt, project_role='developer', invalid_data=False):
+def _create_user_(client, jwt, project_role='developer', invalid_email=False, email_none=False, invalid_phone=False):
     """Create user and return response object."""
     headers = ss_client_auth_header(jwt, project_role=project_role)
     claims = TestJwtClaims['ss_client_' + project_role]
-    if invalid_data:
-        req_data = {}
-    else:
-        req_data = {
-            'email': claims['email'],
-            'phone': '5689732156'
-        }
+    req_data = {
+        'email': claims['email'],
+        'phone': '5689732156'
+    }
+    if invalid_email:
+        req_data['email'] = 'mail@email.com'
+    if email_none:
+        req_data['email'] = None
+    if invalid_phone:
+        req_data['phone'] = None
 
     response = client.post(USER_API, data=json.dumps(req_data),
                            headers=headers, content_type='application/json')
