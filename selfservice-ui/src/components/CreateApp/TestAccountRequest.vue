@@ -1,17 +1,15 @@
 /** * TestAccountRequest component */
 
 <template>
-  <v-card class="mx-auto" style="max-width: 80%;">
+  <v-card class="mx-auto outer-card">
     <v-toolbar flat class="bc-subtitle padding-0" dark>
-      <v-btn icon @click="goBack()" :aria-label="$t('testAccount.Back')">
+      <v-btn icon @click="goBack()" :aria-label="$t('testAccount.btnBack')">
         <v-icon>mdi-arrow-left</v-icon>
       </v-btn>
       <v-toolbar-title>{{ $t('testAccount.pagetitle') }}</v-toolbar-title>
       <div class="flex-grow-1"></div>
       <v-col class="col-lg-4 col-md-5 col-8">
-        <v-alert type="error" v-if="errorStatus" class="alert-top"
-          >Something went wrong...</v-alert
-        >
+        <v-alert type="error" v-if="errorStatus" class="alert-top">Something went wrong...</v-alert>
       </v-col>
       <div class="flex-grow-1"></div>
     </v-toolbar>
@@ -22,30 +20,26 @@
           <v-col cols="12" flat>
             <v-card flat>
               <!-- <v-list-item-content>BCSC Test Account</v-list-item-content> -->
-              <v-list-item-content>{{
+              <v-list-item-content>
+                {{
                 $t('testAccount.pageinfo', { package: 'package' })
-              }}</v-list-item-content>
+                }}
+              </v-list-item-content>
             </v-card>
           </v-col>
 
           <v-col cols="12" flat>
             <v-card flat>
-              <v-list-item-content>{{
+              <v-list-item-content>
+                {{
                 $t('testAccount.how_many_test_account')
-              }}</v-list-item-content>
+                }}
+              </v-list-item-content>
             </v-card>
           </v-col>
 
-          <v-col
-            v-for="(testAccount, idx) in noOfTestAccounts"
-            :key="idx"
-            class="card-width"
-          >
-            <v-item
-              v-slot:default="{ active }"
-              :value="testAccount"
-              class="test-account"
-            >
+          <v-col v-for="(testAccount, idx) in noOfTestAccounts" :key="idx" class="card-width">
+            <v-item v-slot:default="{ active }" :value="testAccount" class="test-account">
               <v-card
                 class="d-flex align-center pa-4 test-account"
                 :class="active ? 'active-bg' : ''"
@@ -53,9 +47,11 @@
               >
                 <v-list-item>
                   <v-list-item-content class="text-center">
-                    <v-list-item-title class="headline">{{
+                    <v-list-item-title class="headline">
+                      {{
                       testAccount
-                    }}</v-list-item-title>
+                      }}
+                    </v-list-item-title>
                     <v-list-item-subtitle></v-list-item-subtitle>
                   </v-list-item-content>
                 </v-list-item>
@@ -65,13 +61,12 @@
           </v-col>
           <v-col cols="12" flat>
             <v-card flat>
-              <v-list-item-content>{{
+              <v-list-item-content>
+                {{
                 $t('testAccount.special_notes')
-              }}</v-list-item-content>
-              <v-list-item-content
-                class="subtitle-1"
-                v-html="$t('testAccount.specialNotesInfo')"
-              ></v-list-item-content>
+                }}
+              </v-list-item-content>
+              <v-list-item-content class="subtitle-1" v-html="$t('testAccount.specialNotesInfo')"></v-list-item-content>
               <TextArea
                 v-model="notes"
                 :label="$t('testAccount.special_notes')"
@@ -88,32 +83,30 @@
         <v-divider></v-divider>
         <v-card-actions class="mx-4">
           <v-spacer></v-spacer>
-          <Button
-            @click="goBack()"
-            :aria-label="$t('testAccount.btnBack')"
-            secondary
-            >{{
-              $t(
-                showWizardExperience()
-                  ? 'testAccount.btnBack'
-                  : 'testAccount.btnCancel'
-              )
-            }}</Button
-          >
+          <Button @click="goBack()" :aria-label="$t('testAccount.btnBack')" secondary>
+            {{
+            $t(
+            showWizardExperience()
+            ? 'testAccount.btnBack'
+            : 'testAccount.btnCancel'
+            )
+            }}
+          </Button>
           <Button
             :disabled="!slectedNumber"
             :loading="isLoading"
             class="white--text submit-account ml-6"
             depressed
             @click="submitTestAccount"
-            >{{
-              $t(
-                showWizardExperience()
-                  ? 'testAccount.btnNext'
-                  : 'testAccount.btnSaveChanges'
-              )
-            }}</Button
           >
+            {{
+            $t(
+            showWizardExperience()
+            ? 'testAccount.btnNext'
+            : 'testAccount.btnSaveChanges'
+            )
+            }}
+          </Button>
         </v-card-actions>
       </v-card>
     </v-col>

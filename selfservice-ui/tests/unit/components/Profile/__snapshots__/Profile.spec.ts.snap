@@ -41,6 +41,8 @@ exports[`Profile.vue renders props when passed with gettors 1`] = `
           md="12"
           tag="div"
         >
+          <!---->
+           
           <v-card-subtitle-stub
             class="text-left padding-0 bc-padding-left-0"
           />
@@ -51,10 +53,10 @@ exports[`Profile.vue renders props when passed with gettors 1`] = `
             
             john
             Deo
+          
           </v-card-title-stub>
            
           <input-stub
-            counter=""
             label=""
             outlined="true"
             rules="v => !!v || 'This field is required',v => /^\\\\w+([.-]?\\\\w+)*@\\\\w+([.-]?\\\\w+)*(\\\\.\\\\w{2,10})+$/.test(v) || 'E-mail must be valid',v => (v || '').length >= len || 'Invalid character length, required ' + len,v => (v || '').length <= len || 'Invalid character length, max length ' + len"
@@ -63,7 +65,6 @@ exports[`Profile.vue renders props when passed with gettors 1`] = `
           />
            
           <input-stub
-            counter=""
             label=""
             outlined="true"
             rules="v => !!v || 'This field is required',v => (v || '').length >= len || 'Invalid character length, required ' + len,v => (v || '').length <= len || 'Invalid character length, max length ' + len"
@@ -88,7 +89,7 @@ exports[`Profile.vue renders props when passed with gettors 1`] = `
                
               <button-stub
                 class="white--text"
-                color="indigo accent-4"
+                color=""
                 depressed=""
                 disabled="true"
                 name="button"

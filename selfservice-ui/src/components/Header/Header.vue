@@ -15,10 +15,9 @@
         alt="Go to the Government of British Columbia website"
         class="img side-left-margin"
       />
-      <!-- </a> -->
-      <!-- <h1 class="text">BC SERVICE CARD</h1> -->
+
       <v-toolbar-title>{{ $t('main.siteTitle') }}</v-toolbar-title>
-      <!-- </div> -->
+      <sup aria-label="This application is currently in Beta phase" class="beta-phase-banner">Beta</sup>
 
       <v-spacer></v-spacer>
       <v-spacer></v-spacer>
@@ -30,8 +29,7 @@
         dark
         class="d-none d-sm-flex login-btn side-right-margin"
         v-if="!isLoggedin"
-        >Login</v-btn
-      >
+      >Login</v-btn>
 
       <v-toolbar-title v-if="isLoggedin">
         Welcome {{ userProfile.firstName }} {{ userProfile.lastName }}
@@ -39,42 +37,23 @@
           <span class="mr-2 logout" color="white">Logout</span>
         </v-btn>
       </v-toolbar-title>
-      <v-btn
-        text
-        to="/"
-        link
-        dark
-        class="mr-2 d-sm-none toggleMenu"
-        @click="toggleMenu"
-      >
+      <v-btn text to="/" link dark class="mr-2 d-sm-none toggleMenu" @click="toggleMenu">
         <v-icon>mdi-menu</v-icon>
       </v-btn>
     </v-app-bar>
-    <nav
-      class="navigation-main"
-      :class="{ 'active-menu': showMenu }"
-      id="navbar"
-      v-if="!showSideMenu"
-    >
+    <nav class="navigation-main" :class="{ 'active-menu': showMenu }" id="navbar" v-if="!hideMenu">
       <ul>
         <li class="d-sm-none">
           <v-btn text to="/" link dark class="mr-2 login-btn">Login</v-btn>
         </li>
-        <li>
-          <router-link to="/">Home</router-link>
-        </li>
-
-        <li>
-          <router-link to="dashboard">Dashboard</router-link>
-        </li>
-        <li>
-          <router-link to="/project/info">Create Project</router-link>
+        <li v-for="item in items" :key="item.title">
+          <router-link :to="item.link" v-if="checkRole(item)">{{item.title}}</router-link>
         </li>
       </ul>
     </nav>
-    <template class="abcd" :class="{ 'active-menu': showMenu }">
-      <Sidebar v-if="showSideMenu" :drawer="drawer" />
-    </template>
+    <!-- <template class="abcd" :class="{ 'active-menu': showMenu }">
+      <Sidebar v-if="hideMenu" :drawer="drawer" />
+    </template>-->
   </div>
 </template>
 
@@ -90,20 +69,31 @@ const KeyCloakModule = namespace('KeyCloakModule');
   }
 })
 export default class Header extends Vue {
-  @Prop({ default: false }) private verticalMenu!: boolean;
+  @Prop({ default: false }) private hideMenu!: boolean;
 
   @KeyCloakModule.Getter('userProfile') private userProfile!: [];
   @KeyCloakModule.Action('setLogout') private setLogout!: any;
   @KeyCloakModule.Getter('isLoggedin') private isLoggedin!: boolean;
+  @KeyCloakModule.Getter('isAdmin')
+  private isAdmin!: any;
 
   private showMenu: boolean = false;
   private drawer: boolean = false;
-  private showSideMenu: boolean = !this.verticalMenu;
+  private hideMenuInPage: boolean = !this.hideMenu;
+  private items: any = [
+    { title: 'Home', icon: 'mdi-home', link: '/' },
+    { title: 'Project', link: '/dashboard' },
+    {
+      title: 'Add Test Account',
+      link: '/add-test-account',
+      roles: 'isAdmin'
+    }
+  ];
 
   @Watch('$route', { immediate: true, deep: true })
   private onUrlChange(newVal: any) {
-    const { showVerticalMenu = false } = newVal.meta;
-    this.showSideMenu = !showVerticalMenu || false;
+    const { hideMenu = false } = newVal.meta;
+    this.hideMenuInPage = !hideMenu || false;
   }
   /**
    * toggleMenu
@@ -119,6 +109,14 @@ export default class Header extends Vue {
    */
   private logout() {
     this.setLogout();
+  }
+  private checkRole(data: any) {
+    if (data && data.roles) {
+      if (data.roles === 'isAdmin') {
+        return this.isAdmin;
+      }
+    }
+    return true;
   }
 }
 </script>
@@ -210,5 +208,12 @@ export default class Header extends Vue {
   background-color: $BCgovGold5;
   color: $BCgovWhite;
   font-size: 18px;
+}
+.beta-phase-banner {
+  color: $BCgovGold5;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 16px;
+  margin-left: 4px;
 }
 </style>

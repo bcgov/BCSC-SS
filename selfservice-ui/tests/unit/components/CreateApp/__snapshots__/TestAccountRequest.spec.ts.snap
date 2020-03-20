@@ -2,8 +2,7 @@
 
 exports[`TestAccountRequest.vue renders props when passed 1`] = `
 <div
-  class="mx-auto v-card v-sheet theme--light"
-  style="max-width: 80%;"
+  class="mx-auto outer-card v-card v-sheet theme--light"
 >
   <header
     class="bc-subtitle padding-0 v-sheet v-sheet--tile theme--dark v-toolbar v-toolbar--flat"
@@ -75,6 +74,8 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
               class="v-list-item__content"
             >
               
+              
+            
             </div>
           </div>
         </div>
@@ -90,6 +91,8 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
               class="v-list-item__content"
             >
               
+              
+            
             </div>
           </div>
         </div>
@@ -111,7 +114,9 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
                 <div
                   class="v-list-item__title headline"
                 >
-                  1
+                  
+                    1
+                  
                 </div>
                  
                 <div
@@ -142,7 +147,9 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
                 <div
                   class="v-list-item__title headline"
                 >
-                  2
+                  
+                    2
+                  
                 </div>
                  
                 <div
@@ -173,7 +180,9 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
                 <div
                   class="v-list-item__title headline"
                 >
-                  3
+                  
+                    3
+                  
                 </div>
                  
                 <div
@@ -204,7 +213,9 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
                 <div
                   class="v-list-item__title headline"
                 >
-                  5
+                  
+                    5
+                  
                 </div>
                  
                 <div
@@ -230,6 +241,8 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
               class="v-list-item__content"
             >
               
+              
+            
             </div>
              
             <div
@@ -315,6 +328,8 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
             class="v-btn__content"
           >
             
+          
+        
           </span>
         </button>
          
@@ -328,6 +343,8 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
             class="v-btn__content"
           >
             
+          
+        
           </span>
         </button>
       </div>
@@ -338,8 +355,7 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
 
 exports[`TestAccountRequest.vue select on package on click  1`] = `
 <div
-  class="mx-auto v-card v-sheet theme--light"
-  style="max-width: 80%;"
+  class="mx-auto outer-card v-card v-sheet theme--light"
 >
   <header
     class="bc-subtitle padding-0 v-sheet v-sheet--tile theme--dark v-toolbar v-toolbar--flat"
@@ -411,6 +427,8 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
               class="v-list-item__content"
             >
               
+              
+            
             </div>
           </div>
         </div>
@@ -426,6 +444,8 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
               class="v-list-item__content"
             >
               
+              
+            
             </div>
           </div>
         </div>
@@ -447,7 +467,9 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
                 <div
                   class="v-list-item__title headline"
                 >
-                  1
+                  
+                    1
+                  
                 </div>
                  
                 <div
@@ -478,7 +500,9 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
                 <div
                   class="v-list-item__title headline"
                 >
-                  2
+                  
+                    2
+                  
                 </div>
                  
                 <div
@@ -509,7 +533,9 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
                 <div
                   class="v-list-item__title headline"
                 >
-                  3
+                  
+                    3
+                  
                 </div>
                  
                 <div
@@ -540,7 +566,9 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
                 <div
                   class="v-list-item__title headline"
                 >
-                  5
+                  
+                    5
+                  
                 </div>
                  
                 <div
@@ -566,6 +594,8 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
               class="v-list-item__content"
             >
               
+              
+            
             </div>
              
             <div
@@ -651,6 +681,8 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
             class="v-btn__content"
           >
             
+          
+        
           </span>
         </button>
          
@@ -664,6 +696,8 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
             class="v-btn__content"
           >
             
+          
+        
           </span>
         </button>
       </div>
@@ -674,8 +708,7 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
 
 exports[`TestAccountRequest.vue submit form with selected package on submit click  1`] = `
 <div
-  class="mx-auto v-card v-sheet theme--light"
-  style="max-width: 80%;"
+  class="mx-auto outer-card v-card v-sheet theme--light"
 >
   <header
     class="bc-subtitle padding-0 v-sheet v-sheet--tile theme--dark v-toolbar v-toolbar--flat"
@@ -747,6 +780,8 @@ exports[`TestAccountRequest.vue submit form with selected package on submit clic
               class="v-list-item__content"
             >
               
+              
+            
             </div>
           </div>
         </div>
@@ -762,6 +797,8 @@ exports[`TestAccountRequest.vue submit form with selected package on submit clic
               class="v-list-item__content"
             >
               
+              
+            
             </div>
           </div>
         </div>
@@ -783,7 +820,9 @@ exports[`TestAccountRequest.vue submit form with selected package on submit clic
                 <div
                   class="v-list-item__title headline"
                 >
-                  1
+                  
+                    1
+                  
                 </div>
                  
                 <div
@@ -814,7 +853,9 @@ exports[`TestAccountRequest.vue submit form with selected package on submit clic
                 <div
                   class="v-list-item__title headline"
                 >
-                  2
+                  
+                    2
+                  
                 </div>
                  
                 <div
@@ -845,7 +886,9 @@ exports[`TestAccountRequest.vue submit form with selected package on submit clic
                 <div
                   class="v-list-item__title headline"
                 >
-                  3
+                  
+                    3
+                  
                 </div>
                  
                 <div
@@ -876,7 +919,9 @@ exports[`TestAccountRequest.vue submit form with selected package on submit clic
                 <div
                   class="v-list-item__title headline"
                 >
-                  5
+                  
+                    5
+                  
                 </div>
                  
                 <div
@@ -902,6 +947,8 @@ exports[`TestAccountRequest.vue submit form with selected package on submit clic
               class="v-list-item__content"
             >
               
+              
+            
             </div>
              
             <div
@@ -987,6 +1034,8 @@ exports[`TestAccountRequest.vue submit form with selected package on submit clic
             class="v-btn__content"
           >
             
+          
+        
           </span>
         </button>
          
@@ -1000,6 +1049,8 @@ exports[`TestAccountRequest.vue submit form with selected package on submit clic
             class="v-btn__content"
           >
             
+          
+        
           </span>
         </button>
       </div>

@@ -33,13 +33,12 @@ export class UserService {
     });
   }
   /**
-   * update user with id
+   * update user with token
    * @static
-   * @param {UserModel} userModel
    * @returns
    */
-  public static async updateUser(userModel: UserModel) {
-    return await axios.patch(USER_URL + '/' + userModel.id, userModel);
+  public static async updateUser() {
+    return await axios.put(USER_URL);
   }
   /**
    * remove user

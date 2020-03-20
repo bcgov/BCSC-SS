@@ -23,6 +23,7 @@ from flask import Flask
 from . import config, models
 from .models import db, ma
 from .resources import API
+from .services.notification import mail
 from .utils.auth import jwt
 from .utils.logging import setup_logging
 from .utils.run_version import get_run_version
@@ -40,13 +41,16 @@ def create_app(run_mode=os.getenv('FLASK_ENV', 'production')):
     db.init_app(app)
     ma.init_app(app)
 
+    mail.init_app(app)
+
     API.init_app(app)
     setup_jwt_manager(app, jwt)
 
     @app.after_request
-    def add_version(response):  # pylint: disable=unused-variable
+    def add_additional_headers(response):  # pylint: disable=unused-variable
         version = get_run_version()
         response.headers['API'] = f'selfservice_api/{version}'
+        response.headers['X-Frame-Options'] = 'DENY'
         return response
 
     register_shellcontext(app)

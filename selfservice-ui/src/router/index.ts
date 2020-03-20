@@ -15,7 +15,7 @@ const router = new VueRouter({
     {
       path: '/',
       name: 'home',
-      meta: { showVerticalMenu: true },
+      meta: { hideMenu: true },
       component: Home,
       props: true
     },
@@ -66,7 +66,14 @@ const router = new VueRouter({
       component: () =>
         import(/* webpackChunkName: "project" */ '../views/Project.vue')
     },
-
+    {
+      path: '/add-test-account',
+      name: 'testaccount',
+      meta: { requiresAuth: true, roles: ['ss_admin'] },
+      props: true,
+      component: () =>
+        import(/* webpackChunkName: "testaccount" */ '../views/TestAccount.vue')
+    },
     {
       path: '/unauthorized',
       name: 'Unauthorized',

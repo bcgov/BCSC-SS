@@ -38,6 +38,7 @@ export const actions: ActionTree<KeyCloakState, RootState> = {
           dispatch('isVerified', true);
           dispatch('setUserProfile', user.data.user);
           dispatch('userRedirect', { path, next, fromUrl });
+          await UserService.updateUser();
         } else {
           dispatch('filedsToShow', user.data.fieldsRequired);
           dispatch('setUserProfile', user.data.user);
@@ -114,15 +115,26 @@ export const actions: ActionTree<KeyCloakState, RootState> = {
   },
 
   async updateProfile(state: any, profile: any) {
-    const { dispatch } = state;
-    const user = await UserService.createUser(profile.email, profile.phone);
-    dispatch('setUserProfile', user.data);
-    dispatch('isVerified', true);
-    dispatch('userRedirect', {
-      path: '/complete-profile',
-      next: 'null',
-      fromUrl: '/complete-profile'
-    });
+    const { dispatch, commit } = state;
+    dispatch('clearStatus');
+    try {
+      const user = await UserService.createUser(profile.email, profile.phone);
+
+      dispatch('setUserProfile', user.data);
+      dispatch('isVerified', true);
+
+      dispatch('userRedirect', {
+        path: '/complete-profile',
+        next: 'null',
+        fromUrl: '/complete-profile'
+      });
+    } catch (error) {
+      if (error.response.status === 403) {
+        commit('SET_PROFILE_DOMAIN_ERROR', true);
+      } else {
+        commit('SET_USER_ERROR', true);
+      }
+    }
   },
   /**
    * isVerified
@@ -139,5 +151,13 @@ export const actions: ActionTree<KeyCloakState, RootState> = {
    */
   filedsToShow({ commit }: any, fields: any) {
     commit('SET_FIELDS_TO_SHOW', fields);
+  },
+  /**
+   * clear message
+   * @param {*} { commit }
+   */
+  async clearStatus({ commit }) {
+    commit('SET_PROFILE_DOMAIN_ERROR', false);
+    commit('SET_USER_ERROR', false);
   }
 };

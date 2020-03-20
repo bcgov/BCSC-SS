@@ -8,6 +8,7 @@ import TechnicalReqModule from './modules/TechnicalReq';
 import PackageAndTestModule from './modules/PackageAndTest';
 import ClientIdModule from './modules/ClientID';
 import SharedModule from './modules/Shared';
+import TestAccountModule from './modules/TestAccount';
 
 Vue.use(Vuex);
 
@@ -21,7 +22,8 @@ const store: StoreOptions<RootState> = {
     TechnicalReqModule,
     PackageAndTestModule,
     ClientIdModule,
-    SharedModule
+    SharedModule,
+    TestAccountModule
   },
   strict: true
 };

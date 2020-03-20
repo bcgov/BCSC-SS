@@ -39,7 +39,7 @@ class TestJwtClaims(dict, Enum):
         'sub': '79ae27e8-4f87-4b7d-8075-46aa4be72e02',
         'given_name': 'developer',
         'family_name': 'ss_client',
-        'email': 'developer@email.com',
+        'email': 'developer@gov.bc.ca',
         'preferred_username': 'ssclientdeveloper',
         'provider': 'bcsc',
         'realm_access': {
@@ -54,7 +54,7 @@ class TestJwtClaims(dict, Enum):
         'sub': '24a6c1c5-d57f-4a18-a30b-74cb714086e9',
         'given_name': 'manager',
         'family_name': 'ss_client',
-        'email': 'manager@email.com',
+        'email': 'manager@gov.bc.ca',
         'preferred_username': 'ssclientmanager',
         'provider': 'bcsc',
         'realm_access': {
@@ -69,7 +69,7 @@ class TestJwtClaims(dict, Enum):
         'sub': '9821a391-5820-4c63-8392-2b72d8373874',
         'given_name': 'cto',
         'family_name': 'ss_client',
-        'email': 'cto@email.com',
+        'email': 'cto@gov.bc.ca',
         'preferred_username': 'ssclientcto',
         'provider': 'bcsc',
         'realm_access': {
@@ -84,6 +84,7 @@ class TestJwtClaims(dict, Enum):
         'sub': '65a62428-6713-4e7d-8f12-99e56de58386',
         'given_name': 'admin',
         'family_name': 'ss',
+        'email': 'analyst@email.com',
         'preferred_username': 'ssadmin',
         'provider': 'idir',
         'realm_access': {
@@ -106,6 +107,13 @@ def ss_client_auth_header(jwt, project_role='developer'):
 def ss_admin_auth_header(jwt):
     """Produce ss_admin JWT tokens for use in tests."""
     return {'Authorization': 'Bearer ' + jwt.create_jwt(claims=TestJwtClaims.ss_admin, header=JWT_HEADER)}
+
+
+def invalid_email_auth_header(jwt):
+    """Produce invalid email on JWT tokens for use in tests."""
+    claims = TestJwtClaims.ss_client_developer
+    del claims['email']
+    return {'Authorization': 'Bearer ' + jwt.create_jwt(claims=claims, header=JWT_HEADER)}
 
 
 def invalid_auth_header(jwt):

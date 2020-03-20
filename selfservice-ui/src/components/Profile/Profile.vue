@@ -2,19 +2,22 @@
 
 <template>
   <v-card class="mx-auto card-width">
-    <v-alert type="error" v-if="errorStatus">
-      Something went wrong...
-    </v-alert>
+    <v-alert type="error" v-if="errorStatus">Something went wrong...</v-alert>
     <v-toolbar flat class="bc-subtitle" dark v-if="!errorStatus">
       <v-toolbar-title>{{ $t('profile.pagetitle') }}</v-toolbar-title>
       <div class="flex-grow-1"></div>
     </v-toolbar>
     <v-divider></v-divider>
-
     <v-form ref="form" v-model="form" v-if="!errorStatus">
       <v-container>
         <v-row class="ma-5">
           <v-col cols="12" md="12">
+            <v-alert
+              type="error"
+              class="text-left"
+              v-if="profileErrorStatus"
+              v-html="$t('profile.errorMessageDomain')"
+            ></v-alert>
             <v-card-subtitle
               class="text-left padding-0 bc-padding-left-0"
               v-html="$t('profile.titlePageInfo')"
@@ -22,8 +25,8 @@
 
             <v-card-title class="text-left bc-padding-left-0">
               {{ userProfile.firstName }}
-              {{ userProfile.lastName }}</v-card-title
-            >
+              {{ userProfile.lastName }}
+            </v-card-title>
             <Input
               v-model="email"
               :label="$t('profile.labelEmail')"
@@ -52,12 +55,10 @@
                 <Button
                   :disabled="!form"
                   class="white--text"
-                  color="indigo accent-4"
                   depressed
                   @click="completeProfile"
                   @keyup.enter="completeProfile"
-                  >{{ $t('profile.btnContinue') }}</Button
-                >
+                >{{ $t('profile.btnContinue') }}</Button>
               </v-card-actions>
             </v-card>
           </v-col>
@@ -68,7 +69,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from 'vue-property-decorator';
+import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
 import Input from '@/Atomic/Input/Input.vue';
 import Button from '@/Atomic/Button/Button.vue';
@@ -85,6 +86,8 @@ export default class Dashboard extends Vue {
   @KeyCloakModule.Getter('userProfile') private userProfile!: [];
   @KeyCloakModule.Getter('errorStatus')
   private errorStatus!: any;
+  @KeyCloakModule.Getter('profileErrorStatus')
+  private profileErrorStatus!: boolean;
 
   private form: boolean = false;
 

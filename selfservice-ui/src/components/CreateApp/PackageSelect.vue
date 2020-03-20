@@ -1,7 +1,7 @@
 /** * ListPackage component */
 
 <template>
-  <v-card class="mx-auto" style="max-width: 80%;">
+  <v-card class="mx-auto outer-card">
     <v-toolbar flat class="bc-subtitle" dark>
       <v-btn icon @click="goBack()" :aria-label="$t('selectPackage.btnBack')">
         <v-icon>mdi-arrow-left</v-icon>
@@ -9,9 +9,7 @@
       <v-toolbar-title>{{ $t('selectPackage.pagetitle') }}</v-toolbar-title>
       <div class="flex-grow-1"></div>
       <v-col class="col-lg-4 col-md-5 col-8">
-        <v-alert type="error" v-if="errorStatus" class="alert-top"
-          >Something went wrong...</v-alert
-        >
+        <v-alert type="error" v-if="errorStatus" class="alert-top">Something went wrong...</v-alert>
       </v-col>
       <div class="flex-grow-1"></div>
     </v-toolbar>
@@ -21,32 +19,23 @@
         <v-row class="ma-5">
           <v-col cols="12" flat>
             <v-card flat>
-              <v-list-item-content class="headline">{{
+              <v-list-item-content class="headline">
+                {{
                 $t('selectPackage.choosePackage')
-              }}</v-list-item-content>
-              <v-list-item-content
-                v-html="$t('selectPackage.pagetitleInfo')"
-              ></v-list-item-content>
+                }}
+              </v-list-item-content>
+              <v-list-item-content v-html="$t('selectPackage.pagetitleInfo')"></v-list-item-content>
               <!-- <v-list-item-content>{{
                 $t('selectPackage.package2')
               }}</v-list-item-content>
               <v-list-item-content>{{
                 $t('selectPackage.package3')
-              }}</v-list-item-content> -->
+              }}</v-list-item-content>-->
             </v-card>
           </v-col>
 
-          <v-col
-            v-for="(packageData, idx) in getPackageList"
-            :key="idx"
-            cols="12"
-            md="12"
-          >
-            <v-item
-              v-slot:default="{ active }"
-              :value="packageData.id"
-              class="select-package"
-            >
+          <v-col v-for="(packageData, idx) in getPackageList" :key="idx" cols="12" md="12">
+            <v-item v-slot:default="{ active }" :value="packageData.id" class="select-package">
               <v-card
                 class="d-flex align-center pa-4 select-package"
                 :class="active ? 'active-bg' : ''"
@@ -54,12 +43,8 @@
               >
                 <v-list-item three-line>
                   <v-list-item-content>
-                    <v-list-item-title class="headline mb-1">
-                      {{ packageData.packageName }}
-                    </v-list-item-title>
-                    <v-list-item-subtitle>
-                      {{ $t('selectPackage.description') }}
-                    </v-list-item-subtitle>
+                    <v-list-item-title class="headline mb-1">{{ packageData.packageName }}</v-list-item-title>
+                    <v-list-item-subtitle>{{ $t('selectPackage.description') }}</v-list-item-subtitle>
                     <v-list-item-subtitle
                       v-for="claimName in packageData.claimNames"
                       :key="claimName"
@@ -67,22 +52,15 @@
                       <v-icon color="#969798" x-small>mdi-check-circle</v-icon>
                       {{ claimName }}
                     </v-list-item-subtitle>
-                    <v-list-item-subtitle class="mt-3">
-                      {{ packageData.description }}
-                    </v-list-item-subtitle>
+                    <v-list-item-subtitle class="mt-3">{{ packageData.description }}</v-list-item-subtitle>
                   </v-list-item-content>
                 </v-list-item>
                 <v-spacer></v-spacer>
                 <div v-if="!active" class="text-center mr-5">
-                  <v-icon color="#eae9e9" x-large
-                    >mdi-check-circle-outline</v-icon
-                  >
+                  <v-icon color="#eae9e9" x-large>mdi-check-circle-outline</v-icon>
                   <!-- Select this package -->
                 </div>
-                <div
-                  v-if="active"
-                  class="display-3 flex-grow-1 text-center mr-5"
-                >
+                <div v-if="active" class="display-3 flex-grow-1 text-center mr-5">
                   <v-icon color="green" x-large>mdi-check-circle</v-icon>
                 </div>
                 <!-- </v-scroll-y-transition> -->
@@ -105,28 +83,28 @@
             class="back-btn"
           >
             {{
-              $t(
-                showWizardExperience()
-                  ? 'selectPackage.btnBack'
-                  : 'selectPackage.btnCancel'
-              )
-            }}</Button
-          >
+            $t(
+            showWizardExperience()
+            ? 'selectPackage.btnBack'
+            : 'selectPackage.btnCancel'
+            )
+            }}
+          </Button>
           <Button
             :disabled="!slectedPackage"
             :loading="isLoading"
             class="white--text submit-package ml-6"
-            color="indigo accent-4"
             depressed
             @click="submitPackage"
-            >{{
-              $t(
-                showWizardExperience()
-                  ? 'selectPackage.btnNext'
-                  : 'selectPackage.btnSaveChanges'
-              )
-            }}</Button
           >
+            {{
+            $t(
+            showWizardExperience()
+            ? 'selectPackage.btnNext'
+            : 'selectPackage.btnSaveChanges'
+            )
+            }}
+          </Button>
         </v-card-actions>
       </v-card>
     </v-col>

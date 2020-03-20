@@ -19,17 +19,17 @@ from flask import g, jsonify, request
 from flask_restplus import Namespace, Resource, cors
 from marshmallow import ValidationError
 
-from ..models.user import User
+from ..models import OrgWhitelist, User
 from ..schemas.user import UserSchema
-from ..utils.auth import jwt
+from ..utils.auth import auth, jwt
 from ..utils.util import cors_preflight
 
 
 API = Namespace('User', description='User')
 
 
-@cors_preflight('GET,POST,OPTIONS')
-@API.route('', methods=['GET', 'POST', 'OPTIONS'])
+@cors_preflight('GET,POST,PUT,OPTIONS')
+@API.route('', methods=['GET', 'POST', 'PUT', 'OPTIONS'])
 class UserResource(Resource):
     """Resource for managing create and get user."""
 
@@ -76,9 +76,18 @@ class UserResource(Resource):
 
         try:
             user = User.find_by_oauth_id(token_info.get('sub'))
-
             user_schema = UserSchema()
-            email = token_info.get('email') if token_info.get('provider') == 'idir' else user_json.get('email')
+
+            if token_info.get('provider') == 'idir':
+                email = token_info.get('email')
+            else:
+                email = user_json.get('email')
+                domain = email.split('@').pop() if email and '@' in email else None
+                valid_domain = OrgWhitelist.validate_domain(domain)
+                if not valid_domain:
+                    return {'code': 'domain', 'message': 'Invalid Domain'}, \
+                        HTTPStatus.FORBIDDEN
+
             dict_data = user_schema.load({
                 'email': email,
                 'phone': user_json.get('phone'),
@@ -100,3 +109,17 @@ class UserResource(Resource):
             response, status = {'message': str(err.messages)}, \
                 HTTPStatus.BAD_REQUEST
         return response, status
+
+    @staticmethod
+    @cors.crossdomain(origin='*')
+    @auth.require
+    def put():
+        """Update first name and last name from token."""
+        token_info = g.jwt_oidc_token_info
+        user = g.user
+        user.update({
+            'first_name': token_info.get('given_name'),
+            'last_name': token_info.get('family_name')
+        })
+
+        return 'Updated successfully', HTTPStatus.OK

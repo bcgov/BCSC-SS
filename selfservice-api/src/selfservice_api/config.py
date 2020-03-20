@@ -80,6 +80,7 @@ class _Config():  # pylint: disable=too-few-public-methods
         port=int(DB_PORT),
         name=DB_NAME,
     )
+    # SQLALCHEMY_ECHO = True
 
     # JWT_OIDC Settings
     JWT_OIDC_WELL_KNOWN_CONFIG = os.getenv('JWT_OIDC_WELL_KNOWN_CONFIG')
@@ -93,6 +94,7 @@ class _Config():  # pylint: disable=too-few-public-methods
     except ValueError:
         JWT_OIDC_JWKS_CACHE_TIMEOUT = 300
 
+    # DYNAMIC API Settings
     DYNAMIC_TEST_API_URL = os.getenv('DYNAMIC_TEST_API_URL')
     if DYNAMIC_TEST_API_URL and DYNAMIC_TEST_API_URL.endswith('/'):
         DYNAMIC_TEST_API_URL = DYNAMIC_TEST_API_URL[:-1]
@@ -101,6 +103,18 @@ class _Config():  # pylint: disable=too-few-public-methods
     if DYNAMIC_PROD_API_URL and DYNAMIC_PROD_API_URL.endswith('/'):
         DYNAMIC_PROD_API_URL = DYNAMIC_PROD_API_URL[:-1]
     DYNAMIC_PROD_API_TOKEN = os.getenv('DYNAMIC_PROD_API_TOKEN')
+
+    # EMAIL
+    MAIL_SERVER = os.getenv('MAIL_SERVER')
+    MAIL_PORT = os.getenv('MAIL_PORT')
+
+    EMAIL_ID_FROM = os.getenv('EMAIL_ID_FROM')
+    EMAIL_ID_ANALYST = os.getenv('EMAIL_ID_ANALYST')
+    EMAIL_ID_CC = os.getenv('EMAIL_ID_CC')
+    EMAIL_ID_DEBUG = os.getenv('EMAIL_ID_DEBUG')
+
+    # APP Settings
+    LIMITED_TEST_ACCOUNT_TRIGGER_COUNT = 20
 
     TESTING = False
     DEBUG = False
@@ -111,6 +125,10 @@ class DevConfig(_Config):  # pylint: disable=too-few-public-methods
 
     TESTING = False
     DEBUG = True
+
+    # EMAIL Settings
+    MAIL_DEBUG = True
+    MAIL_SUPPRESS_SEND = True
 
 
 class TestConfig(_Config):  # pylint: disable=too-few-public-methods
@@ -186,10 +204,15 @@ class TestConfig(_Config):  # pylint: disable=too-few-public-methods
     4H8UZcVFN95vEKxJiLRjAmj6g273pu9kK4ymXNEjWWJn
     -----END RSA PRIVATE KEY-----"""
 
+    # DYNAMIC API Settings
     DYNAMIC_TEST_API_URL = 'TESTING'
     DYNAMIC_TEST_API_TOKEN = 'TESTING_TOKEN'
     DYNAMIC_PROD_API_URL = 'TESTING'
     DYNAMIC_PROD_API_TOKEN = 'TESTING_TOKEN'
+
+    # EMAIL Settings
+    MAIL_DEBUG = True
+    MAIL_SUPPRESS_SEND = True
 
 
 class ProdConfig(_Config):  # pylint: disable=too-few-public-methods

@@ -1,0 +1,19 @@
+name: ZAP
+on: push
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    container:
+      image: owasp/zap2docker-stable
+      options: --user root -v ${{ github.workspace }}:/zap/wrk/:rw
+    steps:
+      - uses: actions/checkout@v2
+      - run: pwd && ls -l
+      - run: pip install --upgrade pip github3.py
+      - run: pip3 install --upgrade pip github3.py
+      - name: run zap baseline scan
+        run: zap-baseline.py -t https://selfservice-dev.pathfinder.gov.bc.ca/ -g gen.conf -r zapdevreport.html || echo 0
+      - run: pwd && ls -l /zap/wrk/
+      - run: cat /zap/wrk/zapdevreport.html
+      - run: apt-get update && apt-get install -q -y bsd-mailx
+      - run: echo "ZAP Scan Report" | mailx -s "ZAP Scan Report" -r "kulpreet.singh@aot-technologies.com" -a /zap/wrk/zapdevreport.html kulpreet.singh@aot-technologies.com

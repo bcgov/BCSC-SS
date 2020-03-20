@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <Header :verticalMenu="verticalMenu" />
+    <Header :hideMenu="hideMenu" />
     <v-content>
       <v-container fluid class="main-content">
         <router-view />
@@ -22,15 +22,19 @@ import Footer from '@/components/Footer/Footer.vue';
   }
 })
 export default class App extends Vue {
-  private sidebarMenuList = ['Home'];
-  private verticalMenu: boolean = false;
+  private hideMenu: boolean = false;
   constructor() {
     super();
   }
+  @Watch('$route', { immediate: true, deep: true })
+  private onUrlChange(newVal: any) {
+    const { hideMenu = false } = newVal.meta;
+    this.hideMenu = hideMenu || false;
+  }
 
   private created() {
-    const { showVerticalMenu = false } = this.$route.meta;
-    this.verticalMenu = showVerticalMenu || false;
+    const { hideMenu = false } = this.$route.meta;
+    this.hideMenu = hideMenu || false;
   }
 }
 </script>

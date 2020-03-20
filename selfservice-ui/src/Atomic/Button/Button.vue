@@ -9,12 +9,14 @@ important action on your service, such as Download or Submit. */
     v-bind:class="[
       secondary !== false ? 'secondary-btn' : 'primary',
       dark !== false ? 'dark-calss' : 'normal',
-      disabled !== false ? 'disabled' : ''
+      disabled !== false ? 'disabled' : '',
+    
     ]"
     :aria-disabled="disabled"
     :disabled="disabled"
     @click="click"
     v-bind="$attrs"
+    :color="color !== '' ? color : undefined"
   >
     <!-- @slot  Button display name-->
     <slot></slot>
@@ -71,6 +73,13 @@ export default class Button extends Vue {
     default: false
   })
   private disabled!: boolean;
+  /**
+   *  custom color button. default will be primary
+   */
+  @Prop({
+    default: ''
+  })
+  private color!: string;
 
   /**
    * on click
@@ -88,7 +97,7 @@ export default class Button extends Vue {
 
 .btn {
   border: none;
-  padding: 12px 32px;
+  padding: 10px 32px !important;
   min-height: 45px;
   display: block;
   text-align: center;

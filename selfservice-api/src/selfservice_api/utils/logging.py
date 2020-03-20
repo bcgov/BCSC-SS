@@ -25,3 +25,13 @@ def setup_logging(conf):
         print('Configure logging, from conf:{}'.format(conf), file=sys.stdout)
     else:
         print('Unable to configure logging, attempted conf:{}'.format(conf), file=sys.stderr)
+
+
+def log_error(msg):
+    """Log error."""
+    logging.error(msg)
+
+
+def log_info(msg):
+    """Log info."""
+    logging.info(msg)
