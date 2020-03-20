@@ -15,7 +15,7 @@
 
 from . import camel2snake
 
-from selfservice_api.models.enums.project import ProjectRoles
+from selfservice_api.models.enums.project import ProjectRoles, SigningEncryptionType
 
 
 def factory_user_info(is_model=False):
@@ -75,7 +75,7 @@ def factory_project_info(is_model=False, my_role=ProjectRoles.Developer):
         return project
 
 
-def factory_project_technical_req(is_model=False):
+def factory_project_technical_req(is_model=False, signing_encryption_type=SigningEncryptionType.SecureJWT):
     """JSON data to create technical req."""
     technical_req = {
         'projectId': 0,
@@ -83,6 +83,7 @@ def factory_project_technical_req(is_model=False):
         'redirectUris': [
             'https://someone.com/*'
         ],
+        'signingEncryptionType': signing_encryption_type,
         'jwksUri': 'https://someone.com/jwks',
         'signedResponseAlg': 'RS256',
         'encryptedResponseAlg': 'RS256'

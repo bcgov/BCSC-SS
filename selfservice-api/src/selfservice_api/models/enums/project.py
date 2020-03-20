@@ -13,57 +13,22 @@
 # limitations under the License.
 """This manages Project Enums."""
 
-from enum import Enum, IntEnum
+from .base_enum import ExtendedEnum, ExtendedIntEnum
 
 
-class ExtendedEnum(Enum):
-    """Extended Enum."""
-
-    @classmethod
-    def list(cls):
-        """Get list of values."""
-        return list(map(lambda c: c.value, cls))
-
-
-class ProjectRoles(IntEnum):
-    """This Enum provides the list of Project Roles."""
-
-    def __new__(cls, value, phrase=''):
-        """Customize the value to include phrase."""
-        obj = int.__new__(cls, value)
-        obj._value_ = value
-
-        obj.phrase = phrase
-        return obj
+class ProjectRoles(ExtendedIntEnum):
+    """This enum provides the list of Project Roles."""
 
     Developer = 1, 'Developer'
     Manager = 2, 'Manager'
     Cto = 3, 'Executive Sponsor'
 
-    @staticmethod
-    def get_phrase(value):
-        """Get phrase by value."""
-        return ProjectRoles(value).phrase
 
-
-class ProjectStatus(IntEnum):
-    """This Enum provides the list of Project Status."""
-
-    def __new__(cls, value, phrase=''):
-        """Customize the value to include phrase."""
-        obj = int.__new__(cls, value)
-        obj._value_ = value
-
-        obj.phrase = phrase
-        return obj
+class ProjectStatus(ExtendedIntEnum):
+    """This enum provides the list of Project Status."""
 
     Draft = 1, 'Draft'
     Development = 2, 'Development'
-
-    @staticmethod
-    def get_phrase(value):
-        """Get phrase by value."""
-        return ProjectStatus(value).phrase
 
 
 class Algorithms(ExtendedEnum):
@@ -81,3 +46,11 @@ class Algorithms(ExtendedEnum):
     PS256 = 'PS256'
     PS384 = 'PS384'
     PS512 = 'PS512'
+
+
+class SigningEncryptionType(ExtendedIntEnum):
+    """This enum provides the list of Signing and Encryption type."""
+
+    SimpleJSON = 1, 'Simple JSON'
+    SignedJWT = 2, 'Signed JWT'
+    SecureJWT = 3, 'Secure JWT'
