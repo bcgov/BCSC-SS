@@ -20,7 +20,7 @@ from flask_restplus import Namespace, Resource, cors
 
 from ..models.scope_package import ScopePackage
 from ..schemas.scope_package import ScopePackageSchema
-from ..utils.auth import jwt
+from ..utils.auth import auth
 from ..utils.util import cors_preflight
 
 
@@ -34,7 +34,7 @@ class ScopePackageResource(Resource):
 
     @staticmethod
     @cors.crossdomain(origin='*')
-    @jwt.requires_auth
+    @auth.require
     def get():
         """Get all scope package."""
         scope_packages = ScopePackage.find_all()

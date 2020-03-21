@@ -16,11 +16,13 @@
 from http import HTTPStatus
 
 from ..api import API_URI_PREFIX
+from ..helper.api_create_data import _create_user_
 from ..helper.auth import ss_client_auth_header
 
 
 def test_values_algorithms(client, jwt, session):
     """Assert that the endpoint returns the success status for algorithms."""
+    _create_user_(client, jwt)
     headers = ss_client_auth_header(jwt)
     rv = client.get(API_URI_PREFIX + 'values/algorithms', headers=headers)
 

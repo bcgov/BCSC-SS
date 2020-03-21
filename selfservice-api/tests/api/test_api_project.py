@@ -16,8 +16,9 @@
 import json
 from http import HTTPStatus
 
-from ..helper.api_create_data import (PROJECTINFO_API, _create_project_, _get_project_, _get_all_project_,  # noqa: I001
-                                    _update_technical_req_with_test_account_,  # noqa: I001
+from ..helper.api_create_data import (PROJECTINFO_API,  # noqa: I001
+                                    _create_admin_user_, _create_project_, _get_project_,  # noqa: I001
+                                    _get_all_project_, _update_technical_req_with_test_account_,  # noqa: I001
                                     create_project, create_technical_req_with_additional, create_user,  # noqa: I001
                                     get_project)  # noqa: I001
 from ..helper.auth import ss_client_auth_header
@@ -51,12 +52,12 @@ def test_post_project_as_cto(client, jwt, session):
 
 def test_post_project_validation(client, jwt, session):
     """Assert that the endpoint returns the failure status."""
+    create_user(client, jwt)
     headers = ss_client_auth_header(jwt)
     req_data = {}
 
     response = client.post(PROJECTINFO_API, data=json.dumps(req_data),
                            headers=headers, content_type='application/json')
-
     assert response.status_code == HTTPStatus.BAD_REQUEST
 
 
@@ -68,6 +69,7 @@ def test_get_all_project(client, jwt, session):
 
 def test_get_all_project_analyst(client, jwt, session):
     """Assert that the endpoint returns the success status."""
+    _create_admin_user_(client, jwt)
     response = _get_all_project_(client, jwt, True)
     assert response.status_code == HTTPStatus.OK
 

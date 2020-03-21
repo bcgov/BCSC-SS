@@ -21,6 +21,9 @@ from ..helper.api_create_data import (TECHNICALREQ_API, _create_technical_req_, 
                                       _update_technical_req_with_test_account_,  # noqa: I001
                                       create_project, create_technical_req, get_scope_packages)  # noqa: I001
 from ..helper.auth import ss_client_auth_header
+from ..helper.request_data import factory_project_technical_req
+
+from selfservice_api.models.enums import SigningEncryptionType
 
 
 def test_post_technical_req(client, jwt, session):
@@ -28,16 +31,37 @@ def test_post_technical_req(client, jwt, session):
     response = _create_technical_req_(client, jwt)
     assert response.status_code == HTTPStatus.CREATED
 
+    response = _create_technical_req_(client, jwt, signing_encryption_type=SigningEncryptionType.SignedJWT)
+    assert response.status_code == HTTPStatus.CREATED
+
+    response = _create_technical_req_(client, jwt, signing_encryption_type=SigningEncryptionType.SimpleJSON)
+    assert response.status_code == HTTPStatus.CREATED
+
 
 def test_post_technical_req_validation(client, jwt, session):
     """Assert that the endpoint returns the failure status."""
     headers = ss_client_auth_header(jwt)
     project = create_project(client, jwt)
-    req_data = {}
 
+    req_data = {}
     response = client.post(TECHNICALREQ_API.replace(':project_id', str(project['id'])), data=json.dumps(req_data),
                            headers=headers, content_type='application/json')
+    assert response.status_code == HTTPStatus.BAD_REQUEST
 
+    req_data = factory_project_technical_req(signing_encryption_type=SigningEncryptionType.SignedJWT)
+    req_data['signedResponseAlg'] = None
+    req_data['encryptedResponseAlg'] = None
+    req_data['jwksUri'] = None
+    response = client.post(TECHNICALREQ_API.replace(':project_id', str(project['id'])), data=json.dumps(req_data),
+                           headers=headers, content_type='application/json')
+    assert response.status_code == HTTPStatus.BAD_REQUEST
+
+    req_data = factory_project_technical_req(signing_encryption_type=SigningEncryptionType.SecureJWT)
+    req_data['signedResponseAlg'] = None
+    req_data['encryptedResponseAlg'] = None
+    req_data['jwksUri'] = None
+    response = client.post(TECHNICALREQ_API.replace(':project_id', str(project['id'])), data=json.dumps(req_data),
+                           headers=headers, content_type='application/json')
     assert response.status_code == HTTPStatus.BAD_REQUEST
 
 

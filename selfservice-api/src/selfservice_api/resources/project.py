@@ -20,12 +20,12 @@ from flask_restplus import Namespace, Resource, cors
 from marshmallow import ValidationError
 
 from ..models import OIDCConfig, Project, TechnicalReq, TestAccount, User
-from ..models.enums import ProjectStatus
+from ..models.enums import ProjectRoles, ProjectStatus
 from ..schemas.project import ProjectSchema
 from ..services.external import get_dynamic_api
 from ..services.external.models import CreateRequestModel, CreateResponseModel, UpdateRequestModel, UpdateResponseModel
 from ..services.notification import EmailService, EmailType
-from ..utils.auth import auth, jwt
+from ..utils.auth import auth
 from ..utils.roles import Role
 from ..utils.util import cors_preflight
 
@@ -40,7 +40,7 @@ class ProjectResource(Resource):
 
     @staticmethod
     @cors.crossdomain(origin='*')
-    @jwt.has_one_of_roles([Role.ss_client, Role.ss_admin])
+    @auth.has_one_of_roles([Role.ss_client, Role.ss_admin])
     def get():
         """Get all project."""
         token_info = g.jwt_oidc_token_info
@@ -52,7 +52,7 @@ class ProjectResource(Resource):
 
     @staticmethod
     @cors.crossdomain(origin='*')
-    @jwt.requires_auth
+    @auth.require
     def post():
         """Post a new project using the request body."""
         project_json = request.get_json()
@@ -76,7 +76,7 @@ class ProjectResourceById(Resource):
 
     @staticmethod
     @cors.crossdomain(origin='*')
-    @jwt.requires_auth
+    @auth.can_access_project([ProjectRoles.Developer, ProjectRoles.Manager, ProjectRoles.Cto])
     def get(project_id):
         """Get project details."""
         token_info = g.jwt_oidc_token_info
@@ -90,7 +90,7 @@ class ProjectResourceById(Resource):
 
     @staticmethod
     @cors.crossdomain(origin='*')
-    @jwt.requires_auth
+    @auth.can_access_project([ProjectRoles.Developer, ProjectRoles.Manager, ProjectRoles.Cto])
     def put(project_id):
         """Update project details."""
         project_json = request.get_json()
@@ -108,7 +108,7 @@ class ProjectResourceById(Resource):
 
     @staticmethod
     @cors.crossdomain(origin='*')
-    @auth.require
+    @auth.can_access_project([ProjectRoles.Developer, ProjectRoles.Manager, ProjectRoles.Cto])
     def patch(project_id):
         """Update project status."""
         project_patch_json = request.get_json()

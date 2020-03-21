@@ -19,7 +19,7 @@ from flask import jsonify
 from flask_restplus import Namespace, Resource, cors
 
 from ..models.enums.project import Algorithms
-from ..utils.auth import jwt
+from ..utils.auth import auth
 from ..utils.util import cors_preflight
 
 
@@ -33,7 +33,7 @@ class AlgorithmValuesResource(Resource):
 
     @staticmethod
     @cors.crossdomain(origin='*')
-    @jwt.requires_auth
+    @auth.require
     def get():
         """Get algorithms."""
         algorithms = [e.value for e in Algorithms]
