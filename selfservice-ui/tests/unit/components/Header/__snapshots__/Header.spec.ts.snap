@@ -115,7 +115,12 @@ exports[`Header.vue Logout user on logout button onlick  1`] = `
         </a>
       </li>
       <li>
-        <!---->
+        <a
+          class=""
+          href="#/add-test-account"
+        >
+          Add Test Account
+        </a>
       </li>
     </ul>
   </nav>
@@ -237,7 +242,12 @@ exports[`Header.vue Toggle menu onlick  1`] = `
         </a>
       </li>
       <li>
-        <!---->
+        <a
+          class=""
+          href="#/add-test-account"
+        >
+          Add Test Account
+        </a>
       </li>
     </ul>
   </nav>
@@ -359,7 +369,12 @@ exports[`Header.vue renders props when passed 1`] = `
         </a>
       </li>
       <li>
-        <!---->
+        <a
+          class=""
+          href="#/add-test-account"
+        >
+          Add Test Account
+        </a>
       </li>
     </ul>
   </nav>
