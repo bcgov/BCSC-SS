@@ -19,7 +19,8 @@ export const state: TechnicalReqState = {
     redirectUris: [],
     jwksUri: '',
     encryptedResponseAlg: '',
-    signedResponseAlg: ''
+    signedResponseAlg: '',
+    signingEncryptionType: 1
   },
   message: ''
 };

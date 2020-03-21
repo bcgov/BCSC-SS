@@ -55,7 +55,9 @@
     "btnBack": "Go Back",
     "btnNext": "Next",
     "btnCancel": "Cancel",
-    "btnSaveChanges": "Save Changes"
+    "btnSaveChanges": "Save Changes",
+    "labelTestMethod": "Select your testing method",
+    "labelTestMethodHint": "Select your testing method hint"
   },
   "selectPackage": {
     "pagetitle": "Select Package",
