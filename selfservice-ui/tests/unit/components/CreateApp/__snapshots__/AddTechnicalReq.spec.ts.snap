@@ -136,11 +136,6 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                         tag="div"
                       />
                     </div>
-                    <div
-                      class="v-counter theme--light"
-                    >
-                      0 / 500
-                    </div>
                   </div>
                 </div>
               </div>
@@ -533,11 +528,6 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                         tag="div"
                       />
                     </div>
-                    <div
-                      class="v-counter theme--light"
-                    >
-                      0 / 500
-                    </div>
                   </div>
                 </div>
               </div>
@@ -929,11 +919,6 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                         name="message-transition"
                         tag="div"
                       />
-                    </div>
-                    <div
-                      class="v-counter theme--light"
-                    >
-                      0 / 500
                     </div>
                   </div>
                 </div>
