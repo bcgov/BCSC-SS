@@ -84,7 +84,10 @@
                   <v-radio-group v-model="signingEncryptionType" :mandatory="false">
                     <v-radio label="Simple JSON" :value="algorithamBase.SimpleJSON"></v-radio>
                     <v-radio label="Signed JWT" :value="algorithamBase.SignedJWT">></v-radio>
-                    <div class="row" v-if="signingEncryptionType === algorithamBase.SignedJWT">
+                    <div
+                      class="row pad-radio"
+                      v-if="signingEncryptionType === algorithamBase.SignedJWT"
+                    >
                       <div class="col-12 col-md-5">
                         <v-card-subtitle class="text-left bc-padding-left-0">
                           {{
@@ -110,7 +113,7 @@
                     <v-radio label="Secure JWT" :value="algorithamBase.SecureJWT">></v-radio>
                   </v-radio-group>
                 </v-card-subtitle>
-                <div v-if="signingEncryptionType === algorithamBase.SecureJWT">
+                <div v-if="signingEncryptionType === algorithamBase.SecureJWT" class="pad-radio">
                   <v-card-subtitle class="text-left bc-padding-left-0">
                     {{
                     $t('technicalRequirements.JWKSText')
@@ -364,3 +367,8 @@ export default class AddTechnicalReq extends Vue {
   // }
 }
 </script>
+<style lang="scss" scoped>
+.pad-radio {
+  padding-left: 33px;
+}
+</style>

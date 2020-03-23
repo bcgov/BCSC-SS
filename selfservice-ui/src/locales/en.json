@@ -57,7 +57,7 @@
     "btnCancel": "Cancel",
     "btnSaveChanges": "Save Changes",
     "labelTestMethod": "Select your testing method",
-    "labelTestMethodHint": "Select your testing method hint"
+    "labelTestMethodHint": "Choose your signing and encryption methods for testing below. These options are available to facilitate your testing. Please note that when you move into a production environment, it will be required that you enable signing and encryption at that time."
   },
   "selectPackage": {
     "pagetitle": "Select Package",
@@ -126,7 +126,12 @@
     "labelJWKSUrlHint": "We use your JWKS  public key to encrypt our returned JWT. Warning - If the JWKS does not resolve, the JWT will not be encrypted.",
     "labelEncryptedResponseAlgHint": "This is the algorithm you would like us to use for encrypting the returned JWT. ",
     "labelSignedResponseAlgHint": "This is the algorithm you would like us to use for signing the returned JWT. We sign with our private key, our public key is included in the token.",
-    "labelDataPackageReqdHint": "Package of OIDC scopes (or user attributes) made available to your application on successful login"
+    "labelDataPackageReqdHint": "Package of OIDC scopes (or user attributes) made available to your application on successful login",
+    "labelTestingMethod": "Testing Method",
+    "labelTestingMethodHint": "This is the method you chose for testing in development. Please note that a production environment will require signing and encryption.",
+    "SimpleJSON": "Simple JSON",
+    "SignedJWT": "Signed JWT",
+    "SecureJWT": "Secure JWT"
   },
   "ClientID": {
     "pagetitle": "API Key / Client ID",
