@@ -94,7 +94,6 @@
                           }}
                         </v-card-subtitle>
                       </div>
-                      <!-- <v-spacer /> -->
                       <div class="col-12 col-md-5">
                         <Select
                           v-model="signedResponseAlg"
