@@ -29,7 +29,8 @@ class TechnicalReqRequestSchema(Schema):
     id = fields.Int()
     project_id = fields.Int(data_key='projectId')
     client_uri = fields.Str(data_key='clientUri', required=True, validate=validate.Length(min=10, max=500))
-    redirect_uris = fields.List(fields.String(), data_key='redirectUris')
+    redirect_uris = fields.List(fields.String(validate=validate.Length(min=10)),
+                                data_key='redirectUris', required=True, validate=validate.Length(min=1))
     jwks_uri = fields.Str(data_key='jwksUri', required=False, validate=validate.Length(max=500), allow_none=True)
 
     id_token_signed_response_alg = fields.Str(load_only=True, data_key='signedResponseAlg', allow_none=True)
