@@ -4,7 +4,7 @@ A Postman collection for authenticating to the BCSC API.
 ## Steps to get up and running
 Follow these steps to quickly test out your access to the BC Services Card OIDC environment
 
-### 1. Get an OAuth2 (OIDC)  key and secret for your application from the BC Services Card Self Service site
+### 1. Get an OAuth2 (OIDC)  key and secret for your application from the BC Services Card Self Service site (<insert url>)
 Lets assume that these are called "Client key" and "Client secret". Remember your redirect URL "Redirect URL" and the scopes you have requested. You also need to remember whether you are encrypting or signing  the response or whether you require the response in JWT or JSON format. The signing parameters (id_token_signed_response_alg,  userinfo_signed_response_alg) are linked to the JWKS URL and the encryption parameters (id_token_encrypted_reponse and userinfo_encrypted_response ) determine whether the response is encrypted. 
 
 ### 2. Import the BCSC OAuth 2.0 collection and BCSC environment into Postman
