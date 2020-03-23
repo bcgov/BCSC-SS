@@ -20,7 +20,7 @@ from flask_restplus import Namespace, Resource, cors
 
 from ..models import OIDCConfig, TestAccount
 from ..schemas import OIDCConfigSchema, TestAccountSchema
-from ..utils.auth import jwt
+from ..utils.auth import auth
 from ..utils.util import cors_preflight
 
 
@@ -34,7 +34,7 @@ class OIDCConfigResource(Resource):
 
     @staticmethod
     @cors.crossdomain(origin='*')
-    @jwt.requires_auth
+    @auth.require
     def get(project_id):
         """Get oidc config and test account details."""
         oidc_config = OIDCConfig.find_by_project_id(project_id)

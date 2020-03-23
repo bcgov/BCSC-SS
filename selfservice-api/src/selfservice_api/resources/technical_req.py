@@ -19,10 +19,11 @@ from flask import g, request
 from flask_restplus import Namespace, Resource, cors
 from marshmallow import ValidationError
 
+from ..models.enums import ProjectRoles
 from ..models.technical_req import TechnicalReq
 from ..schemas.technical_req import (TechnicalReqPackageSchema, TechnicalReqRequestSchema,  # noqa: I001
                                      TechnicalReqResponseSchema, TechnicalReqTestAccountSchema)  # noqa: I001
-from ..utils.auth import jwt
+from ..utils.auth import auth
 from ..utils.util import cors_preflight
 
 
@@ -36,7 +37,7 @@ class TechnicalReqResource(Resource):
 
     @staticmethod
     @cors.crossdomain(origin='*')
-    @jwt.requires_auth
+    @auth.can_access_project([ProjectRoles.Developer, ProjectRoles.Manager, ProjectRoles.Cto])
     def post(project_id):
         """Post a new technical requirement using the request body."""
         technical_req_json = request.get_json()
@@ -55,7 +56,7 @@ class TechnicalReqResource(Resource):
 
     @staticmethod
     @cors.crossdomain(origin='*')
-    @jwt.requires_auth
+    @auth.can_access_project([ProjectRoles.Developer, ProjectRoles.Manager, ProjectRoles.Cto])
     def get(project_id):
         """Get technical requirement details."""
         technical_req = TechnicalReq.find_by_project_id(project_id)
@@ -64,7 +65,7 @@ class TechnicalReqResource(Resource):
 
     @staticmethod
     @cors.crossdomain(origin='*')
-    @jwt.requires_auth
+    @auth.can_access_project([ProjectRoles.Developer, ProjectRoles.Manager, ProjectRoles.Cto])
     def put(project_id):
         """Update technical requirement using the request body."""
         technical_req_json = request.get_json()
@@ -83,7 +84,7 @@ class TechnicalReqResource(Resource):
 
     @staticmethod
     @cors.crossdomain(origin='*')
-    @jwt.requires_auth
+    @auth.can_access_project([ProjectRoles.Developer, ProjectRoles.Manager, ProjectRoles.Cto])
     def patch(project_id):
         """Update scope package or test account in technical requirement."""
         tr_patch_json = request.get_json()

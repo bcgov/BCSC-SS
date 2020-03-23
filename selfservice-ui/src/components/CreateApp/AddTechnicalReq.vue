@@ -41,7 +41,6 @@
                 </v-card-subtitle>
                 <Input
                   v-model="clientUri"
-                  counter="500"
                   :label="$t('technicalRequirements.labelApplicationUrl')"
                   type="text"
                   :rules="[rules.required, rules.url, rules.maxLength(500)]"
@@ -63,7 +62,7 @@
                   v-model="redirectUris[0]"
                   :label="$t('technicalRequirements.labelRedirectUrl')"
                   type="text"
-                  :rules="[rules.url]"
+                  :rules="[rules.required, rules.url]"
                   class="addUri"
                   outlined
                 ></v-text-field>
@@ -71,60 +70,104 @@
                 <!-- </div> -->
                 <v-card-subtitle class="text-left bc-padding-left-0">
                   {{
-                  $t('technicalRequirements.JWKSText')
+                  $t('technicalRequirements.labelTestMethod')
                   }}
                 </v-card-subtitle>
-                <Input
-                  v-model="jwksUri"
-                  counter="500"
-                  :label="$t('technicalRequirements.labelJWKSUrl')"
-                  type="text"
-                  :rules="[rules.required, rules.url, rules.maxLength(500)]"
-                  class="pt-6"
-                />
-                <div class="row">
-                  <div class="col-12 col-md-5">
-                    <v-card-subtitle class="text-left bc-padding-left-0">
-                      {{
-                      $t('technicalRequirements.labelEncryptedResponseAlgHint')
-                      }}
-                    </v-card-subtitle>
-                  </div>
-                  <v-spacer />
-                  <div class="col-12 col-md-5">
-                    <v-card-subtitle class="text-left bc-padding-left-0">
-                      {{
-                      $t('technicalRequirements.labelSignedResponseAlgHint')
-                      }}
-                    </v-card-subtitle>
-                  </div>
-                  <div class="col-12 col-md-5">
-                    <Select
-                      v-model="encryptedResponseAlg"
-                      :label="
-                        $t(
-                          'technicalRequirements.labelEncryptedResponseAlg'
-                        )
-                      "
-                      :items="algorithm"
-                      :rules="[rules.required]"
-                      outlined
-                    />
-                  </div>
-                  <v-spacer />
-                  <div class="col-12 col-md-5">
-                    <Select
-                      v-model="signedResponseAlg"
-                      :label="
+                <v-card-subtitle class="text-left bc-padding-left-0">
+                  {{
+                  $t('technicalRequirements.labelTestMethodHint')
+                  }}
+                </v-card-subtitle>
+
+                <v-card-subtitle class="text-left bc-padding-left-0">
+                  <v-radio-group v-model="signingEncryptionType" :mandatory="false">
+                    <v-radio label="Simple JSON" :value="algorithamBase.SimpleJSON"></v-radio>
+                    <v-radio label="Signed JWT" :value="algorithamBase.SignedJWT">></v-radio>
+                    <div
+                      class="row pad-radio"
+                      v-if="signingEncryptionType === algorithamBase.SignedJWT"
+                    >
+                      <div class="col-12 col-md-5">
+                        <v-card-subtitle class="text-left bc-padding-left-0 pad-0">
+                          {{
+                          $t('technicalRequirements.labelSignedResponseAlgHint')
+                          }}
+                        </v-card-subtitle>
+                      </div>
+                      <div class="col-12 col-md-5">
+                        <Select
+                          v-model="signedResponseAlg"
+                          :label="
                         $t(
                           'technicalRequirements.labelSignedResponseAlg'
                         )
                       "
-                      :items="algorithm"
-                      :rules="[rules.required]"
-                      outlined
-                      class="col-6"
-                    />
+                          :items="algorithm"
+                          :rules="[rules.required]"
+                          outlined
+                        />
+                      </div>
+                    </div>
+                    <v-radio label="Secure JWT" :value="algorithamBase.SecureJWT">></v-radio>
+                  </v-radio-group>
+                </v-card-subtitle>
+                <div v-if="signingEncryptionType === algorithamBase.SecureJWT" class="pad-radio">
+                  <v-card-subtitle class="text-left bc-padding-left-0">
+                    {{
+                    $t('technicalRequirements.JWKSText')
+                    }}
+                  </v-card-subtitle>
+                  <Input
+                    v-model="jwksUri"
+                    :label="$t('technicalRequirements.labelJWKSUrl')"
+                    type="text"
+                    :rules="[rules.required, rules.url, rules.maxLength(500)]"
+                    class="pt-6"
+                  />
+                  <div class="row">
+                    <div class="col-12 col-md-5">
+                      <v-card-subtitle class="text-left bc-padding-left-0">
+                        {{
+                        $t('technicalRequirements.labelEncryptedResponseAlgHint')
+                        }}
+                      </v-card-subtitle>
+                    </div>
+                    <v-spacer />
+                    <div class="col-12 col-md-5">
+                      <v-card-subtitle class="text-left bc-padding-left-0">
+                        {{
+                        $t('technicalRequirements.labelSignedResponseAlgHint')
+                        }}
+                      </v-card-subtitle>
+                    </div>
+                    <div class="col-12 col-md-5">
+                      <Select
+                        v-model="encryptedResponseAlg"
+                        :label="
+                        $t(
+                          'technicalRequirements.labelEncryptedResponseAlg'
+                        )
+                      "
+                        :items="algorithm"
+                        :rules="[rules.required]"
+                        outlined
+                      />
+                    </div>
+                    <v-spacer />
+                    <div class="col-12 col-md-5">
+                      <Select
+                        v-model="signedResponseAlg"
+                        :label="
+                        $t(
+                          'technicalRequirements.labelSignedResponseAlg'
+                        )
+                      "
+                        :items="algorithm"
+                        :rules="[rules.required]"
+                        outlined
+                        class="col-6"
+                      />
+                    </div>
                   </div>
                 </div>
                 <!-- </v-form> -->
@@ -172,6 +215,7 @@ import Button from '@/Atomic/Button/Button.vue';
 import Select from '@/Atomic/Select/Select.vue';
 import validationRules from '@/config/validationRules';
 import Loading from '@/Atomic/Loading/Loading.vue';
+import { algorithamBase } from '@/constants/enums';
 
 import { algorithm } from '@/constants/algorithm';
 import { TechnicalReqModel } from '@/models/TechnicalReqModel';
@@ -219,6 +263,8 @@ export default class AddTechnicalReq extends Vue {
   private signedResponseAlg: string = 'RS256';
   private algorithm: any = algorithm;
   private blockRemoval = true;
+  private signingEncryptionType: number = algorithamBase.SimpleJSON;
+  private algorithamBase: any = algorithamBase;
 
   // private id: string = '';
   private isEditMode: boolean = false;
@@ -240,9 +286,19 @@ export default class AddTechnicalReq extends Vue {
       projectId: this.projectId,
       clientUri: this.clientUri,
       redirectUris: this.redirectUris,
-      jwksUri: this.jwksUri,
-      encryptedResponseAlg: this.encryptedResponseAlg,
-      signedResponseAlg: this.signedResponseAlg
+      signingEncryptionType: this.signingEncryptionType,
+      jwksUri:
+        this.signingEncryptionType === algorithamBase.SecureJWT
+          ? this.jwksUri
+          : '',
+      encryptedResponseAlg:
+        this.signingEncryptionType === algorithamBase.SecureJWT
+          ? this.encryptedResponseAlg
+          : null,
+      signedResponseAlg:
+        this.signingEncryptionType === algorithamBase.SimpleJSON
+          ? null
+          : this.signedResponseAlg
     };
 
     if (this.isEditMode && this.TechnicalReqId !== 0) {
@@ -263,6 +319,8 @@ export default class AddTechnicalReq extends Vue {
     this.signedResponseAlg = val.signedResponseAlg || this.signedResponseAlg;
     this.TechnicalReqId = val.id || 0;
     this.isEditMode = true;
+    this.signingEncryptionType =
+      val.signingEncryptionType || this.signingEncryptionType;
   }
 
   private mounted() {
@@ -306,3 +364,11 @@ export default class AddTechnicalReq extends Vue {
   // }
 }
 </script>
+<style lang="scss" scoped>
+.pad-radio {
+  padding-left: 33px;
+}
+.pad-0 {
+  padding: 0;
+}
+</style>

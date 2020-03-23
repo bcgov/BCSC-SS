@@ -68,7 +68,7 @@ class Auth():
     def can_access_project(cls, project_roles):
         """User should have one of the roles on the project.
 
-        If the user is in `is_admin` role it will skip the validation.
+        If the user is in `ss_admin` role it will skip the check and grand permission.
         Args:
             project_roles [str,]: Comma separated list of valid ProjectRole (enum)
         """

@@ -18,7 +18,7 @@ import json
 from .auth import TestJwtClaims, ss_admin_auth_header, ss_client_auth_header
 from .request_data import factory_project_info, factory_project_technical_req, factory_test_account
 
-from selfservice_api.models.enums import ProjectRoles
+from selfservice_api.models.enums import ProjectRoles, SigningEncryptionType
 
 
 API_URI_PREFIX = '/api/v1/'
@@ -193,11 +193,11 @@ def create_technical_req(client, jwt):
     return technical_req
 
 
-def _create_technical_req_(client, jwt):
+def _create_technical_req_(client, jwt, signing_encryption_type=SigningEncryptionType.SecureJWT):
     """Create technical requirement and return response object."""
     headers = ss_client_auth_header(jwt)
     project = create_project(client, jwt)
-    request_data = factory_project_technical_req()
+    request_data = factory_project_technical_req(signing_encryption_type=signing_encryption_type)
     request_data['projectId'] = project['id']
 
     response = client.post(TECHNICALREQ_API.replace(':project_id', str(project['id'])),

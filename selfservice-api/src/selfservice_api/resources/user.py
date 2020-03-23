@@ -82,7 +82,7 @@ class UserResource(Resource):
                 email = token_info.get('email')
             else:
                 email = user_json.get('email')
-                domain = email.split('@').pop() if email and '@' in email else None
+                domain = email.strip().split('@').pop() if email and '@' in email else None
                 valid_domain = OrgWhitelist.validate_domain(domain)
                 if not valid_domain:
                     return {'code': 'domain', 'message': 'Invalid Domain'}, \
