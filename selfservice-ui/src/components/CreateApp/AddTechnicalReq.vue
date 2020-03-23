@@ -41,7 +41,6 @@
                 </v-card-subtitle>
                 <Input
                   v-model="clientUri"
-                  counter="500"
                   :label="$t('technicalRequirements.labelApplicationUrl')"
                   type="text"
                   :rules="[rules.required, rules.url, rules.maxLength(500)]"
@@ -89,7 +88,7 @@
                       v-if="signingEncryptionType === algorithamBase.SignedJWT"
                     >
                       <div class="col-12 col-md-5">
-                        <v-card-subtitle class="text-left bc-padding-left-0">
+                        <v-card-subtitle class="text-left bc-padding-left-0 pad-0">
                           {{
                           $t('technicalRequirements.labelSignedResponseAlgHint')
                           }}
@@ -121,7 +120,6 @@
                   </v-card-subtitle>
                   <Input
                     v-model="jwksUri"
-                    counter="500"
                     :label="$t('technicalRequirements.labelJWKSUrl')"
                     type="text"
                     :rules="[rules.required, rules.url, rules.maxLength(500)]"
@@ -370,5 +368,8 @@ export default class AddTechnicalReq extends Vue {
 <style lang="scss" scoped>
 .pad-radio {
   padding-left: 33px;
+}
+.pad-0 {
+  padding: 0;
 }
 </style>
