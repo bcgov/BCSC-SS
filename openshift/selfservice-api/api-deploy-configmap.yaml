@@ -26,8 +26,8 @@ objects:
     MAIL_SERVER: "${MAIL_SERVER}"
     MAIL_PORT: "${MAIL_PORT}"
     EMAIL_ID_FROM: "${EMAIL_ID_FROM}"
-    EMAIL_ID_ANALYST: "${EMAIL_ID_ANALYST}"
-    EMAIL_ID_CC: "${EMAIL_ID_CC}"
+    EMAIL_ID_ANALYST: "${EMAIL_ID_ANALYST_DEV}"
+    EMAIL_ID_CC: "${EMAIL_ID_CC_DEV}"
     EMAIL_ID_DEBUG: "${EMAIL_ID_DEBUG}"
 - kind: ConfigMap
   apiVersion: v1
@@ -204,7 +204,13 @@ parameters:
 - name: EMAIL_ID_FROM
   description: NOREPLY email ID
   required: true
-  value: "noreply@gov.bc.ca"
+  value: "noreply.bcservicescard.selfservice@gov.bc.ca"
+- name: EMAIL_ID_ANALYST_DEV
+  description: Analyst email ID
+  value: "vysakh.menon@gov.bc.ca"
+- name: EMAIL_ID_CC_DEV
+  description: Comma seperated N number of email ID
+  value: "vysakh.menon@gov.bc.ca"
 - name: EMAIL_ID_ANALYST
   description: Analyst email ID
   value: "zorin.samji@gov.bc.ca"

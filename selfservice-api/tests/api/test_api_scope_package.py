@@ -15,10 +15,11 @@
 
 from http import HTTPStatus
 
-from ..helper.api_create_data import _get_scope_packages_
+from ..helper.api_create_data import _create_user_, _get_scope_packages_
 
 
 def test_scope_packages(client, jwt, session):
     """Assert that the endpoint returns the success status for scope packages."""
+    _create_user_(client, jwt)
     response = _get_scope_packages_(client, jwt)
     assert response.status_code == HTTPStatus.OK

@@ -41,6 +41,8 @@ exports[`Profile.vue renders props when passed with gettors 1`] = `
           md="12"
           tag="div"
         >
+          <!---->
+           
           <v-card-subtitle-stub
             class="text-left padding-0 bc-padding-left-0"
           />

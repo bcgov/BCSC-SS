@@ -13,6 +13,8 @@
 # limitations under the License.
 """This manages Orginasition Whitelist."""
 
+from __future__ import annotations
+
 from .audit_mixin import AuditDateTimeMixin
 from .db import db
 
@@ -22,6 +24,15 @@ class OrgWhitelist(AuditDateTimeMixin, db.Model):  # pylint: disable=too-few-pub
 
     __tablename__ = 'org_whitelist'
     id = db.Column(db.Integer, primary_key=True)
+    org_code = db.Column('org_code', db.Integer, nullable=True)
     org_name = db.Column('org_name', db.String(250), nullable=False)
     head_of_org = db.Column('head_of_org', db.String(250), nullable=False)
     domain = db.Column('domain', db.String(50), nullable=False)
+
+    @classmethod
+    def validate_domain(cls, domain) -> bool:
+        """Validate domain."""
+        if domain:
+            count = cls.query.filter(OrgWhitelist.domain == domain).count()
+            return count > 0
+        return False

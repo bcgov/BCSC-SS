@@ -18,7 +18,8 @@ export const state: KeyCloakState = {
   isVerfied: false,
   fields: [],
   successStatus: false,
-  errorStatus: false
+  errorStatus: false,
+  profileErrorStatus: false
 };
 
 //  namespaced module

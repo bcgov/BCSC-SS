@@ -30,6 +30,9 @@ describe('Header.vue', () => {
           }),
           isLoggedin: jest.fn(() => {
             return true;
+          }),
+          isAdmin: jest.fn(() => {
+            return true;
           })
         },
         actions: { setLogout: jest.fn() }

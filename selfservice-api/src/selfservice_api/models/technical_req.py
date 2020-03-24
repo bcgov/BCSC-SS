@@ -40,6 +40,8 @@ class TechnicalReq(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
     no_of_test_account = db.Column(db.Integer(), nullable=True)
     note_test_account = db.Column(db.Text(), nullable=True)
 
+    signing_encryption_type = db.Column(db.Integer, nullable=True)
+
     @classmethod
     def create_from_dict(cls, technical_req_info: dict, oauth_id: str) -> TechnicalReq:
         """Create a new technical requirement from the provided dictionary."""
@@ -53,6 +55,7 @@ class TechnicalReq(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
             technical_req.userinfo_signed_response_alg = technical_req_info['userinfo_signed_response_alg']
             technical_req.id_token_encrypted_response_alg = technical_req_info['id_token_encrypted_response_alg']
             technical_req.userinfo_encrypted_response_alg = technical_req_info['userinfo_encrypted_response_alg']
+            technical_req.signing_encryption_type = technical_req_info['signing_encryption_type']
 
             current_user = User.find_by_oauth_id(oauth_id)
             technical_req.created_by = current_user.id
@@ -74,6 +77,6 @@ class TechnicalReq(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
         self.update_from_dict(['modified_by', 'scope_package_id', 'no_of_test_account', 'note_test_account',
                                'client_uri', 'redirect_uris', 'jwks_uri', 'id_token_signed_response_alg',
                                'userinfo_signed_response_alg', 'id_token_encrypted_response_alg',
-                               'userinfo_encrypted_response_alg'],
+                               'userinfo_encrypted_response_alg', 'signing_encryption_type'],
                               technical_req_info)
         self.commit()

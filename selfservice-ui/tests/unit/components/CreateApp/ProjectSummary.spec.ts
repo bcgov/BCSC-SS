@@ -214,6 +214,7 @@ describe('ProjectSummary.vue', () => {
       store,
       mocks: { $t: jest.fn(() => {}) } // tslint:disable-line
     });
+
     expect(projectSummary.element).toMatchSnapshot();
   });
 });

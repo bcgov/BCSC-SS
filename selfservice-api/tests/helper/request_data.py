@@ -15,13 +15,13 @@
 
 from . import camel2snake
 
-from selfservice_api.models.enums.project import ProjectRoles
+from selfservice_api.models.enums.project import ProjectRoles, SigningEncryptionType
 
 
 def factory_user_info(is_model=False):
     """JSON data to create user info."""
     user = {
-        'email': 'developer@email.com',
+        'email': 'developer@gov.bc.ca',
         'phone': '987654321',
         'firstName': 'client',
         'lastName': 'ss',
@@ -44,7 +44,7 @@ def factory_project_info(is_model=False, my_role=ProjectRoles.Developer):
     }
     if my_role != ProjectRoles.Developer:
         project['users'].append({
-            'email': 'developer@email.com',
+            'email': 'developer@gov.bc.ca',
             'phone': '1234567890',
             'firstName': 'f developer',
             'lastName': 'l developer',
@@ -53,7 +53,7 @@ def factory_project_info(is_model=False, my_role=ProjectRoles.Developer):
 
     if my_role != ProjectRoles.Manager:
         project['users'].append({
-            'email': 'manager@email.com',
+            'email': 'manager@gov.bc.ca',
             'phone': '1234567890',
             'firstName': 'f manager',
             'lastName': 'l manager',
@@ -62,7 +62,7 @@ def factory_project_info(is_model=False, my_role=ProjectRoles.Developer):
 
     if my_role != ProjectRoles.Cto:
         project['users'].append({
-            'email': 'cto@email.com',
+            'email': 'cto@gov.bc.ca',
             'phone': '1234567890',
             'firstName': 'f cto',
             'lastName': 'l cto',
@@ -75,7 +75,7 @@ def factory_project_info(is_model=False, my_role=ProjectRoles.Developer):
         return project
 
 
-def factory_project_technical_req(is_model=False):
+def factory_project_technical_req(is_model=False, signing_encryption_type=SigningEncryptionType.SecureJWT):
     """JSON data to create technical req."""
     technical_req = {
         'projectId': 0,
@@ -83,6 +83,7 @@ def factory_project_technical_req(is_model=False):
         'redirectUris': [
             'https://someone.com/*'
         ],
+        'signingEncryptionType': signing_encryption_type,
         'jwksUri': 'https://someone.com/jwks',
         'signedResponseAlg': 'RS256',
         'encryptedResponseAlg': 'RS256'

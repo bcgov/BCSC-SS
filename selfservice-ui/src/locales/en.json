@@ -55,7 +55,9 @@
     "btnBack": "Go Back",
     "btnNext": "Next",
     "btnCancel": "Cancel",
-    "btnSaveChanges": "Save Changes"
+    "btnSaveChanges": "Save Changes",
+    "labelTestMethod": "Select your testing method",
+    "labelTestMethodHint": "Choose your signing and encryption methods for testing below. These options are available to facilitate your testing. Please note that when you move into a production environment, it will be required that you enable signing and encryption at that time."
   },
   "selectPackage": {
     "pagetitle": "Select Package",
@@ -124,7 +126,12 @@
     "labelJWKSUrlHint": "We use your JWKS  public key to encrypt our returned JWT. Warning - If the JWKS does not resolve, the JWT will not be encrypted.",
     "labelEncryptedResponseAlgHint": "This is the algorithm you would like us to use for encrypting the returned JWT. ",
     "labelSignedResponseAlgHint": "This is the algorithm you would like us to use for signing the returned JWT. We sign with our private key, our public key is included in the token.",
-    "labelDataPackageReqdHint": "Package of OIDC scopes (or user attributes) made available to your application on successful login"
+    "labelDataPackageReqdHint": "Package of OIDC scopes (or user attributes) made available to your application on successful login",
+    "labelTestingMethod": "Testing Method",
+    "labelTestingMethodHint": "This is the method you chose for testing in development. Please note that a production environment will require signing and encryption.",
+    "SimpleJSON": "Simple JSON",
+    "SignedJWT": "Signed JWT",
+    "SecureJWT": "Secure JWT"
   },
   "ClientID": {
     "pagetitle": "API Key / Client ID",
@@ -157,7 +164,8 @@
     "titlePageInfo": "After you add your contact information, you will receive a confirmation email. Only users from the broader public sector or BC Government will be approved for access.",
     "labelEmail": "Email (work)",
     "labelPhone": "Phone",
-    "btnContinue": "Continue"
+    "btnContinue": "Continue",
+    "errorMessageDomain": "Your email address does not match any of the eligible organizations in our BC Services Card Self Service System. If you believe you or your organization should have access to this system, please contact <a href='mailto:zorin.samji@gov.bc.ca'>IDIM Consulting</a> to be added. "
   },
   "home": {
     "pagetitle": "Complete Profile",
@@ -170,5 +178,14 @@
     "txtsubcontent4": "Broader Public Sector includes the core provincial public service (ministries), health authorities, Crown corporations, K-12 schools, colleges, institutes, teaching universities, and research universities, contracted social service providers. It does not include Federal, local and municipal governments.",
     "btnLearmore": "Learn more",
     "txtgetStarted": "Get started"
+  },
+  "testAccountList": {
+    "pagetitle": "Add Test Accounts",
+    "pageinfo": "Some text for add test account",
+    "special_notes": "Past your test accounts without heading",
+    "btnBack": "Go Back",
+    "btnSaveChanges": "Add Test Account",
+    "errorMessage": "Something went wrong.",
+    "successMessage": "Test Account created"
   }
 }

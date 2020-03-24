@@ -199,6 +199,25 @@
               <v-list-item>
                 <v-list-item-content class="pr-30">
                   {{
+                  $t('summaryPage.labelTestingMethod')
+                  }}
+                  <span
+                    class="small-hint pad-50"
+                    v-html="$t('summaryPage.labelTestingMethodHint')"
+                  ></span>
+                </v-list-item-content>
+
+                <v-list-item-content class="align-end">
+                  <div v-if="technicalReq.signingEncryptionType">
+                    <v-icon small class="mr-1">mdi-link</v-icon>
+                    {{ $t(`summaryPage.${getTestingMethodName(technicalReq.signingEncryptionType)}`) }}
+                  </div>
+                </v-list-item-content>
+              </v-list-item>
+              <v-divider v-if="technicalReq.signingEncryptionType ===3"></v-divider>
+              <v-list-item v-if="technicalReq.signingEncryptionType ===3">
+                <v-list-item-content class="pr-30">
+                  {{
                   $t('summaryPage.labelJWKSUrl')
                   }}
                   <span
@@ -214,8 +233,8 @@
                   </div>
                 </v-list-item-content>
               </v-list-item>
-              <v-divider></v-divider>
-              <v-list-item>
+              <v-divider v-if="technicalReq.signingEncryptionType ===3"></v-divider>
+              <v-list-item v-if="technicalReq.signingEncryptionType ===3">
                 <v-list-item-content class="pr-30">
                   {{
                   $t('summaryPage.labelEncryptedResponseAlg')
@@ -234,8 +253,8 @@
                   </v-list-item-content>
                 </v-list-item-content>
               </v-list-item>
-              <v-divider></v-divider>
-              <v-list-item>
+              <v-divider v-if="technicalReq.signingEncryptionType !==1"></v-divider>
+              <v-list-item v-if="technicalReq.signingEncryptionType !==1">
                 <v-list-item-content class="pr-30">
                   {{
                   $t('summaryPage.labelSignedResponseAlg')
@@ -466,6 +485,9 @@ export default class TestAccountRequest extends Vue {
     id: '',
     packageName: ''
   };
+  private testMethod: any = [
+    { 1: 'SimpleJSON', 2: 'SignedJWT', 3: 'SecureJWT' }
+  ];
 
   @Watch('getFinalProjectSubmissionStatus')
   private ongetFinalProjectSubmissionStatusChanged(val: any) {
@@ -525,6 +547,10 @@ export default class TestAccountRequest extends Vue {
       (packageData: any) => packageData.id === packageId
     );
     return selectedPack;
+  }
+  // technicalReq.signingEncryptionType
+  private getTestingMethodName(signingEncryptionType: any) {
+    return this.testMethod[0][signingEncryptionType] || 'SimpleJSON';
   }
 
   private setUsers(projectInfo: any) {
