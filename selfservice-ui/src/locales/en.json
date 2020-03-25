@@ -187,5 +187,12 @@
     "btnSaveChanges": "Add Test Account",
     "errorMessage": "Something went wrong.",
     "successMessage": "Test Account created"
+  },
+  "projectContainer": {
+    "pagetitle": "Summary page",
+    "titleDevSummary": "Dev Summary",
+    "titleTeamRoles": "Team Roles",
+    "titleLiveAccessReq": "Live Access Request",
+    "titlePrivacy": "Privacy"
   }
 }
