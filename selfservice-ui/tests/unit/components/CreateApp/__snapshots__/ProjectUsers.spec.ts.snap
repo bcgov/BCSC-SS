@@ -13,7 +13,7 @@ exports[`ProjectUsers.vue renders props when passed 1`] = `
   </v-card-title-stub>
    
   <v-card-subtitle-stub
-    class="text-left bc-padding-left-0"
+    class="text-left bc-padding-left-0 min-height-help"
   >
     
   </v-card-subtitle-stub>
