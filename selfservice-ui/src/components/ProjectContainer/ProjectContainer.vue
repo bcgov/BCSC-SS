@@ -48,9 +48,6 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
 import ProjectSummary from '@/components/CreateApp/ProjectSummary.vue';
 
-const ProjectInfoModule = namespace('ProjectInfoModule');
-const KeyCloakModule = namespace('KeyCloakModule');
-
 @Component({
   components: {
     ProjectSummary
@@ -59,19 +56,6 @@ const KeyCloakModule = namespace('KeyCloakModule');
 export default class ProjectContainer extends Vue {
   @Prop({ default: 0 })
   public id!: number;
-  @KeyCloakModule.Getter('isClient')
-  public isClient!: any;
-
-  @ProjectInfoModule.Getter('getProjectInfoList')
-  public projectInfoList!: any;
-  @ProjectInfoModule.Action('loadProjectInfo')
-  public loadProjectInfo!: any;
-  @ProjectInfoModule.Action('errorStatus')
-  public errorStatus!: any;
-
-  private mounted() {
-    this.loadProjectInfo();
-  }
 }
 </script>
 
