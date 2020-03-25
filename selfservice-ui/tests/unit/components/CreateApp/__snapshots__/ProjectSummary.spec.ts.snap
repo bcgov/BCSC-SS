@@ -4,8 +4,6 @@ exports[`ProjectSummary.vue renders props when passed 1`] = `
 <div>
   <loading-stub />
    
-  <v-divider-stub />
-   
   <div
     class="text-center"
   >
@@ -115,12 +113,6 @@ exports[`ProjectSummary.vue renders props when passed with gettors 1`] = `
     </div>
   </div>
    
-  <hr
-    aria-orientation="horizontal"
-    class="v-divider theme--light"
-    role="separator"
-  />
-   
   <div
     class="text-center"
   >
@@ -146,21 +138,8 @@ exports[`ProjectSummary.vue renders props when passed with gettors 1`] = `
 exports[`ProjectSummary.vue show modal on click 1`] = `
 <div>
   <div
-    class="row ma-5"
+    class="row"
   >
-    <div
-      class="col col-12"
-      flat=""
-    >
-      <div
-        class="v-card v-card--flat v-sheet theme--light"
-      >
-        <div
-          class="v-list-item__content text-left padding-0"
-        />
-      </div>
-    </div>
-     
     <div
       class="col col-12"
       flat=""
@@ -810,12 +789,6 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
       </div>
     </div>
   </div>
-   
-  <hr
-    aria-orientation="horizontal"
-    class="v-divider theme--light"
-    role="separator"
-  />
    
   <div
     class="text-center"
