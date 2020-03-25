@@ -1,4 +1,4 @@
-/** * ClientID component */
+/** * ProjectInfoSummary component */
 
 <template>
   <v-card>
@@ -11,7 +11,7 @@
       </v-card-title>
     </v-toolbar>
 
-    <v-list dense class="px-5">
+    <v-list dense class="px-5" v-if="!isLoading">
       <v-list-item>
         <v-list-item-content class="pr-30">
           {{
@@ -118,7 +118,6 @@ import { Getter, namespace, Action } from 'vuex-class';
 import { ProjectUserModel } from '@/models/ProjectInfoModel';
 import Loading from '@/Atomic/Loading/Loading.vue';
 
-const ClientIdModule = namespace('ClientIdModule');
 const ProjectInfoModule = namespace('ProjectInfoModule');
 
 @Component({
@@ -127,8 +126,7 @@ const ProjectInfoModule = namespace('ProjectInfoModule');
 export default class ProjectInfoSummary extends Vue {
   @Prop({ default: 0 })
   public id!: number;
-  // @Prop({ default: {} })
-  // public projectInfo!: any;
+
   @ProjectInfoModule.Getter('getSingleProjectInfo')
   public projectInfo!: any;
   @ProjectInfoModule.Action('loadSingleProjectInfo')
@@ -166,11 +164,8 @@ export default class ProjectInfoSummary extends Vue {
 
   @Watch('projectInfo')
   private ongetprojectInfoChanged(val: any) {
-    // if (this.technicalReq && this.technicalReq.projectId !== 0) {
-    //   this.isTechnicalInfoAvailable = this.technicalReq.id ? true : false;
     this.isLoading = false;
     this.setUsers(this.projectInfo);
-    // }
   }
 
   private getUserDetailsByRole(users: any, selectedRole: number) {

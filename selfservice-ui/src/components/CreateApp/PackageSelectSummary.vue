@@ -1,4 +1,4 @@
-/** * ClientID component */
+/** * PackageSelectSummary component */
 
 <template>
   <v-card class="mt-5" :class="getDataScopeClasses('scopePackageId')">
@@ -47,7 +47,7 @@ const PackageAndTestModule = namespace('PackageAndTestModule');
 @Component({
   components: { Loading }
 })
-export default class ProjectInfoSummary extends Vue {
+export default class PackageSelectSummary extends Vue {
   @Prop({ default: 0 })
   public id!: number;
   @Prop({ default: {} })

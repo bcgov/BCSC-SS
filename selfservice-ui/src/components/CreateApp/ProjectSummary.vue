@@ -13,7 +13,7 @@
     </v-toolbar>
     <v-container>
       <Loading v-if="isLoading" />
-      <v-row class="ma-5" v-if="!isLoading">
+      <v-row class="ma-5" v-else>
         <v-col cols="12" flat>
           <v-card flat>
             <v-list-item-content class="text-left padding-0" v-html="$t('summaryPage.subTitle')"></v-list-item-content>
@@ -191,36 +191,12 @@ export default class TestAccountRequest extends Vue {
   private showSystemError: boolean = false;
   private componentKey: number = 0;
 
-  // private selectedTechnical: ProjectUserModel = {
-  //   email: '',
-  //   phone: '',
-  //   firstName: '',
-  //   lastName: '',
-  //   role: 1
-  // };
-  // private selectedManager: ProjectUserModel = {
-  //   email: '',
-  //   phone: '',
-  //   firstName: '',
-  //   lastName: '',
-  //   role: 1
-  // };
-  // private selectedCto: ProjectUserModel = {
-  //   email: '',
-  //   phone: '',
-  //   firstName: '',
-  //   lastName: '',
-  //   role: 1
-  // };
   private selectedPackage: any = {
     claimNames: '',
     description: '',
     id: '',
     packageName: ''
   };
-  // private testMethod: any = [
-  //   { 1: 'SimpleJSON', 2: 'SignedJWT', 3: 'SecureJWT' }
-  // ];
 
   @Watch('getFinalProjectSubmissionStatus')
   private ongetFinalProjectSubmissionStatusChanged(val: any) {
@@ -240,56 +216,13 @@ export default class TestAccountRequest extends Vue {
     this.clearSubmitProjectStatus();
   }
 
-  // @Watch('projectInfo')
-  // private ongetprojectInfoChanged(val: any) {
-  //   if (this.technicalReq && this.technicalReq.projectId !== 0) {
-  //     this.isTechnicalInfoAvailable = this.technicalReq.id ? true : false;
-  //     this.isLoading = false;
-  //     // this.setUsers(this.projectInfo);
-  //   }
-  // }
   @Watch('technicalReq')
   private ongetTechnicalReqInfoChanged(val: any) {
-    // if (this.projectInfo && this.projectInfo.id) {
     this.isLoading = false;
     this.isTechnicalInfoAvailable = val && val.id ? true : false;
     this.canSubmit =
       val && val.id && val.scopePackageId && val.noOfTestAccount ? true : false;
-    // this.setUsers(this.projectInfo);
-    // }
   }
-
-  // @Watch('getPackageList')
-  // private ongetPackageListChanged() {
-  //   if (
-  //     this.technicalReq.scopePackageId &&
-  //     this.technicalReq.scopePackageId !== null
-  //   ) {
-  //     this.selectedPackage = this.getSelectedPackage(
-  //       this.technicalReq.scopePackageId
-  //     );
-  //   }
-  // }
-
-  // // private getUserDetailsByRole(users: any, selectedRole: number) {
-  // //   return users.find((userData: any) => userData.role === selectedRole);
-  // // }
-  // private getSelectedPackage(packageId: number) {
-  //   const selectedPack = this.getPackageList.find(
-  //     (packageData: any) => packageData.id === packageId
-  //   );
-  //   return selectedPack;
-  // }
-  // technicalReq.signingEncryptionType
-  // private getTestingMethodName(signingEncryptionType: any) {
-  //   return this.testMethod[0][signingEncryptionType] || 'SimpleJSON';
-  // }
-
-  // private setUsers(projectInfo: any) {
-  //   this.selectedTechnical = this.getUserDetailsByRole(projectInfo.users, 1);
-  //   this.selectedManager = this.getUserDetailsByRole(projectInfo.users, 2);
-  //   this.selectedCto = this.getUserDetailsByRole(projectInfo.users, 3);
-  // }
 
   private hideDisclimer() {
     this.dialog = false;
@@ -329,9 +262,8 @@ export default class TestAccountRequest extends Vue {
 
   private loadFullData() {
     this.showSystemError = false;
-    // this.loadSingleProjectInfo(this.id);
+
     this.loadTechnicalReqDetails(this.id);
-    // this.loadPackage();
     this.redirectFromSummaryPage(true);
 
     this.componentKey = this.componentKey + 1;

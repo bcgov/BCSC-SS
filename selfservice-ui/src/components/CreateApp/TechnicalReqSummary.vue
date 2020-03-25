@@ -1,4 +1,4 @@
-/** * ClientID component */
+/** * TechnicalReqSummary component */
 
 <template>
   <v-card
@@ -136,15 +136,8 @@
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
 
-import Loading from '@/Atomic/Loading/Loading.vue';
-
-// const ClientIdModule = namespace('ClientIdModule');
-// const ProjectInfoModule = namespace('ProjectInfoModule');
-
-@Component({
-  components: { Loading }
-})
-export default class ProjectInfoSummary extends Vue {
+@Component
+export default class TechnicalReqSummary extends Vue {
   @Prop({ default: 0 })
   public id!: number;
   @Prop({ default: {} })
