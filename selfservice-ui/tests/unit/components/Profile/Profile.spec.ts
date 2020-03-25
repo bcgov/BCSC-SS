@@ -20,7 +20,8 @@ describe('Profile.vue', () => {
           }),
           errorStatus: jest.fn(() => {
             return false;
-          })
+          }),
+          profileErrorStatus: jest.fn()
         },
         actions: {
           updateProfile: jest.fn(),

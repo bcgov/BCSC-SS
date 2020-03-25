@@ -20,306 +20,32 @@
           </v-card>
         </v-col>
         <v-col cols="12" flat>
-          <ClientID :id="projectId" :showTestAccountWarning="showTestAccountWarning" :key="componentKey" />
+          <ClientID
+            :id="projectId"
+            :showTestAccountWarning="showTestAccountWarning"
+            :key="componentKey"
+          />
         </v-col>
         <v-col cols="12" flat>
-          <v-card>
-            <v-toolbar dense class="bc-subtitle-2" dark>
-              <v-card-title>
-                {{ $t('summaryPage.projectInfoTitle') }}
-                <v-spacer></v-spacer>
-                <v-icon
-                  small
-                  class="ml-3"
-                  @click="$router.push(`/project/${projectId}/info`)"
-                >mdi-pencil</v-icon>
-              </v-card-title>
-            </v-toolbar>
-
-            <v-list dense class="px-5">
-              <v-list-item>
-                <v-list-item-content class="pr-30">
-                  {{
-                  $t('summaryPage.labelOrganizationName')
-                  }}
-                  <span
-                    class="small-hint pad-50"
-                    v-html="$t('summaryPage.OrganizationNameHint')"
-                  ></span>
-                </v-list-item-content>
-                <v-list-item-content class="align-end">
-                  <div>
-                    <v-icon small class="mr-1">mdi-office-building</v-icon>
-                    {{ projectInfo && projectInfo.organizationName }}
-                  </div>
-                </v-list-item-content>
-              </v-list-item>
-              <v-divider></v-divider>
-              <v-list-item>
-                <v-list-item-content class="pr-30">
-                  {{
-                  $t('summaryPage.labelProjectTitle')
-                  }}
-                  <span
-                    class="small-hint pad-50"
-                    v-html="$t('summaryPage.projectNameHint')"
-                  ></span>
-                </v-list-item-content>
-                <v-list-item-content class="align-end">
-                  <div>
-                    <v-icon small class="mr-1">mdi-apps</v-icon>
-                    {{ projectInfo.projectName }}
-                  </div>
-                </v-list-item-content>
-              </v-list-item>
-              <v-divider></v-divider>
-              <v-list-item>
-                <v-list-item-content class="align-self-start pr-30">
-                  {{
-                  $t('summaryPage.labelTechnicalContact')
-                  }}
-                  <span
-                    class="small-hint pad-50"
-                    v-html="$t('summaryPage.developerHint')"
-                  ></span>
-                </v-list-item-content>
-                <v-list-item-content class="align-end">
-                  <div>
-                    <v-icon small class="mr-1">mdi-account</v-icon>
-                    {{ selectedTechnical.firstName }}
-                    {{ selectedTechnical.lastName }}
-                  </div>
-                  <div
-                    v-if="selectedTechnical.phone !== ''"
-                    class="ml-6"
-                  >{{ selectedTechnical.phone }}</div>
-                  <div
-                    v-if="selectedTechnical.email !== ''"
-                    class="ml-6"
-                  >{{ selectedTechnical.email }}</div>
-                </v-list-item-content>
-              </v-list-item>
-              <v-divider></v-divider>
-              <v-list-item>
-                <v-list-item-content class="align-self-start pr-30">
-                  {{
-                  $t('summaryPage.labelManagerContact')
-                  }}
-                  <span
-                    class="small-hint pad-50"
-                    v-html="$t('summaryPage.managerHint')"
-                  ></span>
-                </v-list-item-content>
-                <v-list-item-content class="align-end">
-                  <div>
-                    <v-icon small class="mr-1">mdi-account</v-icon>
-                    {{ selectedManager.firstName }}
-                    {{ selectedManager.lastName }}
-                  </div>
-                  <div v-if="selectedManager.phone !== ''" class="ml-6">{{ selectedManager.phone }}</div>
-                  <div v-if="selectedManager.email !== ''" class="ml-6">{{ selectedManager.email }}</div>
-                </v-list-item-content>
-              </v-list-item>
-              <v-divider></v-divider>
-              <v-list-item>
-                <v-list-item-content class="align-self-start pr-30">
-                  {{
-                  $t('summaryPage.labelCtoContact')
-                  }}
-                  <span
-                    class="small-hint pad-50"
-                    v-html="$t('summaryPage.ctoHint')"
-                  ></span>
-                </v-list-item-content>
-                <v-list-item-content class="align-end">
-                  <div>
-                    <v-icon small class="mr-1">mdi-account</v-icon>
-                    {{ selectedCto.firstName }} {{ selectedCto.lastName }}
-                  </div>
-                  <div class="ml-6">{{ selectedCto.phone }}</div>
-                  <div class="ml-6">{{ selectedCto.email }}</div>
-                </v-list-item-content>
-              </v-list-item>
-            </v-list>
-          </v-card>
+          <ProjectInfoSummary :id="projectId" />
+        </v-col>
+        <v-col cols="12" flat>
+          <TechnicalReqSummary
+            :id="projectId"
+            :technicalReq="technicalReq"
+            :isTechnicalInfoAvailable="isTechnicalInfoAvailable"
+            :showCannotSubmitError="showCannotSubmitError"
+          />
         </v-col>
 
         <v-col cols="12" flat>
-          <v-card
-            class="mt-5"
-            :class="showCannotSubmitError  && !isTechnicalInfoAvailable ? 'red-border' : '' "
-          >
-            <v-toolbar dense class="bc-subtitle-2" dark>
-              <v-card-title>
-                {{ $t('summaryPage.technicalReqTitle') }}
-                <v-icon
-                  small
-                  class="ml-3"
-                  @click="$router.push(`/project/${projectId}/technical`)"
-                >mdi-pencil</v-icon>
-              </v-card-title>
-            </v-toolbar>
-            <v-list dense class="px-5">
-              <v-list-item>
-                <v-list-item-content class="pr-30">
-                  {{
-                  $t('summaryPage.labelApplicationUrl')
-                  }}
-                  <span
-                    class="small-hint pad-50"
-                    v-html="$t('summaryPage.applicationUrlHint')"
-                  ></span>
-                </v-list-item-content>
-                <v-list-item-content class="align-end">
-                  <div v-if="technicalReq.clientUri">
-                    <v-icon small class="mr-1">mdi-link</v-icon>
-                    {{ technicalReq.clientUri }}
-                  </div>
-                </v-list-item-content>
-              </v-list-item>
-              <v-divider></v-divider>
-              <v-list-item>
-                <v-list-item-content class="align-self-start pr-30">
-                  {{
-                  $t('summaryPage.labelRedirectUrl')
-                  }}
-                  <span
-                    class="small-hint pad-50"
-                    v-html="$t('summaryPage.labelRedirectUrlHint')"
-                  ></span>
-                </v-list-item-content>
-                <v-list-item-content class="align-end">
-                  <div v-for="redirectUri in technicalReq.redirectUris" :key="redirectUri">
-                    <v-icon small class="mr-1" v-if="redirectUri !== ''">mdi-link</v-icon>
-                    {{ redirectUri }}
-                  </div>
-                </v-list-item-content>
-              </v-list-item>
-              <v-divider></v-divider>
-              <v-list-item>
-                <v-list-item-content class="pr-30">
-                  {{
-                  $t('summaryPage.labelTestingMethod')
-                  }}
-                  <span
-                    class="small-hint pad-50"
-                    v-html="$t('summaryPage.labelTestingMethodHint')"
-                  ></span>
-                </v-list-item-content>
-
-                <v-list-item-content class="align-end">
-                  <div v-if="technicalReq.signingEncryptionType">
-                    <v-icon small class="mr-1">mdi-link</v-icon>
-                    {{ $t(`summaryPage.${getTestingMethodName(technicalReq.signingEncryptionType)}`) }}
-                  </div>
-                </v-list-item-content>
-              </v-list-item>
-              <v-divider v-if="technicalReq.signingEncryptionType ===3"></v-divider>
-              <v-list-item v-if="technicalReq.signingEncryptionType ===3">
-                <v-list-item-content class="pr-30">
-                  {{
-                  $t('summaryPage.labelJWKSUrl')
-                  }}
-                  <span
-                    class="small-hint pad-50"
-                    v-html="$t('summaryPage.labelJWKSUrlHint')"
-                  ></span>
-                </v-list-item-content>
-
-                <v-list-item-content class="align-end">
-                  <div v-if="technicalReq.jwksUri">
-                    <v-icon small class="mr-1">mdi-link</v-icon>
-                    {{ technicalReq.jwksUri }}
-                  </div>
-                </v-list-item-content>
-              </v-list-item>
-              <v-divider v-if="technicalReq.signingEncryptionType ===3"></v-divider>
-              <v-list-item v-if="technicalReq.signingEncryptionType ===3">
-                <v-list-item-content class="pr-30">
-                  {{
-                  $t('summaryPage.labelEncryptedResponseAlg')
-                  }}
-                  <span
-                    class="small-hint pad-50"
-                    v-html="$t('summaryPage.labelEncryptedResponseAlgHint')"
-                  ></span>
-                </v-list-item-content>
-                <v-list-item-content class="align-end">
-                  <v-list-item-content class="align-end">
-                    <div v-if="technicalReq.encryptedResponseAlg">
-                      <v-icon small class="mr-1">mdi-shield-key</v-icon>
-                      {{ technicalReq.encryptedResponseAlg }}
-                    </div>
-                  </v-list-item-content>
-                </v-list-item-content>
-              </v-list-item>
-              <v-divider v-if="technicalReq.signingEncryptionType !==1"></v-divider>
-              <v-list-item v-if="technicalReq.signingEncryptionType !==1">
-                <v-list-item-content class="pr-30">
-                  {{
-                  $t('summaryPage.labelSignedResponseAlg')
-                  }}
-                  <span
-                    class="small-hint pad-50"
-                    v-html="$t('summaryPage.labelSignedResponseAlgHint')"
-                  ></span>
-                </v-list-item-content>
-                <v-list-item-content class="align-end">
-                  <v-list-item-content class="align-end">
-                    <div v-if="technicalReq.signedResponseAlg">
-                      <v-icon small class="mr-1">mdi-shield-key</v-icon>
-                      {{ technicalReq.signedResponseAlg }}
-                    </div>
-                  </v-list-item-content>
-                </v-list-item-content>
-              </v-list-item>
-            </v-list>
-          </v-card>
+          <PackageSelectSummary
+            :id="projectId"
+            :technicalReq="technicalReq"
+            :getDataScopeClasses="getDataScopeClasses"
+          />
         </v-col>
-        <v-col cols="12" flat>
-          <v-card class="mt-5" :class="getDataScopeClasses('scopePackageId')">
-            <v-toolbar dense class="bc-subtitle-2" dark>
-              <v-card-title>
-                {{
-                $t('summaryPage.packageTestTitle')
-                }}
-                <v-icon
-                  small
-                  class="ml-3"
-                  @click="$router.push(`/project/${projectId}/package`)"
-                >mdi-pencil</v-icon>
-              </v-card-title>
-            </v-toolbar>
-
-            <v-list dense v-if="getPackageList.length > 0" class="px-5">
-              <v-list-item>
-                <v-list-item-content class="align-self-start pr-30">
-                  {{
-                  $t('summaryPage.labelDataPackageReqd')
-                  }}
-                  <span
-                    class="small-hint pad-50"
-                    v-html="$t('summaryPage.labelDataPackageReqdHint')"
-                  ></span>
-                </v-list-item-content>
-                <v-list-item-content class="align-end">
-                  <div v-if="selectedPackage.packageName !==''">
-                    <v-icon small class="mr-1">mdi-package-variant</v-icon>
-                    {{ selectedPackage.packageName }}
-                  </div>
-                  <div
-                    v-for="claimName in selectedPackage.claimNames"
-                    :key="claimName"
-                    class="ml-5"
-                  >
-                    <v-icon color="#969798" x-small>mdi-check-circle</v-icon>
-                    {{ claimName }}
-                  </div>
-                </v-list-item-content>
-              </v-list-item>
-            </v-list>
-          </v-card>
-        </v-col>
+        <v-col cols="12" flat></v-col>
 
         <v-col cols="12" flat>
           <TestAccountSummary
@@ -409,10 +135,13 @@ import TextArea from '@/Atomic/TextArea/TextArea.vue';
 import Loading from '@/Atomic/Loading/Loading.vue';
 import ClientID from '@/components/CreateApp/ClientID.vue';
 import TestAccountSummary from '@/components/CreateApp/TestAccountSummary.vue';
+import ProjectInfoSummary from '@/components/CreateApp/ProjectInfoSummary.vue';
+import TechnicalReqSummary from '@/components/CreateApp/TechnicalReqSummary.vue';
+import PackageSelectSummary from '@/components/CreateApp/PackageSelectSummary.vue';
 
 const TechnicalReqModule = namespace('TechnicalReqModule');
 const ProjectInfoModule = namespace('ProjectInfoModule');
-const PackageAndTestModule = namespace('PackageAndTestModule');
+// const PackageAndTestModule = namespace('PackageAndTestModule');
 const SharedModule = namespace('SharedModule');
 
 @Component({
@@ -421,19 +150,22 @@ const SharedModule = namespace('SharedModule');
     TextArea,
     Loading,
     ClientID,
-    TestAccountSummary
+    TestAccountSummary,
+    ProjectInfoSummary,
+    TechnicalReqSummary,
+    PackageSelectSummary
   }
 })
 export default class TestAccountRequest extends Vue {
   @Prop({ default: 0 })
   public id!: number;
-  @ProjectInfoModule.Getter('getSingleProjectInfo')
-  public projectInfo!: any;
-  @ProjectInfoModule.Action('loadSingleProjectInfo')
-  public loadSingleProjectInfo!: any;
+  // @ProjectInfoModule.Getter('getSingleProjectInfo')
+  // public projectInfo!: any;
+  // @ProjectInfoModule.Action('loadSingleProjectInfo')
+  // public loadSingleProjectInfo!: any;
 
-  @ProjectInfoModule.Getter('getFinalProjectSubmissionStatus')
-  public getFinalProjectSubmissionStatus!: any;
+  // @ProjectInfoModule.Getter('getFinalProjectSubmissionStatus')
+  // public getFinalProjectSubmissionStatus!: any;
 
   @ProjectInfoModule.Action('clearSubmitProjectStatus')
   public clearSubmitProjectStatus!: any;
@@ -443,8 +175,8 @@ export default class TestAccountRequest extends Vue {
   @TechnicalReqModule.Action('loadTechnicalReqDetails')
   public loadTechnicalReqDetails!: any;
 
-  @PackageAndTestModule.Action('loadPackage') public loadPackage!: any;
-  @PackageAndTestModule.Getter('getPackageList') public getPackageList!: [];
+  // @PackageAndTestModule.Action('loadPackage') public loadPackage!: any;
+  // @PackageAndTestModule.Getter('getPackageList') public getPackageList!: [];
   @ProjectInfoModule.Action('submitProject') public submitProject!: any;
   @SharedModule.Action('redirectFromSummaryPage')
   public redirectFromSummaryPage!: any;
@@ -459,36 +191,36 @@ export default class TestAccountRequest extends Vue {
   private showSystemError: boolean = false;
   private componentKey: number = 0;
 
-  private selectedTechnical: ProjectUserModel = {
-    email: '',
-    phone: '',
-    firstName: '',
-    lastName: '',
-    role: 1
-  };
-  private selectedManager: ProjectUserModel = {
-    email: '',
-    phone: '',
-    firstName: '',
-    lastName: '',
-    role: 1
-  };
-  private selectedCto: ProjectUserModel = {
-    email: '',
-    phone: '',
-    firstName: '',
-    lastName: '',
-    role: 1
-  };
+  // private selectedTechnical: ProjectUserModel = {
+  //   email: '',
+  //   phone: '',
+  //   firstName: '',
+  //   lastName: '',
+  //   role: 1
+  // };
+  // private selectedManager: ProjectUserModel = {
+  //   email: '',
+  //   phone: '',
+  //   firstName: '',
+  //   lastName: '',
+  //   role: 1
+  // };
+  // private selectedCto: ProjectUserModel = {
+  //   email: '',
+  //   phone: '',
+  //   firstName: '',
+  //   lastName: '',
+  //   role: 1
+  // };
   private selectedPackage: any = {
     claimNames: '',
     description: '',
     id: '',
     packageName: ''
   };
-  private testMethod: any = [
-    { 1: 'SimpleJSON', 2: 'SignedJWT', 3: 'SecureJWT' }
-  ];
+  // private testMethod: any = [
+  //   { 1: 'SimpleJSON', 2: 'SignedJWT', 3: 'SecureJWT' }
+  // ];
 
   @Watch('getFinalProjectSubmissionStatus')
   private ongetFinalProjectSubmissionStatusChanged(val: any) {
@@ -508,58 +240,56 @@ export default class TestAccountRequest extends Vue {
     this.clearSubmitProjectStatus();
   }
 
-  @Watch('projectInfo')
-  private ongetprojectInfoChanged(val: any) {
-    if (this.technicalReq && this.technicalReq.projectId !== 0) {
-      this.isTechnicalInfoAvailable = this.technicalReq.id ? true : false;
-      this.isLoading = false;
-      this.setUsers(this.projectInfo);
-    }
-  }
+  // @Watch('projectInfo')
+  // private ongetprojectInfoChanged(val: any) {
+  //   if (this.technicalReq && this.technicalReq.projectId !== 0) {
+  //     this.isTechnicalInfoAvailable = this.technicalReq.id ? true : false;
+  //     this.isLoading = false;
+  //     // this.setUsers(this.projectInfo);
+  //   }
+  // }
   @Watch('technicalReq')
   private ongetTechnicalReqInfoChanged(val: any) {
-    if (this.projectInfo && this.projectInfo.id) {
-      this.isLoading = false;
-      this.isTechnicalInfoAvailable = val && val.id ? true : false;
-      this.canSubmit =
-        val && val.id && val.scopePackageId && val.noOfTestAccount
-          ? true
-          : false;
-      this.setUsers(this.projectInfo);
-    }
+    // if (this.projectInfo && this.projectInfo.id) {
+    this.isLoading = false;
+    this.isTechnicalInfoAvailable = val && val.id ? true : false;
+    this.canSubmit =
+      val && val.id && val.scopePackageId && val.noOfTestAccount ? true : false;
+    // this.setUsers(this.projectInfo);
+    // }
   }
 
-  @Watch('getPackageList')
-  private ongetPackageListChanged() {
-    if (
-      this.technicalReq.scopePackageId &&
-      this.technicalReq.scopePackageId !== null
-    ) {
-      this.selectedPackage = this.getSelectedPackage(
-        this.technicalReq.scopePackageId
-      );
-    }
-  }
+  // @Watch('getPackageList')
+  // private ongetPackageListChanged() {
+  //   if (
+  //     this.technicalReq.scopePackageId &&
+  //     this.technicalReq.scopePackageId !== null
+  //   ) {
+  //     this.selectedPackage = this.getSelectedPackage(
+  //       this.technicalReq.scopePackageId
+  //     );
+  //   }
+  // }
 
-  private getUserDetailsByRole(users: any, selectedRole: number) {
-    return users.find((userData: any) => userData.role === selectedRole);
-  }
-  private getSelectedPackage(packageId: number) {
-    const selectedPack = this.getPackageList.find(
-      (packageData: any) => packageData.id === packageId
-    );
-    return selectedPack;
-  }
+  // // private getUserDetailsByRole(users: any, selectedRole: number) {
+  // //   return users.find((userData: any) => userData.role === selectedRole);
+  // // }
+  // private getSelectedPackage(packageId: number) {
+  //   const selectedPack = this.getPackageList.find(
+  //     (packageData: any) => packageData.id === packageId
+  //   );
+  //   return selectedPack;
+  // }
   // technicalReq.signingEncryptionType
-  private getTestingMethodName(signingEncryptionType: any) {
-    return this.testMethod[0][signingEncryptionType] || 'SimpleJSON';
-  }
+  // private getTestingMethodName(signingEncryptionType: any) {
+  //   return this.testMethod[0][signingEncryptionType] || 'SimpleJSON';
+  // }
 
-  private setUsers(projectInfo: any) {
-    this.selectedTechnical = this.getUserDetailsByRole(projectInfo.users, 1);
-    this.selectedManager = this.getUserDetailsByRole(projectInfo.users, 2);
-    this.selectedCto = this.getUserDetailsByRole(projectInfo.users, 3);
-  }
+  // private setUsers(projectInfo: any) {
+  //   this.selectedTechnical = this.getUserDetailsByRole(projectInfo.users, 1);
+  //   this.selectedManager = this.getUserDetailsByRole(projectInfo.users, 2);
+  //   this.selectedCto = this.getUserDetailsByRole(projectInfo.users, 3);
+  // }
 
   private hideDisclimer() {
     this.dialog = false;
@@ -599,9 +329,9 @@ export default class TestAccountRequest extends Vue {
 
   private loadFullData() {
     this.showSystemError = false;
-    this.loadSingleProjectInfo(this.id);
+    // this.loadSingleProjectInfo(this.id);
     this.loadTechnicalReqDetails(this.id);
-    this.loadPackage();
+    // this.loadPackage();
     this.redirectFromSummaryPage(true);
 
     this.componentKey = this.componentKey + 1;

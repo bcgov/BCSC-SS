@@ -146,6 +146,7 @@ describe('ProjectSummary.vue', () => {
 
   it('renders props when passed with gettors', () => {
     const projectSummary = mountFunction({});
+
     expect(projectSummary.element).toMatchSnapshot();
   });
 
@@ -169,7 +170,8 @@ describe('ProjectSummary.vue', () => {
           state: {},
           getters: {
             getSingleProjectInfo: jest.fn(),
-            errorStatus: jest.fn()
+            errorStatus: jest.fn(),
+            getFinalProjectSubmissionStatus: jest.fn()
           },
           actions: {
             loadSingleProjectInfo: jest.fn()
