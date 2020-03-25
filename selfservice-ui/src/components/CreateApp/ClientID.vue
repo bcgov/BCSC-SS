@@ -104,6 +104,14 @@
               </tbody>
             </template>
           </v-simple-table>
+          <v-alert
+            type="warning"
+            dense
+            outlined
+            class="text-left"
+            v-if="showTestAccountWarning"
+            v-html="$t('ClientID.warningLimitedTestAccount')"
+          ></v-alert>
         </v-list-item-content>
       </v-list-item>
     </v-list>
@@ -123,6 +131,10 @@ const ClientIdModule = namespace('ClientIdModule');
 export default class ClientIDDetails extends Vue {
   @Prop({ default: 0 })
   public id!: number;
+
+  @Prop({ default: false})
+  public showTestAccountWarning!: boolean;
+
   @ClientIdModule.Getter('errorStatus') public errorStatus!: boolean;
   @ClientIdModule.Action('getClientIdDetails')
   public getClientIdDetails!: any;

@@ -109,9 +109,12 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
     commit('SET_LOADING', true);
     try {
       const { projectId } = data;
-      // const packageData =
-      await ProjectInfoService.updateStatusOfProject(projectId, 2);
-      // router.push(`/project/${projectId}/summary/`);
+      const response = await ProjectInfoService.updateStatusOfProject(projectId, 2);
+      if (response.data.testAccountSuccess) {
+        commit('SET_TEST_ACCOUNT_SUCCESS', true);
+      } else {
+        commit('SET_TEST_ACCOUNT_SUCCESS', false);
+      }
       commit('SET_PROJECT_SUBMIT_ERROR', false);
       commit('SET_PROJECT_SUBMIT_SUCESS', true);
       commit('SET_LOADING', false);

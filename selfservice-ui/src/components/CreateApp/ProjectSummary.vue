@@ -20,7 +20,7 @@
           </v-card>
         </v-col>
         <v-col cols="12" flat>
-          <ClientID :id="projectId" :key="componentKey" />
+          <ClientID :id="projectId" :showTestAccountWarning="showTestAccountWarning" :key="componentKey" />
         </v-col>
         <v-col cols="12" flat>
           <v-card>
@@ -455,6 +455,7 @@ export default class TestAccountRequest extends Vue {
   private isTechnicalInfoAvailable: boolean = false;
   private canSubmit: boolean = false;
   private showCannotSubmitError: boolean = false;
+  private showTestAccountWarning: boolean = false;
   private showSystemError: boolean = false;
   private componentKey: number = 0;
 
@@ -491,7 +492,7 @@ export default class TestAccountRequest extends Vue {
 
   @Watch('getFinalProjectSubmissionStatus')
   private ongetFinalProjectSubmissionStatusChanged(val: any) {
-    const { finalErrorStatus, finalSuccessStatus } = val;
+    const { finalErrorStatus, finalSuccessStatus, testAccountSuccess } = val;
     if (finalSuccessStatus) {
       this.hideDisclimer();
       this.loadFullData();
@@ -499,6 +500,7 @@ export default class TestAccountRequest extends Vue {
         duration: 1000,
         easing: 'easeInOutCubic'
       });
+      this.showTestAccountWarning = !testAccountSuccess;
     } else if (finalErrorStatus) {
       this.hideDisclimer();
       this.showSystemError = true;

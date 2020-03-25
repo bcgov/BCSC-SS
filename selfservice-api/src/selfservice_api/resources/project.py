@@ -114,7 +114,6 @@ class ProjectResourceById(Resource):
         project_patch_json = request.get_json()
 
         project = Project.find_by_id(project_id)
-        token_info = g.jwt_oidc_token_info
         if 'update' in project_patch_json:
             if project_patch_json['update'] == 'status' and \
                     ProjectResourceById._validate_before_status_update_(project, project_patch_json.get('status')):
@@ -125,18 +124,36 @@ class ProjectResourceById(Resource):
                 if project_status == ProjectStatus.Development:
                     is_success = ProjectResourceById._dynamic_api_call_(project, False)
                     if is_success:
-                        EmailService.save_and_send(EmailType.DEV_REQUEST, {'project_name': project.project_name})
+                        response = ProjectResourceById._update_development_status_(project, project_status)
 
                 if is_success:
-                    if project.status < project_status:
-                        project.update_status(token_info.get('sub'), project_status)
-
-                    response, status = 'Updated successfully', HTTPStatus.OK
+                    status = HTTPStatus.OK
                 else:
                     response, status = 'OIDC Failed', HTTPStatus.INTERNAL_SERVER_ERROR
                 return response, status
 
         return 'Update failed', HTTPStatus.BAD_REQUEST
+
+    @staticmethod
+    def _update_development_status_(project: Project, status):
+        """Update project status to development."""
+        token_info = g.jwt_oidc_token_info
+        EmailService.save_and_send(EmailType.DEV_REQUEST, {'project_name': project.project_name})
+
+        # Make sure we are not downgrading the project status
+        if project.status < status:
+            project.update_status(token_info.get('sub'), status)
+
+        test_accounts = TestAccount.find_all_by_project_id(project.id)
+        technical_req: TechnicalReq = project.technical_req[0]
+        response = {
+            'testAccountSuccess': True,
+            'message': 'Updated successfully'
+        }
+        if len(test_accounts) < technical_req.no_of_test_account:
+            response['testAccountSuccess'] = False
+
+        return response
 
     @staticmethod
     def _validate_before_status_update_(project: Project, status):

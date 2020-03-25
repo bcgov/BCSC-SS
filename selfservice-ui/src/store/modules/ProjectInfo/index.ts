@@ -22,7 +22,8 @@ export const state: ProjectInfoState = {
   },
   message: '',
   finalSuccessStatus: false,
-  finalErrorStatus: false
+  finalErrorStatus: false,
+  testAccountSuccess: true
 };
 
 const namespaced: boolean = true;
