@@ -43,8 +43,6 @@ exports[`ProjectSummary.vue renders props when passed 1`] = `
     tag="div"
   >
     <loading-stub />
-     
-    <!---->
   </v-container-stub>
    
   <v-divider-stub />
@@ -200,8 +198,6 @@ exports[`ProjectSummary.vue renders props when passed with gettors 1`] = `
         </div>
       </div>
     </div>
-     
-    <!---->
   </div>
    
   <hr
@@ -277,8 +273,6 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
   <div
     class="container"
   >
-    <!---->
-     
     <div
       class="row ma-5"
     >
@@ -519,216 +513,7 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
             </div>
           </div>
            
-          <div
-            class="v-list px-5 v-sheet v-sheet--tile theme--light v-list--dense"
-            role="list"
-          >
-            <div
-              class="v-list-item theme--light"
-              role="listitem"
-              tabindex="-1"
-            >
-              <div
-                class="v-list-item__content pr-30"
-              >
-                
-        
-        
-                <span
-                  class="small-hint pad-50"
-                />
-              </div>
-               
-              <div
-                class="v-list-item__content align-end"
-              >
-                <div>
-                  <i
-                    aria-hidden="true"
-                    class="v-icon notranslate mr-1 mdi mdi-office-building theme--light"
-                    style="font-size: 16px;"
-                  />
-                  
-          new org
-        
-                </div>
-              </div>
-            </div>
-             
-            <hr
-              aria-orientation="horizontal"
-              class="v-divider theme--light"
-              role="separator"
-            />
-             
-            <div
-              class="v-list-item theme--light"
-              role="listitem"
-              tabindex="-1"
-            >
-              <div
-                class="v-list-item__content pr-30"
-              >
-                
-        
-        
-                <span
-                  class="small-hint pad-50"
-                />
-              </div>
-               
-              <div
-                class="v-list-item__content align-end"
-              >
-                <div>
-                  <i
-                    aria-hidden="true"
-                    class="v-icon notranslate mr-1 mdi mdi-apps theme--light"
-                    style="font-size: 16px;"
-                  />
-                  
-          new project
-        
-                </div>
-              </div>
-            </div>
-             
-            <hr
-              aria-orientation="horizontal"
-              class="v-divider theme--light"
-              role="separator"
-            />
-             
-            <div
-              class="v-list-item theme--light"
-              role="listitem"
-              tabindex="-1"
-            >
-              <div
-                class="v-list-item__content align-self-start pr-30"
-              >
-                
-        
-        
-                <span
-                  class="small-hint pad-50"
-                />
-              </div>
-               
-              <div
-                class="v-list-item__content align-end"
-              >
-                <div>
-                  <i
-                    aria-hidden="true"
-                    class="v-icon notranslate mr-1 mdi mdi-account theme--light"
-                    style="font-size: 16px;"
-                  />
-                  
-          
-          
-        
-                </div>
-                 
-                <!---->
-                 
-                <!---->
-              </div>
-            </div>
-             
-            <hr
-              aria-orientation="horizontal"
-              class="v-divider theme--light"
-              role="separator"
-            />
-             
-            <div
-              class="v-list-item theme--light"
-              role="listitem"
-              tabindex="-1"
-            >
-              <div
-                class="v-list-item__content align-self-start pr-30"
-              >
-                
-        
-        
-                <span
-                  class="small-hint pad-50"
-                />
-              </div>
-               
-              <div
-                class="v-list-item__content align-end"
-              >
-                <div>
-                  <i
-                    aria-hidden="true"
-                    class="v-icon notranslate mr-1 mdi mdi-account theme--light"
-                    style="font-size: 16px;"
-                  />
-                  
-          
-          
-        
-                </div>
-                 
-                <!---->
-                 
-                <!---->
-              </div>
-            </div>
-             
-            <hr
-              aria-orientation="horizontal"
-              class="v-divider theme--light"
-              role="separator"
-            />
-             
-            <div
-              class="v-list-item theme--light"
-              role="listitem"
-              tabindex="-1"
-            >
-              <div
-                class="v-list-item__content align-self-start pr-30"
-              >
-                
-        
-        
-                <span
-                  class="small-hint pad-50"
-                />
-              </div>
-               
-              <div
-                class="v-list-item__content align-end"
-              >
-                <div>
-                  <i
-                    aria-hidden="true"
-                    class="v-icon notranslate mr-1 mdi mdi-account theme--light"
-                    style="font-size: 16px;"
-                  />
-                  
-           
-        
-                </div>
-                 
-                <div
-                  class="ml-6"
-                >
-                  
-                </div>
-                 
-                <div
-                  class="ml-6"
-                >
-                  
-                </div>
-              </div>
-            </div>
-          </div>
+          <!---->
         </div>
       </div>
        
