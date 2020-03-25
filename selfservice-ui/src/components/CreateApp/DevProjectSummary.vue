@@ -12,6 +12,11 @@
       <div class="flex-grow-1"></div>
     </v-toolbar>
     <v-container>
+      <v-col cols="12" flat>
+        <v-card flat>
+          <v-list-item-content class="text-left padding-0" v-html="$t('summaryPage.subTitle')"></v-list-item-content>
+        </v-card>
+      </v-col>
       <ProjectSummary :id="id" />
     </v-container>
   </v-card>

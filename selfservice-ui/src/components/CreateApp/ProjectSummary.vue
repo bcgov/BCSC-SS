@@ -3,12 +3,7 @@
 <template>
   <div>
     <Loading v-if="isLoading" />
-    <v-row class="ma-5" v-else>
-      <v-col cols="12" flat>
-        <v-card flat>
-          <v-list-item-content class="text-left padding-0" v-html="$t('summaryPage.subTitle')"></v-list-item-content>
-        </v-card>
-      </v-col>
+    <v-row v-else>
       <v-col cols="12" flat>
         <ClientID
           :id="projectId"
@@ -82,7 +77,6 @@
       </v-col>
     </v-row>
 
-    <v-divider></v-divider>
     <div class="text-center">
       <v-dialog v-model="dialog" persistent width="70%" class="text-left">
         <v-card>
@@ -161,6 +155,9 @@ export default class TestAccountRequest extends Vue {
   @ProjectInfoModule.Action('submitProject') public submitProject!: any;
   @SharedModule.Action('redirectFromSummaryPage')
   public redirectFromSummaryPage!: any;
+
+  @ProjectInfoModule.Getter('getFinalProjectSubmissionStatus')
+  public getFinalProjectSubmissionStatus!: any;
 
   private isLoading: boolean = true;
   private projectId: number = this.id || 0;
