@@ -149,13 +149,6 @@ const SharedModule = namespace('SharedModule');
 export default class TestAccountRequest extends Vue {
   @Prop({ default: 0 })
   public id!: number;
-  // @ProjectInfoModule.Getter('getSingleProjectInfo')
-  // public projectInfo!: any;
-  // @ProjectInfoModule.Action('loadSingleProjectInfo')
-  // public loadSingleProjectInfo!: any;
-
-  // @ProjectInfoModule.Getter('getFinalProjectSubmissionStatus')
-  // public getFinalProjectSubmissionStatus!: any;
 
   @ProjectInfoModule.Action('clearSubmitProjectStatus')
   public clearSubmitProjectStatus!: any;
@@ -165,8 +158,6 @@ export default class TestAccountRequest extends Vue {
   @TechnicalReqModule.Action('loadTechnicalReqDetails')
   public loadTechnicalReqDetails!: any;
 
-  // @PackageAndTestModule.Action('loadPackage') public loadPackage!: any;
-  // @PackageAndTestModule.Getter('getPackageList') public getPackageList!: [];
   @ProjectInfoModule.Action('submitProject') public submitProject!: any;
   @SharedModule.Action('redirectFromSummaryPage')
   public redirectFromSummaryPage!: any;
