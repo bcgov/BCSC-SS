@@ -478,33 +478,46 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
         <div
           class="v-card v-sheet theme--light"
         >
-          <header
-            class="bc-subtitle-2 v-sheet v-sheet--tile theme--dark v-toolbar v-toolbar--dense"
-            style="height: 48px;"
+          <div
+            class="container"
           >
             <div
-              class="v-toolbar__content"
-              style="height: 48px;"
+              class="layout d-flex align-center justify-center row wrap"
             >
               <div
-                class="v-card__title"
+                class="mt-10"
+                col="4"
               >
-                
-              
-              
                 <div
-                  class="spacer"
-                />
+                  aria-valuemax="100"
+                  aria-valuemin="0"
+                  class="v-progress-linear loading v-progress-linear--rounded theme--light"
+                  role="progressbar"
+                  style="height: 6px;"
+                >
+                  <div
+                    class="v-progress-linear__background primary"
+                    style="opacity: 0.3; left: 0%; width: 100%;"
+                  />
+                  <div
+                    class="v-progress-linear__buffer"
+                  />
+                  <div
+                    class="v-progress-linear__indeterminate v-progress-linear__indeterminate--active"
+                  >
+                    <div
+                      class="v-progress-linear__indeterminate long primary"
+                    />
+                    <div
+                      class="v-progress-linear__indeterminate short primary"
+                    />
+                  </div>
+                </div>
                  
-                <i
-                  class="v-icon notranslate ml-3 v-icon--link mdi mdi-pencil theme--dark"
-                  role="button"
-                  style="font-size: 16px;"
-                  tabindex="0"
-                />
+                <span />
               </div>
             </div>
-          </header>
+          </div>
            
           <div
             class="v-list px-5 v-sheet v-sheet--tile theme--light v-list--dense"
@@ -519,8 +532,8 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
                 class="v-list-item__content pr-30"
               >
                 
-                
-                
+        
+        
                 <span
                   class="small-hint pad-50"
                 />
@@ -536,8 +549,8 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
                     style="font-size: 16px;"
                   />
                   
-                  new org
-                
+          new org
+        
                 </div>
               </div>
             </div>
@@ -557,8 +570,8 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
                 class="v-list-item__content pr-30"
               >
                 
-                
-                
+        
+        
                 <span
                   class="small-hint pad-50"
                 />
@@ -574,8 +587,8 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
                     style="font-size: 16px;"
                   />
                   
-                  new project
-                
+          new project
+        
                 </div>
               </div>
             </div>
@@ -595,8 +608,8 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
                 class="v-list-item__content align-self-start pr-30"
               >
                 
-                
-                
+        
+        
                 <span
                   class="small-hint pad-50"
                 />
@@ -612,52 +625,9 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
                     style="font-size: 16px;"
                   />
                   
-                  
-                  
-                
-                </div>
-                 
-                <!---->
-                 
-                <!---->
-              </div>
-            </div>
-             
-            <hr
-              aria-orientation="horizontal"
-              class="v-divider theme--light"
-              role="separator"
-            />
-             
-            <div
-              class="v-list-item theme--light"
-              role="listitem"
-              tabindex="-1"
-            >
-              <div
-                class="v-list-item__content align-self-start pr-30"
-              >
-                
-                
-                
-                <span
-                  class="small-hint pad-50"
-                />
-              </div>
-               
-              <div
-                class="v-list-item__content align-end"
-              >
-                <div>
-                  <i
-                    aria-hidden="true"
-                    class="v-icon notranslate mr-1 mdi mdi-account theme--light"
-                    style="font-size: 16px;"
-                  />
-                  
-                  
-                  
-                
+          
+          
+        
                 </div>
                  
                 <!---->
@@ -681,8 +651,8 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
                 class="v-list-item__content align-self-start pr-30"
               >
                 
-                
-                
+        
+        
                 <span
                   class="small-hint pad-50"
                 />
@@ -698,8 +668,51 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
                     style="font-size: 16px;"
                   />
                   
-                   
+          
+          
+        
+                </div>
+                 
+                <!---->
+                 
+                <!---->
+              </div>
+            </div>
+             
+            <hr
+              aria-orientation="horizontal"
+              class="v-divider theme--light"
+              role="separator"
+            />
+             
+            <div
+              class="v-list-item theme--light"
+              role="listitem"
+              tabindex="-1"
+            >
+              <div
+                class="v-list-item__content align-self-start pr-30"
+              >
                 
+        
+        
+                <span
+                  class="small-hint pad-50"
+                />
+              </div>
+               
+              <div
+                class="v-list-item__content align-end"
+              >
+                <div>
+                  <i
+                    aria-hidden="true"
+                    class="v-icon notranslate mr-1 mdi mdi-account theme--light"
+                    style="font-size: 16px;"
+                  />
+                  
+           
+        
                 </div>
                  
                 <div
@@ -738,8 +751,8 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
                 class="v-card__title"
               >
                 
-              
-              
+      
+      
                 <i
                   class="v-icon notranslate ml-3 v-icon--link mdi mdi-pencil theme--dark"
                   role="button"
@@ -763,8 +776,8 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
                 class="v-list-item__content pr-30"
               >
                 
-                
-                
+        
+        
                 <span
                   class="small-hint pad-50"
                 />
@@ -780,8 +793,8 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
                     style="font-size: 16px;"
                   />
                   
-                  app.com
-                
+          app.com
+        
                 </div>
               </div>
             </div>
@@ -801,8 +814,8 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
                 class="v-list-item__content align-self-start pr-30"
               >
                 
-                
-                
+        
+        
                 <span
                   class="small-hint pad-50"
                 />
@@ -818,8 +831,8 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
                     style="font-size: 16px;"
                   />
                   
-                  test.com
-                
+          test.com
+        
                 </div>
               </div>
             </div>
@@ -839,8 +852,8 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
                 class="v-list-item__content pr-30"
               >
                 
-                
-                
+        
+        
                 <span
                   class="small-hint pad-50"
                 />
@@ -876,8 +889,8 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
                 class="v-list-item__content pr-30"
               >
                 
-                
-                
+        
+        
                 <span
                   class="small-hint pad-50"
                 />
@@ -896,8 +909,8 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
                       style="font-size: 16px;"
                     />
                     
-                    RS256
-                  
+            RS256
+          
                   </div>
                 </div>
               </div>
@@ -925,8 +938,8 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
                 class="v-card__title"
               >
                 
-              
-              
+      
+      
                 <i
                   class="v-icon notranslate ml-3 v-icon--link mdi mdi-pencil theme--dark"
                   role="button"
@@ -950,8 +963,8 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
                 class="v-list-item__content align-self-start pr-30"
               >
                 
-                
-                
+        
+        
                 <span
                   class="small-hint pad-50"
                 />
@@ -967,6 +980,11 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
           </div>
         </div>
       </div>
+       
+      <div
+        class="col col-12"
+        flat=""
+      />
        
       <div
         class="col col-12"
