@@ -1,97 +1,87 @@
 /** * TestAccountRequest component */
 
 <template>
-  <v-card class="mx-auto outer-card">
-    <v-toolbar flat class="bc-subtitle padding-0" dark>
-      <v-btn icon @click="goBack()" :aria-label="$t('summaryPage.goBack')">
-        <v-icon>mdi-arrow-left</v-icon>
-      </v-btn>
-      <v-toolbar-title>{{ $t('summaryPage.pagetitle') }}</v-toolbar-title>
-      <div class="flex-grow-1"></div>
+  <div>
+    <Loading v-if="isLoading" />
+    <v-row class="ma-5" v-else>
+      <v-col cols="12" flat>
+        <v-card flat>
+          <v-list-item-content class="text-left padding-0" v-html="$t('summaryPage.subTitle')"></v-list-item-content>
+        </v-card>
+      </v-col>
+      <v-col cols="12" flat>
+        <ClientID
+          :id="projectId"
+          :showTestAccountWarning="showTestAccountWarning"
+          :key="componentKey"
+        />
+      </v-col>
+      <v-col cols="12" flat>
+        <ProjectInfoSummary :id="projectId" />
+      </v-col>
+      <v-col cols="12" flat>
+        <TechnicalReqSummary
+          :id="projectId"
+          :technicalReq="technicalReq"
+          :isTechnicalInfoAvailable="isTechnicalInfoAvailable"
+          :showCannotSubmitError="showCannotSubmitError"
+        />
+      </v-col>
 
-      <div class="flex-grow-1"></div>
-    </v-toolbar>
-    <v-container>
-      <Loading v-if="isLoading" />
-      <v-row class="ma-5" v-else>
-        <v-col cols="12" flat>
-          <v-card flat>
-            <v-list-item-content class="text-left padding-0" v-html="$t('summaryPage.subTitle')"></v-list-item-content>
-          </v-card>
-        </v-col>
-        <v-col cols="12" flat>
-          <ClientID
-            :id="projectId"
-            :showTestAccountWarning="showTestAccountWarning"
-            :key="componentKey"
-          />
-        </v-col>
-        <v-col cols="12" flat>
-          <ProjectInfoSummary :id="projectId" />
-        </v-col>
-        <v-col cols="12" flat>
-          <TechnicalReqSummary
-            :id="projectId"
-            :technicalReq="technicalReq"
-            :isTechnicalInfoAvailable="isTechnicalInfoAvailable"
-            :showCannotSubmitError="showCannotSubmitError"
-          />
-        </v-col>
+      <v-col cols="12" flat>
+        <PackageSelectSummary
+          :id="projectId"
+          :technicalReq="technicalReq"
+          :getDataScopeClasses="getDataScopeClasses"
+        />
+      </v-col>
+      <v-col cols="12" flat></v-col>
 
-        <v-col cols="12" flat>
-          <PackageSelectSummary
-            :id="projectId"
-            :technicalReq="technicalReq"
-            :getDataScopeClasses="getDataScopeClasses"
-          />
-        </v-col>
-        <v-col cols="12" flat></v-col>
+      <v-col cols="12" flat>
+        <TestAccountSummary
+          :technicalReq="technicalReq"
+          :projectId="projectId"
+          :class="getDataScopeClasses('noOfTestAccount')"
+        />
+      </v-col>
+      <v-col cols="12">
+        <v-alert
+          type="error"
+          dense
+          outlined
+          class="text-left"
+          v-if="showCannotSubmitError"
+        >{{$t('summaryPage.cantSubmitErrorMessage')}}</v-alert>
+        <v-alert
+          type="error"
+          dense
+          outlined
+          class="text-left"
+          v-if="showSystemError"
+        >{{$t('summaryPage.systemError')}}</v-alert>
+      </v-col>
+      <v-col cols="12">
+        <v-card flat class="mt-1">
+          <v-divider></v-divider>
+          <v-card-actions class="mt-2 py-2 px-0">
+            <v-spacer></v-spacer>
+            <Button
+              @click="goBack()"
+              :aria-label="$t('summaryPage.goBack')"
+              secondary
+              class="back-btn"
+            >{{ $t('summaryPage.goBack') }}</Button>
+            <Button
+              :loading="isLoading"
+              class="white--text submit-package ml-6"
+              depressed
+              @click="showDisclimer"
+            >{{ $t('summaryPage.submitRequest') }}</Button>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+    </v-row>
 
-        <v-col cols="12" flat>
-          <TestAccountSummary
-            :technicalReq="technicalReq"
-            :projectId="projectId"
-            :class="getDataScopeClasses('noOfTestAccount')"
-          />
-        </v-col>
-        <v-col cols="12">
-          <v-alert
-            type="error"
-            dense
-            outlined
-            class="text-left"
-            v-if="showCannotSubmitError"
-          >{{$t('summaryPage.cantSubmitErrorMessage')}}</v-alert>
-          <v-alert
-            type="error"
-            dense
-            outlined
-            class="text-left"
-            v-if="showSystemError"
-          >{{$t('summaryPage.systemError')}}</v-alert>
-        </v-col>
-        <v-col cols="12">
-          <v-card flat class="mt-1">
-            <v-divider></v-divider>
-            <v-card-actions class="mt-2 py-2 px-0">
-              <v-spacer></v-spacer>
-              <Button
-                @click="goBack()"
-                :aria-label="$t('summaryPage.goBack')"
-                secondary
-                class="back-btn"
-              >{{ $t('summaryPage.goBack') }}</Button>
-              <Button
-                :loading="isLoading"
-                class="white--text submit-package ml-6"
-                depressed
-                @click="showDisclimer"
-              >{{ $t('summaryPage.submitRequest') }}</Button>
-            </v-card-actions>
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-container>
     <v-divider></v-divider>
     <div class="text-center">
       <v-dialog v-model="dialog" persistent width="70%" class="text-left">
@@ -124,7 +114,7 @@
         </v-card>
       </v-dialog>
     </div>
-  </v-card>
+  </div>
 </template>
 <script lang="ts">
 import { Component, Vue, Watch, Prop } from 'vue-property-decorator';
@@ -288,3 +278,4 @@ export default class TestAccountRequest extends Vue {
   text-align: center !important;
 }
 </style>
+

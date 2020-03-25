@@ -7,7 +7,7 @@
       <v-card-title>
         {{ $t('summaryPage.projectInfoTitle') }}
         <v-spacer></v-spacer>
-        <v-icon small class="ml-3" @click="$router.push(`/project/${projectId}/info`)">mdi-pencil</v-icon>
+        <v-icon small class="ml-3" @click="$router.push(`/project/${id}/info`)">mdi-pencil</v-icon>
       </v-card-title>
     </v-toolbar>
 
