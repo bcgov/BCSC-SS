@@ -75,5 +75,14 @@ export const mutations: MutationTree<ProjectInfoState> = {
    */
   SET_PROJECT_SUBMIT_ERROR(state, payload: any) {
     state.finalErrorStatus = payload;
+  },
+
+  /**
+   * set state on test account mapping status after submit
+   * @param {*} state
+   * @param {*} payload
+   */
+  SET_TEST_ACCOUNT_SUCCESS(state, payload: any) {
+    state.testAccountSuccess = payload;
   }
 };

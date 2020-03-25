@@ -20,7 +20,6 @@
     "OrganizationName": "Organization name",
     "projectName": "Project name",
     "Description": "Description",
-
     "ProjectRoles": "Project Roles",
     "RolesTitleInfo": "In this system, a project consists of one (or more) Developer(s), a Manager and an Executive sponsor. Please provide contact information for each of these roles within your organization in the context of this project.",
     "myRole": "My role in this project is:",
@@ -146,7 +145,8 @@
     "tblCardNo": "Card Number",
     "tblPassCode": "Passcode",
     "tblGivenName": "Given Name",
-    "tblSurName": "Surname"
+    "tblSurName": "Surname",
+    "warningLimitedTestAccount": "Currently, there are no more random test accounts for your use. Please contact <a href='mailto:zorin.samji@gov.bc.ca'>IDIM Consulting or Product Owner</a> who will be in touch with you shortly."
   },
   "dashboard": {
     "pagetitle": "Projects",

@@ -8,4 +8,5 @@ export interface ProjectInfoState {
   message: string;
   finalErrorStatus?: boolean;
   finalSuccessStatus?: boolean;
+  testAccountSuccess?: boolean;
 }
