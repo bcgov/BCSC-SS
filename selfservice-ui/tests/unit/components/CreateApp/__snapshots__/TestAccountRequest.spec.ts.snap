@@ -248,52 +248,6 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
             <div
               class="v-list-item__content subtitle-1"
             />
-             
-            <div
-              class="v-input v-textarea theme--light v-text-field v-text-field--enclosed v-text-field--outlined"
-              outlined=""
-            >
-              <div
-                class="v-input__control"
-              >
-                <div
-                  class="v-input__slot"
-                >
-                  <fieldset
-                    aria-hidden="true"
-                  >
-                    <legend
-                      style="width: 0px;"
-                    >
-                      <span>
-                        ​
-                      </span>
-                    </legend>
-                  </fieldset>
-                  <div
-                    class="v-text-field__slot"
-                  >
-                    <textarea
-                      id="input-27"
-                      rows="5"
-                    />
-                  </div>
-                </div>
-                <div
-                  class="v-text-field__details"
-                >
-                  <div
-                    class="v-messages theme--light"
-                  >
-                    <span
-                      class="v-messages__wrapper"
-                      name="message-transition"
-                      tag="div"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -601,52 +555,6 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
             <div
               class="v-list-item__content subtitle-1"
             />
-             
-            <div
-              class="v-input v-textarea theme--light v-text-field v-text-field--enclosed v-text-field--outlined"
-              outlined=""
-            >
-              <div
-                class="v-input__control"
-              >
-                <div
-                  class="v-input__slot"
-                >
-                  <fieldset
-                    aria-hidden="true"
-                  >
-                    <legend
-                      style="width: 0px;"
-                    >
-                      <span>
-                        ​
-                      </span>
-                    </legend>
-                  </fieldset>
-                  <div
-                    class="v-text-field__slot"
-                  >
-                    <textarea
-                      id="input-61"
-                      rows="5"
-                    />
-                  </div>
-                </div>
-                <div
-                  class="v-text-field__details"
-                >
-                  <div
-                    class="v-messages theme--light"
-                  >
-                    <span
-                      class="v-messages__wrapper"
-                      name="message-transition"
-                      tag="div"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -954,52 +862,6 @@ exports[`TestAccountRequest.vue submit form with selected package on submit clic
             <div
               class="v-list-item__content subtitle-1"
             />
-             
-            <div
-              class="v-input v-textarea theme--light v-text-field v-text-field--enclosed v-text-field--outlined"
-              outlined=""
-            >
-              <div
-                class="v-input__control"
-              >
-                <div
-                  class="v-input__slot"
-                >
-                  <fieldset
-                    aria-hidden="true"
-                  >
-                    <legend
-                      style="width: 0px;"
-                    >
-                      <span>
-                        ​
-                      </span>
-                    </legend>
-                  </fieldset>
-                  <div
-                    class="v-text-field__slot"
-                  >
-                    <textarea
-                      id="input-95"
-                      rows="5"
-                    />
-                  </div>
-                </div>
-                <div
-                  class="v-text-field__details"
-                >
-                  <div
-                    class="v-messages theme--light"
-                  >
-                    <span
-                      class="v-messages__wrapper"
-                      name="message-transition"
-                      tag="div"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
