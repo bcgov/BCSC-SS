@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProjectInfoSummary.vue renders props when passed with gettors 1`] = `
+<div
+  class="v-card v-sheet theme--light"
+>
+  <div
+    class="container"
+  >
+    <div
+      class="layout d-flex align-center justify-center row wrap"
+    >
+      <div
+        class="mt-10"
+        col="4"
+      >
+        <div
+          aria-valuemax="100"
+          aria-valuemin="0"
+          class="v-progress-linear loading v-progress-linear--rounded theme--light"
+          role="progressbar"
+          style="height: 6px;"
+        >
+          <div
+            class="v-progress-linear__background primary"
+            style="opacity: 0.3; left: 0%; width: 100%;"
+          />
+          <div
+            class="v-progress-linear__buffer"
+          />
+          <div
+            class="v-progress-linear__indeterminate v-progress-linear__indeterminate--active"
+          >
+            <div
+              class="v-progress-linear__indeterminate long primary"
+            />
+            <div
+              class="v-progress-linear__indeterminate short primary"
+            />
+          </div>
+        </div>
+         
+        <span />
+      </div>
+    </div>
+  </div>
+   
+  <!---->
+</div>
+`;

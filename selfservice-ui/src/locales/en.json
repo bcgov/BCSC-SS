@@ -193,6 +193,8 @@
     "titleDevSummary": "Dev Summary",
     "titleTeamRoles": "Team Roles",
     "titleLiveAccessReq": "Live Access Request",
-    "titlePrivacy": "Privacy"
+    "titlePrivacy": "Privacy",
+    "titleSecurity": "Security",
+    "titleLiveAccessKey": "Receive Live Access Key"
   }
 }
