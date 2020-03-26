@@ -2,6 +2,7 @@ import { shallowMount, createLocalVue } from '@vue/test-utils';
 import ProjectContainer from '@/components/ProjectContainer/ProjectContainer.vue';
 import vuetify from 'vuetify';
 import Vuex from 'vuex';
+import { singleProject } from '../../mocks/projectinfo';
 
 describe('ProjectContainer.vue', () => {
   let wrapper: any;
@@ -15,38 +16,7 @@ describe('ProjectContainer.vue', () => {
           state: {},
           getters: {
             getSingleProjectInfo: jest.fn(() => {
-              return {
-                description: 'test discription',
-                id: 12,
-                organizationName: 'new org',
-                projectName: 'new project',
-                users: [
-                  {
-                    email: 'e@e.com',
-                    firstName: 'fname',
-                    id: 1,
-                    lastName: 'lname',
-                    phone: '09870987654321',
-                    role: 2
-                  },
-                  {
-                    email: 'bb@test.com',
-                    firstName: 'john',
-                    id: 17,
-                    lastName: 'bb',
-                    phone: '987654321',
-                    role: 3
-                  },
-                  {
-                    email: 'user@yopmail.com',
-                    firstName: 'John',
-                    id: 1,
-                    lastName: 'Doe',
-                    phone: '',
-                    role: 1
-                  }
-                ]
-              };
+              return { singleProject };
             }),
             getFinalProjectSubmissionStatus: jest.fn(),
             errorStatus: jest.fn()
