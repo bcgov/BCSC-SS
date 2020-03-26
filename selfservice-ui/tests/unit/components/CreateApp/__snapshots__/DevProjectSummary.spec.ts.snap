@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DevProjectSummary.vue renders props when passed with gettors 1`] = `
+<v-card-stub
+  class="mx-auto outer-card"
+  loaderheight="4"
+  tag="div"
+>
+  <v-toolbar-stub
+    class="bc-subtitle padding-0"
+    dark="true"
+    extensionheight="48"
+    flat="true"
+    src=""
+    tag="header"
+    tile="true"
+  >
+    <v-btn-stub
+      activeclass=""
+      icon="true"
+      tag="button"
+      type="button"
+    >
+      <v-icon-stub>
+        mdi-arrow-left
+      </v-icon-stub>
+    </v-btn-stub>
+     
+    <v-toolbar-title-stub>
+      
+    </v-toolbar-title-stub>
+     
+    <div
+      class="flex-grow-1"
+    />
+     
+    <div
+      class="flex-grow-1"
+    />
+  </v-toolbar-stub>
+   
+  <v-container-stub
+    tag="div"
+  >
+    <v-col-stub
+      cols="12"
+      flat=""
+      tag="div"
+    >
+      <v-card-stub
+        flat="true"
+        loaderheight="4"
+        tag="div"
+      >
+        <v-list-item-content-stub
+          class="text-left padding-0"
+        />
+      </v-card-stub>
+    </v-col-stub>
+     
+    <projectsummary-stub
+      id="0"
+    />
+  </v-container-stub>
+</v-card-stub>
+`;

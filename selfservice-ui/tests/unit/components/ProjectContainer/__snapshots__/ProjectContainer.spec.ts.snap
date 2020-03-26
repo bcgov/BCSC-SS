@@ -7,30 +7,6 @@ exports[`ProjectContainer.vue renders props when passed 1`] = `
   style="max-width: 80%;"
   tag="div"
 >
-  <v-toolbar-stub
-    class="bc-subtitle"
-    dark="true"
-    extensionheight="48"
-    flat="true"
-    src=""
-    tag="header"
-    tile="true"
-  >
-    <v-toolbar-title-stub>
-      
-    </v-toolbar-title-stub>
-     
-    <div
-      class="flex-grow-1"
-    />
-     
-    <div
-      class="flex-grow-1"
-    />
-  </v-toolbar-stub>
-   
-  <v-divider-stub />
-   
   <v-container-stub
     tag="div"
   >
@@ -39,6 +15,14 @@ exports[`ProjectContainer.vue renders props when passed 1`] = `
       tag="div"
     >
       <v-col-stub
+        cols="12"
+        tag="div"
+      >
+        <loading-stub />
+      </v-col-stub>
+       
+      <v-col-stub
+        cols="12"
         tag="div"
       >
         <v-tabs-stub
@@ -48,7 +32,22 @@ exports[`ProjectContainer.vue renders props when passed 1`] = `
           previcon="$prev"
           slidercolor="d-none"
           slidersize="2"
+          value="0"
         >
+          <v-tab-stub
+            class="font-weight-bold"
+            ripple="true"
+          >
+            
+          </v-tab-stub>
+           
+          <v-tab-stub
+            class="font-weight-bold"
+            ripple="true"
+          >
+            
+          </v-tab-stub>
+           
           <v-tab-stub
             class="font-weight-bold"
             ripple="true"
@@ -102,7 +101,7 @@ exports[`ProjectContainer.vue renders props when passed 1`] = `
               tag="div"
             >
               <v-card-text-stub>
-                content
+                Team Roles
               </v-card-text-stub>
             </v-card-stub>
           </v-tab-item-stub>
@@ -117,7 +116,55 @@ exports[`ProjectContainer.vue renders props when passed 1`] = `
             >
               <v-card-text-stub>
                 <p>
-                  content
+                  Live access request
+                </p>
+              </v-card-text-stub>
+            </v-card-stub>
+          </v-tab-item-stub>
+           
+          <v-tab-item-stub
+            class="custom-tabs-items"
+          >
+            <v-card-stub
+              flat="true"
+              loaderheight="4"
+              tag="div"
+            >
+              <v-card-text-stub>
+                <p>
+                  Privacy
+                </p>
+              </v-card-text-stub>
+            </v-card-stub>
+          </v-tab-item-stub>
+           
+          <v-tab-item-stub
+            class="custom-tabs-items"
+          >
+            <v-card-stub
+              flat="true"
+              loaderheight="4"
+              tag="div"
+            >
+              <v-card-text-stub>
+                <p>
+                  Security
+                </p>
+              </v-card-text-stub>
+            </v-card-stub>
+          </v-tab-item-stub>
+           
+          <v-tab-item-stub
+            class="custom-tabs-items"
+          >
+            <v-card-stub
+              flat="true"
+              loaderheight="4"
+              tag="div"
+            >
+              <v-card-text-stub>
+                <p>
+                  Access Key
                 </p>
               </v-card-text-stub>
             </v-card-stub>
