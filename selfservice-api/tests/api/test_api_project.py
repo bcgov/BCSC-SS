@@ -80,7 +80,7 @@ def test_get_project(client, jwt, session):
     assert response.status_code == HTTPStatus.OK
 
 
-def test_put_project_(client, jwt, session):
+def test_put_project(client, jwt, session):
     """Assert that the endpoint returns the success status."""
     headers = ss_client_auth_header(jwt)
     project = get_project(client, jwt)

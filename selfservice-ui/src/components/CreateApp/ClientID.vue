@@ -68,9 +68,17 @@
       <v-divider></v-divider>
       <v-list-item>
         <v-list-item-content class="align-self-start pr-30">
-          {{
-          $t('ClientID.titleTestAccount')
-          }}
+          <div>
+            {{
+            $t('ClientID.titleTestAccount')
+            }}
+            <v-tooltip bottom open-on-click>
+              <template v-slot:activator="{ on }">
+                <v-icon v-on="on">mdi-help-circle-outline</v-icon>
+              </template>
+              <span v-html="$t('ClientID.tooltipTestAccount')"></span>
+            </v-tooltip>
+          </div>
           <span
             class="small-hint"
             v-html="$t('ClientID.titleTestAccountInfo')"
