@@ -74,7 +74,7 @@
             }}
             <v-tooltip bottom open-on-click>
               <template v-slot:activator="{ on }">
-                <v-icon v-on="on">mdi-help-circle-outline</v-icon>
+                <v-icon v-on="on">mdi-help-circle</v-icon>
               </template>
               <span v-html="$t('ClientID.tooltipTestAccount')"></span>
             </v-tooltip>
