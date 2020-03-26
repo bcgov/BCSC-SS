@@ -6,7 +6,7 @@ let vuetify: any;
 vuetify = new Vuetify();
 
 describe('ProjectInfoSummary.vue', () => {
-  const store = new Vuex.Store({
+  const storeData = new Vuex.Store({
     modules: {
       ProjectInfoModule: {
         namespaced: true,
@@ -14,15 +14,15 @@ describe('ProjectInfoSummary.vue', () => {
         getters: {
           getSingleProjectInfo: jest.fn(() => {
             return {
-              description: 'test discription',
-              id: 12,
-              organizationName: 'new org',
-              projectName: 'new project',
+              description: 'discription',
+              id: 11,
+              organizationName: 'new org2',
+              projectName: 'new project2',
               users: [
                 {
                   email: 'e@e.com',
                   firstName: 'fname',
-                  id: 1,
+                  id: 2,
                   lastName: 'lname',
                   phone: '09870987654321',
                   role: 2
@@ -30,7 +30,7 @@ describe('ProjectInfoSummary.vue', () => {
                 {
                   email: 'bb@test.com',
                   firstName: 'john',
-                  id: 17,
+                  id: 16,
                   lastName: 'bb',
                   phone: '987654321',
                   role: 3
@@ -58,7 +58,7 @@ describe('ProjectInfoSummary.vue', () => {
 
   const mountFunction = (options: any) => {
     return mount(ProjectInfoSummary, {
-      store,
+      store: storeData,
       vuetify,
       mocks: { $t: jest.fn(() => {}) }, // tslint:disable-line
       ...options
@@ -70,74 +70,4 @@ describe('ProjectInfoSummary.vue', () => {
 
     expect(projectInfoSummary.element).toMatchSnapshot();
   });
-
-  // it('show modal on click', () => {
-  //   const ProjectInfoSummary = mountFunction({});
-
-  //   ProjectInfoSummary.setData({ isLoading: false });
-  //   const button = ProjectInfoSummary.find('.submit-package');
-  //   ProjectInfoSummary.vm.$on('action-btn:clicked', jest.fn());
-  //   button.trigger('click');
-  //   expect(ProjectInfoSummary.element).toMatchSnapshot();
-  // });
 });
-
-// describe('ProjectInfoSummary.vue', () => {
-//   it('renders props when passed', () => {
-//     const store = new Vuex.Store({
-//       modules: {
-//         ProjectInfoModule: {
-//           namespaced: true,
-//           state: {},
-//           getters: {
-//             getSingleProjectInfo: jest.fn(),
-//             errorStatus: jest.fn(),
-//             getFinalProjectSubmissionStatus: jest.fn()
-//           },
-//           actions: {
-//             loadSingleProjectInfo: jest.fn()
-//           }
-//         },
-//         TechnicalReqModule: {
-//           namespaced: true,
-//           state: {},
-//           getters: {
-//             getTechnicalReq: jest.fn(),
-//             errorStatus: jest.fn()
-//           },
-//           actions: {
-//             loadTechnicalReqDetails: jest.fn()
-//           }
-//         },
-//         PackageAndTestModule: {
-//           namespaced: true,
-//           state: {},
-//           getters: {
-//             successStatus: jest.fn(),
-//             getPackageList: jest.fn()
-//           },
-//           actions: {
-//             loadPackage: jest.fn()
-//           }
-//         },
-//         SharedModule: {
-//           namespaced: true,
-//           state: {},
-//           getters: {
-//             isRedirectFromSummaryPage: jest.fn()
-//           },
-//           actions: {
-//             redirectFromSummaryPage: jest.fn()
-//           }
-//         }
-//       }
-//     });
-//     const ProjectInfoSummary = shallowMount(ProjectInfoSummary, {
-//       vuetify,
-//       store,
-//       mocks: { $t: jest.fn(() => {}) } // tslint:disable-line
-//     });
-
-//     expect(ProjectInfoSummary.element).toMatchSnapshot();
-//   });
-// });
