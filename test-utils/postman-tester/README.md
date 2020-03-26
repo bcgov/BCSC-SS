@@ -21,17 +21,34 @@ Alternatively, you can download the BCSC OAuth2.0.postman_collection and BCSC 2.
 
 ### 3. Add your environment variables in Postman
 Copy your Client id, Client secret, redirect URI and scopes from the BC Services Card Self Service site into the environment variables in Postman.
-The mapping is as follows : 
-```
-Client id -> client_id
-Client secrect -> client_secret
-Redirect URI -> redirect_uri
-Scopes -> scope
-```
 
- To add these details to the Environment, make sure you have the "BCSC OAuth 2.0" Environment selected in Postman, click the eye button, then edit.
 
-![Environment with some details](images/postman-screen-setenv.PNG)
+Set your environment and environment variables: 
+* Press the eye button  ![Eye](images/section3_img1.PNG) 
+* Add an environment  ![EnvironmentName](images/section3_img2.PNG)
+* Clicking add will present ![EnvironmentDets](images/section3_img3.PNG)
+* Map the following:
+  * Environment Name: BCSC OAuth2.0 
+  * authURI = https://idtest.gov.bc.ca/login/oidc/authorize
+  * state = somestate
+  * access_token = null
+  * refresh_token = null
+  * accessTokenURI = https:://idtest.gov.bc.ca/oauth2/token
+
+the following will need to come from your BC Services Card Self Service Dev Request 
+
+* client_id --> see arrow below
+* client_secret --> see arrow below
+ ![ClientDets](images/section3_img4.PNG)
+
+* Scope= Openid profile ![ScopeDet](images/section3_img5.PNG)
+* Redirect URI -> redirect_uri ![RedirectDet](images/section3_img6.PNG)
+
+In postman it should look like this
+<img src="images/section3_img7.PNG" width="50" width="50">  
+
+ ![EnvWithDetails](images/section3_img7.PNG)
+
 
 ### 4. Test that your client id and redirect url are ok
 1. Click on the "Basic Authorise Test" GET request under the BCSC OAuth 2.0 Collection
@@ -40,7 +57,14 @@ Scopes -> scope
 
 You should get a response with a green "Pass" logo . If it fails you will get a bunch of red html, you may be able to determine what the cause is, most likely your Client Id is wrong or your Redirect URL is incorrect.
 
-![Basic Authorize Test](images/basic-auth-test.PNG)
+You will need to confirm
+a)	Your environment
+b)	Basic Authorise Test
+c)	Press send
+d)	Navigate to Test Results
+e)	See a green pass button
+ 
+![Basic Authorize Test](images/section4_img1.PNG)
 
 
 ### 5. Do a full test by getting your user attributes (NB. You will need a test account which you should have received from the BC Services Card Self Service site )
@@ -49,7 +73,14 @@ You should get a response with a green "Pass" logo . If it fails you will get a 
 1. Select the tab "Authorisation" . Ensure that the Type is set to OAuth 2.0
 1. Click on the "Get new Access Token" button
 
-![Basic Authorize Test](images/Attributes.PNG)
+You will need to confirm
+a)	Your environment
+b)	Attributes
+c)	Authorization
+d)	Type
+e)	Get new access tokens -- It is helpful if you turn on the  postman console View --> Postman Console or ALT+ CTRL +C
+
+![Basic Authorize Test](images/section5_img1.PNG)
 
 
 Add values for each of the fields as follows (yes, type the curly brackets too ) :
@@ -71,7 +102,20 @@ Note : For each of the fields presented (the {{...}} gets replaced by the variab
 
 
 
-Once done, you can click "Request Token" and if all is well , you will be redirected to the standard login screens requesting your BCSC credentials.Using your test account data as a virtual card login, complete the login steps.
+Once done, you can click "Request Token" and if all is well , you will be redirected to the standard login screens requesting your BCSC credentials.
+<img src="images/section5_img2.PNG" width="50" width="50"> OR 
+![RequestToken](images/section5_img2.PNG)
+
+Using your test account data as a virtual card login, complete the login steps.
+![TestAccounts](images/section5_img3.PNG)
+
+
+<img src="images/bcsc_login_1.PNG" width="50" width="50">
+<img src="images/bcsc_login_2.PNG" width="50" width="50">
+<img src="images/bcsc_login_3.PNG" width="50" width="50">
+<img src="images/bcsc_login_4.PNG" width="50" width="50">
+
+OR
 
 ![BCSC Login 1](images/bcsc_login_1.PNG)
 ![BCSC Login 2](images/bcsc_login_2.PNG)
@@ -80,15 +124,15 @@ Once done, you can click "Request Token" and if all is well , you will be redire
 
 
 
- If all goes well, you will be returned a token 
+ If all goes well, you will be returned a token which will be shown as an available token
 
-
-
+![available token](images/section5_img4.PNG)
 ![Successful access token](images/access_token_return.PNG)
 
 Now the fun part - simply click on "Send" for the request and you should get your user attributes returned - note that postman automatically adds your access token returned in the previous step , so you do not need to add anything manually to the GET request header. 
 
-![Get your attributes](images/get_attributes.PNG)
+![available token](images/section5_img5.PNG)
+![Get your attributes](images/section5_img6.PNG)
 
 
 Note: Depending on your encryption settings which you set up in the BC Services Card Self Service application, the attributes returned could be encrypted, returned as a JWT token or returned as JSON. 
