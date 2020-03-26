@@ -94,7 +94,7 @@ class TechnicalReqTestAccountSchema(Schema):
 
         unknown = EXCLUDE
 
-    no_of_test_account = fields.Int(data_key='noOfTestAccount', required=True)
+    no_of_test_account = fields.Int(data_key='noOfTestAccount', required=True, validate=validate.OneOf([1, 2, 3, 5]))
     note_test_account = fields.Str(data_key='noteTestAccount', allow_none=True)
 
 

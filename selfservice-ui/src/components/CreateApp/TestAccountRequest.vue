@@ -67,12 +67,12 @@
                 }}
               </v-list-item-content>
               <v-list-item-content class="subtitle-1" v-html="$t('testAccount.specialNotesInfo')"></v-list-item-content>
-              <TextArea
+              <!-- <TextArea
                 v-model="notes"
                 :label="$t('testAccount.special_notes')"
                 type="text"
                 outlined
-              />
+              /> -->
             </v-card>
           </v-col>
         </v-row>
