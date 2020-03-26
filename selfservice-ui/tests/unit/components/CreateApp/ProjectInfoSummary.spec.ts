@@ -1,4 +1,4 @@
-import { shallowMount, mount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import ProjectInfoSummary from '@/components/CreateApp/ProjectInfoSummary.vue';
 import Vuetify from 'vuetify';
 import Vuex from 'vuex';
@@ -57,7 +57,7 @@ describe('ProjectInfoSummary.vue', () => {
   });
 
   const mountFunction = (options: any) => {
-    return mount(ProjectInfoSummary, {
+    return shallowMount(ProjectInfoSummary, {
       store: storeData,
       vuetify,
       mocks: { $t: jest.fn(() => {}) }, // tslint:disable-line
