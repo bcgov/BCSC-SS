@@ -67,11 +67,11 @@ class TechnicalReqRequestSchema(Schema):
             if errors:
                 raise ValidationError(errors)
 
-            data['id_token_encrypted_response_alg'] = data['userinfo_encrypted_response_alg'] = None
+            data['id_token_encrypted_response_alg'] = data['userinfo_encrypted_response_alg'] = ''
             data['jwks_uri'] = ''
         else:
-            data['id_token_signed_response_alg'] = data['userinfo_signed_response_alg'] = None
-            data['id_token_encrypted_response_alg'] = data['userinfo_encrypted_response_alg'] = None
+            data['id_token_signed_response_alg'] = data['userinfo_signed_response_alg'] = ''
+            data['id_token_encrypted_response_alg'] = data['userinfo_encrypted_response_alg'] = ''
             data['jwks_uri'] = ''
 
 
