@@ -24,9 +24,9 @@ Copy your Client id, Client secret, redirect URI and scopes from the BC Services
 
 
 Set your environment and environment variables: 
-* Press the eye button   <img src="images/section3_img1.PNG" width="150">  
-* Add an environment  <img src="images/section3_img2.PNG" width="150">
-* Clicking add will present <img src="images/section3_img3.PNG" width="150">
+* Press the eye button   <img src="images/section3_img1.png" width="150">  
+* Add an environment  <img src="images/section3_img2.png" width="150">
+* Clicking add will present <img src="images/section3_img3.png" width="150">
 * Map the following:
   * Environment Name: BCSC OAuth2.0 
   * authURI = https://idtest.gov.bc.ca/login/oidc/authorize
@@ -39,13 +39,13 @@ the following will need to come from your BC Services Card Self Service Dev Requ
 
 * client_id --> see arrow below
 * client_secret --> see arrow below
- <img src="images/section3_img4.PNG" width="150">
+ <img src="images/section3_img4.png" width="150">
 
 * Scope= Openid profile ![ScopeDet](images/section3_img5.PNG)
 * Redirect URI -> redirect_uri ![RedirectDet](images/section3_img6.PNG)
 
 In postman it should look like this
-<img src="images/section3_img7.PNG" width="150">  
+<img src="images/section3_img7.png" width="150">  
 
 
 
@@ -63,7 +63,7 @@ c)	Press send</br>
 d)	Navigate to Test Results</br>
 e)	See a green pass button</br>
  
-![Basic Authorize Test](images/section4_img1.PNG)
+![Basic Authorize Test](images/section4_img1.png)
 
 
 ### 5. Do a full test by getting your user attributes (NB. You will need a test account which you should have received from the BC Services Card Self Service site )
@@ -79,7 +79,7 @@ c)	Authorization</br>
 d)	Type</br>
 e)	Get new access tokens -- It is helpful if you turn on the  postman console View --> Postman Console or ALT+ CTRL +C </br>
 
-![Basic Authorize Test](images/section5_img1.PNG)
+![Basic Authorize Test](images/section5_img1.png)
 
 
 Add values for each of the fields as follows (yes, type the curly brackets too ) :
@@ -102,10 +102,10 @@ Note : For each of the fields presented (the {{...}} gets replaced by the variab
 
 
 Once done, you can click "Request Token" and if all is well , you will be redirected to the standard login screens requesting your BCSC credentials.
-<img src="images/section5_img2.PNG" width="150" >
+<img src="images/section5_img2.png" width="150" >
 
 Using your test account data as a virtual card login, complete the login steps.
-<img src="images/section5_img3.PNG" width="150" ></br>
+<img src="images/section5_img3.png" width="150" ></br>
 
 
 <img src="images/bcsc_login_1.PNG" width="150" ></br>
@@ -117,14 +117,14 @@ Using your test account data as a virtual card login, complete the login steps.
 
  If all goes well, you will be returned a token which will be shown as an available token
  </br>
-<img src="images/section5_img4.PNG" width="150" ></br>
+<img src="images/section5_img4.png" width="150" ></br>
 <img src="images/access_token_return.PNG" width="150" ></br>
 
 
 Now the fun part - simply click on "Send" for the request and you should get your user attributes returned - note that postman automatically adds your access token returned in the previous step , so you do not need to add anything manually to the GET request header. 
 
-<img src="images/section5_img5.PNG" width="150" ></br>
-<img src="images/section5_img6.PNG" width="150" ></br>
+<img src="images/section5_img5.png" width="150" ></br>
+<img src="images/section5_img6.png" width="150" ></br>
 
 
 Note: Depending on your encryption settings which you set up in the BC Services Card Self Service application, the attributes returned could be encrypted, returned as a JWT token or returned as JSON. 
