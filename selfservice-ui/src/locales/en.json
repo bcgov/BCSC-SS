@@ -78,7 +78,7 @@
     "pageinfo": "In order to test your configuration, we would like to know how many test accounts you need for {package}. Please note the test data provided to you will be randomized unless you indicate you have preferred customization. If you select the randomized test account, you can expect the test accounts immediately or within X days.",
     "how_many_test_account": "Choose the number of test user accounts you require",
     "special_notes": "Special requests or notes",
-    "specialNotesInfo": "<p>If you have any special requests regarding the data contained in these test accounts, please include that information in this space.</p></p>(For example: all users must have a different city in the address block)</p>",
+    "specialNotesInfo": "<p>If you have any special requests for customized test account. Please contact IDIM Consulting or <a href='mailto:zorin.samji@gov.bc.ca'>Product Owner</a>.</p>",
     "btnBack": "Go Back",
     "btnNext": "Next",
     "btnCancel": "Cancel",
@@ -146,7 +146,8 @@
     "tblPassCode": "Passcode",
     "tblGivenName": "Given Name",
     "tblSurName": "Surname",
-    "warningLimitedTestAccount": "Currently, there are no more random test accounts for your use. Please contact <a href='mailto:zorin.samji@gov.bc.ca'>IDIM Consulting or Product Owner</a> who will be in touch with you shortly."
+    "warningLimitedTestAccount": "Currently, there are no more random test accounts for your use. Please contact IDIM Consulting or <a href='mailto:zorin.samji@gov.bc.ca'>Product Owner</a> who will be in touch with you shortly.",
+    "tooltipTestAccount": "If there is a mismatch between the number of test accounts you requested and what you see here, <br/>then there are no more random test accounts for your use. <br/>Please contact IDIM Consulting or Product Owner who will be in touch with you shortly."
   },
   "dashboard": {
     "pagetitle": "Projects",
