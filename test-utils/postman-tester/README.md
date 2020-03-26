@@ -116,14 +116,15 @@ Using your test account data as a virtual card login, complete the login steps.
 
 
  If all goes well, you will be returned a token which will be shown as an available token
+ </br>
+<img src="images/section5_img4.PNG" width="150" ></br>
+<img src="images/access_token_return.PNG" width="150" ></br>
 
-![available token](images/section5_img4.PNG)
-![Successful access token](images/access_token_return.PNG)
 
 Now the fun part - simply click on "Send" for the request and you should get your user attributes returned - note that postman automatically adds your access token returned in the previous step , so you do not need to add anything manually to the GET request header. 
 
-![available token](images/section5_img5.PNG)
-![Get your attributes](images/section5_img6.PNG)
+<img src="images/section5_img5.PNG" width="150" ></br>
+<img src="images/section5_img6.PNG" width="150" ></br>
 
 
 Note: Depending on your encryption settings which you set up in the BC Services Card Self Service application, the attributes returned could be encrypted, returned as a JWT token or returned as JSON. 
