@@ -1,125 +1,66 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DevProjectSummary.vue renders props when passed with gettors 1`] = `
-<div
-  class="mx-auto outer-card v-card v-sheet theme--light"
+<v-card-stub
+  class="mx-auto outer-card"
+  loaderheight="4"
+  tag="div"
 >
-  <header
-    class="bc-subtitle padding-0 v-sheet v-sheet--tile theme--dark v-toolbar v-toolbar--flat"
-    style="height: 64px;"
+  <v-toolbar-stub
+    class="bc-subtitle padding-0"
+    dark="true"
+    extensionheight="48"
+    flat="true"
+    src=""
+    tag="header"
+    tile="true"
   >
-    <div
-      class="v-toolbar__content"
-      style="height: 64px;"
+    <v-btn-stub
+      activeclass=""
+      icon="true"
+      tag="button"
+      type="button"
     >
-      <button
-        class="v-btn v-btn--flat v-btn--icon v-btn--round theme--dark v-size--default"
-        type="button"
-      >
-        <span
-          class="v-btn__content"
-        >
-          <i
-            aria-hidden="true"
-            class="v-icon notranslate mdi mdi-arrow-left theme--dark"
-          />
-        </span>
-      </button>
-       
-      <div
-        class="v-toolbar__title"
-      >
-        
-      </div>
-       
-      <div
-        class="flex-grow-1"
-      />
-       
-      <div
-        class="flex-grow-1"
-      />
-    </div>
-  </header>
-   
-  <div
-    class="container"
-  >
-    <div
-      class="col col-12"
-      flat=""
-    >
-      <div
-        class="v-card v-card--flat v-sheet theme--light"
-      >
-        <div
-          class="v-list-item__content text-left padding-0"
-        />
-      </div>
-    </div>
+      <v-icon-stub>
+        mdi-arrow-left
+      </v-icon-stub>
+    </v-btn-stub>
      
-    <div>
-      <div
-        class="container"
+    <v-toolbar-title-stub>
+      
+    </v-toolbar-title-stub>
+     
+    <div
+      class="flex-grow-1"
+    />
+     
+    <div
+      class="flex-grow-1"
+    />
+  </v-toolbar-stub>
+   
+  <v-container-stub
+    tag="div"
+  >
+    <v-col-stub
+      cols="12"
+      flat=""
+      tag="div"
+    >
+      <v-card-stub
+        flat="true"
+        loaderheight="4"
+        tag="div"
       >
-        <div
-          class="layout d-flex align-center justify-center row wrap"
-        >
-          <div
-            class="mt-10"
-            col="4"
-          >
-            <div
-              aria-valuemax="100"
-              aria-valuemin="0"
-              class="v-progress-linear loading v-progress-linear--rounded theme--light"
-              role="progressbar"
-              style="height: 6px;"
-            >
-              <div
-                class="v-progress-linear__background primary"
-                style="opacity: 0.3; left: 0%; width: 100%;"
-              />
-              <div
-                class="v-progress-linear__buffer"
-              />
-              <div
-                class="v-progress-linear__indeterminate v-progress-linear__indeterminate--active"
-              >
-                <div
-                  class="v-progress-linear__indeterminate long primary"
-                />
-                <div
-                  class="v-progress-linear__indeterminate short primary"
-                />
-              </div>
-            </div>
-             
-            <span />
-          </div>
-        </div>
-      </div>
-       
-      <div
-        class="text-center"
-      >
-        <div
-          class="v-dialog__container text-left"
-          role="dialog"
-        >
-          <div
-            class="v-dialog__content"
-            role="document"
-            style="z-index: 0;"
-          >
-            <div
-              class="v-dialog v-dialog--persistent"
-              style="width: 70%; display: none;"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+        <v-list-item-content-stub
+          class="text-left padding-0"
+        />
+      </v-card-stub>
+    </v-col-stub>
+     
+    <projectsummary-stub
+      id="0"
+    />
+  </v-container-stub>
+</v-card-stub>
 `;
