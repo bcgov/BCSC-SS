@@ -24,9 +24,9 @@ Copy your Client id, Client secret, redirect URI and scopes from the BC Services
 
 
 Set your environment and environment variables: 
-* Press the eye button  ![Eye](images/section3_img1.PNG) 
-* Add an environment  ![EnvironmentName](images/section3_img2.PNG)
-* Clicking add will present ![EnvironmentDets](images/section3_img3.PNG)
+* Press the eye button   <img src="images/section3_img1.PNG" width="150">  
+* Add an environment  <img src="images/section3_img2.PNG" width="150">
+* Clicking add will present <img src="images/section3_img3.PNG" width="150">
 * Map the following:
   * Environment Name: BCSC OAuth2.0 
   * authURI = https://idtest.gov.bc.ca/login/oidc/authorize
@@ -39,15 +39,14 @@ the following will need to come from your BC Services Card Self Service Dev Requ
 
 * client_id --> see arrow below
 * client_secret --> see arrow below
- ![ClientDets](images/section3_img4.PNG)
+ <img src="images/section3_img4.PNG" width="150">
 
 * Scope= Openid profile ![ScopeDet](images/section3_img5.PNG)
 * Redirect URI -> redirect_uri ![RedirectDet](images/section3_img6.PNG)
 
 In postman it should look like this
-<img src="images/section3_img7.PNG" width="50" width="50">  
+<img src="images/section3_img7.PNG" width="150">  
 
- ![EnvWithDetails](images/section3_img7.PNG)
 
 
 ### 4. Test that your client id and redirect url are ok
@@ -57,12 +56,12 @@ In postman it should look like this
 
 You should get a response with a green "Pass" logo . If it fails you will get a bunch of red html, you may be able to determine what the cause is, most likely your Client Id is wrong or your Redirect URL is incorrect.
 
-You will need to confirm
-a)	Your environment
-b)	Basic Authorise Test
-c)	Press send
-d)	Navigate to Test Results
-e)	See a green pass button
+You will need to confirm</br>
+a) Your environment </br>
+b)	Basic Authorise Test</br>
+c)	Press send</br>
+d)	Navigate to Test Results</br>
+e)	See a green pass button</br>
  
 ![Basic Authorize Test](images/section4_img1.PNG)
 
@@ -73,12 +72,12 @@ e)	See a green pass button
 1. Select the tab "Authorisation" . Ensure that the Type is set to OAuth 2.0
 1. Click on the "Get new Access Token" button
 
-You will need to confirm
-a)	Your environment
-b)	Attributes
-c)	Authorization
-d)	Type
-e)	Get new access tokens -- It is helpful if you turn on the  postman console View --> Postman Console or ALT+ CTRL +C
+You will need to confirm</br>
+a)	Your environment</br>
+b)	Attributes</br>
+c)	Authorization</br>
+d)	Type</br>
+e)	Get new access tokens -- It is helpful if you turn on the  postman console View --> Postman Console or ALT+ CTRL +C </br>
 
 ![Basic Authorize Test](images/section5_img1.PNG)
 
@@ -103,24 +102,16 @@ Note : For each of the fields presented (the {{...}} gets replaced by the variab
 
 
 Once done, you can click "Request Token" and if all is well , you will be redirected to the standard login screens requesting your BCSC credentials.
-<img src="images/section5_img2.PNG" width="50" width="50"> OR 
-![RequestToken](images/section5_img2.PNG)
+<img src="images/section5_img2.PNG" width="150" >
 
 Using your test account data as a virtual card login, complete the login steps.
-![TestAccounts](images/section5_img3.PNG)
+<img src="images/section5_img3.PNG" width="150" ></br>
 
 
-<img src="images/bcsc_login_1.PNG" width="50" width="50">
-<img src="images/bcsc_login_2.PNG" width="50" width="50">
-<img src="images/bcsc_login_3.PNG" width="50" width="50">
-<img src="images/bcsc_login_4.PNG" width="50" width="50">
-
-OR
-
-![BCSC Login 1](images/bcsc_login_1.PNG)
-![BCSC Login 2](images/bcsc_login_2.PNG)
-![BCSC Login 3](images/bcsc_login_3.PNG)
-![BCSC Login 4](images/bcsc_login_4.PNG)
+<img src="images/bcsc_login_1.PNG" width="150" ></br>
+<img src="images/bcsc_login_2.PNG" width="150" ></br>
+<img src="images/bcsc_login_3.PNG" width="150" ></br>
+<img src="images/bcsc_login_4.PNG" width="150" ></br>
 
 
 
