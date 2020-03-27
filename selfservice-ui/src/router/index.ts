@@ -22,14 +22,14 @@ const router = new VueRouter({
     {
       path: '/login',
       name: 'login',
-      meta: { requiresAuth: true, roles: ['ss_admin', 'ss_client', 'idir'] },
+      meta: { requiresAuth: true, roles: ['ss_admin', 'ss_client'] },
       component: () =>
         import(/* webpackChunkName: "Authorize" */ '../views/Authorize.vue')
     },
     {
       path: '/about',
       name: 'about',
-      meta: { requiresAuth: true, roles: ['ss_client', 'idir', 'ss_admin'] },
+      meta: { requiresAuth: true, roles: ['ss_client', 'ss_admin'] },
       props: true,
       component: () =>
         import(/* webpackChunkName: "About" */ '../views/About.vue')
@@ -37,18 +37,18 @@ const router = new VueRouter({
     {
       path: '/dashboard',
       name: 'dashboard',
-      meta: { requiresAuth: true, roles: ['ss_client', 'idir', 'ss_admin'] },
+      meta: { requiresAuth: true, roles: ['ss_client', 'ss_admin'] },
       props: true,
       component: () =>
         import(/* webpackChunkName: "dashboard" */ '../views/Dashboard.vue')
     },
     {
-      path: '/complete-profile',
-      name: 'completeProfile',
-      meta: { requiresAuth: true, roles: ['ss_client', 'idir', 'ss_admin'] },
+      path: '/profile/:step?',
+      name: 'profile',
+      meta: { requiresAuth: true, roles: ['ss_client', 'ss_admin'] },
       props: true,
       component: () =>
-        import(/* webpackChunkName: "completeProfile" */ '../views/Profile.vue')
+        import(/* webpackChunkName: "profile" */ '../views/Profile.vue')
     },
     {
       path: '/project/info',
@@ -61,7 +61,7 @@ const router = new VueRouter({
     {
       path: '/project/:id?/:step?',
       name: 'project',
-      meta: { requiresAuth: true, roles: ['ss_client', 'idir', 'ss_admin'] },
+      meta: { requiresAuth: true, roles: ['ss_client', 'ss_admin'] },
       props: true,
       component: () =>
         import(/* webpackChunkName: "project" */ '../views/Project.vue')
@@ -69,7 +69,7 @@ const router = new VueRouter({
     {
       path: '/project-container/:id?/:tab?',
       name: 'projectcontainer',
-      meta: { requiresAuth: true, roles: ['ss_client', 'idir', 'ss_admin'] },
+      meta: { requiresAuth: true, roles: ['ss_client', 'ss_admin'] },
       props: true,
       component: () =>
         import(
@@ -104,10 +104,10 @@ router.beforeEach((to, from, next) => {
     if (isLoggedin) {
       if (
         !store.state.KeyCloakModule.isVerfied &&
-        to.name !== 'completeProfile'
+        to.name !== 'profile'
       ) {
         next({
-          name: 'completeProfile'
+          path: '/profile/complete'
         });
         // }
       } else if (KeycloakService.checkPermission(to.meta.roles)) {
