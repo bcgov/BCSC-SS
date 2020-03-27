@@ -110,7 +110,7 @@ export default class Dashboard extends Vue {
     const profile = { email: this.email, phone: this.phone };
     this.updateProfile(profile);
   }
-  
+
   private mounted() {
     this.onUserProfileChanged(this.userProfile);
   }
