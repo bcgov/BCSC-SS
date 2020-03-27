@@ -8,6 +8,7 @@ import PageNotFound from '../views/PageNotFound.vue';
 
 Vue.use(VueRouter);
 
+const metaAllRoles = { requiresAuth: true, roles: ['ss_admin', 'ss_client'] };
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
@@ -22,14 +23,14 @@ const router = new VueRouter({
     {
       path: '/login',
       name: 'login',
-      meta: { requiresAuth: true, roles: ['ss_admin', 'ss_client'] },
+      meta: metaAllRoles,
       component: () =>
         import(/* webpackChunkName: "Authorize" */ '../views/Authorize.vue')
     },
     {
       path: '/about',
       name: 'about',
-      meta: { requiresAuth: true, roles: ['ss_client', 'ss_admin'] },
+      meta: metaAllRoles,
       props: true,
       component: () =>
         import(/* webpackChunkName: "About" */ '../views/About.vue')
@@ -37,7 +38,7 @@ const router = new VueRouter({
     {
       path: '/dashboard',
       name: 'dashboard',
-      meta: { requiresAuth: true, roles: ['ss_client', 'ss_admin'] },
+      meta: metaAllRoles,
       props: true,
       component: () =>
         import(/* webpackChunkName: "dashboard" */ '../views/Dashboard.vue')
@@ -45,7 +46,7 @@ const router = new VueRouter({
     {
       path: '/profile/:step?',
       name: 'profile',
-      meta: { requiresAuth: true, roles: ['ss_client', 'ss_admin'] },
+      meta: metaAllRoles,
       props: true,
       component: () =>
         import(/* webpackChunkName: "profile" */ '../views/Profile.vue')
@@ -53,7 +54,7 @@ const router = new VueRouter({
     {
       path: '/project/info',
       name: 'project-info',
-      meta: { requiresAuth: true, roles: ['ss_client', 'ss_admin'] },
+      meta: metaAllRoles,
       props: true,
       component: () =>
         import(/* webpackChunkName: "project" */ '../views/Project.vue')
@@ -61,7 +62,7 @@ const router = new VueRouter({
     {
       path: '/project/:id?/:step?',
       name: 'project',
-      meta: { requiresAuth: true, roles: ['ss_client', 'ss_admin'] },
+      meta: metaAllRoles,
       props: true,
       component: () =>
         import(/* webpackChunkName: "project" */ '../views/Project.vue')
@@ -69,7 +70,7 @@ const router = new VueRouter({
     {
       path: '/project-container/:id?/:tab?',
       name: 'projectcontainer',
-      meta: { requiresAuth: true, roles: ['ss_client', 'ss_admin'] },
+      meta: metaAllRoles,
       props: true,
       component: () =>
         import(
