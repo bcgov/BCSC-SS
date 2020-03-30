@@ -4,7 +4,11 @@
   <v-card class="mx-auto card-width">
     <v-alert type="error" v-if="errorStatus">Something went wrong...</v-alert>
     <v-toolbar flat class="bc-subtitle" dark v-if="!errorStatus">
-      <v-toolbar-title>{{ $t('profile.page' + (isComplete ? 'Complete' : '') + 'Title') }}</v-toolbar-title>
+      <v-toolbar-title>
+        {{ $t(isComplete ? 
+        'profile.pageCompleteTitle' : 
+        'profile.pageTitle') }}
+      </v-toolbar-title>
       <div class="flex-grow-1"></div>
     </v-toolbar>
     <v-divider></v-divider>
@@ -58,7 +62,11 @@
                   depressed
                   @click="createOrUpdateProfile"
                   @keyup.enter="createOrUpdateProfile"
-                >{{ $t('profile.btn' + (isComplete ? 'Continue' : 'SaveChanges')) }}</Button>
+                >
+                  {{ $t(isComplete ? 
+                  'profile.btnContinue' : 
+                  'profile.btnSaveChanges') }}
+                </Button>
               </v-card-actions>
             </v-card>
           </v-col>
