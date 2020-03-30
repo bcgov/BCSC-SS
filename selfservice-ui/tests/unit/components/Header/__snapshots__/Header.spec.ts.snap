@@ -40,11 +40,28 @@ exports[`Header.vue Logout user on logout button onlick  1`] = `
       <!---->
        
       <div
-        class="v-toolbar__title"
+        class="v-toolbar__title d-flex"
       >
-        
-      Welcome user lastName
-      
+        <button
+          class="v-btn v-btn--flat v-btn--icon v-btn--round theme--dark v-size--large"
+          type="button"
+        >
+          <span
+            class="v-btn__content"
+          >
+            <i
+              aria-hidden="true"
+              class="v-icon notranslate mdi mdi-account-edit theme--dark"
+            />
+          </span>
+        </button>
+         
+        <div
+          class="profile-title"
+        >
+          Welcome user lastName
+        </div>
+         
         <button
           class="v-btn v-btn--flat v-btn--text theme--light v-size--default white--text"
           type="button"
@@ -167,11 +184,28 @@ exports[`Header.vue Toggle menu onlick  1`] = `
       <!---->
        
       <div
-        class="v-toolbar__title"
+        class="v-toolbar__title d-flex"
       >
-        
-      Welcome user lastName
-      
+        <button
+          class="v-btn v-btn--flat v-btn--icon v-btn--round theme--dark v-size--large"
+          type="button"
+        >
+          <span
+            class="v-btn__content"
+          >
+            <i
+              aria-hidden="true"
+              class="v-icon notranslate mdi mdi-account-edit theme--dark"
+            />
+          </span>
+        </button>
+         
+        <div
+          class="profile-title"
+        >
+          Welcome user lastName
+        </div>
+         
         <button
           class="v-btn v-btn--flat v-btn--text theme--light v-size--default white--text"
           type="button"
@@ -294,11 +328,28 @@ exports[`Header.vue renders props when passed 1`] = `
       <!---->
        
       <div
-        class="v-toolbar__title"
+        class="v-toolbar__title d-flex"
       >
-        
-      Welcome user lastName
-      
+        <button
+          class="v-btn v-btn--flat v-btn--icon v-btn--round theme--dark v-size--large"
+          type="button"
+        >
+          <span
+            class="v-btn__content"
+          >
+            <i
+              aria-hidden="true"
+              class="v-icon notranslate mdi mdi-account-edit theme--dark"
+            />
+          </span>
+        </button>
+         
+        <div
+          class="profile-title"
+        >
+          Welcome user lastName
+        </div>
+         
         <button
           class="v-btn v-btn--flat v-btn--text theme--light v-size--default white--text"
           type="button"

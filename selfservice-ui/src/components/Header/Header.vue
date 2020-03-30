@@ -31,8 +31,11 @@
         v-if="!isLoggedin"
       >Login</v-btn>
 
-      <v-toolbar-title v-if="isLoggedin">
-        Welcome {{ userProfile.firstName }} {{ userProfile.lastName }}
+      <v-toolbar-title v-if="isLoggedin" class="d-flex">
+        <v-btn icon dark large @click="$router.push(`/profile`)">
+          <v-icon>mdi-account-edit</v-icon>
+        </v-btn>
+        <div class="profile-title">Welcome {{ userProfile.firstName }} {{ userProfile.lastName }}</div>
         <v-btn text @click="logout" color="white">
           <span class="mr-2 logout" color="white">Logout</span>
         </v-btn>
@@ -215,5 +218,10 @@ export default class Header extends Vue {
   font-weight: 600;
   font-size: 16px;
   margin-left: 4px;
+}
+
+.profile-title {
+    display: flex;
+    align-self: center;
 }
 </style>
