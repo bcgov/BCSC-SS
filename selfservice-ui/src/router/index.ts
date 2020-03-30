@@ -7,71 +7,93 @@ import Unauthorized from '../views/Unauthorized.vue';
 import PageNotFound from '../views/PageNotFound.vue';
 
 Vue.use(VueRouter);
-
-const metaAllRoles = { requiresAuth: true, roles: ['ss_admin', 'ss_client'] };
-
-function createRoute(path: string, name: string, component: any, meta: any, props = true) {
-  return {
-    path,
-    name,
-    meta,
-    component,
-    props
-  };
-}
+const routerData = [
+  {
+    path: '/',
+    name: 'home',
+    meta: { hideMenu: true },
+    component: Home,
+    props: true
+  },
+  {
+    path: '/login',
+    name: 'login',
+    meta: { requiresAuth: true, roles: ['ss_admin', 'ss_client'] },
+    component: () =>
+      import(/* webpackChunkName: "Authorize" */ '../views/Authorize.vue')
+  },
+  {
+    path: '/about',
+    name: 'about',
+    meta: { requiresAuth: true, roles: ['ss_client', 'ss_admin'] },
+    props: true,
+    component: () =>
+      import(/* webpackChunkName: "About" */ '../views/About.vue')
+  },
+  {
+    path: '/dashboard',
+    name: 'dashboard',
+    meta: { requiresAuth: true, roles: ['ss_client', 'ss_admin'] },
+    props: true,
+    component: () =>
+      import(/* webpackChunkName: "dashboard" */ '../views/Dashboard.vue')
+  },
+  {
+    path: '/profile/:step?',
+    name: 'profile',
+    meta: { requiresAuth: true, roles: ['ss_client', 'ss_admin'] },
+    props: true,
+    component: () =>
+      import(/* webpackChunkName: "profile" */ '../views/Profile.vue')
+  },
+  {
+    path: '/project/info',
+    name: 'project-info',
+    meta: { requiresAuth: true, roles: ['ss_client', 'ss_admin'] },
+    props: true,
+    component: () =>
+      import(/* webpackChunkName: "project" */ '../views/Project.vue')
+  },
+  {
+    path: '/project/:id?/:step?',
+    name: 'project',
+    meta: { requiresAuth: true, roles: ['ss_client', 'ss_admin'] },
+    props: true,
+    component: () =>
+      import(/* webpackChunkName: "project" */ '../views/Project.vue')
+  },
+  {
+    path: '/project-container/:id?/:tab?',
+    name: 'projectcontainer',
+    meta: { requiresAuth: true, roles: ['ss_client', 'ss_admin'] },
+    props: true,
+    component: () =>
+      import(
+        /* webpackChunkName: "projectcontainer" */ '../views/ProjectContainer.vue'
+      )
+  },
+  {
+    path: '/add-test-account',
+    name: 'testaccount',
+    meta: { requiresAuth: true, roles: ['ss_admin'] },
+    props: true,
+    component: () =>
+      import(/* webpackChunkName: "testaccount" */ '../views/TestAccount.vue')
+  },
+  {
+    path: '/unauthorized',
+    name: 'Unauthorized',
+    meta: { requiresAuth: false },
+    props: true,
+    component: Unauthorized
+  },
+  { path: '*', meta: { requiresAuth: false }, component: PageNotFound }
+];
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes: [
-    createRoute('/', 'home', Home, { hideMenu: true }),
-    createRoute(
-      '/login',
-      'login',
-      () => import(/* webpackChunkName: "Authorize" */ '../views/Authorize.vue'),
-      metaAllRoles),
-    createRoute(
-      '/about',
-      'about',
-      () => import(/* webpackChunkName: "About" */ '../views/About.vue'),
-      metaAllRoles),
-    createRoute(
-      '/dashboard',
-      'dashboard',
-      () => import(/* webpackChunkName: "dashboard" */ '../views/Dashboard.vue'),
-      metaAllRoles),
-    createRoute(
-      '/profile/:step?',
-      'profile',
-      () => import(/* webpackChunkName: "profile" */ '../views/Profile.vue'),
-      metaAllRoles),
-    createRoute(
-      '/project/info',
-      'project-info',
-      () => import(/* webpackChunkName: "project" */ '../views/Project.vue'),
-      metaAllRoles),
-    createRoute(
-      '/project/:id?/:step?',
-      'project',
-      () => import(/* webpackChunkName: "project" */ '../views/Project.vue'),
-      metaAllRoles),
-    createRoute(
-      '/project-container/:id?/:tab?',
-      'projectcontainer',
-      () => import(/* webpackChunkName: "projectcontainer" */ '../views/ProjectContainer.vue'),
-      metaAllRoles),
-    createRoute(
-      '/add-test-account',
-      'testaccount',
-      () => import(/* webpackChunkName: "testaccount" */ '../views/TestAccount.vue'),
-      { requiresAuth: true, roles: ['ss_admin'] }),
-    createRoute(
-      '/unauthorized',
-      'Unauthorized',
-      Unauthorized,
-      { requiresAuth: false }),
-    { path: '*', meta: { requiresAuth: false }, component: PageNotFound }
-  ]
+  routes: routerData
 });
 
 router.beforeEach((to, from, next) => {
@@ -81,10 +103,7 @@ router.beforeEach((to, from, next) => {
   const isLoggedin = store.state.KeyCloakModule.authenticated;
   if (to.meta.requiresAuth) {
     if (isLoggedin) {
-      if (
-        !store.state.KeyCloakModule.isVerfied &&
-        to.name !== 'profile'
-      ) {
+      if (!store.state.KeyCloakModule.isVerfied && to.name !== 'profile') {
         next({
           path: '/profile/complete'
         });
