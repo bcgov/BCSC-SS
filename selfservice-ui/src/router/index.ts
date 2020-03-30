@@ -51,14 +51,6 @@ const routerData = [
       import(/* webpackChunkName: "profile" */ '../views/Profile.vue')
   },
   {
-    path: '/add-test-account',
-    name: 'testaccount',
-    meta: { requiresAuth: true, roles: ['ss_admin'] },
-    props: true,
-    component: () =>
-      import(/* webpackChunkName: "testaccount" */ '../views/TestAccount.vue')
-  },
-  {
     path: '/project/info',
     name: 'project-info',
     meta: metaAllRoles(true),
@@ -84,7 +76,14 @@ const routerData = [
         /* webpackChunkName: "projectcontainer" */ '../views/ProjectContainer.vue'
       )
   },
-
+  {
+    path: '/add-test-account',
+    name: 'testaccount',
+    meta: { requiresAuth: true, roles: ['ss_admin'] },
+    props: true,
+    component: () =>
+      import(/* webpackChunkName: "testaccount" */ '../views/TestAccount.vue')
+  },
   {
     path: '/unauthorized',
     name: 'Unauthorized',
