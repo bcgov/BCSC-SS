@@ -2,17 +2,22 @@
 important action on your service, such as Download or Submit. */
 
 <template>
-  <v-text-field
-    :value="value"
-    :counter="counter"
-    :label="label"
-    :required="required"
-    @input="input"
-    v-bind="$attrs"
-    @blur="$emit('blur')"
-    class="input"
-    :outlined="outlined"
-  ></v-text-field>
+  <div class="form-text">
+    <div class="text-left my-3">{{label}}</div>
+    <div class="text-left my-3 subtitle-2 help-text" v-if="helpText !==''">{{helpText}}</div>
+
+    <v-text-field
+      :value="value"
+      :counter="counter"
+      :required="required"
+      @input="input"
+      v-bind="$attrs"
+      @blur="$emit('blur')"
+      class="input"
+      :outlined="outlined"
+      solo
+    ></v-text-field>
+  </div>
   <!-- outlined -->
 </template>
 
@@ -74,6 +79,13 @@ export default class Input extends Vue {
     default: true
   })
   private outlined!: boolean;
+  /**
+   *  helpText text
+   */
+  @Prop({
+    default: ''
+  })
+  private helpText!: string;
 
   /**
    * input
@@ -87,5 +99,16 @@ export default class Input extends Vue {
 </script>
 
 <style lang="scss" scoped>
-// @import './../../assets/styles/theme.scss';
+@import './../../assets/styles/theme.scss';
+.form-text {
+  font-size: 18px;
+}
+.help-text {
+  line-height: 22px;
+  color: $gray10;
+}
+.v-application .primary--text {
+  color: $BCgovBlue5 !important;
+  caret-color: $BCgovBlue5 !important;
+}
 </style>

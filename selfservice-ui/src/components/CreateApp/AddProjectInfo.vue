@@ -45,6 +45,7 @@
                     rules.length(2),
                     rules.maxLength(100)
                   ]"
+                  :helpText="$t('projectInfo.OrganizationNameHint')"
                 />
                 <v-card-subtitle class="text-left bc-padding-left-0">
                   {{

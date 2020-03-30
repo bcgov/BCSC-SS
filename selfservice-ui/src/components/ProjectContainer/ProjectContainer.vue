@@ -1,7 +1,7 @@
 /** * Dashboard of app */
 
 <template>
-  <v-card class="mx-auto" style="max-width: 80%;">
+  <v-card class="mx-auto outer-card">
     <v-container>
       <v-row class="ma-5">
         <v-col cols="12" v-if="isLoading">
