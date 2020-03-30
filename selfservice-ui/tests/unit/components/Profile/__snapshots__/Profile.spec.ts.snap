@@ -19,6 +19,8 @@ exports[`Profile.vue renders props when passed with gettors 1`] = `
   >
     <v-toolbar-title-stub>
       
+      
+    
     </v-toolbar-title-stub>
      
     <div
@@ -94,6 +96,8 @@ exports[`Profile.vue renders props when passed with gettors 1`] = `
                 type="button"
               >
                 
+                
+              
               </button-stub>
             </v-card-actions-stub>
           </v-card-stub>
