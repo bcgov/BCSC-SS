@@ -7,6 +7,10 @@ import Unauthorized from '../views/Unauthorized.vue';
 import PageNotFound from '../views/PageNotFound.vue';
 
 Vue.use(VueRouter);
+const metaAllRoles = (auth: boolean = true) => {
+  return { requiresAuth: auth, roles: ['ss_admin', 'ss_client'] };
+};
+
 const routerData = [
   {
     path: '/',
@@ -18,14 +22,14 @@ const routerData = [
   {
     path: '/login',
     name: 'login',
-    meta: { requiresAuth: true, roles: ['ss_admin', 'ss_client'] },
+    meta: metaAllRoles(true),
     component: () =>
       import(/* webpackChunkName: "Authorize" */ '../views/Authorize.vue')
   },
   {
     path: '/about',
     name: 'about',
-    meta: { requiresAuth: true, roles: ['ss_client', 'ss_admin'] },
+    meta: metaAllRoles(true),
     props: true,
     component: () =>
       import(/* webpackChunkName: "About" */ '../views/About.vue')
@@ -33,7 +37,7 @@ const routerData = [
   {
     path: '/dashboard',
     name: 'dashboard',
-    meta: { requiresAuth: true, roles: ['ss_client', 'ss_admin'] },
+    meta: metaAllRoles(true),
     props: true,
     component: () =>
       import(/* webpackChunkName: "dashboard" */ '../views/Dashboard.vue')
@@ -41,36 +45,10 @@ const routerData = [
   {
     path: '/profile/:step?',
     name: 'profile',
-    meta: { requiresAuth: true, roles: ['ss_client', 'ss_admin'] },
+    meta: metaAllRoles(true),
     props: true,
     component: () =>
       import(/* webpackChunkName: "profile" */ '../views/Profile.vue')
-  },
-  {
-    path: '/project/info',
-    name: 'project-info',
-    meta: { requiresAuth: true, roles: ['ss_client', 'ss_admin'] },
-    props: true,
-    component: () =>
-      import(/* webpackChunkName: "project" */ '../views/Project.vue')
-  },
-  {
-    path: '/project/:id?/:step?',
-    name: 'project',
-    meta: { requiresAuth: true, roles: ['ss_client', 'ss_admin'] },
-    props: true,
-    component: () =>
-      import(/* webpackChunkName: "project" */ '../views/Project.vue')
-  },
-  {
-    path: '/project-container/:id?/:tab?',
-    name: 'projectcontainer',
-    meta: { requiresAuth: true, roles: ['ss_client', 'ss_admin'] },
-    props: true,
-    component: () =>
-      import(
-        /* webpackChunkName: "projectcontainer" */ '../views/ProjectContainer.vue'
-      )
   },
   {
     path: '/add-test-account',
@@ -80,6 +58,33 @@ const routerData = [
     component: () =>
       import(/* webpackChunkName: "testaccount" */ '../views/TestAccount.vue')
   },
+  {
+    path: '/project/info',
+    name: 'project-info',
+    meta: metaAllRoles(true),
+    props: true,
+    component: () =>
+      import(/* webpackChunkName: "project" */ '../views/Project.vue')
+  },
+  {
+    path: '/project/:id?/:step?',
+    name: 'project',
+    meta: metaAllRoles(true),
+    props: true,
+    component: () =>
+      import(/* webpackChunkName: "project" */ '../views/Project.vue')
+  },
+  {
+    path: '/project-container/:id?/:tab?',
+    name: 'projectcontainer',
+    meta: metaAllRoles(true),
+    props: true,
+    component: () =>
+      import(
+        /* webpackChunkName: "projectcontainer" */ '../views/ProjectContainer.vue'
+      )
+  },
+
   {
     path: '/unauthorized',
     name: 'Unauthorized',
