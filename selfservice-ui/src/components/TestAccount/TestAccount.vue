@@ -24,7 +24,7 @@
               </v-list-item-content>
             </v-card>
           </v-col>
-          <v-col class="col-12">
+          <v-col class="col-12" v-if="errorStatus || successStatus">
             <v-alert
               type="error"
               v-if="errorStatus"

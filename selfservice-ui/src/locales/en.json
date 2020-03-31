@@ -55,7 +55,7 @@
     "btnNext": "Next",
     "btnCancel": "Cancel",
     "btnSaveChanges": "Save Changes",
-    "labelTestMethod": "Select your testing method",
+    "labelTestMethod": "Select your data security and format",
     "labelTestMethodHint": "Choose your signing and encryption methods for testing below. These options are available to facilitate your testing. Please note that when you move into a production environment, it will be required that you enable signing and encryption at that time."
   },
   "selectPackage": {
@@ -164,6 +164,7 @@
     "pageTitle": "Profile",
     "pageCompleteTitle": "Complete Profile",
     "titlePageInfo": "After you add your contact information, you will receive a confirmation email. Only users from the broader public sector or BC Government will be approved for access.",
+    "titlePageCompleteInfo": "You can edit the following fields related to your profile",
     "labelEmail": "Email (work)",
     "labelPhone": "Phone",
     "btnContinue": "Continue",
@@ -184,20 +185,21 @@
   },
   "testAccountList": {
     "pagetitle": "Add Test Accounts",
-    "pageinfo": "Some text for add test account",
-    "special_notes": "Past your test accounts without heading",
+    "pageinfo": "This page is for an IDIM representative to bulk load from a CSV file the test accounts needed for the Self Service Application. ",
+    "special_notes": "Please remember to copy and paste from the CSV file of the test bc services card virtual cards to be use in this system. PLEASE do not include the heading row which describes the column names.",
     "btnBack": "Go Back",
-    "btnSaveChanges": "Add Test Account",
+    "btnSaveChanges": "Load Test Account",
     "errorMessage": "Something went wrong.",
-    "successMessage": "Test Account created"
+    "successMessage": "Test accounts loaded"
   },
   "projectContainer": {
     "pagetitle": "Summary page",
     "titleDevSummary": "Dev Summary",
-    "titleTeamRoles": "Team Roles",
-    "titleLiveAccessReq": "Live Access Request",
+    "titleTeamRoles": "Team",
     "titlePrivacy": "Privacy",
     "titleSecurity": "Security",
-    "titleLiveAccessKey": "Receive Live Access Key"
+    "titleComms": "Communications",
+    "titleAgreements": "Agreements",
+    "titleLiveSummary": "Live Summary"
   }
 }
