@@ -2,9 +2,9 @@
 important action on your service, such as Download or Submit. */
 
 <template>
-  <div class="form-text">
+  <div class="bc-form-text">
     <div class="text-left my-3">{{label}}</div>
-    <div class="text-left my-3 subtitle-2 help-text" v-if="helpText !==''">{{helpText}}</div>
+    <div class="text-left my-3 subtitle-2 bc-help-text" v-if="helpText !==''">{{helpText}}</div>
 
     <v-text-field
       :value="value"
@@ -100,13 +100,7 @@ export default class Input extends Vue {
 
 <style lang="scss" scoped>
 @import './../../assets/styles/theme.scss';
-.form-text {
-  font-size: 18px;
-}
-.help-text {
-  line-height: 22px;
-  color: $gray10;
-}
+
 .v-application .primary--text {
   color: $BCgovBlue5 !important;
   caret-color: $BCgovBlue5 !important;
