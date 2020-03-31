@@ -45,7 +45,9 @@ exports[`Profile.vue renders props when passed with gettors 1`] = `
         >
           <!---->
            
-          <!---->
+          <v-card-subtitle-stub
+            class="text-left padding-0 bc-padding-left-0"
+          />
            
           <v-card-title-stub
             class="text-left bc-padding-left-0"

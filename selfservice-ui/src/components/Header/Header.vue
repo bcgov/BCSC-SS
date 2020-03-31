@@ -85,9 +85,9 @@ export default class Header extends Vue {
   private hideMenuInPage: boolean = !this.hideMenu;
   private items: any = [
     { title: 'Home', icon: 'mdi-home', link: '/' },
-    { title: 'Project', link: '/dashboard' },
+    { title: 'Projects', link: '/dashboard' },
     {
-      title: 'Add Test Account',
+      title: 'Load test accounts',
       link: '/add-test-account',
       roles: 'isAdmin'
     }
@@ -221,7 +221,7 @@ export default class Header extends Vue {
 }
 
 .profile-title {
-    display: flex;
-    align-self: center;
+  display: flex;
+  align-self: center;
 }
 </style>

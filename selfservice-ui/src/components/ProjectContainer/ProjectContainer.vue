@@ -24,10 +24,11 @@
           <v-tabs slider-color="d-none" v-model="selectedTab">
             <v-tab class="font-weight-bold">{{ $t('projectContainer.titleDevSummary') }}</v-tab>
             <v-tab class="font-weight-bold">{{ $t('projectContainer.titleTeamRoles') }}</v-tab>
-            <v-tab class="font-weight-bold">{{ $t('projectContainer.titleLiveAccessReq') }}</v-tab>
             <v-tab class="font-weight-bold">{{ $t('projectContainer.titlePrivacy') }}</v-tab>
             <v-tab class="font-weight-bold">{{ $t('projectContainer.titleSecurity') }}</v-tab>
-            <v-tab class="font-weight-bold">{{ $t('projectContainer.titleLiveAccessKey') }}</v-tab>
+            <v-tab class="font-weight-bold">{{ $t('projectContainer.titleComms') }}</v-tab>
+            <v-tab class="font-weight-bold">{{ $t('projectContainer.titleAgreements') }}</v-tab>
+            <v-tab class="font-weight-bold">{{ $t('projectContainer.titleLiveSummary') }}</v-tab>
             <v-tab-item class="custom-tabs-items">
               <v-card flat>
                 <v-card-text>

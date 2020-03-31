@@ -5,8 +5,8 @@
     <v-alert type="error" v-if="errorStatus">Something went wrong...</v-alert>
     <v-toolbar flat class="bc-subtitle" dark v-if="!errorStatus">
       <v-toolbar-title>
-        {{ $t(isComplete ? 
-        'profile.pageCompleteTitle' : 
+        {{ $t(isComplete ?
+        'profile.pageCompleteTitle' :
         'profile.pageTitle') }}
       </v-toolbar-title>
       <div class="flex-grow-1"></div>
@@ -18,14 +18,15 @@
           <v-col cols="12" md="12">
             <v-alert
               type="error"
+              dense
+              outlined
               class="text-left"
               v-if="profileErrorStatus"
               v-html="$t('profile.errorMessageDomain')"
             ></v-alert>
             <v-card-subtitle
               class="text-left padding-0 bc-padding-left-0"
-              v-if="isComplete"
-              v-html="$t('profile.titlePageInfo')"
+              v-html="$t(!isComplete? 'profile.titlePageCompleteInfo' : 'profile.titlePageInfo')"
             ></v-card-subtitle>
             <v-card-title class="text-left bc-padding-left-0">
               {{ userProfile.firstName }}
@@ -63,8 +64,8 @@
                   @click="createOrUpdateProfile"
                   @keyup.enter="createOrUpdateProfile"
                 >
-                  {{ $t(isComplete ? 
-                  'profile.btnContinue' : 
+                  {{ $t(isComplete ?
+                  'profile.btnContinue' :
                   'profile.btnSaveChanges') }}
                 </Button>
               </v-card-actions>
