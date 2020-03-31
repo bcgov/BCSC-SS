@@ -56,7 +56,10 @@
     "btnCancel": "Cancel",
     "btnSaveChanges": "Save Changes",
     "labelTestMethod": "Select your data security and format",
-    "labelTestMethodHint": "Choose your signing and encryption methods for testing below. These options are available to facilitate your testing. Please note that when you move into a production environment, it will be required that you enable signing and encryption at that time."
+    "labelTestMethodHint": "Choose your signing and encryption methods for testing below. These options are available to facilitate your testing. Please note that when you move into a production environment, it will be required that you enable signing and encryption at that time.",
+    "SimpleJSONHint": "We return unsigned, unencrypted JSON format for easy testing",
+    "SignedJWTHint": "We return a signed JWT for more security",
+    "SecureJWTHint": "We return a signed and encrypted JWT for maximum security"
   },
   "selectPackage": {
     "pagetitle": "Select Package",
