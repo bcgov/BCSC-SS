@@ -89,7 +89,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
               </div>
                
               <div
-                class="v-input input theme--light v-text-field v-text-field--enclosed v-text-field--outlined"
+                class="bc-form-text"
                 rules="v => !!v || 'This field is required',v => {
     if (v === '') {
       return true;
@@ -99,42 +99,52 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
   },v => (v || '').length <= len || 'Invalid character length, max length ' + len"
               >
                 <div
-                  class="v-input__control"
+                  class="text-left my-3"
+                >
+                  
+                </div>
+                 
+                <!---->
+                 
+                <div
+                  class="v-input input theme--light v-text-field v-text-field--single-line v-text-field--solo v-text-field--enclosed v-text-field--outlined"
                 >
                   <div
-                    class="v-input__slot"
+                    class="v-input__control"
                   >
-                    <fieldset
-                      aria-hidden="true"
+                    <div
+                      class="v-input__slot"
                     >
-                      <legend
-                        style="width: 0px;"
+                      <fieldset
+                        aria-hidden="true"
                       >
-                        <span>
-                          ​
-                        </span>
-                      </legend>
-                    </fieldset>
-                    <div
-                      class="v-text-field__slot"
-                    >
-                      <input
-                        id="input-14"
-                        type="text"
-                      />
+                        <legend>
+                          <span>
+                            ​
+                          </span>
+                        </legend>
+                      </fieldset>
+                      <div
+                        class="v-text-field__slot"
+                      >
+                        <input
+                          id="input-14"
+                          type="text"
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div
-                    class="v-text-field__details"
-                  >
                     <div
-                      class="v-messages theme--light"
+                      class="v-text-field__details"
                     >
-                      <span
-                        class="v-messages__wrapper"
-                        name="message-transition"
-                        tag="div"
-                      />
+                      <div
+                        class="v-messages theme--light"
+                      >
+                        <span
+                          class="v-messages__wrapper"
+                          name="message-transition"
+                          tag="div"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -481,7 +491,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
               </div>
                
               <div
-                class="v-input input theme--light v-text-field v-text-field--enclosed v-text-field--outlined"
+                class="bc-form-text"
                 rules="v => !!v || 'This field is required',v => {
     if (v === '') {
       return true;
@@ -491,42 +501,52 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
   },v => (v || '').length <= len || 'Invalid character length, max length ' + len"
               >
                 <div
-                  class="v-input__control"
+                  class="text-left my-3"
+                >
+                  
+                </div>
+                 
+                <!---->
+                 
+                <div
+                  class="v-input input theme--light v-text-field v-text-field--single-line v-text-field--solo v-text-field--enclosed v-text-field--outlined"
                 >
                   <div
-                    class="v-input__slot"
+                    class="v-input__control"
                   >
-                    <fieldset
-                      aria-hidden="true"
+                    <div
+                      class="v-input__slot"
                     >
-                      <legend
-                        style="width: 0px;"
+                      <fieldset
+                        aria-hidden="true"
                       >
-                        <span>
-                          ​
-                        </span>
-                      </legend>
-                    </fieldset>
-                    <div
-                      class="v-text-field__slot"
-                    >
-                      <input
-                        id="input-46"
-                        type="text"
-                      />
+                        <legend>
+                          <span>
+                            ​
+                          </span>
+                        </legend>
+                      </fieldset>
+                      <div
+                        class="v-text-field__slot"
+                      >
+                        <input
+                          id="input-46"
+                          type="text"
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div
-                    class="v-text-field__details"
-                  >
                     <div
-                      class="v-messages theme--light"
+                      class="v-text-field__details"
                     >
-                      <span
-                        class="v-messages__wrapper"
-                        name="message-transition"
-                        tag="div"
-                      />
+                      <div
+                        class="v-messages theme--light"
+                      >
+                        <span
+                          class="v-messages__wrapper"
+                          name="message-transition"
+                          tag="div"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -873,7 +893,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
               </div>
                
               <div
-                class="v-input input theme--light v-text-field v-text-field--enclosed v-text-field--outlined"
+                class="bc-form-text"
                 rules="v => !!v || 'This field is required',v => {
     if (v === '') {
       return true;
@@ -883,42 +903,52 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
   },v => (v || '').length <= len || 'Invalid character length, max length ' + len"
               >
                 <div
-                  class="v-input__control"
+                  class="text-left my-3"
+                >
+                  
+                </div>
+                 
+                <!---->
+                 
+                <div
+                  class="v-input input theme--light v-text-field v-text-field--single-line v-text-field--solo v-text-field--enclosed v-text-field--outlined"
                 >
                   <div
-                    class="v-input__slot"
+                    class="v-input__control"
                   >
-                    <fieldset
-                      aria-hidden="true"
+                    <div
+                      class="v-input__slot"
                     >
-                      <legend
-                        style="width: 0px;"
+                      <fieldset
+                        aria-hidden="true"
                       >
-                        <span>
-                          ​
-                        </span>
-                      </legend>
-                    </fieldset>
-                    <div
-                      class="v-text-field__slot"
-                    >
-                      <input
-                        id="input-78"
-                        type="text"
-                      />
+                        <legend>
+                          <span>
+                            ​
+                          </span>
+                        </legend>
+                      </fieldset>
+                      <div
+                        class="v-text-field__slot"
+                      >
+                        <input
+                          id="input-78"
+                          type="text"
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div
-                    class="v-text-field__details"
-                  >
                     <div
-                      class="v-messages theme--light"
+                      class="v-text-field__details"
                     >
-                      <span
-                        class="v-messages__wrapper"
-                        name="message-transition"
-                        tag="div"
-                      />
+                      <div
+                        class="v-messages theme--light"
+                      >
+                        <span
+                          class="v-messages__wrapper"
+                          name="message-transition"
+                          tag="div"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
