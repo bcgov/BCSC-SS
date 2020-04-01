@@ -25,8 +25,14 @@
               v-html="$t('profile.errorMessageDomain')"
             ></v-alert>
             <v-card-subtitle
+              v-if="isComplete"
               class="text-left padding-0 bc-padding-left-0"
-              v-html="$t(!isComplete? 'profile.titlePageCompleteInfo' : 'profile.titlePageInfo')"
+              v-html="$t(filedsToShow.email ? 'profile.titlePageInfoBCSC' : 'profile.titlePageInfoIDIR')"
+            ></v-card-subtitle>
+            <v-card-subtitle
+              v-else
+              class="text-left padding-0 bc-padding-left-0"
+              v-html="$t('profile.titlePageCompleteInfo')"
             ></v-card-subtitle>
             <v-card-title class="text-left bc-padding-left-0">
               {{ userProfile.firstName }}
