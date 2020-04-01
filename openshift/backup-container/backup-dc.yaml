@@ -1,0 +1,149 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  annotations:
+    description: Defines how to deploy the backup server
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"apps.openshift.io/v1","kind":"DeploymentConfig","metadata":{"annotations":{"description":"Defines
+      how to deploy the backup
+      server"},"labels":{"template":"backup-deployment"},"name":"backup","namespace":"oultzp-prod"},"spec":{"replicas":1,"selector":{"name":"backup"},"strategy":{"type":"Recreate"},"template":{"metadata":{"labels":{"name":"backup"},"name":"backup"},"spec":{"containers":[{"env":[{"name":"BACKUP_STRATEGY","value":"daily"},{"name":"BACKUP_DIR","value":"/backups/"},{"name":"NUM_BACKUPS","value":"30"},{"name":"DAILY_BACKUPS","value":"2"},{"name":"WEEKLY_BACKUPS","value":"1"},{"name":"MONTHLY_BACKUPS","value":"1"},{"name":"BACKUP_PERIOD","value":"1d"},{"name":"DATABASE_SERVICE_NAME","value":"patroni-persistent-master"},{"name":"POSTGRESQL_DATABASE","value":"postgres"},{"name":"TABLE_SCHEMA","value":"public"},{"name":"POSTGRESQL_USER","value":"postgres"},{"name":"POSTGRESQL_PASSWORD","value":"postgres"},{"name":"FTP_URL","value":""},{"name":"FTP_USER","valueFrom":{"secretKeyRef":{"key":"ftp-user","name":"ftp-secret"}}},{"name":"FTP_PASSWORD","valueFrom":{"secretKeyRef":{"key":"ftp-password","name":"ftp-secret"}}},{"name":"WEBHOOK_URL","value":""},{"name":"ENVIRONMENT_FRIENDLY_NAME","value":""},{"name":"ENVIRONMENT_NAME","value":""}],"image":"","name":"backup","ports":[],"resources":{"limits":{"cpu":"0","memory":"0Mi"},"requests":{"cpu":"0","memory":"0Mi"}},"volumeMounts":[{"mountPath":"/backups/","name":"pgbackup"},{"mountPath":"/var/lib/pgsql/data","name":"backup-verification"},{"mountPath":"/config/backup_test.conf","name":"backup-config-volume","subPath":"backup_test.conf"}]}],"volumes":[{"name":"pgbackup","persistentVolumeClaim":{"claimName":"pgbackup"}},{"name":"backup-verification","persistentVolumeClaim":{"claimName":"backup-verification"}},{"configMap":{"items":[{"key":"backup_test.conf","path":"backup_test.conf"}],"name":"backup-conf"},"name":"backup-config-volume"}]}},"triggers":[{"type":"ConfigChange"},{"imageChangeParams":{"automatic":true,"containerNames":["backup"],"from":{"kind":"ImageStreamTag","name":"backup:dev","namespace":"oultzp-tools"}},"type":"ImageChange"}]}}
+  labels:
+    template: backup-deployment
+  name: backup
+  namespace: oultzp-prod
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    name: backup
+  strategy:
+    activeDeadlineSeconds: 21600
+    recreateParams:
+      timeoutSeconds: 600
+    resources: {}
+    type: Recreate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        name: backup
+      name: backup
+    spec:
+      containers:
+        - env:
+            - name: BACKUP_STRATEGY
+              value: daily
+            - name: BACKUP_DIR
+              value: /backups/
+            - name: NUM_BACKUPS
+              value: '30'
+            - name: DAILY_BACKUPS
+              value: '2'
+            - name: WEEKLY_BACKUPS
+              value: '1'
+            - name: MONTHLY_BACKUPS
+              value: '1'
+            - name: BACKUP_PERIOD
+              value: 1d
+            - name: DATABASE_SERVICE_NAME
+              value: patroni-persistent-master
+            - name: POSTGRESQL_DATABASE
+              value: postgres
+            - name: TABLE_SCHEMA
+              value: public
+            - name: POSTGRESQL_USER
+              value: postgres
+            - name: POSTGRESQL_PASSWORD
+              value: postgres
+            - name: FTP_URL
+            - name: FTP_USER
+              valueFrom:
+                secretKeyRef:
+                  key: ftp-user
+                  name: ftp-secret
+            - name: FTP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: ftp-password
+                  name: ftp-secret
+            - name: WEBHOOK_URL
+            - name: ENVIRONMENT_FRIENDLY_NAME
+            - name: ENVIRONMENT_NAME
+          image: >-
+            docker-registry.default.svc:5000/oultzp-tools/backup@sha256:cceda70b8560d4ee3c13bd9475985fd688ea297ff94ea1792a3c043cc78c760b
+          imagePullPolicy: IfNotPresent
+          name: backup
+          resources:
+            limits:
+              cpu: '0'
+              memory: '0'
+            requests:
+              cpu: '0'
+              memory: '0'
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+            - mountPath: /backups/
+              name: pgbackup
+            - mountPath: /var/lib/pgsql/data
+              name: backup-verification
+            - mountPath: /config/backup_test.conf
+              name: backup-config-volume
+              subPath: backup_test.conf
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+        - name: pgbackup
+          persistentVolumeClaim:
+            claimName: pgbackup
+        - name: backup-verification
+          persistentVolumeClaim:
+            claimName: backup-verification
+        - configMap:
+            defaultMode: 420
+            items:
+              - key: backup_test.conf
+                path: backup_test.conf
+            name: backup-conf
+          name: backup-config-volume
+  test: false
+  triggers:
+    - type: ConfigChange
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+          - backup
+        from:
+          kind: ImageStreamTag
+          name: 'backup:dev'
+          namespace: oultzp-tools
+        lastTriggeredImage: >-
+          docker-registry.default.svc:5000/oultzp-tools/backup@sha256:cceda70b8560d4ee3c13bd9475985fd688ea297ff94ea1792a3c043cc78c760b
+      type: ImageChange
+status:
+  availableReplicas: 1
+  conditions:
+    - lastTransitionTime: '2020-02-25T00:14:23Z'
+      lastUpdateTime: '2020-02-25T00:14:28Z'
+      message: replication controller "backup-1" successfully rolled out
+      reason: NewReplicationControllerAvailable
+      status: 'True'
+      type: Progressing
+    - lastTransitionTime: '2020-03-20T18:23:21Z'
+      lastUpdateTime: '2020-03-20T18:23:21Z'
+      message: Deployment config has minimum availability.
+      status: 'True'
+      type: Available
+  details:
+    causes:
+      - type: ConfigChange
+    message: config change
+  latestVersion: 1
+  observedGeneration: 2
+  readyReplicas: 1
+  replicas: 1
+  unavailableReplicas: 0
+  updatedReplicas: 1

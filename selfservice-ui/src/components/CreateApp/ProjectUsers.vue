@@ -3,7 +3,7 @@
 <template>
   <v-card class="v-form pa-8 pt-6 ma-3">
     <v-card-title class="headline bc-padding-left-0">{{ title }}</v-card-title>
-    <v-card-subtitle class="text-left bc-padding-left-0">{{hint}}</v-card-subtitle>
+    <v-card-subtitle class="text-left bc-padding-left-0 min-height-help">{{hint}}</v-card-subtitle>
     <Input
       v-model="userDetails.firstName"
       label="First name"
@@ -63,5 +63,8 @@ export default class ProjectUsers extends Vue {
 @import './../../assets/styles/theme.scss';
 .bc-padding-left-0 {
   padding-left: 0px !important;
+}
+.min-height-help {
+  min-height: 124px;
 }
 </style>

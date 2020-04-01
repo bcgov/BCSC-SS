@@ -20,7 +20,6 @@
     "OrganizationName": "Organization name",
     "projectName": "Project name",
     "Description": "Description",
-
     "ProjectRoles": "Project Roles",
     "RolesTitleInfo": "In this system, a project consists of one (or more) Developer(s), a Manager and an Executive sponsor. Please provide contact information for each of these roles within your organization in the context of this project.",
     "myRole": "My role in this project is:",
@@ -56,8 +55,11 @@
     "btnNext": "Next",
     "btnCancel": "Cancel",
     "btnSaveChanges": "Save Changes",
-    "labelTestMethod": "Select your testing method",
-    "labelTestMethodHint": "Choose your signing and encryption methods for testing below. These options are available to facilitate your testing. Please note that when you move into a production environment, it will be required that you enable signing and encryption at that time."
+    "labelTestMethod": "Select your data security and format",
+    "labelTestMethodHint": "Choose your signing and encryption methods for testing below. These options are available to facilitate your testing. Please note that when you move into a production environment, it will be required that you enable signing and encryption at that time.",
+    "SimpleJSONHint": "We return unsigned, unencrypted JSON format for easy testing",
+    "SignedJWTHint": "We return a signed JWT for more security",
+    "SecureJWTHint": "We return a signed and encrypted JWT for maximum security"
   },
   "selectPackage": {
     "pagetitle": "Select Package",
@@ -79,7 +81,7 @@
     "pageinfo": "In order to test your configuration, we would like to know how many test accounts you need for {package}. Please note the test data provided to you will be randomized unless you indicate you have preferred customization. If you select the randomized test account, you can expect the test accounts immediately or within X days.",
     "how_many_test_account": "Choose the number of test user accounts you require",
     "special_notes": "Special requests or notes",
-    "specialNotesInfo": "<p>If you have any special requests regarding the data contained in these test accounts, please include that information in this space.</p></p>(For example: all users must have a different city in the address block)</p>",
+    "specialNotesInfo": "<p>If you have any special requests for customized test account. Please contact IDIM Consulting or <a href='mailto:zorin.samji@gov.bc.ca'>Product Owner</a>.</p>",
     "btnBack": "Go Back",
     "btnNext": "Next",
     "btnCancel": "Cancel",
@@ -146,7 +148,9 @@
     "tblCardNo": "Card Number",
     "tblPassCode": "Passcode",
     "tblGivenName": "Given Name",
-    "tblSurName": "Surname"
+    "tblSurName": "Surname",
+    "warningLimitedTestAccount": "Currently, there are no more random test accounts for your use. Please contact IDIM Consulting or <a href='mailto:zorin.samji@gov.bc.ca'>Product Owner</a> who will be in touch with you shortly.",
+    "tooltipTestAccount": "If there is a mismatch between the number of test accounts you requested and what you see here, <br/>then there are no more random test accounts for your use. <br/>Please contact IDIM Consulting or Product Owner who will be in touch with you shortly."
   },
   "dashboard": {
     "pagetitle": "Projects",
@@ -160,11 +164,14 @@
     "noData": "There are no projects to view. Add one to start "
   },
   "profile": {
-    "pagetitle": "Complete Profile",
+    "pageTitle": "Profile",
+    "pageCompleteTitle": "Complete Profile",
     "titlePageInfo": "After you add your contact information, you will receive a confirmation email. Only users from the broader public sector or BC Government will be approved for access.",
+    "titlePageCompleteInfo": "You can edit the following fields related to your profile",
     "labelEmail": "Email (work)",
     "labelPhone": "Phone",
     "btnContinue": "Continue",
+    "btnSaveChanges": "Save Changes",
     "errorMessageDomain": "Your email address does not match any of the eligible organizations in our BC Services Card Self Service System. If you believe you or your organization should have access to this system, please contact <a href='mailto:zorin.samji@gov.bc.ca'>IDIM Consulting</a> to be added. "
   },
   "home": {
@@ -181,11 +188,21 @@
   },
   "testAccountList": {
     "pagetitle": "Add Test Accounts",
-    "pageinfo": "Some text for add test account",
-    "special_notes": "Past your test accounts without heading",
+    "pageinfo": "This page is for an IDIM representative to bulk load from a CSV file the test accounts needed for the Self Service Application. ",
+    "special_notes": "Please remember to copy and paste from the CSV file of the test bc services card virtual cards to be use in this system. PLEASE do not include the heading row which describes the column names.",
     "btnBack": "Go Back",
-    "btnSaveChanges": "Add Test Account",
+    "btnSaveChanges": "Load Test Account",
     "errorMessage": "Something went wrong.",
-    "successMessage": "Test Account created"
+    "successMessage": "Test accounts loaded"
+  },
+  "projectContainer": {
+    "pagetitle": "Summary page",
+    "titleDevSummary": "Dev Summary",
+    "titleTeamRoles": "Team",
+    "titlePrivacy": "Privacy",
+    "titleSecurity": "Security",
+    "titleComms": "Communications",
+    "titleAgreements": "Agreements",
+    "titleLiveSummary": "Live Summary"
   }
 }
