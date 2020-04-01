@@ -55,8 +55,11 @@
     "btnNext": "Next",
     "btnCancel": "Cancel",
     "btnSaveChanges": "Save Changes",
-    "labelTestMethod": "Select your testing method",
-    "labelTestMethodHint": "Choose your signing and encryption methods for testing below. These options are available to facilitate your testing. Please note that when you move into a production environment, it will be required that you enable signing and encryption at that time."
+    "labelTestMethod": "Select your data security and format",
+    "labelTestMethodHint": "Choose your signing and encryption methods for testing below. These options are available to facilitate your testing. Please note that when you move into a production environment, it will be required that you enable signing and encryption at that time.",
+    "SimpleJSONHint": "We return unsigned, unencrypted JSON format for easy testing",
+    "SignedJWTHint": "We return a signed JWT for more security",
+    "SecureJWTHint": "We return a signed and encrypted JWT for maximum security"
   },
   "selectPackage": {
     "pagetitle": "Select Package",
@@ -157,13 +160,15 @@
     "tblTitlCreated": "Created",
     "tblTitleProjectStatus": "Project status",
     "tblTitleProjectActions": "Actions",
-    "tblTitlrole": "Role",
+    "tblTitlrole": "My role",
     "noData": "There are no projects to view. Add one to start "
   },
   "profile": {
     "pageTitle": "Profile",
     "pageCompleteTitle": "Complete Profile",
-    "titlePageInfo": "After you add your contact information, you will receive a confirmation email. Only users from the broader public sector or BC Government will be approved for access.",
+    "titlePageInfoBCSC": "<p>Thank you for logging in with your BC Services Card. Please provide us with your Broader Public Sector agency work email address and phone number.</p><p>It should be noted all information collected is in a business context for business contact use only. Under the Freedom of Information and Protection of Privacy Act (FOIPPA), business contact information it is not considered Personal Information (PI). Please <a href='/contact-us'>contact us</a> with any questions.</p>",
+    "titlePageInfoIDIR": "<p>Thank you for logging in with your IDIR, which provides us with your work email address. Please provide us with your phone number.</p><p>It should be noted all information collected is in a business context for business contact use only. Under the Freedom of Information and Protection of Privacy Act (FOIPPA), business contact information it is not considered Personal Information (PI). Please <a href='/contact-us'>contact us</a> with any questions. </p>",
+    "titlePageCompleteInfo": "You can edit the following fields related to your profile",
     "labelEmail": "Email (work)",
     "labelPhone": "Phone",
     "btnContinue": "Continue",
@@ -184,20 +189,21 @@
   },
   "testAccountList": {
     "pagetitle": "Add Test Accounts",
-    "pageinfo": "Some text for add test account",
-    "special_notes": "Past your test accounts without heading",
+    "pageinfo": "This page is for an IDIM representative to bulk load from a CSV file the test accounts needed for the Self Service Application. ",
+    "special_notes": "Please remember to copy and paste from the CSV file of the test bc services card virtual cards to be use in this system. PLEASE do not include the heading row which describes the column names.",
     "btnBack": "Go Back",
-    "btnSaveChanges": "Add Test Account",
+    "btnSaveChanges": "Load Test Account",
     "errorMessage": "Something went wrong.",
-    "successMessage": "Test Account created"
+    "successMessage": "Test accounts loaded"
   },
   "projectContainer": {
     "pagetitle": "Summary page",
     "titleDevSummary": "Dev Summary",
-    "titleTeamRoles": "Team Roles",
-    "titleLiveAccessReq": "Live Access Request",
+    "titleTeamRoles": "Team",
     "titlePrivacy": "Privacy",
     "titleSecurity": "Security",
-    "titleLiveAccessKey": "Receive Live Access Key"
+    "titleComms": "Communications",
+    "titleAgreements": "Agreements",
+    "titleLiveSummary": "Live Summary"
   }
 }

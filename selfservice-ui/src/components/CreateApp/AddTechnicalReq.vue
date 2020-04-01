@@ -81,7 +81,9 @@
 
                 <v-card-subtitle class="text-left bc-padding-left-0">
                   <v-radio-group v-model="signingEncryptionType" :mandatory="false">
+                    <div class="small-hint">{{$t('technicalRequirements.SimpleJSONHint')}}</div>
                     <v-radio label="Simple JSON" :value="algorithamBase.SimpleJSON"></v-radio>
+                    <div class="small-hint">{{$t('technicalRequirements.SignedJWTHint')}}</div>
                     <v-radio label="Signed JWT" :value="algorithamBase.SignedJWT">></v-radio>
                     <div
                       class="row pad-radio"
@@ -108,6 +110,7 @@
                         />
                       </div>
                     </div>
+                    <div class="small-hint">{{$t('technicalRequirements.SecureJWTHint')}}</div>
                     <v-radio label="Secure JWT" :value="algorithamBase.SecureJWT">></v-radio>
                   </v-radio-group>
                 </v-card-subtitle>

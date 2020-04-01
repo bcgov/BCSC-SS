@@ -238,6 +238,12 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                         role="radiogroup"
                       >
                         <div
+                          class="small-hint"
+                        >
+                          
+                        </div>
+                         
+                        <div
                           class="v-radio theme--light v-item--active"
                         >
                           <div
@@ -266,6 +272,12 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                           >
                             Simple JSON
                           </label>
+                        </div>
+                         
+                        <div
+                          class="small-hint"
+                        >
+                          
                         </div>
                          
                         <div
@@ -300,6 +312,12 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                         </div>
                          
                         <!---->
+                         
+                        <div
+                          class="small-hint"
+                        >
+                          
+                        </div>
                          
                         <div
                           class="v-radio theme--light"
@@ -640,6 +658,12 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                         role="radiogroup"
                       >
                         <div
+                          class="small-hint"
+                        >
+                          
+                        </div>
+                         
+                        <div
                           class="v-radio theme--light v-item--active"
                         >
                           <div
@@ -668,6 +692,12 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                           >
                             Simple JSON
                           </label>
+                        </div>
+                         
+                        <div
+                          class="small-hint"
+                        >
+                          
                         </div>
                          
                         <div
@@ -702,6 +732,12 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                         </div>
                          
                         <!---->
+                         
+                        <div
+                          class="small-hint"
+                        >
+                          
+                        </div>
                          
                         <div
                           class="v-radio theme--light"
@@ -1042,6 +1078,12 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                         role="radiogroup"
                       >
                         <div
+                          class="small-hint"
+                        >
+                          
+                        </div>
+                         
+                        <div
                           class="v-radio theme--light v-item--active"
                         >
                           <div
@@ -1070,6 +1112,12 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                           >
                             Simple JSON
                           </label>
+                        </div>
+                         
+                        <div
+                          class="small-hint"
+                        >
+                          
                         </div>
                          
                         <div
@@ -1104,6 +1152,12 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                         </div>
                          
                         <!---->
+                         
+                        <div
+                          class="small-hint"
+                        >
+                          
+                        </div>
                          
                         <div
                           class="v-radio theme--light"

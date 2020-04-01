@@ -22,6 +22,7 @@ import json
 
 import requests
 
+from ...utils.logging import log_error, log_info
 from .models.dynamic_client_create import CreateRequestModel, CreateResponseModel
 from .models.dynamic_client_get import GetResponseModel
 from .models.dynamic_client_update import UpdateRequestModel, UpdateResponseModel
@@ -43,7 +44,10 @@ class DynamicClientRegistrationService():
         data = None
         if response.ok:
             data = CreateResponseModel(response.json())
-
+        else:
+            log_info(request.__dict__)
+            log_error(response.status_code)
+            log_error(response.text)
         return data
 
     @staticmethod
@@ -56,6 +60,10 @@ class DynamicClientRegistrationService():
         data = None
         if response.ok:
             data = GetResponseModel(response.json())
+        else:
+            log_info(registration_access_token)
+            log_error(response.status_code)
+            log_error(response.text)
 
         return data
 
@@ -72,6 +80,10 @@ class DynamicClientRegistrationService():
         data = None
         if response.ok:
             data = UpdateResponseModel(response.json())
+        else:
+            log_info(request.__dict__)
+            log_error(response.status_code)
+            log_error(response.text)
 
         return data
 

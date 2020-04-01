@@ -75,6 +75,13 @@ exports[`ProjectContainer.vue renders props when passed 1`] = `
             
           </v-tab-stub>
            
+          <v-tab-stub
+            class="font-weight-bold"
+            ripple="true"
+          >
+            
+          </v-tab-stub>
+           
           <v-tab-item-stub
             class="custom-tabs-items"
           >
