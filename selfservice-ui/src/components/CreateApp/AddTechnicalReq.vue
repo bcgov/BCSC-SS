@@ -34,23 +34,15 @@
                 </v-card-subtitle>
               </v-card>
               <v-card class="pa-4 pt-6">
-                <v-card-subtitle class="text-left bc-padding-left-0">
-                  {{
-                  $t('technicalRequirements.inputAppText')
-                  }}
-                </v-card-subtitle>
                 <Input
                   v-model="clientUri"
                   :label="$t('technicalRequirements.labelApplicationUrl')"
                   type="text"
                   :rules="[rules.required, rules.url, rules.maxLength(500)]"
+                  :helpText="$t('technicalRequirements.inputAppText')"
                 />
                 <!-- <div class="col-12"> -->
-                <v-card-subtitle class="text-left bc-padding-left-0">
-                  {{
-                  $t('technicalRequirements.inputUrlText')
-                  }}
-                </v-card-subtitle>
+
                 <!-- </div> -->
                 <!-- <div
                   v-for="(redirectUri, index) in redirectUris"
@@ -58,14 +50,15 @@
                   class="row v-form px-4"
                 >-->
 
-                <v-text-field
+                <Input
                   v-model="redirectUris[0]"
                   :label="$t('technicalRequirements.labelRedirectUrl')"
                   type="text"
                   :rules="[rules.required, rules.url]"
                   class="addUri"
                   outlined
-                ></v-text-field>
+                  :helpText="$t('technicalRequirements.inputUrlText')"
+                />
                 <!-- :rules="[rules.required]" -->
                 <!-- </div> -->
                 <v-card-subtitle class="text-left bc-padding-left-0">
@@ -90,13 +83,6 @@
                       v-if="signingEncryptionType === algorithamBase.SignedJWT"
                     >
                       <div class="col-12 col-md-5">
-                        <v-card-subtitle class="text-left bc-padding-left-0 pad-0">
-                          {{
-                          $t('technicalRequirements.labelSignedResponseAlgHint')
-                          }}
-                        </v-card-subtitle>
-                      </div>
-                      <div class="col-12 col-md-5">
                         <Select
                           v-model="signedResponseAlg"
                           :label="
@@ -107,6 +93,7 @@
                           :items="algorithm"
                           :rules="[rules.required]"
                           outlined
+                          :helpText="$t('technicalRequirements.labelSignedResponseAlgHint')"
                         />
                       </div>
                     </div>
@@ -115,34 +102,15 @@
                   </v-radio-group>
                 </v-card-subtitle>
                 <div v-if="signingEncryptionType === algorithamBase.SecureJWT" class="pad-radio">
-                  <v-card-subtitle class="text-left bc-padding-left-0">
-                    {{
-                    $t('technicalRequirements.JWKSText')
-                    }}
-                  </v-card-subtitle>
                   <Input
                     v-model="jwksUri"
                     :label="$t('technicalRequirements.labelJWKSUrl')"
                     type="text"
                     :rules="[rules.required, rules.url, rules.maxLength(500)]"
                     class="pt-6"
+                    :helpText="$t('technicalRequirements.JWKSText')"
                   />
                   <div class="row">
-                    <div class="col-12 col-md-5">
-                      <v-card-subtitle class="text-left bc-padding-left-0">
-                        {{
-                        $t('technicalRequirements.labelEncryptedResponseAlgHint')
-                        }}
-                      </v-card-subtitle>
-                    </div>
-                    <v-spacer />
-                    <div class="col-12 col-md-5">
-                      <v-card-subtitle class="text-left bc-padding-left-0">
-                        {{
-                        $t('technicalRequirements.labelSignedResponseAlgHint')
-                        }}
-                      </v-card-subtitle>
-                    </div>
                     <div class="col-12 col-md-5">
                       <Select
                         v-model="encryptedResponseAlg"
@@ -154,6 +122,8 @@
                         :items="algorithm"
                         :rules="[rules.required]"
                         outlined
+                        :helpText="$t('technicalRequirements.labelEncryptedResponseAlgHint')"
+                        helpClass="mb-9"
                       />
                     </div>
                     <v-spacer />
@@ -168,7 +138,7 @@
                         :items="algorithm"
                         :rules="[rules.required]"
                         outlined
-                        class="col-6"
+                        :helpText="$t('technicalRequirements.labelSignedResponseAlgHint')"
                       />
                     </div>
                   </div>
