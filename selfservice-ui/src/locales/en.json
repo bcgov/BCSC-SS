@@ -160,13 +160,14 @@
     "tblTitlCreated": "Created",
     "tblTitleProjectStatus": "Project status",
     "tblTitleProjectActions": "Actions",
-    "tblTitlrole": "Role",
+    "tblTitlrole": "My role",
     "noData": "There are no projects to view. Add one to start "
   },
   "profile": {
     "pageTitle": "Profile",
     "pageCompleteTitle": "Complete Profile",
-    "titlePageInfo": "After you add your contact information, you will receive a confirmation email. Only users from the broader public sector or BC Government will be approved for access.",
+    "titlePageInfoBCSC": "<p>Thank you for logging in with your BC Services Card. Please provide us with your Broader Public Sector agency work email address and phone number.</p><p>It should be noted all information collected is in a business context for business contact use only. Under the Freedom of Information and Protection of Privacy Act (FOIPPA), business contact information it is not considered Personal Information (PI). Please contact us with any questions.</p>",
+    "titlePageInfoIDIR": "<p>Thank you for logging in with your IDIR, which provides us with your work email address. Please provide us with your phone number.</p><p>It should be noted all information collected is in a business context for business contact use only. Under the Freedom of Information and Protection of Privacy Act (FOIPPA), business contact information it is not considered Personal Information (PI). Please contact us with any questions. </p>",
     "titlePageCompleteInfo": "You can edit the following fields related to your profile",
     "labelEmail": "Email (work)",
     "labelPhone": "Phone",
