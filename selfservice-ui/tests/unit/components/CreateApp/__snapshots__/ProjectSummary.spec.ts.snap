@@ -700,34 +700,6 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
               </div>
             </div>
           </div>
-           
-          <hr
-            aria-orientation="horizontal"
-            class="v-divider theme--light"
-            role="separator"
-          />
-           
-          <div
-            class="v-list-item theme--light"
-            role="listitem"
-            tabindex="-1"
-          >
-            <div
-              class="v-list-item__content pr-30"
-            >
-              
-        
-      
-            </div>
-             
-            <div
-              class="v-list-item__content align-end"
-            >
-              
-        
-      
-            </div>
-          </div>
         </div>
       </div>
     </div>

@@ -8,7 +8,7 @@ exports[`Input.vue renders props when passed 1`] = `
       }"
 >
   <div
-    class="text-left my-3"
+    class="text-left my-1"
   >
     
   </div>
@@ -71,7 +71,7 @@ exports[`Input.vue renders props when passed 2`] = `
       }"
 >
   <div
-    class="text-left my-3"
+    class="text-left my-1"
   >
     
   </div>

@@ -91,7 +91,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
   },v => (v || '').length <= len || 'Invalid character length, max length ' + len"
               >
                 <div
-                  class="text-left my-3"
+                  class="text-left my-1"
                 >
                   
                 </div>
@@ -153,7 +153,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
   }"
               >
                 <div
-                  class="text-left my-3"
+                  class="text-left my-1"
                 >
                   
                 </div>
@@ -205,7 +205,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
               </div>
                
               <div
-                class="v-card__subtitle text-left bc-padding-left-0"
+                class="v-card__title text-left bc-padding-left-0"
               >
                 
                 
@@ -239,12 +239,6 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                         role="radiogroup"
                       >
                         <div
-                          class="small-hint"
-                        >
-                          
-                        </div>
-                         
-                        <div
                           class="v-radio theme--light v-item--active"
                         >
                           <div
@@ -276,7 +270,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                         </div>
                          
                         <div
-                          class="small-hint"
+                          class="small-hint radio-help"
                         >
                           
                         </div>
@@ -312,13 +306,13 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                           </label>
                         </div>
                          
-                        <!---->
-                         
                         <div
-                          class="small-hint"
+                          class="small-hint radio-help"
                         >
                           
                         </div>
+                         
+                        <!---->
                          
                         <div
                           class="v-radio theme--light"
@@ -349,6 +343,12 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                           >
                             Secure JWT
                           </label>
+                        </div>
+                         
+                        <div
+                          class="small-hint radio-help"
+                        >
+                          
                         </div>
                       </div>
                     </div>
@@ -512,7 +512,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
   },v => (v || '').length <= len || 'Invalid character length, max length ' + len"
               >
                 <div
-                  class="text-left my-3"
+                  class="text-left my-1"
                 >
                   
                 </div>
@@ -574,7 +574,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
   }"
               >
                 <div
-                  class="text-left my-3"
+                  class="text-left my-1"
                 >
                   
                 </div>
@@ -626,7 +626,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
               </div>
                
               <div
-                class="v-card__subtitle text-left bc-padding-left-0"
+                class="v-card__title text-left bc-padding-left-0"
               >
                 
                 
@@ -660,12 +660,6 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                         role="radiogroup"
                       >
                         <div
-                          class="small-hint"
-                        >
-                          
-                        </div>
-                         
-                        <div
                           class="v-radio theme--light v-item--active"
                         >
                           <div
@@ -697,7 +691,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                         </div>
                          
                         <div
-                          class="small-hint"
+                          class="small-hint radio-help"
                         >
                           
                         </div>
@@ -733,13 +727,13 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                           </label>
                         </div>
                          
-                        <!---->
-                         
                         <div
-                          class="small-hint"
+                          class="small-hint radio-help"
                         >
                           
                         </div>
+                         
+                        <!---->
                          
                         <div
                           class="v-radio theme--light"
@@ -770,6 +764,12 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                           >
                             Secure JWT
                           </label>
+                        </div>
+                         
+                        <div
+                          class="small-hint radio-help"
+                        >
+                          
                         </div>
                       </div>
                     </div>
@@ -933,7 +933,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
   },v => (v || '').length <= len || 'Invalid character length, max length ' + len"
               >
                 <div
-                  class="text-left my-3"
+                  class="text-left my-1"
                 >
                   
                 </div>
@@ -995,7 +995,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
   }"
               >
                 <div
-                  class="text-left my-3"
+                  class="text-left my-1"
                 >
                   
                 </div>
@@ -1047,7 +1047,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
               </div>
                
               <div
-                class="v-card__subtitle text-left bc-padding-left-0"
+                class="v-card__title text-left bc-padding-left-0"
               >
                 
                 
@@ -1081,12 +1081,6 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                         role="radiogroup"
                       >
                         <div
-                          class="small-hint"
-                        >
-                          
-                        </div>
-                         
-                        <div
                           class="v-radio theme--light v-item--active"
                         >
                           <div
@@ -1118,7 +1112,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                         </div>
                          
                         <div
-                          class="small-hint"
+                          class="small-hint radio-help"
                         >
                           
                         </div>
@@ -1154,13 +1148,13 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                           </label>
                         </div>
                          
-                        <!---->
-                         
                         <div
-                          class="small-hint"
+                          class="small-hint radio-help"
                         >
                           
                         </div>
+                         
+                        <!---->
                          
                         <div
                           class="v-radio theme--light"
@@ -1191,6 +1185,12 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                           >
                             Secure JWT
                           </label>
+                        </div>
+                         
+                        <div
+                          class="small-hint radio-help"
+                        >
+                          
                         </div>
                       </div>
                     </div>

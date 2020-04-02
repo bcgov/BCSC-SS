@@ -95,14 +95,6 @@ exports[`AddProjectInfo.vue renders edit props when passed 1`] = `
                 value=""
               />
                
-              <v-card-subtitle-stub
-                class="text-left bc-padding-left-0"
-              >
-                
-                
-              
-              </v-card-subtitle-stub>
-               
               <textarea-stub
                 counter=""
                 helptext=""
@@ -368,14 +360,6 @@ exports[`AddProjectInfo.vue renders props when passed 1`] = `
                 type="text"
                 value=""
               />
-               
-              <v-card-subtitle-stub
-                class="text-left bc-padding-left-0"
-              >
-                
-                
-              
-              </v-card-subtitle-stub>
                
               <textarea-stub
                 counter=""
