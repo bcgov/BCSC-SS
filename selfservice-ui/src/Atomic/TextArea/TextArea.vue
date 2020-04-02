@@ -3,8 +3,8 @@ action on your service, such as Download or Submit. */
 
 <template>
   <div class="bc-form-text">
-    <div class="text-left my-3">{{label}}</div>
-    <div class="text-left my-3 subtitle-2 bc-help-text" v-if="helpText !==''">{{helpText}}</div>
+    <div class="text-left my-1">{{label}}</div>
+    <div class="text-left mb-1 subtitle-2 bc-help-text" v-if="helpText !==''">{{helpText}}</div>
     <v-textarea :value="value" @input="input" v-bind="$attrs" solo></v-textarea>
   </div>
   <!-- outlined -->

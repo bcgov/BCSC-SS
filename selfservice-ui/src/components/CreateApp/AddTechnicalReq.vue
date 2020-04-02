@@ -61,11 +61,11 @@
                 />
                 <!-- :rules="[rules.required]" -->
                 <!-- </div> -->
-                <v-card-subtitle class="text-left bc-padding-left-0">
+                <v-card-title class="text-left bc-padding-left-0">
                   {{
                   $t('technicalRequirements.labelTestMethod')
                   }}
-                </v-card-subtitle>
+                </v-card-title>
                 <v-card-subtitle class="text-left bc-padding-left-0">
                   {{
                   $t('technicalRequirements.labelTestMethodHint')
@@ -74,10 +74,13 @@
 
                 <v-card-subtitle class="text-left bc-padding-left-0">
                   <v-radio-group v-model="signingEncryptionType" :mandatory="false">
-                    <div class="small-hint">{{$t('technicalRequirements.SimpleJSONHint')}}</div>
                     <v-radio label="Simple JSON" :value="algorithamBase.SimpleJSON"></v-radio>
-                    <div class="small-hint">{{$t('technicalRequirements.SignedJWTHint')}}</div>
+                    <div
+                      class="small-hint radio-help"
+                    >{{$t('technicalRequirements.SimpleJSONHint')}}</div>
+
                     <v-radio label="Signed JWT" :value="algorithamBase.SignedJWT">></v-radio>
+                    <div class="small-hint radio-help">{{$t('technicalRequirements.SignedJWTHint')}}</div>
                     <div
                       class="row pad-radio"
                       v-if="signingEncryptionType === algorithamBase.SignedJWT"
@@ -97,8 +100,9 @@
                         />
                       </div>
                     </div>
-                    <div class="small-hint">{{$t('technicalRequirements.SecureJWTHint')}}</div>
+
                     <v-radio label="Secure JWT" :value="algorithamBase.SecureJWT">></v-radio>
+                    <div class="small-hint radio-help">{{$t('technicalRequirements.SecureJWTHint')}}</div>
                   </v-radio-group>
                 </v-card-subtitle>
                 <div v-if="signingEncryptionType === algorithamBase.SecureJWT" class="pad-radio">
@@ -107,7 +111,6 @@
                     :label="$t('technicalRequirements.labelJWKSUrl')"
                     type="text"
                     :rules="[rules.required, rules.url, rules.maxLength(500)]"
-                    class="pt-6"
                     :helpText="$t('technicalRequirements.JWKSText')"
                   />
                   <div class="row">
@@ -343,5 +346,10 @@ export default class AddTechnicalReq extends Vue {
 }
 .pad-0 {
   padding: 0;
+}
+.radio-help {
+  margin-top: -11px;
+  margin-left: 30px;
+  margin-bottom: 10px;
 }
 </style>

@@ -54,11 +54,7 @@
                   ]"
                   :helpText="$t('projectInfo.projectNameHint')"
                 />
-                <v-card-subtitle class="text-left bc-padding-left-0">
-                  {{
-                  $t('projectInfo.DescriptionHint')
-                  }}
-                </v-card-subtitle>
+
                 <TextArea
                   v-model="description"
                   :label="$t('projectInfo.Description')"
