@@ -5,9 +5,9 @@ action on your service, such as Download or Submit. */
   <!-- <v-Select :value="value" @input="input" v-bind="$attrs"></v-Select> -->
 
   <div class="bc-form-text">
-    <div class="text-left my-3">{{label}}</div>
+    <div class="text-left my-1">{{label}}</div>
     <div
-      class="text-left my-3 subtitle-2 bc-help-text"
+      class="text-left mb-1 subtitle-2 bc-help-text"
       v-if="helpText !==''"
       :class="helpClass"
     >{{helpText}}</div>

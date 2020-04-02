@@ -27,20 +27,6 @@
           </div>
         </v-list-item-content>
       </v-list-item>
-      <v-divider></v-divider>
-
-      <v-list-item>
-        <v-list-item-content class="pr-30">
-          {{
-          $t('summaryPage.labelSpecialReq')
-          }}
-        </v-list-item-content>
-        <v-list-item-content class="align-end">
-          {{
-          technicalReq.noteTestAccount
-          }}
-        </v-list-item-content>
-      </v-list-item>
     </v-list>
   </v-card>
 </template>
