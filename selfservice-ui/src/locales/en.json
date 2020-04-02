@@ -188,7 +188,7 @@
     "txtgetStarted": "Get started"
   },
   "testAccountList": {
-    "pagetitle": "Add Test Accounts",
+    "pagetitle": "Load Test Accounts",
     "pageinfo": "This page is for an IDIM representative to bulk load from a CSV file the test accounts needed for the Self Service Application. ",
     "special_notes": "Please remember to copy and paste from the CSV file of the test bc services card virtual cards to be use in this system. PLEASE do not include the heading row which describes the column names.",
     "btnBack": "Go Back",

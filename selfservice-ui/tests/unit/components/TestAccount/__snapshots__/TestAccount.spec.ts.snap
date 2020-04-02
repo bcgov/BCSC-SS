@@ -90,6 +90,7 @@ exports[`TestAccount.vue renders props when passed with gettors 1`] = `
              
             <textarea-stub
               counter=""
+              helptext=""
               label=""
               outlined=""
               rows="10"

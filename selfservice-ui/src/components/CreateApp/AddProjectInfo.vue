@@ -31,11 +31,6 @@
                   class="font-weight-bold text-left bc-padding-left-0"
                 >{{ $t('projectInfo.ProjectOrgTitle') }}</v-card-subtitle>
 
-                <v-card-subtitle class="text-left bc-padding-left-0">
-                  {{
-                  $t('projectInfo.OrganizationNameHint')
-                  }}
-                </v-card-subtitle>
                 <Input
                   v-model="organizationName"
                   :label="$t('projectInfo.OrganizationName')"
@@ -45,12 +40,9 @@
                     rules.length(2),
                     rules.maxLength(100)
                   ]"
+                  :helpText="$t('projectInfo.OrganizationNameHint')"
                 />
-                <v-card-subtitle class="text-left bc-padding-left-0">
-                  {{
-                  $t('projectInfo.projectNameHint')
-                  }}
-                </v-card-subtitle>
+
                 <Input
                   v-model="projectName"
                   :label="$t('projectInfo.projectName')"
@@ -60,6 +52,7 @@
                     rules.length(2),
                     rules.maxLength(100)
                   ]"
+                  :helpText="$t('projectInfo.projectNameHint')"
                 />
                 <v-card-subtitle class="text-left bc-padding-left-0">
                   {{
@@ -72,6 +65,7 @@
                   type="text"
                   :rules="[rules.required]"
                   outlined
+                  :helpText="$t('projectInfo.DescriptionHint')"
                 />
               </v-card>
             </v-col>

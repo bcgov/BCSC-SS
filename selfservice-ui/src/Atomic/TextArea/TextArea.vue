@@ -2,12 +2,11 @@
 action on your service, such as Download or Submit. */
 
 <template>
-  <v-textarea
-    :value="value"
-    :label="label"
-    @input="input"
-    v-bind="$attrs"
-  ></v-textarea>
+  <div class="bc-form-text">
+    <div class="text-left my-3">{{label}}</div>
+    <div class="text-left my-3 subtitle-2 bc-help-text" v-if="helpText !==''">{{helpText}}</div>
+    <v-textarea :value="value" @input="input" v-bind="$attrs" solo></v-textarea>
+  </div>
   <!-- outlined -->
 </template>
 
@@ -62,7 +61,13 @@ export default class TextArea extends Vue {
     default: false
   })
   private required!: boolean;
-
+  /**
+   *  helpText text
+   */
+  @Prop({
+    default: ''
+  })
+  private helpText!: string;
   /**
    * input
    * @description update value on key up or blur

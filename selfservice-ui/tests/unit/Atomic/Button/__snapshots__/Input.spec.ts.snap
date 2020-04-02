@@ -2,51 +2,61 @@
 
 exports[`Input.vue renders props when passed 1`] = `
 <div
-  class="v-input input v-input--is-label-active v-input--is-dirty theme--light v-text-field v-text-field--enclosed v-text-field--outlined"
+  class="bc-form-text"
   input="function mockConstructor() {
         return fn.apply(this, arguments);
       }"
 >
   <div
-    class="v-input__control"
+    class="text-left my-3"
+  >
+    
+  </div>
+   
+  <!---->
+   
+  <div
+    class="v-input input v-input--is-label-active v-input--is-dirty theme--light v-text-field v-text-field--single-line v-text-field--solo v-text-field--enclosed v-text-field--outlined"
   >
     <div
-      class="v-input__slot"
+      class="v-input__control"
     >
-      <fieldset
-        aria-hidden="true"
-      >
-        <legend
-          style="width: 0px;"
-        >
-          <span>
-            ​
-          </span>
-        </legend>
-      </fieldset>
       <div
-        class="v-text-field__slot"
+        class="v-input__slot"
       >
-        <input
-          id="input-3"
-          input="function mockConstructor() {
+        <fieldset
+          aria-hidden="true"
+        >
+          <legend>
+            <span>
+              ​
+            </span>
+          </legend>
+        </fieldset>
+        <div
+          class="v-text-field__slot"
+        >
+          <input
+            id="input-3"
+            input="function mockConstructor() {
         return fn.apply(this, arguments);
       }"
-          type="text"
-        />
+            type="text"
+          />
+        </div>
       </div>
-    </div>
-    <div
-      class="v-text-field__details"
-    >
       <div
-        class="v-messages theme--light"
+        class="v-text-field__details"
       >
-        <span
-          class="v-messages__wrapper"
-          name="message-transition"
-          tag="div"
-        />
+        <div
+          class="v-messages theme--light"
+        >
+          <span
+            class="v-messages__wrapper"
+            name="message-transition"
+            tag="div"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -55,51 +65,61 @@ exports[`Input.vue renders props when passed 1`] = `
 
 exports[`Input.vue renders props when passed 2`] = `
 <div
-  class="v-input input v-input--is-label-active v-input--is-dirty theme--light v-text-field v-text-field--enclosed v-text-field--outlined"
+  class="bc-form-text"
   input="function mockConstructor() {
         return fn.apply(this, arguments);
       }"
 >
   <div
-    class="v-input__control"
+    class="text-left my-3"
+  >
+    
+  </div>
+   
+  <!---->
+   
+  <div
+    class="v-input input v-input--is-label-active v-input--is-dirty theme--light v-text-field v-text-field--single-line v-text-field--solo v-text-field--enclosed v-text-field--outlined"
   >
     <div
-      class="v-input__slot"
+      class="v-input__control"
     >
-      <fieldset
-        aria-hidden="true"
-      >
-        <legend
-          style="width: 0px;"
-        >
-          <span>
-            ​
-          </span>
-        </legend>
-      </fieldset>
       <div
-        class="v-text-field__slot"
+        class="v-input__slot"
       >
-        <input
-          id="input-9"
-          input="function mockConstructor() {
+        <fieldset
+          aria-hidden="true"
+        >
+          <legend>
+            <span>
+              ​
+            </span>
+          </legend>
+        </fieldset>
+        <div
+          class="v-text-field__slot"
+        >
+          <input
+            id="input-9"
+            input="function mockConstructor() {
         return fn.apply(this, arguments);
       }"
-          type="text"
-        />
+            type="text"
+          />
+        </div>
       </div>
-    </div>
-    <div
-      class="v-text-field__details"
-    >
       <div
-        class="v-messages theme--light"
+        class="v-text-field__details"
       >
-        <span
-          class="v-messages__wrapper"
-          name="message-transition"
-          tag="div"
-        />
+        <div
+          class="v-messages theme--light"
+        >
+          <span
+            class="v-messages__wrapper"
+            name="message-transition"
+            tag="div"
+          />
+        </div>
       </div>
     </div>
   </div>
