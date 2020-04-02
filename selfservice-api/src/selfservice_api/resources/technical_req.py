@@ -43,11 +43,11 @@ class TechnicalReqResource(Resource):
         technical_req_json = request.get_json()
 
         try:
-            token_info = g.jwt_oidc_token_info
+            user = g.user
             technical_req_schema = TechnicalReqRequestSchema()
             dict_data = technical_req_schema.load(technical_req_json)
             dict_data['project_id'] = project_id
-            technical_req = TechnicalReq.create_from_dict(dict_data, token_info.get('sub'))
+            technical_req = TechnicalReq.create_from_dict(dict_data, user)
             response, status = technical_req_schema.dump(technical_req), HTTPStatus.CREATED
         except ValidationError as technical_req_err:
             response, status = {'message': str(technical_req_err.messages)}, \
@@ -71,12 +71,12 @@ class TechnicalReqResource(Resource):
         technical_req_json = request.get_json()
 
         try:
-            token_info = g.jwt_oidc_token_info
+            user = g.user
             technical_req_schema = TechnicalReqRequestSchema()
             dict_data = technical_req_schema.load(technical_req_json)
             dict_data['project_id'] = project_id
             technical_req = TechnicalReq.find_by_project_id(project_id)
-            technical_req.update(token_info.get('sub'), dict_data)
+            technical_req.update(dict_data, user)
             response, status = 'Updated successfully', HTTPStatus.OK
         except ValidationError as technical_req_err:
             response, status = {'message': str(technical_req_err.messages)}, HTTPStatus.BAD_REQUEST
@@ -89,7 +89,7 @@ class TechnicalReqResource(Resource):
         """Update scope package or test account in technical requirement."""
         tr_patch_json = request.get_json()
 
-        token_info = g.jwt_oidc_token_info
+        user = g.user
         technical_req_info = None
         if 'update' in tr_patch_json:
             if tr_patch_json['update'] == 'package':
@@ -99,7 +99,7 @@ class TechnicalReqResource(Resource):
 
         if technical_req_info is not None:
             technical_req = TechnicalReq.find_by_project_id(project_id)
-            technical_req.update(token_info.get('sub'), technical_req_info)
+            technical_req.update(technical_req_info, user)
             response, status = 'Updated successfully', HTTPStatus.OK
         else:
             response, status = 'Update failed', HTTPStatus.BAD_REQUEST

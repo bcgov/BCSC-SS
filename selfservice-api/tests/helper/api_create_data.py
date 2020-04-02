@@ -24,6 +24,7 @@ from selfservice_api.models.enums import ProjectRoles, SigningEncryptionType
 API_URI_PREFIX = '/api/v1/'
 USER_API = API_URI_PREFIX + 'user'
 PROJECTINFO_API = API_URI_PREFIX + 'project/info'
+TEAM_API = API_URI_PREFIX + 'project/:project_id/team'
 TECHNICALREQ_API = API_URI_PREFIX + 'project/:project_id/technical-req'
 OIDCCONFIG_API = API_URI_PREFIX + 'project/:project_id/oidc-config'
 SCOPEPACKAGE_API = API_URI_PREFIX + 'scope-package'
@@ -110,7 +111,7 @@ def _create_project_(client, jwt, my_role):
     headers = ss_client_auth_header(jwt, project_role=project_role)
     create_user(client, jwt, project_role=project_role)
 
-    response = client.post(PROJECTINFO_API, data=json.dumps(factory_project_info(my_role=my_role)),
+    response = client.post(PROJECTINFO_API, data=json.dumps(factory_project_info()),
                            headers=headers, content_type='application/json')
     return response
 

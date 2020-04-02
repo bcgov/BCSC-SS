@@ -17,6 +17,7 @@ from ..helper.request_data import factory_project_technical_req
 from .test_model_project import create_project
 
 from selfservice_api.models.technical_req import TechnicalReq
+from selfservice_api.models.user import User
 
 
 def test_create_from_dict(session):
@@ -27,7 +28,7 @@ def test_create_from_dict(session):
 
 def test_none_create_from_dict(session):
     """Assert skipping technical_req creation by providing None."""
-    technical_req = TechnicalReq.create_from_dict(technical_req_info=None, oauth_id=None)
+    technical_req = TechnicalReq.create_from_dict(None, None)
     assert technical_req is None
 
 
@@ -41,11 +42,11 @@ def test_find_by_project_id(session):
 def create_technical_req(session):
     """Create technical_req and return technical_req object."""
     project = create_project(session)
+    user = User.find_by_id(project.created_by)
     technical_req_info = factory_project_technical_req(is_model=True)
     technical_req_info['project_id'] = project.id
 
-    technical_req = TechnicalReq.create_from_dict(
-        technical_req_info=technical_req_info, oauth_id=None)
+    technical_req = TechnicalReq.create_from_dict(technical_req_info, user)
     session.add(technical_req)
     session.commit()
     return technical_req

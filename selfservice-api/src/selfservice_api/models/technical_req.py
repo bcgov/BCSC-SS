@@ -43,7 +43,7 @@ class TechnicalReq(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
     signing_encryption_type = db.Column(db.Integer, nullable=True)
 
     @classmethod
-    def create_from_dict(cls, technical_req_info: dict, oauth_id: str) -> TechnicalReq:
+    def create_from_dict(cls, technical_req_info: dict, user: User) -> TechnicalReq:
         """Create a new technical requirement from the provided dictionary."""
         if technical_req_info:
             technical_req = TechnicalReq()
@@ -56,10 +56,7 @@ class TechnicalReq(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
             technical_req.id_token_encrypted_response_alg = technical_req_info['id_token_encrypted_response_alg']
             technical_req.userinfo_encrypted_response_alg = technical_req_info['userinfo_encrypted_response_alg']
             technical_req.signing_encryption_type = technical_req_info['signing_encryption_type']
-
-            current_user = User.find_by_oauth_id(oauth_id)
-            technical_req.created_by = current_user.id
-
+            technical_req.created_by = user.id
             technical_req.save()
 
             return technical_req
@@ -70,10 +67,9 @@ class TechnicalReq(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
         """Find technical requirement that matches the provided id."""
         return cls.query.filter(TechnicalReq.project_id == project_id).first()
 
-    def update(self, oauth_id: str, technical_req_info: dict):
+    def update(self, technical_req_info: dict, user: User):
         """Update technical requirement."""
-        current_user = User.find_by_oauth_id(oauth_id)
-        technical_req_info['modified_by'] = current_user.id
+        technical_req_info['modified_by'] = user.id
         self.update_from_dict(['modified_by', 'scope_package_id', 'no_of_test_account', 'note_test_account',
                                'client_uri', 'redirect_uris', 'jwks_uri', 'id_token_signed_response_alg',
                                'userinfo_signed_response_alg', 'id_token_encrypted_response_alg',
