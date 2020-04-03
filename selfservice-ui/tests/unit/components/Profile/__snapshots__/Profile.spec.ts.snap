@@ -59,6 +59,7 @@ exports[`Profile.vue renders props when passed with gettors 1`] = `
           </v-card-title-stub>
            
           <input-stub
+            helptext=""
             label=""
             outlined="true"
             rules="v => !!v || 'This field is required',v => /^\\\\w+([.-]?\\\\w+)*@\\\\w+([.-]?\\\\w+)*(\\\\.\\\\w{2,10})+$/.test(v) || 'E-mail must be valid',v => (v || '').length >= len || 'Invalid character length, required ' + len,v => (v || '').length <= len || 'Invalid character length, max length ' + len"
@@ -67,6 +68,7 @@ exports[`Profile.vue renders props when passed with gettors 1`] = `
           />
            
           <input-stub
+            helptext=""
             label=""
             outlined="true"
             rules="v => !!v || 'This field is required',v => (v || '').length >= len || 'Invalid character length, required ' + len,v => (v || '').length <= len || 'Invalid character length, max length ' + len"
