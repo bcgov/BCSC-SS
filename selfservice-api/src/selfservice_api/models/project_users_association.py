@@ -37,7 +37,7 @@ class ProjectUsersAssociation(BaseModel, db.Model):
     @classmethod
     def create_from_dict(cls, user_info: dict, project_id) -> ProjectUsersAssociation:
         """Create an association between user and project from dict."""
-        user = cls.__create_or_map_user__(user_info)
+        user = cls.__create_or_update_user__(user_info)
         return cls.create(user.id, project_id, user_info['role'])
 
     @classmethod
@@ -56,13 +56,13 @@ class ProjectUsersAssociation(BaseModel, db.Model):
         `only_role`: if `True` only role will be updated in association.
         """
         if not only_role:
-            user = self.__create_or_map_user__(user_info)
+            user = self.__create_or_update_user__(user_info)
             self.user_id = user.id
         self.role = user_info['role']
         self.commit()
 
     @staticmethod
-    def __create_or_map_user__(user_info: dict):
+    def __create_or_update_user__(user_info: dict):
         """Create or update a user."""
         user = User.find_by_email(user_info['email'])
         if user is None:
@@ -73,12 +73,38 @@ class ProjectUsersAssociation(BaseModel, db.Model):
         return user
 
     @classmethod
+    def check_user_existence(cls, project_id: str, email: str, association_id: str = None):
+        """Check existence of user in a project."""
+        user = User.find_by_email(email)
+        if user:
+            association = cls.query.filter(and_(ProjectUsersAssociation.project_id == project_id,
+                                                ProjectUsersAssociation.user_id == user.id)).first()
+            is_exist = association is not None
+
+            if association_id and association and association_id == association.id:
+                is_exist = False
+
+            return is_exist
+        return False
+
+    @classmethod
+    def check_role_existence(cls, project_id: str, role: str, association_id: str = None):
+        """Check existence of role in a project."""
+        association = cls.query.filter(and_(ProjectUsersAssociation.project_id == project_id,
+                                            ProjectUsersAssociation.role == role)).first()
+        is_exist = association is not None
+
+        if association_id and association and association_id == association.id:
+            is_exist = False
+
+        return is_exist
+
+    @classmethod
     def delete_by_id(cls, association_id: str):
         """Delete association by id."""
         association: ProjectUsersAssociation = cls.query.filter_by(id=association_id).first()
         if association:
             association.delete()
-            # cls.commit()
 
     @classmethod
     def find_by_id(cls, association_id: str) -> ProjectUsersAssociation:
@@ -91,7 +117,7 @@ class ProjectUsersAssociation(BaseModel, db.Model):
         return cls.query.filter(ProjectUsersAssociation.project_id == project_id).all()
 
     @classmethod
-    def find_by_project_and_user_id(cls, project_id: str, user_id: str) -> ProjectUsersAssociation:
-        """Find association by project id and user id."""
+    def find_all_by_project_and_user_id(cls, project_id: str, user_id: str) -> ProjectUsersAssociation:
+        """Find all association by project id and user id."""
         return cls.query.filter(and_(ProjectUsersAssociation.project_id == project_id,
-                                     ProjectUsersAssociation.user_id == user_id)).first()
+                                     ProjectUsersAssociation.user_id == user_id)).all()

@@ -28,12 +28,13 @@ class TeamSchema(Schema):
         unknown = EXCLUDE
 
     id = fields.Int()
+    project_id = fields.Int(data_key='projectId')
     role = fields.Int(data_key='role', required=True, validate=validate.OneOf(list(map(int, ProjectRoles))))
 
-    email = fields.Email(load_only=True, validate=validate.Length(min=5, max=250))
-    phone = fields.Str(load_only=True, validate=validate.Length(max=15))
-    first_name = fields.Str(load_only=True, data_key='firstName', validate=validate.Length(min=2, max=250))
-    last_name = fields.Str(load_only=True, data_key='lastName', validate=validate.Length(min=2, max=250))
+    email = fields.Email(load_only=True, required=True, validate=validate.Length(min=5, max=250))
+    phone = fields.Str(load_only=True, required=True, validate=validate.Length(max=15))
+    first_name = fields.Str(load_only=True, data_key='firstName', required=True, validate=validate.Length(max=250))
+    last_name = fields.Str(load_only=True, data_key='lastName', required=True, validate=validate.Length(max=250))
 
     # Since the user data has to be plucked, seperating load and dump into different fields.
 

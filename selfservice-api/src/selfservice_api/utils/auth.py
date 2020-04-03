@@ -80,9 +80,11 @@ class Auth():
 
                     if user is not None:
                         project_id = kwargs.get('project_id')
-                        association = ProjectUsersAssociation.find_by_project_and_user_id(project_id, user.id)
-                        if association and association.role in project_roles:
-                            return f(*args, **kwargs)
+                        associations = ProjectUsersAssociation.find_all_by_project_and_user_id(project_id, user.id)
+                        if associations is not None:
+                            roles = [association.role for association in associations]
+                            if all(elem in project_roles for elem in roles):
+                                return f(*args, **kwargs)
                     raise BusinessException('Access Denied', HTTPStatus.UNAUTHORIZED)
 
                 return f(*args, **kwargs)

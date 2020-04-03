@@ -47,10 +47,10 @@ def factory_project_info(is_model=False):
         return project
 
 
-def factory_project_team_member(is_model=False, my_role=ProjectRoles.Developer):
+def factory_project_team_member(is_model=False, member_role=ProjectRoles.Developer):
     """JSON data to create project info."""
     team_member = {}
-    if my_role != ProjectRoles.Developer:
+    if member_role == ProjectRoles.Developer:
         team_member = {
             'email': 'developer@gov.bc.ca',
             'phone': '1234567890',
@@ -58,8 +58,7 @@ def factory_project_team_member(is_model=False, my_role=ProjectRoles.Developer):
             'lastName': 'l developer',
             'role': ProjectRoles.Developer
         }
-
-    if my_role != ProjectRoles.Manager:
+    elif member_role == ProjectRoles.Manager:
         team_member = {
             'email': 'manager@gov.bc.ca',
             'phone': '1234567890',
@@ -67,14 +66,21 @@ def factory_project_team_member(is_model=False, my_role=ProjectRoles.Developer):
             'lastName': 'l manager',
             'role': ProjectRoles.Manager
         }
-
-    if my_role != ProjectRoles.Cto:
+    elif member_role == ProjectRoles.Cto:
         team_member = {
             'email': 'cto@gov.bc.ca',
             'phone': '1234567890',
             'firstName': 'f cto',
             'lastName': 'l cto',
             'role': ProjectRoles.Cto
+        }
+    else:
+        team_member = {
+            'email': 'invalid@domain.com',
+            'phone': '1234567890',
+            'firstName': 'f invalid',
+            'lastName': 'l invalid',
+            'role': ProjectRoles.Developer
         }
 
     if is_model:

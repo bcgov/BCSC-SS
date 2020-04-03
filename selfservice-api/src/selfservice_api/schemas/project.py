@@ -13,7 +13,7 @@
 # limitations under the License.
 """This manages Project Req/Res Schema."""
 
-from marshmallow import EXCLUDE, Schema, fields
+from marshmallow import EXCLUDE, Schema, fields, validate
 
 
 class ProjectSchema(Schema):
@@ -25,6 +25,6 @@ class ProjectSchema(Schema):
         unknown = EXCLUDE
 
     id = fields.Int()
-    organization_name = fields.Str(data_key='organizationName', required=True)
-    project_name = fields.Str(data_key='projectName', required=True)
+    organization_name = fields.Str(data_key='organizationName', required=True, validate=validate.Length(max=100))
+    project_name = fields.Str(data_key='projectName', required=True, validate=validate.Length(max=100))
     description = fields.Str(required=True)
