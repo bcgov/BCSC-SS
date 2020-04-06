@@ -59,7 +59,9 @@ exports[`Header.vue Logout user on logout button onlick  1`] = `
         <div
           class="profile-title"
         >
-          Welcome user lastName
+          
+        Welcome user lastName
+      
         </div>
          
         <button
@@ -129,6 +131,14 @@ exports[`Header.vue Logout user on logout button onlick  1`] = `
           href="#/dashboard"
         >
           Projects
+        </a>
+      </li>
+      <li>
+        <a
+          class=""
+          href="#/help"
+        >
+          Help
         </a>
       </li>
       <li>
@@ -203,7 +213,9 @@ exports[`Header.vue Toggle menu onlick  1`] = `
         <div
           class="profile-title"
         >
-          Welcome user lastName
+          
+        Welcome user lastName
+      
         </div>
          
         <button
@@ -278,6 +290,14 @@ exports[`Header.vue Toggle menu onlick  1`] = `
       <li>
         <a
           class=""
+          href="#/help"
+        >
+          Help
+        </a>
+      </li>
+      <li>
+        <a
+          class=""
           href="#/add-test-account"
         >
           Load test accounts
@@ -347,7 +367,9 @@ exports[`Header.vue renders props when passed 1`] = `
         <div
           class="profile-title"
         >
-          Welcome user lastName
+          
+        Welcome user lastName
+      
         </div>
          
         <button
@@ -417,6 +439,14 @@ exports[`Header.vue renders props when passed 1`] = `
           href="#/dashboard"
         >
           Projects
+        </a>
+      </li>
+      <li>
+        <a
+          class=""
+          href="#/help"
+        >
+          Help
         </a>
       </li>
       <li>
