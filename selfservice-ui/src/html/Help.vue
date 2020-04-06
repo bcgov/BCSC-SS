@@ -85,7 +85,7 @@
       Once the proof of concept has been tested and is completed to the BPS’
       satisfaction, the BPS team should inform the Provincial Identity
       Information Management (IDIM) Program through the self-service application
-      to begin the process of a <i>Live Access Request</i>. We want to keep
+      to begin the process of a <em>Live Access Request</em>. We want to keep
       things simple and are asking for the contact information of 3 types of
       team members from the BPS with respect to a Live Access Request:
     </p>
@@ -113,10 +113,10 @@
     <h3>Step 2: Begin the Live BC Services Card request process</h3>
 
     <p>
-      The <i>Live Access Request</i> process is designed to enable BPS teams to
-      work at their own pace to understand and address the various categories of
-      compliance before integrating with a live production-ready environment of
-      BC Services Card data. A member of the Provincial Identity Information
+      The <em>Live Access Request</em> process is designed to enable BPS teams
+      to work at their own pace to understand and address the various categories
+      of compliance before integrating with a live production-ready environment
+      of BC Services Card data. A member of the Provincial Identity Information
       Management Program is always available to help BPS clients in completing
       the integration components. The BC Services Card self-service application
       will guide you through these steps.
@@ -170,7 +170,7 @@
     </p>
 
     <p>
-      Moving into a <i>Live Access Request</i> towards gaining access to a
+      Moving into a <em>Live Access Request</em> towards gaining access to a
       production environment will require you to enter some information about
       your project team (Manager, Executive Sponsor) who will be required to
       work through some categorized compliance steps. The BC Services Card
