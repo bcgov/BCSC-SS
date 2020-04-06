@@ -10,12 +10,7 @@
     <v-toolbar dense class="bc-subtitle-2" dark>
       <v-card-title>
         {{ $t('summaryPage.technicalReqTitle') }}
-        <v-icon
-          small
-          class="ml-3"
-          @click="$router.push(`/project/${id}/technical`)"
-          >mdi-pencil</v-icon
-        >
+        <v-icon small class="ml-3" @click="$router.push(`/project/${id}/technical`)">mdi-pencil</v-icon>
       </v-card-title>
     </v-toolbar>
     <v-list dense class="px-5">
@@ -44,13 +39,8 @@
           ></span>
         </v-list-item-content>
         <v-list-item-content class="align-end">
-          <div
-            v-for="redirectUri in technicalReq.redirectUris"
-            :key="redirectUri"
-          >
-            <v-icon small class="mr-1" v-if="redirectUri !== ''"
-              >mdi-link</v-icon
-            >
+          <div v-for="redirectUri in technicalReq.redirectUris" :key="redirectUri">
+            <v-icon small class="mr-1" v-if="redirectUri !== ''">mdi-link</v-icon>
             {{ redirectUri }}
           </div>
         </v-list-item-content>
@@ -69,11 +59,11 @@
           <div v-if="technicalReq.signingEncryptionType">
             <v-icon small class="mr-1">mdi-format-list-checks</v-icon>
             {{
-              $t(
-                `summaryPage.${getTestingMethodName(
-                  technicalReq.signingEncryptionType
-                )}`
-              )
+            $t(
+            `summaryPage.${getTestingMethodName(
+            technicalReq.signingEncryptionType
+            )}`
+            )
             }}
           </div>
         </v-list-item-content>
@@ -150,12 +140,10 @@ export default class TechnicalReqSummary extends Vue {
   @Prop({ default: false })
   public isTechnicalInfoAvailable!: boolean;
 
-  private testMethod: any = [
-    { 1: 'SimpleJSON', 2: 'SignedJWT', 3: 'SecureJWT' }
-  ];
+  private testMethod: any = [{ 1: 'SignedJWT', 2: 'SecureJWT' }];
 
   private getTestingMethodName(signingEncryptionType: any) {
-    return this.testMethod[0][signingEncryptionType] || 'SimpleJSON';
+    return this.testMethod[0][signingEncryptionType] || 'SignedJWT';
   }
 }
 </script>

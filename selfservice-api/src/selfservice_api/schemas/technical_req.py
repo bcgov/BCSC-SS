@@ -69,10 +69,6 @@ class TechnicalReqRequestSchema(Schema):
 
             data['id_token_encrypted_response_alg'] = data['userinfo_encrypted_response_alg'] = ''
             data['jwks_uri'] = ''
-        else:
-            data['id_token_signed_response_alg'] = data['userinfo_signed_response_alg'] = ''
-            data['id_token_encrypted_response_alg'] = data['userinfo_encrypted_response_alg'] = ''
-            data['jwks_uri'] = ''
 
 
 class TechnicalReqPackageSchema(Schema):

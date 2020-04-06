@@ -74,11 +74,6 @@
 
                 <v-card-subtitle class="text-left bc-padding-left-0">
                   <v-radio-group v-model="signingEncryptionType" :mandatory="false">
-                    <v-radio label="Simple JSON" :value="algorithamBase.SimpleJSON"></v-radio>
-                    <div
-                      class="small-hint radio-help"
-                    >{{$t('technicalRequirements.SimpleJSONHint')}}</div>
-
                     <v-radio label="Signed JWT" :value="algorithamBase.SignedJWT">></v-radio>
                     <div class="small-hint radio-help">{{$t('technicalRequirements.SignedJWTHint')}}</div>
                     <div
@@ -239,7 +234,7 @@ export default class AddTechnicalReq extends Vue {
   private signedResponseAlg: string = 'RS256';
   private algorithm: any = algorithm;
   private blockRemoval = true;
-  private signingEncryptionType: number = algorithamBase.SimpleJSON;
+  private signingEncryptionType: number = algorithamBase.SignedJWT;
   private algorithamBase: any = algorithamBase;
 
   // private id: string = '';
@@ -271,10 +266,7 @@ export default class AddTechnicalReq extends Vue {
         this.signingEncryptionType === algorithamBase.SecureJWT
           ? this.encryptedResponseAlg
           : null,
-      signedResponseAlg:
-        this.signingEncryptionType === algorithamBase.SimpleJSON
-          ? null
-          : this.signedResponseAlg
+      signedResponseAlg: this.signedResponseAlg
     };
 
     if (this.isEditMode && this.TechnicalReqId !== 0) {

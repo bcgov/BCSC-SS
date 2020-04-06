@@ -57,7 +57,6 @@
     "btnSaveChanges": "Save Changes",
     "labelTestMethod": "Select your data security and format",
     "labelTestMethodHint": "Choose your signing and encryption methods for testing below. These options are available to facilitate your testing. Please note that when you move into a production environment, it will be required that you enable signing and encryption at that time.",
-    "SimpleJSONHint": "We return unsigned, unencrypted JSON format for easy testing",
     "SignedJWTHint": "We return a signed JWT for more security",
     "SecureJWTHint": "We return a signed and encrypted JWT for maximum security"
   },
@@ -131,7 +130,6 @@
     "labelDataPackageReqdHint": "Package of OIDC scopes (or user attributes) made available to your application on successful login",
     "labelTestingMethod": "Testing Method",
     "labelTestingMethodHint": "This is the method you chose for testing in development. Please note that a production environment will require signing and encryption.",
-    "SimpleJSON": "Simple JSON",
     "SignedJWT": "Signed JWT",
     "SecureJWT": "Secure JWT"
   },

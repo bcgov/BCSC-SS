@@ -29,6 +29,12 @@ class ProjectStatus(ExtendedIntEnum):
 
     Draft = 1, 'Draft'
     Development = 2, 'Development'
+    DevelopmentComplete = 3, 'Development Complete'
+    ComplianceChecks = 4, 'Compliance Checks'
+    AwaitingApproval = 5, 'Awaiting Approval'
+    AwaitingStagingKeys = 6, 'Awaiting Staging Keys'
+    AwaitingProductionUse = 7, 'Awaiting Production Use'
+    ReadyForFirstCitizenUse = 8, 'Ready for First Citizen Use'
 
 
 class Algorithms(ExtendedEnum):
@@ -51,6 +57,5 @@ class Algorithms(ExtendedEnum):
 class SigningEncryptionType(ExtendedIntEnum):
     """This enum provides the list of Signing and Encryption type."""
 
-    SimpleJSON = 1, 'Simple JSON'
-    SignedJWT = 2, 'Signed JWT'
-    SecureJWT = 3, 'Secure JWT'
+    SignedJWT = 1, 'Signed JWT'
+    SecureJWT = 2, 'Secure JWT'
