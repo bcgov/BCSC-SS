@@ -58,9 +58,9 @@ class TeamResource(Resource):
             team = ProjectUsersAssociation.create_from_dict(dict_data, project_id)
             response, status = team_schema.dump(team), HTTPStatus.CREATED
         except ValidationError as team_err:
-            response, status = {'message': str(team_err.messages)}, HTTPStatus.BAD_REQUEST
+            response, status = {'systemErrors': team_err.messages}, HTTPStatus.BAD_REQUEST
         except BusinessException as team_be_err:
-            response, status = {'errors': str(team_be_err.error)}, HTTPStatus.BAD_REQUEST
+            response, status = {'errors': team_be_err.error}, HTTPStatus.BAD_REQUEST
         return response, status
 
 
@@ -107,9 +107,9 @@ class TeamResourceById(Resource):
                 association.update(dict_data)
             response, status = 'Updated successfully', HTTPStatus.OK
         except ValidationError as team_err:
-            response, status = {'message': str(team_err.messages)}, HTTPStatus.BAD_REQUEST
+            response, status = {'systemErrors': team_err.messages}, HTTPStatus.BAD_REQUEST
         except BusinessException as team_be_err:
-            response, status = {'errors': str(team_be_err.error)}, HTTPStatus.BAD_REQUEST
+            response, status = {'errors': team_be_err.error}, HTTPStatus.BAD_REQUEST
         return response, status
 
 
@@ -121,15 +121,13 @@ def validate_before_save(project_id, dict_data, association_id: str = None):
     role_exist = ProjectUsersAssociation.check_role_existence(project_id, role, association_id)
     errors = {}
     if email_exist:
-        errors['email'] = f'{email} already assigned to a different role. \
-                    Remove other role and try again.'
+        errors['email'] = 'emailAlreadyAssigned'
     if role_exist:
-        errors['role'] = f'{role} already assigned to a different user. \
-                    Remove other user and try again.'
+        errors['role'] = 'roleAlreadyAssigned'
 
     domain = email.strip().split('@').pop() if email and '@' in email else None
     if not OrgWhitelist.validate_domain(domain):
-        errors['email'] = f'Invalid domain.'
+        errors['email'] = 'invalidDomain'
 
     if errors:
         raise BusinessException(errors, HTTPStatus.BAD_REQUEST)

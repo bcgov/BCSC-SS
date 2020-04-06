@@ -50,7 +50,7 @@ class TechnicalReqResource(Resource):
             technical_req = TechnicalReq.create_from_dict(dict_data, user)
             response, status = technical_req_schema.dump(technical_req), HTTPStatus.CREATED
         except ValidationError as technical_req_err:
-            response, status = {'message': str(technical_req_err.messages)}, \
+            response, status = {'systemErrors': technical_req_err.messages}, \
                 HTTPStatus.BAD_REQUEST
         return response, status
 
@@ -79,7 +79,7 @@ class TechnicalReqResource(Resource):
             technical_req.update(dict_data, user)
             response, status = 'Updated successfully', HTTPStatus.OK
         except ValidationError as technical_req_err:
-            response, status = {'message': str(technical_req_err.messages)}, HTTPStatus.BAD_REQUEST
+            response, status = {'systemErrors': technical_req_err.messages}, HTTPStatus.BAD_REQUEST
         return response, status
 
     @staticmethod
@@ -89,19 +89,21 @@ class TechnicalReqResource(Resource):
         """Update scope package or test account in technical requirement."""
         tr_patch_json = request.get_json()
 
-        user = g.user
-        technical_req_info = None
-        if 'update' in tr_patch_json:
-            if tr_patch_json['update'] == 'package':
-                technical_req_info = TechnicalReqPackageSchema().load(tr_patch_json)
-            if tr_patch_json['update'] == 'test-account':
-                technical_req_info = TechnicalReqTestAccountSchema().load(tr_patch_json)
+        try:
+            user = g.user
+            technical_req_info = None
+            if 'update' in tr_patch_json:
+                if tr_patch_json['update'] == 'package':
+                    technical_req_info = TechnicalReqPackageSchema().load(tr_patch_json)
+                if tr_patch_json['update'] == 'test-account':
+                    technical_req_info = TechnicalReqTestAccountSchema().load(tr_patch_json)
 
-        if technical_req_info is not None:
-            technical_req = TechnicalReq.find_by_project_id(project_id)
-            technical_req.update(technical_req_info, user)
-            response, status = 'Updated successfully', HTTPStatus.OK
-        else:
-            response, status = 'Update failed', HTTPStatus.BAD_REQUEST
-
+            if technical_req_info is not None:
+                technical_req = TechnicalReq.find_by_project_id(project_id)
+                technical_req.update(technical_req_info, user)
+                response, status = 'Updated successfully', HTTPStatus.OK
+            else:
+                response, status = 'Update failed', HTTPStatus.BAD_REQUEST
+        except ValidationError as technical_req_err:
+            response, status = {'systemErrors': technical_req_err.messages}, HTTPStatus.BAD_REQUEST
         return response, status

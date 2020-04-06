@@ -85,8 +85,7 @@ class UserResource(Resource):
                 domain = email.strip().split('@').pop() if email and '@' in email else None
                 valid_domain = OrgWhitelist.validate_domain(domain)
                 if not valid_domain:
-                    return {'code': 'domain', 'message': 'Invalid Domain'}, \
-                        HTTPStatus.FORBIDDEN
+                    return {'errors': {'email': 'invalidDomain'}}, HTTPStatus.BAD_REQUEST
 
             dict_data = user_schema.load({
                 'email': email,
@@ -105,8 +104,8 @@ class UserResource(Resource):
                 user.update(dict_data)
 
             response, status = user_schema.dump(user), HTTPStatus.CREATED
-        except ValidationError as err:
-            response, status = {'message': str(err.messages)}, \
+        except ValidationError as user_err:
+            response, status = {'systemErrors': user_err.messages}, \
                 HTTPStatus.BAD_REQUEST
         return response, status
 

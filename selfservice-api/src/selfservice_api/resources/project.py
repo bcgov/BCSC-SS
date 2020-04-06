@@ -67,7 +67,7 @@ class ProjectResource(Resource):
 
             response, status = project_schema.dump(project), HTTPStatus.CREATED
         except ValidationError as project_err:
-            response, status = {'message': str(project_err.messages)}, \
+            response, status = {'systemErrors': project_err.messages}, \
                 HTTPStatus.BAD_REQUEST
         return response, status
 
@@ -106,7 +106,7 @@ class ProjectResourceById(Resource):
             project.update(dict_data, user)
             return 'Updated successfully', HTTPStatus.OK
         except ValidationError as project_err:
-            return {'message': str(project_err.messages)}, HTTPStatus.BAD_REQUEST
+            return {'systemErrors': project_err.messages}, HTTPStatus.BAD_REQUEST
 
     @staticmethod
     @cors.crossdomain(origin='*')
