@@ -51,7 +51,7 @@
     <h3>Step 1: Experiment through a proof of concept</h3>
 
     <p>
-      We call the activities in this step a <i>development access request</i>.
+      We call the activities in this step a <em>development access request</em>.
       This process is designed to be free from barriers, enabling developers to
       easily access data within a protected development tier. It allows
       developers to create a quick implementation of a proof of concept or
@@ -60,25 +60,26 @@
     </p>
     <ul>
       <li>
-        <b>Identity Information:</b> The BC Services Card provides a higher
-        level of identity assurance and during an authentication transaction,
-        identity information about a person is available. We&#146;ve created a
-        set of pre-defined identity data attributes or scope packages as we call
-        them, for BPS developers to experiment with. We believe offering these
-        packages provides a simple experience in understanding how to integrate
-        with BC Services Card.
+        <strong>Identity Information:</strong>The BC Services Card provides a
+        higher level of identity assurance and during an authentication
+        transaction, identity information about a person is available.
+        We&#146;ve created a set of pre-defined identity data attributes or
+        scope packages as we call them, for BPS developers to experiment with.
+        We believe offering these packages provides a simple experience in
+        understanding how to integrate with BC Services Card.
       </li>
       <li>
-        <b>Test Accounts:</b> Test BC Services Card accounts are provided to let
-        developers test their work using mock data in a development environment.
+        <strong>Test Accounts:</strong>Test BC Services Card accounts are
+        provided to let developers test their work using mock data in a
+        development environment.
       </li>
       <li>
-        <b>API Key and Secret:</b> After submitting a development access
-        request, a developer will obtain a data sharing key and secret as per
-        our protocols of Open ID Connect (OIDC) API.
+        <strong>API Key and Secret:</strong>After submitting a development
+        access request, a developer will obtain a data sharing key and secret as
+        per our protocols of Open ID Connect (OIDC) API.
       </li>
     </ul>
-    <img src="help-img/5stepstodev.png" />
+    <img src="help-img/5stepstodev.png" alt="5 steps to dev" />
 
     <p>
       Once the proof of concept has been tested and is completed to the BPS’
@@ -218,14 +219,20 @@
     </p>
 
     <h3>Direct browser architecture</h3>
-    <img src="help-img/direct-browser-architecture.png" />
+    <img
+      src="help-img/direct-browser-architecture.png"
+      alt="direct browser architecture"
+    />
 
     <h3>Direct webapp architecture</h3>
 
-    <img src="help-img/direct-webapp-architecture.png" />
+    <img
+      src="help-img/direct-webapp-architecture.png"
+      alt="direct webapp architecture"
+    />
 
     <h3>Proxy architecture</h3>
-    <img src="help-img/proxy-architecture.png" />
+    <img src="help-img/proxy-architecture.png" alt="proxy architecture" />
 
     <h2>***Recommended technical resources</h2>
     <ul>
