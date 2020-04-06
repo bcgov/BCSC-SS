@@ -1,0 +1,34 @@
+<template>
+  <v-card class="mx-auto outer-card " flat>
+    <div class="help-page text-left ">
+      <Help />
+    </div>
+  </v-card>
+</template>
+<script lang="ts">
+// @ is an alias to /src
+import { Component, Vue, Prop } from 'vue-property-decorator';
+import Help from '@/html/Help.vue';
+
+@Component({
+  components: {
+    Help
+  }
+})
+export default class HelpHome extends Vue {}
+</script>
+<style lang="scss">
+.help-page h1,
+.help-page h2,
+.help-page h3 {
+  letter-spacing: -0.04rem;
+  font-weight: 700;
+  margin: 20px 0;
+}
+.help-page img {
+  margin: 30px 0;
+}
+.help-page {
+  margin-bottom: 30px;
+}
+</style>

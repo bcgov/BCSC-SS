@@ -85,6 +85,13 @@ const routerData = [
       import(/* webpackChunkName: "testaccount" */ '../views/TestAccount.vue')
   },
   {
+    path: '/help',
+    name: 'help',
+    meta: metaAllRoles(false),
+    props: true,
+    component: () => import(/* webpackChunkName: "help" */ '../views/Help.vue')
+  },
+  {
     path: '/unauthorized',
     name: 'Unauthorized',
     meta: { requiresAuth: false },
