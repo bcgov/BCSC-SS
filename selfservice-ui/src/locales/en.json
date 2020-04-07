@@ -15,7 +15,7 @@
   },
   "projectInfo": {
     "ProjectInfoTitle": "Project Information",
-    "ProjectInfoTitleInfo": "<p>To receive access to the BC Services Card login API , we need to gather some information about the application you’re working with. This allows us to understand the purpose of your application or project within your organization and provide proper assistance to you through  development to the live access request.</p>",
+    "ProjectInfoTitleInfo": "<p>To receive access to the BC Services Card login API , we need to gather some information about the application you’re working with. This allows us to understand the purpose of your application or project within your organization and provide proper assistance to you, through development to the live access request.</p>",
     "ProjectOrgTitle": "This API is available for organizations that fall within the BC Broader Public Sector (BPS).",
     "OrganizationName": "Organization name",
     "projectName": "Project name",
