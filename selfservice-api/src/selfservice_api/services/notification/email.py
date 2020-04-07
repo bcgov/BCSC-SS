@@ -17,6 +17,7 @@ from flask import current_app, g
 from flask_mail import Mail, Message
 
 from ...models import EmailQueue
+from ...utils.logging import log_error
 from .email_helper import EmailBody, EmailSubject, EmailType
 
 
@@ -29,10 +30,13 @@ class EmailService():
     @classmethod
     def send(cls, email_queue: EmailQueue):
         """Send Email."""
-        message = Message(subject=email_queue.subject, html=email_queue.body,
-                          recipients=email_queue.recipients, sender=email_queue.sender,
-                          cc=email_queue.cc, bcc=email_queue.bcc)
-        mail.send(message)
+        try:
+            message = Message(subject=email_queue.subject, html=email_queue.body,
+                              recipients=email_queue.recipients, sender=email_queue.sender,
+                              cc=email_queue.cc, bcc=email_queue.bcc)
+            mail.send(message)
+        except Exception as err:  # pylint: disable=broad-except
+            log_error(err)
 
     @classmethod
     def save_and_send(cls, email_type: EmailType, attributes: dict):

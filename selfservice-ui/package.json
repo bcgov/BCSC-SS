@@ -13,7 +13,7 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
-    "@mdi/font": "^4.7.95",
+    "@mdi/font": "^4.9.95",
     "animate.css": "^3.7.2",
     "axios": "^0.19.1",
     "core-js": "^3.4.3",

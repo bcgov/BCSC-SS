@@ -41,6 +41,8 @@ exports[`Home.vue renders props when passed 1`] = `
           class="second-headline"
         >
           
+          
+        
         </h2>
          
         <div

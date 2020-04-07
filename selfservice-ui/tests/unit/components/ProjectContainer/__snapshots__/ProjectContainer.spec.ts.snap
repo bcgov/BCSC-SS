@@ -2,9 +2,8 @@
 
 exports[`ProjectContainer.vue renders props when passed 1`] = `
 <v-card-stub
-  class="mx-auto"
+  class="mx-auto outer-card"
   loaderheight="4"
-  style="max-width: 80%;"
   tag="div"
 >
   <v-container-stub
@@ -34,6 +33,13 @@ exports[`ProjectContainer.vue renders props when passed 1`] = `
           slidersize="2"
           value="0"
         >
+          <v-tab-stub
+            class="font-weight-bold"
+            ripple="true"
+          >
+            
+          </v-tab-stub>
+           
           <v-tab-stub
             class="font-weight-bold"
             ripple="true"

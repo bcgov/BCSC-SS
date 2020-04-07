@@ -17,39 +17,26 @@
         <v-row class="mx-4">
           <v-col cols="12" flat>
             <v-card flat>
-              <v-list-item-content>
-                {{
-                $t('testAccountList.pageinfo')
-                }}
-              </v-list-item-content>
+              <div class="text-left" v-html="$t('testAccountList.pageinfo')"></div class="text-left">
             </v-card>
           </v-col>
-          <v-col class="col-12">
+          <v-col class="col-12" v-if="errorStatus || successStatus">
             <v-alert
               type="error"
               v-if="errorStatus"
               class="alert-top text-left"
-            >{{$t('testAccountList.errorMessage')}}</v-alert>
+              >{{ $t('testAccountList.errorMessage') }}</v-alert
+            >
             <v-alert
               type="success"
               class="alert-top text-left"
               v-if="successStatus"
-            >{{$t('testAccountList.successMessage')}}</v-alert>
+              >{{ $t('testAccountList.successMessage') }}</v-alert
+            >
           </v-col>
           <v-col cols="12" flat>
             <v-card flat>
-              <v-list-item-content>
-                {{
-                $t('testAccountList.special_notes')
-                }}
-              </v-list-item-content>
-              <TextArea
-                v-model="testAccounts"
-                :label="$t('testAccountList.special_notes')"
-                type="text"
-                outlined
-                rows="10"
-              />
+              <TextArea v-model="testAccounts" :label="$t('testAccountList.special_notes')" type="text" outlined rows="10" />
             </v-card>
           </v-col>
         </v-row>
@@ -68,11 +55,7 @@
             depressed
             @click="submitTestAccount"
           >
-            {{
-            $t(
-            'testAccountList.btnSaveChanges'
-            )
-            }}
+            {{ $t('testAccountList.btnSaveChanges') }}
           </Button>
         </v-card-actions>
       </v-card>

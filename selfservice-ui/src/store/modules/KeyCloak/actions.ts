@@ -36,6 +36,7 @@ export const actions: ActionTree<KeyCloakState, RootState> = {
         const user = await UserService.getUser();
         if (user && user.data && user.data.verified) {
           dispatch('isVerified', true);
+          dispatch('filedsToShow', user.data.fieldsRequired);
           dispatch('setUserProfile', user.data.user);
           dispatch('userRedirect', { path, next, fromUrl });
           await UserService.updateUser();
@@ -43,7 +44,7 @@ export const actions: ActionTree<KeyCloakState, RootState> = {
           dispatch('filedsToShow', user.data.fieldsRequired);
           dispatch('setUserProfile', user.data.user);
           dispatch('isVerified', false);
-          router.push({ path: '/complete-profile' });
+          router.push({ path: '/profile/complete' });
         }
         commit('SET_USER_ERROR', false);
       } catch {
@@ -102,14 +103,14 @@ export const actions: ActionTree<KeyCloakState, RootState> = {
    * @param {*} keycloak
    */
   userRedirect(store: any, { path, next, fromUrl }) {
-    if (fromUrl === '/complete-profile' && path === '/complete-profile') {
+    if (fromUrl === '/profile/complete' && path === '/profile/complete') {
       router.push({ name: 'dashboard' });
     } else if (fromUrl === '/login' && path === '/login') {
       // if (store.state.isClient || store.state.isAdmin) {
       router.push({ path: '/dashboard' });
     } else if (fromUrl === '/login' && path !== '/login') {
       router.push({ path });
-    } else {
+    } else if (next) {
       next();
     }
   },
@@ -124,9 +125,9 @@ export const actions: ActionTree<KeyCloakState, RootState> = {
       dispatch('isVerified', true);
 
       dispatch('userRedirect', {
-        path: '/complete-profile',
+        path: '/profile/complete',
         next: 'null',
-        fromUrl: '/complete-profile'
+        fromUrl: '/profile/complete'
       });
     } catch (error) {
       if (error.response.status === 403) {
