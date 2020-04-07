@@ -15,6 +15,9 @@
         <ProjectInfoSummary :id="projectId" />
       </v-col>
       <v-col cols="12" flat>
+        <TeamSummary :id="projectId" />
+      </v-col>
+      <v-col cols="12" flat>
         <TechnicalReqSummary
           :id="projectId"
           :technicalReq="technicalReq"
@@ -120,6 +123,7 @@ import Loading from '@/Atomic/Loading/Loading.vue';
 import ClientID from '@/components/CreateApp/ClientID.vue';
 import TestAccountSummary from '@/components/CreateApp/TestAccountSummary.vue';
 import ProjectInfoSummary from '@/components/CreateApp/ProjectInfoSummary.vue';
+import TeamSummary from '@/components/CreateApp/TeamSummary.vue';
 import TechnicalReqSummary from '@/components/CreateApp/TechnicalReqSummary.vue';
 import PackageSelectSummary from '@/components/CreateApp/PackageSelectSummary.vue';
 
@@ -136,6 +140,7 @@ const SharedModule = namespace('SharedModule');
     ClientID,
     TestAccountSummary,
     ProjectInfoSummary,
+    TeamSummary,
     TechnicalReqSummary,
     PackageSelectSummary
   }

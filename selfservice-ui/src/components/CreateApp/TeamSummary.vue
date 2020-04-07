@@ -1,0 +1,99 @@
+/** * TeamSummary component */
+
+<template>
+  <v-card>
+    <Loading v-if="isLoading" />
+    <v-toolbar dense class="bc-subtitle-2" dark v-else>
+      <v-card-title>
+        {{ $t('summaryPage.teamTitle') }}
+        <v-spacer></v-spacer>
+        <v-icon small class="ml-3" @click="$router.push(`/project/${id}/team`)">mdi-pencil</v-icon>
+      </v-card-title>
+    </v-toolbar>
+
+    <v-list dense class="px-5" v-if="!isLoading">
+      <template v-for="(member, index) in team">
+        <v-list-item :key="member">
+          <v-list-item-content class="align-self-start pr-30">
+            {{
+            $t(getLabelKeyByRole())
+            }}
+            <span
+              class="small-hint pad-50"
+              v-html="$t(getLabelHintKeyByRole())"
+            ></span>
+          </v-list-item-content>
+          <v-list-item-content class="align-end">
+            <div>
+              <v-icon small class="mr-1">mdi-account</v-icon>
+              {{ member.firstName }}
+              {{ member.lastName }}
+            </div>
+            <div v-if="member.phone !== ''" class="ml-6">{{ member.phone }}</div>
+            <div v-if="member.email !== ''" class="ml-6">{{ member.email }}</div>
+          </v-list-item-content>
+        </v-list-item>
+        <v-divider :key="member" v-if="index < team.length - 1"></v-divider>
+      </template>
+    </v-list>
+  </v-card>
+</template>
+<script lang="ts">
+import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
+import { Getter, namespace, Action } from 'vuex-class';
+import { projectRoles } from '@/constants/enums';
+
+const TeamModule = namespace('TeamModule');
+
+@Component
+export default class TeamSummary extends Vue {
+  @Prop({ default: 0 })
+  public id!: number;
+
+  @TeamModule.Getter('getTeam')
+  public team!: any;
+  @TeamModule.Action('loadTeam')
+  public loadTeam!: any;
+
+  private isLoading: boolean = true;
+
+  private mounted() {
+    this.isLoading = true;
+    this.loadTeam(this.id);
+  }
+
+  private getLabelKeyByRole(teamMember: any) {
+    switch (teamMember.role) {
+      case projectRoles.developer:
+        return 'summaryPage.labelDeveloperContact';
+        break;
+      case projectRoles.manager:
+        return 'summaryPage.labelManagerContact';
+        break;
+      case projectRoles.cto:
+        return 'summaryPage.labelCtoContact';
+        break;
+      default:
+        return '';
+        break;
+    }
+  }
+
+  private getLabelHintKeyByRole(teamMember: any) {
+    switch (teamMember.role) {
+      case projectRoles.developer:
+        return 'summaryPage.developerHint';
+        break;
+      case projectRoles.manager:
+        return 'summaryPage.managerHint';
+        break;
+      case projectRoles.cto:
+        return 'summaryPage.ctoHint';
+        break;
+      default:
+        return '';
+        break;
+    }
+  }
+}
+</script>

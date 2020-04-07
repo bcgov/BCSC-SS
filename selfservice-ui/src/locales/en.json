@@ -92,7 +92,7 @@
     "projectInfoTitle": "Project Information",
     "labelProjectTitle": "Project name",
     "labelOrganizationName": "Organization name",
-    "labelTechnicalContact": "Developer",
+    "labelDeveloperContact": "Developer",
     "labelManagerContact": "Manager ",
     "labelCtoContact": "Executive Sponsor",
     "Next": "Next",
@@ -131,7 +131,8 @@
     "labelTestingMethod": "Testing Method",
     "labelTestingMethodHint": "This is the method you chose for testing in development. Please note that a production environment will require signing and encryption.",
     "SignedJWT": "Signed JWT",
-    "SecureJWT": "Secure JWT"
+    "SecureJWT": "Secure JWT",
+    "teamTitle": "Team"
   },
   "ClientID": {
     "pagetitle": "API Key / Client ID",
