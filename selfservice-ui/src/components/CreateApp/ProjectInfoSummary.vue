@@ -14,9 +14,7 @@
     <v-list dense class="px-5" v-if="!isLoading">
       <v-list-item>
         <v-list-item-content class="pr-30">
-          {{
-          $t('summaryPage.labelOrganizationName')
-          }}
+          {{ $t('summaryPage.labelOrganizationName') }}
           <span
             class="small-hint pad-50"
             v-html="$t('summaryPage.OrganizationNameHint')"
@@ -32,9 +30,7 @@
       <v-divider></v-divider>
       <v-list-item>
         <v-list-item-content class="pr-30">
-          {{
-          $t('summaryPage.labelProjectTitle')
-          }}
+          {{ $t('summaryPage.labelProjectTitle') }}
           <span
             class="small-hint pad-50"
             v-html="$t('summaryPage.projectNameHint')"
@@ -89,4 +85,3 @@ export default class ProjectInfoSummary extends Vue {
   }
 }
 </script>
-

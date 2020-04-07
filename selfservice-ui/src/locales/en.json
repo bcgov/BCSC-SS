@@ -204,5 +204,16 @@
     "titleComms": "Communications",
     "titleAgreements": "Agreements",
     "titleLiveSummary": "Live Summary"
+  },
+  "TeamRoles": {
+    "pagetitle": "Project team roles",
+    "pageInfo": "This is page info",
+    "tblHeadName": "Name",
+    "tblHeadMyRole": "My Role",
+    "tblHeadEmail": "Email",
+    "tblHeadPhone": "Work phone",
+    "labelRoledeveloper": "Developer",
+    "labelRolemanager": "Manager",
+    "labelRolecto": "Executive Sponsor"
   }
 }

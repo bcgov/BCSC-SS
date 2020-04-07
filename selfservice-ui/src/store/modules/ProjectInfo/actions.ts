@@ -109,7 +109,10 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
     commit('SET_LOADING', true);
     try {
       const { projectId } = data;
-      const response = await ProjectInfoService.updateStatusOfProject(projectId, 2);
+      const response = await ProjectInfoService.updateStatusOfProject(
+        projectId,
+        2
+      );
       if (response.data.testAccountSuccess) {
         commit('SET_TEST_ACCOUNT_SUCCESS', true);
       } else {

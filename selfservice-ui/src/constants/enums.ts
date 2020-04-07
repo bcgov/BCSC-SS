@@ -10,4 +10,11 @@ enum algorithamBase {
   SecureJWT = 2
 }
 
-export { projectRoles, algorithamBase };
+const projectRolesList = {
+  // const array for project role name cxonvertion
+  1: 'developer',
+  2: 'manager',
+  3: 'cto'
+};
+
+export { projectRoles, algorithamBase, projectRolesList };
