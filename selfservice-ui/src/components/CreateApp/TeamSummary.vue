@@ -16,11 +16,11 @@
         <v-list-item :key="member.id">
           <v-list-item-content class="align-self-start pr-30">
             {{
-            $t(getLabelKeyByRole(member))
+            $t(`summaryPage.${rolesList[member.role]}`)
             }}
             <span
               class="small-hint pad-50"
-              v-html="$t(getLabelHintKeyByRole(member))"
+              v-html="$t(`summaryPage.${rolesList[member.role]}Hint`)"
             ></span>
           </v-list-item-content>
           <v-list-item-content class="align-end">
@@ -41,7 +41,7 @@
 <script lang="ts">
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
-import { projectRoles } from '@/constants/enums';
+import { projectRolesList } from '@/constants/enums';
 import Loading from '@/Atomic/Loading/Loading.vue';
 
 const TeamModule = namespace('TeamRolesModule');
@@ -59,6 +59,7 @@ export default class TeamSummary extends Vue {
   public loadTeam!: any;
 
   private isLoading: boolean = true;
+  private rolesList: any = projectRolesList;
 
   @Watch('team')
   private onTeamChanged(val: any) {
@@ -68,40 +69,6 @@ export default class TeamSummary extends Vue {
   private mounted() {
     this.isLoading = true;
     this.loadTeam(this.id);
-  }
-
-  private getLabelKeyByRole(teamMember: any) {
-    switch (teamMember.role) {
-      case projectRoles.developer:
-        return 'summaryPage.labelDeveloperContact';
-        break;
-      case projectRoles.manager:
-        return 'summaryPage.labelManagerContact';
-        break;
-      case projectRoles.cto:
-        return 'summaryPage.labelCtoContact';
-        break;
-      default:
-        return '';
-        break;
-    }
-  }
-
-  private getLabelHintKeyByRole(teamMember: any) {
-    switch (teamMember.role) {
-      case projectRoles.developer:
-        return 'summaryPage.developerHint';
-        break;
-      case projectRoles.manager:
-        return 'summaryPage.managerHint';
-        break;
-      case projectRoles.cto:
-        return 'summaryPage.ctoHint';
-        break;
-      default:
-        return '';
-        break;
-    }
   }
 }
 </script>
