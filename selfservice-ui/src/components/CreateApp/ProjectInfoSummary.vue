@@ -7,16 +7,16 @@
       <v-card-title>
         {{ $t('summaryPage.projectInfoTitle') }}
         <v-spacer></v-spacer>
-        <v-icon small class="ml-3" @click="$router.push(`/project/${id}/info`)">mdi-pencil</v-icon>
+        <v-icon small class="ml-3" @click="$router.push(`/project/${id}/info`)"
+          >mdi-pencil</v-icon
+        >
       </v-card-title>
     </v-toolbar>
 
     <v-list dense class="px-5" v-if="!isLoading">
       <v-list-item>
         <v-list-item-content class="pr-30">
-          {{
-          $t('summaryPage.labelOrganizationName')
-          }}
+          {{ $t('summaryPage.labelOrganizationName') }}
           <span
             class="small-hint pad-50"
             v-html="$t('summaryPage.OrganizationNameHint')"
@@ -32,9 +32,7 @@
       <v-divider></v-divider>
       <v-list-item>
         <v-list-item-content class="pr-30">
-          {{
-          $t('summaryPage.labelProjectTitle')
-          }}
+          {{ $t('summaryPage.labelProjectTitle') }}
           <span
             class="small-hint pad-50"
             v-html="$t('summaryPage.projectNameHint')"
@@ -50,9 +48,7 @@
       <v-divider></v-divider>
       <v-list-item>
         <v-list-item-content class="align-self-start pr-30">
-          {{
-          $t('summaryPage.labelTechnicalContact')
-          }}
+          {{ $t('summaryPage.labelTechnicalContact') }}
           <span
             class="small-hint pad-50"
             v-html="$t('summaryPage.developerHint')"
@@ -64,16 +60,18 @@
             {{ selectedTechnical.firstName }}
             {{ selectedTechnical.lastName }}
           </div>
-          <div v-if="selectedTechnical.phone !== ''" class="ml-6">{{ selectedTechnical.phone }}</div>
-          <div v-if="selectedTechnical.email !== ''" class="ml-6">{{ selectedTechnical.email }}</div>
+          <div v-if="selectedTechnical.phone !== ''" class="ml-6">
+            {{ selectedTechnical.phone }}
+          </div>
+          <div v-if="selectedTechnical.email !== ''" class="ml-6">
+            {{ selectedTechnical.email }}
+          </div>
         </v-list-item-content>
       </v-list-item>
       <v-divider></v-divider>
       <v-list-item>
         <v-list-item-content class="align-self-start pr-30">
-          {{
-          $t('summaryPage.labelManagerContact')
-          }}
+          {{ $t('summaryPage.labelManagerContact') }}
           <span
             class="small-hint pad-50"
             v-html="$t('summaryPage.managerHint')"
@@ -85,16 +83,18 @@
             {{ selectedManager.firstName }}
             {{ selectedManager.lastName }}
           </div>
-          <div v-if="selectedManager.phone !== ''" class="ml-6">{{ selectedManager.phone }}</div>
-          <div v-if="selectedManager.email !== ''" class="ml-6">{{ selectedManager.email }}</div>
+          <div v-if="selectedManager.phone !== ''" class="ml-6">
+            {{ selectedManager.phone }}
+          </div>
+          <div v-if="selectedManager.email !== ''" class="ml-6">
+            {{ selectedManager.email }}
+          </div>
         </v-list-item-content>
       </v-list-item>
       <v-divider></v-divider>
       <v-list-item>
         <v-list-item-content class="align-self-start pr-30">
-          {{
-          $t('summaryPage.labelCtoContact')
-          }}
+          {{ $t('summaryPage.labelCtoContact') }}
           <span
             class="small-hint pad-50"
             v-html="$t('summaryPage.ctoHint')"
@@ -165,7 +165,7 @@ export default class ProjectInfoSummary extends Vue {
   @Watch('projectInfo')
   private ongetprojectInfoChanged(val: any) {
     this.isLoading = false;
-    this.setUsers(this.projectInfo);
+    // this.setUsers(this.projectInfo);
   }
 
   private getUserDetailsByRole(users: any, selectedRole: number) {
@@ -184,4 +184,3 @@ export default class ProjectInfoSummary extends Vue {
   }
 }
 </script>
-
