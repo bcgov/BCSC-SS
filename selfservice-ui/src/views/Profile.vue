@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Profile />
+    <Profile :step="step" />
   </div>
 </template>
 
@@ -14,5 +14,8 @@ import Profile from '@/components/Profile/Profile.vue';
     Profile
   }
 })
-export default class ProfileHome extends Vue {}
+export default class ProfileHome extends Vue {
+  @Prop({ default: '' })
+  public step!: string;
+}
 </script>

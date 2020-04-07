@@ -3,20 +3,25 @@
 <template>
   <v-card
     class="mt-5"
-    :class="showCannotSubmitError  && !isTechnicalInfoAvailable ? 'red-border' : '' "
+    :class="
+      showCannotSubmitError && !isTechnicalInfoAvailable ? 'red-border' : ''
+    "
   >
     <v-toolbar dense class="bc-subtitle-2" dark>
       <v-card-title>
         {{ $t('summaryPage.technicalReqTitle') }}
-        <v-icon small class="ml-3" @click="$router.push(`/project/${id}/technical`)">mdi-pencil</v-icon>
+        <v-icon
+          small
+          class="ml-3"
+          @click="$router.push(`/project/${id}/technical`)"
+          >mdi-pencil</v-icon
+        >
       </v-card-title>
     </v-toolbar>
     <v-list dense class="px-5">
       <v-list-item>
         <v-list-item-content class="pr-30">
-          {{
-          $t('summaryPage.labelApplicationUrl')
-          }}
+          {{ $t('summaryPage.labelApplicationUrl') }}
           <span
             class="small-hint pad-50"
             v-html="$t('summaryPage.applicationUrlHint')"
@@ -32,17 +37,20 @@
       <v-divider></v-divider>
       <v-list-item>
         <v-list-item-content class="align-self-start pr-30">
-          {{
-          $t('summaryPage.labelRedirectUrl')
-          }}
+          {{ $t('summaryPage.labelRedirectUrl') }}
           <span
             class="small-hint pad-50"
             v-html="$t('summaryPage.labelRedirectUrlHint')"
           ></span>
         </v-list-item-content>
         <v-list-item-content class="align-end">
-          <div v-for="redirectUri in technicalReq.redirectUris" :key="redirectUri">
-            <v-icon small class="mr-1" v-if="redirectUri !== ''">mdi-link</v-icon>
+          <div
+            v-for="redirectUri in technicalReq.redirectUris"
+            :key="redirectUri"
+          >
+            <v-icon small class="mr-1" v-if="redirectUri !== ''"
+              >mdi-link</v-icon
+            >
             {{ redirectUri }}
           </div>
         </v-list-item-content>
@@ -50,9 +58,7 @@
       <v-divider></v-divider>
       <v-list-item>
         <v-list-item-content class="pr-30">
-          {{
-          $t('summaryPage.labelTestingMethod')
-          }}
+          {{ $t('summaryPage.labelTestingMethod') }}
           <span
             class="small-hint pad-50"
             v-html="$t('summaryPage.labelTestingMethodHint')"
@@ -61,17 +67,21 @@
 
         <v-list-item-content class="align-end">
           <div v-if="technicalReq.signingEncryptionType">
-            <v-icon small class="mr-1">mdi-link</v-icon>
-            {{ $t(`summaryPage.${getTestingMethodName(technicalReq.signingEncryptionType)}`) }}
+            <v-icon small class="mr-1">mdi-format-list-checks</v-icon>
+            {{
+              $t(
+                `summaryPage.${getTestingMethodName(
+                  technicalReq.signingEncryptionType
+                )}`
+              )
+            }}
           </div>
         </v-list-item-content>
       </v-list-item>
-      <v-divider v-if="technicalReq.signingEncryptionType ===3"></v-divider>
-      <v-list-item v-if="technicalReq.signingEncryptionType ===3">
+      <v-divider v-if="technicalReq.signingEncryptionType === 3"></v-divider>
+      <v-list-item v-if="technicalReq.signingEncryptionType === 3">
         <v-list-item-content class="pr-30">
-          {{
-          $t('summaryPage.labelJWKSUrl')
-          }}
+          {{ $t('summaryPage.labelJWKSUrl') }}
           <span
             class="small-hint pad-50"
             v-html="$t('summaryPage.labelJWKSUrlHint')"
@@ -85,12 +95,10 @@
           </div>
         </v-list-item-content>
       </v-list-item>
-      <v-divider v-if="technicalReq.signingEncryptionType ===3"></v-divider>
-      <v-list-item v-if="technicalReq.signingEncryptionType ===3">
+      <v-divider v-if="technicalReq.signingEncryptionType === 3"></v-divider>
+      <v-list-item v-if="technicalReq.signingEncryptionType === 3">
         <v-list-item-content class="pr-30">
-          {{
-          $t('summaryPage.labelEncryptedResponseAlg')
-          }}
+          {{ $t('summaryPage.labelEncryptedResponseAlg') }}
           <span
             class="small-hint pad-50"
             v-html="$t('summaryPage.labelEncryptedResponseAlgHint')"
@@ -105,12 +113,10 @@
           </v-list-item-content>
         </v-list-item-content>
       </v-list-item>
-      <v-divider v-if="technicalReq.signingEncryptionType !==1"></v-divider>
-      <v-list-item v-if="technicalReq.signingEncryptionType !==1">
+      <v-divider v-if="technicalReq.signingEncryptionType !== 1"></v-divider>
+      <v-list-item v-if="technicalReq.signingEncryptionType !== 1">
         <v-list-item-content class="pr-30">
-          {{
-          $t('summaryPage.labelSignedResponseAlg')
-          }}
+          {{ $t('summaryPage.labelSignedResponseAlg') }}
           <span
             class="small-hint pad-50"
             v-html="$t('summaryPage.labelSignedResponseAlgHint')"
@@ -153,4 +159,3 @@ export default class TechnicalReqSummary extends Vue {
   }
 }
 </script>
-

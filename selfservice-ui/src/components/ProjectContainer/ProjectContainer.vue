@@ -1,7 +1,7 @@
 /** * Dashboard of app */
 
 <template>
-  <v-card class="mx-auto" style="max-width: 80%;">
+  <v-card class="mx-auto outer-card">
     <v-container>
       <v-row class="ma-5">
         <v-col cols="12" v-if="isLoading">
@@ -24,10 +24,11 @@
           <v-tabs slider-color="d-none" v-model="selectedTab">
             <v-tab class="font-weight-bold">{{ $t('projectContainer.titleDevSummary') }}</v-tab>
             <v-tab class="font-weight-bold">{{ $t('projectContainer.titleTeamRoles') }}</v-tab>
-            <v-tab class="font-weight-bold">{{ $t('projectContainer.titleLiveAccessReq') }}</v-tab>
             <v-tab class="font-weight-bold">{{ $t('projectContainer.titlePrivacy') }}</v-tab>
             <v-tab class="font-weight-bold">{{ $t('projectContainer.titleSecurity') }}</v-tab>
-            <v-tab class="font-weight-bold">{{ $t('projectContainer.titleLiveAccessKey') }}</v-tab>
+            <v-tab class="font-weight-bold">{{ $t('projectContainer.titleComms') }}</v-tab>
+            <v-tab class="font-weight-bold">{{ $t('projectContainer.titleAgreements') }}</v-tab>
+            <v-tab class="font-weight-bold">{{ $t('projectContainer.titleLiveSummary') }}</v-tab>
             <v-tab-item class="custom-tabs-items">
               <v-card flat>
                 <v-card-text>

@@ -81,15 +81,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
               class="pa-4 pt-6 v-card v-sheet theme--light"
             >
               <div
-                class="v-card__subtitle text-left bc-padding-left-0"
-              >
-                
-                
-              
-              </div>
-               
-              <div
-                class="v-input input theme--light v-text-field v-text-field--enclosed v-text-field--outlined"
+                class="bc-form-text"
                 rules="v => !!v || 'This field is required',v => {
     if (v === '') {
       return true;
@@ -99,102 +91,121 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
   },v => (v || '').length <= len || 'Invalid character length, max length ' + len"
               >
                 <div
-                  class="v-input__control"
+                  class="text-left my-1"
+                >
+                  
+                </div>
+                 
+                <!---->
+                 
+                <div
+                  class="v-input input theme--light v-text-field v-text-field--single-line v-text-field--solo v-text-field--enclosed v-text-field--outlined"
                 >
                   <div
-                    class="v-input__slot"
+                    class="v-input__control"
                   >
-                    <fieldset
-                      aria-hidden="true"
+                    <div
+                      class="v-input__slot"
                     >
-                      <legend
-                        style="width: 0px;"
+                      <fieldset
+                        aria-hidden="true"
                       >
-                        <span>
-                          ​
-                        </span>
-                      </legend>
-                    </fieldset>
-                    <div
-                      class="v-text-field__slot"
-                    >
-                      <input
-                        id="input-14"
-                        type="text"
-                      />
+                        <legend>
+                          <span>
+                            ​
+                          </span>
+                        </legend>
+                      </fieldset>
+                      <div
+                        class="v-text-field__slot"
+                      >
+                        <input
+                          id="input-14"
+                          type="text"
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div
-                    class="v-text-field__details"
-                  >
                     <div
-                      class="v-messages theme--light"
+                      class="v-text-field__details"
                     >
-                      <span
-                        class="v-messages__wrapper"
-                        name="message-transition"
-                        tag="div"
-                      />
+                      <div
+                        class="v-messages theme--light"
+                      >
+                        <span
+                          class="v-messages__wrapper"
+                          name="message-transition"
+                          tag="div"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
                
               <div
-                class="v-card__subtitle text-left bc-padding-left-0"
-              >
-                
-                
-              
-              </div>
-               
-              <div
-                class="v-input addUri theme--light v-text-field v-text-field--enclosed v-text-field--outlined"
+                class="bc-form-text addUri"
+                rules="v => !!v || 'This field is required',v => {
+    if (v === '') {
+      return true;
+    } else {
+      return /^(?:http(s)?:\\\\/\\\\/)[\\\\w.-]+(?:\\\\.[\\\\w\\\\.-]+)+[\\\\w\\\\-\\\\._~:/?#[\\\\]@!\\\\$&'\\\\(\\\\)\\\\*\\\\+,;=.]+$/.test(v) || ' must be valid URL';
+    }
+  }"
               >
                 <div
-                  class="v-input__control"
+                  class="text-left my-1"
+                >
+                  
+                </div>
+                 
+                <!---->
+                 
+                <div
+                  class="v-input input theme--light v-text-field v-text-field--single-line v-text-field--solo v-text-field--enclosed v-text-field--outlined"
                 >
                   <div
-                    class="v-input__slot"
+                    class="v-input__control"
                   >
-                    <fieldset
-                      aria-hidden="true"
+                    <div
+                      class="v-input__slot"
                     >
-                      <legend
-                        style="width: 0px;"
+                      <fieldset
+                        aria-hidden="true"
                       >
-                        <span>
-                          ​
-                        </span>
-                      </legend>
-                    </fieldset>
-                    <div
-                      class="v-text-field__slot"
-                    >
-                      <input
-                        id="input-17"
-                        type="text"
-                      />
+                        <legend>
+                          <span>
+                            ​
+                          </span>
+                        </legend>
+                      </fieldset>
+                      <div
+                        class="v-text-field__slot"
+                      >
+                        <input
+                          id="input-18"
+                          type="text"
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div
-                    class="v-text-field__details"
-                  >
                     <div
-                      class="v-messages theme--light"
+                      class="v-text-field__details"
                     >
-                      <span
-                        class="v-messages__wrapper"
-                        name="message-transition"
-                        tag="div"
-                      />
+                      <div
+                        class="v-messages theme--light"
+                      >
+                        <span
+                          class="v-messages__wrapper"
+                          name="message-transition"
+                          tag="div"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
                
               <div
-                class="v-card__subtitle text-left bc-padding-left-0"
+                class="v-card__title text-left bc-padding-left-0"
               >
                 
                 
@@ -223,7 +234,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                       style="height: auto;"
                     >
                       <div
-                        aria-labelledby="input-20"
+                        aria-labelledby="input-21"
                         class="v-input--radio-group__input"
                         role="radiogroup"
                       >
@@ -235,8 +246,8 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                           >
                             <input
                               aria-checked="true"
-                              id="input-21"
-                              name="radio-20"
+                              id="input-22"
+                              name="radio-21"
                               role="radio"
                               type="radio"
                               value="1"
@@ -251,11 +262,17 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                           </div>
                           <label
                             class="v-label theme--light"
-                            for="input-21"
+                            for="input-22"
                             style="left: 0px; position: relative;"
                           >
                             Simple JSON
                           </label>
+                        </div>
+                         
+                        <div
+                          class="small-hint radio-help"
+                        >
+                          
                         </div>
                          
                         <div
@@ -266,8 +283,8 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                           >
                             <input
                               aria-checked="false"
-                              id="input-23"
-                              name="radio-20"
+                              id="input-24"
+                              name="radio-21"
                               role="radio"
                               type="radio"
                               value="2"
@@ -282,11 +299,17 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                           </div>
                           <label
                             class="v-label theme--light"
-                            for="input-23"
+                            for="input-24"
                             style="left: 0px; position: relative;"
                           >
                             Signed JWT
                           </label>
+                        </div>
+                         
+                        <div
+                          class="small-hint radio-help"
+                        >
+                          
                         </div>
                          
                         <!---->
@@ -299,8 +322,8 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                           >
                             <input
                               aria-checked="false"
-                              id="input-25"
-                              name="radio-20"
+                              id="input-26"
+                              name="radio-21"
                               role="radio"
                               type="radio"
                               value="3"
@@ -315,11 +338,17 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                           </div>
                           <label
                             class="v-label theme--light"
-                            for="input-25"
+                            for="input-26"
                             style="left: 0px; position: relative;"
                           >
                             Secure JWT
                           </label>
+                        </div>
+                         
+                        <div
+                          class="small-hint radio-help"
+                        >
+                          
                         </div>
                       </div>
                     </div>
@@ -473,15 +502,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
               class="pa-4 pt-6 v-card v-sheet theme--light"
             >
               <div
-                class="v-card__subtitle text-left bc-padding-left-0"
-              >
-                
-                
-              
-              </div>
-               
-              <div
-                class="v-input input theme--light v-text-field v-text-field--enclosed v-text-field--outlined"
+                class="bc-form-text"
                 rules="v => !!v || 'This field is required',v => {
     if (v === '') {
       return true;
@@ -491,102 +512,121 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
   },v => (v || '').length <= len || 'Invalid character length, max length ' + len"
               >
                 <div
-                  class="v-input__control"
+                  class="text-left my-1"
+                >
+                  
+                </div>
+                 
+                <!---->
+                 
+                <div
+                  class="v-input input theme--light v-text-field v-text-field--single-line v-text-field--solo v-text-field--enclosed v-text-field--outlined"
                 >
                   <div
-                    class="v-input__slot"
+                    class="v-input__control"
                   >
-                    <fieldset
-                      aria-hidden="true"
+                    <div
+                      class="v-input__slot"
                     >
-                      <legend
-                        style="width: 0px;"
+                      <fieldset
+                        aria-hidden="true"
                       >
-                        <span>
-                          ​
-                        </span>
-                      </legend>
-                    </fieldset>
-                    <div
-                      class="v-text-field__slot"
-                    >
-                      <input
-                        id="input-46"
-                        type="text"
-                      />
+                        <legend>
+                          <span>
+                            ​
+                          </span>
+                        </legend>
+                      </fieldset>
+                      <div
+                        class="v-text-field__slot"
+                      >
+                        <input
+                          id="input-47"
+                          type="text"
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div
-                    class="v-text-field__details"
-                  >
                     <div
-                      class="v-messages theme--light"
+                      class="v-text-field__details"
                     >
-                      <span
-                        class="v-messages__wrapper"
-                        name="message-transition"
-                        tag="div"
-                      />
+                      <div
+                        class="v-messages theme--light"
+                      >
+                        <span
+                          class="v-messages__wrapper"
+                          name="message-transition"
+                          tag="div"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
                
               <div
-                class="v-card__subtitle text-left bc-padding-left-0"
-              >
-                
-                
-              
-              </div>
-               
-              <div
-                class="v-input addUri theme--light v-text-field v-text-field--enclosed v-text-field--outlined"
+                class="bc-form-text addUri"
+                rules="v => !!v || 'This field is required',v => {
+    if (v === '') {
+      return true;
+    } else {
+      return /^(?:http(s)?:\\\\/\\\\/)[\\\\w.-]+(?:\\\\.[\\\\w\\\\.-]+)+[\\\\w\\\\-\\\\._~:/?#[\\\\]@!\\\\$&'\\\\(\\\\)\\\\*\\\\+,;=.]+$/.test(v) || ' must be valid URL';
+    }
+  }"
               >
                 <div
-                  class="v-input__control"
+                  class="text-left my-1"
+                >
+                  
+                </div>
+                 
+                <!---->
+                 
+                <div
+                  class="v-input input theme--light v-text-field v-text-field--single-line v-text-field--solo v-text-field--enclosed v-text-field--outlined"
                 >
                   <div
-                    class="v-input__slot"
+                    class="v-input__control"
                   >
-                    <fieldset
-                      aria-hidden="true"
+                    <div
+                      class="v-input__slot"
                     >
-                      <legend
-                        style="width: 0px;"
+                      <fieldset
+                        aria-hidden="true"
                       >
-                        <span>
-                          ​
-                        </span>
-                      </legend>
-                    </fieldset>
-                    <div
-                      class="v-text-field__slot"
-                    >
-                      <input
-                        id="input-49"
-                        type="text"
-                      />
+                        <legend>
+                          <span>
+                            ​
+                          </span>
+                        </legend>
+                      </fieldset>
+                      <div
+                        class="v-text-field__slot"
+                      >
+                        <input
+                          id="input-51"
+                          type="text"
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div
-                    class="v-text-field__details"
-                  >
                     <div
-                      class="v-messages theme--light"
+                      class="v-text-field__details"
                     >
-                      <span
-                        class="v-messages__wrapper"
-                        name="message-transition"
-                        tag="div"
-                      />
+                      <div
+                        class="v-messages theme--light"
+                      >
+                        <span
+                          class="v-messages__wrapper"
+                          name="message-transition"
+                          tag="div"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
                
               <div
-                class="v-card__subtitle text-left bc-padding-left-0"
+                class="v-card__title text-left bc-padding-left-0"
               >
                 
                 
@@ -615,7 +655,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                       style="height: auto;"
                     >
                       <div
-                        aria-labelledby="input-52"
+                        aria-labelledby="input-54"
                         class="v-input--radio-group__input"
                         role="radiogroup"
                       >
@@ -627,8 +667,8 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                           >
                             <input
                               aria-checked="true"
-                              id="input-53"
-                              name="radio-52"
+                              id="input-55"
+                              name="radio-54"
                               role="radio"
                               type="radio"
                               value="1"
@@ -643,11 +683,17 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                           </div>
                           <label
                             class="v-label theme--light"
-                            for="input-53"
+                            for="input-55"
                             style="left: 0px; position: relative;"
                           >
                             Simple JSON
                           </label>
+                        </div>
+                         
+                        <div
+                          class="small-hint radio-help"
+                        >
+                          
                         </div>
                          
                         <div
@@ -658,8 +704,8 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                           >
                             <input
                               aria-checked="false"
-                              id="input-55"
-                              name="radio-52"
+                              id="input-57"
+                              name="radio-54"
                               role="radio"
                               type="radio"
                               value="2"
@@ -674,11 +720,17 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                           </div>
                           <label
                             class="v-label theme--light"
-                            for="input-55"
+                            for="input-57"
                             style="left: 0px; position: relative;"
                           >
                             Signed JWT
                           </label>
+                        </div>
+                         
+                        <div
+                          class="small-hint radio-help"
+                        >
+                          
                         </div>
                          
                         <!---->
@@ -691,8 +743,8 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                           >
                             <input
                               aria-checked="false"
-                              id="input-57"
-                              name="radio-52"
+                              id="input-59"
+                              name="radio-54"
                               role="radio"
                               type="radio"
                               value="3"
@@ -707,11 +759,17 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                           </div>
                           <label
                             class="v-label theme--light"
-                            for="input-57"
+                            for="input-59"
                             style="left: 0px; position: relative;"
                           >
                             Secure JWT
                           </label>
+                        </div>
+                         
+                        <div
+                          class="small-hint radio-help"
+                        >
+                          
                         </div>
                       </div>
                     </div>
@@ -865,15 +923,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
               class="pa-4 pt-6 v-card v-sheet theme--light"
             >
               <div
-                class="v-card__subtitle text-left bc-padding-left-0"
-              >
-                
-                
-              
-              </div>
-               
-              <div
-                class="v-input input theme--light v-text-field v-text-field--enclosed v-text-field--outlined"
+                class="bc-form-text"
                 rules="v => !!v || 'This field is required',v => {
     if (v === '') {
       return true;
@@ -883,102 +933,121 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
   },v => (v || '').length <= len || 'Invalid character length, max length ' + len"
               >
                 <div
-                  class="v-input__control"
+                  class="text-left my-1"
+                >
+                  
+                </div>
+                 
+                <!---->
+                 
+                <div
+                  class="v-input input theme--light v-text-field v-text-field--single-line v-text-field--solo v-text-field--enclosed v-text-field--outlined"
                 >
                   <div
-                    class="v-input__slot"
+                    class="v-input__control"
                   >
-                    <fieldset
-                      aria-hidden="true"
+                    <div
+                      class="v-input__slot"
                     >
-                      <legend
-                        style="width: 0px;"
+                      <fieldset
+                        aria-hidden="true"
                       >
-                        <span>
-                          ​
-                        </span>
-                      </legend>
-                    </fieldset>
-                    <div
-                      class="v-text-field__slot"
-                    >
-                      <input
-                        id="input-78"
-                        type="text"
-                      />
+                        <legend>
+                          <span>
+                            ​
+                          </span>
+                        </legend>
+                      </fieldset>
+                      <div
+                        class="v-text-field__slot"
+                      >
+                        <input
+                          id="input-80"
+                          type="text"
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div
-                    class="v-text-field__details"
-                  >
                     <div
-                      class="v-messages theme--light"
+                      class="v-text-field__details"
                     >
-                      <span
-                        class="v-messages__wrapper"
-                        name="message-transition"
-                        tag="div"
-                      />
+                      <div
+                        class="v-messages theme--light"
+                      >
+                        <span
+                          class="v-messages__wrapper"
+                          name="message-transition"
+                          tag="div"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
                
               <div
-                class="v-card__subtitle text-left bc-padding-left-0"
-              >
-                
-                
-              
-              </div>
-               
-              <div
-                class="v-input addUri theme--light v-text-field v-text-field--enclosed v-text-field--outlined"
+                class="bc-form-text addUri"
+                rules="v => !!v || 'This field is required',v => {
+    if (v === '') {
+      return true;
+    } else {
+      return /^(?:http(s)?:\\\\/\\\\/)[\\\\w.-]+(?:\\\\.[\\\\w\\\\.-]+)+[\\\\w\\\\-\\\\._~:/?#[\\\\]@!\\\\$&'\\\\(\\\\)\\\\*\\\\+,;=.]+$/.test(v) || ' must be valid URL';
+    }
+  }"
               >
                 <div
-                  class="v-input__control"
+                  class="text-left my-1"
+                >
+                  
+                </div>
+                 
+                <!---->
+                 
+                <div
+                  class="v-input input theme--light v-text-field v-text-field--single-line v-text-field--solo v-text-field--enclosed v-text-field--outlined"
                 >
                   <div
-                    class="v-input__slot"
+                    class="v-input__control"
                   >
-                    <fieldset
-                      aria-hidden="true"
+                    <div
+                      class="v-input__slot"
                     >
-                      <legend
-                        style="width: 0px;"
+                      <fieldset
+                        aria-hidden="true"
                       >
-                        <span>
-                          ​
-                        </span>
-                      </legend>
-                    </fieldset>
-                    <div
-                      class="v-text-field__slot"
-                    >
-                      <input
-                        id="input-81"
-                        type="text"
-                      />
+                        <legend>
+                          <span>
+                            ​
+                          </span>
+                        </legend>
+                      </fieldset>
+                      <div
+                        class="v-text-field__slot"
+                      >
+                        <input
+                          id="input-84"
+                          type="text"
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div
-                    class="v-text-field__details"
-                  >
                     <div
-                      class="v-messages theme--light"
+                      class="v-text-field__details"
                     >
-                      <span
-                        class="v-messages__wrapper"
-                        name="message-transition"
-                        tag="div"
-                      />
+                      <div
+                        class="v-messages theme--light"
+                      >
+                        <span
+                          class="v-messages__wrapper"
+                          name="message-transition"
+                          tag="div"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
                
               <div
-                class="v-card__subtitle text-left bc-padding-left-0"
+                class="v-card__title text-left bc-padding-left-0"
               >
                 
                 
@@ -1007,7 +1076,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                       style="height: auto;"
                     >
                       <div
-                        aria-labelledby="input-84"
+                        aria-labelledby="input-87"
                         class="v-input--radio-group__input"
                         role="radiogroup"
                       >
@@ -1019,8 +1088,8 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                           >
                             <input
                               aria-checked="true"
-                              id="input-85"
-                              name="radio-84"
+                              id="input-88"
+                              name="radio-87"
                               role="radio"
                               type="radio"
                               value="1"
@@ -1035,11 +1104,17 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                           </div>
                           <label
                             class="v-label theme--light"
-                            for="input-85"
+                            for="input-88"
                             style="left: 0px; position: relative;"
                           >
                             Simple JSON
                           </label>
+                        </div>
+                         
+                        <div
+                          class="small-hint radio-help"
+                        >
+                          
                         </div>
                          
                         <div
@@ -1050,8 +1125,8 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                           >
                             <input
                               aria-checked="false"
-                              id="input-87"
-                              name="radio-84"
+                              id="input-90"
+                              name="radio-87"
                               role="radio"
                               type="radio"
                               value="2"
@@ -1066,11 +1141,17 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                           </div>
                           <label
                             class="v-label theme--light"
-                            for="input-87"
+                            for="input-90"
                             style="left: 0px; position: relative;"
                           >
                             Signed JWT
                           </label>
+                        </div>
+                         
+                        <div
+                          class="small-hint radio-help"
+                        >
+                          
                         </div>
                          
                         <!---->
@@ -1083,8 +1164,8 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                           >
                             <input
                               aria-checked="false"
-                              id="input-89"
-                              name="radio-84"
+                              id="input-92"
+                              name="radio-87"
                               role="radio"
                               type="radio"
                               value="3"
@@ -1099,11 +1180,17 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                           </div>
                           <label
                             class="v-label theme--light"
-                            for="input-89"
+                            for="input-92"
                             style="left: 0px; position: relative;"
                           >
                             Secure JWT
                           </label>
+                        </div>
+                         
+                        <div
+                          class="small-hint radio-help"
+                        >
+                          
                         </div>
                       </div>
                     </div>

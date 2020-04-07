@@ -55,8 +55,11 @@
     "btnNext": "Next",
     "btnCancel": "Cancel",
     "btnSaveChanges": "Save Changes",
-    "labelTestMethod": "Select your testing method",
-    "labelTestMethodHint": "Choose your signing and encryption methods for testing below. These options are available to facilitate your testing. Please note that when you move into a production environment, it will be required that you enable signing and encryption at that time."
+    "labelTestMethod": "Select your data security and format",
+    "labelTestMethodHint": "Choose your signing and encryption methods for testing below. These options are available to facilitate your testing. Please note that when you move into a production environment, it will be required that you enable signing and encryption at that time.",
+    "SimpleJSONHint": "We return unsigned, unencrypted JSON format for easy testing",
+    "SignedJWTHint": "We return a signed JWT for more security",
+    "SecureJWTHint": "We return a signed and encrypted JWT for maximum security"
   },
   "selectPackage": {
     "pagetitle": "Select Package",
@@ -157,15 +160,19 @@
     "tblTitlCreated": "Created",
     "tblTitleProjectStatus": "Project status",
     "tblTitleProjectActions": "Actions",
-    "tblTitlrole": "Role",
+    "tblTitlrole": "My role",
     "noData": "There are no projects to view. Add one to start "
   },
   "profile": {
-    "pagetitle": "Complete Profile",
-    "titlePageInfo": "After you add your contact information, you will receive a confirmation email. Only users from the broader public sector or BC Government will be approved for access.",
+    "pageTitle": "Profile",
+    "pageCompleteTitle": "Complete Profile",
+    "titlePageInfoBCSC": "<p>Thank you for logging in with your BC Services Card. Please provide us with your Broader Public Sector agency work email address and phone number.</p><p>It should be noted all information collected is in a business context for business contact use only. Under the Freedom of Information and Protection of Privacy Act (FOIPPA), business contact information it is not considered Personal Information (PI). Please <a href='/contact-us'>contact us</a> with any questions.</p>",
+    "titlePageInfoIDIR": "<p>Thank you for logging in with your IDIR, which provides us with your work email address. Please provide us with your phone number.</p><p>It should be noted all information collected is in a business context for business contact use only. Under the Freedom of Information and Protection of Privacy Act (FOIPPA), business contact information it is not considered Personal Information (PI). Please <a href='/contact-us'>contact us</a> with any questions. </p>",
+    "titlePageCompleteInfo": "You can edit the following fields related to your profile",
     "labelEmail": "Email (work)",
     "labelPhone": "Phone",
     "btnContinue": "Continue",
+    "btnSaveChanges": "Save Changes",
     "errorMessageDomain": "Your email address does not match any of the eligible organizations in our BC Services Card Self Service System. If you believe you or your organization should have access to this system, please contact <a href='mailto:zorin.samji@gov.bc.ca'>IDIM Consulting</a> to be added. "
   },
   "home": {
@@ -181,21 +188,22 @@
     "txtgetStarted": "Get started"
   },
   "testAccountList": {
-    "pagetitle": "Add Test Accounts",
-    "pageinfo": "Some text for add test account",
-    "special_notes": "Past your test accounts without heading",
+    "pagetitle": "Load Test Accounts",
+    "pageinfo": "<h4>About Virtual Card test accounts</h4><p class=\"my-2\">This form allows you to upload test accounts to the BC Services Card Self-Service application. Users of this application can select one or more test accounts which will be provisioned from this test account pool. Test accounts are allocated discretely to the organization's project and will not be reused between projects.    </p><h4>Adding test accounts to the system</h4><p class=\"my-2\">As an IDIM representative, you are the user that can ensure there is a sufficient supply of virtual cards in this BC Services Card Self-Serve application so that users are not impeded from testing because of a lack of available test accounts.</p><p>To add test accounts, have a CSV file ready with your generated virtual card information in it. </p><ul><li> Copy from your CSV file and paste into the text area below. </li><li> Do not include the heading row which describes the column names.</li></ul>",
+    "special_notes": "Paste your CSV in this text box",
     "btnBack": "Go Back",
-    "btnSaveChanges": "Add Test Account",
+    "btnSaveChanges": "Load Test Account",
     "errorMessage": "Something went wrong.",
-    "successMessage": "Test Account created"
+    "successMessage": "Test accounts loaded"
   },
   "projectContainer": {
     "pagetitle": "Summary page",
     "titleDevSummary": "Dev Summary",
-    "titleTeamRoles": "Team Roles",
-    "titleLiveAccessReq": "Live Access Request",
+    "titleTeamRoles": "Team",
     "titlePrivacy": "Privacy",
     "titleSecurity": "Security",
-    "titleLiveAccessKey": "Receive Live Access Key"
+    "titleComms": "Communications",
+    "titleAgreements": "Agreements",
+    "titleLiveSummary": "Live Summary"
   }
 }

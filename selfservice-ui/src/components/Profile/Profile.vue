@@ -1,10 +1,14 @@
-/** * Complete Profile of app */
+/** * Create or Update Profile of app */
 
 <template>
   <v-card class="mx-auto card-width">
     <v-alert type="error" v-if="errorStatus">Something went wrong...</v-alert>
     <v-toolbar flat class="bc-subtitle" dark v-if="!errorStatus">
-      <v-toolbar-title>{{ $t('profile.pagetitle') }}</v-toolbar-title>
+      <v-toolbar-title>
+        {{ $t(isComplete ?
+        'profile.pageCompleteTitle' :
+        'profile.pageTitle') }}
+      </v-toolbar-title>
       <div class="flex-grow-1"></div>
     </v-toolbar>
     <v-divider></v-divider>
@@ -14,15 +18,22 @@
           <v-col cols="12" md="12">
             <v-alert
               type="error"
+              dense
+              outlined
               class="text-left"
               v-if="profileErrorStatus"
               v-html="$t('profile.errorMessageDomain')"
             ></v-alert>
             <v-card-subtitle
+              v-if="isComplete"
               class="text-left padding-0 bc-padding-left-0"
-              v-html="$t('profile.titlePageInfo')"
+              v-html="$t(filedsToShow.email ? 'profile.titlePageInfoBCSC' : 'profile.titlePageInfoIDIR')"
             ></v-card-subtitle>
-
+            <v-card-subtitle
+              v-else
+              class="text-left padding-0 bc-padding-left-0"
+              v-html="$t('profile.titlePageCompleteInfo')"
+            ></v-card-subtitle>
             <v-card-title class="text-left bc-padding-left-0">
               {{ userProfile.firstName }}
               {{ userProfile.lastName }}
@@ -56,9 +67,13 @@
                   :disabled="!form"
                   class="white--text"
                   depressed
-                  @click="completeProfile"
-                  @keyup.enter="completeProfile"
-                >{{ $t('profile.btnContinue') }}</Button>
+                  @click="createOrUpdateProfile"
+                  @keyup.enter="createOrUpdateProfile"
+                >
+                  {{ $t(isComplete ?
+                  'profile.btnContinue' :
+                  'profile.btnSaveChanges') }}
+                </Button>
               </v-card-actions>
             </v-card>
           </v-col>
@@ -79,11 +94,15 @@ const KeyCloakModule = namespace('KeyCloakModule');
 
 @Component({ components: { Input, Button } })
 export default class Dashboard extends Vue {
+  @Prop({ default: '' })
+  public step!: string;
+  private isComplete = this.step === 'complete';
+
   @KeyCloakModule.Getter('filedsToShow')
   private filedsToShow!: any;
   @KeyCloakModule.Action('updateProfile')
   private updateProfile!: any;
-  @KeyCloakModule.Getter('userProfile') private userProfile!: [];
+  @KeyCloakModule.Getter('userProfile') private userProfile!: any;
   @KeyCloakModule.Getter('errorStatus')
   private errorStatus!: any;
   @KeyCloakModule.Getter('profileErrorStatus')
@@ -96,9 +115,19 @@ export default class Dashboard extends Vue {
   private email: string = '';
   private phone: string = '';
 
-  private completeProfile() {
+  @Watch('userProfile')
+  private onUserProfileChanged(val: any) {
+    this.email = val.email;
+    this.phone = val.phone;
+  }
+
+  private createOrUpdateProfile() {
     const profile = { email: this.email, phone: this.phone };
     this.updateProfile(profile);
+  }
+
+  private mounted() {
+    this.onUserProfileChanged(this.userProfile);
   }
 }
 </script>

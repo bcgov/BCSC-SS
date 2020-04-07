@@ -62,22 +62,13 @@ exports[`TestAccount.vue renders props when passed with gettors 1`] = `
             loaderheight="4"
             tag="div"
           >
-            <v-list-item-content-stub>
-              
-              
-            
-            </v-list-item-content-stub>
+            <div
+              class="text-left"
+            />
           </v-card-stub>
         </v-col-stub>
          
-        <v-col-stub
-          class="col-12"
-          tag="div"
-        >
-          <!---->
-           
-          <!---->
-        </v-col-stub>
+        <!---->
          
         <v-col-stub
           cols="12"
@@ -89,14 +80,9 @@ exports[`TestAccount.vue renders props when passed with gettors 1`] = `
             loaderheight="4"
             tag="div"
           >
-            <v-list-item-content-stub>
-              
-              
-            
-            </v-list-item-content-stub>
-             
             <textarea-stub
               counter=""
+              helptext=""
               label=""
               outlined=""
               rows="10"

@@ -86,3 +86,16 @@
   background-color: transparent !important;
   border-color: $BCgovBlue5 !important;
 }
+
+.v-application .primary--text {
+  color: $BCgovBlue5 !important;
+  caret-color: $BCgovBlue5 !important;
+}
+
+.bc-form-text {
+  font-size: 18px;
+}
+.bc-help-text {
+  line-height: 22px;
+  color: $gray10;
+}
