@@ -18,6 +18,7 @@ import Help from '@/html/Help.vue';
 export default class HelpHome extends Vue {}
 </script>
 <style lang="scss">
+@import './../assets/styles/theme.scss';
 .help-page h1,
 .help-page h2,
 .help-page h3 {
@@ -30,5 +31,18 @@ export default class HelpHome extends Vue {}
 }
 .help-page {
   margin-bottom: 30px;
+}
+.help-page .menu ul {
+  background-color: $gray10;
+  display: flex;
+  padding: 15px;
+  & li {
+    list-style: none;
+    margin-right: 12px;
+    color: $BCgovFontColorInverted;
+    & a {
+      color: $BCgovFontColorInverted;
+    }
+  }
 }
 </style>
