@@ -68,11 +68,11 @@ exports[`AddProjectInfo.vue renders edit props when passed 1`] = `
               </v-card-title-stub>
                
               <v-card-subtitle-stub
-                class="text-left bc-padding-left-0"
+                class="text-left bc-padding-left-0 page-info"
               />
                
               <v-card-subtitle-stub
-                class="font-weight-bold text-left bc-padding-left-0"
+                class="font-weight-bold text-left bc-padding-left-0 org-title"
               >
                 
               </v-card-subtitle-stub>
@@ -334,11 +334,11 @@ exports[`AddProjectInfo.vue renders props when passed 1`] = `
               </v-card-title-stub>
                
               <v-card-subtitle-stub
-                class="text-left bc-padding-left-0"
+                class="text-left bc-padding-left-0 page-info"
               />
                
               <v-card-subtitle-stub
-                class="font-weight-bold text-left bc-padding-left-0"
+                class="font-weight-bold text-left bc-padding-left-0 org-title"
               >
                 
               </v-card-subtitle-stub>
