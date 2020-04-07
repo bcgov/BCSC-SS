@@ -49,7 +49,6 @@
 <script lang="ts">
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
-import { ProjectUserModel } from '@/models/ProjectInfoModel';
 import Loading from '@/Atomic/Loading/Loading.vue';
 
 const ProjectInfoModule = namespace('ProjectInfoModule');
