@@ -1,0 +1,8 @@
+server {
+    listen       ${JWKS_SERVER_PORT};
+    server_name  ${JWKS_SERVER_NAME};
+    location / {
+        root   /usr/share/nginx/json;
+        index  jwks.json;
+    }
+}
