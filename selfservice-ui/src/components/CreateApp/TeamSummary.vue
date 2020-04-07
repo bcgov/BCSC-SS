@@ -13,14 +13,14 @@
 
     <v-list dense class="px-5" v-if="!isLoading">
       <template v-for="(member, index) in team">
-        <v-list-item :key="member">
+        <v-list-item :key="member.id">
           <v-list-item-content class="align-self-start pr-30">
             {{
-            $t(getLabelKeyByRole())
+            $t(getLabelKeyByRole(member))
             }}
             <span
               class="small-hint pad-50"
-              v-html="$t(getLabelHintKeyByRole())"
+              v-html="$t(getLabelHintKeyByRole(member))"
             ></span>
           </v-list-item-content>
           <v-list-item-content class="align-end">
@@ -33,7 +33,7 @@
             <div v-if="member.email !== ''" class="ml-6">{{ member.email }}</div>
           </v-list-item-content>
         </v-list-item>
-        <v-divider :key="member" v-if="index < team.length - 1"></v-divider>
+        <v-divider :key="`divider-${member.id}`" v-if="index < team.length - 1"></v-divider>
       </template>
     </v-list>
   </v-card>
@@ -42,20 +42,28 @@
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
 import { projectRoles } from '@/constants/enums';
+import Loading from '@/Atomic/Loading/Loading.vue';
 
-const TeamModule = namespace('TeamModule');
+const TeamModule = namespace('TeamRolesModule');
 
-@Component
+@Component({
+  components: { Loading }
+})
 export default class TeamSummary extends Vue {
   @Prop({ default: 0 })
   public id!: number;
 
-  @TeamModule.Getter('getTeam')
+  @TeamModule.Getter('getTeamList')
   public team!: any;
   @TeamModule.Action('loadTeam')
   public loadTeam!: any;
 
   private isLoading: boolean = true;
+
+  @Watch('team')
+  private onTeamChanged(val: any) {
+    this.isLoading = false;
+  }
 
   private mounted() {
     this.isLoading = true;
