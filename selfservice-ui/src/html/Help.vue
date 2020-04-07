@@ -1,8 +1,14 @@
 <template>
   <div>
+    <div class="menu">
+      <ul>
+        <li><a href="#manager">Getting Started Info for Managers</a></li>
+        <li><a href="#developer">Getting Started Info for Developers</a></li>
+      </ul>
+    </div>
     <h1 class="">Learn more about the BC Services Card Self-Serve</h1>
 
-    <h2>Getting Started Info for Managers</h2>
+    <h2 id="manager">Getting Started Info for Managers</h2>
 
     <h3>About the BC Services Card</h3>
 
@@ -143,7 +149,7 @@
 
     <hr />
 
-    <h2>Getting Started Info for Developers</h2>
+    <h2 id="developer">Getting Started Info for Developers</h2>
 
     <h3>How to begin</h3>
 
@@ -254,3 +260,6 @@
 import { Vue } from 'vue-property-decorator';
 export default class Help extends Vue {}
 </script>
+<style lang="scss">
+@import './../assets/styles/theme.scss';
+</style>
