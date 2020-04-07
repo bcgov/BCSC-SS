@@ -6,9 +6,8 @@ enum projectRoles {
 }
 enum algorithamBase {
   // This Enum provides the list of algorithams.
-  SimpleJSON = 1,
-  SignedJWT = 2,
-  SecureJWT = 3
+  SignedJWT = 1,
+  SecureJWT = 2
 }
 
 const projectRolesList = {
