@@ -56,77 +56,91 @@ exports[`AddTeam.vue renders props when passed 1`] = `
         <div
           class="col col-12"
         >
-          <h2
-            class="text-left tab-headline"
-          >
-            
-        
-      
-          </h2>
-           
-          <h4
-            class="text-left tab-headline font-weight-medium"
-          >
-            
-        
-      
-          </h4>
-           
           <div
-            class="v-data-table mt-5 theme--light"
+            class="v-card v-card--flat v-sheet theme--light"
           >
-            <div
-              class="v-data-table__wrapper"
-            >
-              <table>
-                <thead
-                  class="tbl-head"
-                >
-                  <tr
-                    class="text-left"
-                  >
-                    <th
-                      class="text-left"
-                    >
-                      
-                    </th>
-                     
-                    <th
-                      class="text-left"
-                    >
-                      
-                    </th>
-                     
-                    <th
-                      class="text-left"
-                    >
-                      
-                    </th>
-                     
-                    <th
-                      class="text-left"
-                    >
-                      
-                    </th>
-                  </tr>
-                </thead>
-                 
-                <tbody />
-              </table>
-            </div>
-          </div>
-           
-          <button
-            class="btn v-btn v-btn--contained theme--light v-size--default primary normal"
-            name="button"
-            type="button"
-          >
-            <span
-              class="v-btn__content"
+            <h2
+              class="text-left tab-headline"
             >
               
-            </span>
-          </button>
+          
+        
+            </h2>
+             
+            <h4
+              class="text-left tab-headline font-weight-medium"
+            >
+              
+          
+        
+            </h4>
+             
+            <div
+              class="v-data-table mt-5 theme--light"
+            >
+              <div
+                class="v-data-table__wrapper"
+              >
+                <table>
+                  <thead
+                    class="tbl-head"
+                  >
+                    <tr
+                      class="text-left"
+                    >
+                      <th
+                        class="text-left"
+                      >
+                        
+                      </th>
+                       
+                      <th
+                        class="text-left"
+                      >
+                        
+                      </th>
+                       
+                      <th
+                        class="text-left"
+                      >
+                        
+                      </th>
+                       
+                      <th
+                        class="text-left"
+                      >
+                        
+                      </th>
+                       
+                      <!---->
+                    </tr>
+                  </thead>
+                   
+                  <tbody />
+                </table>
+              </div>
+            </div>
+             
+            <div
+              class="v-card__actions"
+            >
+              <div
+                class="spacer"
+              />
+               
+              <button
+                class="btn v-btn v-btn--contained theme--light v-size--default primary normal"
+                name="button"
+                type="button"
+              >
+                <span
+                  class="v-btn__content"
+                >
+                  
+                </span>
+              </button>
+            </div>
+          </div>
         </div>
          
         <div
@@ -145,7 +159,7 @@ exports[`AddTeam.vue renders props when passed 1`] = `
                 style="z-index: 0;"
               >
                 <div
-                  class="v-dialog v-dialog--persistent"
+                  class="v-dialog"
                   style="width: 70%; display: none;"
                 />
               </div>
@@ -265,77 +279,91 @@ exports[`AddTeam.vue submit form on onlick  1`] = `
         <div
           class="col col-12"
         >
-          <h2
-            class="text-left tab-headline"
-          >
-            
-        
-      
-          </h2>
-           
-          <h4
-            class="text-left tab-headline font-weight-medium"
-          >
-            
-        
-      
-          </h4>
-           
           <div
-            class="v-data-table mt-5 theme--light"
+            class="v-card v-card--flat v-sheet theme--light"
           >
-            <div
-              class="v-data-table__wrapper"
-            >
-              <table>
-                <thead
-                  class="tbl-head"
-                >
-                  <tr
-                    class="text-left"
-                  >
-                    <th
-                      class="text-left"
-                    >
-                      
-                    </th>
-                     
-                    <th
-                      class="text-left"
-                    >
-                      
-                    </th>
-                     
-                    <th
-                      class="text-left"
-                    >
-                      
-                    </th>
-                     
-                    <th
-                      class="text-left"
-                    >
-                      
-                    </th>
-                  </tr>
-                </thead>
-                 
-                <tbody />
-              </table>
-            </div>
-          </div>
-           
-          <button
-            class="btn v-btn v-btn--contained theme--light v-size--default primary normal"
-            name="button"
-            type="button"
-          >
-            <span
-              class="v-btn__content"
+            <h2
+              class="text-left tab-headline"
             >
               
-            </span>
-          </button>
+          
+        
+            </h2>
+             
+            <h4
+              class="text-left tab-headline font-weight-medium"
+            >
+              
+          
+        
+            </h4>
+             
+            <div
+              class="v-data-table mt-5 theme--light"
+            >
+              <div
+                class="v-data-table__wrapper"
+              >
+                <table>
+                  <thead
+                    class="tbl-head"
+                  >
+                    <tr
+                      class="text-left"
+                    >
+                      <th
+                        class="text-left"
+                      >
+                        
+                      </th>
+                       
+                      <th
+                        class="text-left"
+                      >
+                        
+                      </th>
+                       
+                      <th
+                        class="text-left"
+                      >
+                        
+                      </th>
+                       
+                      <th
+                        class="text-left"
+                      >
+                        
+                      </th>
+                       
+                      <!---->
+                    </tr>
+                  </thead>
+                   
+                  <tbody />
+                </table>
+              </div>
+            </div>
+             
+            <div
+              class="v-card__actions"
+            >
+              <div
+                class="spacer"
+              />
+               
+              <button
+                class="btn v-btn v-btn--contained theme--light v-size--default primary normal"
+                name="button"
+                type="button"
+              >
+                <span
+                  class="v-btn__content"
+                >
+                  
+                </span>
+              </button>
+            </div>
+          </div>
         </div>
          
         <div
@@ -354,7 +382,7 @@ exports[`AddTeam.vue submit form on onlick  1`] = `
                 style="z-index: 0;"
               >
                 <div
-                  class="v-dialog v-dialog--persistent"
+                  class="v-dialog"
                   style="width: 70%; display: none;"
                 />
               </div>
