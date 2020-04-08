@@ -48,23 +48,7 @@
         <div class="text-center">
           <v-dialog v-model="dialog" persistent width="70%" class="text-left">
             <v-card>
-              <AddTeamMember :id="id" />
-
-              <!-- <v-card-actions>
-                <v-spacer></v-spacer>
-                <Button
-                  @click="dialog = false"
-                  aria-label="Back Button"
-                  secondary
-                  >{{ $t('summaryPage.btnAgreeBack') }}</Button
-                >
-                <Button
-                  class="white--text submit-package ml-6"
-                  depressed
-                  @click="addTeamMember"
-                  >{{ $t('summaryPage.btnAgree') }}</Button
-                >
-              </v-card-actions> -->
+              <AddTeamMember :id="id" @toggleAddMember="toggleAddMember" />
             </v-card>
           </v-dialog>
         </div>

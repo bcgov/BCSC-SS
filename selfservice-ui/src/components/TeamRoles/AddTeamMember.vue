@@ -72,7 +72,7 @@
             <v-card-actions>
               <v-spacer></v-spacer>
               <Button
-                @click="dialog = false"
+                @click="$emit('toggleAddMember', false)"
                 aria-label="Back Button"
                 secondary
                 >{{ $t('addTeamMember.btnCancel') }}</Button
@@ -112,6 +112,8 @@ const TeamRolesModule = namespace('TeamRolesModule');
 export default class AddTeamMember extends Vue {
   @Prop({ default: 0 })
   public id!: number;
+  @Prop()
+  public toggleAddMember: any;
 
   public userDetails: TeamRoleModel = {
     email: '',
