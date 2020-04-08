@@ -9,10 +9,12 @@ import { RootState } from '../../types';
  * Sharedmodule state
  */
 export const state: TeamRoleState = {
-  teamRoles: {},
+  teamRoles: [],
   isLoading: false,
   successStatus: false,
-  errorStatus: false
+  errorStatus: false,
+  memberAdded: false,
+  memberAddedError: false
 };
 
 const namespaced: boolean = true;

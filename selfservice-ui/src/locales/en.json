@@ -205,7 +205,7 @@
     "titleAgreements": "Agreements",
     "titleLiveSummary": "Live Summary"
   },
-  "TeamRoles": {
+  "teamRoles": {
     "pagetitle": "Project team roles",
     "pageInfo": "This is page info",
     "tblHeadName": "Name",
@@ -214,6 +214,17 @@
     "tblHeadPhone": "Work phone",
     "labelRoledeveloper": "Developer",
     "labelRolemanager": "Manager",
-    "labelRolecto": "Executive Sponsor"
+    "labelRolecto": "Executive Sponsor",
+    "btnAddTeamMember": "Add team member"
+  },
+  "addTeamMember": {
+    "pagetitle": "Add a team member",
+    "contactInfo": "Contact information",
+    "roleTitle": "Role",
+    "labelRoledeveloper": "Developer",
+    "labelRolemanager": "Manager",
+    "labelRolecto": "Executive Sponsor",
+    "btnCancel": "Cancel",
+    "btnSumbmit": "Add this person"
   }
 }

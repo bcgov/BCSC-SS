@@ -31,5 +31,22 @@ export const actions: ActionTree<TeamRoleState, RootState> = {
     commit('SET_SUCESS', false);
     commit('SET_ERROR', false);
     commit('SET_LOADING', false);
+  },
+  /**
+   * add team member
+   * @param {*} { commit }
+   */
+  async addTeamMember({ commit }, { userDetails, projectId }) {
+    commit('SET_LOADING', true);
+    try {
+      const roles = await TeamRoles.addTeamMember(userDetails, projectId);
+      commit('SET_MEMBER_ADDED', true);
+      commit('SET_MEMBER_ADDED_ERROR', false);
+      commit('SET_LOADING', false);
+    } catch {
+      commit('SET_MEMBER_ADDED', false);
+      commit('SET_MEMBER_ADDED_ERROR', true);
+      commit('SET_LOADING', false);
+    }
   }
 };

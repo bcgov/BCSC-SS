@@ -1,6 +1,10 @@
+import { TeamRoleModel } from '@/models/TeamRoleModel';
+
 export interface TeamRoleState {
-  teamRoles?: any;
+  teamRoles?: TeamRoleModel[];
   isLoading: boolean;
   successStatus?: boolean;
   errorStatus?: boolean;
+  memberAdded?: boolean;
+  memberAddedError?: boolean;
 }
