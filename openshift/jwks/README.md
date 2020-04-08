@@ -1,3 +1,5 @@
+# JWKS Readme
+
  This is a build of a really simple nginx docker container which provides a jwks.json file from a URL for JWT encryption purposes
 
  You can build it using docker or docker compose
@@ -37,4 +39,22 @@
 ```
 The only value which can be changed is the "n" property which is the public key obtained from demojwks.cert.pem , converted from the PEM format in this file to the JWKS modulo format using an online tool eg. https://8gwifi.org/jwkconvertfunctions.jsp
 
+## OpenShift
+
+## Setting up builds and deployments
+
+1. Upload `jwk-build.yaml` to the `tools` environment
+2. Upload `jwk-deploy.yaml` to the dev/test/prod/whatever environment.  Currently we only are deploying to test.
+
+Make sure you update the environment variables as appropriate to each environment.
+
  
+## Deploying a build
+
+Deploying the latest JWKS code is simple.  We do not use a Jenkins pipeline here.
+
+1. Login to OpenShift and navigate to the  "tools" project
+2. Builds > Builds, then select `jwks-build-test`
+3. Click 'Start Build' in the top right.
+
+This will trigger a build, which takes ~2-5 minutes, and then after that a deployment in the TEST environment (another 1-2 mins).  Then the deployment should be complete and the changes should be updated at `https://services-card-jwks-demo.pathfinder.gov.bc.ca/`
