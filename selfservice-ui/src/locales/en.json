@@ -75,6 +75,13 @@
     "btnCancel": "Cancel",
     "btnSaveChanges": "Save Changes"
   },
+  "team": {
+    "pageTitle": "Team",
+    "btnBack": "Go Back",
+    "btnNext": "Next",
+    "btnCancel": "Cancel",
+    "btnSaveChanges": "Save Changes"
+  },
   "testAccount": {
     "pagetitle": "Test Accounts",
     "pageinfo": "In order to test your configuration, we would like to know how many test accounts you need for {package}. Please note the test data provided to you will be randomized unless you indicate you have preferred customization. If you select the randomized test account, you can expect the test accounts immediately or within X days.",

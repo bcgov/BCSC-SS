@@ -1,9 +1,8 @@
 /** * TeamSummary component */
 
 <template>
-  <v-card>
-    <Loading v-if="isLoading" />
-    <v-toolbar dense class="bc-subtitle-2" dark v-else>
+  <v-card class="mt-5" :class="!isTeamAvailable ? 'red-border' : ''">
+    <v-toolbar dense class="bc-subtitle-2" dark>
       <v-card-title>
         {{ $t('summaryPage.teamTitle') }}
         <v-spacer></v-spacer>
@@ -11,7 +10,7 @@
       </v-card-title>
     </v-toolbar>
 
-    <v-list dense class="px-5" v-if="!isLoading">
+    <v-list dense class="px-5">
       <template v-for="(member, index) in team">
         <v-list-item :key="member.id">
           <v-list-item-content class="align-self-start pr-30">
@@ -42,33 +41,18 @@
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
 import { projectRolesList } from '@/constants/enums';
-import Loading from '@/Atomic/Loading/Loading.vue';
 
-const TeamModule = namespace('TeamRolesModule');
-
-@Component({
-  components: { Loading }
-})
+@Component
 export default class TeamSummary extends Vue {
   @Prop({ default: 0 })
   public id!: number;
 
-  @TeamModule.Getter('getTeamList')
+  @Prop({ default: {} })
   public team!: any;
-  @TeamModule.Action('loadTeam')
-  public loadTeam!: any;
 
-  private isLoading: boolean = true;
+  @Prop({ default: false })
+  public isTeamAvailable!: boolean;
+
   private rolesList: any = projectRolesList;
-
-  @Watch('team')
-  private onTeamChanged(val: any) {
-    this.isLoading = false;
-  }
-
-  private mounted() {
-    this.isLoading = true;
-    this.loadTeam(this.id);
-  }
 }
 </script>

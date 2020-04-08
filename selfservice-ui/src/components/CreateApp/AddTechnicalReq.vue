@@ -305,7 +305,7 @@ export default class AddTechnicalReq extends Vue {
     }
   }
   private goBack() {
-    const redirectPage = this.showWizardExperience() ? 'info' : 'summary';
+    const redirectPage = this.showWizardExperience() ? 'team' : 'summary';
     this.redirectFromSummaryPage(false);
     this.$router.push(`/project/${this.projectId}/${redirectPage}/`);
   }

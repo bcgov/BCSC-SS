@@ -388,50 +388,40 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
       flat=""
     >
       <div
-        class="v-card v-sheet theme--light"
+        class="mt-5 v-card v-sheet theme--light red-border"
       >
-        <div
-          class="container"
+        <header
+          class="bc-subtitle-2 v-sheet v-sheet--tile theme--dark v-toolbar v-toolbar--dense"
+          style="height: 48px;"
         >
           <div
-            class="layout d-flex align-center justify-center row wrap"
+            class="v-toolbar__content"
+            style="height: 48px;"
           >
             <div
-              class="mt-10"
-              col="4"
+              class="v-card__title"
             >
+              
+      
+      
               <div
-                aria-valuemax="100"
-                aria-valuemin="0"
-                class="v-progress-linear loading v-progress-linear--rounded theme--light"
-                role="progressbar"
-                style="height: 6px;"
-              >
-                <div
-                  class="v-progress-linear__background primary"
-                  style="opacity: 0.3; left: 0%; width: 100%;"
-                />
-                <div
-                  class="v-progress-linear__buffer"
-                />
-                <div
-                  class="v-progress-linear__indeterminate v-progress-linear__indeterminate--active"
-                >
-                  <div
-                    class="v-progress-linear__indeterminate long primary"
-                  />
-                  <div
-                    class="v-progress-linear__indeterminate short primary"
-                  />
-                </div>
-              </div>
+                class="spacer"
+              />
                
-              <span />
+              <i
+                class="v-icon notranslate ml-3 v-icon--link mdi mdi-pencil theme--dark"
+                role="button"
+                style="font-size: 16px;"
+                tabindex="0"
+              />
             </div>
           </div>
-        </div>
+        </header>
          
-        <!---->
+        <div
+          class="v-list px-5 v-sheet v-sheet--tile theme--light v-list--dense"
+          role="list"
+        />
       </div>
     </div>
      

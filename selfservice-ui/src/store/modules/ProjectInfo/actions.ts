@@ -25,7 +25,7 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
       commit('SET_PROJECTINFO_MESSAGE', i18n.t('PROJECTINFO_ADD_MESSAGE'));
       commit('SET_EDIT_PROJECTINFO', projectinfo.data);
       const id = projectinfo.data.id;
-      router.push(`/project/${id}/technical/`);
+      router.push(`/project/${id}/team/`);
       // dispatch('loadProjectInfo');
     } catch {
       commit('SET_PROJECTINFO_SUCCESSFULLY', false);
@@ -83,7 +83,7 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
     try {
       // const { data, redirect } = projectData;
       const isRedirectFromSummaryPage = rootState.SharedModule.isSummaryPage;
-      const redirect = !isRedirectFromSummaryPage ? 'technical' : 'summary';
+      const redirect = !isRedirectFromSummaryPage ? 'team' : 'summary';
       const { id } = data;
       await ProjectInfoService.updateProjectInfo(data);
       commit('SET_LOADING', false);

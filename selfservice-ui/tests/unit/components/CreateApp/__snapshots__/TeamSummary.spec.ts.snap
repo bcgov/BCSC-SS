@@ -2,7 +2,7 @@
 
 exports[`TeamSummary.vue render data 1`] = `
 <div
-  class="v-card v-sheet theme--light"
+  class="mt-5 v-card v-sheet theme--light red-border"
 >
   <header
     class="bc-subtitle-2 v-sheet v-sheet--tile theme--dark v-toolbar v-toolbar--dense"
@@ -35,113 +35,84 @@ exports[`TeamSummary.vue render data 1`] = `
   <div
     class="v-list px-5 v-sheet v-sheet--tile theme--light v-list--dense"
     role="list"
-  >
-    <div
-      class="v-list-item theme--light"
-      role="listitem"
-      tabindex="-1"
-    >
-      <div
-        class="v-list-item__content align-self-start pr-30"
-      >
-        
-          
-          
-        <span
-          class="small-hint pad-50"
-        />
-      </div>
-       
-      <div
-        class="v-list-item__content align-end"
-      >
-        <div>
-          <i
-            aria-hidden="true"
-            class="v-icon notranslate mr-1 mdi mdi-account theme--light"
-            style="font-size: 16px;"
-          />
-          
-            
-            
-          
-        </div>
-         
-        <div
-          class="ml-6"
-        >
-          
-        </div>
-         
-        <div
-          class="ml-6"
-        >
-          
-        </div>
-      </div>
-    </div>
-     
-    <!---->
-  </div>
+  />
 </div>
 `;
 
 exports[`TeamSummary.vue renders props when passed 1`] = `
 <v-card-stub
+  class="mt-5 red-border"
   loaderheight="4"
   tag="div"
 >
-  <loading-stub />
+  <v-toolbar-stub
+    class="bc-subtitle-2"
+    dark="true"
+    dense="true"
+    extensionheight="48"
+    src=""
+    tag="header"
+    tile="true"
+  >
+    <v-card-title-stub>
+      
+      
+      
+      <v-spacer-stub />
+       
+      <v-icon-stub
+        class="ml-3"
+        small=""
+      >
+        mdi-pencil
+      </v-icon-stub>
+    </v-card-title-stub>
+  </v-toolbar-stub>
    
-  <!---->
+  <v-list-stub
+    class="px-5"
+    dense="true"
+    tag="div"
+    tile="true"
+  />
 </v-card-stub>
 `;
 
 exports[`TeamSummary.vue renders props when passed with gettors 1`] = `
 <div
-  class="v-card v-sheet theme--light"
+  class="mt-5 v-card v-sheet theme--light red-border"
 >
-  <div
-    class="container"
+  <header
+    class="bc-subtitle-2 v-sheet v-sheet--tile theme--dark v-toolbar v-toolbar--dense"
+    style="height: 48px;"
   >
     <div
-      class="layout d-flex align-center justify-center row wrap"
+      class="v-toolbar__content"
+      style="height: 48px;"
     >
       <div
-        class="mt-10"
-        col="4"
+        class="v-card__title"
       >
+        
+      
+      
         <div
-          aria-valuemax="100"
-          aria-valuemin="0"
-          class="v-progress-linear loading v-progress-linear--rounded theme--light"
-          role="progressbar"
-          style="height: 6px;"
-        >
-          <div
-            class="v-progress-linear__background primary"
-            style="opacity: 0.3; left: 0%; width: 100%;"
-          />
-          <div
-            class="v-progress-linear__buffer"
-          />
-          <div
-            class="v-progress-linear__indeterminate v-progress-linear__indeterminate--active"
-          >
-            <div
-              class="v-progress-linear__indeterminate long primary"
-            />
-            <div
-              class="v-progress-linear__indeterminate short primary"
-            />
-          </div>
-        </div>
+          class="spacer"
+        />
          
-        <span />
+        <i
+          class="v-icon notranslate ml-3 v-icon--link mdi mdi-pencil theme--dark"
+          role="button"
+          style="font-size: 16px;"
+          tabindex="0"
+        />
       </div>
     </div>
-  </div>
+  </header>
    
-  <!---->
+  <div
+    class="v-list px-5 v-sheet v-sheet--tile theme--light v-list--dense"
+    role="list"
+  />
 </div>
 `;
