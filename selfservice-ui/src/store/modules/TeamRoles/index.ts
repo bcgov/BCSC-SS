@@ -14,7 +14,15 @@ export const state: TeamRoleState = {
   successStatus: false,
   errorStatus: false,
   memberAdded: false,
-  memberAddedError: false
+  memberAddedError: false,
+  memberAddedErrorList: {},
+  memberDetails: {
+    email: '',
+    phone: '',
+    firstName: '',
+    lastName: '',
+    role: 1
+  }
 };
 
 const namespaced: boolean = true;

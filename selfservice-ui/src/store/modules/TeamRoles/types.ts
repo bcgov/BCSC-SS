@@ -7,4 +7,6 @@ export interface TeamRoleState {
   errorStatus?: boolean;
   memberAdded?: boolean;
   memberAddedError?: boolean;
+  memberAddedErrorList?: any;
+  memberDetails: TeamRoleModel;
 }

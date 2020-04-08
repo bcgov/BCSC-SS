@@ -22,5 +22,14 @@ export const getters: GetterTree<TeamRoleState, RootState> = {
   },
   getTeamList(state) {
     return state.teamRoles;
+  },
+  memberErrorStatus(state) {
+    return state.memberAddedError;
+  },
+  getMemberErrorList(state) {
+    return state.memberAddedErrorList;
+  },
+  getMemberDetails(state) {
+    return state.memberDetails;
   }
 };

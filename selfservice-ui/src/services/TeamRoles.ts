@@ -14,4 +14,18 @@ export class TeamRoles {
 
     return await axios.post(teamURL, userDetails);
   }
+  public static async getTeamMember(projectId: number, memberId: number) {
+    const teamURL = getUrl(TEAMROLE_URL, projectId);
+
+    return await axios.get(`${teamURL}/${memberId}`);
+  }
+  public static async updateTeamMember(
+    userDetails: any,
+    projectId: number,
+    memberId: number
+  ) {
+    const teamURL = getUrl(TEAMROLE_URL, projectId);
+
+    return await axios.put(`${teamURL}/${memberId}`, userDetails);
+  }
 }
