@@ -26,7 +26,7 @@
             )
             }}
           </Button>
-          <Button class="white--text ml-6" depressed @click="nextRedirect">
+          <Button class="white--text submit-team ml-6" depressed @click="nextRedirect">
             {{
             $t(
             showWizardExperience()
