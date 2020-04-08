@@ -214,7 +214,7 @@
   },
   "teamRoles": {
     "pagetitle": "Project team roles",
-    "pageInfo": "This is page info",
+    "pageInfo": "To begin your development, only the Developer is required. A Manager will be required to \"Mark Development Complete\" and move your project along the route to implementation in a production environment. It will be the Manager and Executive Sponsors' (both) to agree and attest to the measures required in Privacy, Security and work with IDIM Consulting to ensure compliance for production usage of the BC Services Card login application.",
     "tblHeadName": "Name",
     "tblHeadMyRole": "My Role",
     "tblHeadEmail": "Email",
@@ -222,7 +222,7 @@
     "labelRoledeveloper": "Developer",
     "labelRolemanager": "Manager",
     "labelRolecto": "Executive Sponsor",
-    "btnAddTeamMember": "Add team member"
+    "btnAddTeamMember": "+ Add team member"
   },
   "addTeamMember": {
     "pagetitle": "Add a team member",
@@ -232,6 +232,13 @@
     "labelRolemanager": "Manager",
     "labelRolecto": "Executive Sponsor",
     "btnCancel": "Cancel",
-    "btnSumbmit": "Add this person"
+    "btnSumbmit": "+ Add this person",
+    "labelFirstName": "First name",
+    "labelLastName": "Last name",
+    "labelWorkEmail": "Work email",
+    "labelPhone": "Phone",
+    "errorTitle": "please fix following errors",
+    "invalidDomain": "Your email address does not match any of the eligible organizations in our BC Services Card Self Service System. If you believe you or your organization should have access to this system, please contact <a href='mailto:zorin.samji@gov.bc.ca'>IDIM Consulting</a> to be added. ",
+    "roleAlreadyAssigned": "This role has already been assigned. Please select another role"
   }
 }

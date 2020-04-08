@@ -46,5 +46,21 @@ export const mutations: MutationTree<TeamRoleState> = {
    */
   SET_MEMBER_ADDED_ERROR(state, payload: any) {
     state.memberAddedError = payload;
+  },
+  /**
+   * set stae on error
+   * @param {*} state
+   * @param {*} payload
+   */
+  SET_MEMBER_ADDED_ERROR_LIST(state, data: any) {
+    state.memberAddedErrorList = data;
+  },
+  /**
+   * set state on members data
+   * @param {*} state
+   * @param {*} payload
+   */
+  SET_MEMBER_DETAILS(state, payload: any) {
+    state.memberDetails = payload;
   }
 };
