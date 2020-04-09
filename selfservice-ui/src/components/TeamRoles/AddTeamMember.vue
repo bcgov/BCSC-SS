@@ -49,7 +49,7 @@
                       rules.maxLength(250)
                     ]"
                     type="text"
-                    :disabled="editMode"
+                    :disabled="disabled()"
                   />
                   <Input
                     v-model="userDetails.lastName"
@@ -60,22 +60,22 @@
                       rules.maxLength(250)
                     ]"
                     type="text"
-                    :disabled="editMode"
+                    :disabled="disabled()"
                   />
                   <Input
                     v-model="userDetails.email"
                     :label="$t('addTeamMember.labelWorkEmail')"
                     :rules="[rules.required, rules.email, rules.maxLength(250)]"
                     type="text"
-                    :disabled="editMode"
+                    :disabled="disabled()"
                   />
 
                   <Input
                     v-model="userDetails.phone"
                     :label="$t('addTeamMember.labelPhone')"
-                    :rules="[rules.required, rules.maxLength(15)]"
                     type="text"
-                    :disabled="editMode"
+                    :disabled="disabled()"
+                    :optional="true"
                   />
                 </v-col>
                 <v-col
@@ -103,8 +103,8 @@
                       class="my-2"
                     ></v-radio>
                   </v-radio-group>
-                  <v-spacer></v-spacer>
-                  <v-card-actions>
+
+                  <v-card-actions class="btn-bottom ">
                     <v-spacer></v-spacer>
                     <Button
                       @click="$emit('toggleAddMember', false)"
@@ -142,6 +142,7 @@ import { TeamRoleModel } from '@/models/TeamRoleModel';
 import { memberDetails } from '@/store/modules/TeamRoles/defaults';
 
 const TeamRolesModule = namespace('TeamRolesModule');
+const KeyCloakModule = namespace('KeyCloakModule');
 
 @Component({
   components: {
@@ -179,6 +180,9 @@ export default class AddTeamMember extends Vue {
   public errorList: any = {};
 
   public userDetails: TeamRoleModel;
+
+  @KeyCloakModule.Getter('isAdmin')
+  private isAdmin!: any;
 
   private rules: any = validationRules;
   private projectRoles: any = projectRoles;
@@ -237,6 +241,12 @@ export default class AddTeamMember extends Vue {
       this.clearMemberData();
     }
   }
+  private disabled() {
+    if (this.editMode && !this.isAdmin) {
+      return true;
+    }
+    return false;
+  }
 
   private mounted() {
     this.getMemberDetails();
@@ -248,5 +258,9 @@ export default class AddTeamMember extends Vue {
 @import './../../assets/styles/theme.scss';
 .v-text-field input {
   padding: 3px 0 3px 0;
+}
+.btn-bottom {
+  bottom: 32px;
+  position: absolute;
 }
 </style>

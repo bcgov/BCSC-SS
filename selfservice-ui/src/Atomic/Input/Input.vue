@@ -3,8 +3,12 @@ important action on your service, such as Download or Submit. */
 
 <template>
   <div class="bc-form-text">
-    <div class="text-left my-1">{{label}}</div>
-    <div class="text-left mb-1 subtitle-2 bc-help-text" v-if="helpText !==''">{{helpText}}</div>
+    <div class="text-left my-1">
+      {{ label }} <span v-if="optional" class="optional">*optional</span>
+    </div>
+    <div class="text-left mb-1 subtitle-2 bc-help-text" v-if="helpText !== ''">
+      {{ helpText }}
+    </div>
 
     <v-text-field
       :value="value"
@@ -86,6 +90,13 @@ export default class Input extends Vue {
     default: ''
   })
   private helpText!: string;
+  /**
+   *  optional text
+   */
+  @Prop({
+    default: false
+  })
+  private optional!: boolean;
 
   /**
    * input
@@ -104,5 +115,10 @@ export default class Input extends Vue {
 .v-application .primary--text {
   color: $BCgovBlue5 !important;
   caret-color: $BCgovBlue5 !important;
+}
+.optional {
+  color: $BCgovABlue2;
+  font-size: 14px;
+  margin-left: 10px;
 }
 </style>

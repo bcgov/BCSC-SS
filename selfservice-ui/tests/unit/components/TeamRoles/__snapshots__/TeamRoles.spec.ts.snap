@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TeamRoles.vue renders props when passed with gettors 1`] = `
+<v-container-stub
+  tag="div"
+>
+  <v-row-stub
+    class="ma-5"
+    tag="div"
+  >
+    <v-col-stub
+      cols="12"
+      tag="div"
+    >
+      <v-card-stub
+        flat="true"
+        loaderheight="4"
+        tag="div"
+      >
+        <h2
+          class="text-left tab-headline"
+        >
+          
+          
+        
+        </h2>
+         
+        <h4
+          class="text-left tab-headline font-weight-medium"
+        >
+          
+          
+        
+        </h4>
+         
+        <!---->
+         
+        <v-card-actions-stub
+          class="mt-5"
+        >
+          <v-spacer-stub />
+           
+          <button-stub
+            color=""
+            name="button"
+            type="button"
+          >
+            
+          </button-stub>
+        </v-card-actions-stub>
+      </v-card-stub>
+    </v-col-stub>
+     
+    <v-col-stub
+      tag="div"
+    >
+      <div
+        class="text-center"
+      >
+        <v-dialog-stub
+          class="text-left"
+          closedelay="0"
+          contentclass=""
+          maxwidth="none"
+          opendelay="0"
+          origin="center center"
+          retainfocus="true"
+          transition="dialog-transition"
+          width="71%"
+        >
+          <v-card-stub
+            loaderheight="4"
+            tag="div"
+          >
+            <addteammember-stub
+              id="0"
+              memberid="0"
+            />
+          </v-card-stub>
+        </v-dialog-stub>
+      </div>
+    </v-col-stub>
+  </v-row-stub>
+</v-container-stub>
+`;
