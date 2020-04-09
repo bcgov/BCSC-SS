@@ -29,6 +29,7 @@ class TeamSchema(Schema):
 
     id = fields.Int()
     project_id = fields.Int(data_key='projectId')
+    user_id = fields.Int(data_key='userId')
     role = fields.Int(data_key='role', required=True, validate=validate.OneOf(list(map(int, ProjectRoles))))
 
     email = fields.Email(load_only=True, required=True, validate=validate.Length(min=5, max=250))

@@ -42,6 +42,9 @@ class TeamResource(Resource):
         """Get team."""
         team = ProjectUsersAssociation.find_all_by_project_id(project_id)
         data = TeamSchema().dump(team, many=True)
+        user = g.user
+        for team_member in data:
+            team_member['isCurrentUser'] = team_member['userId'] == user.id
         return jsonify({'team': data}), HTTPStatus.OK
 
     @staticmethod
@@ -75,7 +78,10 @@ class TeamResourceById(Resource):
     def get(project_id, member_id):  # pylint: disable=unused-argument
         """Get team member."""
         team_member = ProjectUsersAssociation.find_by_id(member_id)
-        return TeamSchema().dump(team_member), HTTPStatus.OK
+        data = TeamSchema().dump(team_member)
+        user = g.user
+        data['isCurrentUser'] = data['userId'] == user.id
+        return data, HTTPStatus.OK
 
     @staticmethod
     @cors.crossdomain(origin='*')
@@ -99,7 +105,7 @@ class TeamResourceById(Resource):
             association = ProjectUsersAssociation.find_by_id(member_id)
             if association.user_id == user.id:
                 dict_data = team_schema.load(team_json, partial=('role',))
-                validate_before_save(project_id, dict_data, member_id)
+                validate_before_save(project_id, dict_data, member_id, True)
                 association.update(dict_data, only_role=True)
             else:
                 dict_data = team_schema.load(team_json)
@@ -113,21 +119,25 @@ class TeamResourceById(Resource):
         return response, status
 
 
-def validate_before_save(project_id, dict_data, association_id: str = None):
+def validate_before_save(project_id, dict_data, association_id: str = None, is_current_user: bool = False):
     """Validate team member before save."""
-    email = dict_data['email']
-    role = dict_data['role']
-    email_exist = ProjectUsersAssociation.check_user_existence(project_id, email, association_id)
-    role_exist = ProjectUsersAssociation.check_role_existence(project_id, role, association_id)
     errors = {}
-    if email_exist:
-        errors['email'] = 'emailAlreadyAssigned'
+
+    role = dict_data['role']
+    role_exist = ProjectUsersAssociation.check_role_existence(project_id, role, association_id)
     if role_exist:
         errors['role'] = 'roleAlreadyAssigned'
 
-    domain = email.strip().split('@').pop() if email and '@' in email else None
-    if not OrgWhitelist.validate_domain(domain):
-        errors['email'] = 'invalidDomain'
+    if not is_current_user:
+        # Skip validation if the user association is for the logged in user.
+        email = dict_data['email']
+        email_exist = ProjectUsersAssociation.check_user_existence(project_id, email, association_id)
+        if email_exist:
+            errors['email'] = 'emailAlreadyAssigned'
+
+        domain = email.strip().split('@').pop() if email and '@' in email else None
+        if not OrgWhitelist.validate_domain(domain):
+            errors['email'] = 'invalidDomain'
 
     if errors:
         raise BusinessException(errors, HTTPStatus.BAD_REQUEST)

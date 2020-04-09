@@ -162,7 +162,9 @@ class ProjectResourceById(Resource):
         """Validate the project details before updating status."""
         if status == ProjectStatus.Development:
             technical_req = TechnicalReq.find_by_project_id(project.id)
-            if technical_req is not None and \
+            project_members = ProjectUsersAssociation.find_all_by_project_id(project.id)
+            if len(project_members) > 0 and \
+                technical_req is not None and \
                 technical_req.scope_package_id is not None and \
                     technical_req.no_of_test_account is not None:
                 return True
