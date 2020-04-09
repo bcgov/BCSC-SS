@@ -9,7 +9,6 @@ important action on your service, such as Download or Submit. */
     <div class="text-left mb-1 subtitle-2 bc-help-text" v-if="helpText !== ''">
       {{ helpText }}
     </div>
-
     <v-text-field
       :value="value"
       :counter="counter"
