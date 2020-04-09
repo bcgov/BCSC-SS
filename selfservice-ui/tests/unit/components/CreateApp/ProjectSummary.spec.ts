@@ -25,6 +25,45 @@ describe('ProjectSummary.vue', () => {
           loadSingleProjectInfo: jest.fn()
         }
       },
+      TeamRolesModule: {
+        namespaced: true,
+        state: {},
+        getters: {
+          getTeamList: jest.fn(() => {
+            return {
+              team: [
+                {
+                  email: 'e@e.com',
+                  firstName: 'fname',
+                  id: 1,
+                  lastName: 'lname',
+                  phone: '09870987654321',
+                  role: 2
+                },
+                {
+                  email: 'bb@test.com',
+                  firstName: 'john',
+                  id: 17,
+                  lastName: 'bb',
+                  phone: '987654321',
+                  role: 3
+                },
+                {
+                  email: 'user@yopmail.com',
+                  firstName: 'John',
+                  id: 1,
+                  lastName: 'Doe',
+                  phone: '',
+                  role: 1
+                }
+              ]
+            };
+          })
+        },
+        actions: {
+          loadTeam: jest.fn()
+        }
+      },
       TechnicalReqModule: {
         namespaced: true,
         state: {},
@@ -111,7 +150,7 @@ describe('ProjectSummary.vue', () => {
     return mount(ProjectSummary, {
       store,
       vuetify,
-      mocks: { $t: jest.fn(() => {}) }, // tslint:disable-line
+      mocks: { $t: jest.fn(() => { }) }, // tslint:disable-line
       ...options
     });
   };
@@ -147,6 +186,16 @@ describe('ProjectSummary.vue', () => {
           },
           actions: {
             loadSingleProjectInfo: jest.fn()
+          }
+        },
+        TeamRolesModule: {
+          namespaced: true,
+          state: {},
+          getters: {
+            getTeamList: jest.fn()
+          },
+          actions: {
+            loadTeam: jest.fn()
           }
         },
         TechnicalReqModule: {
@@ -186,7 +235,7 @@ describe('ProjectSummary.vue', () => {
     const projectSummary = shallowMount(ProjectSummary, {
       vuetify,
       store,
-      mocks: { $t: jest.fn(() => {}) } // tslint:disable-line
+      mocks: { $t: jest.fn(() => { }) } // tslint:disable-line
     });
 
     expect(projectSummary.element).toMatchSnapshot();
