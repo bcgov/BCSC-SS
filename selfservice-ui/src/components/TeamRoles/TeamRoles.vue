@@ -124,8 +124,7 @@ export default class TeamRoles extends Vue {
     this.dialog = status;
   }
   private showActions() {
-    // return this.isAdmin;
-    return true;
+    return this.isAdmin;
   }
 
   private mounted() {
