@@ -53,6 +53,7 @@
               @click="toggleAddMember(true)"
               :aria-label="$t('teamRoles.btnAddTeamMember')"
               :disabled="teamList.length >= 3"
+              class="team-roles"
             >{{ $t('teamRoles.btnAddTeamMember') }}</Button>
           </v-card-actions>
         </v-card>

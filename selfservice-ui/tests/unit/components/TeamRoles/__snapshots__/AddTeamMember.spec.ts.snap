@@ -1,0 +1,411 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddTeamMember.vue renders props when passed with gettors 1`] = `
+<v-container-stub
+  tag="div"
+>
+  <v-row-stub
+    class=" text-left"
+    tag="div"
+  >
+    <v-col-stub
+      tag="div"
+    >
+      <v-card-stub
+        class="v-form  ma-3"
+        flat="true"
+        loaderheight="4"
+        tag="div"
+      >
+        <v-form-stub>
+          <v-card-stub
+            class="v-form px-6  ma-3"
+            loaderheight="4"
+            tag="div"
+          >
+            <!---->
+             
+            <v-row-stub
+              tag="div"
+            >
+              <v-col-stub
+                cols="12"
+                tag="div"
+              >
+                <div
+                  class=" display-1"
+                >
+                  
+                  
+                
+                </div>
+              </v-col-stub>
+               
+              <v-col-stub
+                cols="12"
+                sm="6"
+                tag="div"
+              >
+                <v-card-subtitle-stub
+                  class="headline bc-padding-left-0"
+                >
+                  
+                </v-card-subtitle-stub>
+                 
+                <input-stub
+                  helptext=""
+                  label=""
+                  outlined="true"
+                  rules="v => !!v || 'This field is required',v => (v || '').length >= len || 'Invalid character length, required ' + len,v => (v || '').length <= len || 'Invalid character length, max length ' + len"
+                  type="text"
+                  value=""
+                />
+                 
+                <input-stub
+                  helptext=""
+                  label=""
+                  outlined="true"
+                  rules="v => !!v || 'This field is required',v => (v || '').length >= len || 'Invalid character length, required ' + len,v => (v || '').length <= len || 'Invalid character length, max length ' + len"
+                  type="text"
+                  value=""
+                />
+                 
+                <input-stub
+                  helptext=""
+                  label=""
+                  outlined="true"
+                  rules="v => !!v || 'This field is required',v => /^\\\\w+([.-]?\\\\w+)*@\\\\w+([.-]?\\\\w+)*(\\\\.\\\\w{2,10})+$/.test(v) || 'E-mail must be valid',v => (v || '').length <= len || 'Invalid character length, max length ' + len"
+                  type="text"
+                  value=""
+                />
+                 
+                <input-stub
+                  helptext=""
+                  label=""
+                  optional="true"
+                  outlined="true"
+                  type="text"
+                  value=""
+                />
+              </v-col-stub>
+               
+              <v-col-stub
+                tag="div"
+              >
+                <v-divider-stub
+                  class="mx-4"
+                  vertical="true"
+                />
+              </v-col-stub>
+               
+              <v-col-stub
+                cols="12"
+                sm="5"
+                tag="div"
+              >
+                <v-card-subtitle-stub
+                  class="headline bc-padding-left-0"
+                >
+                  
+                </v-card-subtitle-stub>
+                 
+                <v-radio-group-stub
+                  activeclass="v-item--active"
+                  backgroundcolor=""
+                  column="true"
+                  errorcount="1"
+                  errormessages=""
+                  height="auto"
+                  messages=""
+                  rules=""
+                  successmessages=""
+                  value="1"
+                  valuecomparator="function deepEqual(a, b) {
+  if (a === b) return true;
+
+  if (a instanceof Date && b instanceof Date) {
+    // If the values are Date, they were convert to timestamp with getTime and compare it
+    if (a.getTime() !== b.getTime()) return false;
+  }
+
+  if (a !== Object(a) || b !== Object(b)) {
+    // If the values aren't objects, they were already checked for equality
+    return false;
+  }
+
+  var props = Object.keys(a);
+
+  if (props.length !== Object.keys(b).length) {
+    // Different number of props, don't bother to check
+    return false;
+  }
+
+  return props.every(function (p) {
+    return deepEqual(a[p], b[p]);
+  });
+}"
+                >
+                  <v-radio-stub
+                    class="my-2"
+                    officon="$radioOff"
+                    onicon="$radioOn"
+                    ripple="true"
+                    value="1"
+                  />
+                   
+                  <v-radio-stub
+                    class="my-2"
+                    officon="$radioOff"
+                    onicon="$radioOn"
+                    ripple="true"
+                    value="2"
+                  />
+                   
+                  <v-radio-stub
+                    class="my-2"
+                    officon="$radioOff"
+                    onicon="$radioOn"
+                    ripple="true"
+                    value="3"
+                  />
+                </v-radio-group-stub>
+                 
+                <v-card-actions-stub
+                  class="btn-bottom "
+                >
+                  <v-spacer-stub />
+                   
+                  <button-stub
+                    aria-label="Back Button"
+                    color=""
+                    name="button"
+                    secondary=""
+                    type="button"
+                  >
+                    
+                  </button-stub>
+                   
+                  <button-stub
+                    class="white--text submit-package ml-6"
+                    color=""
+                    disabled="true"
+                    name="button"
+                    type="button"
+                  >
+                    
+                  </button-stub>
+                </v-card-actions-stub>
+              </v-col-stub>
+            </v-row-stub>
+          </v-card-stub>
+        </v-form-stub>
+      </v-card-stub>
+    </v-col-stub>
+  </v-row-stub>
+</v-container-stub>
+`;
+
+exports[`AddTeamMember.vue renders props when passed with gettors with member id 1`] = `
+<v-container-stub
+  tag="div"
+>
+  <v-row-stub
+    class=" text-left"
+    tag="div"
+  >
+    <v-col-stub
+      tag="div"
+    >
+      <v-card-stub
+        class="v-form  ma-3"
+        flat="true"
+        loaderheight="4"
+        tag="div"
+      >
+        <v-form-stub>
+          <v-card-stub
+            class="v-form px-6  ma-3"
+            loaderheight="4"
+            tag="div"
+          >
+            <!---->
+             
+            <v-row-stub
+              tag="div"
+            >
+              <v-col-stub
+                cols="12"
+                tag="div"
+              >
+                <div
+                  class=" display-1"
+                >
+                  
+                  
+                
+                </div>
+              </v-col-stub>
+               
+              <v-col-stub
+                cols="12"
+                sm="6"
+                tag="div"
+              >
+                <v-card-subtitle-stub
+                  class="headline bc-padding-left-0"
+                >
+                  
+                </v-card-subtitle-stub>
+                 
+                <input-stub
+                  helptext=""
+                  label=""
+                  outlined="true"
+                  rules="v => !!v || 'This field is required',v => (v || '').length >= len || 'Invalid character length, required ' + len,v => (v || '').length <= len || 'Invalid character length, max length ' + len"
+                  type="text"
+                  value=""
+                />
+                 
+                <input-stub
+                  helptext=""
+                  label=""
+                  outlined="true"
+                  rules="v => !!v || 'This field is required',v => (v || '').length >= len || 'Invalid character length, required ' + len,v => (v || '').length <= len || 'Invalid character length, max length ' + len"
+                  type="text"
+                  value=""
+                />
+                 
+                <input-stub
+                  helptext=""
+                  label=""
+                  outlined="true"
+                  rules="v => !!v || 'This field is required',v => /^\\\\w+([.-]?\\\\w+)*@\\\\w+([.-]?\\\\w+)*(\\\\.\\\\w{2,10})+$/.test(v) || 'E-mail must be valid',v => (v || '').length <= len || 'Invalid character length, max length ' + len"
+                  type="text"
+                  value=""
+                />
+                 
+                <input-stub
+                  helptext=""
+                  label=""
+                  optional="true"
+                  outlined="true"
+                  type="text"
+                  value=""
+                />
+              </v-col-stub>
+               
+              <v-col-stub
+                tag="div"
+              >
+                <v-divider-stub
+                  class="mx-4"
+                  vertical="true"
+                />
+              </v-col-stub>
+               
+              <v-col-stub
+                cols="12"
+                sm="5"
+                tag="div"
+              >
+                <v-card-subtitle-stub
+                  class="headline bc-padding-left-0"
+                >
+                  
+                </v-card-subtitle-stub>
+                 
+                <v-radio-group-stub
+                  activeclass="v-item--active"
+                  backgroundcolor=""
+                  column="true"
+                  errorcount="1"
+                  errormessages=""
+                  height="auto"
+                  messages=""
+                  rules=""
+                  successmessages=""
+                  value="1"
+                  valuecomparator="function deepEqual(a, b) {
+  if (a === b) return true;
+
+  if (a instanceof Date && b instanceof Date) {
+    // If the values are Date, they were convert to timestamp with getTime and compare it
+    if (a.getTime() !== b.getTime()) return false;
+  }
+
+  if (a !== Object(a) || b !== Object(b)) {
+    // If the values aren't objects, they were already checked for equality
+    return false;
+  }
+
+  var props = Object.keys(a);
+
+  if (props.length !== Object.keys(b).length) {
+    // Different number of props, don't bother to check
+    return false;
+  }
+
+  return props.every(function (p) {
+    return deepEqual(a[p], b[p]);
+  });
+}"
+                >
+                  <v-radio-stub
+                    class="my-2"
+                    officon="$radioOff"
+                    onicon="$radioOn"
+                    ripple="true"
+                    value="1"
+                  />
+                   
+                  <v-radio-stub
+                    class="my-2"
+                    officon="$radioOff"
+                    onicon="$radioOn"
+                    ripple="true"
+                    value="2"
+                  />
+                   
+                  <v-radio-stub
+                    class="my-2"
+                    officon="$radioOff"
+                    onicon="$radioOn"
+                    ripple="true"
+                    value="3"
+                  />
+                </v-radio-group-stub>
+                 
+                <v-card-actions-stub
+                  class="btn-bottom "
+                >
+                  <v-spacer-stub />
+                   
+                  <button-stub
+                    aria-label="Back Button"
+                    color=""
+                    name="button"
+                    secondary=""
+                    type="button"
+                  >
+                    
+                  </button-stub>
+                   
+                  <button-stub
+                    class="white--text submit-package ml-6"
+                    color=""
+                    disabled="true"
+                    name="button"
+                    type="button"
+                  >
+                    
+                  </button-stub>
+                </v-card-actions-stub>
+              </v-col-stub>
+            </v-row-stub>
+          </v-card-stub>
+        </v-form-stub>
+      </v-card-stub>
+    </v-col-stub>
+  </v-row-stub>
+</v-container-stub>
+`;
