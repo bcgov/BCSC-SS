@@ -214,7 +214,7 @@
   },
   "teamRoles": {
     "pagetitle": "Project team roles",
-    "pageInfo": "To begin your development, only the Developer is required. A Manager will be required to \"Mark Development Complete\" and move your project along the route to implementation in a production environment. It will be the Manager and Executive Sponsors' (both) to agree and attest to the measures required in Privacy, Security and work with IDIM Consulting to ensure compliance for production usage of the BC Services Card login application.",
+    "pageInfo": "To begin your development, only the Developer is required. To move your project along the route to implementation in a production environment, a Manager and Executive Sponsor will be required.",
     "tblHeadName": "Name",
     "tblHeadMyRole": "My Role",
     "tblHeadEmail": "Email",
@@ -237,10 +237,10 @@
     "labelFirstName": "First name",
     "labelLastName": "Last name",
     "labelWorkEmail": "Work email",
-    "labelPhone": "Phone",
+    "labelPhone": "Office phone number",
     "errorTitle": "please fix following errors",
-    "invalidDomain": "Your email address does not match any of the eligible organizations in our BC Services Card Self Service System. If you believe you or your organization should have access to this system, please contact <a href='mailto:zorin.samji@gov.bc.ca'>IDIM Consulting</a> to be added. ",
-    "roleAlreadyAssigned": "This role has already been assigned. Please select another role",
-    "emailAlreadyAssigned": "This email address has already been assigned to a role on this project. Only one email address can be used in a project"
+    "invalidDomain": "This email domain address you entered is not in our system of approved organizations. Please correct the email address or  <a href='/contact-us'>contact IDIM</a>to have the domain added to the system.",
+    "roleAlreadyAssigned": "This role is already assigned to another team member. Please select a different role or <a href='/contact-us'>contact IDIM</a> to change your project team membership.",
+    "emailAlreadyAssigned": "The email address you entered belongs to a user who already has been assigned in this project. An individual user can only have one project role."
   }
 }

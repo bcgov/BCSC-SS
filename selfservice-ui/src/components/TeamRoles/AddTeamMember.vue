@@ -4,16 +4,9 @@
   <v-container>
     <v-row class=" text-left">
       <v-col v-if="userDetails">
-        <v-card class="v-form pa-8 pt-6 ma-3" flat="">
-          <v-card-subtitle class=" display-1 bc-padding-left-0">{{
-            $t(
-              !editMode
-                ? 'addTeamMember.pagetitle'
-                : 'addTeamMember.pagetitleUpdate'
-            )
-          }}</v-card-subtitle>
+        <v-card class="v-form  ma-3" flat="">
           <v-form ref="form" v-model="form">
-            <v-card class="v-form pa-8 pt-6 ma-3">
+            <v-card class="v-form px-6  ma-3">
               <v-alert
                 type="error"
                 dense
@@ -22,15 +15,28 @@
                 v-if="memberErrorStatus"
               >
                 <div>{{ $t('addTeamMember.errorTitle') }}</div>
-                <div
-                  v-for="(errors, idx) in errorList"
-                  :key="idx"
-                  v-html="$t(`addTeamMember.${errors}`)"
-                ></div>
+                <ul>
+                  <li
+                    v-for="(errors, idx) in errorList"
+                    :key="idx"
+                    v-html="$t(`addTeamMember.${errors}`)"
+                  ></li>
+                </ul>
               </v-alert>
 
               <v-row>
-                <v-col cols="6">
+                <v-col cols="12">
+                  <div class=" display-1">
+                    {{
+                      $t(
+                        !editMode
+                          ? 'addTeamMember.pagetitle'
+                          : 'addTeamMember.pagetitleUpdate'
+                      )
+                    }}
+                  </div>
+                </v-col>
+                <v-col cols="12" sm="6">
                   <v-card-subtitle class="headline bc-padding-left-0">{{
                     $t('addTeamMember.contactInfo')
                   }}</v-card-subtitle>
@@ -43,7 +49,7 @@
                       rules.maxLength(250)
                     ]"
                     type="text"
-                    :disabled="editMode"
+                    :disabled="disabled()"
                   />
                   <Input
                     v-model="userDetails.lastName"
@@ -54,25 +60,28 @@
                       rules.maxLength(250)
                     ]"
                     type="text"
-                    :disabled="editMode"
+                    :disabled="disabled()"
                   />
                   <Input
                     v-model="userDetails.email"
                     :label="$t('addTeamMember.labelWorkEmail')"
                     :rules="[rules.required, rules.email, rules.maxLength(250)]"
                     type="text"
-                    :disabled="editMode"
+                    :disabled="disabled()"
                   />
 
                   <Input
                     v-model="userDetails.phone"
                     :label="$t('addTeamMember.labelPhone')"
-                    :rules="[rules.required, rules.maxLength(15)]"
                     type="text"
-                    :disabled="editMode"
+                    :disabled="disabled()"
+                    :optional="true"
                   />
                 </v-col>
-                <v-col cols="6">
+                <v-col
+                  ><v-divider class="mx-4" :inset="inset" vertical></v-divider
+                ></v-col>
+                <v-col cols="12" sm="5">
                   <v-card-subtitle class="headline bc-padding-left-0">{{
                     $t('addTeamMember.roleTitle')
                   }}</v-card-subtitle>
@@ -81,33 +90,37 @@
                     <v-radio
                       :label="$t(`addTeamMember.labelRole${rolesList[1]}`)"
                       :value="projectRoles.developer"
+                      class="my-2"
                     ></v-radio>
                     <v-radio
                       :label="$t(`addTeamMember.labelRole${rolesList[2]}`)"
                       :value="projectRoles.manager"
+                      class="my-2"
                     ></v-radio>
                     <v-radio
                       :label="$t(`addTeamMember.labelRole${rolesList[3]}`)"
                       :value="projectRoles.cto"
+                      class="my-2"
                     ></v-radio>
                   </v-radio-group>
+
+                  <v-card-actions class="btn-bottom ">
+                    <v-spacer></v-spacer>
+                    <Button
+                      @click="$emit('toggleAddMember', false)"
+                      aria-label="Back Button"
+                      secondary
+                      >{{ $t('addTeamMember.btnCancel') }}</Button
+                    >
+                    <Button
+                      :disabled="!form"
+                      class="white--text submit-package ml-6"
+                      @click="submitTeamMember"
+                      >{{ $t('addTeamMember.btnSumbmit') }}</Button
+                    >
+                  </v-card-actions>
                 </v-col>
               </v-row>
-              <v-card-actions>
-                <v-spacer></v-spacer>
-                <Button
-                  @click="$emit('toggleAddMember', false)"
-                  aria-label="Back Button"
-                  secondary
-                  >{{ $t('addTeamMember.btnCancel') }}</Button
-                >
-                <Button
-                  :disabled="!form"
-                  class="white--text submit-package ml-6"
-                  @click="submitTeamMember"
-                  >{{ $t('addTeamMember.btnSumbmit') }}</Button
-                >
-              </v-card-actions>
             </v-card>
           </v-form>
         </v-card>
@@ -129,6 +142,7 @@ import { TeamRoleModel } from '@/models/TeamRoleModel';
 import { memberDetails } from '@/store/modules/TeamRoles/defaults';
 
 const TeamRolesModule = namespace('TeamRolesModule');
+const KeyCloakModule = namespace('KeyCloakModule');
 
 @Component({
   components: {
@@ -166,6 +180,9 @@ export default class AddTeamMember extends Vue {
   public errorList: any = {};
 
   public userDetails: TeamRoleModel;
+
+  @KeyCloakModule.Getter('isAdmin')
+  private isAdmin!: any;
 
   private rules: any = validationRules;
   private projectRoles: any = projectRoles;
@@ -224,6 +241,12 @@ export default class AddTeamMember extends Vue {
       this.clearMemberData();
     }
   }
+  private disabled() {
+    if (this.editMode && !this.isAdmin) {
+      return true;
+    }
+    return false;
+  }
 
   private mounted() {
     this.getMemberDetails();
@@ -233,4 +256,11 @@ export default class AddTeamMember extends Vue {
 
 <style lang="scss" scoped>
 @import './../../assets/styles/theme.scss';
+.v-text-field input {
+  padding: 3px 0 3px 0;
+}
+.btn-bottom {
+  bottom: 32px;
+  position: absolute;
+}
 </style>

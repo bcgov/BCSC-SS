@@ -94,6 +94,8 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                   class="text-left my-1"
                 >
                   
+     
+                  <!---->
                 </div>
                  
                 <!---->
@@ -156,6 +158,8 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                   class="text-left my-1"
                 >
                   
+     
+                  <!---->
                 </div>
                  
                 <!---->
@@ -582,6 +586,8 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                   class="text-left my-1"
                 >
                   
+     
+                  <!---->
                 </div>
                  
                 <!---->
@@ -644,6 +650,8 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                   class="text-left my-1"
                 >
                   
+     
+                  <!---->
                 </div>
                  
                 <!---->
@@ -1070,6 +1078,8 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                   class="text-left my-1"
                 >
                   
+     
+                  <!---->
                 </div>
                  
                 <!---->
@@ -1132,6 +1142,8 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                   class="text-left my-1"
                 >
                   
+     
+                  <!---->
                 </div>
                  
                 <!---->

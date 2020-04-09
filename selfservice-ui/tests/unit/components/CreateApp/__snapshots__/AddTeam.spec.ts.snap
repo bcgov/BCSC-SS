@@ -78,7 +78,7 @@ exports[`AddTeam.vue renders props when passed 1`] = `
             <!---->
              
             <div
-              class="v-card__actions"
+              class="v-card__actions mt-5"
             >
               <div
                 class="spacer"
@@ -116,7 +116,7 @@ exports[`AddTeam.vue renders props when passed 1`] = `
               >
                 <div
                   class="v-dialog"
-                  style="width: 70%; display: none;"
+                  style="width: 71%; display: none;"
                 />
               </div>
             </div>

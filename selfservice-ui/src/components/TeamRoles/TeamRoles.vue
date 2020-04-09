@@ -22,16 +22,24 @@
                   <th class="text-left">{{ $t('teamRoles.tblHeadMyRole') }}</th>
                   <th class="text-left">{{ $t('teamRoles.tblHeadEmail') }}</th>
                   <th class="text-left">{{ $t('teamRoles.tblHeadPhone') }}</th>
-                  <th class="text-left" v-if="showActions()"></th>
+                  <th class="text-left" v-if="isAdmin"></th>
                 </tr>
               </thead>
               <tbody>
                 <tr v-for="team in teamList" :key="team.id" class="text-left">
                   <td>{{ team.firstName }} {{ team.lastName }}</td>
-                  <td>{{ $t(`teamRoles.labelRole${rolesList[team.role]}`) }}</td>
+                  <td>
+                    {{ $t(`teamRoles.labelRole${rolesList[team.role]}`) }}
+                    <v-icon
+                      @click="toggleAddMember(true, team.id)"
+                      class="ml-2"
+                      small
+                      v-if="team.isCurrentUser"
+                    >mdi-pencil</v-icon>
+                  </td>
                   <td>{{ team.email }}</td>
                   <td>{{ team.phone }}</td>
-                  <td v-if="showActions()">
+                  <td v-if="isAdmin">
                     <v-icon @click="toggleAddMember(true, team.id)" class="ml-2" small>mdi-pencil</v-icon>
                     <v-icon @click="deleteMemberDialog(team.id)" class="ml-2" small>mdi-delete</v-icon>
                   </td>
@@ -39,7 +47,7 @@
               </tbody>
             </template>
           </v-simple-table>
-          <v-card-actions>
+          <v-card-actions class="mt-5">
             <v-spacer></v-spacer>
             <Button
               @click="toggleAddMember(true)"
@@ -52,7 +60,7 @@
 
       <v-col>
         <div class="text-center">
-          <v-dialog v-model="dialog" width="70%" class="text-left">
+          <v-dialog v-model="dialog" width="71%" class="text-left">
             <v-card>
               <AddTeamMember :id="id" @toggleAddMember="toggleAddMember" :memberId="memberId" />
             </v-card>
@@ -60,7 +68,7 @@
         </div>
       </v-col>
       <v-col>
-        <v-dialog v-model="dialogDelete" persistent max-width="290" flat>
+        <v-dialog v-model="dialogDelete" persistent max-width="290">
           <v-card>
             <v-card-title>Confirm Delete</v-card-title>
             <v-card-text>Are you sure you want to delete?</v-card-text>
