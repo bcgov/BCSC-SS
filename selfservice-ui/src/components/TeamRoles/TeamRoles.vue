@@ -10,13 +10,9 @@
 
     <v-row class="ma-5" v-else>
       <v-col cols="12">
-        <v-card flat="">
-          <h2 class="text-left tab-headline">
-            {{ $t('teamRoles.pagetitle') }}
-          </h2>
-          <h4 class="text-left tab-headline font-weight-medium">
-            {{ $t('teamRoles.pageInfo') }}
-          </h4>
+        <v-card flat>
+          <h2 class="text-left tab-headline">{{ $t('teamRoles.pagetitle') }}</h2>
+          <h4 class="text-left tab-headline font-weight-medium">{{ $t('teamRoles.pageInfo') }}</h4>
 
           <v-simple-table class="mt-5" v-if="teamList.length > 0">
             <template v-slot:default>
@@ -32,18 +28,12 @@
               <tbody>
                 <tr v-for="team in teamList" :key="team.id" class="text-left">
                   <td>{{ team.firstName }} {{ team.lastName }}</td>
-                  <td>
-                    {{ $t(`teamRoles.labelRole${rolesList[team.role]}`) }}
-                  </td>
+                  <td>{{ $t(`teamRoles.labelRole${rolesList[team.role]}`) }}</td>
                   <td>{{ team.email }}</td>
                   <td>{{ team.phone }}</td>
                   <td v-if="showActions()">
-                    <v-icon
-                      @click="toggleAddMember(true, team.id)"
-                      class="ml-2"
-                      small
-                      >mdi-pencil</v-icon
-                    >
+                    <v-icon @click="toggleAddMember(true, team.id)" class="ml-2" small>mdi-pencil</v-icon>
+                    <v-icon @click="deleteMemberDialog(team.id)" class="ml-2" small>mdi-delete</v-icon>
                   </td>
                 </tr>
               </tbody>
@@ -55,8 +45,7 @@
               @click="toggleAddMember(true)"
               :aria-label="$t('teamRoles.btnAddTeamMember')"
               :disabled="teamList.length >= 3"
-              >{{ $t('teamRoles.btnAddTeamMember') }}</Button
-            >
+            >{{ $t('teamRoles.btnAddTeamMember') }}</Button>
           </v-card-actions>
         </v-card>
       </v-col>
@@ -65,14 +54,23 @@
         <div class="text-center">
           <v-dialog v-model="dialog" width="70%" class="text-left">
             <v-card>
-              <AddTeamMember
-                :id="id"
-                @toggleAddMember="toggleAddMember"
-                :memberId="memberId"
-              />
+              <AddTeamMember :id="id" @toggleAddMember="toggleAddMember" :memberId="memberId" />
             </v-card>
           </v-dialog>
         </div>
+      </v-col>
+      <v-col>
+        <v-dialog v-model="dialogDelete" persistent max-width="290" flat>
+          <v-card>
+            <v-card-title>Confirm Delete</v-card-title>
+            <v-card-text>Are you sure you want to delete?</v-card-text>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn text @click="deleteMember(true)">Cancel</v-btn>
+              <v-btn text @click="deleteMember()">Delete</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
       </v-col>
     </v-row>
   </v-container>
@@ -105,6 +103,8 @@ export default class TeamRoles extends Vue {
   public teamList!: any;
   @TeamRolesModule.Action('loadTeam')
   public loadTeam!: any;
+  @TeamRolesModule.Action('deleteTeamMember')
+  public deleteTeamMember!: any;
   @KeyCloakModule.Getter('isAdmin')
   private isAdmin!: any;
 
@@ -112,6 +112,7 @@ export default class TeamRoles extends Vue {
   // private selectedTab: number = 0;
   private rolesList: any = projectRolesList;
   private dialog: boolean = false;
+  private dialogDelete: boolean = false;
   private memberId: number = 0;
 
   @Watch('teamList')
@@ -123,6 +124,24 @@ export default class TeamRoles extends Vue {
     this.memberId = memberId;
     this.dialog = status;
   }
+
+  private deleteMemberDialog(teamMemberId: number) {
+    this.dialogDelete = true;
+    this.memberId = teamMemberId;
+  }
+
+  private deleteMember(cancel: boolean = false) {
+    if (!cancel) {
+      this.isLoading = true;
+      this.deleteTeamMember({
+        projectId: this.id,
+        memberId: this.memberId
+      });
+    }
+    this.memberId = 0;
+    this.dialogDelete = false;
+  }
+
   private showActions() {
     return this.isAdmin;
   }

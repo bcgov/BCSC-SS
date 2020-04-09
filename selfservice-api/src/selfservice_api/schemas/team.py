@@ -33,7 +33,7 @@ class TeamSchema(Schema):
     role = fields.Int(data_key='role', required=True, validate=validate.OneOf(list(map(int, ProjectRoles))))
 
     email = fields.Email(load_only=True, required=True, validate=validate.Length(min=5, max=250))
-    phone = fields.Str(load_only=True, required=True, validate=validate.Length(max=15))
+    phone = fields.Str(load_only=True, allow_none=True, validate=validate.Length(max=15))
     first_name = fields.Str(load_only=True, data_key='firstName', required=True, validate=validate.Length(max=250))
     last_name = fields.Str(load_only=True, data_key='lastName', required=True, validate=validate.Length(max=250))
 

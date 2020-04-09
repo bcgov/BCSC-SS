@@ -28,4 +28,8 @@ export class TeamRoles {
 
     return await axios.put(`${teamURL}/${memberId}`, userDetails);
   }
+  public static async deleteTeamMember(projectId: number, memberId: number) {
+    const teamURL = getUrl(TEAMROLE_URL, projectId);
+    return await axios.delete(`${teamURL}/${memberId}`);
+  }
 }

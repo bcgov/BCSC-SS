@@ -121,6 +121,18 @@ export const actions: ActionTree<TeamRoleState, RootState> = {
       commit('SET_LOADING', false);
     }
   },
+  async deleteTeamMember(
+    { commit, dispatch },
+    { projectId, memberId }
+  ) {
+    try {
+      await TeamRoles.deleteTeamMember(projectId, memberId);
+      commit('SET_LOADING', false);
+      dispatch('loadTeam', projectId);
+    } catch (error) {
+      commit('SET_LOADING', false);
+    }
+  },
   clearMemberData({ commit }) {
     commit('SET_MEMBER_DETAILS', memberDetails);
   }
