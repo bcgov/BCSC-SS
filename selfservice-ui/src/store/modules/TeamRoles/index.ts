@@ -4,6 +4,7 @@ import { actions } from './actions';
 import { mutations } from './mutations';
 import { TeamRoleState } from './types';
 import { RootState } from '../../types';
+import { memberDetails } from './defaults';
 
 /**
  * Sharedmodule state
@@ -16,13 +17,7 @@ export const state: TeamRoleState = {
   memberAdded: false,
   memberAddedError: false,
   memberAddedErrorList: {},
-  memberDetails: {
-    email: '',
-    phone: '',
-    firstName: '',
-    lastName: '',
-    role: 1
-  }
+  memberDetails
 };
 
 const namespaced: boolean = true;

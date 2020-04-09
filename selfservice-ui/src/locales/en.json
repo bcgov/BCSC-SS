@@ -226,6 +226,7 @@
   },
   "addTeamMember": {
     "pagetitle": "Add a team member",
+    "pagetitleUpdate": "Update a team member",
     "contactInfo": "Contact information",
     "roleTitle": "Role",
     "labelRoledeveloper": "Developer",
@@ -239,6 +240,7 @@
     "labelPhone": "Phone",
     "errorTitle": "please fix following errors",
     "invalidDomain": "Your email address does not match any of the eligible organizations in our BC Services Card Self Service System. If you believe you or your organization should have access to this system, please contact <a href='mailto:zorin.samji@gov.bc.ca'>IDIM Consulting</a> to be added. ",
-    "roleAlreadyAssigned": "This role has already been assigned. Please select another role"
+    "roleAlreadyAssigned": "This role has already been assigned. Please select another role",
+    "emailAlreadyAssigned": "This email address has already been assigned to a role on this project. Only one email address can be used in a project"
   }
 }

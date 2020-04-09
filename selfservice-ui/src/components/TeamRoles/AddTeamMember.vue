@@ -3,10 +3,14 @@
 <template>
   <v-container>
     <v-row class=" text-left">
-      <v-col>
+      <v-col v-if="userDetails">
         <v-card class="v-form pa-8 pt-6 ma-3" flat="">
           <v-card-subtitle class=" display-1 bc-padding-left-0">{{
-            $t('addTeamMember.pagetitle')
+            $t(
+              !editMode
+                ? 'addTeamMember.pagetitle'
+                : 'addTeamMember.pagetitleUpdate'
+            )
           }}</v-card-subtitle>
           <v-form ref="form" v-model="form">
             <v-card class="v-form pa-8 pt-6 ma-3">
@@ -15,7 +19,7 @@
                 dense
                 outlined
                 class="text-left"
-                v-if="errorList && errorList.email"
+                v-if="memberErrorStatus"
               >
                 <div>{{ $t('addTeamMember.errorTitle') }}</div>
                 <div
@@ -122,6 +126,8 @@ import Button from '@/Atomic/Button/Button.vue';
 import validationRules from '@/config/validationRules';
 import { projectRoles, projectRolesList } from '@/constants/enums';
 import { TeamRoleModel } from '@/models/TeamRoleModel';
+import { memberDetails } from '@/store/modules/TeamRoles/defaults';
+
 const TeamRolesModule = namespace('TeamRolesModule');
 
 @Component({
@@ -138,14 +144,6 @@ export default class AddTeamMember extends Vue {
   @Prop({ default: 0 })
   public memberId!: number;
 
-  public userDetails: TeamRoleModel = {
-    email: '',
-    phone: '',
-    firstName: '',
-    lastName: '',
-    role: 1
-  };
-
   @TeamRolesModule.Getter('getTeamList')
   public teamList!: any;
   @TeamRolesModule.Action('addTeamMember')
@@ -160,8 +158,14 @@ export default class AddTeamMember extends Vue {
   public getMemberErrorList!: any;
   @TeamRolesModule.Getter('getMemberDetails')
   public memberDetails!: any;
+  @TeamRolesModule.Getter('memberSucessStatus')
+  public memberSucessStatus!: any;
+  @TeamRolesModule.Action('clearMemberData')
+  public clearMemberData!: any;
 
   public errorList: any = {};
+
+  public userDetails: TeamRoleModel;
 
   private rules: any = validationRules;
   private projectRoles: any = projectRoles;
@@ -169,6 +173,11 @@ export default class AddTeamMember extends Vue {
   private rolesList: any = projectRolesList;
   private form: boolean = false;
   private editMode: boolean = false;
+
+  public constructor() {
+    super();
+    this.userDetails = memberDetails;
+  }
 
   @Watch('getMemberErrorList')
   private ongetMemberErrorListChanged(val: any) {
@@ -184,6 +193,12 @@ export default class AddTeamMember extends Vue {
   private onmemberIdChanged(val: any) {
     this.memberId = val;
     this.getMemberDetails();
+  }
+  @Watch('memberSucessStatus')
+  private onmemberSucessStatusChanged(val: boolean) {
+    if (val) {
+      this.$emit('toggleAddMember', false);
+    }
   }
 
   private submitTeamMember() {
@@ -206,8 +221,10 @@ export default class AddTeamMember extends Vue {
       this.getTeamMember({ memberId: this.memberId, projectId: this.id });
     } else {
       this.editMode = false;
+      this.clearMemberData();
     }
   }
+
   private mounted() {
     this.getMemberDetails();
   }

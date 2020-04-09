@@ -2,7 +2,7 @@ import { ActionTree } from 'vuex';
 import { TeamRoleState } from './types';
 import { RootState } from '../../types';
 import { TeamRoles } from '@/services/TeamRoles';
-
+import { memberDetails } from './defaults';
 /**
  * TeamRoles Actions
  *
@@ -33,17 +33,30 @@ export const actions: ActionTree<TeamRoleState, RootState> = {
     commit('SET_LOADING', false);
   },
   /**
+   * clear message
+   * @param {*} { commit }
+   */
+  async clearMemberStatus({ commit }) {
+    commit('SET_MEMBER_ADDED', false);
+    commit('SET_MEMBER_ADDED_ERROR', false);
+    commit('SET_LOADING', false);
+    commit('SET_MEMBER_ADDED_ERROR_LIST', {});
+  },
+  /**
    * add team member
    * @param {*} { commit }
    */
-  async addTeamMember({ commit }, { userDetails, projectId }) {
+  async addTeamMember({ commit, dispatch }, { userDetails, projectId }) {
     commit('SET_LOADING', true);
+    dispatch('clearMemberStatus');
     try {
-      const roles = await TeamRoles.addTeamMember(userDetails, projectId);
+      await TeamRoles.addTeamMember(userDetails, projectId);
       commit('SET_MEMBER_ADDED', true);
       commit('SET_MEMBER_ADDED_ERROR', false);
       commit('SET_LOADING', false);
       commit('SET_MEMBER_ADDED_ERROR_LIST', {});
+      dispatch('loadTeam', projectId);
+      dispatch('clearMemberData');
     } catch (error) {
       commit('SET_MEMBER_ADDED_ERROR_LIST', {});
       if (error.response.status === 400) {
@@ -58,11 +71,15 @@ export const actions: ActionTree<TeamRoleState, RootState> = {
    * get team member detail
    * @param {*} { commit }
    */
-  async getTeamMember({ commit }, { projectId, memberId }) {
+  async getTeamMember({ commit, dispatch }, { projectId, memberId }) {
     commit('SET_LOADING', true);
+    dispatch('clearMemberStatus');
     try {
-      const memberDetails = await TeamRoles.getTeamMember(projectId, memberId);
-      commit('SET_MEMBER_DETAILS', memberDetails.data);
+      const memberDetailsData = await TeamRoles.getTeamMember(
+        projectId,
+        memberId
+      );
+      commit('SET_MEMBER_DETAILS', memberDetailsData.data);
       commit('SET_MEMBER_ADDED_ERROR', false);
       commit('SET_LOADING', false);
       commit('SET_MEMBER_ADDED_ERROR_LIST', {});
@@ -80,18 +97,20 @@ export const actions: ActionTree<TeamRoleState, RootState> = {
    * update team member
    * @param {*} { commit }
    */
-  async updateTeamMember({ commit }, { userDetails, projectId, memberId }) {
+  async updateTeamMember(
+    { commit, dispatch },
+    { userDetails, projectId, memberId }
+  ) {
+    dispatch('clearMemberStatus');
     commit('SET_LOADING', true);
+
     try {
-      const roles = await TeamRoles.updateTeamMember(
-        userDetails,
-        projectId,
-        memberId
-      );
+      await TeamRoles.updateTeamMember(userDetails, projectId, memberId);
       commit('SET_MEMBER_ADDED', true);
       commit('SET_MEMBER_ADDED_ERROR', false);
       commit('SET_LOADING', false);
       commit('SET_MEMBER_ADDED_ERROR_LIST', {});
+      dispatch('loadTeam', projectId);
     } catch (error) {
       commit('SET_MEMBER_ADDED_ERROR_LIST', {});
       if (error && error.response && error.response.status === 400) {
@@ -101,5 +120,8 @@ export const actions: ActionTree<TeamRoleState, RootState> = {
       commit('SET_MEMBER_ADDED_ERROR', true);
       commit('SET_LOADING', false);
     }
+  },
+  clearMemberData({ commit }) {
+    commit('SET_MEMBER_DETAILS', memberDetails);
   }
 };

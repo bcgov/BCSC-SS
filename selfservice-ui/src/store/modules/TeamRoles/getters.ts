@@ -31,5 +31,8 @@ export const getters: GetterTree<TeamRoleState, RootState> = {
   },
   getMemberDetails(state) {
     return state.memberDetails;
+  },
+  memberSucessStatus(state) {
+    return state.memberAdded;
   }
 };

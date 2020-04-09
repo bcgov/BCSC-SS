@@ -18,7 +18,7 @@
             {{ $t('teamRoles.pageInfo') }}
           </h4>
 
-          <v-simple-table class="mt-5">
+          <v-simple-table class="mt-5" v-if="teamList.length > 0">
             <template v-slot:default>
               <thead class="tbl-head">
                 <tr class="text-left">
@@ -54,11 +54,13 @@
             <Button
               @click="toggleAddMember(true)"
               :aria-label="$t('teamRoles.btnAddTeamMember')"
+              :disabled="teamList.length >= 3"
               >{{ $t('teamRoles.btnAddTeamMember') }}</Button
             >
           </v-card-actions>
         </v-card>
       </v-col>
+
       <v-col>
         <div class="text-center">
           <v-dialog v-model="dialog" width="70%" class="text-left">
@@ -122,7 +124,8 @@ export default class TeamRoles extends Vue {
     this.dialog = status;
   }
   private showActions() {
-    return this.isAdmin;
+    // return this.isAdmin;
+    return true;
   }
 
   private mounted() {
