@@ -1,5 +1,533 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
+<div
+  class="container"
+>
+  <div
+    class="row ma-5"
+  >
+    <div
+      class="col col-12"
+    >
+      <div
+        class="v-card v-card--flat v-sheet theme--light"
+      >
+        <h2
+          class="text-left tab-headline"
+        >
+          
+          
+        
+        </h2>
+         
+        <h4
+          class="text-left tab-headline font-weight-medium"
+        >
+          
+          
+        
+        </h4>
+         
+        <!---->
+         
+        <div
+          class="v-card__actions mt-5"
+        >
+          <div
+            class="spacer"
+          />
+           
+          <button
+            class="btn team-roles v-btn v-btn--contained theme--light v-size--default primary normal"
+            name="button"
+            type="button"
+          >
+            <span
+              class="v-btn__content"
+            >
+              
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+     
+    <div
+      class="col"
+    >
+      <div
+        class="text-center"
+      >
+        <div
+          class="v-dialog__container text-left"
+          role="dialog"
+        >
+          <div
+            class="v-dialog__content v-dialog__content--active"
+            role="document"
+            style="z-index: 202; z-index: 202;"
+            tabindex="0"
+          >
+            <div
+              class="v-dialog v-dialog--active"
+              style="width: 71%;"
+            >
+              <div
+                class="v-card v-sheet theme--light"
+              >
+                <div
+                  class="container"
+                >
+                  <div
+                    class="row text-left"
+                  >
+                    <div
+                      class="col"
+                    >
+                      <div
+                        class="v-form  ma-3 v-card v-card--flat v-sheet theme--light"
+                      >
+                        <form
+                          class="v-form"
+                          novalidate="novalidate"
+                        >
+                          <div
+                            class="v-form px-6  ma-3 v-card v-sheet theme--light"
+                          >
+                            <!---->
+                             
+                            <div
+                              class="row"
+                            >
+                              <div
+                                class="col col-12"
+                              >
+                                <div
+                                  class=" display-1"
+                                >
+                                  
+                  
+                
+                                </div>
+                              </div>
+                               
+                              <div
+                                class="col-sm-6 col-12"
+                              >
+                                <div
+                                  class="v-card__subtitle headline bc-padding-left-0"
+                                >
+                                  
+                                </div>
+                                 
+                                <div
+                                  class="bc-form-text"
+                                  rules="v => !!v || 'This field is required',v => (v || '').length >= len || 'Invalid character length, required ' + len,v => (v || '').length <= len || 'Invalid character length, max length ' + len"
+                                >
+                                  <div
+                                    class="text-left my-1"
+                                  >
+                                    
+     
+                                    <!---->
+                                  </div>
+                                   
+                                  <!---->
+                                   
+                                  <div
+                                    class="v-input input theme--light v-text-field v-text-field--single-line v-text-field--solo v-text-field--enclosed v-text-field--outlined"
+                                  >
+                                    <div
+                                      class="v-input__control"
+                                    >
+                                      <div
+                                        class="v-input__slot"
+                                      >
+                                        <fieldset
+                                          aria-hidden="true"
+                                        >
+                                          <legend>
+                                            <span>
+                                              ​
+                                            </span>
+                                          </legend>
+                                        </fieldset>
+                                        <div
+                                          class="v-text-field__slot"
+                                        >
+                                          <input
+                                            id="input-38"
+                                            type="text"
+                                          />
+                                        </div>
+                                      </div>
+                                      <div
+                                        class="v-text-field__details"
+                                      >
+                                        <div
+                                          class="v-messages theme--light"
+                                        >
+                                          <span
+                                            class="v-messages__wrapper"
+                                            name="message-transition"
+                                            tag="div"
+                                          />
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                 
+                                <div
+                                  class="bc-form-text"
+                                  rules="v => !!v || 'This field is required',v => (v || '').length >= len || 'Invalid character length, required ' + len,v => (v || '').length <= len || 'Invalid character length, max length ' + len"
+                                >
+                                  <div
+                                    class="text-left my-1"
+                                  >
+                                    
+     
+                                    <!---->
+                                  </div>
+                                   
+                                  <!---->
+                                   
+                                  <div
+                                    class="v-input input theme--light v-text-field v-text-field--single-line v-text-field--solo v-text-field--enclosed v-text-field--outlined"
+                                  >
+                                    <div
+                                      class="v-input__control"
+                                    >
+                                      <div
+                                        class="v-input__slot"
+                                      >
+                                        <fieldset
+                                          aria-hidden="true"
+                                        >
+                                          <legend>
+                                            <span>
+                                              ​
+                                            </span>
+                                          </legend>
+                                        </fieldset>
+                                        <div
+                                          class="v-text-field__slot"
+                                        >
+                                          <input
+                                            id="input-42"
+                                            type="text"
+                                          />
+                                        </div>
+                                      </div>
+                                      <div
+                                        class="v-text-field__details"
+                                      >
+                                        <div
+                                          class="v-messages theme--light"
+                                        >
+                                          <span
+                                            class="v-messages__wrapper"
+                                            name="message-transition"
+                                            tag="div"
+                                          />
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                 
+                                <div
+                                  class="bc-form-text"
+                                  rules="v => !!v || 'This field is required',v => /^\\\\w+([.-]?\\\\w+)*@\\\\w+([.-]?\\\\w+)*(\\\\.\\\\w{2,10})+$/.test(v) || 'E-mail must be valid',v => (v || '').length <= len || 'Invalid character length, max length ' + len"
+                                >
+                                  <div
+                                    class="text-left my-1"
+                                  >
+                                    
+     
+                                    <!---->
+                                  </div>
+                                   
+                                  <!---->
+                                   
+                                  <div
+                                    class="v-input input theme--light v-text-field v-text-field--single-line v-text-field--solo v-text-field--enclosed v-text-field--outlined"
+                                  >
+                                    <div
+                                      class="v-input__control"
+                                    >
+                                      <div
+                                        class="v-input__slot"
+                                      >
+                                        <fieldset
+                                          aria-hidden="true"
+                                        >
+                                          <legend>
+                                            <span>
+                                              ​
+                                            </span>
+                                          </legend>
+                                        </fieldset>
+                                        <div
+                                          class="v-text-field__slot"
+                                        >
+                                          <input
+                                            id="input-46"
+                                            type="text"
+                                          />
+                                        </div>
+                                      </div>
+                                      <div
+                                        class="v-text-field__details"
+                                      >
+                                        <div
+                                          class="v-messages theme--light"
+                                        >
+                                          <span
+                                            class="v-messages__wrapper"
+                                            name="message-transition"
+                                            tag="div"
+                                          />
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                 
+                                <div
+                                  class="bc-form-text"
+                                >
+                                  <div
+                                    class="text-left my-1"
+                                  >
+                                    
+     
+                                    <span
+                                      class="optional"
+                                    >
+                                      *optional
+                                    </span>
+                                  </div>
+                                   
+                                  <!---->
+                                   
+                                  <div
+                                    class="v-input input theme--light v-text-field v-text-field--single-line v-text-field--solo v-text-field--enclosed v-text-field--outlined"
+                                  >
+                                    <div
+                                      class="v-input__control"
+                                    >
+                                      <div
+                                        class="v-input__slot"
+                                      >
+                                        <fieldset
+                                          aria-hidden="true"
+                                        >
+                                          <legend>
+                                            <span>
+                                              ​
+                                            </span>
+                                          </legend>
+                                        </fieldset>
+                                        <div
+                                          class="v-text-field__slot"
+                                        >
+                                          <input
+                                            id="input-50"
+                                            type="text"
+                                          />
+                                        </div>
+                                      </div>
+                                      <div
+                                        class="v-text-field__details"
+                                      >
+                                        <div
+                                          class="v-messages theme--light"
+                                        >
+                                          <span
+                                            class="v-messages__wrapper"
+                                            name="message-transition"
+                                            tag="div"
+                                          />
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                               
+                              <div
+                                class="col"
+                              >
+                                <hr
+                                  aria-orientation="vertical"
+                                  class="mx-4 v-divider v-divider--vertical theme--light"
+                                  role="separator"
+                                />
+                              </div>
+                               
+                              <div
+                                class="col-sm-5 col-12"
+                              >
+                                <div
+                                  class="v-card__subtitle headline bc-padding-left-0"
+                                >
+                                  
+                                </div>
+                                 
+                                <div
+                                  class="v-input v-input--is-label-active v-input--is-dirty theme--light v-input--selection-controls v-input--radio-group v-input--radio-group--column"
+                                >
+                                  <div
+                                    class="v-input__control"
+                                  >
+                                    <div
+                                      class="v-input__slot"
+                                      style="height: auto;"
+                                    >
+                                      <div
+                                        aria-labelledby="input-54"
+                                        class="v-input--radio-group__input"
+                                        role="radiogroup"
+                                      >
+                                        <div
+                                          class="v-radio my-2 theme--light v-item--active"
+                                        >
+                                          <div
+                                            class="v-input--selection-controls__input"
+                                          >
+                                            <input
+                                              aria-checked="true"
+                                              id="input-55"
+                                              name="radio-54"
+                                              role="radio"
+                                              type="radio"
+                                              value="1"
+                                            />
+                                            <div
+                                              class="v-input--selection-controls__ripple primary--text"
+                                            />
+                                            <i
+                                              aria-hidden="true"
+                                              class="v-icon notranslate mdi mdi-radiobox-marked theme--light primary--text"
+                                            />
+                                          </div>
+                                        </div>
+                                         
+                                        <div
+                                          class="v-radio my-2 theme--light"
+                                        >
+                                          <div
+                                            class="v-input--selection-controls__input"
+                                          >
+                                            <input
+                                              aria-checked="false"
+                                              id="input-57"
+                                              name="radio-54"
+                                              role="radio"
+                                              type="radio"
+                                              value="2"
+                                            />
+                                            <div
+                                              class="v-input--selection-controls__ripple"
+                                            />
+                                            <i
+                                              aria-hidden="true"
+                                              class="v-icon notranslate mdi mdi-radiobox-blank theme--light"
+                                            />
+                                          </div>
+                                        </div>
+                                         
+                                        <div
+                                          class="v-radio my-2 theme--light"
+                                        >
+                                          <div
+                                            class="v-input--selection-controls__input"
+                                          >
+                                            <input
+                                              aria-checked="false"
+                                              id="input-59"
+                                              name="radio-54"
+                                              role="radio"
+                                              type="radio"
+                                              value="3"
+                                            />
+                                            <div
+                                              class="v-input--selection-controls__ripple"
+                                            />
+                                            <i
+                                              aria-hidden="true"
+                                              class="v-icon notranslate mdi mdi-radiobox-blank theme--light"
+                                            />
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div
+                                      class="v-messages theme--light"
+                                    >
+                                      <span
+                                        class="v-messages__wrapper"
+                                        name="message-transition"
+                                        tag="div"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                                 
+                                <div
+                                  class="v-card__actions btn-bottom"
+                                >
+                                  <div
+                                    class="spacer"
+                                  />
+                                   
+                                  <button
+                                    aria-label="Back Button"
+                                    class="btn v-btn v-btn--contained theme--light v-size--default secondary-btn normal"
+                                    name="button"
+                                    type="button"
+                                  >
+                                    <span
+                                      class="v-btn__content"
+                                    >
+                                      
+                                    </span>
+                                  </button>
+                                   
+                                  <button
+                                    aria-disabled="true"
+                                    class="btn white--text submit-package ml-6 v-btn v-btn--contained v-btn--disabled theme--light v-size--default primary normal disabled"
+                                    disabled="disabled"
+                                    name="button"
+                                    type="button"
+                                  >
+                                    <span
+                                      class="v-btn__content"
+                                    >
+                                      
+                                    </span>
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`TeamRoles.vue renders props when passed with gettors 1`] = `
 <v-container-stub
   tag="div"
@@ -41,6 +569,7 @@ exports[`TeamRoles.vue renders props when passed with gettors 1`] = `
           <v-spacer-stub />
            
           <button-stub
+            class="team-roles"
             color=""
             name="button"
             type="button"

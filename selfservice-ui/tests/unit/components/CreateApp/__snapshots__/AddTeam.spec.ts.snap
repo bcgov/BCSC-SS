@@ -85,7 +85,7 @@ exports[`AddTeam.vue renders props when passed 1`] = `
               />
                
               <button
-                class="btn v-btn v-btn--contained theme--light v-size--default primary normal"
+                class="btn team-roles v-btn v-btn--contained theme--light v-size--default primary normal"
                 name="button"
                 type="button"
               >
