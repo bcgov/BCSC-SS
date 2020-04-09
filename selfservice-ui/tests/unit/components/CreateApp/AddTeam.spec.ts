@@ -32,7 +32,9 @@ describe('AddTeam.vue', () => {
             return [];
           })
         },
-        actions: {}
+        actions: {
+          loadTeam: jest.fn()
+        }
       }
     }
   });
@@ -43,7 +45,7 @@ describe('AddTeam.vue', () => {
       vuetify,
       localVue,
       sync: false,
-      mocks: { $t: jest.fn(() => {}) }, // tslint:disable-line
+      mocks: { $t: jest.fn(() => { }) }, // tslint:disable-line
       ...options
     });
   };

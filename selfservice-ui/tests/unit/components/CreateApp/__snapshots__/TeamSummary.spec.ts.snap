@@ -1,44 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TeamSummary.vue render data 1`] = `
-<div
-  class="mt-5 v-card v-sheet theme--light red-border"
->
-  <header
-    class="bc-subtitle-2 v-sheet v-sheet--tile theme--dark v-toolbar v-toolbar--dense"
-    style="height: 48px;"
-  >
-    <div
-      class="v-toolbar__content"
-      style="height: 48px;"
-    >
-      <div
-        class="v-card__title"
-      >
-        
-      
-      
-        <div
-          class="spacer"
-        />
-         
-        <i
-          class="v-icon notranslate ml-3 v-icon--link mdi mdi-pencil theme--dark"
-          role="button"
-          style="font-size: 16px;"
-          tabindex="0"
-        />
-      </div>
-    </div>
-  </header>
-   
-  <div
-    class="v-list px-5 v-sheet v-sheet--tile theme--light v-list--dense"
-    role="list"
-  />
-</div>
-`;
-
 exports[`TeamSummary.vue renders props when passed 1`] = `
 <v-card-stub
   class="mt-5 red-border"
@@ -74,7 +35,142 @@ exports[`TeamSummary.vue renders props when passed 1`] = `
     dense="true"
     tag="div"
     tile="true"
-  />
+  >
+    <v-list-item-stub
+      activeclass=""
+      tag="div"
+    >
+      <v-list-item-content-stub
+        class="align-self-start pr-30"
+      >
+        
+          
+          
+        <span
+          class="small-hint pad-50"
+        />
+      </v-list-item-content-stub>
+       
+      <v-list-item-content-stub
+        class="align-end"
+      >
+        <div>
+          <v-icon-stub
+            class="mr-1"
+            small=""
+          >
+            mdi-account
+          </v-icon-stub>
+          
+            fname
+            lname
+          
+        </div>
+         
+        <div
+          class="ml-6"
+        >
+          09870987654321
+        </div>
+         
+        <div
+          class="ml-6"
+        >
+          e@e.com
+        </div>
+      </v-list-item-content-stub>
+    </v-list-item-stub>
+     
+    <v-divider-stub />
+    <v-list-item-stub
+      activeclass=""
+      tag="div"
+    >
+      <v-list-item-content-stub
+        class="align-self-start pr-30"
+      >
+        
+          
+          
+        <span
+          class="small-hint pad-50"
+        />
+      </v-list-item-content-stub>
+       
+      <v-list-item-content-stub
+        class="align-end"
+      >
+        <div>
+          <v-icon-stub
+            class="mr-1"
+            small=""
+          >
+            mdi-account
+          </v-icon-stub>
+          
+            john
+            bb
+          
+        </div>
+         
+        <div
+          class="ml-6"
+        >
+          987654321
+        </div>
+         
+        <div
+          class="ml-6"
+        >
+          bb@test.com
+        </div>
+      </v-list-item-content-stub>
+    </v-list-item-stub>
+     
+    <v-divider-stub />
+    <v-list-item-stub
+      activeclass=""
+      tag="div"
+    >
+      <v-list-item-content-stub
+        class="align-self-start pr-30"
+      >
+        
+          
+          
+        <span
+          class="small-hint pad-50"
+        />
+      </v-list-item-content-stub>
+       
+      <v-list-item-content-stub
+        class="align-end"
+      >
+        <div>
+          <v-icon-stub
+            class="mr-1"
+            small=""
+          >
+            mdi-account
+          </v-icon-stub>
+          
+            John
+            Doe
+          
+        </div>
+         
+        <!---->
+         
+        <div
+          class="ml-6"
+        >
+          user@yopmail.com
+        </div>
+      </v-list-item-content-stub>
+    </v-list-item-stub>
+     
+    <!---->
+  </v-list-stub>
 </v-card-stub>
 `;
 
@@ -113,6 +209,149 @@ exports[`TeamSummary.vue renders props when passed with gettors 1`] = `
   <div
     class="v-list px-5 v-sheet v-sheet--tile theme--light v-list--dense"
     role="list"
-  />
+  >
+    <div
+      class="v-list-item theme--light"
+      role="listitem"
+      tabindex="-1"
+    >
+      <div
+        class="v-list-item__content align-self-start pr-30"
+      >
+        
+          
+          
+        <span
+          class="small-hint pad-50"
+        />
+      </div>
+       
+      <div
+        class="v-list-item__content align-end"
+      >
+        <div>
+          <i
+            aria-hidden="true"
+            class="v-icon notranslate mr-1 mdi mdi-account theme--light"
+            style="font-size: 16px;"
+          />
+          
+            fname
+            lname
+          
+        </div>
+         
+        <div
+          class="ml-6"
+        >
+          09870987654321
+        </div>
+         
+        <div
+          class="ml-6"
+        >
+          e@e.com
+        </div>
+      </div>
+    </div>
+     
+    <hr
+      aria-orientation="horizontal"
+      class="v-divider theme--light"
+      role="separator"
+    />
+    <div
+      class="v-list-item theme--light"
+      role="listitem"
+      tabindex="-1"
+    >
+      <div
+        class="v-list-item__content align-self-start pr-30"
+      >
+        
+          
+          
+        <span
+          class="small-hint pad-50"
+        />
+      </div>
+       
+      <div
+        class="v-list-item__content align-end"
+      >
+        <div>
+          <i
+            aria-hidden="true"
+            class="v-icon notranslate mr-1 mdi mdi-account theme--light"
+            style="font-size: 16px;"
+          />
+          
+            john
+            bb
+          
+        </div>
+         
+        <div
+          class="ml-6"
+        >
+          987654321
+        </div>
+         
+        <div
+          class="ml-6"
+        >
+          bb@test.com
+        </div>
+      </div>
+    </div>
+     
+    <hr
+      aria-orientation="horizontal"
+      class="v-divider theme--light"
+      role="separator"
+    />
+    <div
+      class="v-list-item theme--light"
+      role="listitem"
+      tabindex="-1"
+    >
+      <div
+        class="v-list-item__content align-self-start pr-30"
+      >
+        
+          
+          
+        <span
+          class="small-hint pad-50"
+        />
+      </div>
+       
+      <div
+        class="v-list-item__content align-end"
+      >
+        <div>
+          <i
+            aria-hidden="true"
+            class="v-icon notranslate mr-1 mdi mdi-account theme--light"
+            style="font-size: 16px;"
+          />
+          
+            John
+            Doe
+          
+        </div>
+         
+        <!---->
+         
+        <div
+          class="ml-6"
+        >
+          user@yopmail.com
+        </div>
+      </div>
+    </div>
+     
+    <!---->
+  </div>
 </div>
 `;

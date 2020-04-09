@@ -47,7 +47,7 @@ export default class TeamSummary extends Vue {
   @Prop({ default: 0 })
   public id!: number;
 
-  @Prop({ default: {} })
+  @Prop({ default: [] })
   public team!: any;
 
   @Prop({ default: false })
