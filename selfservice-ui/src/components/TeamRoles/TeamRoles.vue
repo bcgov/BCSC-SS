@@ -26,7 +26,7 @@
                   <th class="text-left">{{ $t('teamRoles.tblHeadMyRole') }}</th>
                   <th class="text-left">{{ $t('teamRoles.tblHeadEmail') }}</th>
                   <th class="text-left">{{ $t('teamRoles.tblHeadPhone') }}</th>
-                  <th class="text-left" v-if="showActions()"></th>
+                  <th class="text-left"></th>
                 </tr>
               </thead>
               <tbody>
@@ -37,11 +37,12 @@
                   </td>
                   <td>{{ team.email }}</td>
                   <td>{{ team.phone }}</td>
-                  <td v-if="showActions()">
+                  <td>
                     <v-icon
                       @click="toggleAddMember(true, team.id)"
                       class="ml-2"
                       small
+                      v-if="showActions(team.isCurrentUser)"
                       >mdi-pencil</v-icon
                     >
                   </td>
@@ -49,7 +50,7 @@
               </tbody>
             </template>
           </v-simple-table>
-          <v-card-actions>
+          <v-card-actions class="mt-5">
             <v-spacer></v-spacer>
             <Button
               @click="toggleAddMember(true)"
@@ -63,7 +64,7 @@
 
       <v-col>
         <div class="text-center">
-          <v-dialog v-model="dialog" width="70%" class="text-left">
+          <v-dialog v-model="dialog" width="71%" class="text-left">
             <v-card>
               <AddTeamMember
                 :id="id"
@@ -123,7 +124,10 @@ export default class TeamRoles extends Vue {
     this.memberId = memberId;
     this.dialog = status;
   }
-  private showActions() {
+  private showActions(isCurrentUser: boolean) {
+    if (isCurrentUser) {
+      return true;
+    }
     return this.isAdmin;
   }
 
