@@ -129,6 +129,19 @@ def db(app):  # pylint: disable=redefined-outer-name, invalid-name
         Migrate(app, _db)
         upgrade()
 
+        admin_user = {
+            'sub': '65a62428-6713-4e7d-8f12-99e56de58386',
+            'given_name': 'admin',
+            'family_name': 'ss',
+            'email': 'analyst@gov.bc.ca'
+        }
+        sess.execute(text('INSERT INTO public."user"(' +
+                          'created, modified, email, phone, first_name, last_name, oauth_id)' +
+                          "VALUES (now(), null, '" + admin_user['email'] + "', " +
+                          "'123456789', '" + admin_user['given_name'] + "', " +
+                          " '" + admin_user['family_name'] + "', '" + admin_user['sub'] + "'); "))
+        sess.commit()
+
         return _db
 
 

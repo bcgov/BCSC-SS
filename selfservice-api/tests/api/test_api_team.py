@@ -18,7 +18,7 @@ from http import HTTPStatus
 
 from ..helper.api_create_data import (TEAM_API, create_team, _create_team_, _delete_team_member_,  # noqa: I001
                                     _get_team_, _get_team_member_, create_project)  # noqa: I001
-from ..helper.auth import ss_client_auth_header
+from ..helper.auth import ss_admin_auth_header, ss_client_auth_header
 from ..helper.request_data import factory_project_team_member
 
 from selfservice_api.models.enums import ProjectRoles
@@ -57,7 +57,7 @@ def test_post_team_validation(client, jwt, session):
 
 def test_put_team(client, jwt, session):
     """Assert that the endpoint returns the success status."""
-    headers = ss_client_auth_header(jwt)
+    headers = ss_admin_auth_header(jwt)
     team = create_team(client, jwt, member_role=ProjectRoles.Manager)
 
     get_team_response = _get_team_(client, jwt, str(team['projectId']))
@@ -75,7 +75,7 @@ def test_put_team(client, jwt, session):
 
 def test_put_team_validation(client, jwt, session):
     """Assert that the endpoint returns the failure status."""
-    headers = ss_client_auth_header(jwt)
+    headers = ss_admin_auth_header(jwt)
     team = create_team(client, jwt, member_role=ProjectRoles.Manager)
     team_put_api = TEAM_API.replace(':project_id', str(team['projectId'])) + '/' + str(team['id'])
 
