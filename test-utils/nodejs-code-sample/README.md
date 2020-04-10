@@ -23,8 +23,8 @@ When you have completed the registration process in the BC Services Card Self Se
 Once you have the key, secret, redirect url and test accounts, you configure the sample app by :
 
 
-1. Clonimg this repo to your local desktop
-2. Renaming `.env.sample` to `.env` 
+1. Cloning this repo to your local desktop
+2. Copying `.env.sample` to `.env` 
 3. Updating  **OIDC_CLIENT_ID** and **OIDC_CLIENT_SECRET** in `.env` to the values you obtained from the BC Services Card Self Service app
 
 
