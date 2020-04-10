@@ -185,7 +185,7 @@ def _get_team_(client, jwt, project_id):
 
 def _delete_team_member_(client, jwt, project_id, member_id):
     """Delete a team member and return response."""
-    headers = ss_client_auth_header(jwt)
+    headers = ss_admin_auth_header(jwt)
     team_delete_api = TEAM_API.replace(':project_id', project_id) + '/' + str(member_id)
     response = client.delete(team_delete_api, headers=headers, content_type='application/json')
     return response

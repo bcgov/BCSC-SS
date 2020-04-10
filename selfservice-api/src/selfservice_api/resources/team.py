@@ -21,9 +21,9 @@ from marshmallow import ValidationError
 
 from ..exceptions import BusinessException
 from ..models import OrgWhitelist, ProjectUsersAssociation
-from ..models.enums import ProjectRoles
 from ..schemas import TeamSchema
 from ..utils.auth import auth
+from ..utils.roles import Role
 from ..utils.util import cors_preflight
 
 
@@ -37,7 +37,7 @@ class TeamResource(Resource):
 
     @staticmethod
     @cors.crossdomain(origin='*')
-    @auth.can_access_project([ProjectRoles.Developer, ProjectRoles.Manager, ProjectRoles.Cto])
+    @auth.require
     def get(project_id):
         """Get team."""
         team = ProjectUsersAssociation.find_all_by_project_id(project_id)
@@ -49,7 +49,7 @@ class TeamResource(Resource):
 
     @staticmethod
     @cors.crossdomain(origin='*')
-    @auth.can_access_project([ProjectRoles.Developer, ProjectRoles.Manager, ProjectRoles.Cto])
+    @auth.require
     def post(project_id):
         """Post a new team using the request body."""
         team_json = request.get_json()
@@ -74,7 +74,7 @@ class TeamResourceById(Resource):
 
     @staticmethod
     @cors.crossdomain(origin='*')
-    @auth.can_access_project([ProjectRoles.Developer, ProjectRoles.Manager, ProjectRoles.Cto])
+    @auth.require
     def get(project_id, member_id):  # pylint: disable=unused-argument
         """Get team member."""
         team_member = ProjectUsersAssociation.find_by_id(member_id)
@@ -85,7 +85,7 @@ class TeamResourceById(Resource):
 
     @staticmethod
     @cors.crossdomain(origin='*')
-    @auth.can_access_project([ProjectRoles.Developer, ProjectRoles.Manager, ProjectRoles.Cto])
+    @auth.has_one_of_roles([Role.ss_admin])
     def delete(project_id, member_id):  # pylint: disable=unused-argument
         """Delete member from team."""
         ProjectUsersAssociation.delete_by_id(member_id)
@@ -93,25 +93,32 @@ class TeamResourceById(Resource):
 
     @staticmethod
     @cors.crossdomain(origin='*')
-    @auth.can_access_project([ProjectRoles.Developer, ProjectRoles.Manager, ProjectRoles.Cto])
+    @auth.require
     def put(project_id, member_id):
         """Update team member details."""
         team_json = request.get_json()
 
         try:
-            team_schema = TeamSchema()
             user = g.user
-
+            team_schema = TeamSchema()
             association = ProjectUsersAssociation.find_by_id(member_id)
-            if association.user_id == user.id:
-                dict_data = team_schema.load(team_json, partial=('role',))
-                validate_before_save(project_id, dict_data, member_id, True)
-                association.update(dict_data, only_role=True)
+
+            can_i_update = True  # can update if user is admin
+            if auth.is_client_role():  # can update own details if user is client
+                can_i_update = association.user_id == user.id
+
+            if can_i_update:
+                if association.user_id == user.id:
+                    dict_data = team_schema.load(team_json, partial=('role',))
+                    validate_before_save(project_id, dict_data, member_id, True)
+                    association.update(dict_data, only_role=True)
+                else:
+                    dict_data = team_schema.load(team_json)
+                    validate_before_save(project_id, dict_data, member_id)
+                    association.update(dict_data)
+                response, status = 'Updated successfully', HTTPStatus.OK
             else:
-                dict_data = team_schema.load(team_json)
-                validate_before_save(project_id, dict_data, member_id)
-                association.update(dict_data)
-            response, status = 'Updated successfully', HTTPStatus.OK
+                response, status = 'Access Denied', HTTPStatus.UNAUTHORIZED
         except ValidationError as team_err:
             response, status = {'systemErrors': team_err.messages}, HTTPStatus.BAD_REQUEST
         except BusinessException as team_be_err:
