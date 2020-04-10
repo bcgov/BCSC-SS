@@ -14,16 +14,20 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
         class="v-card v-card--flat v-sheet theme--light"
       >
         <h2
-          class="text-left tab-headline"
+          class="text-left tab-headline page-title-h2"
         >
           
+          
+        
         </h2>
          
-        <h4
-          class="text-left tab-headline font-weight-medium"
+        <p
+          class="text-left page-description"
         >
           
-        </h4>
+          
+        
+        </p>
          
         <!---->
          
@@ -562,16 +566,20 @@ exports[`TeamRoles.vue renders props when passed with gettors 1`] = `
         tag="div"
       >
         <h2
-          class="text-left tab-headline"
+          class="text-left tab-headline page-title-h2"
         >
           
+          
+        
         </h2>
          
-        <h4
-          class="text-left tab-headline font-weight-medium"
+        <p
+          class="text-left page-description"
         >
           
-        </h4>
+          
+        
+        </p>
          
         <!---->
          
