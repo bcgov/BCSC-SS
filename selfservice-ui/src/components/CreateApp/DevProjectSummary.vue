@@ -12,12 +12,18 @@
       <div class="flex-grow-1"></div>
     </v-toolbar>
     <v-container>
-      <v-col cols="12" flat>
-        <v-card flat>
-          <v-list-item-content class="text-left padding-0" v-html="$t('summaryPage.subTitle')"></v-list-item-content>
-        </v-card>
-      </v-col>
-      <ProjectSummary :id="id" />
+      <v-row>
+        <v-col cols="8" flat>
+          <v-card flat>
+            <v-list-item-content
+              class="text-left padding-0"
+              v-html="$t('summaryPage.subTitle')"
+            ></v-list-item-content>
+          </v-card>
+        </v-col>
+        <v-col cols="4"><ProjectActions :id="id" /> </v-col>
+        <ProjectSummary :id="id" />
+      </v-row>
     </v-container>
   </v-card>
 </template>
@@ -25,11 +31,13 @@
 import { Component, Vue, Watch, Prop } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
 import ProjectSummary from '@/components/CreateApp/ProjectSummary.vue';
+import ProjectActions from '@/components/ProjectActions/ProjectActions.vue';
 const SharedModule = namespace('SharedModule');
 
 @Component({
   components: {
-    ProjectSummary
+    ProjectSummary,
+    ProjectActions
   }
 })
 export default class DevProjectSummary extends Vue {

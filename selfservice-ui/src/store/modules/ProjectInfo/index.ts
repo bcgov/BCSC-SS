@@ -21,7 +21,9 @@ export const state: ProjectInfoState = {
   message: '',
   finalSuccessStatus: false,
   finalErrorStatus: false,
-  testAccountSuccess: true
+  testAccountSuccess: true,
+  statusChangeError: false,
+  statusChangeSuccess: false
 };
 
 const namespaced: boolean = true;

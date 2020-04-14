@@ -9,4 +9,6 @@ export interface ProjectInfoState {
   finalErrorStatus?: boolean;
   finalSuccessStatus?: boolean;
   testAccountSuccess?: boolean;
+  statusChangeError?: boolean;
+  statusChangeSuccess?: boolean;
 }
