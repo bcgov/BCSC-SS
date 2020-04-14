@@ -22,11 +22,19 @@
             <template v-slot:default>
               <thead class="tbl-head">
                 <tr class="text-left">
-                  <th class="text-left">{{ $t('teamRoles.tblHeadName') }}</th>
-                  <th class="text-left">{{ $t('teamRoles.tblHeadMyRole') }}</th>
-                  <th class="text-left">{{ $t('teamRoles.tblHeadEmail') }}</th>
-                  <th class="text-left">{{ $t('teamRoles.tblHeadPhone') }}</th>
-                  <th class="text-left" v-if="isAdmin"></th>
+                  <th :scope="$t('ClientID.tblHeadMyRole')" class="text-left">
+                    {{ $t('teamRoles.tblHeadMyRole') }}
+                  </th>
+                  <th :scope="$t('ClientID.tblHeadMyRole')" class="text-left">
+                    {{ $t('teamRoles.tblHeadMyRole') }}
+                  </th>
+                  <th :scope="$t('ClientID.tblHeadEmail')" class="text-left">
+                    {{ $t('teamRoles.tblHeadEmail') }}
+                  </th>
+                  <th :scope="$t('ClientID.tblHeadPhone')" class="text-left">
+                    {{ $t('teamRoles.tblHeadPhone') }}
+                  </th>
+                  <th scope="actions" class="text-left" v-if="isAdmin"></th>
                 </tr>
               </thead>
               <tbody>

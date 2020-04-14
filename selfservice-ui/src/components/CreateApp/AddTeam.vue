@@ -17,22 +17,23 @@
         <v-divider></v-divider>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <Button @click="goBack" :aria-label="$t('team.btnBack')" secondary class="back-btn">
-            {{
-            $t(
-            showWizardExperience()
-            ? 'team.btnBack'
-            : 'team.btnCancel'
-            )
-            }}
+          <Button
+            @click="goBack"
+            :aria-label="$t('team.btnBack')"
+            secondary
+            class="back-btn"
+          >
+            {{ $t(showWizardExperience() ? 'team.btnBack' : 'team.btnCancel') }}
           </Button>
-          <Button class="white--text submit-team ml-6" depressed @click="nextRedirect">
+          <Button
+            class="white--text submit-team ml-6"
+            depressed
+            @click="nextRedirect"
+          >
             {{
-            $t(
-            showWizardExperience()
-            ? 'team.btnNext'
-            : 'team.btnSaveChanges'
-            )
+              $t(
+                showWizardExperience() ? 'team.btnNext' : 'team.btnSaveChanges'
+              )
             }}
           </Button>
         </v-card-actions>
@@ -82,6 +83,3 @@ export default class AddTeam extends Vue {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-</style>
