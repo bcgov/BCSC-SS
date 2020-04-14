@@ -1,0 +1,259 @@
+<html>
+  
+  <div>
+    <div class="menu">
+      <ul>
+        <li><a href="#manager">Getting Started Info for Managers</a></li>
+        <li><a href="#developer">Getting Started Info for Developers</a></li>
+      </ul>
+    </div>
+    <h1 class="">Learn more about the BC Services Card Self-Serve</h1>
+
+    <h2 id="manager">Getting Started Info for Managers</h2>
+
+    <h3>About the BC Services Card</h3>
+
+    <p>
+      The BC Services Card is a government issued ID that can be used to log in
+      to participating services online when it is paired with your mobile
+      device. The BC Services Card provides a high identity assurance level
+      which gives your public agency clients the confidence that the person
+      trying to access their online service is who they say they are.
+    </p>
+    <ul>
+      <li>
+        <a
+          href="https://www2.gov.bc.ca/gov/content/governments/government-id/bc-services-card"
+          >Learn more about the BC Services Card</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://www2.gov.bc.ca/gov/content/governments/government-id/bc-services-card/login-with-card/mobile-card"
+          >Logging into online services with a mobile card</a
+        >
+      </li>
+    </ul>
+
+    <h3>Who is this for?</h3>
+
+    <p>
+      This BC Services Card self-service implementation is available for
+      organizations that fall within the BC Broader Public Sector (BPS). The BC
+      Services Card Self-Service application enables organizations within the
+      BPS to have an easy-access point into deploying the BC Services Card as an
+      authentication mechanism for the BPS organization&#146;s own web
+      application. We want to help BPS agencies integrate with the BC Services
+      Card.
+    </p>
+
+    <p>
+      Self-service uses a two-stepped approach where the BPS teams can
+      experiment with an integration in our test environment, using fictious BC
+      Services Card data as a test and then, when they are ready, prepare and
+      submit their materials to create a live integration with real citizen BC
+      Services Cards.
+    </p>
+
+    <h3>Step 1: Experiment through a proof of concept</h3>
+
+    <p>
+      We call the activities in this step a <em>development access request</em>.
+      This process is designed to be free from barriers, enabling developers to
+      easily access data within a protected development tier. It allows
+      developers to create a quick implementation of a proof of concept or
+      working model of BC Services Card login functionality integrated with
+      their own BPS application. The key things to keep in mind in this step:
+    </p>
+    <ul>
+      <li>
+        <strong>Identity Information:</strong>The BC Services Card provides a
+        higher level of identity assurance and during an authentication
+        transaction, identity information about a person is available.
+        We&#146;ve created a set of pre-defined identity data attributes or
+        scope packages as we call them, for BPS developers to experiment with.
+        We believe offering these packages provides a simple experience in
+        understanding how to integrate with BC Services Card.
+      </li>
+      <li>
+        <strong>Test Accounts:</strong>Test BC Services Card accounts are
+        provided to let developers test their work using mock data in a
+        development environment.
+      </li>
+      <li>
+        <strong>API Key and Secret:</strong>After submitting a development
+        access request, a developer will obtain a data sharing key and secret as
+        per our protocols of Open ID Connect (OIDC) API.
+      </li>
+    </ul>
+    <img src="help-img/5stepstodev.png" alt="5 steps to dev" />
+
+    <p>
+      Once the proof of concept has been tested and is completed to the BPS’
+      satisfaction, the BPS team should inform the Provincial Identity
+      Information Management (IDIM) Program through the self-service application
+      to begin the process of a <em>Live Access Request</em>. We want to keep
+      things simple and are asking for the contact information of 3 types of
+      team members from the BPS with respect to a Live Access Request:
+    </p>
+    <ul>
+      <li>
+        A developer, who uses the API key and secret details to configure the
+        OpenID Connect configuration for the BPS online service.
+      </li>
+      <li>
+        A manager, who will be involved in the end to end Live Access Request
+        Process. This person works with both the development and executive team.
+      </li>
+      <li>
+        An executive sponsor, who has the accountability and authority to sign
+        off on privacy documents, security documents and service agreements.
+      </li>
+    </ul>
+    <p>
+      Each defined member of the project team will be required to log in to the
+      BC Services Card self-service application to view the project(s) they have
+      access to and to advance the project through the steps to production, in
+      accordance with their project role.
+    </p>
+
+    <h3>Step 2: Begin the Live BC Services Card request process</h3>
+
+    <p>
+      The <em>Live Access Request</em> process is designed to enable BPS teams
+      to work at their own pace to understand and address the various categories
+      of compliance before integrating with a live production-ready environment
+      of BC Services Card data. A member of the Provincial Identity Information
+      Management Program is always available to help BPS clients in completing
+      the integration components. The BC Services Card self-service application
+      will guide you through these steps.
+    </p>
+
+    <p>
+      The Provincial Identity Information Management Program is mandated to
+      provide identity and authentication services using the BC Services Card to
+      support citizen transactions with government services. BPS integration
+      with the BC Services Card requires agreement and adherance to categorized
+      compliance items to ensure privacy, security and other needs are met to
+      the satisfaction of the Provincial Identity Information Management
+      Program. This self-service system will guide you through these compliance
+      areas.
+    </p>
+
+    <p>
+      Once a user has completed all of the items in each of the compliance
+      categories, a member of the Provincial Identity Information Management
+      (IDIM) Program will provide the BPS team with a new data sharing key and
+      secret for using the OpenIDConnect (OIDC) API to provide authentication
+      for the live production environment.
+    </p>
+
+    <hr />
+
+    <h2 id="developer">Getting Started Info for Developers</h2>
+
+    <h3>How to begin</h3>
+
+    <p>
+      The BC Services Card Self-Service application has been created to provide
+      developers from Broader Public Sector (BPS) organizations with
+      straightforward access to the tools that will enable them to easily build
+      a proof of concept or working model in a development environment to
+      connect their organization's applications with the BC Services Card login
+      functionality.
+    </p>
+
+    <p>
+      Begin by logging into the BC Services Card Self-Service application with
+      your own BC Services Card, your existing IDIR login (if you have one) or
+      your GitHub account.
+    </p>
+
+    <p>
+      Create a project to get started. The project will be created in the
+      Development Access Request state and will allow you to set up the
+      configuration for your application in order to receive an API key and
+      secret for use in your development environment.
+    </p>
+
+    <p>
+      Moving into a <em>Live Access Request</em> towards gaining access to a
+      production environment will require you to enter some information about
+      your project team (Manager, Executive Sponsor) who will be required to
+      work through some categorized compliance steps. The BC Services Card
+      Self-Service application will guide your team through this process.
+    </p>
+
+    <h3>GitHub Repository</h3>
+
+    <p>
+      The following GitHub repository is provided to assist you with your
+      development and integration. You will find technical documentation, sample
+      code and applications in the repository to assist you in your
+      experimentation, proofs of concept and implementation.
+    </p>
+
+    <ul>
+      <li>
+        <a href="https://github.com/bcgov/BCSC-SS/"
+          >BC Services Card Self-Service GitHub Repo</a
+        >
+      </li>
+    </ul>
+
+    <h3>Technical Architecture Overview</h3>
+    <p>
+      There are a number of different ways in which a web application might use
+      the BC Services Card as a login option, we discuss two common
+      architectures.
+    </p>
+
+    <p>
+      For all architectures the BC Services Card uses Open ID Connect (OIDC) as
+      the authentication mechanism whereby the user is presented a login screen
+      from the BC Services Card (or IAS) infrastructure and the authentication
+      and validation therein are completely separate to the calling application.
+    </p>
+
+    <p>
+      On successful login, a token is passed to the calling application, which
+      can be used to get user attribute data (also known as &quot;scopes&quot;)
+      such as email address, first and last names or mailing address in
+      subsequent calls to IAS. In this application, the scopes are pre-defined
+      in packages. You will select a package that meets the needs of your
+      organization. The OIDC flow used is the &quot;Authorization Code
+      Flow&quot;.
+    </p>
+
+    <h3>Direct browser architecture</h3>
+    <img
+      src="help-img/direct-browser-architecture.png"
+      alt="direct browser architecture"
+    />
+
+    <h3>Direct webapp architecture</h3>
+
+    <img
+      src="help-img/direct-webapp-architecture.png"
+      alt="direct webapp architecture"
+    />
+
+    <h3>Proxy architecture</h3>
+    <img src="help-img/proxy-architecture.png" alt="proxy architecture" />
+
+    <h2>***Recommended technical resources</h2>
+    <ul>
+      <li>
+        <a href="https://github.com/bcgov/BCSC-SS/"
+          >BC Services Card Self-Service GitHub Repo</a
+        >
+      </li>
+      <li>
+        <a href="https://github.com/bcgov/BCSC-SS/tree/dev/test-utils"
+          >GitHub - test applications</a
+        >
+      </li>
+      <li>OIDC links??</li>
+    </ul>
+  </div>
+</html>
