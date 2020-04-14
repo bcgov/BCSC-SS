@@ -113,6 +113,7 @@ class ProjectResourceById(Resource):
     @auth.can_access_project([ProjectRoles.Developer, ProjectRoles.Manager, ProjectRoles.Cto])
     def patch(project_id):
         """Update project status."""
+        user = g.user
         project_patch_json = request.get_json()
 
         project = Project.find_by_id(project_id)
@@ -121,12 +122,17 @@ class ProjectResourceById(Resource):
                     ProjectResourceById._validate_before_status_update_(project, project_patch_json.get('status')):
 
                 project_status = project_patch_json['status']
-                is_success = False
-                # Decide which api to call
+                is_success = True
+
+                # Decide when and which api to call
                 if project_status == ProjectStatus.Development:
                     is_success = ProjectResourceById._dynamic_api_call_(project, False)
                     if is_success:
-                        response = ProjectResourceById._update_development_status_(project, project_status)
+                        response = ProjectResourceById._on_development_status_(project, project_status)
+
+                # Make sure we are not downgrading the project status
+                if project.status < project_status:
+                    project.update_status(project_status, user)
 
                 if is_success:
                     status = HTTPStatus.OK
@@ -137,14 +143,9 @@ class ProjectResourceById(Resource):
         return 'Update failed', HTTPStatus.BAD_REQUEST
 
     @staticmethod
-    def _update_development_status_(project: Project, status):
-        """Update project status to development."""
-        user = g.user
+    def _on_development_status_(project: Project, status):
+        """When the project status is moving to development from draft."""
         EmailService.save_and_send(EmailType.DEV_REQUEST, {'project_name': project.project_name})
-
-        # Make sure we are not downgrading the project status
-        if project.status < status:
-            project.update_status(status, user)
 
         test_accounts = TestAccount.find_all_by_project_id(project.id)
         technical_req: TechnicalReq = project.technical_req[0]
@@ -160,6 +161,7 @@ class ProjectResourceById(Resource):
     @staticmethod
     def _validate_before_status_update_(project: Project, status):
         """Validate the project details before updating status."""
+        is_valid = False
         if status == ProjectStatus.Development:
             technical_req = TechnicalReq.find_by_project_id(project.id)
             project_members = ProjectUsersAssociation.find_all_by_project_id(project.id)
@@ -167,9 +169,12 @@ class ProjectResourceById(Resource):
                 technical_req is not None and \
                 technical_req.scope_package_id is not None and \
                     technical_req.no_of_test_account is not None:
-                return True
+                is_valid = True
+        elif status == ProjectStatus.DevelopmentComplete:
+            if project.status == ProjectStatus.Development:
+                is_valid = True
 
-        return False
+        return is_valid
 
     @staticmethod
     def _dynamic_api_call_(project: Project, is_prod: bool):
