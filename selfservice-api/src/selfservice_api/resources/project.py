@@ -121,6 +121,7 @@ class ProjectResourceById(Resource):
             if project_patch_json['update'] == 'status' and \
                     ProjectResourceById._validate_before_status_update_(project, project_patch_json.get('status')):
 
+                response = {'message': 'Updated successfully'}
                 project_status = project_patch_json['status']
                 is_success = True
 
@@ -128,7 +129,8 @@ class ProjectResourceById(Resource):
                 if project_status == ProjectStatus.Development:
                     is_success = ProjectResourceById._dynamic_api_call_(project, False)
                     if is_success:
-                        response = ProjectResourceById._on_development_status_(project, project_status)
+                        response_additional = ProjectResourceById._on_development_status_(project, project_status)
+                        response.update(response_additional)
 
                 # Make sure we are not downgrading the project status
                 if project.status < project_status:
@@ -150,8 +152,7 @@ class ProjectResourceById(Resource):
         test_accounts = TestAccount.find_all_by_project_id(project.id)
         technical_req: TechnicalReq = project.technical_req[0]
         response = {
-            'testAccountSuccess': True,
-            'message': 'Updated successfully'
+            'testAccountSuccess': True
         }
         if len(test_accounts) < technical_req.no_of_test_account:
             response['testAccountSuccess'] = False
@@ -171,8 +172,7 @@ class ProjectResourceById(Resource):
                     technical_req.no_of_test_account is not None:
                 is_valid = True
         elif status == ProjectStatus.DevelopmentComplete:
-            if project.status == ProjectStatus.Development:
-                is_valid = True
+            is_valid = project.status == ProjectStatus.Development
 
         return is_valid
 
