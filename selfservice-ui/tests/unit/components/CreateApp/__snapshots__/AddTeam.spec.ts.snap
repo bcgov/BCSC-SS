@@ -63,16 +63,12 @@ exports[`AddTeam.vue renders props when passed 1`] = `
               class="text-left tab-headline page-title-h2"
             >
               
-          
-        
             </h2>
              
             <p
               class="text-left page-description"
             >
               
-          
-        
             </p>
              
             <!---->
