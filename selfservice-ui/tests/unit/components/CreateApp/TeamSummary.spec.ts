@@ -1,12 +1,11 @@
 import { shallowMount, mount } from '@vue/test-utils';
 import TeamSummary from '@/components/CreateApp/TeamSummary.vue';
 import Vuetify from 'vuetify';
-import Vuex from 'vuex';
+
 let vuetify: any;
 vuetify = new Vuetify();
 
 describe('TeamSummary.vue', () => {
-
   const mountFunction = (options: any) => {
     return mount(TeamSummary, {
       propsData: {
@@ -38,7 +37,7 @@ describe('TeamSummary.vue', () => {
         ]
       },
       vuetify,
-      mocks: { $t: jest.fn(() => { }) }, // tslint:disable-line
+      mocks: { $t: jest.fn(() => {}) }, // tslint:disable-line
       ...options
     });
   };
@@ -52,7 +51,6 @@ describe('TeamSummary.vue', () => {
 
 describe('TeamSummary.vue', () => {
   it('renders props when passed', () => {
-
     const teamSummary = shallowMount(TeamSummary, {
       propsData: {
         team: [
@@ -83,7 +81,7 @@ describe('TeamSummary.vue', () => {
         ]
       },
       vuetify,
-      mocks: { $t: jest.fn(() => { }) } // tslint:disable-line
+      mocks: { $t: jest.fn(() => {}) } // tslint:disable-line
     });
 
     expect(teamSummary.element).toMatchSnapshot();
