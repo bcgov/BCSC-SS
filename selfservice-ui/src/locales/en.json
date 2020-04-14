@@ -222,7 +222,8 @@
     "labelRoledeveloper": "Developer",
     "labelRolemanager": "Manager",
     "labelRolecto": "Executive Sponsor",
-    "btnAddTeamMember": "+ Add team member"
+    "btnAddTeamMember": "+ Add team member",
+    "deleteWarning": "You have chosen to remove a user from this project.<br/>Do you wish to proceed with deleting this user?"
   },
   "addTeamMember": {
     "pagetitle": "Add a team member",
