@@ -17,7 +17,10 @@
         <v-row class="mx-4">
           <v-col cols="12" flat>
             <v-card flat>
-              <div class="text-left" v-html="$t('testAccountList.pageinfo')"></div class="text-left">
+              <div
+                class="text-left"
+                v-html="$t('testAccountList.pageinfo')"
+              ></div>
             </v-card>
           </v-col>
           <v-col class="col-12" v-if="errorStatus || successStatus">
@@ -36,7 +39,13 @@
           </v-col>
           <v-col cols="12" flat>
             <v-card flat>
-              <TextArea v-model="testAccounts" :label="$t('testAccountList.special_notes')" type="text" outlined rows="10" />
+              <TextArea
+                v-model="testAccounts"
+                :label="$t('testAccountList.special_notes')"
+                type="text"
+                outlined
+                rows="10"
+              />
             </v-card>
           </v-col>
         </v-row>

@@ -57,7 +57,6 @@
     "btnSaveChanges": "Save Changes",
     "labelTestMethod": "Select your data security and format",
     "labelTestMethodHint": "Choose your signing and encryption methods for testing below. These options are available to facilitate your testing. Please note that when you move into a production environment, it will be required that you enable signing and encryption at that time.",
-    "SimpleJSONHint": "We return unsigned, unencrypted JSON format for easy testing",
     "SignedJWTHint": "We return a signed JWT for more security",
     "SecureJWTHint": "We return a signed and encrypted JWT for maximum security"
   },
@@ -71,6 +70,13 @@
     "package3": "Package 3 - best fit for organizations who want to know who the user is and communicate directly with their users non-electronically",
     "how_many_test_account": "How many test accounts do you require?",
     "special_notes": "Special requests or notes for test account creation",
+    "btnBack": "Go Back",
+    "btnNext": "Next",
+    "btnCancel": "Cancel",
+    "btnSaveChanges": "Save Changes"
+  },
+  "team": {
+    "pageTitle": "Team",
     "btnBack": "Go Back",
     "btnNext": "Next",
     "btnCancel": "Cancel",
@@ -93,9 +99,9 @@
     "projectInfoTitle": "Project Information",
     "labelProjectTitle": "Project name",
     "labelOrganizationName": "Organization name",
-    "labelTechnicalContact": "Developer",
-    "labelManagerContact": "Manager ",
-    "labelCtoContact": "Executive Sponsor",
+    "developer": "Developer",
+    "manager": "Manager ",
+    "cto": "Executive Sponsor",
     "Next": "Next",
     "Back": "Go Back",
     "technicalReqTitle": "Technical Requirement",
@@ -131,9 +137,9 @@
     "labelDataPackageReqdHint": "Package of OIDC scopes (or user attributes) made available to your application on successful login",
     "labelTestingMethod": "Testing Method",
     "labelTestingMethodHint": "This is the method you chose for testing in development. Please note that a production environment will require signing and encryption.",
-    "SimpleJSON": "Simple JSON",
     "SignedJWT": "Signed JWT",
-    "SecureJWT": "Secure JWT"
+    "SecureJWT": "Secure JWT",
+    "teamTitle": "Team"
   },
   "ClientID": {
     "pagetitle": "API Key / Client ID",
@@ -205,5 +211,36 @@
     "titleComms": "Communications",
     "titleAgreements": "Agreements",
     "titleLiveSummary": "Live Summary"
+  },
+  "teamRoles": {
+    "pagetitle": "Project team roles",
+    "pageInfo": "To begin your development, only the Developer is required. To move your project along the route to implementation in a production environment, a Manager and Executive Sponsor will be required.",
+    "tblHeadName": "Name",
+    "tblHeadMyRole": "My Role",
+    "tblHeadEmail": "Email",
+    "tblHeadPhone": "Work phone",
+    "labelRoledeveloper": "Developer",
+    "labelRolemanager": "Manager",
+    "labelRolecto": "Executive Sponsor",
+    "btnAddTeamMember": "+ Add team member"
+  },
+  "addTeamMember": {
+    "pagetitle": "Add a team member",
+    "pagetitleUpdate": "Update a team member",
+    "contactInfo": "Contact information",
+    "roleTitle": "Role",
+    "labelRoledeveloper": "Developer",
+    "labelRolemanager": "Manager",
+    "labelRolecto": "Executive Sponsor",
+    "btnCancel": "Cancel",
+    "btnSumbmit": "+ Add this person",
+    "labelFirstName": "First name",
+    "labelLastName": "Last name",
+    "labelWorkEmail": "Work email",
+    "labelPhone": "Office phone number",
+    "errorTitle": "please fix following errors",
+    "invalidDomain": "This email domain address you entered is not in our system of approved organizations. Please correct the email address or  <a href='/contact-us'>contact IDIM</a>to have the domain added to the system.",
+    "roleAlreadyAssigned": "This role is already assigned to another team member. Please select a different role or <a href='/contact-us'>contact IDIM</a> to change your project team membership.",
+    "emailAlreadyAssigned": "The email address you entered belongs to a user who already has been assigned in this project. An individual user can only have one project role."
   }
 }

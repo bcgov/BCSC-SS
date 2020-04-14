@@ -19,9 +19,9 @@ from flask import current_app, g, jsonify, request
 from flask_restplus import Namespace, Resource, cors
 from marshmallow import ValidationError
 
-from ..models import OIDCConfig, Project, TechnicalReq, TestAccount, User
+from ..models import OIDCConfig, Project, ProjectUsersAssociation, TechnicalReq, TestAccount
 from ..models.enums import ProjectRoles, ProjectStatus
-from ..schemas.project import ProjectSchema
+from ..schemas import ProjectSchema
 from ..services.external import get_dynamic_api
 from ..services.external.models import CreateRequestModel, CreateResponseModel, UpdateRequestModel, UpdateResponseModel
 from ..services.notification import EmailService, EmailType
@@ -43,11 +43,10 @@ class ProjectResource(Resource):
     @auth.has_one_of_roles([Role.ss_client, Role.ss_admin])
     def get():
         """Get all project."""
-        token_info = g.jwt_oidc_token_info
-        oauth_id = None
+        user = None
         if auth.is_client_role():
-            oauth_id = token_info.get('sub')
-        projects = Project.find_all_or_by_user(oauth_id)
+            user = g.user
+        projects = Project.find_all_or_by_user(user)
         return jsonify({'projects': projects}), HTTPStatus.OK
 
     @staticmethod
@@ -58,13 +57,17 @@ class ProjectResource(Resource):
         project_json = request.get_json()
 
         try:
-            token_info = g.jwt_oidc_token_info
+            user = g.user
             project_schema = ProjectSchema()
             dict_data = project_schema.load(project_json)
-            project = Project.create_from_dict(dict_data, token_info.get('sub'))
+            project = Project.create_from_dict(dict_data, user)
+
+            if auth.is_client_role():
+                ProjectUsersAssociation.create(user.id, project.id, ProjectRoles.Developer)
+
             response, status = project_schema.dump(project), HTTPStatus.CREATED
         except ValidationError as project_err:
-            response, status = {'message': str(project_err.messages)}, \
+            response, status = {'systemErrors': project_err.messages}, \
                 HTTPStatus.BAD_REQUEST
         return response, status
 
@@ -79,8 +82,7 @@ class ProjectResourceById(Resource):
     @auth.can_access_project([ProjectRoles.Developer, ProjectRoles.Manager, ProjectRoles.Cto])
     def get(project_id):
         """Get project details."""
-        token_info = g.jwt_oidc_token_info
-        user = User.find_by_oauth_id(token_info.get('sub'))
+        user = g.user
         project = Project.find_by_id(project_id)
         project_dump = ProjectSchema().dump(project)
         for project_users in project.users:
@@ -99,12 +101,12 @@ class ProjectResourceById(Resource):
             project_schema = ProjectSchema()
             dict_data = project_schema.load(project_json)
 
+            user = g.user
             project = Project.find_by_id(project_id)
-            token_info = g.jwt_oidc_token_info
-            project.update(token_info.get('sub'), dict_data)
+            project.update(dict_data, user)
             return 'Updated successfully', HTTPStatus.OK
         except ValidationError as project_err:
-            return {'message': str(project_err.messages)}, HTTPStatus.BAD_REQUEST
+            return {'systemErrors': project_err.messages}, HTTPStatus.BAD_REQUEST
 
     @staticmethod
     @cors.crossdomain(origin='*')
@@ -137,12 +139,12 @@ class ProjectResourceById(Resource):
     @staticmethod
     def _update_development_status_(project: Project, status):
         """Update project status to development."""
-        token_info = g.jwt_oidc_token_info
+        user = g.user
         EmailService.save_and_send(EmailType.DEV_REQUEST, {'project_name': project.project_name})
 
         # Make sure we are not downgrading the project status
         if project.status < status:
-            project.update_status(token_info.get('sub'), status)
+            project.update_status(status, user)
 
         test_accounts = TestAccount.find_all_by_project_id(project.id)
         technical_req: TechnicalReq = project.technical_req[0]
@@ -158,13 +160,14 @@ class ProjectResourceById(Resource):
     @staticmethod
     def _validate_before_status_update_(project: Project, status):
         """Validate the project details before updating status."""
-        if project is not None:
-            if status == ProjectStatus.Development:
-                technical_req = TechnicalReq.find_by_project_id(project.id)
-                if technical_req is not None and \
-                    technical_req.scope_package_id is not None and \
-                        technical_req.no_of_test_account is not None:
-                    return True
+        if status == ProjectStatus.Development:
+            technical_req = TechnicalReq.find_by_project_id(project.id)
+            project_members = ProjectUsersAssociation.find_all_by_project_id(project.id)
+            if len(project_members) > 0 and \
+                technical_req is not None and \
+                technical_req.scope_package_id is not None and \
+                    technical_req.no_of_test_account is not None:
+                return True
 
         return False
 

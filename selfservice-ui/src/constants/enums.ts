@@ -6,9 +6,15 @@ enum projectRoles {
 }
 enum algorithamBase {
   // This Enum provides the list of algorithams.
-  SimpleJSON = 1,
-  SignedJWT = 2,
-  SecureJWT = 3
+  SignedJWT = 1,
+  SecureJWT = 2
 }
 
-export { projectRoles, algorithamBase };
+const projectRolesList = {
+  // const array for project role name cxonvertion
+  1: 'developer',
+  2: 'manager',
+  3: 'cto'
+};
+
+export { projectRoles, algorithamBase, projectRolesList };

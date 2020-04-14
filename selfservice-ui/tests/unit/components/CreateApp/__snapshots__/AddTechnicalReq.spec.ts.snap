@@ -94,6 +94,8 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                   class="text-left my-1"
                 >
                   
+     
+                  <!---->
                 </div>
                  
                 <!---->
@@ -156,6 +158,8 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                   class="text-left my-1"
                 >
                   
+     
+                  <!---->
                 </div>
                  
                 <!---->
@@ -265,7 +269,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                             for="input-22"
                             style="left: 0px; position: relative;"
                           >
-                            Simple JSON
+                            Signed JWT
                           </label>
                         </div>
                          
@@ -276,6 +280,112 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                         </div>
                          
                         <div
+                          class="row pad-radio"
+                        >
+                          <div
+                            class="col-12 col-md-5"
+                          >
+                            <div
+                              class="bc-form-text"
+                              outlined=""
+                              rules="v => !!v || 'This field is required'"
+                              value="RS256"
+                            >
+                              <div
+                                class="text-left my-1"
+                              >
+                                
+                              </div>
+                               
+                              <!---->
+                               
+                              <div
+                                class="v-input v-input--is-label-active v-input--is-dirty theme--light v-text-field v-text-field--single-line v-text-field--solo v-text-field--enclosed v-text-field--outlined v-select"
+                              >
+                                <div
+                                  class="v-input__control"
+                                >
+                                  <div
+                                    aria-expanded="false"
+                                    aria-haspopup="listbox"
+                                    aria-owns="list-25"
+                                    class="v-input__slot"
+                                    role="button"
+                                  >
+                                    <fieldset
+                                      aria-hidden="true"
+                                    >
+                                      <legend>
+                                        <span>
+                                          ​
+                                        </span>
+                                      </legend>
+                                    </fieldset>
+                                    <div
+                                      class="v-select__slot"
+                                    >
+                                      <div
+                                        class="v-select__selections"
+                                      >
+                                        <div
+                                          class="v-select__selection v-select__selection--comma"
+                                        >
+                                          RS256
+                                        </div>
+                                        <input
+                                          aria-readonly="true"
+                                          autocomplete="off"
+                                          id="input-25"
+                                          readonly="readonly"
+                                          type="text"
+                                        />
+                                      </div>
+                                      <div
+                                        class="v-input__append-inner"
+                                      >
+                                        <div
+                                          class="v-input__icon v-input__icon--append"
+                                        >
+                                          <i
+                                            aria-hidden="true"
+                                            class="v-icon notranslate mdi mdi-menu-down theme--light"
+                                          />
+                                        </div>
+                                      </div>
+                                      <input
+                                        type="hidden"
+                                        value="RS256"
+                                      />
+                                    </div>
+                                    <div
+                                      class="v-menu"
+                                    >
+                                      <div
+                                        class="v-menu__content theme--light "
+                                        style="max-height: 304px; min-width: 0px; max-width: auto; top: 12px; left: 0px; transform-origin: top left; z-index: 0; display: none;"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div
+                                    class="v-text-field__details"
+                                  >
+                                    <div
+                                      class="v-messages theme--light"
+                                    >
+                                      <span
+                                        class="v-messages__wrapper"
+                                        name="message-transition"
+                                        tag="div"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                         
+                        <div
                           class="v-radio theme--light"
                         >
                           <div
@@ -283,7 +393,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                           >
                             <input
                               aria-checked="false"
-                              id="input-24"
+                              id="input-32"
                               name="radio-21"
                               role="radio"
                               type="radio"
@@ -299,46 +409,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                           </div>
                           <label
                             class="v-label theme--light"
-                            for="input-24"
-                            style="left: 0px; position: relative;"
-                          >
-                            Signed JWT
-                          </label>
-                        </div>
-                         
-                        <div
-                          class="small-hint radio-help"
-                        >
-                          
-                        </div>
-                         
-                        <!---->
-                         
-                        <div
-                          class="v-radio theme--light"
-                        >
-                          <div
-                            class="v-input--selection-controls__input"
-                          >
-                            <input
-                              aria-checked="false"
-                              id="input-26"
-                              name="radio-21"
-                              role="radio"
-                              type="radio"
-                              value="3"
-                            />
-                            <div
-                              class="v-input--selection-controls__ripple"
-                            />
-                            <i
-                              aria-hidden="true"
-                              class="v-icon notranslate mdi mdi-radiobox-blank theme--light"
-                            />
-                          </div>
-                          <label
-                            class="v-label theme--light"
-                            for="input-26"
+                            for="input-32"
                             style="left: 0px; position: relative;"
                           >
                             Secure JWT
@@ -515,6 +586,8 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                   class="text-left my-1"
                 >
                   
+     
+                  <!---->
                 </div>
                  
                 <!---->
@@ -541,7 +614,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                         class="v-text-field__slot"
                       >
                         <input
-                          id="input-47"
+                          id="input-53"
                           type="text"
                         />
                       </div>
@@ -577,6 +650,8 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                   class="text-left my-1"
                 >
                   
+     
+                  <!---->
                 </div>
                  
                 <!---->
@@ -603,7 +678,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                         class="v-text-field__slot"
                       >
                         <input
-                          id="input-51"
+                          id="input-57"
                           type="text"
                         />
                       </div>
@@ -655,7 +730,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                       style="height: auto;"
                     >
                       <div
-                        aria-labelledby="input-54"
+                        aria-labelledby="input-60"
                         class="v-input--radio-group__input"
                         role="radiogroup"
                       >
@@ -667,8 +742,8 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                           >
                             <input
                               aria-checked="true"
-                              id="input-55"
-                              name="radio-54"
+                              id="input-61"
+                              name="radio-60"
                               role="radio"
                               type="radio"
                               value="1"
@@ -683,10 +758,10 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                           </div>
                           <label
                             class="v-label theme--light"
-                            for="input-55"
+                            for="input-61"
                             style="left: 0px; position: relative;"
                           >
-                            Simple JSON
+                            Signed JWT
                           </label>
                         </div>
                          
@@ -697,6 +772,112 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                         </div>
                          
                         <div
+                          class="row pad-radio"
+                        >
+                          <div
+                            class="col-12 col-md-5"
+                          >
+                            <div
+                              class="bc-form-text"
+                              outlined=""
+                              rules="v => !!v || 'This field is required'"
+                              value="RS256"
+                            >
+                              <div
+                                class="text-left my-1"
+                              >
+                                
+                              </div>
+                               
+                              <!---->
+                               
+                              <div
+                                class="v-input v-input--is-label-active v-input--is-dirty theme--light v-text-field v-text-field--single-line v-text-field--solo v-text-field--enclosed v-text-field--outlined v-select"
+                              >
+                                <div
+                                  class="v-input__control"
+                                >
+                                  <div
+                                    aria-expanded="false"
+                                    aria-haspopup="listbox"
+                                    aria-owns="list-64"
+                                    class="v-input__slot"
+                                    role="button"
+                                  >
+                                    <fieldset
+                                      aria-hidden="true"
+                                    >
+                                      <legend>
+                                        <span>
+                                          ​
+                                        </span>
+                                      </legend>
+                                    </fieldset>
+                                    <div
+                                      class="v-select__slot"
+                                    >
+                                      <div
+                                        class="v-select__selections"
+                                      >
+                                        <div
+                                          class="v-select__selection v-select__selection--comma"
+                                        >
+                                          RS256
+                                        </div>
+                                        <input
+                                          aria-readonly="true"
+                                          autocomplete="off"
+                                          id="input-64"
+                                          readonly="readonly"
+                                          type="text"
+                                        />
+                                      </div>
+                                      <div
+                                        class="v-input__append-inner"
+                                      >
+                                        <div
+                                          class="v-input__icon v-input__icon--append"
+                                        >
+                                          <i
+                                            aria-hidden="true"
+                                            class="v-icon notranslate mdi mdi-menu-down theme--light"
+                                          />
+                                        </div>
+                                      </div>
+                                      <input
+                                        type="hidden"
+                                        value="RS256"
+                                      />
+                                    </div>
+                                    <div
+                                      class="v-menu"
+                                    >
+                                      <div
+                                        class="v-menu__content theme--light "
+                                        style="max-height: 304px; min-width: 0px; max-width: auto; top: 12px; left: 0px; transform-origin: top left; z-index: 0; display: none;"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div
+                                    class="v-text-field__details"
+                                  >
+                                    <div
+                                      class="v-messages theme--light"
+                                    >
+                                      <span
+                                        class="v-messages__wrapper"
+                                        name="message-transition"
+                                        tag="div"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                         
+                        <div
                           class="v-radio theme--light"
                         >
                           <div
@@ -704,8 +885,8 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                           >
                             <input
                               aria-checked="false"
-                              id="input-57"
-                              name="radio-54"
+                              id="input-71"
+                              name="radio-60"
                               role="radio"
                               type="radio"
                               value="2"
@@ -720,46 +901,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                           </div>
                           <label
                             class="v-label theme--light"
-                            for="input-57"
-                            style="left: 0px; position: relative;"
-                          >
-                            Signed JWT
-                          </label>
-                        </div>
-                         
-                        <div
-                          class="small-hint radio-help"
-                        >
-                          
-                        </div>
-                         
-                        <!---->
-                         
-                        <div
-                          class="v-radio theme--light"
-                        >
-                          <div
-                            class="v-input--selection-controls__input"
-                          >
-                            <input
-                              aria-checked="false"
-                              id="input-59"
-                              name="radio-54"
-                              role="radio"
-                              type="radio"
-                              value="3"
-                            />
-                            <div
-                              class="v-input--selection-controls__ripple"
-                            />
-                            <i
-                              aria-hidden="true"
-                              class="v-icon notranslate mdi mdi-radiobox-blank theme--light"
-                            />
-                          </div>
-                          <label
-                            class="v-label theme--light"
-                            for="input-59"
+                            for="input-71"
                             style="left: 0px; position: relative;"
                           >
                             Secure JWT
@@ -936,6 +1078,8 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                   class="text-left my-1"
                 >
                   
+     
+                  <!---->
                 </div>
                  
                 <!---->
@@ -962,7 +1106,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                         class="v-text-field__slot"
                       >
                         <input
-                          id="input-80"
+                          id="input-92"
                           type="text"
                         />
                       </div>
@@ -998,6 +1142,8 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                   class="text-left my-1"
                 >
                   
+     
+                  <!---->
                 </div>
                  
                 <!---->
@@ -1024,7 +1170,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                         class="v-text-field__slot"
                       >
                         <input
-                          id="input-84"
+                          id="input-96"
                           type="text"
                         />
                       </div>
@@ -1076,7 +1222,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                       style="height: auto;"
                     >
                       <div
-                        aria-labelledby="input-87"
+                        aria-labelledby="input-99"
                         class="v-input--radio-group__input"
                         role="radiogroup"
                       >
@@ -1088,8 +1234,8 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                           >
                             <input
                               aria-checked="true"
-                              id="input-88"
-                              name="radio-87"
+                              id="input-100"
+                              name="radio-99"
                               role="radio"
                               type="radio"
                               value="1"
@@ -1104,10 +1250,10 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                           </div>
                           <label
                             class="v-label theme--light"
-                            for="input-88"
+                            for="input-100"
                             style="left: 0px; position: relative;"
                           >
-                            Simple JSON
+                            Signed JWT
                           </label>
                         </div>
                          
@@ -1118,6 +1264,112 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                         </div>
                          
                         <div
+                          class="row pad-radio"
+                        >
+                          <div
+                            class="col-12 col-md-5"
+                          >
+                            <div
+                              class="bc-form-text"
+                              outlined=""
+                              rules="v => !!v || 'This field is required'"
+                              value="RS256"
+                            >
+                              <div
+                                class="text-left my-1"
+                              >
+                                
+                              </div>
+                               
+                              <!---->
+                               
+                              <div
+                                class="v-input v-input--is-label-active v-input--is-dirty theme--light v-text-field v-text-field--single-line v-text-field--solo v-text-field--enclosed v-text-field--outlined v-select"
+                              >
+                                <div
+                                  class="v-input__control"
+                                >
+                                  <div
+                                    aria-expanded="false"
+                                    aria-haspopup="listbox"
+                                    aria-owns="list-103"
+                                    class="v-input__slot"
+                                    role="button"
+                                  >
+                                    <fieldset
+                                      aria-hidden="true"
+                                    >
+                                      <legend>
+                                        <span>
+                                          ​
+                                        </span>
+                                      </legend>
+                                    </fieldset>
+                                    <div
+                                      class="v-select__slot"
+                                    >
+                                      <div
+                                        class="v-select__selections"
+                                      >
+                                        <div
+                                          class="v-select__selection v-select__selection--comma"
+                                        >
+                                          RS256
+                                        </div>
+                                        <input
+                                          aria-readonly="true"
+                                          autocomplete="off"
+                                          id="input-103"
+                                          readonly="readonly"
+                                          type="text"
+                                        />
+                                      </div>
+                                      <div
+                                        class="v-input__append-inner"
+                                      >
+                                        <div
+                                          class="v-input__icon v-input__icon--append"
+                                        >
+                                          <i
+                                            aria-hidden="true"
+                                            class="v-icon notranslate mdi mdi-menu-down theme--light"
+                                          />
+                                        </div>
+                                      </div>
+                                      <input
+                                        type="hidden"
+                                        value="RS256"
+                                      />
+                                    </div>
+                                    <div
+                                      class="v-menu"
+                                    >
+                                      <div
+                                        class="v-menu__content theme--light "
+                                        style="max-height: 304px; min-width: 0px; max-width: auto; top: 12px; left: 0px; transform-origin: top left; z-index: 0; display: none;"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div
+                                    class="v-text-field__details"
+                                  >
+                                    <div
+                                      class="v-messages theme--light"
+                                    >
+                                      <span
+                                        class="v-messages__wrapper"
+                                        name="message-transition"
+                                        tag="div"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                         
+                        <div
                           class="v-radio theme--light"
                         >
                           <div
@@ -1125,8 +1377,8 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                           >
                             <input
                               aria-checked="false"
-                              id="input-90"
-                              name="radio-87"
+                              id="input-110"
+                              name="radio-99"
                               role="radio"
                               type="radio"
                               value="2"
@@ -1141,46 +1393,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                           </div>
                           <label
                             class="v-label theme--light"
-                            for="input-90"
-                            style="left: 0px; position: relative;"
-                          >
-                            Signed JWT
-                          </label>
-                        </div>
-                         
-                        <div
-                          class="small-hint radio-help"
-                        >
-                          
-                        </div>
-                         
-                        <!---->
-                         
-                        <div
-                          class="v-radio theme--light"
-                        >
-                          <div
-                            class="v-input--selection-controls__input"
-                          >
-                            <input
-                              aria-checked="false"
-                              id="input-92"
-                              name="radio-87"
-                              role="radio"
-                              type="radio"
-                              value="3"
-                            />
-                            <div
-                              class="v-input--selection-controls__ripple"
-                            />
-                            <i
-                              aria-hidden="true"
-                              class="v-icon notranslate mdi mdi-radiobox-blank theme--light"
-                            />
-                          </div>
-                          <label
-                            class="v-label theme--light"
-                            for="input-92"
+                            for="input-110"
                             style="left: 0px; position: relative;"
                           >
                             Secure JWT

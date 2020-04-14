@@ -1,4 +1,4 @@
-/** * TestAccountRequest component */
+/** * ProjectSummary component */
 
 <template>
   <div>
@@ -13,6 +13,9 @@
       </v-col>
       <v-col cols="12" flat>
         <ProjectInfoSummary :id="projectId" />
+      </v-col>
+      <v-col cols="12" flat>
+        <TeamSummary :id="projectId" :team="team" :isTeamAvailable="isTeamAvailable" />
       </v-col>
       <v-col cols="12" flat>
         <TechnicalReqSummary
@@ -113,18 +116,19 @@
 <script lang="ts">
 import { Component, Vue, Watch, Prop } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
-import { ProjectUserModel } from '@/models/ProjectInfoModel';
 import Button from '@/Atomic/Button/Button.vue';
 import TextArea from '@/Atomic/TextArea/TextArea.vue';
 import Loading from '@/Atomic/Loading/Loading.vue';
 import ClientID from '@/components/CreateApp/ClientID.vue';
 import TestAccountSummary from '@/components/CreateApp/TestAccountSummary.vue';
 import ProjectInfoSummary from '@/components/CreateApp/ProjectInfoSummary.vue';
+import TeamSummary from '@/components/CreateApp/TeamSummary.vue';
 import TechnicalReqSummary from '@/components/CreateApp/TechnicalReqSummary.vue';
 import PackageSelectSummary from '@/components/CreateApp/PackageSelectSummary.vue';
 
-const TechnicalReqModule = namespace('TechnicalReqModule');
 const ProjectInfoModule = namespace('ProjectInfoModule');
+const TeamModule = namespace('TeamRolesModule');
+const TechnicalReqModule = namespace('TechnicalReqModule');
 // const PackageAndTestModule = namespace('PackageAndTestModule');
 const SharedModule = namespace('SharedModule');
 
@@ -136,16 +140,22 @@ const SharedModule = namespace('SharedModule');
     ClientID,
     TestAccountSummary,
     ProjectInfoSummary,
+    TeamSummary,
     TechnicalReqSummary,
     PackageSelectSummary
   }
 })
-export default class TestAccountRequest extends Vue {
+export default class ProjectSummary extends Vue {
   @Prop({ default: 0 })
   public id!: number;
 
   @ProjectInfoModule.Action('clearSubmitProjectStatus')
   public clearSubmitProjectStatus!: any;
+
+  @TeamModule.Getter('getTeamList')
+  public team!: any;
+  @TeamModule.Action('loadTeam')
+  public loadTeam!: any;
 
   @TechnicalReqModule.Getter('getTechnicalReq')
   public technicalReq!: any;
@@ -162,6 +172,7 @@ export default class TestAccountRequest extends Vue {
   private isLoading: boolean = true;
   private projectId: number = this.id || 0;
   private dialog: boolean = false;
+  private isTeamAvailable: boolean = false;
   private isTechnicalInfoAvailable: boolean = false;
   private canSubmit: boolean = false;
   private showCannotSubmitError: boolean = false;
@@ -194,12 +205,29 @@ export default class TestAccountRequest extends Vue {
     this.clearSubmitProjectStatus();
   }
 
+  @Watch('team')
+  private onTeamChanged(val: any) {
+    this.setCanSubmit();
+  }
+
   @Watch('technicalReq')
   private ongetTechnicalReqInfoChanged(val: any) {
+    this.setCanSubmit();
+  }
+
+  private setCanSubmit() {
     this.isLoading = false;
-    this.isTechnicalInfoAvailable = val && val.id ? true : false;
+    this.isTeamAvailable = this.team && this.team.length > 0;
+    this.isTechnicalInfoAvailable =
+      this.technicalReq && this.technicalReq.id ? true : false;
     this.canSubmit =
-      val && val.id && val.scopePackageId && val.noOfTestAccount ? true : false;
+      this.technicalReq &&
+      this.technicalReq.id &&
+      this.technicalReq.scopePackageId &&
+      this.technicalReq.noOfTestAccount &&
+      this.team.length > 0
+        ? true
+        : false;
   }
 
   private hideDisclimer() {
@@ -240,7 +268,7 @@ export default class TestAccountRequest extends Vue {
 
   private loadFullData() {
     this.showSystemError = false;
-
+    this.loadTeam(this.id);
     this.loadTechnicalReqDetails(this.id);
     this.redirectFromSummaryPage(true);
 

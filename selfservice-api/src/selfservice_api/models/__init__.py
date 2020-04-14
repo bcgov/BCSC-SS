@@ -17,6 +17,7 @@ from .db import db, ma
 from .email_queue import EmailQueue
 from .org_whitelist import OrgWhitelist
 from .user import User
+from .project_users_association import ProjectUsersAssociation
 from .project import Project
 from .scope_package import ScopePackage
 from .technical_req import TechnicalReq

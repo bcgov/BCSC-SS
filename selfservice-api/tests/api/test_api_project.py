@@ -135,9 +135,11 @@ def test_patch_project_status_validation(client, jwt, session):
     """Assert that the endpoint returns the failure status."""
     headers = ss_client_auth_header(jwt)
     create_user(client, jwt)
+
     req_data = {}
 
-    response = client.patch(PROJECTINFO_API + '/1234',
+    technical_req = create_technical_req_with_additional(client, jwt)
+    response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
                             data=json.dumps(req_data), headers=headers, content_type='application/json')
 
     assert response.status_code == HTTPStatus.BAD_REQUEST
@@ -146,13 +148,6 @@ def test_patch_project_status_validation(client, jwt, session):
 
     technical_req = create_technical_req_with_additional(client, jwt)
     response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
-                            data=json.dumps(req_data), headers=headers, content_type='application/json')
-
-    assert response.status_code == HTTPStatus.BAD_REQUEST
-
-    req_data = {'update': 'status'}
-
-    response = client.patch(PROJECTINFO_API + '/1234',
                             data=json.dumps(req_data), headers=headers, content_type='application/json')
 
     assert response.status_code == HTTPStatus.BAD_REQUEST

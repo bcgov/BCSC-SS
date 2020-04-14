@@ -107,7 +107,9 @@ exports[`ProjectContainer.vue renders props when passed 1`] = `
               tag="div"
             >
               <v-card-text-stub>
-                Team Roles
+                <teamroles-stub
+                  id="0"
+                />
               </v-card-text-stub>
             </v-card-stub>
           </v-tab-item-stub>

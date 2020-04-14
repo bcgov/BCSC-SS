@@ -130,7 +130,7 @@ export const actions: ActionTree<KeyCloakState, RootState> = {
         fromUrl: '/profile/complete'
       });
     } catch (error) {
-      if (error.response.status === 403) {
+      if (error.response.status === 400 && error.response.errors) {
         commit('SET_PROFILE_DOMAIN_ERROR', true);
       } else {
         commit('SET_USER_ERROR', true);

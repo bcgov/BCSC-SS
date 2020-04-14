@@ -28,9 +28,9 @@ def test_post_user(client, jwt, session):
 def test_post_user_validation(client, jwt, session):
     """Assert that the endpoint returns the bad request."""
     response = _create_user_(client, jwt, invalid_email=True)
-    assert response.status_code == HTTPStatus.FORBIDDEN
+    assert response.status_code == HTTPStatus.BAD_REQUEST
     response = _create_user_(client, jwt, email_none=True)
-    assert response.status_code == HTTPStatus.FORBIDDEN
+    assert response.status_code == HTTPStatus.BAD_REQUEST
 
     response = _create_user_(client, jwt, invalid_phone=True)
     assert response.status_code == HTTPStatus.BAD_REQUEST

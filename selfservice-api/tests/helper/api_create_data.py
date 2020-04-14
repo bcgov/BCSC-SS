@@ -16,7 +16,8 @@
 import json
 
 from .auth import TestJwtClaims, ss_admin_auth_header, ss_client_auth_header
-from .request_data import factory_project_info, factory_project_technical_req, factory_test_account
+from .request_data import (factory_project_info, factory_project_team_member,  # noqa: I001
+                           factory_project_technical_req, factory_test_account)  # noqa: I001
 
 from selfservice_api.models.enums import ProjectRoles, SigningEncryptionType
 
@@ -24,6 +25,7 @@ from selfservice_api.models.enums import ProjectRoles, SigningEncryptionType
 API_URI_PREFIX = '/api/v1/'
 USER_API = API_URI_PREFIX + 'user'
 PROJECTINFO_API = API_URI_PREFIX + 'project/info'
+TEAM_API = API_URI_PREFIX + 'project/:project_id/team'
 TECHNICALREQ_API = API_URI_PREFIX + 'project/:project_id/technical-req'
 OIDCCONFIG_API = API_URI_PREFIX + 'project/:project_id/oidc-config'
 SCOPEPACKAGE_API = API_URI_PREFIX + 'scope-package'
@@ -110,7 +112,7 @@ def _create_project_(client, jwt, my_role):
     headers = ss_client_auth_header(jwt, project_role=project_role)
     create_user(client, jwt, project_role=project_role)
 
-    response = client.post(PROJECTINFO_API, data=json.dumps(factory_project_info(my_role=my_role)),
+    response = client.post(PROJECTINFO_API, data=json.dumps(factory_project_info()),
                            headers=headers, content_type='application/json')
     return response
 
@@ -143,6 +145,53 @@ def _get_all_project_(client, jwt, is_analyst=False):
     return response
 
 # Project Info: End
+# Team: Start
+
+
+def create_team(client, jwt, member_role=ProjectRoles.Developer):
+    """Create team and return team object."""
+    response = _create_team_(client, jwt, member_role)
+    team = json.loads(response.data)
+    return team
+
+
+def _create_team_(client, jwt, member_role=ProjectRoles.Developer):
+    """Create team and return response object."""
+    headers = ss_client_auth_header(jwt)
+    project = create_project(client, jwt)
+    request_data = factory_project_team_member(False, member_role)
+
+    response = client.post(TEAM_API.replace(':project_id', str(project['id'])),
+                           data=json.dumps(request_data),
+                           headers=headers, content_type='application/json')
+    return response
+
+
+def _get_team_member_(client, jwt, project_id, member_id):
+    """Get a team member and return response."""
+    headers = ss_client_auth_header(jwt)
+    team_get_api = TEAM_API.replace(':project_id', project_id) + '/' + str(member_id)
+    response = client.get(team_get_api, headers=headers, content_type='application/json')
+    return response
+
+
+def _get_team_(client, jwt, project_id):
+    """Get team and return response."""
+    headers = ss_client_auth_header(jwt)
+    response = client.get(TEAM_API.replace(':project_id', project_id),
+                          headers=headers, content_type='application/json')
+    return response
+
+
+def _delete_team_member_(client, jwt, project_id, member_id):
+    """Delete a team member and return response."""
+    headers = ss_admin_auth_header(jwt)
+    team_delete_api = TEAM_API.replace(':project_id', project_id) + '/' + str(member_id)
+    response = client.delete(team_delete_api, headers=headers, content_type='application/json')
+    return response
+
+
+# Team: End
 # Technical Req: Start
 
 

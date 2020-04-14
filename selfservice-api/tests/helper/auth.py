@@ -84,7 +84,7 @@ class TestJwtClaims(dict, Enum):
         'sub': '65a62428-6713-4e7d-8f12-99e56de58386',
         'given_name': 'admin',
         'family_name': 'ss',
-        'email': 'analyst@email.com',
+        'email': 'analyst@gov.bc.ca',
         'preferred_username': 'ssadmin',
         'provider': 'idir',
         'realm_access': {

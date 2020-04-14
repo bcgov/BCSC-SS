@@ -1,4 +1,4 @@
-/** * TestAccountRequest component */
+/** * DevProjectSummary component */
 
 <template>
   <v-card class="mx-auto outer-card">
@@ -32,7 +32,7 @@ const SharedModule = namespace('SharedModule');
     ProjectSummary
   }
 })
-export default class TestAccountRequest extends Vue {
+export default class DevProjectSummary extends Vue {
   @Prop({ default: 0 })
   public id!: number;
 

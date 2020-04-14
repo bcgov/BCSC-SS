@@ -11,6 +11,8 @@ exports[`Input.vue renders props when passed 1`] = `
     class="text-left my-1"
   >
     
+     
+    <!---->
   </div>
    
   <!---->
@@ -74,6 +76,8 @@ exports[`Input.vue renders props when passed 2`] = `
     class="text-left my-1"
   >
     
+     
+    <!---->
   </div>
    
   <!---->

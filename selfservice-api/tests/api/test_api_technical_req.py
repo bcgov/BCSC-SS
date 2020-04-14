@@ -34,9 +34,6 @@ def test_post_technical_req(client, jwt, session):
     response = _create_technical_req_(client, jwt, signing_encryption_type=SigningEncryptionType.SignedJWT)
     assert response.status_code == HTTPStatus.CREATED
 
-    response = _create_technical_req_(client, jwt, signing_encryption_type=SigningEncryptionType.SimpleJSON)
-    assert response.status_code == HTTPStatus.CREATED
-
 
 def test_post_technical_req_validation(client, jwt, session):
     """Assert that the endpoint returns the failure status."""

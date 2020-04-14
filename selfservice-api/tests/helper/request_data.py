@@ -33,46 +33,60 @@ def factory_user_info(is_model=False):
         return user
 
 
-def factory_project_info(is_model=False, my_role=ProjectRoles.Developer):
+def factory_project_info(is_model=False):
     """JSON data to create project info."""
     project = {
         'organizationName': 'organization',
         'projectName': 'project',
-        'description': 'project which i am trying to create',
-        'myRole': my_role,
-        'users': []
+        'description': 'project which i am trying to create'
     }
-    if my_role != ProjectRoles.Developer:
-        project['users'].append({
-            'email': 'developer@gov.bc.ca',
-            'phone': '1234567890',
-            'firstName': 'f developer',
-            'lastName': 'l developer',
-            'role': ProjectRoles.Developer
-        })
-
-    if my_role != ProjectRoles.Manager:
-        project['users'].append({
-            'email': 'manager@gov.bc.ca',
-            'phone': '1234567890',
-            'firstName': 'f manager',
-            'lastName': 'l manager',
-            'role': ProjectRoles.Manager
-        })
-
-    if my_role != ProjectRoles.Cto:
-        project['users'].append({
-            'email': 'cto@gov.bc.ca',
-            'phone': '1234567890',
-            'firstName': 'f cto',
-            'lastName': 'l cto',
-            'role': ProjectRoles.Cto
-        })
 
     if is_model:
         return camel2snake(project)
     else:
         return project
+
+
+def factory_project_team_member(is_model=False, member_role=ProjectRoles.Developer):
+    """JSON data to create project info."""
+    team_member = {}
+    if member_role == ProjectRoles.Developer:
+        team_member = {
+            'email': 'developer@gov.bc.ca',
+            'phone': '1234567890',
+            'firstName': 'f developer',
+            'lastName': 'l developer',
+            'role': ProjectRoles.Developer
+        }
+    elif member_role == ProjectRoles.Manager:
+        team_member = {
+            'email': 'manager@gov.bc.ca',
+            'phone': '1234567890',
+            'firstName': 'f manager',
+            'lastName': 'l manager',
+            'role': ProjectRoles.Manager
+        }
+    elif member_role == ProjectRoles.Cto:
+        team_member = {
+            'email': 'cto@gov.bc.ca',
+            'phone': '1234567890',
+            'firstName': 'f cto',
+            'lastName': 'l cto',
+            'role': ProjectRoles.Cto
+        }
+    else:
+        team_member = {
+            'email': 'invalid@domain.com',
+            'phone': '1234567890',
+            'firstName': 'f invalid',
+            'lastName': 'l invalid',
+            'role': ProjectRoles.Developer
+        }
+
+    if is_model:
+        return camel2snake(team_member)
+    else:
+        return team_member
 
 
 def factory_project_technical_req(is_model=False, signing_encryption_type=SigningEncryptionType.SecureJWT):
