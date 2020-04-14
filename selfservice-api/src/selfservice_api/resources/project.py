@@ -129,7 +129,7 @@ class ProjectResourceById(Resource):
                 if project_status == ProjectStatus.Development:
                     is_success = ProjectResourceById._dynamic_api_call_(project, False)
                     if is_success:
-                        response_additional = ProjectResourceById._on_development_status_(project, project_status)
+                        response_additional = ProjectResourceById._on_development_status_(project)
                         response.update(response_additional)
 
                 # Make sure we are not downgrading the project status
@@ -145,7 +145,7 @@ class ProjectResourceById(Resource):
         return 'Update failed', HTTPStatus.BAD_REQUEST
 
     @staticmethod
-    def _on_development_status_(project: Project, status):
+    def _on_development_status_(project: Project):
         """When the project status is moving to development from draft."""
         EmailService.save_and_send(EmailType.DEV_REQUEST, {'project_name': project.project_name})
 
