@@ -17,6 +17,8 @@
     "passport": "^0.4.0",
     "passport-openidconnect": "0.0.2",
     "request": "^2.88.0",
-    "serve-favicon": "~2.4.2"
+    "serve-favicon": "~2.4.2",
+    "jwks-rsa": "latest",
+    "jsonwebtoken": "latest"
   }
 }

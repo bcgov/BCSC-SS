@@ -1,0 +1,16 @@
+server {
+    listen       ${JWKS_SERVER_PORT};
+    server_name  ${JWKS_SERVER_NAME};
+    location / {
+        root   /usr/share/nginx/json;
+        index  jwks.json;
+    }
+
+    # For status of ngnix service, OpenShift is configured to call this
+    location /nginx_status {
+        # Enable Nginx stats
+        stub_status on;
+        # No need to log this request, its just noise
+        access_log off;
+    }
+}
