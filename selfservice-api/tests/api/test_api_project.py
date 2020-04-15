@@ -21,9 +21,9 @@ from ..helper.api_create_data import (PROJECTINFO_API,  # noqa: I001
                                     _get_all_project_, _update_technical_req_with_test_account_,  # noqa: I001
                                     create_project, create_technical_req_with_additional, create_user,  # noqa: I001
                                     get_project)  # noqa: I001
-from ..helper.auth import ss_client_auth_header
+from ..helper.auth import ss_admin_auth_header, ss_client_auth_header
 
-from selfservice_api.models.enums import ProjectRoles
+from selfservice_api.models.enums import ProjectRoles, ProjectStatus
 
 
 def test_post_project_as_developer(client, jwt, session):
@@ -79,6 +79,22 @@ def test_get_project(client, jwt, session):
     response = _get_project_(client, jwt)
     assert response.status_code == HTTPStatus.OK
 
+    response = _get_project_(client, jwt, is_analyst=True)
+    assert response.status_code == HTTPStatus.OK
+
+
+def test_delete_project(client, jwt, session):
+    """Assert that the endpoint returns the success status."""
+    headers = ss_admin_auth_header(jwt)
+    project = get_project(client, jwt)
+
+    response = client.delete(PROJECTINFO_API + '/' + str(project['id']),
+                             headers=headers, content_type='application/json')
+    assert response.status_code == HTTPStatus.OK
+
+    response = client.delete(PROJECTINFO_API + '/1234', headers=headers, content_type='application/json')
+    assert response.status_code == HTTPStatus.OK
+
 
 def test_put_project(client, jwt, session):
     """Assert that the endpoint returns the success status."""
@@ -108,7 +124,7 @@ def test_patch_project_status(client, jwt, session):
     headers = ss_client_auth_header(jwt)
     technical_req = create_technical_req_with_additional(client, jwt)
 
-    req_data = {'update': 'status', 'status': 2}
+    req_data = {'update': 'status', 'status': ProjectStatus.Development}
     response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
                             data=json.dumps(req_data), headers=headers, content_type='application/json')
 
@@ -128,6 +144,12 @@ def test_patch_project_status(client, jwt, session):
     _update_technical_req_with_test_account_(client, jwt, str(technical_req['projectId']), 0)
     response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
                             data=json.dumps(req_data), headers=headers, content_type='application/json')
+    assert response.status_code == HTTPStatus.OK
+
+    req_data = {'update': 'status', 'status': ProjectStatus.DevelopmentComplete}
+    response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
+                            data=json.dumps(req_data), headers=headers, content_type='application/json')
+
     assert response.status_code == HTTPStatus.OK
 
 
@@ -160,7 +182,7 @@ def test_patch_project_status_validation(client, jwt, session):
 
     assert response.status_code == HTTPStatus.BAD_REQUEST
 
-    req_data = {'update': 'status', 'status': 2}
+    req_data = {'update': 'status', 'status': ProjectStatus.Development}
 
     project = create_project(client, jwt)
     response = client.patch(PROJECTINFO_API + '/' + str(project['id']),
@@ -176,7 +198,7 @@ def test_patch_project_status_oidc_and_test_account(client, jwt, session, config
 
     # Dynamic OIDC None response: Start
     config['dynamic_api_return_none'] = True
-    req_data = {'update': 'status', 'status': 2}
+    req_data = {'update': 'status', 'status': ProjectStatus.Development}
     response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
                             data=json.dumps(req_data), headers=headers, content_type='application/json')
 
@@ -200,7 +222,7 @@ def test_patch_project_status_oidc_and_test_account(client, jwt, session, config
     # Dynamic OIDC None response: End
 
     config['LIMITED_TEST_ACCOUNT_TRIGGER_COUNT'] = 200
-    req_data = {'update': 'status', 'status': 2}
+    req_data = {'update': 'status', 'status': ProjectStatus.Development}
     response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
                             data=json.dumps(req_data), headers=headers, content_type='application/json')
 

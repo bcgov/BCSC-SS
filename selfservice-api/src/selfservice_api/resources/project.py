@@ -72,8 +72,8 @@ class ProjectResource(Resource):
         return response, status
 
 
-@cors_preflight('GET,PUT,PATCH,OPTIONS')
-@API.route('/<int:project_id>', methods=['GET', 'PUT', 'PATCH', 'OPTIONS'])
+@cors_preflight('GET,PUT,PATCH,DELETE,OPTIONS')
+@API.route('/<int:project_id>', methods=['GET', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'])
 class ProjectResourceById(Resource):
     """Resource for managing get project by id."""
 
@@ -89,6 +89,21 @@ class ProjectResourceById(Resource):
             if project_users.user_id == user.id:
                 project_dump['myRole'] = project_users.role
         return project_dump, HTTPStatus.OK
+
+    @staticmethod
+    @cors.crossdomain(origin='*')
+    @auth.has_one_of_roles([Role.ss_admin])
+    def delete(project_id):
+        """Delete project."""
+        project = Project.find_by_id(project_id)
+        if project:
+            TestAccount.map_test_accounts(project.id, 0)
+            TechnicalReq.delete_by_project_id(project.id)
+            ProjectUsersAssociation.delete_all_by_project_id(project.id)
+            OIDCConfig.delete_by_project_id(project.id)
+            project.delete()
+
+        return 'Deleted successfully', HTTPStatus.OK
 
     @staticmethod
     @cors.crossdomain(origin='*')
@@ -113,44 +128,43 @@ class ProjectResourceById(Resource):
     @auth.can_access_project([ProjectRoles.Developer, ProjectRoles.Manager, ProjectRoles.Cto])
     def patch(project_id):
         """Update project status."""
+        user = g.user
         project_patch_json = request.get_json()
 
         project = Project.find_by_id(project_id)
-        if 'update' in project_patch_json:
-            if project_patch_json['update'] == 'status' and \
-                    ProjectResourceById._validate_before_status_update_(project, project_patch_json.get('status')):
+        if ProjectResourceById._validate_before_status_update_(project, project_patch_json):
+            response = {'message': 'Updated successfully'}
+            project_status = project_patch_json['status']
+            is_success = True
 
-                project_status = project_patch_json['status']
-                is_success = False
-                # Decide which api to call
-                if project_status == ProjectStatus.Development:
-                    is_success = ProjectResourceById._dynamic_api_call_(project, False)
-                    if is_success:
-                        response = ProjectResourceById._update_development_status_(project, project_status)
-
+            # Decide when and which api to call
+            if project_status == ProjectStatus.Development:
+                is_success = ProjectResourceById._dynamic_api_call_(project, False)
                 if is_success:
-                    status = HTTPStatus.OK
-                else:
-                    response, status = 'OIDC Failed', HTTPStatus.INTERNAL_SERVER_ERROR
-                return response, status
+                    response_additional = ProjectResourceById._on_development_status_(project)
+                    response.update(response_additional)
+
+            # Make sure we are not downgrading the project status
+            if project.status < project_status:
+                project.update_status(project_status, user)
+
+            if is_success:
+                status = HTTPStatus.OK
+            else:
+                response, status = 'OIDC Failed', HTTPStatus.INTERNAL_SERVER_ERROR
+            return response, status
 
         return 'Update failed', HTTPStatus.BAD_REQUEST
 
     @staticmethod
-    def _update_development_status_(project: Project, status):
-        """Update project status to development."""
-        user = g.user
+    def _on_development_status_(project: Project):
+        """When the project status is moving to development from draft."""
         EmailService.save_and_send(EmailType.DEV_REQUEST, {'project_name': project.project_name})
-
-        # Make sure we are not downgrading the project status
-        if project.status < status:
-            project.update_status(status, user)
 
         test_accounts = TestAccount.find_all_by_project_id(project.id)
         technical_req: TechnicalReq = project.technical_req[0]
         response = {
-            'testAccountSuccess': True,
-            'message': 'Updated successfully'
+            'testAccountSuccess': True
         }
         if len(test_accounts) < technical_req.no_of_test_account:
             response['testAccountSuccess'] = False
@@ -158,18 +172,23 @@ class ProjectResourceById(Resource):
         return response
 
     @staticmethod
-    def _validate_before_status_update_(project: Project, status):
+    def _validate_before_status_update_(project: Project, project_json):
         """Validate the project details before updating status."""
-        if status == ProjectStatus.Development:
-            technical_req = TechnicalReq.find_by_project_id(project.id)
-            project_members = ProjectUsersAssociation.find_all_by_project_id(project.id)
-            if len(project_members) > 0 and \
-                technical_req is not None and \
-                technical_req.scope_package_id is not None and \
-                    technical_req.no_of_test_account is not None:
-                return True
+        is_valid = False
+        if 'update' in project_json and project_json['update'] == 'status':
+            status = project_json.get('status')
+            if status == ProjectStatus.Development:
+                technical_req = TechnicalReq.find_by_project_id(project.id)
+                project_members = ProjectUsersAssociation.find_all_by_project_id(project.id)
+                if len(project_members) > 0 and \
+                    technical_req is not None and \
+                    technical_req.scope_package_id is not None and \
+                        technical_req.no_of_test_account is not None:
+                    is_valid = True
+            elif status == ProjectStatus.DevelopmentComplete:
+                is_valid = project.status == ProjectStatus.Development
 
-        return False
+        return is_valid
 
     @staticmethod
     def _dynamic_api_call_(project: Project, is_prod: bool):

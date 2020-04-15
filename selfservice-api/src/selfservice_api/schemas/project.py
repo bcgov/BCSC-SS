@@ -28,3 +28,4 @@ class ProjectSchema(Schema):
     organization_name = fields.Str(data_key='organizationName', required=True, validate=validate.Length(max=100))
     project_name = fields.Str(data_key='projectName', required=True, validate=validate.Length(max=100))
     description = fields.Str(required=True)
+    status = fields.Int(data_key='statusId', dump_only=True)
