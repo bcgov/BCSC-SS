@@ -72,8 +72,8 @@ class ProjectResource(Resource):
         return response, status
 
 
-@cors_preflight('GET,PUT,PATCH,OPTIONS')
-@API.route('/<int:project_id>', methods=['GET', 'PUT', 'PATCH', 'OPTIONS'])
+@cors_preflight('GET,PUT,PATCH,DELETE,OPTIONS')
+@API.route('/<int:project_id>', methods=['GET', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'])
 class ProjectResourceById(Resource):
     """Resource for managing get project by id."""
 
@@ -89,6 +89,21 @@ class ProjectResourceById(Resource):
             if project_users.user_id == user.id:
                 project_dump['myRole'] = project_users.role
         return project_dump, HTTPStatus.OK
+
+    @staticmethod
+    @cors.crossdomain(origin='*')
+    @auth.has_one_of_roles([Role.ss_admin])
+    def delete(project_id):
+        """Delete project."""
+        project = Project.find_by_id(project_id)
+        if project:
+            TestAccount.map_test_accounts(project.id, 0)
+            TechnicalReq.delete_by_project_id(project.id)
+            ProjectUsersAssociation.delete_all_by_project_id(project.id)
+            OIDCConfig.delete_by_project_id(project.id)
+            project.delete()
+
+        return 'Deleted successfully', HTTPStatus.OK
 
     @staticmethod
     @cors.crossdomain(origin='*')
@@ -117,30 +132,27 @@ class ProjectResourceById(Resource):
         project_patch_json = request.get_json()
 
         project = Project.find_by_id(project_id)
-        if 'update' in project_patch_json:
-            if project_patch_json['update'] == 'status' and \
-                    ProjectResourceById._validate_before_status_update_(project, project_patch_json.get('status')):
+        if ProjectResourceById._validate_before_status_update_(project, project_patch_json):
+            response = {'message': 'Updated successfully'}
+            project_status = project_patch_json['status']
+            is_success = True
 
-                response = {'message': 'Updated successfully'}
-                project_status = project_patch_json['status']
-                is_success = True
-
-                # Decide when and which api to call
-                if project_status == ProjectStatus.Development:
-                    is_success = ProjectResourceById._dynamic_api_call_(project, False)
-                    if is_success:
-                        response_additional = ProjectResourceById._on_development_status_(project)
-                        response.update(response_additional)
-
-                # Make sure we are not downgrading the project status
-                if project.status < project_status:
-                    project.update_status(project_status, user)
-
+            # Decide when and which api to call
+            if project_status == ProjectStatus.Development:
+                is_success = ProjectResourceById._dynamic_api_call_(project, False)
                 if is_success:
-                    status = HTTPStatus.OK
-                else:
-                    response, status = 'OIDC Failed', HTTPStatus.INTERNAL_SERVER_ERROR
-                return response, status
+                    response_additional = ProjectResourceById._on_development_status_(project)
+                    response.update(response_additional)
+
+            # Make sure we are not downgrading the project status
+            if project.status < project_status:
+                project.update_status(project_status, user)
+
+            if is_success:
+                status = HTTPStatus.OK
+            else:
+                response, status = 'OIDC Failed', HTTPStatus.INTERNAL_SERVER_ERROR
+            return response, status
 
         return 'Update failed', HTTPStatus.BAD_REQUEST
 
@@ -160,19 +172,21 @@ class ProjectResourceById(Resource):
         return response
 
     @staticmethod
-    def _validate_before_status_update_(project: Project, status):
+    def _validate_before_status_update_(project: Project, project_json):
         """Validate the project details before updating status."""
         is_valid = False
-        if status == ProjectStatus.Development:
-            technical_req = TechnicalReq.find_by_project_id(project.id)
-            project_members = ProjectUsersAssociation.find_all_by_project_id(project.id)
-            if len(project_members) > 0 and \
-                technical_req is not None and \
-                technical_req.scope_package_id is not None and \
-                    technical_req.no_of_test_account is not None:
-                is_valid = True
-        elif status == ProjectStatus.DevelopmentComplete:
-            is_valid = project.status == ProjectStatus.Development
+        if 'update' in project_json and project_json['update'] == 'status':
+            status = project_json.get('status')
+            if status == ProjectStatus.Development:
+                technical_req = TechnicalReq.find_by_project_id(project.id)
+                project_members = ProjectUsersAssociation.find_all_by_project_id(project.id)
+                if len(project_members) > 0 and \
+                    technical_req is not None and \
+                    technical_req.scope_package_id is not None and \
+                        technical_req.no_of_test_account is not None:
+                    is_valid = True
+            elif status == ProjectStatus.DevelopmentComplete:
+                is_valid = project.status == ProjectStatus.Development
 
         return is_valid
 
