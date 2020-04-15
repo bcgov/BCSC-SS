@@ -646,9 +646,7 @@ exports[`TeamRoles.vue renders props when passed with gettors 1`] = `
         >
           <v-card-text-stub
             class="text-left"
-          >
-            
-          </v-card-text-stub>
+          />
            
           <v-card-actions-stub>
             <v-spacer-stub />

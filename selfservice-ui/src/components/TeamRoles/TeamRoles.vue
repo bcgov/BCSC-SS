@@ -83,7 +83,7 @@
       <v-col>
         <v-dialog v-model="dialogDelete" persistent max-width="400">
           <v-card>
-            <v-card-text class="text-left">{{ $t('teamRoles.deleteWarning') }}</v-card-text>
+            <v-card-text class="text-left" v-html="$t('teamRoles.deleteWarning')"></v-card-text>
             <v-card-actions>
               <v-spacer></v-spacer>
               <Button secondary text @click="deleteMember(true)">Cancel</Button>
