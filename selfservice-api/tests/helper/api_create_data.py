@@ -124,9 +124,9 @@ def get_project(client, jwt):
     return project
 
 
-def _get_project_(client, jwt):
+def _get_project_(client, jwt, is_analyst=False):
     """Get project and return response object."""
-    headers = ss_client_auth_header(jwt)
+    headers = ss_admin_auth_header(jwt) if is_analyst else ss_client_auth_header(jwt)
     project = create_project(client, jwt)
 
     response = client.get(PROJECTINFO_API + '/' + str(project['id']),

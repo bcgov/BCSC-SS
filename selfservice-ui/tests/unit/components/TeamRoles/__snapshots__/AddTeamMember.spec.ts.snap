@@ -5,21 +5,21 @@ exports[`AddTeamMember.vue renders props when passed with gettors 1`] = `
   tag="div"
 >
   <v-row-stub
-    class=" text-left"
+    class="text-left"
     tag="div"
   >
     <v-col-stub
       tag="div"
     >
       <v-card-stub
-        class="v-form  ma-3"
+        class="v-form ma-3"
         flat="true"
         loaderheight="4"
         tag="div"
       >
         <v-form-stub>
           <v-card-stub
-            class="v-form px-6  ma-3"
+            class="v-form px-6 ma-3"
             loaderheight="4"
             tag="div"
           >
@@ -33,7 +33,7 @@ exports[`AddTeamMember.vue renders props when passed with gettors 1`] = `
                 tag="div"
               >
                 <div
-                  class=" display-1"
+                  class="display-1"
                 >
                   
                   
@@ -50,6 +50,8 @@ exports[`AddTeamMember.vue renders props when passed with gettors 1`] = `
                   class="headline bc-padding-left-0"
                 >
                   
+                  
+                
                 </v-card-subtitle-stub>
                  
                 <input-stub
@@ -107,6 +109,8 @@ exports[`AddTeamMember.vue renders props when passed with gettors 1`] = `
                   class="headline bc-padding-left-0"
                 >
                   
+                  
+                
                 </v-card-subtitle-stub>
                  
                 <v-radio-group-stub
@@ -171,7 +175,7 @@ exports[`AddTeamMember.vue renders props when passed with gettors 1`] = `
                 </v-radio-group-stub>
                  
                 <v-card-actions-stub
-                  class="btn-bottom "
+                  class="btn-bottom"
                 >
                   <v-spacer-stub />
                    
@@ -210,21 +214,21 @@ exports[`AddTeamMember.vue renders props when passed with gettors with member id
   tag="div"
 >
   <v-row-stub
-    class=" text-left"
+    class="text-left"
     tag="div"
   >
     <v-col-stub
       tag="div"
     >
       <v-card-stub
-        class="v-form  ma-3"
+        class="v-form ma-3"
         flat="true"
         loaderheight="4"
         tag="div"
       >
         <v-form-stub>
           <v-card-stub
-            class="v-form px-6  ma-3"
+            class="v-form px-6 ma-3"
             loaderheight="4"
             tag="div"
           >
@@ -238,7 +242,7 @@ exports[`AddTeamMember.vue renders props when passed with gettors with member id
                 tag="div"
               >
                 <div
-                  class=" display-1"
+                  class="display-1"
                 >
                   
                   
@@ -255,6 +259,8 @@ exports[`AddTeamMember.vue renders props when passed with gettors with member id
                   class="headline bc-padding-left-0"
                 >
                   
+                  
+                
                 </v-card-subtitle-stub>
                  
                 <input-stub
@@ -312,6 +318,8 @@ exports[`AddTeamMember.vue renders props when passed with gettors with member id
                   class="headline bc-padding-left-0"
                 >
                   
+                  
+                
                 </v-card-subtitle-stub>
                  
                 <v-radio-group-stub
@@ -376,7 +384,7 @@ exports[`AddTeamMember.vue renders props when passed with gettors with member id
                 </v-radio-group-stub>
                  
                 <v-card-actions-stub
-                  class="btn-bottom "
+                  class="btn-bottom"
                 >
                   <v-spacer-stub />
                    
