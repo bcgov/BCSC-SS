@@ -1,7 +1,5 @@
 module.exports = {
-  "transpileDependencies": [
-    "vuetify"
-  ],
+  transpileDependencies: ['vuetify'],
 
   pluginOptions: {
     i18n: {
@@ -10,5 +8,22 @@ module.exports = {
       localeDir: 'locales',
       enableInSFC: true
     }
+  },
+  configureWebpack: {
+    module: {
+      rules: [
+        {
+          test: /\.(html)$/,
+          use: {
+            loader: 'vue2-html-loader',
+            options: {
+              removeComments: true,
+              removeWhiteSpace: true,
+              removeNewline: true
+            }
+          }
+        }
+      ]
+    }
   }
-}
+};

@@ -1,11 +1,11 @@
 <template>
   <div v-html="helpHtml" />
- </template>
+</template>
 <script lang="ts">
-import helpHtml from 'html-loader!./Help.html';
+const helpHtml = require('./Help.html'); // tslint:disable-line
 import { Vue } from 'vue-property-decorator';
 export default class Help extends Vue {
-  public helpHtml : helpHtml;
+  public helpHtml: any = helpHtml;
 }
 </script>
 <style lang="scss">
