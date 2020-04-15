@@ -19,9 +19,9 @@
               <thead class="tbl-head">
                 <tr class="text-left">
                   <th
-                    :scope="$t('ClientID.tblHeadMyRole')"
+                    :scope="$t('ClientID.tblHeadName')"
                     class="text-left"
-                  >{{ $t('teamRoles.tblHeadMyRole') }}</th>
+                  >{{ $t('teamRoles.tblHeadName') }}</th>
                   <th
                     :scope="$t('ClientID.tblHeadMyRole')"
                     class="text-left"
@@ -73,7 +73,7 @@
 
       <v-col>
         <div class="text-center">
-          <v-dialog v-model="dialog" width="71%" class="text-left">
+          <v-dialog v-model="dialog" width="85%" class="text-left">
             <v-card>
               <AddTeamMember :id="id" @toggleAddMember="toggleAddMember" :memberId="memberId" />
             </v-card>

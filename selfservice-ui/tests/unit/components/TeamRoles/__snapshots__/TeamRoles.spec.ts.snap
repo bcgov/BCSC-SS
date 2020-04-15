@@ -67,7 +67,7 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
           >
             <div
               class="v-dialog v-dialog--active"
-              style="width: 71%;"
+              style="width: 85%;"
             >
               <div
                 class="v-card v-sheet theme--light"
@@ -82,14 +82,14 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                       class="col"
                     >
                       <div
-                        class="v-form  ma-3 v-card v-card--flat v-sheet theme--light"
+                        class="v-form ma-3 v-card v-card--flat v-sheet theme--light"
                       >
                         <form
                           class="v-form"
                           novalidate="novalidate"
                         >
                           <div
-                            class="v-form px-6  ma-3 v-card v-sheet theme--light"
+                            class="v-form px-6 ma-3 v-card v-sheet theme--light"
                           >
                             <!---->
                              
@@ -100,7 +100,7 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                 class="col col-12"
                               >
                                 <div
-                                  class=" display-1"
+                                  class="display-1"
                                 >
                                   
                   
@@ -115,6 +115,8 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                   class="v-card__subtitle headline bc-padding-left-0"
                                 >
                                   
+                  
+                
                                 </div>
                                  
                                 <div
@@ -370,6 +372,8 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                   class="v-card__subtitle headline bc-padding-left-0"
                                 >
                                   
+                  
+                
                                 </div>
                                  
                                 <div
@@ -607,7 +611,7 @@ exports[`TeamRoles.vue renders props when passed with gettors 1`] = `
           origin="center center"
           retainfocus="true"
           transition="dialog-transition"
-          width="71%"
+          width="85%"
         >
           <v-card-stub
             loaderheight="4"
