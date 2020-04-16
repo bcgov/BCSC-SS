@@ -41,7 +41,7 @@
                     :label="$t('addTeamMember.labelFirstName')"
                     :rules="[
                       rules.required,
-                      rules.length(3),
+                      rules.length(1),
                       rules.maxLength(250)
                     ]"
                     type="text"
@@ -52,7 +52,7 @@
                     :label="$t('addTeamMember.labelLastName')"
                     :rules="[
                       rules.required,
-                      rules.length(2),
+                      rules.length(1),
                       rules.maxLength(250)
                     ]"
                     type="text"

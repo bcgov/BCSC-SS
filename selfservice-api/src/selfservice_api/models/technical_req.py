@@ -42,6 +42,8 @@ class TechnicalReq(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
 
     signing_encryption_type = db.Column(db.Integer, nullable=True)
 
+    is_prod = db.Column(db.Boolean(), default=False)
+
     @classmethod
     def create_from_dict(cls, technical_req_info: dict, user: User) -> TechnicalReq:
         """Create a new technical requirement from the provided dictionary."""
@@ -56,6 +58,7 @@ class TechnicalReq(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
             technical_req.id_token_encrypted_response_alg = technical_req_info['id_token_encrypted_response_alg']
             technical_req.userinfo_encrypted_response_alg = technical_req_info['userinfo_encrypted_response_alg']
             technical_req.signing_encryption_type = technical_req_info['signing_encryption_type']
+            technical_req.is_prod = technical_req_info['is_prod']
             technical_req.created_by = user.id
             technical_req.save()
 
@@ -63,9 +66,10 @@ class TechnicalReq(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
         return None
 
     @classmethod
-    def find_by_project_id(cls, project_id) -> TechnicalReq:
+    def find_by_project_id(cls, project_id, is_prod: bool) -> TechnicalReq:
         """Find technical requirement that matches the provided id."""
-        return cls.query.filter(TechnicalReq.project_id == project_id).first()
+        return cls.query.filter(TechnicalReq.project_id == project_id and
+                                TechnicalReq.is_prod == is_prod).first()
 
     def update(self, technical_req_info: dict, user: User):
         """Update technical requirement."""

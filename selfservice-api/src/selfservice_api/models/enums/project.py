@@ -32,9 +32,9 @@ class ProjectStatus(ExtendedIntEnum):
     DevelopmentComplete = 3, 'Development Complete'
     ComplianceChecks = 4, 'Compliance Checks'
     AwaitingApproval = 5, 'Awaiting Approval'
-    AwaitingStagingKeys = 6, 'Awaiting Staging Keys'
-    AwaitingProductionUse = 7, 'Awaiting Production Use'
-    ReadyForFirstCitizenUse = 8, 'Ready for First Citizen Use'
+    PrepareProdTechConfig = 6, 'Prepare Prod Tech Config'
+    RequireIDIMEDApproval = 7, 'Require IDIM ED Approval'
+    ApprovalGranted = 8, 'Approval Granted'
 
 
 class Algorithms(ExtendedEnum):

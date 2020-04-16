@@ -43,7 +43,7 @@ def test_update(session):
 def test_find_by_project_id(session):
     """Assert oidc config instance that matches the provided id."""
     oidc_config = create_oidc_config(session)
-    found = OIDCConfig.find_by_project_id(oidc_config.project_id)
+    found = OIDCConfig.find_by_project_id(oidc_config.project_id, False)
     assert found is not None
 
 
