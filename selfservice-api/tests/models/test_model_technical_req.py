@@ -35,7 +35,7 @@ def test_none_create_from_dict(session):
 def test_find_by_project_id(session):
     """Assert technical_req instance that matches the provided id."""
     technical_req = create_technical_req(session)
-    found = technical_req.find_by_project_id(technical_req.project_id)
+    found = technical_req.find_by_project_id(technical_req.project_id, False)
     assert found is not None
 
 

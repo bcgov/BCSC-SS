@@ -37,7 +37,7 @@ class OIDCConfigResource(Resource):
     @auth.require
     def get(project_id):
         """Get oidc config and test account details."""
-        oidc_config = OIDCConfig.find_by_project_id(project_id)
+        oidc_config = OIDCConfig.find_by_project_id(project_id, False)
         test_accounts = TestAccount.find_all_by_project_id(project_id)
 
         return jsonify({
