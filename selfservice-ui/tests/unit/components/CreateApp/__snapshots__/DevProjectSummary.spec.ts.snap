@@ -46,8 +46,9 @@ exports[`DevProjectSummary.vue renders props when passed with gettors 1`] = `
       tag="div"
     >
       <v-col-stub
-        cols="8"
+        cols="12"
         flat=""
+        sm="8"
         tag="div"
       >
         <v-card-stub
@@ -62,7 +63,9 @@ exports[`DevProjectSummary.vue renders props when passed with gettors 1`] = `
       </v-col-stub>
        
       <v-col-stub
-        cols="4"
+        class="d-flex align-end flex-column-reverse mb-2"
+        cols="12"
+        sm="4"
         tag="div"
       >
         <projectactions-stub

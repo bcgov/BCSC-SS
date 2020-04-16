@@ -1,11 +1,12 @@
 /** * Dashboard of app */
 
 <template>
-  <div class="right-side">
+  <div class="right-side ">
     <v-col
       cols="12"
       class="d-flex justify-end"
       v-if="projectStatus === projectStatusList.development"
+      no-gutters
     >
       <v-card flat>
         <Button
@@ -17,18 +18,18 @@
         >
       </v-card>
     </v-col>
+
     <v-col
       class="d-flex justify-end btn-delete"
       @click="toggleDelete()"
       v-if="isAdmin || projectStatus < projectStatusList.developmentComplete"
+      no-gutters
     >
-      <!-- <div> -->
-      <v-icon class="ml-2 icon-delete " small>mdi-delete</v-icon
+      <v-icon class="ml-2 icon-delete" small>mdi-delete</v-icon
       >{{ $t('projectActions.labelDelete') }}
-      <!-- </div> -->
     </v-col>
 
-    <v-col>
+    <v-col v-if="requestDialog || deleteDialog">
       <v-dialog v-model="requestDialog" persistent max-width="70%">
         <v-card>
           <v-toolbar flat class="bc-subtitle" dark>

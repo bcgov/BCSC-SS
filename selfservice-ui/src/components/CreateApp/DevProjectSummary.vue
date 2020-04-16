@@ -13,7 +13,7 @@
     </v-toolbar>
     <v-container>
       <v-row>
-        <v-col cols="8" flat>
+        <v-col cols="12" sm="8" flat>
           <v-card flat>
             <v-list-item-content
               class="text-left padding-0"
@@ -21,7 +21,12 @@
             ></v-list-item-content>
           </v-card>
         </v-col>
-        <v-col cols="4"><ProjectActions :id="id" /> </v-col>
+        <v-col
+          cols="12"
+          sm="4"
+          class="d-flex align-end flex-column-reverse mb-2"
+          ><ProjectActions :id="id" />
+        </v-col>
         <ProjectSummary :id="id" />
       </v-row>
     </v-container>
