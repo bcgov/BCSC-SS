@@ -162,7 +162,7 @@
     "pagetitle": "Projects",
     "tblTitleSi": "#",
     "tblTitleProjectName": "Project name",
-    "tblTitleProjectId": "ID",
+    "tblTitleReferenceNo": "Reference number",
     "tblTitlCreated": "Created",
     "tblTitleProjectStatus": "Project status",
     "tblTitleProjectActions": "Actions",
