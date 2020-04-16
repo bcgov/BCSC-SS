@@ -15,11 +15,22 @@ module.exports = {
         {
           test: /\.(html)$/,
           use: {
-            loader: 'vue2-html-loader',
+            loader: 'html-loader',
             options: {
-              removeComments: true,
-              removeWhiteSpace: true,
-              removeNewline: true
+              attributes: {
+                list: [
+                  {
+                    // only for img tags
+                    tag: 'img',
+                    // Attribute name
+                    attribute: 'src',
+                    // Type of processing, can be `src` or `scrset`
+                    type: 'src',
+                    // Allow to filter some attributes (optional)
+                  },
+                ],
+              },
+
             }
           }
         }
