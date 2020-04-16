@@ -25,10 +25,8 @@
       v-if="isAdmin || projectStatus < projectStatusList.developmentComplete"
       no-gutters
     >
-      <!-- <div> -->
-      <v-icon class="ml-2 icon-delete " small>mdi-delete</v-icon
+      <v-icon class="ml-2 icon-delete" small>mdi-delete</v-icon
       >{{ $t('projectActions.labelDelete') }}
-      <!-- </div> -->
     </v-col>
 
     <v-col v-if="requestDialog || deleteDialog">
