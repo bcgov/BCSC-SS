@@ -167,7 +167,15 @@
     "tblTitleProjectStatus": "Project status",
     "tblTitleProjectActions": "Actions",
     "tblTitlrole": "My role",
-    "noData": "There are no projects to view. Add one to start "
+    "noData": "There are no projects to view. Add one to start ",
+    "roledraft": "Draft",
+    "roledevelopment": "Development",
+    "roledevelopmentComplete": "Development Complete",
+    "rolecomplianceChecks": "Compliance checks",
+    "roleawaitingApproval": "Awaiting approval",
+    "roleawaitingStagingKeys": "Awaiting staging keys",
+    "roleawaitingProductionUse": "Awaiting production use",
+    "rolereadyForFirstCitizenUse": "Ready for first citizen use"
   },
   "profile": {
     "pageTitle": "Profile",
@@ -254,6 +262,6 @@
     "btnDeleteConfirm": "Delete this project",
     "btnDeleteCancel": "Cancel",
     "deleteDialogTitle": "Delete this project",
-    "deleteDialogInfo": "<h3>You have chosen to delete this project</h4><p class='my-5'>Please note:</p><ul><li> Deleting this project will remove both the project and API from the system.</li><li> A project can only be deleted by a member of the project team while it is in the development state.</li><li>  Once you have marked development complete on your project, deletion is no longer possible. If you require a project deleted from this phase, please contact us.</li></ul><p class='my-5 red--text'>Deleting a project is permanent and cannot be undone.</p><pclass='my-5 '>Do you wish to proceed with deleting this project?</p>"
+    "deleteDialogInfo": "<h3>You have chosen to delete this project</h4><p class='my-5'>Please note:</p><ul><li> Deleting this project will remove both the project and API from the system.</li><li> A project can only be deleted by a member of the project team while it is in the development state.</li><li>  Once you have marked development complete on your project, deletion is no longer possible. If you require a project deleted from this phase, please <a href='/contact-us'>contact us.</a></li></ul><p class='my-5 red--text'>Deleting a project is permanent and cannot be undone.</p><pclass='my-5 '>Do you wish to proceed with deleting this project?</p>"
   }
 }

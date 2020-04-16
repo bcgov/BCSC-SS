@@ -50,7 +50,13 @@
                 <tr
                   v-for="(project, idx) in projectInfoList"
                   :key="project.id"
-                  @click="$router.push(`/project/${project.id}/summary`)"
+                  @click="
+                    $router.push(
+                      project.statusId >= projectStatusList.developmentComplete
+                        ? `project-container/${project.id}`
+                        : `/project/${project.id}/summary`
+                    )
+                  "
                   style="cursor: pointer"
                 >
                   <td>{{ idx + 1 }}</td>
@@ -58,7 +64,11 @@
                   <!-- <td>{{ project.id }}</td> -->
                   <td v-if="isClient">{{ project.role }}</td>
                   <td>{{ project.created }}</td>
-                  <td>{{ project.status }}</td>
+                  <td>
+                    {{
+                      $t(`dashboard.role${projectStatusList[project.statusId]}`)
+                    }}
+                  </td>
                 </tr>
               </tbody>
             </template>
@@ -77,6 +87,8 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
+import { projectStatus } from '@/constants/enums';
+
 const ProjectInfoModule = namespace('ProjectInfoModule');
 const KeyCloakModule = namespace('KeyCloakModule');
 
@@ -91,6 +103,7 @@ export default class Dashboard extends Vue {
   public loadProjectInfo!: any;
   @ProjectInfoModule.Action('errorStatus')
   public errorStatus!: any;
+  private projectStatusList: any = projectStatus;
 
   private mounted() {
     this.loadProjectInfo();

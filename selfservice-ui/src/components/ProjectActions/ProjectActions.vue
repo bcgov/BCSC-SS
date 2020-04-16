@@ -2,7 +2,11 @@
 
 <template>
   <div class="right-side">
-    <v-col cols="12" class="d-flex justify-end">
+    <v-col
+      cols="12"
+      class="d-flex justify-end"
+      v-if="projectStatus === projectStatusList.development"
+    >
       <v-card flat>
         <Button
           @click="toggleWarning()"
@@ -13,9 +17,13 @@
         >
       </v-card>
     </v-col>
-    <v-col class="d-flex justify-end btn-delete" @click="toggleDelete()">
+    <v-col
+      class="d-flex justify-end btn-delete"
+      @click="toggleDelete()"
+      v-if="isAdmin || projectStatus < projectStatusList.developmentComplete"
+    >
       <!-- <div> -->
-      <v-icon class="ml-2 btn-delete " small>mdi-delete</v-icon
+      <v-icon class="ml-2 icon-delete " small>mdi-delete</v-icon
       >{{ $t('projectActions.labelDelete') }}
       <!-- </div> -->
     </v-col>
@@ -32,7 +40,7 @@
             class="text-left ma-8"
             v-html="$t('projectActions.requestLiveAccessDialogInfo')"
           ></v-card-text>
-          <v-card-actions>
+          <v-card-actions class="pb-10">
             <v-spacer></v-spacer>
             <Button secondary text @click="toggleWarning()">{{
               $t('projectActions.btnCancel')
@@ -56,7 +64,7 @@
             class="text-left ma-8"
             v-html="$t('projectActions.deleteDialogInfo')"
           ></v-card-text>
-          <v-card-actions>
+          <v-card-actions class="pb-10">
             <v-spacer></v-spacer>
             <Button secondary text @click="toggleDelete()">{{
               $t('projectActions.btnDeleteCancel')
@@ -76,12 +84,10 @@ import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
 
 import Button from '@/Atomic/Button/Button.vue';
-import { projectStatus } from '@/constants/enums';
-
-import { projectRolesList } from '@/constants/enums';
+import { projectStatus, projectRolesList } from '@/constants/enums';
 
 const ProjectInfoModule = namespace('ProjectInfoModule');
-// const KeyCloakModule = namespace('KeyCloakModule');
+const KeyCloakModule = namespace('KeyCloakModule');
 
 @Component({
   components: {
@@ -104,16 +110,23 @@ export default class ProjectActions extends Vue {
   @ProjectInfoModule.Getter('getSingleProjectInfo')
   public getSingleProjectInfo!: any;
 
+  @KeyCloakModule.Getter('isAdmin')
+  private isAdmin!: any;
+
   private requestDialog: boolean = false;
   private deleteDialog: boolean = false;
 
   private showProjectActions: boolean = false;
   private projectStatus: number = 1;
+  private projectStatusList: any = projectStatus;
 
   @Watch('getChangeStatus')
   private ongetChangeStatusChanged(val: any) {
     const { statusChangeError, statusChangeSuccess } = val;
     this.toggleWarning();
+    if (statusChangeSuccess === true) {
+      this.$router.push(`/project-container/${this.id}`);
+    }
   }
   @Watch('getDeleteProjectReturn')
   private ongetgetDeleteProjectReturnChanged(val: any) {
@@ -161,5 +174,8 @@ export default class ProjectActions extends Vue {
 .btn-delete {
   color: $BCgovBlue10;
   cursor: pointer;
+  & .icon-delete {
+    color: $BCgovBlue10;
+  }
 }
 </style>
