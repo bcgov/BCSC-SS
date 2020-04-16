@@ -29,7 +29,7 @@
             }}</v-toolbar-title>
           </v-toolbar>
           <v-card-text
-            class="text-left"
+            class="text-left ma-8"
             v-html="$t('projectActions.requestLiveAccessDialogInfo')"
           ></v-card-text>
           <v-card-actions>
@@ -53,7 +53,7 @@
             >
           </v-toolbar>
           <v-card-text
-            class="text-left"
+            class="text-left ma-8"
             v-html="$t('projectActions.deleteDialogInfo')"
           ></v-card-text>
           <v-card-actions>
