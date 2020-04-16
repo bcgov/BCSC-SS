@@ -11,10 +11,21 @@ enum algorithamBase {
 }
 
 const projectRolesList = {
-  // const array for project role name cxonvertion
+  // const array for project role name convertion
   1: 'developer',
   2: 'manager',
   3: 'cto'
 };
 
-export { projectRoles, algorithamBase, projectRolesList };
+enum projectStatus {
+  draft = 1,
+  development = 2,
+  developmentComplete = 3,
+  complianceChecks = 4,
+  awaitingApproval = 5,
+  awaitingStagingKeys = 6,
+  awaitingProductionUse = 7,
+  readyForFirstCitizenUse = 8
+}
+
+export { projectRoles, algorithamBase, projectRolesList, projectStatus };

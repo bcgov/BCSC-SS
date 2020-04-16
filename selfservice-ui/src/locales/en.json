@@ -167,7 +167,15 @@
     "tblTitleProjectStatus": "Project status",
     "tblTitleProjectActions": "Actions",
     "tblTitlrole": "My role",
-    "noData": "There are no projects to view. Add one to start "
+    "noData": "There are no projects to view. Add one to start ",
+    "roledraft": "Draft",
+    "roledevelopment": "Development",
+    "roledevelopmentComplete": "Development Complete",
+    "rolecomplianceChecks": "Compliance checks",
+    "roleawaitingApproval": "Awaiting approval",
+    "roleawaitingStagingKeys": "Awaiting staging keys",
+    "roleawaitingProductionUse": "Awaiting production use",
+    "rolereadyForFirstCitizenUse": "Ready for first citizen use"
   },
   "profile": {
     "pageTitle": "Profile",
@@ -243,5 +251,17 @@
     "invalidDomain": "This email domain address you entered is not in our system of approved organizations. Please correct the email address or  <a href='/contact-us'>contact IDIM</a>to have the domain added to the system.",
     "roleAlreadyAssigned": "This role is already assigned to another team member. Please select a different role or <a href='/contact-us'>contact IDIM</a> to change your project team membership.",
     "emailAlreadyAssigned": "The email address you entered belongs to a user who already has been assigned in this project. An individual user can only have one project role."
+  },
+  "projectActions": {
+    "btnRequestLiveAccess": "Request live access",
+    "requestLiveAccessDialogTitle": "Request live access",
+    "requestLiveAccessDialogInfo": "<h3>You have chosen to request live access.</h3><p class='my-5'>This action will move your project into the next phase to begin the Live Access Request process.</p><p class='my-5 pr-2'>In this next phase, you will be guided through the process to understand and address the various categories of compliance before integrating with a live production-ready environment of BC Services Card data. A member of the Provincial Identity Information Management Program is always available to help BPS clients in completing the integration components.</p><p class='my-5'>The Provincial Identity Information Management Program is mandated to provide identity and authentication services using the BC Services Card to support citizen transactions with government services.</p><p class='my-5'><strong> Would you like to continue?</strong></p>",
+    "btnCancel": "Cancel",
+    "btnConfirm": "Request live access",
+    "labelDelete": "Delete project",
+    "btnDeleteConfirm": "Delete this project",
+    "btnDeleteCancel": "Cancel",
+    "deleteDialogTitle": "Delete this project",
+    "deleteDialogInfo": "<h3>You have chosen to delete this project</h4><p class='my-5'>Please note:</p><ul><li> Deleting this project will remove both the project and API from the system.</li><li> A project can only be deleted by a member of the project team while it is in the development state.</li><li>  Once you have marked development complete on your project, deletion is no longer possible. If you require a project deleted from this phase, please <a href='/contact-us'>contact us.</a></li></ul><p class='my-5 red--text'>Deleting a project is permanent and cannot be undone.</p><pclass='my-5 '>Do you wish to proceed with deleting this project?</p>"
   }
 }
