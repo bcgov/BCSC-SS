@@ -112,7 +112,7 @@ exports[`AddTeam.vue renders props when passed 1`] = `
               >
                 <div
                   class="v-dialog"
-                  style="width: 71%; display: none;"
+                  style="width: 85%; display: none;"
                 />
               </div>
             </div>

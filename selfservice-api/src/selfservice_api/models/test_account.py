@@ -48,7 +48,7 @@ class TestAccount(BaseModel, db.Model):
     def map_test_accounts(cls, project_id: int, no_of_accounts: int):
         """Find available test accounts and map to a project."""
         project_test_accounts = TestAccount.find_all_by_project_id(project_id)
-        if len(project_test_accounts) == 0:
+        if len(project_test_accounts) == 0 and no_of_accounts > 0:
             TestAccount._update_project_id_(project_id, no_of_accounts)
         else:
             if len(project_test_accounts) < no_of_accounts:

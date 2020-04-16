@@ -19,9 +19,9 @@
               <thead class="tbl-head">
                 <tr class="text-left">
                   <th
-                    :scope="$t('ClientID.tblHeadMyRole')"
+                    :scope="$t('ClientID.tblHeadName')"
                     class="text-left"
-                  >{{ $t('teamRoles.tblHeadMyRole') }}</th>
+                  >{{ $t('teamRoles.tblHeadName') }}</th>
                   <th
                     :scope="$t('ClientID.tblHeadMyRole')"
                     class="text-left"
@@ -73,7 +73,7 @@
 
       <v-col>
         <div class="text-center">
-          <v-dialog v-model="dialog" width="71%" class="text-left">
+          <v-dialog v-model="dialog" width="85%" class="text-left">
             <v-card>
               <AddTeamMember :id="id" @toggleAddMember="toggleAddMember" :memberId="memberId" />
             </v-card>
@@ -83,7 +83,7 @@
       <v-col>
         <v-dialog v-model="dialogDelete" persistent max-width="400">
           <v-card>
-            <v-card-text class="text-left">{{ $t('teamRoles.deleteWarning') }}</v-card-text>
+            <v-card-text class="text-left" v-html="$t('teamRoles.deleteWarning')"></v-card-text>
             <v-card-actions>
               <v-spacer></v-spacer>
               <Button secondary text @click="deleteMember(true)">Cancel</Button>

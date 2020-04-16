@@ -21,7 +21,7 @@ from ..helper.api_create_data import (PROJECTINFO_API,  # noqa: I001
                                     _get_all_project_, _update_technical_req_with_test_account_,  # noqa: I001
                                     create_project, create_technical_req_with_additional, create_user,  # noqa: I001
                                     get_project)  # noqa: I001
-from ..helper.auth import ss_client_auth_header
+from ..helper.auth import ss_admin_auth_header, ss_client_auth_header
 
 from selfservice_api.models.enums import ProjectRoles, ProjectStatus
 
@@ -77,6 +77,22 @@ def test_get_all_project_analyst(client, jwt, session):
 def test_get_project(client, jwt, session):
     """Assert that the endpoint returns the success status."""
     response = _get_project_(client, jwt)
+    assert response.status_code == HTTPStatus.OK
+
+    response = _get_project_(client, jwt, is_analyst=True)
+    assert response.status_code == HTTPStatus.OK
+
+
+def test_delete_project(client, jwt, session):
+    """Assert that the endpoint returns the success status."""
+    headers = ss_admin_auth_header(jwt)
+    project = get_project(client, jwt)
+
+    response = client.delete(PROJECTINFO_API + '/' + str(project['id']),
+                             headers=headers, content_type='application/json')
+    assert response.status_code == HTTPStatus.OK
+
+    response = client.delete(PROJECTINFO_API + '/1234', headers=headers, content_type='application/json')
     assert response.status_code == HTTPStatus.OK
 
 

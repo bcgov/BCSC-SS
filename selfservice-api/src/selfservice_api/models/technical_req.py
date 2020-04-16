@@ -76,3 +76,8 @@ class TechnicalReq(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
                                'userinfo_encrypted_response_alg', 'signing_encryption_type'],
                               technical_req_info)
         self.commit()
+
+    @classmethod
+    def delete_by_project_id(cls, project_id):
+        """Delete technical requirement by project id."""
+        return cls.query.filter(TechnicalReq.project_id == project_id).delete()
