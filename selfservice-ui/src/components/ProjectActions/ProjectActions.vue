@@ -12,7 +12,7 @@
         <Button
           @click="toggleWarning()"
           :aria-label="$t('projectActions.btnRequestLiveAccess')"
-          class="team-roles"
+          class="btn-req"
           secondary
           >{{ $t('projectActions.btnRequestLiveAccess') }}</Button
         >
@@ -46,7 +46,7 @@
             <Button secondary text @click="toggleWarning()">{{
               $t('projectActions.btnCancel')
             }}</Button>
-            <Button text @click="confirmLiveAccess()">{{
+            <Button text class="btn-live" @click="confirmLiveAccess()">{{
               $t('projectActions.btnConfirm')
             }}</Button>
           </v-card-actions>
@@ -70,9 +70,12 @@
             <Button secondary text @click="toggleDelete()">{{
               $t('projectActions.btnDeleteCancel')
             }}</Button>
-            <Button text @click="confirmDeleteProject()">{{
-              $t('projectActions.btnDeleteConfirm')
-            }}</Button>
+            <Button
+              text
+              class="dialog-delete"
+              @click="confirmDeleteProject()"
+              >{{ $t('projectActions.btnDeleteConfirm') }}</Button
+            >
           </v-card-actions>
         </v-card>
       </v-dialog>
