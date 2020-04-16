@@ -110,6 +110,7 @@ def factory_project_technical_req(is_model=False, signing_encryption_type=Signin
         technical_req['userinfo_signed_response_alg'] = 'RS256'
         technical_req['id_token_encrypted_response_alg'] = 'RS256'
         technical_req['userinfo_encrypted_response_alg'] = 'RS256'
+        technical_req['is_prod'] = False
         return technical_req
     else:
         return technical_req
@@ -132,7 +133,8 @@ def factory_project_oidc_config():
         'id_token_encrypted_response_alg': 'RS256',
         'id_token_encrypted_response_enc': 'RS256',
         'userinfo_encrypted_response_alg': 'RS256',
-        'userinfo_encrypted_response_enc': 'RS256'
+        'userinfo_encrypted_response_enc': 'RS256',
+        'is_prod': False
     }
     return oidc_config
 

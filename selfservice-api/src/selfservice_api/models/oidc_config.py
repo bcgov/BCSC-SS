@@ -39,6 +39,8 @@ class OIDCConfig(BaseModel, db.Model):
     application_type = db.Column(db.String(100))
     subject_type = db.Column(db.String(100))
 
+    is_prod = db.Column(db.Boolean(), default=False)
+
     @classmethod
     def create_from_dict(cls, oidc_config_info: dict) -> OIDCConfig:
         """Create a new oidc config from the provided dictionary."""
@@ -54,16 +56,17 @@ class OIDCConfig(BaseModel, db.Model):
             oidc_config.token_endpoint_auth_method = oidc_config_info['token_endpoint_auth_method']
             oidc_config.application_type = oidc_config_info['application_type']
             oidc_config.subject_type = oidc_config_info['subject_type']
-
+            oidc_config.is_prod = oidc_config_info['is_prod']
             oidc_config.save()
 
             return oidc_config
         return None
 
     @classmethod
-    def find_by_project_id(cls, project_id) -> OIDCConfig:
+    def find_by_project_id(cls, project_id, is_prod: bool) -> OIDCConfig:
         """Find oidc config that matches the provided id."""
-        return cls.query.filter(OIDCConfig.project_id == project_id).first()
+        return cls.query.filter(OIDCConfig.project_id == project_id and
+                                OIDCConfig.is_prod == is_prod).first()
 
     def update(self, oidc_config_info: dict):
         """Update oidc config."""

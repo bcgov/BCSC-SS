@@ -106,11 +106,14 @@ def create_project(client, jwt):
     return project
 
 
-def _create_project_(client, jwt, my_role):
+def _create_project_(client, jwt, my_role, is_analyst=False):
     """Create project and return response object."""
-    project_role = 'developer' if my_role == 1 else 'manager' if my_role == 2 else 'cto'
-    headers = ss_client_auth_header(jwt, project_role=project_role)
-    create_user(client, jwt, project_role=project_role)
+    if not is_analyst:
+        project_role = 'developer' if my_role == 1 else 'manager' if my_role == 2 else 'cto'
+        headers = ss_client_auth_header(jwt, project_role=project_role)
+        create_user(client, jwt, project_role=project_role)
+    else:
+        headers = ss_admin_auth_header(jwt)
 
     response = client.post(PROJECTINFO_API, data=json.dumps(factory_project_info()),
                            headers=headers, content_type='application/json')
