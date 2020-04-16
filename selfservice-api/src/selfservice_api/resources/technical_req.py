@@ -47,6 +47,7 @@ class TechnicalReqResource(Resource):
             technical_req_schema = TechnicalReqRequestSchema()
             dict_data = technical_req_schema.load(technical_req_json)
             dict_data['project_id'] = project_id
+            dict_data['is_prod'] = False
             technical_req = TechnicalReq.create_from_dict(dict_data, user)
             response, status = technical_req_schema.dump(technical_req), HTTPStatus.CREATED
         except ValidationError as technical_req_err:
@@ -59,7 +60,7 @@ class TechnicalReqResource(Resource):
     @auth.can_access_project([ProjectRoles.Developer, ProjectRoles.Manager, ProjectRoles.Cto])
     def get(project_id):
         """Get technical requirement details."""
-        technical_req = TechnicalReq.find_by_project_id(project_id)
+        technical_req = TechnicalReq.find_by_project_id(project_id, False)
 
         return TechnicalReqResponseSchema().dump(technical_req), HTTPStatus.OK
 
@@ -75,7 +76,7 @@ class TechnicalReqResource(Resource):
             technical_req_schema = TechnicalReqRequestSchema()
             dict_data = technical_req_schema.load(technical_req_json)
             dict_data['project_id'] = project_id
-            technical_req = TechnicalReq.find_by_project_id(project_id)
+            technical_req = TechnicalReq.find_by_project_id(project_id, False)
             technical_req.update(dict_data, user)
             response, status = 'Updated successfully', HTTPStatus.OK
         except ValidationError as technical_req_err:
@@ -99,7 +100,7 @@ class TechnicalReqResource(Resource):
                     technical_req_info = TechnicalReqTestAccountSchema().load(tr_patch_json)
 
             if technical_req_info is not None:
-                technical_req = TechnicalReq.find_by_project_id(project_id)
+                technical_req = TechnicalReq.find_by_project_id(project_id, False)
                 technical_req.update(technical_req_info, user)
                 response, status = 'Updated successfully', HTTPStatus.OK
             else:

@@ -26,6 +26,12 @@ from ..helper.auth import ss_admin_auth_header, ss_client_auth_header
 from selfservice_api.models.enums import ProjectRoles, ProjectStatus
 
 
+def test_post_project_as_analyst(client, jwt, session):
+    """Assert that the endpoint returns the success status."""
+    response = _create_project_(client, jwt, None, is_analyst=True)
+    assert response.status_code == HTTPStatus.CREATED
+
+
 def test_post_project_as_developer(client, jwt, session):
     """Assert that the endpoint returns the success status."""
     create_user(client, jwt, project_role='manager')
@@ -85,15 +91,22 @@ def test_get_project(client, jwt, session):
 
 def test_delete_project(client, jwt, session):
     """Assert that the endpoint returns the success status."""
+    # Delete as admin
     headers = ss_admin_auth_header(jwt)
     project = get_project(client, jwt)
+    response = client.delete(PROJECTINFO_API + '/' + str(project['id']),
+                             headers=headers, content_type='application/json')
+    assert response.status_code == HTTPStatus.OK
 
+    # Delete as client
+    headers = ss_client_auth_header(jwt)
+    project = get_project(client, jwt)
     response = client.delete(PROJECTINFO_API + '/' + str(project['id']),
                              headers=headers, content_type='application/json')
     assert response.status_code == HTTPStatus.OK
 
     response = client.delete(PROJECTINFO_API + '/1234', headers=headers, content_type='application/json')
-    assert response.status_code == HTTPStatus.OK
+    assert response.status_code == HTTPStatus.BAD_REQUEST
 
 
 def test_put_project(client, jwt, session):

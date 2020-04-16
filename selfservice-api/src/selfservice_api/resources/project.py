@@ -92,18 +92,26 @@ class ProjectResourceById(Resource):
 
     @staticmethod
     @cors.crossdomain(origin='*')
-    @auth.has_one_of_roles([Role.ss_admin])
+    @auth.require
     def delete(project_id):
         """Delete project."""
         project = Project.find_by_id(project_id)
-        if project:
+        can_delete = bool(project)
+        including_prod = not auth.is_client_role()
+
+        if auth.is_client_role() and can_delete:
+            can_delete = project.status < ProjectStatus.DevelopmentComplete
+
+        if can_delete:
             TestAccount.map_test_accounts(project.id, 0)
             TechnicalReq.delete_by_project_id(project.id)
             ProjectUsersAssociation.delete_all_by_project_id(project.id)
+            ProjectResourceById._dynamic_api_delete_(project, including_prod)
             OIDCConfig.delete_by_project_id(project.id)
             project.delete()
+            return 'Deleted successfully', HTTPStatus.OK
 
-        return 'Deleted successfully', HTTPStatus.OK
+        return 'Delete failed', HTTPStatus.BAD_REQUEST
 
     @staticmethod
     @cors.crossdomain(origin='*')
@@ -139,7 +147,7 @@ class ProjectResourceById(Resource):
 
             # Decide when and which api to call
             if project_status == ProjectStatus.Development:
-                is_success = ProjectResourceById._dynamic_api_call_(project, False)
+                is_success = ProjectResourceById._dynamic_api_save_(project, False)
                 if is_success:
                     response_additional = ProjectResourceById._on_development_status_(project)
                     response.update(response_additional)
@@ -178,7 +186,7 @@ class ProjectResourceById(Resource):
         if 'update' in project_json and project_json['update'] == 'status':
             status = project_json.get('status')
             if status == ProjectStatus.Development:
-                technical_req = TechnicalReq.find_by_project_id(project.id)
+                technical_req = TechnicalReq.find_by_project_id(project.id, False)
                 project_members = ProjectUsersAssociation.find_all_by_project_id(project.id)
                 if len(project_members) > 0 and \
                     technical_req is not None and \
@@ -191,20 +199,39 @@ class ProjectResourceById(Resource):
         return is_valid
 
     @staticmethod
-    def _dynamic_api_call_(project: Project, is_prod: bool):
+    def _dynamic_api_delete_(project: Project, including_prod: bool):
+        """Delete OIDC config for this project."""
+        dynamic_api = get_dynamic_api()
+
+        # Delete test config by default
+        oidc_config = OIDCConfig.find_by_project_id(project.id, False)
+        if oidc_config:
+            api_url = current_app.config.get('DYNAMIC_TEST_API_URL')
+            dynamic_api.delete(oidc_config.client_id, oidc_config.registration_access_token, api_url)
+
+        # Delete prod config as well if `including_prod` true
+        if including_prod:
+            oidc_config = OIDCConfig.find_by_project_id(project.id, True)
+            if oidc_config:
+                api_url = current_app.config.get('DYNAMIC_PROD_API_URL')
+                dynamic_api.delete(oidc_config.client_id, oidc_config.registration_access_token, api_url)
+
+    @staticmethod
+    def _dynamic_api_save_(project: Project, is_prod: bool):
         """Generate OIDC config for this project."""
         api_call_succeeded = True
         dynamic_api = get_dynamic_api()
 
-        oidc_config = OIDCConfig.find_by_project_id(project.id)
+        oidc_config = OIDCConfig.find_by_project_id(project.id, is_prod)
         api_request = ProjectResourceById._generate_api_request_(project, is_prod, oidc_config)
 
         if oidc_config is None:
             api_response: CreateResponseModel = dynamic_api.create(api_request)
 
             if api_response is not None:
-                OIDCConfig.create_from_dict(
-                    ProjectResourceById._map_response_to_oidc_config_(False, project, api_response))
+                dict_oidc = ProjectResourceById._map_response_to_oidc_config_(False, project, api_response)
+                dict_oidc['is_prod'] = is_prod
+                OIDCConfig.create_from_dict(dict_oidc)
             else:
                 api_call_succeeded = False
         else:
