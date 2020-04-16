@@ -1,4 +1,4 @@
-import { createLocalVue, mount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import ProjectActions from '@/components/ProjectActions/ProjectActions.vue';
 import Vuetify from 'vuetify';
 import Vuex from 'vuex';
