@@ -32,13 +32,15 @@ import { Component, Vue, Watch, Prop } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
 import ProjectSummary from '@/components/CreateApp/ProjectSummary.vue';
 import ProjectActions from '@/components/ProjectActions/ProjectActions.vue';
+
 const SharedModule = namespace('SharedModule');
+const ProjectInfoModule = namespace('ProjectInfoModule');
 
 @Component({
   components: {
     ProjectSummary,
-    ProjectActions
-  }
+    ProjectActions,
+  },
 })
 export default class DevProjectSummary extends Vue {
   @Prop({ default: 0 })
@@ -46,6 +48,8 @@ export default class DevProjectSummary extends Vue {
 
   @SharedModule.Action('redirectFromSummaryPage')
   public redirectFromSummaryPage!: any;
+  @ProjectInfoModule.Getter('getSingleProjectInfo')
+  public getSingleProjectInfo!: any;
 
   private projectId: number = this.id || 0;
 

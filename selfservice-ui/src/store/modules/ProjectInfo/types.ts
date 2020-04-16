@@ -11,4 +11,6 @@ export interface ProjectInfoState {
   testAccountSuccess?: boolean;
   statusChangeError?: boolean;
   statusChangeSuccess?: boolean;
+  deleteProjectError?: boolean;
+  deleteProjectSuccess?: boolean;
 }

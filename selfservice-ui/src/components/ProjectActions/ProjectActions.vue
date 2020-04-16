@@ -13,13 +13,9 @@
         >
       </v-card>
     </v-col>
-    <v-col class="d-flex justify-end btn-delete">
+    <v-col class="d-flex justify-end btn-delete" @click="toggleDelete()">
       <!-- <div> -->
-      <v-icon
-        @click="deleteMemberDialog(team.id)"
-        class="ml-2 btn-delete "
-        small
-        >mdi-delete</v-icon
+      <v-icon class="ml-2 btn-delete " small>mdi-delete</v-icon
       >{{ $t('projectActions.labelDelete') }}
       <!-- </div> -->
     </v-col>
@@ -47,6 +43,30 @@
           </v-card-actions>
         </v-card>
       </v-dialog>
+
+      <v-dialog v-model="deleteDialog" persistent max-width="70%">
+        <v-card>
+          <v-toolbar flat class="bc-subtitle" dark>
+            <v-toolbar-title
+              ><v-icon class="ml-2  " medium>mdi-delete</v-icon
+              >{{ $t('projectActions.deleteDialogTitle') }}</v-toolbar-title
+            >
+          </v-toolbar>
+          <v-card-text
+            class="text-left"
+            v-html="$t('projectActions.deleteDialogInfo')"
+          ></v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <Button secondary text @click="toggleDelete()">{{
+              $t('projectActions.btnDeleteCancel')
+            }}</Button>
+            <Button text @click="confirmDeleteProject()">{{
+              $t('projectActions.btnDeleteConfirm')
+            }}</Button>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
     </v-col>
   </div>
 </template>
@@ -65,8 +85,8 @@ const ProjectInfoModule = namespace('ProjectInfoModule');
 
 @Component({
   components: {
-    Button
-  }
+    Button,
+  },
 })
 export default class ProjectActions extends Vue {
   @Prop({ default: 0 })
@@ -76,23 +96,59 @@ export default class ProjectActions extends Vue {
   @ProjectInfoModule.Action('updateProjectStatus')
   public updateProjectStatus!: any;
 
+  @ProjectInfoModule.Getter('getDeleteProjectReturn')
+  public getDeleteProjectReturn!: any;
+  @ProjectInfoModule.Action('deleteProject')
+  public deleteProject!: any;
+
+  @ProjectInfoModule.Getter('getSingleProjectInfo')
+  public getSingleProjectInfo!: any;
+
   private requestDialog: boolean = false;
+  private deleteDialog: boolean = false;
+
+  private showProjectActions: boolean = false;
+  private projectStatus: number = 1;
 
   @Watch('getChangeStatus')
   private ongetChangeStatusChanged(val: any) {
     const { statusChangeError, statusChangeSuccess } = val;
     this.toggleWarning();
   }
+  @Watch('getDeleteProjectReturn')
+  private ongetgetDeleteProjectReturnChanged(val: any) {
+    const { deleteProjectError, deleteProjectSuccess } = val;
+
+    if (deleteProjectSuccess === true) {
+      this.$router.push('/dashboard');
+    }
+  }
+
+  /** this watch will get called on load of projectinfo summary page which loads as child */
+  @Watch('getSingleProjectInfo')
+  private ongetSingleProjectInfoChanged(val: any) {
+    if (val && val.statusId > 1) {
+      this.showProjectActions = true;
+      this.projectStatus = val.statusId;
+    }
+  }
 
   private toggleWarning() {
     this.requestDialog = !this.requestDialog;
   }
 
+  private toggleDelete() {
+    this.deleteDialog = !this.deleteDialog;
+  }
+
   private confirmLiveAccess() {
     this.updateProjectStatus({
       projectId: this.id,
-      statusId: projectStatus.developmentComplete
+      statusId: projectStatus.developmentComplete,
     });
+  }
+  private confirmDeleteProject() {
+    this.deleteProject({ projectId: this.id });
   }
 }
 </script>

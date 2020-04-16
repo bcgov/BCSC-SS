@@ -100,5 +100,21 @@ export const mutations: MutationTree<ProjectInfoState> = {
    */
   SET_STATUS_CHANGE_SUCESS(state, payload: any) {
     state.statusChangeSuccess = payload;
-  }
+  },
+  /**
+   * set stae on error change
+   * @param {*} state
+   * @param {*} payload
+   */
+  SET_DELETE_ERROR(state, payload: any) {
+    state.deleteProjectError = payload;
+  },
+  /**
+   * set stae on success of status change
+   * @param {*} state
+   * @param {*} payload
+   */
+  SET_DELETE_SUCESS(state, payload: any) {
+    state.deleteProjectSuccess = payload;
+  },
 };

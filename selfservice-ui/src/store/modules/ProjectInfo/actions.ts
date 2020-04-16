@@ -154,5 +154,24 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
       commit('SET_STATUS_CHANGE_ERROR', true);
       commit('SET_LOADING', false);
     }
-  }
+  },
+  /**
+   * delete Project
+   * @param {*} { commit }
+   */
+  async deleteProject({ commit }, data) {
+    commit('SET_LOADING', true);
+    try {
+      const { projectId } = data;
+      await ProjectInfoService.deleteProject(projectId);
+
+      commit('SET_DELETE_ERROR', false);
+      commit('SET_DELETE_SUCESS', true);
+      commit('SET_LOADING', false);
+    } catch {
+      commit('SET_DELETE_SUCESS', false);
+      commit('SET_DELETE_ERROR', true);
+      commit('SET_LOADING', false);
+    }
+  },
 };

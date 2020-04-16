@@ -250,6 +250,10 @@
     "requestLiveAccessDialogInfo": "warning message",
     "btnCancel": "Cancel",
     "btnConfirm": "Request live access",
-    "labelDelete": "Delete project"
+    "labelDelete": "Delete project",
+    "btnDeleteConfirm": "Delete this project",
+    "btnDeleteCancel": "Cancel",
+    "deleteDialogTitle": "Delete this project",
+    "deleteDialogInfo": "warning message"
   }
 }
