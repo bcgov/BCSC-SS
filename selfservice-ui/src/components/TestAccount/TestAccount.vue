@@ -82,8 +82,8 @@ const TestAccountModule = namespace('TestAccountModule');
 @Component({
   components: {
     Button,
-    TextArea
-  }
+    TextArea,
+  },
 })
 export default class TestAccount extends Vue {
   @Prop({ default: 0 })
@@ -101,7 +101,7 @@ export default class TestAccount extends Vue {
 
   private submitTestAccount() {
     this.addTestAccounts({
-      testAccounts: this.testAccounts
+      testAccounts: this.testAccounts,
     });
   }
 

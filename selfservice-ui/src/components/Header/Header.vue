@@ -17,11 +17,7 @@
       />
 
       <v-toolbar-title>{{ $t('main.siteTitle') }}</v-toolbar-title>
-      <sup
-        aria-label="This application is currently in Beta phase"
-        class="beta-phase-banner"
-        >Beta</sup
-      >
+      <sup aria-label="This application is currently in Beta phase" class="beta-phase-banner">Beta</sup>
 
       <v-spacer></v-spacer>
       <v-spacer></v-spacer>
@@ -33,45 +29,32 @@
         dark
         class="d-none d-sm-flex login-btn side-right-margin"
         v-if="!isLoggedin"
-        >Login</v-btn
-      >
+      >Login</v-btn>
 
       <v-toolbar-title v-if="isLoggedin" class="d-flex">
         <v-btn icon dark large @click="$router.push(`/profile`)">
           <v-icon>mdi-account-edit</v-icon>
         </v-btn>
-        <div class="profile-title">
-          Welcome {{ userProfile.firstName }} {{ userProfile.lastName }}
-        </div>
+        <div class="profile-title">Welcome {{ userProfile.firstName }} {{ userProfile.lastName }}</div>
         <v-btn text @click="logout" color="white">
           <span class="mr-2 logout" color="white">Logout</span>
         </v-btn>
       </v-toolbar-title>
-      <v-btn
-        text
-        to="/"
-        link
-        dark
-        class="mr-2 d-sm-none toggleMenu"
-        @click="toggleMenu"
-      >
+      <v-btn text to="/" link dark class="mr-2 d-sm-none toggleMenu" @click="toggleMenu">
         <v-icon>mdi-menu</v-icon>
       </v-btn>
     </v-app-bar>
-    <nav
-      class="navigation-main"
-      :class="{ 'active-menu': showMenu }"
-      id="navbar"
-      v-if="!hideMenu"
-    >
+    <nav class="navigation-main" :class="{ 'active-menu': showMenu }" id="navbar" v-if="!hideMenu">
       <ul>
         <li class="d-sm-none">
           <v-btn text to="/" link dark class="mr-2 login-btn">Login</v-btn>
         </li>
         <li v-for="item in items" :key="item.title">
-          <router-link :to="item.link" v-if="checkRole(item)">{{
+          <router-link :to="item.link" v-if="checkRole(item)">
+            {{
             item.title
-          }}</router-link>
+            }}
+          </router-link>
         </li>
       </ul>
     </nav>
@@ -106,7 +89,7 @@ export default class Header extends Vue {
   private hideMenuInPage: boolean = !this.hideMenu;
   private items: any = [
     { title: 'Home', icon: 'mdi-home', link: '/' },
-    { title: 'Projects', link: '/dashboard' },
+    { title: 'Dashboard', link: '/dashboard' },
     { title: 'Help', link: '/help' },
     {
       title: 'Load test accounts',

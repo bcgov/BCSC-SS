@@ -4,9 +4,7 @@
   <v-card class="mx-auto card-width">
     <v-alert type="error" v-if="errorStatus">Something went wrong...</v-alert>
     <v-toolbar flat class="bc-subtitle" dark v-if="!errorStatus">
-      <v-toolbar-title>
-        {{ $t(isComplete ? 'profile.pageCompleteTitle' : 'profile.pageTitle') }}
-      </v-toolbar-title>
+      <v-toolbar-title>{{ $t(isComplete ? 'profile.pageCompleteTitle' : 'profile.pageTitle') }}</v-toolbar-title>
       <div class="flex-grow-1"></div>
     </v-toolbar>
     <v-divider></v-divider>
@@ -27,9 +25,9 @@
               class="text-left padding-0 bc-padding-left-0"
               v-html="
                 $t(
-                  filedsToShow.email
-                    ? 'profile.titlePageInfoBCSC'
-                    : 'profile.titlePageInfoIDIR'
+                  provider == 'idir'
+                    ? 'profile.titlePageInfoIDIR'
+                    : 'profile.titlePageInfoBCSC'
                 )
               "
             ></v-card-subtitle>
@@ -75,11 +73,11 @@
                   @keyup.enter="createOrUpdateProfile"
                 >
                   {{
-                    $t(
-                      isComplete
-                        ? 'profile.btnContinue'
-                        : 'profile.btnSaveChanges'
-                    )
+                  $t(
+                  isComplete
+                  ? 'profile.btnContinue'
+                  : 'profile.btnSaveChanges'
+                  )
                   }}
                 </Button>
               </v-card-actions>
@@ -108,6 +106,8 @@ export default class Dashboard extends Vue {
 
   @KeyCloakModule.Getter('filedsToShow')
   private filedsToShow!: any;
+  @KeyCloakModule.Getter('provider')
+  private provider!: string;
   @KeyCloakModule.Action('updateProfile')
   private updateProfile!: any;
   @KeyCloakModule.Getter('userProfile') private userProfile!: any;

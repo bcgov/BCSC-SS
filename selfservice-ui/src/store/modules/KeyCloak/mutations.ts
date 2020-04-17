@@ -67,6 +67,9 @@ export const mutations: MutationTree<KeyCloakState> = {
   SET_FIELDS_TO_SHOW(state, fields: any) {
     state.fields = fields;
   },
+  SET_PROVIDER(state, provider: string) {
+    state.provider = provider;
+  },
   /**
    * set stae on success
    * @param {*} state
