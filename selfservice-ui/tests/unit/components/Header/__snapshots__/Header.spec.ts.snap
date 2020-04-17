@@ -59,9 +59,7 @@ exports[`Header.vue Logout user on logout button onlick  1`] = `
         <div
           class="profile-title"
         >
-          
-        Welcome user lastName
-      
+          Welcome user lastName
         </div>
          
         <button
@@ -122,7 +120,9 @@ exports[`Header.vue Logout user on logout button onlick  1`] = `
           class="router-link-exact-active router-link-active"
           href="#/"
         >
+          
           Home
+        
         </a>
       </li>
       <li>
@@ -130,7 +130,9 @@ exports[`Header.vue Logout user on logout button onlick  1`] = `
           class=""
           href="#/dashboard"
         >
-          Projects
+          
+          Dashboard
+        
         </a>
       </li>
       <li>
@@ -138,7 +140,9 @@ exports[`Header.vue Logout user on logout button onlick  1`] = `
           class=""
           href="#/help"
         >
+          
           Help
+        
         </a>
       </li>
       <li>
@@ -146,7 +150,9 @@ exports[`Header.vue Logout user on logout button onlick  1`] = `
           class=""
           href="#/add-test-account"
         >
+          
           Load test accounts
+        
         </a>
       </li>
     </ul>
@@ -213,9 +219,7 @@ exports[`Header.vue Toggle menu onlick  1`] = `
         <div
           class="profile-title"
         >
-          
-        Welcome user lastName
-      
+          Welcome user lastName
         </div>
          
         <button
@@ -276,7 +280,9 @@ exports[`Header.vue Toggle menu onlick  1`] = `
           class="router-link-exact-active router-link-active"
           href="#/"
         >
+          
           Home
+        
         </a>
       </li>
       <li>
@@ -284,7 +290,9 @@ exports[`Header.vue Toggle menu onlick  1`] = `
           class=""
           href="#/dashboard"
         >
-          Projects
+          
+          Dashboard
+        
         </a>
       </li>
       <li>
@@ -292,7 +300,9 @@ exports[`Header.vue Toggle menu onlick  1`] = `
           class=""
           href="#/help"
         >
+          
           Help
+        
         </a>
       </li>
       <li>
@@ -300,7 +310,9 @@ exports[`Header.vue Toggle menu onlick  1`] = `
           class=""
           href="#/add-test-account"
         >
+          
           Load test accounts
+        
         </a>
       </li>
     </ul>
@@ -367,9 +379,7 @@ exports[`Header.vue renders props when passed 1`] = `
         <div
           class="profile-title"
         >
-          
-        Welcome user lastName
-      
+          Welcome user lastName
         </div>
          
         <button
@@ -430,7 +440,9 @@ exports[`Header.vue renders props when passed 1`] = `
           class="router-link-exact-active router-link-active"
           href="#/"
         >
+          
           Home
+        
         </a>
       </li>
       <li>
@@ -438,7 +450,9 @@ exports[`Header.vue renders props when passed 1`] = `
           class=""
           href="#/dashboard"
         >
-          Projects
+          
+          Dashboard
+        
         </a>
       </li>
       <li>
@@ -446,7 +460,9 @@ exports[`Header.vue renders props when passed 1`] = `
           class=""
           href="#/help"
         >
+          
           Help
+        
         </a>
       </li>
       <li>
@@ -454,7 +470,9 @@ exports[`Header.vue renders props when passed 1`] = `
           class=""
           href="#/add-test-account"
         >
+          
           Load test accounts
+        
         </a>
       </li>
     </ul>

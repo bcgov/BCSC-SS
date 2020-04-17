@@ -42,8 +42,9 @@ class UserResource(Resource):
         user = User.find_by_oauth_id(token_info.get('sub'))
 
         verified = False
+        provider = token_info.get('provider')
         fields_required = {
-            'email': not token_info.get('provider') == 'idir',
+            'email': not provider == 'idir',
             'phone': True
         }
         user_dump = None
@@ -63,6 +64,7 @@ class UserResource(Resource):
         return jsonify({
             'verified': verified,
             'fieldsRequired': fields_required,
+            'provider': provider,
             'user': user_dump
         }), HTTPStatus.OK
 
@@ -78,9 +80,10 @@ class UserResource(Resource):
             user = User.find_by_oauth_id(token_info.get('sub'))
             user_schema = UserSchema()
 
-            if token_info.get('provider') == 'idir':
+            provider = token_info.get('provider')
+            if provider == 'idir':
                 email = token_info.get('email')
-            else:
+            elif provider == 'bcsc':
                 email = user_json.get('email')
                 domain = email.strip().split('@').pop() if email and '@' in email else None
                 valid_domain = OrgWhitelist.validate_domain(domain)

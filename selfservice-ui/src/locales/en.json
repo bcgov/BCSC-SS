@@ -224,7 +224,7 @@
     "pagetitle": "Project team roles",
     "pageInfo": "To begin your development, only the Developer is required. To move your project along the route to implementation in a production environment, a Manager and Executive Sponsor will be required.",
     "tblHeadName": "Name",
-    "tblHeadMyRole": "My Role",
+    "tblHeadMyRole": "Role",
     "tblHeadEmail": "Email",
     "tblHeadPhone": "Work phone",
     "labelRoledeveloper": "Developer",
