@@ -19,8 +19,6 @@ exports[`Profile.vue renders props when passed with gettors 1`] = `
   >
     <v-toolbar-title-stub>
       
-      
-    
     </v-toolbar-title-stub>
      
     <div
