@@ -26,19 +26,21 @@
  ## Encryption
  Note the format of the jwks.json
  ```
- { "keys" : [
-			{"kty":"RSA",
-			"e":"AQAB",
-			"kid":"dummy",
-			"alg" : "RS256", 
-			"use" : "enc",
-			"n":"uks-oR3vXWIet4rUKSMnOi8cof2APJUyDAmFOfaYLCpC7tt_ogHhH0BrQmXKSgDeU5MQN30F1cb1yZLdbctoaJD1FmyhgP7dq6Y5ByZZPojW2rlo9wmpNV6Sji3YsvMgSKMtWXUXQ1bWz9cG8SLYeJt4XflJlUjGh0qjWLk6hgXnEIx-UTzcWTApE51uFf_8WxVDIb2cb0dFl1Z5KX7ZbBwkPd1RNdZNOwUaaChq1OwI02B53dYO85SKLGUL0mTl5vis_hEzjhCDq_l3zsLO_oSIcxk0XUfPfTBGzsFd4DOi-TE7dzNqK7UiKqM7v-bKg5eU_4gKeyFnOnZwBPPpqw"
-			}
+{ "keys" : [
+        {
+    "kty": "RSA",
+    "e": "AQAB",
+    "use": "enc",
+    "kid": "testkey",
+    "alg": "RS256",
+    "n": "t2MsTsJGRoMS4AlHX5uprzspq9g18c2DwVezuQSAeFcCy4BXECmLjmNbcaqLX4pDx48ht2fm5lNdd7vsL_1QDxUVxvHMtueMm9ZxbHYLyfWNC34aB6gHakVW4dX2km3-gKCKaZP_tDm8PvcO9uhpd2i3F3MerPR9JJrznwpMGbnYCEJlgaBTXeajZFbDqK5MwaWN1TwyL99cltWzBsj5qy2nlPfOQU4BHZtH7U4oBAOhM9kA6jbJZKoNKUWIVf4rgTi2FH5pHyz8yEP451xDTf6uxaR4jdMxLYAok-jgHNZxca9aMNekmpTY6SNFhDgoWUzNrmsDBs5WnxVLGqTBWw"
+}
     ]
 }
-```
-The only value which can be changed is the "n" property which is the public key obtained from demojwks.cert.pem , converted from the PEM format in this file to the JWKS modulo format using an online tool eg. https://8gwifi.org/jwkconvertfunctions.jsp
 
+```
+The corresponding private key file is in jwks-private.json , not sure how to use this right now ... 
+Get these keys from the key generation site https://mkjwk.org/ 
 ## OpenShift
 
 ## Setting up builds and deployments
