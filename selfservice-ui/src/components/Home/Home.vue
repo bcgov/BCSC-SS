@@ -94,7 +94,7 @@ export default class HelloWorld extends Vue {}
 }
 .home-img {
   background-position: center;
-  background-image: url('/img/login_with_mobile_card.png');
+  background-image: url('/img/login_with_mobile_card_mobile.png');
   @include lg {
     background-image: url('/img/login_with_mobile_card-500.png');
   }
