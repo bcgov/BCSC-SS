@@ -17,6 +17,7 @@ export const state: KeyCloakState = {
   isClient: false,
   isVerfied: false,
   fields: [],
+  provider: '',
   successStatus: false,
   errorStatus: false,
   profileErrorStatus: false

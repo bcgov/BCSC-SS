@@ -38,6 +38,14 @@ def test_update(session):
     assert found.phone == '123456897'
 
 
+def test_update_from_dict_skip_it(session):
+    """Assert base update_from_dict."""
+    user = create_user(session)
+    user.update_from_dict(['skip_key', 'phone'], {'skip_key': None, 'phone': '123456897'})
+    found = user.find_by_oauth_id(user.oauth_id)
+    assert found.phone == '123456897'
+
+
 def test_find_by_id(session):
     """Assert user instance that matches the provided id."""
     user = create_user(session)
