@@ -105,7 +105,7 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
    * @param {*} { commit }
    */
 
-  async submitProject({ commit }, data) {
+  async submitProject({ commit, dispatch }, data) {
     commit('SET_LOADING', true);
     try {
       const { projectId } = data;
@@ -118,6 +118,7 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
       } else {
         commit('SET_TEST_ACCOUNT_SUCCESS', false);
       }
+      dispatch('loadSingleProjectInfo', projectId);
       commit('SET_PROJECT_SUBMIT_ERROR', false);
       commit('SET_PROJECT_SUBMIT_SUCESS', true);
       commit('SET_LOADING', false);
