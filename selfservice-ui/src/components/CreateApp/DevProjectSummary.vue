@@ -12,10 +12,17 @@
       <v-row>
         <v-col cols="12" sm="8" flat>
           <v-card flat>
-            <v-list-item-content class="text-left padding-0" v-html="$t('summaryPage.subTitle')"></v-list-item-content>
+            <v-list-item-content
+              class="text-left padding-0"
+              v-html="$t('summaryPage.subTitle')"
+            ></v-list-item-content>
           </v-card>
         </v-col>
-        <v-col cols="12" sm="4" class="d-flex align-end flex-column-reverse mb-2">
+        <v-col
+          cols="12"
+          sm="4"
+          class="d-flex align-end flex-column-reverse mb-2"
+        >
           <ProjectActions :id="id" />
         </v-col>
         <ProjectSummary :id="id" />
@@ -30,27 +37,17 @@ import ProjectSummary from '@/components/CreateApp/ProjectSummary.vue';
 import ProjectActions from '@/components/ProjectActions/ProjectActions.vue';
 import { projectStatus } from '@/constants/enums';
 
-const SharedModule = namespace('SharedModule');
-const ProjectInfoModule = namespace('ProjectInfoModule');
-
 @Component({
   components: {
     ProjectSummary,
-    ProjectActions
-  }
+    ProjectActions,
+  },
 })
 export default class DevProjectSummary extends Vue {
   @Prop({ default: 0 })
   public id!: number;
 
-  @SharedModule.Action('redirectFromSummaryPage')
-  public redirectFromSummaryPage!: any;
-
   private projectId: number = this.id || 0;
-
-  private mounted() {
-    this.redirectFromSummaryPage(true);
-  }
 }
 </script>
 
