@@ -9,9 +9,7 @@
           <v-icon>mdi-arrow-left</v-icon>
         </v-btn>
         <v-toolbar-title>
-          {{
-          $t('technicalRequirements.technicalTitle')
-          }}
+          {{ $t('technicalRequirements.technicalTitle') }}
         </v-toolbar-title>
         <v-spacer></v-spacer>
       </v-app-bar>
@@ -22,15 +20,13 @@
           <v-row dense>
             <v-col cols="12" md="12">
               <v-card class="pa-4 pt-6 mb-4">
-                <v-card-title class="headline bc-padding-left-0 text-capitalize">
-                  {{
-                  getSingleProjectInfo && getSingleProjectInfo.projectName
-                  }}
+                <v-card-title
+                  class="headline bc-padding-left-0 text-capitalize"
+                >
+                  {{ getSingleProjectInfo && getSingleProjectInfo.projectName }}
                 </v-card-title>
                 <v-card-subtitle class="text-left bc-padding-left-0">
-                  {{
-                  $t('technicalRequirements.technicalTitleInfo')
-                  }}
+                  {{ $t('technicalRequirements.technicalTitleInfo') }}
                 </v-card-subtitle>
               </v-card>
               <v-card class="pa-4 pt-6">
@@ -41,41 +37,53 @@
                   :rules="[rules.required, rules.url, rules.maxLength(500)]"
                   :helpText="$t('technicalRequirements.inputAppText')"
                 />
-                <!-- <div class="col-12"> -->
 
-                <!-- </div> -->
-                <!-- <div
+                <div class="text-left my-1">
+                  {{ $t('technicalRequirements.labelRedirectUrl') }}
+                </div>
+                <div
                   v-for="(redirectUri, index) in redirectUris"
                   v-bind:key="index"
-                  class="row v-form px-4"
-                >-->
+                  class="row v-form px-4 "
+                >
+                  <div class="redirect-div">
+                    <Input
+                      v-model="redirectUris[index]"
+                      type="text"
+                      :rules="[rules.required, rules.url]"
+                      class="addUri"
+                      outlined
+                    />
+                  </div>
+                  <div class="clear-icon">
+                    <v-icon class="ml-2  " large="" @click="clearUri(index)"
+                      >mdi-close</v-icon
+                    >
+                  </div>
+                </div>
 
-                <Input
-                  v-model="redirectUris[0]"
-                  :label="$t('technicalRequirements.labelRedirectUrl')"
-                  type="text"
-                  :rules="[rules.required, rules.url]"
-                  class="addUri"
-                  outlined
-                  :helpText="$t('technicalRequirements.inputUrlText')"
-                />
-                <!-- :rules="[rules.required]" -->
-                <!-- </div> -->
+                <div @click="addUri()" class="add-url text-left">
+                  + Add another URL
+                </div>
                 <v-card-title class="text-left bc-padding-left-0">
-                  {{
-                  $t('technicalRequirements.labelTestMethod')
-                  }}
+                  {{ $t('technicalRequirements.labelTestMethod') }}
                 </v-card-title>
                 <v-card-subtitle class="text-left bc-padding-left-0">
-                  {{
-                  $t('technicalRequirements.labelTestMethodHint')
-                  }}
+                  {{ $t('technicalRequirements.labelTestMethodHint') }}
                 </v-card-subtitle>
 
                 <v-card-subtitle class="text-left bc-padding-left-0">
-                  <v-radio-group v-model="signingEncryptionType" :mandatory="false">
-                    <v-radio label="Signed JWT" :value="algorithamBase.SignedJWT">></v-radio>
-                    <div class="small-hint radio-help">{{$t('technicalRequirements.SignedJWTHint')}}</div>
+                  <v-radio-group
+                    v-model="signingEncryptionType"
+                    :mandatory="false"
+                  >
+                    <v-radio
+                      label="Signed JWT"
+                      :value="algorithamBase.SignedJWT"
+                    ></v-radio>
+                    <div class="small-hint radio-help">
+                      {{ $t('technicalRequirements.SignedJWTHint') }}
+                    </div>
                     <div
                       class="row pad-radio"
                       v-if="signingEncryptionType === algorithamBase.SignedJWT"
@@ -84,23 +92,34 @@
                         <Select
                           v-model="signedResponseAlg"
                           :label="
-                        $t(
-                          'technicalRequirements.labelSignedResponseAlg'
-                        )
-                      "
+                            $t('technicalRequirements.labelSignedResponseAlg')
+                          "
                           :items="algorithm"
                           :rules="[rules.required]"
                           outlined
-                          :helpText="$t('technicalRequirements.labelSignedResponseAlgHint')"
+                          :helpText="
+                            $t(
+                              'technicalRequirements.labelSignedResponseAlgHint'
+                            )
+                          "
                         />
                       </div>
                     </div>
 
-                    <v-radio label="Secure JWT" :value="algorithamBase.SecureJWT">></v-radio>
-                    <div class="small-hint radio-help">{{$t('technicalRequirements.SecureJWTHint')}}</div>
+                    <v-radio
+                      label="Secure JWT"
+                      :value="algorithamBase.SecureJWT"
+                      >></v-radio
+                    >
+                    <div class="small-hint radio-help">
+                      {{ $t('technicalRequirements.SecureJWTHint') }}
+                    </div>
                   </v-radio-group>
                 </v-card-subtitle>
-                <div v-if="signingEncryptionType === algorithamBase.SecureJWT" class="pad-radio">
+                <div
+                  v-if="signingEncryptionType === algorithamBase.SecureJWT"
+                  class="pad-radio"
+                >
                   <Input
                     v-model="jwksUri"
                     :label="$t('technicalRequirements.labelJWKSUrl')"
@@ -113,14 +132,16 @@
                       <Select
                         v-model="encryptedResponseAlg"
                         :label="
-                        $t(
-                          'technicalRequirements.labelEncryptedResponseAlg'
-                        )
-                      "
+                          $t('technicalRequirements.labelEncryptedResponseAlg')
+                        "
                         :items="algorithm"
                         :rules="[rules.required]"
                         outlined
-                        :helpText="$t('technicalRequirements.labelEncryptedResponseAlgHint')"
+                        :helpText="
+                          $t(
+                            'technicalRequirements.labelEncryptedResponseAlgHint'
+                          )
+                        "
                         helpClass="mb-9"
                       />
                     </div>
@@ -129,14 +150,14 @@
                       <Select
                         v-model="signedResponseAlg"
                         :label="
-                        $t(
-                          'technicalRequirements.labelSignedResponseAlg'
-                        )
-                      "
+                          $t('technicalRequirements.labelSignedResponseAlg')
+                        "
                         :items="algorithm"
                         :rules="[rules.required]"
                         outlined
-                        :helpText="$t('technicalRequirements.labelSignedResponseAlgHint')"
+                        :helpText="
+                          $t('technicalRequirements.labelSignedResponseAlgHint')
+                        "
                       />
                     </div>
                   </div>
@@ -147,11 +168,11 @@
                   <v-spacer></v-spacer>
                   <Button @click="goBack()" aria-label="Back Button" secondary>
                     {{
-                    $t(
-                    showWizardExperience()
-                    ? 'technicalRequirements.btnBack'
-                    : 'technicalRequirements.btnCancel'
-                    )
+                      $t(
+                        showWizardExperience()
+                          ? 'technicalRequirements.btnBack'
+                          : 'technicalRequirements.btnCancel'
+                      )
                     }}
                   </Button>
                   <Button
@@ -162,11 +183,11 @@
                     @click="addTechnicalReq()"
                   >
                     {{
-                    $t(
-                    showWizardExperience()
-                    ? 'technicalRequirements.btnNext'
-                    : 'technicalRequirements.btnSaveChanges'
-                    )
+                      $t(
+                        showWizardExperience()
+                          ? 'technicalRequirements.btnNext'
+                          : 'technicalRequirements.btnSaveChanges'
+                      )
                     }}
                   </Button>
                 </v-card-actions>
@@ -195,7 +216,7 @@ const ProjectInfoModule = namespace('ProjectInfoModule');
 const SharedModule = namespace('SharedModule');
 
 @Component({
-  components: { Input, Button, Select, Loading }
+  components: { Input, Button, Select, Loading },
 })
 export default class AddTechnicalReq extends Vue {
   @Prop({ default: 0 })
@@ -266,7 +287,7 @@ export default class AddTechnicalReq extends Vue {
         this.signingEncryptionType === algorithamBase.SecureJWT
           ? this.encryptedResponseAlg
           : null,
-      signedResponseAlg: this.signedResponseAlg
+      signedResponseAlg: this.signedResponseAlg,
     };
 
     if (this.isEditMode && this.TechnicalReqId !== 0) {
@@ -317,22 +338,25 @@ export default class AddTechnicalReq extends Vue {
   }
 
   // commented out now only one redirect URL
-  // private addUri() {
-  //   const checkEmptyLines = this.redirectUris.filter((uri: any) => uri === '');
-  //   if (checkEmptyLines.length >= 1 && this.redirectUris.length > 0) {
-  //     return;
-  //   }
-  //   this.redirectUris.push('');
-  // }
-  // private clearUri(uriId: number) {
-  //   this.blockRemoval = this.redirectUris.length <= 1;
-  //   if (!this.blockRemoval) {
-  //     this.redirectUris.splice(uriId, 1);
-  //   }
-  // }
+  private addUri() {
+    const checkEmptyLines = this.redirectUris.filter((uri: any) => uri === '');
+
+    if (checkEmptyLines.length >= 1 && this.redirectUris.length > 0) {
+      return;
+    }
+
+    this.redirectUris.push('');
+  }
+  private clearUri(uriId: number) {
+    this.blockRemoval = this.redirectUris.length <= 1;
+    if (!this.blockRemoval) {
+      this.redirectUris.splice(uriId, 1);
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
+@import './../../assets/styles/theme.scss';
 .pad-radio {
   padding-left: 33px;
 }
@@ -343,5 +367,16 @@ export default class AddTechnicalReq extends Vue {
   margin-top: -11px;
   margin-left: 30px;
   margin-bottom: 10px;
+}
+.add-url {
+  margin-left: 7px;
+  color: $BCgovBlue10;
+  cursor: pointer;
+}
+.redirect-div {
+  width: 95%;
+}
+.clear-icon {
+  margin-top: 15px;
 }
 </style>

@@ -39,7 +39,7 @@ export default class Input extends Vue {
    *
    */
   @Prop({
-    default: false
+    default: false,
   })
   private counter!: boolean | string | number;
 
@@ -48,7 +48,7 @@ export default class Input extends Vue {
    * @values input, password
    */
   @Prop({
-    default: 'text'
+    default: 'text',
   })
   private type!: string;
 
@@ -56,7 +56,7 @@ export default class Input extends Vue {
    *  value for input
    */
   @Prop({
-    default: ''
+    default: '',
   })
   private value!: string;
 
@@ -64,7 +64,7 @@ export default class Input extends Vue {
    *  label text
    */
   @Prop({
-    default: ''
+    default: '',
   })
   private label!: string;
 
@@ -72,28 +72,28 @@ export default class Input extends Vue {
    *  required
    */
   @Prop({
-    default: false
+    default: false,
   })
   private required!: boolean;
   /**
    *  outlined
    */
   @Prop({
-    default: true
+    default: true,
   })
   private outlined!: boolean;
   /**
    *  helpText text
    */
   @Prop({
-    default: ''
+    default: '',
   })
   private helpText!: string;
   /**
    *  optional text
    */
   @Prop({
-    default: false
+    default: false,
   })
   private optional!: boolean;
 
@@ -119,5 +119,8 @@ export default class Input extends Vue {
   color: $BCgovABlue2;
   font-size: 14px;
   margin-left: 10px;
+}
+.bc-form-text {
+  width: 100%;
 }
 </style>
