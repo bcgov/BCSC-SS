@@ -250,8 +250,8 @@
     "labelLastName": "Last name",
     "labelWorkEmail": "Work email",
     "labelPhone": "Office phone number",
-    "errorTitle": "please fix following errors",
-    "invalidDomain": "This email domain address you entered is not in our system of approved organizations. Please correct the email address or  <a href='/contact-us'>contact IDIM</a>to have the domain added to the system.",
+    "errorTitle": "Please fix following errors",
+    "invalidDomain": "This email domain address you entered is not in our system of approved organizations. Please correct the email address or  <a href='/contact-us'>contact IDIM</a> to have the domain added to the system.",
     "roleAlreadyAssigned": "This role is already assigned to another team member. Please select a different role or <a href='/contact-us'>contact IDIM</a> to change your project team membership.",
     "emailAlreadyAssigned": "The email address you entered belongs to a user who already has been assigned in this project. An individual user can only have one project role."
   },
