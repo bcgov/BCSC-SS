@@ -3,9 +3,6 @@
 <template>
   <v-card class="mx-auto outer-card">
     <v-toolbar flat class="bc-subtitle padding-0" dark>
-      <v-btn icon @click="goBack()" :aria-label="$t('summaryPage.goBack')">
-        <v-icon>mdi-arrow-left</v-icon>
-      </v-btn>
       <v-toolbar-title>{{ $t('summaryPage.pagetitle') }}</v-toolbar-title>
       <div class="flex-grow-1"></div>
 
@@ -25,7 +22,8 @@
           cols="12"
           sm="4"
           class="d-flex align-end flex-column-reverse mb-2"
-          ><ProjectActions :id="id" />
+        >
+          <ProjectActions :id="id" />
         </v-col>
         <ProjectSummary :id="id" />
       </v-row>
@@ -37,9 +35,7 @@ import { Component, Vue, Watch, Prop } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
 import ProjectSummary from '@/components/CreateApp/ProjectSummary.vue';
 import ProjectActions from '@/components/ProjectActions/ProjectActions.vue';
-
-const SharedModule = namespace('SharedModule');
-const ProjectInfoModule = namespace('ProjectInfoModule');
+import { projectStatus } from '@/constants/enums';
 
 @Component({
   components: {
@@ -51,21 +47,7 @@ export default class DevProjectSummary extends Vue {
   @Prop({ default: 0 })
   public id!: number;
 
-  @SharedModule.Action('redirectFromSummaryPage')
-  public redirectFromSummaryPage!: any;
-  @ProjectInfoModule.Getter('getSingleProjectInfo')
-  public getSingleProjectInfo!: any;
-
   private projectId: number = this.id || 0;
-
-  private mounted() {
-    this.redirectFromSummaryPage(true);
-  }
-
-  private goBack() {
-    this.redirectFromSummaryPage(false);
-    this.$router.push(`/project/${this.projectId}/test-account`);
-  }
 }
 </script>
 

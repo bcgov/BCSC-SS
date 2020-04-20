@@ -118,6 +118,12 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
       } else {
         commit('SET_TEST_ACCOUNT_SUCCESS', false);
       }
+      if (response.data.isCreated) {
+        commit('SET_IS_CREATED', true);
+      }
+      if (response.data.isUpdated) {
+        commit('SET_IS_UPDATED', true);
+      }
       dispatch('loadSingleProjectInfo', projectId);
       commit('SET_PROJECT_SUBMIT_ERROR', false);
       commit('SET_PROJECT_SUBMIT_SUCESS', true);

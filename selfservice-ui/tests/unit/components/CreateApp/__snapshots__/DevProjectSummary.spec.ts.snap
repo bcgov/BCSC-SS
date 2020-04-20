@@ -15,17 +15,6 @@ exports[`DevProjectSummary.vue renders props when passed with gettors 1`] = `
     tag="header"
     tile="true"
   >
-    <v-btn-stub
-      activeclass=""
-      icon="true"
-      tag="button"
-      type="button"
-    >
-      <v-icon-stub>
-        mdi-arrow-left
-      </v-icon-stub>
-    </v-btn-stub>
-     
     <v-toolbar-title-stub>
       
     </v-toolbar-title-stub>

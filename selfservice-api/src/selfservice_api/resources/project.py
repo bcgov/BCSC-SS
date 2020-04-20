@@ -155,6 +155,9 @@ class ProjectResourceById(Resource):
             # Make sure we are not downgrading the project status
             if project.status < project_status:
                 project.update_status(project_status, user)
+                response.update({'isCreated': True})
+            else:
+                response.update({'isUpdated': True})
 
             if is_success:
                 status = HTTPStatus.OK
