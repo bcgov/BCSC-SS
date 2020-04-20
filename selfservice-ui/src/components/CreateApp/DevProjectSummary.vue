@@ -3,9 +3,6 @@
 <template>
   <v-card class="mx-auto outer-card">
     <v-toolbar flat class="bc-subtitle padding-0" dark>
-      <v-btn icon @click="goBack()" :aria-label="$t('summaryPage.goBack')">
-        <v-icon>mdi-arrow-left</v-icon>
-      </v-btn>
       <v-toolbar-title>{{ $t('summaryPage.pagetitle') }}</v-toolbar-title>
       <div class="flex-grow-1"></div>
 
@@ -15,17 +12,11 @@
       <v-row>
         <v-col cols="12" sm="8" flat>
           <v-card flat>
-            <v-list-item-content
-              class="text-left padding-0"
-              v-html="$t('summaryPage.subTitle')"
-            ></v-list-item-content>
+            <v-list-item-content class="text-left padding-0" v-html="$t('summaryPage.subTitle')"></v-list-item-content>
           </v-card>
         </v-col>
-        <v-col
-          cols="12"
-          sm="4"
-          class="d-flex align-end flex-column-reverse mb-2"
-          ><ProjectActions :id="id" />
+        <v-col cols="12" sm="4" class="d-flex align-end flex-column-reverse mb-2">
+          <ProjectActions :id="id" />
         </v-col>
         <ProjectSummary :id="id" />
       </v-row>
@@ -37,6 +28,7 @@ import { Component, Vue, Watch, Prop } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
 import ProjectSummary from '@/components/CreateApp/ProjectSummary.vue';
 import ProjectActions from '@/components/ProjectActions/ProjectActions.vue';
+import { projectStatus } from '@/constants/enums';
 
 const SharedModule = namespace('SharedModule');
 const ProjectInfoModule = namespace('ProjectInfoModule');
@@ -44,8 +36,8 @@ const ProjectInfoModule = namespace('ProjectInfoModule');
 @Component({
   components: {
     ProjectSummary,
-    ProjectActions,
-  },
+    ProjectActions
+  }
 })
 export default class DevProjectSummary extends Vue {
   @Prop({ default: 0 })
@@ -53,18 +45,11 @@ export default class DevProjectSummary extends Vue {
 
   @SharedModule.Action('redirectFromSummaryPage')
   public redirectFromSummaryPage!: any;
-  @ProjectInfoModule.Getter('getSingleProjectInfo')
-  public getSingleProjectInfo!: any;
 
   private projectId: number = this.id || 0;
 
   private mounted() {
     this.redirectFromSummaryPage(true);
-  }
-
-  private goBack() {
-    this.redirectFromSummaryPage(false);
-    this.$router.push(`/project/${this.projectId}/test-account`);
   }
 }
 </script>
