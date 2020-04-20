@@ -17,7 +17,7 @@ export const state: TeamRoleState = {
   memberAdded: false,
   memberAddedError: false,
   memberAddedErrorList: {},
-  memberDetails
+  memberDetails: memberDetails(),
 };
 
 const namespaced: boolean = true;
@@ -27,7 +27,7 @@ const SharedModule: Module<TeamRoleState, RootState> = {
   state,
   getters,
   actions,
-  mutations
+  mutations,
 };
 
 export default SharedModule;

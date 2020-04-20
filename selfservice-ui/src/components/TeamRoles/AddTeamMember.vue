@@ -6,8 +6,15 @@
       <v-col v-if="userDetails">
         <v-card class="v-form ma-3" flat>
           <v-form ref="form" v-model="form">
+            userDetails {{ userDetails }}
             <v-card class="v-form px-6 ma-3">
-              <v-alert type="error" dense outlined class="text-left" v-if="memberErrorStatus">
+              <v-alert
+                type="error"
+                dense
+                outlined
+                class="text-left"
+                v-if="memberErrorStatus"
+              >
                 <div>{{ $t('addTeamMember.errorTitle') }}</div>
                 <ul>
                   <li
@@ -22,19 +29,17 @@
                 <v-col cols="12">
                   <div class="display-1">
                     {{
-                    $t(
-                    !editMode
-                    ? 'addTeamMember.pagetitle'
-                    : 'addTeamMember.pagetitleUpdate'
-                    )
+                      $t(
+                        !editMode
+                          ? 'addTeamMember.pagetitle'
+                          : 'addTeamMember.pagetitleUpdate'
+                      )
                     }}
                   </div>
                 </v-col>
                 <v-col cols="12" sm="6">
                   <v-card-subtitle class="headline bc-padding-left-0">
-                    {{
-                    $t('addTeamMember.contactInfo')
-                    }}
+                    {{ $t('addTeamMember.contactInfo') }}
                   </v-card-subtitle>
                   <Input
                     v-model="userDetails.firstName"
@@ -42,7 +47,7 @@
                     :rules="[
                       rules.required,
                       rules.length(1),
-                      rules.maxLength(250)
+                      rules.maxLength(250),
                     ]"
                     type="text"
                     :disabled="disabled()"
@@ -53,7 +58,7 @@
                     :rules="[
                       rules.required,
                       rules.length(1),
-                      rules.maxLength(250)
+                      rules.maxLength(250),
                     ]"
                     type="text"
                     :disabled="disabled()"
@@ -75,13 +80,11 @@
                   />
                 </v-col>
                 <v-col>
-                  <v-divider class="mx-4" :inset="inset" vertical></v-divider>
+                  <v-divider class="mx-4" vertical></v-divider>
                 </v-col>
                 <v-col cols="12" sm="5">
                   <v-card-subtitle class="headline bc-padding-left-0">
-                    {{
-                    $t('addTeamMember.roleTitle')
-                    }}
+                    {{ $t('addTeamMember.roleTitle') }}
                   </v-card-subtitle>
 
                   <v-radio-group v-model="userDetails.role" :mandatory="false">
@@ -108,12 +111,14 @@
                       @click="$emit('toggleAddMember', false)"
                       aria-label="Back Button"
                       secondary
-                    >{{ $t('addTeamMember.btnCancel') }}</Button>
+                      >{{ $t('addTeamMember.btnCancel') }}</Button
+                    >
                     <Button
                       :disabled="!form"
                       class="white--text submit-package ml-6"
                       @click="submitTeamMember"
-                    >{{ $t('addTeamMember.btnSumbmit') }}</Button>
+                      >{{ $t('addTeamMember.btnSumbmit') }}</Button
+                    >
                   </v-card-actions>
                 </v-col>
               </v-row>
@@ -143,8 +148,8 @@ const KeyCloakModule = namespace('KeyCloakModule');
 @Component({
   components: {
     Input,
-    Button
-  }
+    Button,
+  },
 })
 export default class AddTeamMember extends Vue {
   @Prop({ default: 0 })
@@ -189,7 +194,7 @@ export default class AddTeamMember extends Vue {
 
   public constructor() {
     super();
-    this.userDetails = memberDetails;
+    this.userDetails = memberDetails();
   }
 
   @Watch('getMemberErrorList')
@@ -219,12 +224,12 @@ export default class AddTeamMember extends Vue {
       this.updateTeamMember({
         userDetails: this.userDetails,
         projectId: this.id,
-        memberId: this.memberId
+        memberId: this.memberId,
       });
     } else {
       this.addTeamMember({
         userDetails: this.userDetails,
-        projectId: this.id
+        projectId: this.id,
       });
     }
   }
