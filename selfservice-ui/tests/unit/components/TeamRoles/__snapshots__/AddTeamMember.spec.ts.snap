@@ -18,15 +18,6 @@ exports[`AddTeamMember.vue renders props when passed with gettors 1`] = `
         tag="div"
       >
         <v-form-stub>
-          
-          userDetails {
-  "email": "",
-  "phone": "",
-  "firstName": "",
-  "lastName": "",
-  "role": 1
-}
-          
           <v-card-stub
             class="v-form px-6 ma-3"
             loaderheight="4"
@@ -236,15 +227,6 @@ exports[`AddTeamMember.vue renders props when passed with gettors with member id
         tag="div"
       >
         <v-form-stub>
-          
-          userDetails {
-  "email": "",
-  "phone": "",
-  "firstName": "",
-  "lastName": "",
-  "role": 1
-}
-          
           <v-card-stub
             class="v-form px-6 ma-3"
             loaderheight="4"
