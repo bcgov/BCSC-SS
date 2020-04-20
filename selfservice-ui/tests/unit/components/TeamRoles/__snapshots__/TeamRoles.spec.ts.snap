@@ -92,15 +92,6 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                           class="v-form"
                           novalidate="novalidate"
                         >
-                          
-          userDetails {
-  "email": "",
-  "phone": "",
-  "firstName": "",
-  "lastName": "",
-  "role": 1
-}
-          
                           <div
                             class="v-form px-6 ma-3 v-card v-sheet theme--light"
                           >

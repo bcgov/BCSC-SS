@@ -6,7 +6,6 @@
       <v-col v-if="userDetails">
         <v-card class="v-form ma-3" flat>
           <v-form ref="form" v-model="form">
-            userDetails {{ userDetails }}
             <v-card class="v-form px-6 ma-3">
               <v-alert
                 type="error"
