@@ -21,17 +21,16 @@ If using git bash you will type
 Navigate to this folder ( **selfservice-ui/src/html**  ). 
 
 ### Editing html
-You can edit any html file , I suggest using Visual Studio code with the html preview plugin so you can see your changes live as you edit . Use one of the existing files as a template, note the header section which must be there else the online code analyser will barf .
+You can edit any html file , I suggest using Visual Studio code with the html preview plugin so you can see your changes live as you edit . Use one of the existing files as a template, note the header section which must be there else the online code analyser will barf . Ensure that the title is set appropriately.
 ``` html
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <title>Help page</title>
-    <style lang="scss">
-      @import './../assets/styles/theme.scss';
-    </style>
+  </head>
+
 ```
-Some other points to watch - the code analyser looks for accessibility stuff too, for example tables need to have "aria-describedby" in the "\<table>"  tag plus each \<th> tag needs scope="col" 
+Some other points to watch - the code analyser looks for accessibility stuff too, for example tables need to have "aria-describedby" in the "\<table>"  tag plus each \<th> tag needs scope="col" , all images need an "alt" property etc.
 
 eg.
 ``` html
@@ -40,7 +39,9 @@ eg.
 ```
 ### Adding images
 
-Images must be copied into the folder **selfservice-ui/public/help-img**, and refereced in your html with reference "../../public/help-img/\<image-name> "
+Images must be copied into the folder **selfservice-ui/public/help-img**, and referenced in your html with reference 
+
+```<img src="../../public/help-img/some-image.png"  alt="Some image desription" /> ```
 
 ### Adding a new help page
 
