@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div v-html="helpHtml" v-if="step === 'help'" />
-    <div v-html="helpDevHtml" v-if="step === 'help-dev'" />
+    <div v-html="helpHtml" v-if="page === 'help'" />
+    <div v-html="helpDevHtml" v-if="page === 'help-dev'" />
   </div>
 </template>
 <script lang="ts">
@@ -14,7 +14,7 @@ const helpDevHtml = require('./HelpDev.html');
 @Component
 export default class Help extends Vue {
   @Prop({ default: 'help' })
-  public step!: string;
+  public page!: string;
 
   public helpHtml: any = helpHtml;
   public helpDevHtml: any = helpDevHtml;

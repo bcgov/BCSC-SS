@@ -85,7 +85,7 @@ const routerData = [
       import(/* webpackChunkName: "testaccount" */ '../views/TestAccount.vue'),
   },
   {
-    path: '/help/:step?',
+    path: '/help/:page?',
     name: 'help',
     meta: metaAllRoles(false),
     props: true,
