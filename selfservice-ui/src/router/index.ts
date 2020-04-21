@@ -17,14 +17,14 @@ const routerData = [
     name: 'home',
     meta: { hideMenu: true },
     component: Home,
-    props: true
+    props: true,
   },
   {
     path: '/login',
     name: 'login',
     meta: metaAllRoles(true),
     component: () =>
-      import(/* webpackChunkName: "Authorize" */ '../views/Authorize.vue')
+      import(/* webpackChunkName: "Authorize" */ '../views/Authorize.vue'),
   },
   {
     path: '/about',
@@ -32,7 +32,7 @@ const routerData = [
     meta: metaAllRoles(true),
     props: true,
     component: () =>
-      import(/* webpackChunkName: "About" */ '../views/About.vue')
+      import(/* webpackChunkName: "About" */ '../views/About.vue'),
   },
   {
     path: '/dashboard',
@@ -40,7 +40,7 @@ const routerData = [
     meta: metaAllRoles(true),
     props: true,
     component: () =>
-      import(/* webpackChunkName: "dashboard" */ '../views/Dashboard.vue')
+      import(/* webpackChunkName: "dashboard" */ '../views/Dashboard.vue'),
   },
   {
     path: '/profile/:step?',
@@ -48,7 +48,7 @@ const routerData = [
     meta: metaAllRoles(true),
     props: true,
     component: () =>
-      import(/* webpackChunkName: "profile" */ '../views/Profile.vue')
+      import(/* webpackChunkName: "profile" */ '../views/Profile.vue'),
   },
   {
     path: '/project/info',
@@ -56,7 +56,7 @@ const routerData = [
     meta: metaAllRoles(true),
     props: true,
     component: () =>
-      import(/* webpackChunkName: "project" */ '../views/Project.vue')
+      import(/* webpackChunkName: "project" */ '../views/Project.vue'),
   },
   {
     path: '/project/:id?/:step?',
@@ -64,7 +64,7 @@ const routerData = [
     meta: metaAllRoles(true),
     props: true,
     component: () =>
-      import(/* webpackChunkName: "project" */ '../views/Project.vue')
+      import(/* webpackChunkName: "project" */ '../views/Project.vue'),
   },
   {
     path: '/project-container/:id?/:tab?',
@@ -74,7 +74,7 @@ const routerData = [
     component: () =>
       import(
         /* webpackChunkName: "projectcontainer" */ '../views/ProjectContainer.vue'
-      )
+      ),
   },
   {
     path: '/add-test-account',
@@ -82,29 +82,29 @@ const routerData = [
     meta: { requiresAuth: true, roles: ['ss_admin'] },
     props: true,
     component: () =>
-      import(/* webpackChunkName: "testaccount" */ '../views/TestAccount.vue')
+      import(/* webpackChunkName: "testaccount" */ '../views/TestAccount.vue'),
   },
   {
-    path: '/help',
+    path: '/help/:page?',
     name: 'help',
     meta: metaAllRoles(false),
     props: true,
-    component: () => import(/* webpackChunkName: "help" */ '../views/Help.vue')
+    component: () => import(/* webpackChunkName: "help" */ '../views/Help.vue'),
   },
   {
     path: '/unauthorized',
     name: 'Unauthorized',
     meta: { requiresAuth: false },
     props: true,
-    component: Unauthorized
+    component: Unauthorized,
   },
-  { path: '*', meta: { requiresAuth: false }, component: PageNotFound }
+  { path: '*', meta: { requiresAuth: false }, component: PageNotFound },
 ];
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes: routerData
+  routes: routerData,
 });
 
 router.beforeEach((to, from, next) => {
@@ -116,7 +116,7 @@ router.beforeEach((to, from, next) => {
     if (isLoggedin) {
       if (!store.state.KeyCloakModule.isVerfied && to.name !== 'profile') {
         next({
-          path: '/profile/complete'
+          path: '/profile/complete',
         });
         // }
       } else if (KeycloakService.checkPermission(to.meta.roles)) {
@@ -132,7 +132,7 @@ router.beforeEach((to, from, next) => {
     } else {
       next({
         name: 'login',
-        params: { redirect: to.path }
+        params: { redirect: to.path },
       });
     }
   } else {
