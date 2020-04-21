@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Help page</title>
+    <style lang="scss">
+      @import './../assets/styles/theme.scss';
+      </style>
+      <style> .help-table-element { background:rgb(236, 235, 235)} .help-table-header {background:rgb(200, 200, 201)} </style>
+  </head>
+
+  <div>
+    <div class="menu">
+      <ul>
+        <li><a href="#overview">Technical overview   </a></li> &nbsp;&nbsp;&nbsp;
+        <li><a href="#idsecret">Getting Client ID and Secret  </a></li>&nbsp;&nbsp;&nbsp;
+        <li><a href="#sampleapps">Sample applications   </a></li>&nbsp;&nbsp;&nbsp;
+        <li><a href="#testandtrouble">Testing and troubleshooting  </a></li>
+      </ul>
+    </div>
+    
+    <h1 class="">Developers Guide</h1>
+
+    <h2 id="overview">Technical Overview</h2>
+
+      <p>There are a number of different ways in which a web application might integrate the BC Services Card as an authentication option, but all of these ways make use of the Open ID Connect mechanism. The following links are a good introduction or refresher to the OIDC standard.</p><h4>OIDC explanations : </h4><p><a href="https://medium.com/@robert.broeckelmann/saml2-vs-jwt-understanding-openid-connect-part-1-fffe0d50f953">https://medium.com/@robert.broeckelmann/saml2-vs-jwt-understanding-openid-connect-part-1-fffe0d50f953</a></p><p><a href="https://medium.com/@robert.broeckelmann/saml2-vs-jwt-understanding-openid-connect-part-2-f361ca867baa">https://medium.com/@robert.broeckelmann/saml2-vs-jwt-understanding-openid-connect-part-2-f361ca867baa</a></p><h4>OIDC spec</h4><p><a href="https://openid.net/developers/specs/">https://openid.net/developers/specs/</a></p><h4>BC Services Card specific OIDC documentation</h4><p>Open ID Connect Integration guide</p><p><a href="https://bcbutton.atlassian.net/wiki/download/attachments/5242881/BC_Services_Card_OIDC_Integration_Guide1.0.3.pdf?api=v2"><span class="inline-comment-marker" data-ref="f2a02edc-6455-488a-a84e-ab5b1efee3cb">https://bcbutton.atlassian.net/wiki/download/attachments/5242881/BC_Services_Card_OIDC_Integration_Guide1.0.3.pdf?api=v2</span></a></p><p>We will make use of the following terms throughout, so it is a good idea to brush up on your knowledge of them : </p><ul><li><p>JWKS</p></li><li><p>JWT</p></li><li><p>Access Token</p></li><li><p>Authorisation Token</p></li><li><p>Scopes</p></li><li><p>Profile</p></li><li><p>Client ID</p></li><li><p>Client Secret</p></li><li><p>“Well-known” discovery endpoint</p></li><li><p>OpenID provider</p></li><li><p>Relying Party</p></li><li><p>Userinfo endpoint</p></li><li><p>Digital signing and encryption algorithms </p></li></ul><p>For all architectures the the user is presented a login screen from the BC Services Card (or IAS) infrastructure and the authentication and validation therein are completely separate to the calling application.</p><p>On successful login, a token is passed to the calling application, which can be used to get user attribute data (also known as &quot;scopes&quot;) such as email address, first and last names or mailing address in subsequent calls to IAS. Other than the data contained in the scopes which you select, there is no data accessible from the BC Services Card infrastructure. </p><p> This application exists to ease your journey getting set up with the necessary OIDC scopes, keys and secrets necessary to access the live IAS system with the appropriate minimum scopes required for your needs (plus of course the necessary security and privacy authorisations ) </p><p />
+        <p>&nbsp;</p>
+
+    <h2 id="idsecret">Get a Client ID and Secret</h2>
+
+    </p>         <p>The four things you need for accessing the BC Services Card back end are : </p><ul><li><p>Client ID</p></li><li><p>Client Secret</p></li><li><p>Scopes package</p></li><li><p>Test accounts</p></li></ul><p>These are different for Development/Test and for Production. For Development/Test it is really quick to run through the “Create new project” wizard in our self-service application and be delivered the above items in a couple of minutes. For migrating this into production, the process involves more paperwork and rigour, and sign-off by managers, since the BC Services Card delivers personally identifiable data. But from a development perspective it is not much different, with one major difference - in production you MUST provide a JWKS for the IAS backend to use to encrypt all traffic to your application. In both Dev and production, all data is returned as a signed JWT, signed with the IAS private key. You can verify the signature (and that the payload has not been tampered with by accessing the IAS public key at their JWKS, which is located at the “jwks_uri” as specified in the “.well-known”  discovery endpoints : </p><p>IAS TEST - <a href="https://idtest.gov.bc.ca/login/.well-known/openid-configuration">https://idtest.gov.bc.ca/login/.well-known/openid-configuration</a><br />IAS PROD - <a href="https://id.gov.bc.ca/login/.well-known/openid-configuration">https://id.gov.bc.ca/login/.well-known/openid-configuration</a></p><p>During the wizard process, you will also be given the opportunity to select the authentication algorithms for both signing and encryption (in development you can choose unencrypted for debugging purposes) , as well as the packages of scopes suitable and the number of test accounts required. Note that test accounts are only relevant to the development environment and comprise an ID and a password instead of the usual BC Service card authentication mechanism which typically requires a mobile device for the second authentication factor. They are essential for testing your application without using real data. </p><p>At the end you will need to use all 4 of these in your application and your test efforts, so you will need to cut and paste them into your application and/or testing.</p><p>The table below summarises the differences between production and development : </p>
+    
+    <table data-layout="default" aria-describedby="Comparison between dev and prod" >
+      <tbody><tr><th  scope="col"><p /></th><th class="help-table-header" scope="col"><p><strong>Production</strong></p></th><th class="help-table-header" scope="col"><p><strong>Development</strong></p></th></tr>
+        
+        <tr><td class="help-table-element"><p>Encryption</p></td><td class="help-table-element"><p>Mandatory</p></td><td class="help-table-element"><p>Optional</p></td></tr><tr><td class="help-table-element"><p>Scopes</p></td><td class="help-table-element"><p>Cannot be changed from Dev</p></td><td class="help-table-element"><p>Can be changed</p></td></tr>
+        <tr><td class="help-table-element"><p>Discovery</p></td><td class="help-table-element"><p><a href="https://id.gov.bc.ca/login/.well-known/openid-configuration">https://id.gov.bc.ca/login/.well-known/openid-configuration</a>&nbsp;&nbsp;</p></td><td class="help-table-element"><p><a href="https://idtest.gov.bc.ca/login/.well-known/openid-configuration">https://idtest.gov.bc.ca/login/.well-known/openid-configuration</a></p></td></tr>
+        
+        <tr><td class="help-table-element"><p>Test accounts</p></td><td class="help-table-element"><p>No</p></td><td class="help-table-element"><p>Yes</p></td></tr>
+      </tbody></table><p />
+        <p>&nbsp;</p>
+    
+    <h2 id="sampleapps">Sample Applications</h2>
+    <p>We have prepared a sample application and a Postman test utility which can be accessed, downloaded and run from Github . </p><p>The Postman test collection can be used for a quick check that the connections are working as expected and that the key and secret are valid. The sample javascripts application uses Express.js and Passport.js libraries and handles all aspects of the BCSC interaction including signature validation and encryption. </p><p>Each have a <a href="http://README.md">README.md</a> with full instructions and are a great way to do an initial validation of your key and secret which you obtain from the BC Services card self-service application. </p><p>Link to Postman utility </p><p><a href="https://github.com/bcgov/BCSC-SS/tree/dev/test-utils/postman-tester">Postman on Github</a> </p><p>Link to Javascript application</p><p><a href="https://github.com/bcgov/BCSC-SS/tree/dev/test-utils/nodejs-code-sample">Javascript on Github</a> </p><p />
+        <p>&nbsp;</p>
+
+
+    <h2 id="testandtrouble">Testing and Troubleshooting </h2>
+    <h2>Testing</h2><p>In order to test out your integration with BC Services Card you will need test accounts. Unlike real BC Services Card accounts (tied to real people) these do NOT need 2-factor authentication through a second device (typically mobile phone) , they are simply an ID and passcode , which allow easy testing of your integration. They are, however, only able to be used to test in your Dev environment. Once you migrate to the Production environment and are pointed at the Production BC Services Card servers, you will need to use real users for testing.</p><p>Test accounts are granted as part of the BC Services Card self-service application</p><h2>Troubleshooting</h2><p /><p /><p /><p />
+        <p>&nbsp;</p>
+    
+  </div>
+</html>
