@@ -1,7 +1,7 @@
 <template>
   <v-card class="mx-auto outer-card " flat>
     <div class="help-page text-left ">
-      <Help />
+      <Help :step="step" />
     </div>
   </v-card>
 </template>
@@ -12,10 +12,13 @@ import Help from '@/html/Help.vue';
 
 @Component({
   components: {
-    Help
-  }
+    Help,
+  },
 })
-export default class HelpHome extends Vue {}
+export default class HelpHome extends Vue {
+  @Prop({ default: 'help' })
+  public step!: string;
+}
 </script>
 <style lang="scss">
 @import './../assets/styles/theme.scss';
