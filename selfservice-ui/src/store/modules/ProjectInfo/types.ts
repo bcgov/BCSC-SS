@@ -13,4 +13,6 @@ export interface ProjectInfoState {
   statusChangeSuccess?: boolean;
   deleteProjectError?: boolean;
   deleteProjectSuccess?: boolean;
+  isCreated: boolean;
+  isUpdated: boolean;
 }

@@ -51,6 +51,8 @@ export const getters: GetterTree<ProjectInfoState, RootState> = {
       finalErrorStatus: state.finalErrorStatus,
       finalSuccessStatus: state.finalSuccessStatus,
       testAccountSuccess: state.testAccountSuccess,
+      isCreated: state.isCreated,
+      isUpdated: state.isUpdated,
     };
   },
   getChangeStatus(state) {

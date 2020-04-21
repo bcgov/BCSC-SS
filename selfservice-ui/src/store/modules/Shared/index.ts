@@ -9,7 +9,7 @@ import { RootState } from '../../types';
  * Sharedmodule state
  */
 export const state: SharedState = {
-  isSummaryPage: true
+  isSummaryPage: true,
 };
 
 const namespaced: boolean = true;
@@ -19,7 +19,7 @@ const SharedModule: Module<SharedState, RootState> = {
   state,
   getters,
   actions,
-  mutations
+  mutations,
 };
 
 export default SharedModule;

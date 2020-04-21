@@ -6,6 +6,19 @@ import { singleProject } from '../../mocks/projectinfo';
 let vuetify: any;
 vuetify = new Vuetify();
 
+const technicalReq = {
+  clientUri: 'app.com',
+  id: 15,
+  encryptedResponseAlg: 'RS256',
+  jwksUri: 'jwks2.com',
+  noOfTestAccount: 3,
+  noteTestAccount: '',
+  projectId: 12,
+  redirectUris: ['test.com'],
+  scopePackageId: 3,
+  signedResponseAlg: 'RS256',
+};
+
 describe('ProjectSummary.vue', () => {
   const store = new Vuex.Store({
     modules: {
@@ -15,15 +28,15 @@ describe('ProjectSummary.vue', () => {
         getters: {
           getSingleProjectInfo: jest.fn(() => {
             return {
-              singleProject
+              singleProject,
             };
           }),
           getFinalProjectSubmissionStatus: jest.fn(),
-          errorStatus: jest.fn()
+          errorStatus: jest.fn(),
         },
         actions: {
-          loadSingleProjectInfo: jest.fn()
-        }
+          loadSingleProjectInfo: jest.fn(),
+        },
       },
       TeamRolesModule: {
         namespaced: true,
@@ -38,7 +51,7 @@ describe('ProjectSummary.vue', () => {
                   id: 1,
                   lastName: 'lname',
                   phone: '09870987654321',
-                  role: 2
+                  role: 2,
                 },
                 {
                   email: 'bb@test.com',
@@ -46,7 +59,7 @@ describe('ProjectSummary.vue', () => {
                   id: 17,
                   lastName: 'bb',
                   phone: '987654321',
-                  role: 3
+                  role: 3,
                 },
                 {
                   email: 'user@yopmail.com',
@@ -54,39 +67,28 @@ describe('ProjectSummary.vue', () => {
                   id: 1,
                   lastName: 'Doe',
                   phone: '',
-                  role: 1
-                }
-              ]
+                  role: 1,
+                },
+              ],
             };
-          })
+          }),
         },
         actions: {
-          loadTeam: jest.fn()
-        }
+          loadTeam: jest.fn(),
+        },
       },
       TechnicalReqModule: {
         namespaced: true,
         state: {},
         getters: {
           getTechnicalReq: jest.fn(() => {
-            return {
-              clientUri: 'app.com',
-              id: 15,
-              encryptedResponseAlg: 'RS256',
-              jwksUri: 'jwks2.com',
-              noOfTestAccount: 3,
-              noteTestAccount: '',
-              projectId: 12,
-              redirectUris: ['test.com'],
-              scopePackageId: 3,
-              signedResponseAlg: 'RS256'
-            };
+            return technicalReq;
           }),
-          errorStatus: jest.fn()
+          errorStatus: jest.fn(),
         },
         actions: {
-          loadTechnicalReqDetails: jest.fn()
-        }
+          loadTechnicalReqDetails: jest.fn(),
+        },
       },
       PackageAndTestModule: {
         namespaced: true,
@@ -99,24 +101,24 @@ describe('ProjectSummary.vue', () => {
                 claimNames: ['Given name', 'Surname'],
                 description: 'This package contains the following data:',
                 id: 1,
-                packageName: 'Package 1'
-              }
+                packageName: 'Package 1',
+              },
             ];
-          })
+          }),
         },
         actions: {
-          loadPackage: jest.fn()
-        }
+          loadPackage: jest.fn(),
+        },
       },
       SharedModule: {
         namespaced: true,
         state: {},
         getters: {
-          isRedirectFromSummaryPage: jest.fn()
+          isRedirectFromSummaryPage: jest.fn(),
         },
         actions: {
-          redirectFromSummaryPage: jest.fn()
-        }
+          redirectFromSummaryPage: jest.fn(),
+        },
       },
       ClientIdModule: {
         namespaced: true,
@@ -127,31 +129,31 @@ describe('ProjectSummary.vue', () => {
             return {
               oidcConfig: {
                 clientId: 'new client',
-                clientSecret: 'new secret'
+                clientSecret: 'new secret',
               },
               testUserAccounts: [
                 {
                   userName: 'iuser1',
-                  idKey: 'my key'
-                }
-              ]
+                  idKey: 'my key',
+                },
+              ],
             };
           }),
-          errorStatus: jest.fn()
+          errorStatus: jest.fn(),
         },
         actions: {
-          getClientIdDetails: jest.fn()
-        }
-      }
-    }
+          getClientIdDetails: jest.fn(),
+        },
+      },
+    },
   });
 
   const mountFunction = (options: any) => {
     return mount(ProjectSummary, {
       store,
       vuetify,
-      mocks: { $t: jest.fn(() => { }) }, // tslint:disable-line
-      ...options
+      mocks: { $t: jest.fn(() => {}) }, // tslint:disable-line
+      ...options,
     });
   };
 
@@ -182,60 +184,62 @@ describe('ProjectSummary.vue', () => {
           getters: {
             getSingleProjectInfo: jest.fn(),
             errorStatus: jest.fn(),
-            getFinalProjectSubmissionStatus: jest.fn()
+            getFinalProjectSubmissionStatus: jest.fn(),
           },
           actions: {
-            loadSingleProjectInfo: jest.fn()
-          }
+            loadSingleProjectInfo: jest.fn(),
+          },
         },
         TeamRolesModule: {
           namespaced: true,
           state: {},
           getters: {
-            getTeamList: jest.fn()
+            getTeamList: jest.fn(),
           },
           actions: {
-            loadTeam: jest.fn()
-          }
+            loadTeam: jest.fn(),
+          },
         },
         TechnicalReqModule: {
           namespaced: true,
           state: {},
           getters: {
-            getTechnicalReq: jest.fn(),
-            errorStatus: jest.fn()
+            getTechnicalReq: jest.fn(() => {
+              return technicalReq;
+            }),
+            errorStatus: jest.fn(),
           },
           actions: {
-            loadTechnicalReqDetails: jest.fn()
-          }
+            loadTechnicalReqDetails: jest.fn(),
+          },
         },
         PackageAndTestModule: {
           namespaced: true,
           state: {},
           getters: {
             successStatus: jest.fn(),
-            getPackageList: jest.fn()
+            getPackageList: jest.fn(),
           },
           actions: {
-            loadPackage: jest.fn()
-          }
+            loadPackage: jest.fn(),
+          },
         },
         SharedModule: {
           namespaced: true,
           state: {},
           getters: {
-            isRedirectFromSummaryPage: jest.fn()
+            isRedirectFromSummaryPage: jest.fn(),
           },
           actions: {
-            redirectFromSummaryPage: jest.fn()
-          }
-        }
-      }
+            redirectFromSummaryPage: jest.fn(),
+          },
+        },
+      },
     });
     const projectSummary = shallowMount(ProjectSummary, {
       vuetify,
       store,
-      mocks: { $t: jest.fn(() => { }) } // tslint:disable-line
+      mocks: { $t: jest.fn(() => {}) }, // tslint:disable-line
     });
 
     expect(projectSummary.element).toMatchSnapshot();
