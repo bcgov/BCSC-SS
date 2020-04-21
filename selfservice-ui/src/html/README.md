@@ -71,7 +71,27 @@ Once you have finished editing your html file, and added any required entries to
 
 ```git push localhost content/<username>  ```
 
-Then you will login to github https://github.com/bcgov/BCSC-SS and create a pull request for your changes. Check that the changes do not  break the pre processing and assign one of the devs for a review and merge. 
+Then you will login to github https://github.com/bcgov/BCSC-SS and create a pull request for your changes. 
+
+![Pull request](../../public/help-img/pull-req1.png)
+
+
+Assign a reviewer
+
+![Assign reviewer](../../public/help-img/assign-review.png)
+
+
+Check that the changes do not  break the pre processing
+
+![Something wrong](../../public/help-img/fail-checks.png)
+
+
+  - if so make changes locally  , commit and push again. Many of the problems arise from minor accessibility issues eg. alt attributes on images etc. You can click on the failed link in github and it will help you resolve the issues. 
+
+![Checks passed](../../public/help-img/checks-passed.png)
+
+
+ Your changes will be added to the current pull request. 
 
 
 
