@@ -26,6 +26,8 @@ export const state: ProjectInfoState = {
   statusChangeSuccess: false,
   deleteProjectError: false,
   deleteProjectSuccess: false,
+  isCreated: false,
+  isUpdated: false,
 };
 
 const namespaced: boolean = true;
