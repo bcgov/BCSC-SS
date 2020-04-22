@@ -68,7 +68,7 @@ Once you have finished editing your html file, and added any required entries to
 
 ``` git add <filename> ```
 
-```git commit <filename> -m"brief description of what I changed" ```
+```git commit <filename> -m "brief description of what I changed" ```
 
 ```git push localhost content/<username>  ```
 
