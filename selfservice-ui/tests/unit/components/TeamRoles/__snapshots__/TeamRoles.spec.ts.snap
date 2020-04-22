@@ -364,13 +364,13 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                               >
                                 <hr
                                   aria-orientation="vertical"
-                                  class="mx-4 v-divider v-divider--vertical theme--light"
+                                  class="mx-4 d-none d-sm-flex v-divider v-divider--vertical theme--light"
                                   role="separator"
                                 />
                               </div>
                                
                               <div
-                                class="col-sm-5 col-12"
+                                class="p-relative col-sm-5 col-12"
                               >
                                 <div
                                   class="v-card__subtitle headline bc-padding-left-0"
@@ -480,6 +480,12 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                   </div>
                                 </div>
                                  
+                                <div>
+                                  
+                  
+                
+                                </div>
+                                 
                                 <div
                                   class="v-card__actions btn-bottom"
                                 >
@@ -502,7 +508,7 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                    
                                   <button
                                     aria-disabled="true"
-                                    class="btn white--text submit-package ml-6 v-btn v-btn--contained v-btn--disabled theme--light v-size--default primary normal disabled"
+                                    class="btn white--text submit-package  v-btn v-btn--contained v-btn--disabled theme--light v-size--default primary normal disabled"
                                     disabled="disabled"
                                     name="button"
                                     type="button"

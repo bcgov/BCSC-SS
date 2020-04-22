@@ -5,7 +5,7 @@
     <v-row class="text-left">
       <v-col v-if="userDetails">
         <v-card class="v-form ma-3" flat>
-          <v-form ref="form" v-model="form">
+          <v-form ref="form" v-model="valid">
             <v-card class="v-form px-6 ma-3">
               <v-alert
                 type="error"
@@ -79,9 +79,9 @@
                   />
                 </v-col>
                 <v-col>
-                  <v-divider class="mx-4" vertical></v-divider>
+                  <v-divider class="mx-4 d-none d-sm-flex" vertical></v-divider>
                 </v-col>
-                <v-col cols="12" sm="5">
+                <v-col cols="12" sm="5" class="p-relative">
                   <v-card-subtitle class="headline bc-padding-left-0">
                     {{ $t('addTeamMember.roleTitle') }}
                   </v-card-subtitle>
@@ -92,11 +92,13 @@
                       :value="projectRoles.developer"
                       class="my-2"
                     ></v-radio>
+
                     <v-radio
                       :label="$t(`addTeamMember.labelRole${rolesList[2]}`)"
                       :value="projectRoles.manager"
                       class="my-2"
                     ></v-radio>
+
                     <v-radio
                       :label="$t(`addTeamMember.labelRole${rolesList[3]}`)"
                       :value="projectRoles.cto"
@@ -104,6 +106,15 @@
                     ></v-radio>
                   </v-radio-group>
 
+                  <div>
+                    {{
+                      $t(
+                        `addTeamMember.labelRoleInfo${
+                          rolesList[userDetails.role]
+                        }`
+                      )
+                    }}
+                  </div>
                   <v-card-actions class="btn-bottom">
                     <v-spacer></v-spacer>
                     <Button
@@ -113,10 +124,16 @@
                       >{{ $t('addTeamMember.btnCancel') }}</Button
                     >
                     <Button
-                      :disabled="!form"
-                      class="white--text submit-package ml-6"
+                      :disabled="!valid"
+                      class="white--text submit-package "
                       @click="submitTeamMember"
-                      >{{ $t('addTeamMember.btnSumbmit') }}</Button
+                      >{{
+                        $t(
+                          !editMode
+                            ? 'addTeamMember.btnSumbmit'
+                            : 'addTeamMember.btnSumbmitSave'
+                        )
+                      }}</Button
                     >
                   </v-card-actions>
                 </v-col>
@@ -188,7 +205,7 @@ export default class AddTeamMember extends Vue {
   private projectRoles: any = projectRoles;
   private selectedRole: any = 1;
   private rolesList: any = projectRolesList;
-  private form: boolean = false;
+  private valid: boolean = false;
   private editMode: boolean = false;
 
   public constructor() {
@@ -239,6 +256,9 @@ export default class AddTeamMember extends Vue {
     } else {
       this.editMode = false;
       this.clearMemberData();
+      if (this.$refs.form && this.$refs.form.resetValidation) {
+        this.$refs.form.resetValidation(); // tslint:disable-line
+      }
     }
   }
   private disabled() {
@@ -260,7 +280,28 @@ export default class AddTeamMember extends Vue {
   padding: 3px 0 3px 0;
 }
 .btn-bottom {
-  bottom: 32px;
-  position: absolute;
+  flex-direction: column;
+  width: 100%;
+  @include sm {
+    bottom: 32px;
+    position: absolute;
+  }
+  & .btn {
+    width: 100%;
+    margin-top: 12px;
+  }
+  @include rwd('1260') {
+    bottom: 32px;
+    position: absolute;
+    flex-direction: row;
+    width: auto;
+    & .btn {
+      width: auto;
+      margin-top: 0;
+    }
+  }
+}
+.p-relative {
+  position: relative;
 }
 </style>

@@ -3,10 +3,16 @@
   <v-card class="mx-auto outer-card">
     <v-card class="mx-auto">
       <v-app-bar dark class="bc-subtitle">
-        <v-btn icon @click="$router.push('/dashboard/')" aria-label="Back Button">
+        <v-btn
+          icon
+          @click="$router.push('/dashboard/')"
+          aria-label="Back Button"
+        >
           <v-icon>mdi-arrow-left</v-icon>
         </v-btn>
-        <v-toolbar-title>{{ $t('projectInfo.ProjectInfoTitle') }}</v-toolbar-title>
+        <v-toolbar-title>{{
+          $t('projectInfo.ProjectInfoTitle')
+        }}</v-toolbar-title>
         <v-spacer></v-spacer>
       </v-app-bar>
       <v-form ref="form" v-model="form">
@@ -14,16 +20,10 @@
           <v-row dense>
             <v-col cols="12" md="12">
               <v-card class="pa-8 pt-6 ma-3">
-                <v-card-title
-                  class="headline bc-padding-left-0"
-                >{{ $t('projectInfo.ProjectInfoTitle') }}</v-card-title>
                 <v-card-subtitle
                   class="text-left bc-padding-left-0 page-info"
                   v-html="$t('projectInfo.ProjectInfoTitleInfo')"
                 ></v-card-subtitle>
-                <v-card-subtitle
-                  class="font-weight-bold text-left bc-padding-left-0 org-title"
-                >{{ $t('projectInfo.ProjectOrgTitle') }}</v-card-subtitle>
 
                 <Input
                   v-model="organizationName"
@@ -32,7 +32,7 @@
                   :rules="[
                     rules.required,
                     rules.length(2),
-                    rules.maxLength(100)
+                    rules.maxLength(100),
                   ]"
                   :helpText="$t('projectInfo.OrganizationNameHint')"
                 />
@@ -44,7 +44,7 @@
                   :rules="[
                     rules.required,
                     rules.length(2),
-                    rules.maxLength(100)
+                    rules.maxLength(100),
                   ]"
                   :helpText="$t('projectInfo.projectNameHint')"
                 />
@@ -70,7 +70,8 @@
                     aria-label="Back Button"
                     secondary
                     v-if="!showWizardExperience()"
-                  >{{ $t('projectInfo.btnCancel') }}</Button>
+                    >{{ $t('projectInfo.btnCancel') }}</Button
+                  >
                   <Button
                     :disabled="!form"
                     :loading="isLoading"
@@ -80,11 +81,11 @@
                     @keyup.enter="submitProjectInfo"
                   >
                     {{
-                    $t(
-                    showWizardExperience()
-                    ? 'projectInfo.btnNext'
-                    : 'projectInfo.btnSaveChanges'
-                    )
+                      $t(
+                        showWizardExperience()
+                          ? 'projectInfo.btnNext'
+                          : 'projectInfo.btnSaveChanges'
+                      )
                     }}
                   </Button>
                 </v-card-actions>
@@ -150,7 +151,7 @@ export default class AddProjectInfo extends Vue {
     const data: ProjectInfoModel = {
       organizationName: this.organizationName,
       projectName: this.projectName,
-      description: this.description
+      description: this.description,
     };
 
     if (this.isEditMode) {

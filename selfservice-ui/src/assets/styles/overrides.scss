@@ -99,3 +99,15 @@
   line-height: 22px;
   color: $gray10;
 }
+
+.v-application p.pageinfo {
+  margin-bottom: 16px;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.87);
+  line-height: 24px;
+  overflow-wrap: break-word;
+  text-rendering: optimizelegibility;
+  flex-wrap: wrap;
+  padding: 12px 0;
+  text-align: left;
+}

@@ -95,12 +95,13 @@ exports[`AddTeamMember.vue renders props when passed with gettors 1`] = `
                 tag="div"
               >
                 <v-divider-stub
-                  class="mx-4"
+                  class="mx-4 d-none d-sm-flex"
                   vertical="true"
                 />
               </v-col-stub>
                
               <v-col-stub
+                class="p-relative"
                 cols="12"
                 sm="5"
                 tag="div"
@@ -174,6 +175,12 @@ exports[`AddTeamMember.vue renders props when passed with gettors 1`] = `
                   />
                 </v-radio-group-stub>
                  
+                <div>
+                  
+                  
+                
+                </div>
+                 
                 <v-card-actions-stub
                   class="btn-bottom"
                 >
@@ -190,7 +197,7 @@ exports[`AddTeamMember.vue renders props when passed with gettors 1`] = `
                   </button-stub>
                    
                   <button-stub
-                    class="white--text submit-package ml-6"
+                    class="white--text submit-package "
                     color=""
                     disabled="true"
                     name="button"
@@ -304,12 +311,13 @@ exports[`AddTeamMember.vue renders props when passed with gettors with member id
                 tag="div"
               >
                 <v-divider-stub
-                  class="mx-4"
+                  class="mx-4 d-none d-sm-flex"
                   vertical="true"
                 />
               </v-col-stub>
                
               <v-col-stub
+                class="p-relative"
                 cols="12"
                 sm="5"
                 tag="div"
@@ -383,6 +391,12 @@ exports[`AddTeamMember.vue renders props when passed with gettors with member id
                   />
                 </v-radio-group-stub>
                  
+                <div>
+                  
+                  
+                
+                </div>
+                 
                 <v-card-actions-stub
                   class="btn-bottom"
                 >
@@ -399,7 +413,7 @@ exports[`AddTeamMember.vue renders props when passed with gettors with member id
                   </button-stub>
                    
                   <button-stub
-                    class="white--text submit-package ml-6"
+                    class="white--text submit-package "
                     color=""
                     disabled="true"
                     name="button"

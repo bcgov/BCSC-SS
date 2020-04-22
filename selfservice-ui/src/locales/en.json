@@ -15,7 +15,7 @@
   },
   "projectInfo": {
     "ProjectInfoTitle": "Project Information",
-    "ProjectInfoTitleInfo": "<p>To receive access to the BC Services Card login API , we need to gather some information about the application you’re working with. This allows us to understand the purpose of your application or project within your organization and provide proper assistance to you, through development to the live access request.</p>",
+    "ProjectInfoTitleInfo": "<p class='pageinfo'>To receive access to the BC Services Card login API , we need to gather some information about the application you’re working with. This allows us to understand the purpose of your application or project within your organization and provide proper assistance to you, through development to the live access request.</p>",
     "ProjectOrgTitle": "This API is available for organizations that fall within the BC Broader Public Sector (BPS).",
     "OrganizationName": "Organization name",
     "projectName": "Project name",
@@ -39,7 +39,7 @@
   },
   "technicalRequirements": {
     "technicalTitle": "Technical Requirements",
-    "technicalTitleInfo": "The authentication process with BC Services Card is through Open ID Connect (OIDC). The following parameters are required for us to initiate the connection.",
+    "technicalTitleInfo": "<p class='pageinfo'>The authentication process with BC Services Card is through Open ID Connect (OIDC). The following parameters are required for us to initiate the connection.</p>",
     "projectName": "Project name:",
     "inputAppText": "Add the URL of your application home page, or where users will go to understand what your application does.",
     "inputUrlText": "Input the URL(s) of your redirect location(s). These are potential URL addresses to which we could redirect your application on successful user authentication. If you have multiple redirects, use one field for each URL.",
@@ -58,11 +58,12 @@
     "labelTestMethod": "Select your data security and format",
     "labelTestMethodHint": "Choose your signing and encryption methods for testing below. These options are available to facilitate your testing. Please note that when you move into a production environment, it will be required that you enable signing and encryption at that time.",
     "SignedJWTHint": "We return a signed JWT for more security",
-    "SecureJWTHint": "We return a signed and encrypted JWT for maximum security"
+    "SecureJWTHint": "We return a signed and encrypted JWT for maximum security",
+    "AddURI": "+ Add another URI"
   },
   "selectPackage": {
     "pagetitle": "Select Package",
-    "pagetitleInfo": "<p>OIDC scopes are collections of user attributes which can be returned on successful authentication.</p>Select the most appropriate package of scopes for your use case, noting that the more attributes you require, the greater the overhead of complying with privacy regulations.</p><p><br /></p><p>The following standard scopes are supported :</p><p><ul ><li class='my-1'>openid - Unique identifier </li><li class='my-1'>profile - Given name and surname</li><li class='my-1'>email - Email address</li><li class='my-1'>address - Physical address (Street, locality, state or province, postal code and country) </li></ul></p>",
+    "pagetitleInfo": "<p class='pageinfo'>OIDC scopes are collections of user attributes which can be returned on successful authentication.</p>Select the most appropriate package of scopes for your use case, noting that the more attributes you require, the greater the overhead of complying with privacy regulations.</p><p><br /></p><p>The following standard scopes are supported :</p><p><ul ><li class='my-1'>openid - Unique identifier </li><li class='my-1'>profile - Given name and surname</li><li class='my-1'>email - Email address</li><li class='my-1'>address - Physical address (Street, locality, state or province, postal code and country) </li></ul></p>",
     "choosePackage": "Select your scope package",
     "description": "This package contains the following data:",
     "package1": "Package 1 - best fit for organizations looking for a digital signature",
@@ -84,7 +85,7 @@
   },
   "testAccount": {
     "pagetitle": "Test Accounts",
-    "pageinfo": "In order to test your configuration, we would like to know how many test accounts you need for package. Please note the test data provided to you will be randomized unless you indicate you have preferred customization.",
+    "pageinfo": "<p class='pageinfo'>In order to test your configuration, we would like to know how many test accounts you need for package. Please note the test data provided to you will be randomized unless you indicate you have preferred customization.</p>",
     "how_many_test_account": "Choose the number of test user accounts you require",
     "special_notes": "Special requests or notes",
     "specialNotesInfo": "<p>If you have any special requests for customized test account. Please contact IDIM Consulting or <a href='mailto:zorin.samji@gov.bc.ca'>Product Owner</a>.</p>",
@@ -95,7 +96,7 @@
   },
   "summaryPage": {
     "pagetitle": "Summary",
-    "subTitle": "<p>The details you entered are shown as a summary on this page. Please review the information to ensure that it is correct before submitting your request with the “Submit Request” button.</p><p><br /></p><p>If you need to make changes at this stage, you can edit the sections using the edit icons on this page.</p>",
+    "subTitle": "<p class='pageinfo'>This page is a summary of the details of your development request. </p><p><strong>Please note any changes will not be reflected until you submit/commit changes.</strong></p>",
     "createSuccessMessage": "Your request was successfully received",
     "updateSuccessMessage": "Your changes are successfully committed",
     "projectInfoTitle": "Project Information",
@@ -245,7 +246,8 @@
     "labelRolemanager": "Manager",
     "labelRolecto": "Executive Sponsor",
     "btnCancel": "Cancel",
-    "btnSumbmit": "+ Add this person",
+    "btnSumbmit": "+ Add user",
+    "btnSumbmitSave": "Save",
     "labelFirstName": "First name",
     "labelLastName": "Last name",
     "labelWorkEmail": "Work email",
@@ -253,7 +255,10 @@
     "errorTitle": "Please fix following errors",
     "invalidDomain": "This email domain address you entered is not in our system of approved organizations. Please correct the email address or  <a href='/contact-us'>contact IDIM</a> to have the domain added to the system.",
     "roleAlreadyAssigned": "This role is already assigned to another team member. Please select a different role or <a href='/contact-us'>contact IDIM</a> to change your project team membership.",
-    "emailAlreadyAssigned": "The email address you entered belongs to a user who already has been assigned in this project. An individual user can only have one project role."
+    "emailAlreadyAssigned": "The email address you entered belongs to a user who already has been assigned in this project. An individual user can only have one project role.",
+    "labelRoleInfodeveloper": "The developer builds the integration with BC Services Card",
+    "labelRoleInfomanager": "The manager steers the integration through to production",
+    "labelRoleInfocto": "The Executive Sponsor attests to the integration application compliance"
   },
   "projectActions": {
     "btnRequestLiveAccess": "Request live access",
