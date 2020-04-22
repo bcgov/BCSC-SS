@@ -164,7 +164,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
     if (v === '') {
       return true;
     } else {
-      return /^(?:http(s)?:\\\\/\\\\/)[\\\\w.-]+(?:\\\\.[\\\\w\\\\.-]+)+[\\\\w\\\\-\\\\._~:/?#[\\\\]@!\\\\$&'\\\\(\\\\)\\\\*\\\\+,;=.]+$/.test(v) || ' must be valid URL';
+      return /^((?:http(s)?:\\\\/\\\\/)[\\\\w.-]+(?:\\\\.[\\\\w\\\\.-]+)+[\\\\w\\\\-\\\\._~:/?#[\\\\]@!\\\\$&'\\\\(\\\\)\\\\*\\\\+,;=.]+|(localhost).*)$/.test(v) || ' must be valid URL (localhost allowed)';
     }
   }"
                   >
@@ -239,7 +239,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                 class="add-url text-left"
               >
                 
-                + Add another URL
+                
               
               </div>
                
@@ -695,7 +695,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
     if (v === '') {
       return true;
     } else {
-      return /^(?:http(s)?:\\\\/\\\\/)[\\\\w.-]+(?:\\\\.[\\\\w\\\\.-]+)+[\\\\w\\\\-\\\\._~:/?#[\\\\]@!\\\\$&'\\\\(\\\\)\\\\*\\\\+,;=.]+$/.test(v) || ' must be valid URL';
+      return /^((?:http(s)?:\\\\/\\\\/)[\\\\w.-]+(?:\\\\.[\\\\w\\\\.-]+)+[\\\\w\\\\-\\\\._~:/?#[\\\\]@!\\\\$&'\\\\(\\\\)\\\\*\\\\+,;=.]+|(localhost).*)$/.test(v) || ' must be valid URL (localhost allowed)';
     }
   }"
                   >
@@ -770,7 +770,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                 class="add-url text-left"
               >
                 
-                + Add another URL
+                
               
               </div>
                
@@ -1226,7 +1226,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
     if (v === '') {
       return true;
     } else {
-      return /^(?:http(s)?:\\\\/\\\\/)[\\\\w.-]+(?:\\\\.[\\\\w\\\\.-]+)+[\\\\w\\\\-\\\\._~:/?#[\\\\]@!\\\\$&'\\\\(\\\\)\\\\*\\\\+,;=.]+$/.test(v) || ' must be valid URL';
+      return /^((?:http(s)?:\\\\/\\\\/)[\\\\w.-]+(?:\\\\.[\\\\w\\\\.-]+)+[\\\\w\\\\-\\\\._~:/?#[\\\\]@!\\\\$&'\\\\(\\\\)\\\\*\\\\+,;=.]+|(localhost).*)$/.test(v) || ' must be valid URL (localhost allowed)';
     }
   }"
                   >
@@ -1301,7 +1301,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                 class="add-url text-left"
               >
                 
-                + Add another URL
+                
               
               </div>
                
