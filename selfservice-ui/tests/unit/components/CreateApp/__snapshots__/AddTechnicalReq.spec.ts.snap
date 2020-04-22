@@ -70,11 +70,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                
               <div
                 class="v-card__subtitle text-left bc-padding-left-0"
-              >
-                
-                
-              
-              </div>
+              />
             </div>
              
             <div
@@ -601,11 +597,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                
               <div
                 class="v-card__subtitle text-left bc-padding-left-0"
-              >
-                
-                
-              
-              </div>
+              />
             </div>
              
             <div
@@ -1132,11 +1124,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                
               <div
                 class="v-card__subtitle text-left bc-padding-left-0"
-              >
-                
-                
-              
-              </div>
+              />
             </div>
              
             <div
