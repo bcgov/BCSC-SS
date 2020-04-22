@@ -25,8 +25,10 @@
                 >
                   {{ getSingleProjectInfo && getSingleProjectInfo.projectName }}
                 </v-card-title>
-                <v-card-subtitle class="text-left bc-padding-left-0">
-                  {{ $t('technicalRequirements.technicalTitleInfo') }}
+                <v-card-subtitle
+                  class="text-left bc-padding-left-0"
+                  v-html="$t('technicalRequirements.technicalTitleInfo')"
+                >
                 </v-card-subtitle>
               </v-card>
               <v-card class="pa-4 pt-6">
