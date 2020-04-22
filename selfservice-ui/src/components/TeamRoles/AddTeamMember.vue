@@ -221,6 +221,7 @@ export default class AddTeamMember extends Vue {
   @Watch('memberDetails')
   private ongetmemberDetailsChanged(val: any) {
     this.userDetails = val;
+    this.resetValidation();
   }
 
   @Watch('memberId')
@@ -248,6 +249,7 @@ export default class AddTeamMember extends Vue {
         projectId: this.id,
       });
     }
+    this.resetValidation();
   }
   private getMemberDetails() {
     if (this.memberId !== 0) {
@@ -256,12 +258,14 @@ export default class AddTeamMember extends Vue {
     } else {
       this.editMode = false;
       this.clearMemberData();
-
-      // to fix typescript error
-      (this.$refs.form as Vue & {
-        resetValidation: () => any;
-      }).resetValidation();
     }
+    this.resetValidation();
+  }
+  private resetValidation() {
+    // to fix typescript error
+    (this.$refs.form as Vue & {
+      resetValidation: () => any;
+    }).resetValidation();
   }
   private disabled() {
     if (this.editMode && !this.isAdmin) {
