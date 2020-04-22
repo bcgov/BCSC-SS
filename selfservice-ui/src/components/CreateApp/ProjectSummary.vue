@@ -3,14 +3,24 @@
 <template>
   <div>
     <Loading v-if="isLoading" />
-    <v-alert type="success" class="alert-top text-left" v-if="isCreated">{{
-      $t('summaryPage.createSuccessMessage')
-    }}</v-alert>
-
-    <v-alert type="success" class="alert-top text-left" v-if="isUpdated">{{
-      $t('summaryPage.updateSuccessMessage')
-    }}</v-alert>
     <v-row v-else>
+      <v-alert
+        type="success"
+        class="alert-top text-left alert-msg"
+        dense
+        outlined
+        v-if="isCreated"
+        >{{ $t('summaryPage.createSuccessMessage') }}</v-alert
+      >
+
+      <v-alert
+        type="success"
+        class="alert-top text-left alert-msg"
+        dense
+        outlined
+        v-if="isUpdated"
+        >{{ $t('summaryPage.updateSuccessMessage') }}</v-alert
+      >
       <v-col cols="12" flat>
         <ClientID
           :id="projectId"
@@ -349,5 +359,9 @@ export default class ProjectSummary extends Vue {
 }
 .text-center {
   text-align: center !important;
+}
+.alert-msg {
+  width: 100%;
+  margin: 10px 15px;
 }
 </style>
