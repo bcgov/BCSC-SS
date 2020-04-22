@@ -208,7 +208,11 @@ import validationRules from '@/config/validationRules';
 import Loading from '@/Atomic/Loading/Loading.vue';
 import { algorithamBase } from '@/constants/enums';
 
-import { algorithm } from '@/constants/algorithm';
+import {
+  signedAlgorithm,
+  encryptedAlgorithm,
+  encryptedEncoding,
+} from '@/constants/algorithm';
 import { TechnicalReqModel } from '@/models/TechnicalReqModel';
 const TechnicalReqModule = namespace('TechnicalReqModule');
 const ProjectInfoModule = namespace('ProjectInfoModule');
@@ -252,7 +256,7 @@ export default class AddTechnicalReq extends Vue {
   private jwksUri: string = '';
   private encryptedResponseAlg: string = 'RS256';
   private signedResponseAlg: string = 'RS256';
-  private algorithm: any = algorithm;
+  private algorithm: any = signedAlgorithm;
   private blockRemoval = true;
   private signingEncryptionType: number = algorithamBase.SignedJWT;
   private algorithamBase: any = algorithamBase;

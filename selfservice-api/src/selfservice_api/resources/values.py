@@ -18,7 +18,7 @@ from http import HTTPStatus
 from flask import jsonify
 from flask_restplus import Namespace, Resource, cors
 
-from ..models.enums.project import Algorithms
+from ..models.enums import EncryptedAlgorithm, EncryptedEncoding, SignedAlgorithm
 from ..utils.auth import auth
 from ..utils.util import cors_preflight
 
@@ -36,8 +36,12 @@ class AlgorithmValuesResource(Resource):
     @auth.require
     def get():
         """Get algorithms."""
-        algorithms = [e.value for e in Algorithms]
+        signed_algorithm = [{'key': e.name, 'value': e.value} for e in SignedAlgorithm]
+        encrypted_algorithm = [{'key': e.name, 'value': e.value} for e in EncryptedAlgorithm]
+        encrypted_encoding = [{'key': e.name, 'value': e.value} for e in EncryptedEncoding]
 
         return jsonify({
-            'algorithms': algorithms
+            'signedAlgorithm': signed_algorithm,
+            'encryptedAlgorithm': encrypted_algorithm,
+            'encryptedEncoding': encrypted_encoding
         }), HTTPStatus.OK

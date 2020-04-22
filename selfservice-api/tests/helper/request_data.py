@@ -15,7 +15,7 @@
 
 from . import camel2snake
 
-from selfservice_api.models.enums.project import ProjectRoles, SigningEncryptionType
+from selfservice_api.models.enums import ProjectRoles, SigningEncryptionType
 
 
 def factory_user_info(is_model=False):
@@ -100,16 +100,20 @@ def factory_project_technical_req(is_model=False, signing_encryption_type=Signin
         'signingEncryptionType': signing_encryption_type,
         'jwksUri': 'https://someone.com/jwks',
         'signedResponseAlg': 'RS256',
-        'encryptedResponseAlg': 'RS256'
+        'encryptedResponseAlg': 'RSA1_5',
+        'encryptedResponseEnc': 'A256GCM'
     }
     if is_model:
         del technical_req['signedResponseAlg']
         del technical_req['encryptedResponseAlg']
+        del technical_req['encryptedResponseEnc']
         technical_req = camel2snake(technical_req)
         technical_req['id_token_signed_response_alg'] = 'RS256'
         technical_req['userinfo_signed_response_alg'] = 'RS256'
-        technical_req['id_token_encrypted_response_alg'] = 'RS256'
-        technical_req['userinfo_encrypted_response_alg'] = 'RS256'
+        technical_req['id_token_encrypted_response_alg'] = 'RSA1_5'
+        technical_req['userinfo_encrypted_response_alg'] = 'RSA1_5'
+        technical_req['id_token_encrypted_response_enc'] = 'A256GCM'
+        technical_req['userinfo_encrypted_response_enc'] = 'A256GCM'
         technical_req['is_prod'] = False
         return technical_req
     else:
@@ -130,19 +134,20 @@ def factory_project_oidc_config():
         'application_type': 'web',
         'subject_type': 'pairwise',
         'sector_identifier_uri': 'urn:org:example:client',
-        'id_token_encrypted_response_alg': 'RS256',
-        'id_token_encrypted_response_enc': 'RS256',
-        'userinfo_encrypted_response_alg': 'RS256',
-        'userinfo_encrypted_response_enc': 'RS256',
+        'id_token_encrypted_response_alg': 'RSA1_5',
+        'id_token_encrypted_response_enc': 'A256GCM',
+        'userinfo_encrypted_response_alg': 'RSA1_5',
+        'userinfo_encrypted_response_enc': 'A256GCM',
         'is_prod': False
     }
     return oidc_config
 
 
-def factory_test_account():
+def factory_test_account(is_model=False):
     """JSON data to create TestAccount."""
     test_accounts = {
-        'testAccounts': 'SS4BPS201,98901,ONE,SS4BPS Felecia,F,4732 Easy Street,,V9B 3V9,1998-04-30\n \
-            SS4BPS202,,TWO,SS4BPS Benjamin ,M,308-2464 Crimson Vale,Penticton BC V2A 5N1,V2A 5N1,2000-11-18'
+        'testAccounts': 'SS4BPS201,98901,ONE,SS4BPS Felecia,F,4732 Easy Street,,V9B 3V9,1998-04-30\nSS4BPS999,' +
+        ('98989' if is_model else '') +
+        ',TWO,SS4BPS Benjamin,M,308-2464 Crimson Vale,Penticton BC V2A 5N1,V2A 5N1,2000-11-18'
     }
     return test_accounts

@@ -55,13 +55,13 @@ class DynamicClientRegistrationApiMock():
         response.id_token_signed_response_alg = request.id_token_signed_response_alg
         response.userinfo_signed_response_alg = request.userinfo_signed_response_alg
         response.id_token_encrypted_response_alg = request.id_token_encrypted_response_alg \
-            if request.id_token_encrypted_response_alg is not None else 'RS256'
+            if request.id_token_encrypted_response_alg is not None else 'RSA1_5'
         response.id_token_encrypted_response_enc = request.id_token_encrypted_response_enc \
-            if request.id_token_encrypted_response_enc is not None else 'RS256'
+            if request.id_token_encrypted_response_enc is not None else 'A256GCM'
         response.userinfo_encrypted_response_alg = request.userinfo_encrypted_response_alg \
-            if request.userinfo_encrypted_response_alg is not None else 'RS256'
+            if request.userinfo_encrypted_response_alg is not None else 'RSA1_5'
         response.userinfo_encrypted_response_enc = request.userinfo_encrypted_response_enc \
-            if request.userinfo_encrypted_response_enc is not None else 'RS256'
+            if request.userinfo_encrypted_response_enc is not None else 'A256GCM'
 
         return response
 
@@ -89,10 +89,10 @@ class DynamicClientRegistrationApiMock():
         response.sector_identifier_uri = 'urn:org:example:client'
         response.id_token_signed_response_alg = 'RS256'
         response.userinfo_signed_response_alg = 'RS256'
-        response.id_token_encrypted_response_alg = 'RS256'
-        response.id_token_encrypted_response_enc = 'RS256'
-        response.userinfo_encrypted_response_alg = 'RS256'
-        response.userinfo_encrypted_response_enc = 'RS256'
+        response.id_token_encrypted_response_alg = 'RSA1_5'
+        response.id_token_encrypted_response_enc = 'A256GCM'
+        response.userinfo_encrypted_response_alg = 'RSA1_5'
+        response.userinfo_encrypted_response_enc = 'A256GCM'
 
         return response
 
@@ -122,13 +122,13 @@ class DynamicClientRegistrationApiMock():
         response.id_token_signed_response_alg = request.id_token_signed_response_alg
         response.userinfo_signed_response_alg = request.userinfo_signed_response_alg
         response.id_token_encrypted_response_alg = request.id_token_encrypted_response_alg \
-            if request.id_token_encrypted_response_alg is not None else 'RS256'
+            if request.id_token_encrypted_response_alg is not None else 'RSA1_5'
         response.id_token_encrypted_response_enc = request.id_token_encrypted_response_enc \
-            if request.id_token_encrypted_response_enc is not None else 'RS256'
+            if request.id_token_encrypted_response_enc is not None else 'A256GCM'
         response.userinfo_encrypted_response_alg = request.userinfo_encrypted_response_alg \
-            if request.userinfo_encrypted_response_alg is not None else 'RS256'
+            if request.userinfo_encrypted_response_alg is not None else 'RSA1_5'
         response.userinfo_encrypted_response_enc = request.userinfo_encrypted_response_enc \
-            if request.userinfo_encrypted_response_enc is not None else 'RS256'
+            if request.userinfo_encrypted_response_enc is not None else 'A256GCM'
 
         return response
 
