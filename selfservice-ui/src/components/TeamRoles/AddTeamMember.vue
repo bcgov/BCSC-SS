@@ -5,7 +5,7 @@
     <v-row class="text-left">
       <v-col v-if="userDetails">
         <v-card class="v-form ma-3" flat>
-          <v-form ref="form" v-model="form">
+          <v-form ref="form" v-model="valid">
             <v-card class="v-form px-6 ma-3">
               <v-alert
                 type="error"
@@ -124,10 +124,16 @@
                       >{{ $t('addTeamMember.btnCancel') }}</Button
                     >
                     <Button
-                      :disabled="!form"
+                      :disabled="!valid"
                       class="white--text submit-package ml-6"
                       @click="submitTeamMember"
-                      >{{ $t('addTeamMember.btnSumbmit') }}</Button
+                      >{{
+                        $t(
+                          !editMode
+                            ? 'addTeamMember.btnSumbmit'
+                            : 'addTeamMember.btnSumbmitSave'
+                        )
+                      }}</Button
                     >
                   </v-card-actions>
                 </v-col>
@@ -199,7 +205,7 @@ export default class AddTeamMember extends Vue {
   private projectRoles: any = projectRoles;
   private selectedRole: any = 1;
   private rolesList: any = projectRolesList;
-  private form: boolean = false;
+  private valid: boolean = false;
   private editMode: boolean = false;
 
   public constructor() {
@@ -250,6 +256,7 @@ export default class AddTeamMember extends Vue {
     } else {
       this.editMode = false;
       this.clearMemberData();
+      this.$refs.form.resetValidation(); // tslint:disable-line
     }
   }
   private disabled() {
