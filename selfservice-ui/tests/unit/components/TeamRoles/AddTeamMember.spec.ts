@@ -21,12 +21,12 @@ describe('AddTeamMember.vue', () => {
           }),
           getMemberErrorList: jest.fn(),
           memberSucessStatus: jest.fn(),
-          memberErrorStatus: jest.fn()
+          memberErrorStatus: jest.fn(),
         },
         actions: {
           clearMemberData: jest.fn(),
-          getTeamMember: jest.fn()
-        }
+          getTeamMember: jest.fn(),
+        },
       },
       KeyCloakModule: {
         namespaced: true,
@@ -34,11 +34,11 @@ describe('AddTeamMember.vue', () => {
         getters: {
           isAdmin: jest.fn(() => {
             return true;
-          })
+          }),
         },
-        actions: { setLogout: jest.fn() }
-      }
-    }
+        actions: { setLogout: jest.fn() },
+      },
+    },
   });
 
   const mountFunction = (options: any) => {
@@ -46,7 +46,15 @@ describe('AddTeamMember.vue', () => {
       store,
       vuetify,
       mocks: { $t: jest.fn(() => {}) }, // tslint:disable-line
-      ...options
+      ...options,
+      stubs: {
+        VForm: {
+          render: () => jest.fn(),
+          methods: {
+            resetValidation: () => jest.fn(),
+          },
+        },
+      },
     });
   };
 
@@ -57,8 +65,8 @@ describe('AddTeamMember.vue', () => {
   it('renders props when passed with gettors with member id', () => {
     const AddTeamMemberPage = mountFunction({
       propsData: {
-        memberId: 2
-      }
+        memberId: 2,
+      },
     });
     expect(AddTeamMemberPage.element).toMatchSnapshot();
   });
