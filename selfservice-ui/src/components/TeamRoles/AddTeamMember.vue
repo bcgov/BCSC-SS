@@ -92,11 +92,13 @@
                       :value="projectRoles.developer"
                       class="my-2"
                     ></v-radio>
+
                     <v-radio
                       :label="$t(`addTeamMember.labelRole${rolesList[2]}`)"
                       :value="projectRoles.manager"
                       class="my-2"
                     ></v-radio>
+
                     <v-radio
                       :label="$t(`addTeamMember.labelRole${rolesList[3]}`)"
                       :value="projectRoles.cto"

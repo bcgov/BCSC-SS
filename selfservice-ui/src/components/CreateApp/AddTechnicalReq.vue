@@ -50,7 +50,7 @@
                     <Input
                       v-model="redirectUris[index]"
                       type="text"
-                      :rules="[rules.required, rules.url]"
+                      :rules="[rules.required, rules.urlLocalHost]"
                       class="addUri"
                       outlined
                     />
@@ -63,7 +63,7 @@
                 </div>
 
                 <div @click="addUri()" class="add-url text-left">
-                  + Add another URL
+                  {{ $t('technicalRequirements.AddURI') }}
                 </div>
                 <v-card-title class="text-left bc-padding-left-0">
                   {{ $t('technicalRequirements.labelTestMethod') }}
@@ -109,8 +109,7 @@
                     <v-radio
                       label="Secure JWT"
                       :value="algorithamBase.SecureJWT"
-                      >></v-radio
-                    >
+                    ></v-radio>
                     <div class="small-hint radio-help">
                       {{ $t('technicalRequirements.SecureJWTHint') }}
                     </div>
@@ -337,11 +336,10 @@ export default class AddTechnicalReq extends Vue {
     return true;
   }
 
-  // commented out now only one redirect URL
   private addUri() {
     const checkEmptyLines = this.redirectUris.filter((uri: any) => uri === '');
 
-    if (checkEmptyLines.length >= 1 && this.redirectUris.length > 0) {
+    if (checkEmptyLines.length >= 1 || this.redirectUris.length >= 10) {
       return;
     }
 

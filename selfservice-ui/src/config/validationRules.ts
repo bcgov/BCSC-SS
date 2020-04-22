@@ -17,7 +17,18 @@ const rules = {
         ) || ' must be valid URL'
       );
     }
-  }
+  },
+  urlLocalHost: (v: any) => {
+    if (v === '') {
+      return true;
+    } else {
+      return (
+        /^((?:http(s)?:\/\/)[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+|(localhost).*)$/.test(
+          v
+        ) || ' must be valid URL (localhost allowed)'
+      );
+    }
+  },
 };
 
 export default rules;

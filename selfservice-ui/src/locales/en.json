@@ -58,7 +58,8 @@
     "labelTestMethod": "Select your data security and format",
     "labelTestMethodHint": "Choose your signing and encryption methods for testing below. These options are available to facilitate your testing. Please note that when you move into a production environment, it will be required that you enable signing and encryption at that time.",
     "SignedJWTHint": "We return a signed JWT for more security",
-    "SecureJWTHint": "We return a signed and encrypted JWT for maximum security"
+    "SecureJWTHint": "We return a signed and encrypted JWT for maximum security",
+    "AddURI": "+ Add another URI"
   },
   "selectPackage": {
     "pagetitle": "Select Package",
@@ -95,7 +96,7 @@
   },
   "summaryPage": {
     "pagetitle": "Summary",
-    "subTitle": "<p>The details you entered are shown as a summary on this page. Please review the information to ensure that it is correct before submitting your request with the “Submit Request” button.</p><p><br /></p><p>If you need to make changes at this stage, you can edit the sections using the edit icons on this page.</p>",
+    "subTitle": "<p>This page is a summary of the details of your development request. </p><p><strong>Please note any changes will not be reflected until you submit/commit changes.</strong></p>",
     "createSuccessMessage": "Your request was successfully received",
     "updateSuccessMessage": "Your changes are successfully committed",
     "projectInfoTitle": "Project Information",
