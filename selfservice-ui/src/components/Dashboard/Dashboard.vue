@@ -8,7 +8,13 @@
 
       <div class="flex-grow-1"></div>
 
-      <v-btn class="ma-2" fab dark color="#fba30e" @click="$router.push(`/project/info`)">
+      <v-btn
+        class="ma-2"
+        fab
+        dark
+        color="#fba30e"
+        @click="$router.push(`/project/info`)"
+      >
         <v-icon dark large>mdi-plus</v-icon>
       </v-btn>
     </v-toolbar>
@@ -20,36 +26,39 @@
             <template v-slot:default>
               <thead>
                 <tr>
-                  <th :scope="$t('dashboard.tblTitleSi')">{{ $t('dashboard.tblTitleSi') }}</th>
-                  <th
-                    :scope="$t('dashboard.tblTitleProjectName')"
-                  >{{ $t('dashboard.tblTitleProjectName') }}</th>
-                  <!-- <th :scope="$t('dashboard.tblTitleProjectId')">
-                    {{ $t('dashboard.tblTitleProjectId') }}
-                  </th>-->
-                  <th
-                    :scope="$t('dashboard.tblTitlrole')"
-                    v-if="isClient"
-                  >{{ $t('dashboard.tblTitlrole') }}</th>
-                  <th :scope="$t('dashboard.tblTitlCreated')">{{ $t('dashboard.tblTitlCreated') }}</th>
-                  <th
-                    :scope="$t('dashboard.tblTitleProjectStatus')"
-                  >{{ $t('dashboard.tblTitleProjectStatus') }}</th>
+                  <th :scope="$t('dashboard.tblTitleReferenceNo')">
+                    {{ $t('dashboard.tblTitleReferenceNo') }}
+                  </th>
+                  <th :scope="$t('dashboard.tblTitleProjectName')">
+                    {{ $t('dashboard.tblTitleProjectName') }}
+                  </th>
+                  <th :scope="$t('dashboard.tblTitlrole')" v-if="isClient">
+                    {{ $t('dashboard.tblTitlrole') }}
+                  </th>
+                  <th :scope="$t('dashboard.tblTitlCreated')">
+                    {{ $t('dashboard.tblTitlCreated') }}
+                  </th>
+                  <th :scope="$t('dashboard.tblTitleProjectStatus')">
+                    {{ $t('dashboard.tblTitleProjectStatus') }}
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 <tr
-                  v-for="(project, idx) in projectInfoList"
+                  v-for="project in projectInfoList"
                   :key="project.id"
-                  @click="$router.push(`/project/${project.id}/summary`)"
+                  @click="redirectToProject(project)"
                   style="cursor: pointer"
                 >
-                  <td>{{ idx + 1 }}</td>
+                  <td>{{ project.id }}</td>
                   <td>{{ project.name }}</td>
-                  <!-- <td>{{ project.id }}</td> -->
                   <td v-if="isClient">{{ project.role }}</td>
                   <td>{{ project.created }}</td>
-                  <td>{{ project.status }}</td>
+                  <td>
+                    {{
+                      $t(`dashboard.role${projectStatusList[project.statusId]}`)
+                    }}
+                  </td>
                 </tr>
               </tbody>
             </template>
@@ -68,8 +77,11 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
+import { projectStatus } from '@/constants/enums';
+
 const ProjectInfoModule = namespace('ProjectInfoModule');
 const KeyCloakModule = namespace('KeyCloakModule');
+const SharedModule = namespace('SharedModule');
 
 @Component
 export default class Dashboard extends Vue {
@@ -82,9 +94,27 @@ export default class Dashboard extends Vue {
   public loadProjectInfo!: any;
   @ProjectInfoModule.Action('errorStatus')
   public errorStatus!: any;
+  @SharedModule.Action('redirectFromSummaryPage')
+  public redirectFromSummaryPage!: any;
+
+  @SharedModule.Getter('isRedirectFromSummaryPage')
+  public isRedirectFromSummaryPage!: boolean;
+
+  private projectStatusList: any = projectStatus;
 
   private mounted() {
     this.loadProjectInfo();
+  }
+
+  private redirectToProject(project: any) {
+    if (project.statusId === projectStatus.development) {
+      this.redirectFromSummaryPage(false);
+    }
+    this.$router.push(
+      project.statusId >= projectStatus.developmentComplete
+        ? `project-container/${project.id}`
+        : `/project/${project.id}/summary`
+    );
   }
 }
 </script>

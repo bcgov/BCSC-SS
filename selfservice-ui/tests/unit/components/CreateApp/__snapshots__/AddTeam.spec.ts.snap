@@ -1,0 +1,200 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddTeam.vue renders props when passed 1`] = `
+<div
+  class="mx-auto outer-card v-card v-sheet theme--light"
+>
+  <header
+    class="bc-subtitle v-sheet v-sheet--tile theme--dark v-toolbar v-toolbar--flat"
+    style="height: 64px;"
+  >
+    <div
+      class="v-toolbar__content"
+      style="height: 64px;"
+    >
+      <button
+        class="v-btn v-btn--flat v-btn--icon v-btn--round theme--dark v-size--default"
+        type="button"
+      >
+        <span
+          class="v-btn__content"
+        >
+          <i
+            aria-hidden="true"
+            class="v-icon notranslate mdi mdi-arrow-left theme--dark"
+          />
+        </span>
+      </button>
+       
+      <div
+        class="v-toolbar__title"
+      >
+        
+      </div>
+       
+      <div
+        class="flex-grow-1"
+      />
+    </div>
+  </header>
+   
+  <hr
+    aria-orientation="horizontal"
+    class="v-divider theme--light"
+    role="separator"
+  />
+   
+  <div
+    class="col col-12"
+  >
+    <div
+      class="container"
+    >
+      <div
+        class="row ma-5"
+      >
+        <div
+          class="col col-12"
+        >
+          <div
+            class="v-card v-card--flat v-sheet theme--light"
+          >
+            <h2
+              class="text-left tab-headline page-title-h2"
+            >
+              
+          
+        
+            </h2>
+             
+            <p
+              class="text-left page-description"
+            >
+              
+          
+        
+            </p>
+             
+            <!---->
+             
+            <div
+              class="v-card__actions mt-5"
+            >
+              <div
+                class="spacer"
+              />
+               
+              <button
+                class="btn team-roles v-btn v-btn--contained theme--light v-size--default primary normal"
+                name="button"
+                type="button"
+              >
+                <span
+                  class="v-btn__content"
+                >
+                  
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+         
+        <div
+          class="col"
+        >
+          <div
+            class="text-center"
+          >
+            <div
+              class="v-dialog__container text-left"
+              role="dialog"
+            >
+              <div
+                class="v-dialog__content"
+                role="document"
+                style="z-index: 0;"
+              >
+                <div
+                  class="v-dialog"
+                  style="width: 85%; display: none;"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+         
+        <div
+          class="col"
+        >
+          <div
+            class="v-dialog__container"
+            role="dialog"
+          >
+            <div
+              class="v-dialog__content"
+              role="document"
+              style="z-index: 0;"
+            >
+              <div
+                class="v-dialog v-dialog--persistent"
+                style="max-width: 400px; display: none;"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+   
+  <div
+    class="col col-12"
+  >
+    <div
+      class="ma-5 v-card v-card--flat v-sheet theme--light"
+    >
+      <hr
+        aria-orientation="horizontal"
+        class="v-divider theme--light"
+        role="separator"
+      />
+       
+      <div
+        class="v-card__actions"
+      >
+        <div
+          class="spacer"
+        />
+         
+        <button
+          class="btn back-btn v-btn v-btn--contained theme--light v-size--default secondary-btn normal"
+          name="button"
+          type="button"
+        >
+          <span
+            class="v-btn__content"
+          >
+            
+          
+        
+          </span>
+        </button>
+         
+        <button
+          class="btn white--text submit-team ml-6 v-btn v-btn--depressed theme--light v-size--default primary normal"
+          depressed=""
+          name="button"
+          type="button"
+        >
+          <span
+            class="v-btn__content"
+          >
+            
+          
+        
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;

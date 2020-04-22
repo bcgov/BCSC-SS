@@ -9,6 +9,7 @@ import PackageAndTestModule from './modules/PackageAndTest';
 import ClientIdModule from './modules/ClientID';
 import SharedModule from './modules/Shared';
 import TestAccountModule from './modules/TestAccount';
+import TeamRolesModule from './modules/TeamRoles';
 
 Vue.use(Vuex);
 
@@ -23,7 +24,8 @@ const store: StoreOptions<RootState> = {
     PackageAndTestModule,
     ClientIdModule,
     SharedModule,
-    TestAccountModule
+    TestAccountModule,
+    TeamRolesModule
   },
   strict: true
 };

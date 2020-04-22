@@ -20,13 +20,16 @@ All services have 2 defaults sets of endpoints:
 That are used to expose operational health information about the service, and meta information.
 """
 
+from flask_jwt_oidc import AuthError
 from flask_restplus import Api
 
+from ..exceptions import BusinessException
 from .meta import API as META_API
 from .oidc_config import API as OIDC_CONFIG_API
 from .ops import API as OPS_API
 from .project import API as PROJECT_API
 from .scope_package import API as SCOPEPACKAGE_API
+from .team import API as TEAM_API
 from .technical_req import API as TECHNICALREQ_API
 from .test_account import API as TESTACCOUNT_API
 from .user import API as USER_API
@@ -51,10 +54,24 @@ API = Api(
     security=['apikey'],
     authorizations=AUTHORIZATIONS)
 
+
+@API.errorhandler(BusinessException)
+def handle_business_exception(error: BusinessException):
+    """Handle Business exception."""
+    return {'message': error.error}, error.status_code
+
+
+@API.errorhandler(AuthError)
+def handle_auth_error(error: AuthError):
+    """Handle Business exception."""
+    return {'message': 'Access Denied'}, error.status_code
+
+
 API.add_namespace(OPS_API, path='/ops')
 API.add_namespace(META_API, path='/meta')
 API.add_namespace(USER_API, path='/user')
 API.add_namespace(PROJECT_API, path='/project/info')
+API.add_namespace(TEAM_API, path='/project/<int:project_id>/team')
 API.add_namespace(TECHNICALREQ_API, path='/project/<int:project_id>/technical-req')
 API.add_namespace(VALUES_API, path='/values')
 API.add_namespace(SCOPEPACKAGE_API, path='/scope-package')

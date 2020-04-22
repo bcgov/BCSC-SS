@@ -2,9 +2,8 @@
 
 exports[`ProjectContainer.vue renders props when passed 1`] = `
 <v-card-stub
-  class="mx-auto"
+  class="mx-auto outer-card"
   loaderheight="4"
-  style="max-width: 80%;"
   tag="div"
 >
   <v-container-stub
@@ -108,7 +107,9 @@ exports[`ProjectContainer.vue renders props when passed 1`] = `
               tag="div"
             >
               <v-card-text-stub>
-                Team Roles
+                <teamroles-stub
+                  id="0"
+                />
               </v-card-text-stub>
             </v-card-stub>
           </v-tab-item-stub>

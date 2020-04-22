@@ -15,17 +15,6 @@ exports[`DevProjectSummary.vue renders props when passed with gettors 1`] = `
     tag="header"
     tile="true"
   >
-    <v-btn-stub
-      activeclass=""
-      icon="true"
-      tag="button"
-      type="button"
-    >
-      <v-icon-stub>
-        mdi-arrow-left
-      </v-icon-stub>
-    </v-btn-stub>
-     
     <v-toolbar-title-stub>
       
     </v-toolbar-title-stub>
@@ -42,25 +31,41 @@ exports[`DevProjectSummary.vue renders props when passed with gettors 1`] = `
   <v-container-stub
     tag="div"
   >
-    <v-col-stub
-      cols="12"
-      flat=""
+    <v-row-stub
       tag="div"
     >
-      <v-card-stub
-        flat="true"
-        loaderheight="4"
+      <v-col-stub
+        cols="12"
+        flat=""
+        sm="8"
         tag="div"
       >
-        <v-list-item-content-stub
-          class="text-left padding-0"
+        <v-card-stub
+          flat="true"
+          loaderheight="4"
+          tag="div"
+        >
+          <v-list-item-content-stub
+            class="text-left padding-0"
+          />
+        </v-card-stub>
+      </v-col-stub>
+       
+      <v-col-stub
+        class="d-flex align-end flex-column-reverse mb-2"
+        cols="12"
+        sm="4"
+        tag="div"
+      >
+        <projectactions-stub
+          id="0"
         />
-      </v-card-stub>
-    </v-col-stub>
-     
-    <projectsummary-stub
-      id="0"
-    />
+      </v-col-stub>
+       
+      <projectsummary-stub
+        id="0"
+      />
+    </v-row-stub>
   </v-container-stub>
 </v-card-stub>
 `;

@@ -15,7 +15,7 @@
   },
   "projectInfo": {
     "ProjectInfoTitle": "Project Information",
-    "ProjectInfoTitleInfo": "<p>To receive access to the BC Services Card login API to use with your web application, we need to gather some information about the application you’re working with.  </p><p>  Collecting this information allows us to understand the purpose of your application or project within your organization and provide proper assistance to you as you move through from development to the live access request. </p>",
+    "ProjectInfoTitleInfo": "<p class='pageinfo'>To receive access to the BC Services Card login API , we need to gather some information about the application you’re working with. This allows us to understand the purpose of your application or project within your organization and provide proper assistance to you, through development to the live access request.</p>",
     "ProjectOrgTitle": "This API is available for organizations that fall within the BC Broader Public Sector (BPS).",
     "OrganizationName": "Organization name",
     "projectName": "Project name",
@@ -39,7 +39,7 @@
   },
   "technicalRequirements": {
     "technicalTitle": "Technical Requirements",
-    "technicalTitleInfo": "The authentication process with BC Services Card is through Open ID Connect (OIDC). The following parameters are required for us to initiate the connection.",
+    "technicalTitleInfo": "<p class='pageinfo'>The authentication process with BC Services Card is through Open ID Connect (OIDC). The following parameters are required for us to initiate the connection.</p>",
     "projectName": "Project name:",
     "inputAppText": "Add the URL of your application home page, or where users will go to understand what your application does.",
     "inputUrlText": "Input the URL(s) of your redirect location(s). These are potential URL addresses to which we could redirect your application on successful user authentication. If you have multiple redirects, use one field for each URL.",
@@ -57,13 +57,13 @@
     "btnSaveChanges": "Save Changes",
     "labelTestMethod": "Select your data security and format",
     "labelTestMethodHint": "Choose your signing and encryption methods for testing below. These options are available to facilitate your testing. Please note that when you move into a production environment, it will be required that you enable signing and encryption at that time.",
-    "SimpleJSONHint": "We return unsigned, unencrypted JSON format for easy testing",
     "SignedJWTHint": "We return a signed JWT for more security",
-    "SecureJWTHint": "We return a signed and encrypted JWT for maximum security"
+    "SecureJWTHint": "We return a signed and encrypted JWT for maximum security",
+    "AddURI": "+ Add another URI"
   },
   "selectPackage": {
     "pagetitle": "Select Package",
-    "pagetitleInfo": "<p>OIDC scopes are collections of user attributes which can be returned on successful authentication.</p>Select the most appropriate package of scopes for your use case, noting that the more attributes you require, the greater the overhead of complying with privacy regulations.</p><p><br /></p><p>The following standard scopes are supported :</p><p><ul ><li class='my-1'>openid - Unique identifier </li><li class='my-1'>profile - Given name and surname</li><li class='my-1'>email - Email address</li><li class='my-1'>address - Physical address (Street, locality, state or province, postal code and country) </li></ul></p>",
+    "pagetitleInfo": "<p class='pageinfo'>OIDC scopes are collections of user attributes which can be returned on successful authentication.</p>Select the most appropriate package of scopes for your use case, noting that the more attributes you require, the greater the overhead of complying with privacy regulations.</p><p><br /></p><p>The following standard scopes are supported :</p><p><ul ><li class='my-1'>openid - Unique identifier </li><li class='my-1'>profile - Given name and surname</li><li class='my-1'>email - Email address</li><li class='my-1'>address - Physical address (Street, locality, state or province, postal code and country) </li></ul></p>",
     "choosePackage": "Select your scope package",
     "description": "This package contains the following data:",
     "package1": "Package 1 - best fit for organizations looking for a digital signature",
@@ -76,9 +76,16 @@
     "btnCancel": "Cancel",
     "btnSaveChanges": "Save Changes"
   },
+  "team": {
+    "pageTitle": "Team",
+    "btnBack": "Go Back",
+    "btnNext": "Next",
+    "btnCancel": "Cancel",
+    "btnSaveChanges": "Save Changes"
+  },
   "testAccount": {
     "pagetitle": "Test Accounts",
-    "pageinfo": "In order to test your configuration, we would like to know how many test accounts you need for {package}. Please note the test data provided to you will be randomized unless you indicate you have preferred customization. If you select the randomized test account, you can expect the test accounts immediately or within X days.",
+    "pageinfo": "<p class='pageinfo'>In order to test your configuration, we would like to know how many test accounts you need for package. Please note the test data provided to you will be randomized unless you indicate you have preferred customization.</p>",
     "how_many_test_account": "Choose the number of test user accounts you require",
     "special_notes": "Special requests or notes",
     "specialNotesInfo": "<p>If you have any special requests for customized test account. Please contact IDIM Consulting or <a href='mailto:zorin.samji@gov.bc.ca'>Product Owner</a>.</p>",
@@ -89,13 +96,15 @@
   },
   "summaryPage": {
     "pagetitle": "Summary",
-    "subTitle": "<p>The details you entered are shown as a summary on this page. Please review the information to ensure that it is correct before submitting your request with the “Submit Request” button.</p><p><br /></p><p>If you need to make changes at this stage, you can edit the sections using the edit icons on this page.</p>",
+    "subTitle": "<p class='pageinfo mb-7'>This page is a summary of the details of your development request. </p><p><strong>Please note any changes will not be reflected until you submit/commit changes.</strong></p>",
+    "createSuccessMessage": "Your request was successfully received",
+    "updateSuccessMessage": "Your changes are successfully committed",
     "projectInfoTitle": "Project Information",
     "labelProjectTitle": "Project name",
     "labelOrganizationName": "Organization name",
-    "labelTechnicalContact": "Developer",
-    "labelManagerContact": "Manager ",
-    "labelCtoContact": "Executive Sponsor",
+    "developer": "Developer",
+    "manager": "Manager ",
+    "cto": "Executive Sponsor",
     "Next": "Next",
     "Back": "Go Back",
     "technicalReqTitle": "Technical Requirement",
@@ -110,6 +119,7 @@
     "labelSpecialReq": "Special request",
     "labelTestAccountNumber": "Accounts requested",
     "submitRequest": "Submit Request",
+    "commitChanges": "Commit Changes",
     "goBack": "Go Back",
     "disclaimerTitle": "Disclaimer",
     "disclaimerContent": "<h4>Warranty Disclaimer</h4><p></p><p>This information is provided as a public service by the Government of British Columbia, Box 9411, Victoria, British Columbia, Canada V8W 9V1.</p><p>This website and all of the information it contains are provided 'as is' without warranty of any kind, whether express or implied. All implied warranties, including, without limitation, implied warranties of merchantability, fitness for a particular purpose, and non-infringement, are hereby expressly disclaimed. Links and references to any other websites are provided for information only and listing shall not be taken as endorsement of any kind. The Government of British Columbia is not responsible for the content or reliability of the linked websites and does not endorse the content, products, services or views expressed within them.</p><h4>Limitation of Liabilities</h4><p>Under no circumstances will the Government of British Columbia be liable to any person or business entity for any direct, indirect, special, incidental, consequential, or other damages based on any use of this website or any other website to which this site is linked, including, without limitation, any lost profits, business interruption, or loss of programs or information, even if the Government of British Columbia has been specifically advised of the possibility of such damages.</p>",
@@ -131,9 +141,9 @@
     "labelDataPackageReqdHint": "Package of OIDC scopes (or user attributes) made available to your application on successful login",
     "labelTestingMethod": "Testing Method",
     "labelTestingMethodHint": "This is the method you chose for testing in development. Please note that a production environment will require signing and encryption.",
-    "SimpleJSON": "Simple JSON",
     "SignedJWT": "Signed JWT",
-    "SecureJWT": "Secure JWT"
+    "SecureJWT": "Secure JWT",
+    "teamTitle": "Team"
   },
   "ClientID": {
     "pagetitle": "API Key / Client ID",
@@ -156,12 +166,20 @@
     "pagetitle": "Projects",
     "tblTitleSi": "#",
     "tblTitleProjectName": "Project name",
-    "tblTitleProjectId": "ID",
+    "tblTitleReferenceNo": "Reference number",
     "tblTitlCreated": "Created",
     "tblTitleProjectStatus": "Project status",
     "tblTitleProjectActions": "Actions",
     "tblTitlrole": "My role",
-    "noData": "There are no projects to view. Add one to start "
+    "noData": "There are no projects to view. Add one to start ",
+    "roledraft": "Draft",
+    "roledevelopment": "Development",
+    "roledevelopmentComplete": "Development Complete",
+    "rolecomplianceChecks": "Compliance checks",
+    "roleawaitingApproval": "Awaiting approval",
+    "roleawaitingStagingKeys": "Awaiting staging keys",
+    "roleawaitingProductionUse": "Awaiting production use",
+    "rolereadyForFirstCitizenUse": "Ready for first citizen use"
   },
   "profile": {
     "pageTitle": "Profile",
@@ -188,9 +206,9 @@
     "txtgetStarted": "Get started"
   },
   "testAccountList": {
-    "pagetitle": "Add Test Accounts",
-    "pageinfo": "This page is for an IDIM representative to bulk load from a CSV file the test accounts needed for the Self Service Application. ",
-    "special_notes": "Please remember to copy and paste from the CSV file of the test bc services card virtual cards to be use in this system. PLEASE do not include the heading row which describes the column names.",
+    "pagetitle": "Load Test Accounts",
+    "pageinfo": "<h4>About Virtual Card test accounts</h4><p class=\"my-2\">This form allows you to upload test accounts to the BC Services Card Self-Service application. Users of this application can select one or more test accounts which will be provisioned from this test account pool. Test accounts are allocated discretely to the organization's project and will not be reused between projects.    </p><h4>Adding test accounts to the system</h4><p class=\"my-2\">As an IDIM representative, you are the user that can ensure there is a sufficient supply of virtual cards in this BC Services Card Self-Serve application so that users are not impeded from testing because of a lack of available test accounts.</p><p>To add test accounts, have a CSV file ready with your generated virtual card information in it. </p><ul><li> Copy from your CSV file and paste into the text area below. </li><li> Do not include the heading row which describes the column names.</li></ul>",
+    "special_notes": "Paste your CSV in this text box",
     "btnBack": "Go Back",
     "btnSaveChanges": "Load Test Account",
     "errorMessage": "Something went wrong.",
@@ -205,5 +223,53 @@
     "titleComms": "Communications",
     "titleAgreements": "Agreements",
     "titleLiveSummary": "Live Summary"
+  },
+  "teamRoles": {
+    "pagetitle": "Project team roles",
+    "pageInfo": "To begin your development, only the Developer is required. To move your project along the route to implementation in a production environment, a Manager and Executive Sponsor will be required.",
+    "tblHeadName": "Name",
+    "tblHeadMyRole": "Role",
+    "tblHeadEmail": "Email",
+    "tblHeadPhone": "Work phone",
+    "labelRoledeveloper": "Developer",
+    "labelRolemanager": "Manager",
+    "labelRolecto": "Executive Sponsor",
+    "btnAddTeamMember": "+ Add team member",
+    "deleteWarning": "You have chosen to remove a user from this project.<br/>Do you wish to proceed with deleting this user?"
+  },
+  "addTeamMember": {
+    "pagetitle": "Add a team member",
+    "pagetitleUpdate": "Update a team member",
+    "contactInfo": "Contact information",
+    "roleTitle": "Role",
+    "labelRoledeveloper": "Developer",
+    "labelRolemanager": "Manager",
+    "labelRolecto": "Executive Sponsor",
+    "btnCancel": "Cancel",
+    "btnSumbmit": "+ Add user",
+    "btnSumbmitSave": "Save",
+    "labelFirstName": "First name",
+    "labelLastName": "Last name",
+    "labelWorkEmail": "Work email",
+    "labelPhone": "Office phone number",
+    "errorTitle": "Please fix following errors",
+    "invalidDomain": "This email domain address you entered is not in our system of approved organizations. Please correct the email address or  <a href='/contact-us'>contact IDIM</a> to have the domain added to the system.",
+    "roleAlreadyAssigned": "This role is already assigned to another team member. Please select a different role or <a href='/contact-us'>contact IDIM</a> to change your project team membership.",
+    "emailAlreadyAssigned": "The email address you entered belongs to a user who already has been assigned in this project. An individual user can only have one project role.",
+    "labelRoleInfodeveloper": "The developer builds the integration with BC Services Card",
+    "labelRoleInfomanager": "The manager steers the integration through to production",
+    "labelRoleInfocto": "The Executive Sponsor attests to the integration application compliance"
+  },
+  "projectActions": {
+    "btnRequestLiveAccess": "Request live access",
+    "requestLiveAccessDialogTitle": "Request live access",
+    "requestLiveAccessDialogInfo": "<h3>You have chosen to request live access.</h3><p class='my-5'>This action will move your project into the next phase to begin the Live Access Request process.</p><p class='my-5 pr-2'>In this next phase, you will be guided through the process to understand and address the various categories of compliance before integrating with a live production-ready environment of BC Services Card data. A member of the Provincial Identity Information Management Program is always available to help BPS clients in completing the integration components.</p><p class='my-5'>The Provincial Identity Information Management Program is mandated to provide identity and authentication services using the BC Services Card to support citizen transactions with government services.</p><p class='my-5'><strong> Would you like to continue?</strong></p>",
+    "btnCancel": "Cancel",
+    "btnConfirm": "Request live access",
+    "labelDelete": "Delete project",
+    "btnDeleteConfirm": "Delete this project",
+    "btnDeleteCancel": "Cancel",
+    "deleteDialogTitle": "Delete this project",
+    "deleteDialogInfo": "<h3>You have chosen to delete this project</h4><p class='my-5'>Please note:</p><ul><li> Deleting this project will remove both the project and API from the system.</li><li> A project can only be deleted by a member of the project team while it is in the development state.</li><li>  Once you have marked development complete on your project, deletion is no longer possible. If you require a project deleted from this phase, please <a href='/contact-us'>contact us.</a></li></ul><p class='my-5 red--text'>Deleting a project is permanent and cannot be undone.</p><pclass='my-5 '>Do you wish to proceed with deleting this project?</p>"
   }
 }

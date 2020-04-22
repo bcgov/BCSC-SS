@@ -41,10 +41,13 @@ export const getters: GetterTree<KeyCloakState, RootState> = {
     return state.isClient;
   },
   isVerfiedUser(state) {
-    return state.fields;
+    return state.isVerfied;
   },
   filedsToShow(state) {
     return state.fields;
+  },
+  provider(state) {
+    return state.provider;
   },
   successStatus(state) {
     return state.successStatus;

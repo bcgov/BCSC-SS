@@ -37,11 +37,13 @@ export const actions: ActionTree<KeyCloakState, RootState> = {
         if (user && user.data && user.data.verified) {
           dispatch('isVerified', true);
           dispatch('filedsToShow', user.data.fieldsRequired);
+          dispatch('setProvider', user.data.provider);
           dispatch('setUserProfile', user.data.user);
           dispatch('userRedirect', { path, next, fromUrl });
           await UserService.updateUser();
         } else {
           dispatch('filedsToShow', user.data.fieldsRequired);
+          dispatch('setProvider', user.data.provider);
           dispatch('setUserProfile', user.data.user);
           dispatch('isVerified', false);
           router.push({ path: '/profile/complete' });
@@ -130,7 +132,7 @@ export const actions: ActionTree<KeyCloakState, RootState> = {
         fromUrl: '/profile/complete'
       });
     } catch (error) {
-      if (error.response.status === 403) {
+      if (error.response.status === 400 && error.response.errors) {
         commit('SET_PROFILE_DOMAIN_ERROR', true);
       } else {
         commit('SET_USER_ERROR', true);
@@ -152,6 +154,14 @@ export const actions: ActionTree<KeyCloakState, RootState> = {
    */
   filedsToShow({ commit }: any, fields: any) {
     commit('SET_FIELDS_TO_SHOW', fields);
+  },
+  /**
+   * setProvider
+   * @param {*} { commit }
+   * @param {*} provider
+   */
+  setProvider({ commit }: any, provider: string) {
+    commit('SET_PROVIDER', provider);
   },
   /**
    * clear message

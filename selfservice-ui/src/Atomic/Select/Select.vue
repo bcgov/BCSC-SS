@@ -3,7 +3,17 @@ action on your service, such as Download or Submit. */
 
 <template>
   <!-- <v-Select :value="value" @input="input" v-bind="$attrs"></v-Select> -->
-  <v-select :items="items" v-bind="$attrs" :label="label" @change="input" @input="input"></v-select>
+
+  <div class="bc-form-text">
+    <div class="text-left my-1">{{label}}</div>
+    <div
+      class="text-left mb-1 subtitle-2 bc-help-text"
+      v-if="helpText !==''"
+      :class="helpClass"
+    >{{helpText}}</div>
+
+    <v-select :items="items" v-bind="$attrs" :label="label" @change="input" @input="input" solo></v-select>
+  </div>
 </template>
 
 <script lang="ts">
@@ -31,6 +41,22 @@ export default class Select extends Vue {
     default: ''
   })
   private label!: string;
+
+  /**
+   *  helpText text
+   */
+  @Prop({
+    default: ''
+  })
+  private helpText!: string;
+
+  /**
+   *  helpText class
+   */
+  @Prop({
+    default: ''
+  })
+  private helpClass!: string;
 
   /**
    * input

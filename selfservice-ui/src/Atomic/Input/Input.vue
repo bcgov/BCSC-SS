@@ -2,17 +2,25 @@
 important action on your service, such as Download or Submit. */
 
 <template>
-  <v-text-field
-    :value="value"
-    :counter="counter"
-    :label="label"
-    :required="required"
-    @input="input"
-    v-bind="$attrs"
-    @blur="$emit('blur')"
-    class="input"
-    :outlined="outlined"
-  ></v-text-field>
+  <div class="bc-form-text">
+    <div class="text-left my-1">
+      {{ label }} <span v-if="optional" class="optional">*optional</span>
+    </div>
+    <div class="text-left mb-1 subtitle-2 bc-help-text" v-if="helpText !== ''">
+      {{ helpText }}
+    </div>
+    <v-text-field
+      :value="value"
+      :counter="counter"
+      :required="required"
+      @input="input"
+      v-bind="$attrs"
+      @blur="$emit('blur')"
+      class="input"
+      :outlined="outlined"
+      solo
+    ></v-text-field>
+  </div>
   <!-- outlined -->
 </template>
 
@@ -31,7 +39,7 @@ export default class Input extends Vue {
    *
    */
   @Prop({
-    default: false
+    default: false,
   })
   private counter!: boolean | string | number;
 
@@ -40,7 +48,7 @@ export default class Input extends Vue {
    * @values input, password
    */
   @Prop({
-    default: 'text'
+    default: 'text',
   })
   private type!: string;
 
@@ -48,7 +56,7 @@ export default class Input extends Vue {
    *  value for input
    */
   @Prop({
-    default: ''
+    default: '',
   })
   private value!: string;
 
@@ -56,7 +64,7 @@ export default class Input extends Vue {
    *  label text
    */
   @Prop({
-    default: ''
+    default: '',
   })
   private label!: string;
 
@@ -64,16 +72,30 @@ export default class Input extends Vue {
    *  required
    */
   @Prop({
-    default: false
+    default: false,
   })
   private required!: boolean;
   /**
    *  outlined
    */
   @Prop({
-    default: true
+    default: true,
   })
   private outlined!: boolean;
+  /**
+   *  helpText text
+   */
+  @Prop({
+    default: '',
+  })
+  private helpText!: string;
+  /**
+   *  optional text
+   */
+  @Prop({
+    default: false,
+  })
+  private optional!: boolean;
 
   /**
    * input
@@ -87,5 +109,18 @@ export default class Input extends Vue {
 </script>
 
 <style lang="scss" scoped>
-// @import './../../assets/styles/theme.scss';
+@import './../../assets/styles/theme.scss';
+
+.v-application .primary--text {
+  color: $BCgovBlue5 !important;
+  caret-color: $BCgovBlue5 !important;
+}
+.optional {
+  color: $BCgovABlue2;
+  font-size: 14px;
+  margin-left: 10px;
+}
+.bc-form-text {
+  width: 100%;
+}
 </style>

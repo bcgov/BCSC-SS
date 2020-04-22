@@ -1,7 +1,7 @@
 /** * Dashboard of app */
 
 <template>
-  <v-card class="mx-auto" style="max-width: 80%;">
+  <v-card class="mx-auto outer-card">
     <v-container>
       <v-row class="ma-5">
         <v-col cols="12" v-if="isLoading">
@@ -9,26 +9,36 @@
         </v-col>
         <v-col cols="12" v-else>
           <h2 class="text-left tab-headline">
-            {{
-            projectInfo && projectInfo.projectName
-            }}
+            {{ projectInfo && projectInfo.projectName }}
           </h2>
           <h4 class="text-left tab-headline font-weight-medium">
-            {{
-            projectInfo && projectInfo.organizationName
-            }}
+            {{ projectInfo && projectInfo.organizationName }}
           </h4>
         </v-col>
 
         <v-col cols="12">
           <v-tabs slider-color="d-none" v-model="selectedTab">
-            <v-tab class="font-weight-bold">{{ $t('projectContainer.titleDevSummary') }}</v-tab>
-            <v-tab class="font-weight-bold">{{ $t('projectContainer.titleTeamRoles') }}</v-tab>
-            <v-tab class="font-weight-bold">{{ $t('projectContainer.titlePrivacy') }}</v-tab>
-            <v-tab class="font-weight-bold">{{ $t('projectContainer.titleSecurity') }}</v-tab>
-            <v-tab class="font-weight-bold">{{ $t('projectContainer.titleComms') }}</v-tab>
-            <v-tab class="font-weight-bold">{{ $t('projectContainer.titleAgreements') }}</v-tab>
-            <v-tab class="font-weight-bold">{{ $t('projectContainer.titleLiveSummary') }}</v-tab>
+            <v-tab class="font-weight-bold">{{
+              $t('projectContainer.titleDevSummary')
+            }}</v-tab>
+            <v-tab class="font-weight-bold">{{
+              $t('projectContainer.titleTeamRoles')
+            }}</v-tab>
+            <v-tab class="font-weight-bold">{{
+              $t('projectContainer.titlePrivacy')
+            }}</v-tab>
+            <v-tab class="font-weight-bold">{{
+              $t('projectContainer.titleSecurity')
+            }}</v-tab>
+            <v-tab class="font-weight-bold">{{
+              $t('projectContainer.titleComms')
+            }}</v-tab>
+            <v-tab class="font-weight-bold">{{
+              $t('projectContainer.titleAgreements')
+            }}</v-tab>
+            <v-tab class="font-weight-bold">{{
+              $t('projectContainer.titleLiveSummary')
+            }}</v-tab>
             <v-tab-item class="custom-tabs-items">
               <v-card flat>
                 <v-card-text>
@@ -38,7 +48,7 @@
             </v-tab-item>
             <v-tab-item class="custom-tabs-items">
               <v-card flat>
-                <v-card-text>Team Roles</v-card-text>
+                <v-card-text><TeamRoles :id="id"/></v-card-text>
               </v-card>
             </v-tab-item>
             <v-tab-item class="custom-tabs-items">
@@ -82,12 +92,15 @@ import { Getter, namespace, Action } from 'vuex-class';
 import ProjectSummary from '@/components/CreateApp/ProjectSummary.vue';
 import Loading from '@/Atomic/Loading/Loading.vue';
 
+import TeamRoles from '@/components/TeamRoles/TeamRoles.vue';
+
 const ProjectInfoModule = namespace('ProjectInfoModule');
 
 @Component({
   components: {
     ProjectSummary,
-    Loading
+    Loading,
+    TeamRoles
   }
 })
 export default class ProjectContainer extends Vue {

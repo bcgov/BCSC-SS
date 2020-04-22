@@ -9,9 +9,7 @@
           <v-icon>mdi-arrow-left</v-icon>
         </v-btn>
         <v-toolbar-title>
-          {{
-          $t('technicalRequirements.technicalTitle')
-          }}
+          {{ $t('technicalRequirements.technicalTitle') }}
         </v-toolbar-title>
         <v-spacer></v-spacer>
       </v-app-bar>
@@ -22,138 +20,130 @@
           <v-row dense>
             <v-col cols="12" md="12">
               <v-card class="pa-4 pt-6 mb-4">
-                <v-card-title class="headline bc-padding-left-0 text-capitalize">
-                  {{
-                  getSingleProjectInfo && getSingleProjectInfo.projectName
-                  }}
+                <v-card-title
+                  class="headline bc-padding-left-0 text-capitalize"
+                >
+                  {{ getSingleProjectInfo && getSingleProjectInfo.projectName }}
                 </v-card-title>
-                <v-card-subtitle class="text-left bc-padding-left-0">
-                  {{
-                  $t('technicalRequirements.technicalTitleInfo')
-                  }}
+                <v-card-subtitle
+                  class="text-left bc-padding-left-0"
+                  v-html="$t('technicalRequirements.technicalTitleInfo')"
+                >
                 </v-card-subtitle>
               </v-card>
               <v-card class="pa-4 pt-6">
-                <v-card-subtitle class="text-left bc-padding-left-0">
-                  {{
-                  $t('technicalRequirements.inputAppText')
-                  }}
-                </v-card-subtitle>
                 <Input
                   v-model="clientUri"
                   :label="$t('technicalRequirements.labelApplicationUrl')"
                   type="text"
                   :rules="[rules.required, rules.url, rules.maxLength(500)]"
+                  :helpText="$t('technicalRequirements.inputAppText')"
                 />
-                <!-- <div class="col-12"> -->
-                <v-card-subtitle class="text-left bc-padding-left-0">
-                  {{
-                  $t('technicalRequirements.inputUrlText')
-                  }}
-                </v-card-subtitle>
-                <!-- </div> -->
-                <!-- <div
+
+                <div class="text-left my-1">
+                  {{ $t('technicalRequirements.labelRedirectUrl') }}
+                </div>
+                <div
                   v-for="(redirectUri, index) in redirectUris"
                   v-bind:key="index"
-                  class="row v-form px-4"
-                >-->
+                  class="row v-form px-4 "
+                >
+                  <div class="redirect-div">
+                    <Input
+                      v-model="redirectUris[index]"
+                      type="text"
+                      :rules="[rules.required, rules.urlLocalHost]"
+                      class="addUri"
+                      outlined
+                    />
+                  </div>
+                  <div class="clear-icon">
+                    <v-icon class="ml-2  " large="" @click="clearUri(index)"
+                      >mdi-close</v-icon
+                    >
+                  </div>
+                </div>
 
-                <v-text-field
-                  v-model="redirectUris[0]"
-                  :label="$t('technicalRequirements.labelRedirectUrl')"
-                  type="text"
-                  :rules="[rules.required, rules.url]"
-                  class="addUri"
-                  outlined
-                ></v-text-field>
-                <!-- :rules="[rules.required]" -->
-                <!-- </div> -->
+                <div @click="addUri()" class="add-url text-left">
+                  {{ $t('technicalRequirements.AddURI') }}
+                </div>
+                <v-card-title class="text-left bc-padding-left-0">
+                  {{ $t('technicalRequirements.labelTestMethod') }}
+                </v-card-title>
                 <v-card-subtitle class="text-left bc-padding-left-0">
-                  {{
-                  $t('technicalRequirements.labelTestMethod')
-                  }}
-                </v-card-subtitle>
-                <v-card-subtitle class="text-left bc-padding-left-0">
-                  {{
-                  $t('technicalRequirements.labelTestMethodHint')
-                  }}
+                  {{ $t('technicalRequirements.labelTestMethodHint') }}
                 </v-card-subtitle>
 
                 <v-card-subtitle class="text-left bc-padding-left-0">
-                  <v-radio-group v-model="signingEncryptionType" :mandatory="false">
-                    <div class="small-hint">{{$t('technicalRequirements.SimpleJSONHint')}}</div>
-                    <v-radio label="Simple JSON" :value="algorithamBase.SimpleJSON"></v-radio>
-                    <div class="small-hint">{{$t('technicalRequirements.SignedJWTHint')}}</div>
-                    <v-radio label="Signed JWT" :value="algorithamBase.SignedJWT">></v-radio>
+                  <v-radio-group
+                    v-model="signingEncryptionType"
+                    :mandatory="false"
+                  >
+                    <v-radio
+                      label="Signed JWT"
+                      :value="algorithamBase.SignedJWT"
+                    ></v-radio>
+                    <div class="small-hint radio-help">
+                      {{ $t('technicalRequirements.SignedJWTHint') }}
+                    </div>
                     <div
                       class="row pad-radio"
                       v-if="signingEncryptionType === algorithamBase.SignedJWT"
                     >
                       <div class="col-12 col-md-5">
-                        <v-card-subtitle class="text-left bc-padding-left-0 pad-0">
-                          {{
-                          $t('technicalRequirements.labelSignedResponseAlgHint')
-                          }}
-                        </v-card-subtitle>
-                      </div>
-                      <div class="col-12 col-md-5">
                         <Select
                           v-model="signedResponseAlg"
                           :label="
-                        $t(
-                          'technicalRequirements.labelSignedResponseAlg'
-                        )
-                      "
+                            $t('technicalRequirements.labelSignedResponseAlg')
+                          "
                           :items="algorithm"
                           :rules="[rules.required]"
                           outlined
+                          :helpText="
+                            $t(
+                              'technicalRequirements.labelSignedResponseAlgHint'
+                            )
+                          "
                         />
                       </div>
                     </div>
-                    <div class="small-hint">{{$t('technicalRequirements.SecureJWTHint')}}</div>
-                    <v-radio label="Secure JWT" :value="algorithamBase.SecureJWT">></v-radio>
+
+                    <v-radio
+                      label="Secure JWT"
+                      :value="algorithamBase.SecureJWT"
+                    ></v-radio>
+                    <div class="small-hint radio-help">
+                      {{ $t('technicalRequirements.SecureJWTHint') }}
+                    </div>
                   </v-radio-group>
                 </v-card-subtitle>
-                <div v-if="signingEncryptionType === algorithamBase.SecureJWT" class="pad-radio">
-                  <v-card-subtitle class="text-left bc-padding-left-0">
-                    {{
-                    $t('technicalRequirements.JWKSText')
-                    }}
-                  </v-card-subtitle>
+                <div
+                  v-if="signingEncryptionType === algorithamBase.SecureJWT"
+                  class="pad-radio"
+                >
                   <Input
                     v-model="jwksUri"
                     :label="$t('technicalRequirements.labelJWKSUrl')"
                     type="text"
                     :rules="[rules.required, rules.url, rules.maxLength(500)]"
-                    class="pt-6"
+                    :helpText="$t('technicalRequirements.JWKSText')"
                   />
                   <div class="row">
-                    <div class="col-12 col-md-5">
-                      <v-card-subtitle class="text-left bc-padding-left-0">
-                        {{
-                        $t('technicalRequirements.labelEncryptedResponseAlgHint')
-                        }}
-                      </v-card-subtitle>
-                    </div>
-                    <v-spacer />
-                    <div class="col-12 col-md-5">
-                      <v-card-subtitle class="text-left bc-padding-left-0">
-                        {{
-                        $t('technicalRequirements.labelSignedResponseAlgHint')
-                        }}
-                      </v-card-subtitle>
-                    </div>
                     <div class="col-12 col-md-5">
                       <Select
                         v-model="encryptedResponseAlg"
                         :label="
-                        $t(
-                          'technicalRequirements.labelEncryptedResponseAlg'
-                        )
-                      "
+                          $t('technicalRequirements.labelEncryptedResponseAlg')
+                        "
                         :items="algorithm"
                         :rules="[rules.required]"
                         outlined
+                        :helpText="
+                          $t(
+                            'technicalRequirements.labelEncryptedResponseAlgHint'
+                          )
+                        "
+                        helpClass="mb-9"
                       />
                     </div>
                     <v-spacer />
@@ -161,14 +151,14 @@
                       <Select
                         v-model="signedResponseAlg"
                         :label="
-                        $t(
-                          'technicalRequirements.labelSignedResponseAlg'
-                        )
-                      "
+                          $t('technicalRequirements.labelSignedResponseAlg')
+                        "
                         :items="algorithm"
                         :rules="[rules.required]"
                         outlined
-                        class="col-6"
+                        :helpText="
+                          $t('technicalRequirements.labelSignedResponseAlgHint')
+                        "
                       />
                     </div>
                   </div>
@@ -179,11 +169,11 @@
                   <v-spacer></v-spacer>
                   <Button @click="goBack()" aria-label="Back Button" secondary>
                     {{
-                    $t(
-                    showWizardExperience()
-                    ? 'technicalRequirements.btnBack'
-                    : 'technicalRequirements.btnCancel'
-                    )
+                      $t(
+                        showWizardExperience()
+                          ? 'technicalRequirements.btnBack'
+                          : 'technicalRequirements.btnCancel'
+                      )
                     }}
                   </Button>
                   <Button
@@ -194,11 +184,11 @@
                     @click="addTechnicalReq()"
                   >
                     {{
-                    $t(
-                    showWizardExperience()
-                    ? 'technicalRequirements.btnNext'
-                    : 'technicalRequirements.btnSaveChanges'
-                    )
+                      $t(
+                        showWizardExperience()
+                          ? 'technicalRequirements.btnNext'
+                          : 'technicalRequirements.btnSaveChanges'
+                      )
                     }}
                   </Button>
                 </v-card-actions>
@@ -227,7 +217,7 @@ const ProjectInfoModule = namespace('ProjectInfoModule');
 const SharedModule = namespace('SharedModule');
 
 @Component({
-  components: { Input, Button, Select, Loading }
+  components: { Input, Button, Select, Loading },
 })
 export default class AddTechnicalReq extends Vue {
   @Prop({ default: 0 })
@@ -266,7 +256,7 @@ export default class AddTechnicalReq extends Vue {
   private signedResponseAlg: string = 'RS256';
   private algorithm: any = algorithm;
   private blockRemoval = true;
-  private signingEncryptionType: number = algorithamBase.SimpleJSON;
+  private signingEncryptionType: number = algorithamBase.SignedJWT;
   private algorithamBase: any = algorithamBase;
 
   // private id: string = '';
@@ -298,10 +288,7 @@ export default class AddTechnicalReq extends Vue {
         this.signingEncryptionType === algorithamBase.SecureJWT
           ? this.encryptedResponseAlg
           : null,
-      signedResponseAlg:
-        this.signingEncryptionType === algorithamBase.SimpleJSON
-          ? null
-          : this.signedResponseAlg
+      signedResponseAlg: this.signedResponseAlg,
     };
 
     if (this.isEditMode && this.TechnicalReqId !== 0) {
@@ -340,7 +327,7 @@ export default class AddTechnicalReq extends Vue {
     }
   }
   private goBack() {
-    const redirectPage = this.showWizardExperience() ? 'info' : 'summary';
+    const redirectPage = this.showWizardExperience() ? 'team' : 'summary';
     this.redirectFromSummaryPage(false);
     this.$router.push(`/project/${this.projectId}/${redirectPage}/`);
   }
@@ -351,27 +338,45 @@ export default class AddTechnicalReq extends Vue {
     return true;
   }
 
-  // commented out now only one redirect URL
-  // private addUri() {
-  //   const checkEmptyLines = this.redirectUris.filter((uri: any) => uri === '');
-  //   if (checkEmptyLines.length >= 1 && this.redirectUris.length > 0) {
-  //     return;
-  //   }
-  //   this.redirectUris.push('');
-  // }
-  // private clearUri(uriId: number) {
-  //   this.blockRemoval = this.redirectUris.length <= 1;
-  //   if (!this.blockRemoval) {
-  //     this.redirectUris.splice(uriId, 1);
-  //   }
-  // }
+  private addUri() {
+    const checkEmptyLines = this.redirectUris.filter((uri: any) => uri === '');
+
+    if (checkEmptyLines.length >= 1 || this.redirectUris.length >= 10) {
+      return;
+    }
+
+    this.redirectUris.push('');
+  }
+  private clearUri(uriId: number) {
+    this.blockRemoval = this.redirectUris.length <= 1;
+    if (!this.blockRemoval) {
+      this.redirectUris.splice(uriId, 1);
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
+@import './../../assets/styles/theme.scss';
 .pad-radio {
   padding-left: 33px;
 }
 .pad-0 {
   padding: 0;
+}
+.radio-help {
+  margin-top: -11px;
+  margin-left: 30px;
+  margin-bottom: 10px;
+}
+.add-url {
+  margin-left: 7px;
+  color: $BCgovBlue10;
+  cursor: pointer;
+}
+.redirect-div {
+  width: 95%;
+}
+.clear-icon {
+  margin-top: 15px;
 }
 </style>

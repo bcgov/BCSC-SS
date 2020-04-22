@@ -50,7 +50,11 @@
           <v-btn text to="/" link dark class="mr-2 login-btn">Login</v-btn>
         </li>
         <li v-for="item in items" :key="item.title">
-          <router-link :to="item.link" v-if="checkRole(item)">{{item.title}}</router-link>
+          <router-link :to="item.link" v-if="checkRole(item)">
+            {{
+            item.title
+            }}
+          </router-link>
         </li>
       </ul>
     </nav>
@@ -85,7 +89,8 @@ export default class Header extends Vue {
   private hideMenuInPage: boolean = !this.hideMenu;
   private items: any = [
     { title: 'Home', icon: 'mdi-home', link: '/' },
-    { title: 'Projects', link: '/dashboard' },
+    { title: 'Dashboard', link: '/dashboard' },
+    { title: 'Help', link: '/help' },
     {
       title: 'Load test accounts',
       link: '/add-test-account',

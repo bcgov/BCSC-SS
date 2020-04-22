@@ -160,18 +160,24 @@ exports[`ClientID.vue renders props when passed with gettors 1`] = `
                     class="text-left"
                   >
                     
+                  
+                
                   </th>
                    
                   <th
                     class="text-left"
                   >
                     
+                  
+                
                   </th>
                    
                   <th
                     class="text-left"
                   >
                     
+                  
+                
                   </th>
                 </tr>
               </thead>
@@ -374,18 +380,24 @@ exports[`ClientID.vue renders props when passed with gettors 2`] = `
                     class="text-left"
                   >
                     
+                  
+                
                   </th>
                    
                   <th
                     class="text-left"
                   >
                     
+                  
+                
                   </th>
                    
                   <th
                     class="text-left"
                   >
                     
+                  
+                
                   </th>
                 </tr>
               </thead>

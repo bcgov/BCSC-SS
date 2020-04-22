@@ -7,21 +7,36 @@
       <v-col cols="12" md="6" class="home-img"></v-col>
       <v-col cols="12" md="6" class="text-left">
         <v-card flat>
-          <h2 class="second-headline">{{$t('home.txtFitForOrganization')}}</h2>
-          <div v-html="$t('home.txtsubcontent1')" class="second-sub-content"></div>
-          <div v-html="$t('home.txtsubcontent2')" class="second-sub-content"></div>
-          <div v-html="$t('home.txtsubcontent3')" class="second-sub-content"></div>
+          <h2 class="second-headline">
+            {{ $t('home.txtFitForOrganization') }}
+          </h2>
+          <div
+            v-html="$t('home.txtsubcontent1')"
+            class="second-sub-content"
+          ></div>
+          <div
+            v-html="$t('home.txtsubcontent2')"
+            class="second-sub-content"
+          ></div>
+          <div
+            v-html="$t('home.txtsubcontent3')"
+            class="second-sub-content"
+          ></div>
 
-          <h3 class="third-h3">{{$t('home.txtsubTitle2')}}</h3>
+          <h3 class="third-h3">{{ $t('home.txtsubTitle2') }}</h3>
           <div v-html="$t('home.txtsubcontent4')" class="subcontent3"></div>
           <v-card-actions class="btn-actions">
-            <Button class="btn-all" color="#fcba19 !important">{{ $t('home.btnLearmore') }}</Button>
-            <Button class="btn-all getting-start-btn" @click="$router.push('/dashboard/')">
-              {{
-              $t(
-              'home.txtgetStarted'
-              )
-              }}
+            <Button
+              class="btn-all"
+              color="#fcba19 !important"
+              @click="$router.push('/help')"
+              >{{ $t('home.btnLearmore') }}</Button
+            >
+            <Button
+              class="btn-all getting-start-btn"
+              @click="$router.push('/dashboard/')"
+            >
+              {{ $t('home.txtgetStarted') }}
             </Button>
           </v-card-actions>
         </v-card>
@@ -79,7 +94,7 @@ export default class HelloWorld extends Vue {}
 }
 .home-img {
   background-position: center;
-  background-image: url('/img/login_with_mobile_card.png');
+  background-image: url('/img/login_with_mobile_card_mobile.png');
   @include lg {
     background-image: url('/img/login_with_mobile_card-500.png');
   }

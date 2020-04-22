@@ -72,11 +72,7 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
           >
             <div
               class="v-list-item__content"
-            >
-              
-              
-            
-            </div>
+            />
           </div>
         </div>
          
@@ -379,11 +375,7 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
           >
             <div
               class="v-list-item__content"
-            >
-              
-              
-            
-            </div>
+            />
           </div>
         </div>
          
@@ -686,11 +678,7 @@ exports[`TestAccountRequest.vue submit form with selected package on submit clic
           >
             <div
               class="v-list-item__content"
-            >
-              
-              
-            
-            </div>
+            />
           </div>
         </div>
          

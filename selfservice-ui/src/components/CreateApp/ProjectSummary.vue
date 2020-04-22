@@ -1,9 +1,26 @@
-/** * TestAccountRequest component */
+/** * ProjectSummary component */
 
 <template>
   <div>
     <Loading v-if="isLoading" />
     <v-row v-else>
+      <v-alert
+        type="success"
+        class="alert-top text-left alert-msg"
+        dense
+        outlined
+        v-if="isCreated"
+        >{{ $t('summaryPage.createSuccessMessage') }}</v-alert
+      >
+
+      <v-alert
+        type="success"
+        class="alert-top text-left alert-msg"
+        dense
+        outlined
+        v-if="isUpdated"
+        >{{ $t('summaryPage.updateSuccessMessage') }}</v-alert
+      >
       <v-col cols="12" flat>
         <ClientID
           :id="projectId"
@@ -13,6 +30,13 @@
       </v-col>
       <v-col cols="12" flat>
         <ProjectInfoSummary :id="projectId" />
+      </v-col>
+      <v-col cols="12" flat>
+        <TeamSummary
+          :id="projectId"
+          :team="team"
+          :isTeamAvailable="isTeamAvailable"
+        />
       </v-col>
       <v-col cols="12" flat>
         <TechnicalReqSummary
@@ -46,14 +70,16 @@
           outlined
           class="text-left"
           v-if="showCannotSubmitError"
-        >{{$t('summaryPage.cantSubmitErrorMessage')}}</v-alert>
+          >{{ $t('summaryPage.cantSubmitErrorMessage') }}</v-alert
+        >
         <v-alert
           type="error"
           dense
           outlined
           class="text-left"
           v-if="showSystemError"
-        >{{$t('summaryPage.systemError')}}</v-alert>
+          >{{ $t('summaryPage.systemError') }}</v-alert
+        >
       </v-col>
       <v-col cols="12">
         <v-card flat class="mt-1">
@@ -65,13 +91,20 @@
               :aria-label="$t('summaryPage.goBack')"
               secondary
               class="back-btn"
-            >{{ $t('summaryPage.goBack') }}</Button>
+              v-if="isDraft"
+              >{{ $t('summaryPage.goBack') }}</Button
+            >
             <Button
               :loading="isLoading"
               class="white--text submit-package ml-6"
               depressed
               @click="showDisclimer"
-            >{{ $t('summaryPage.submitRequest') }}</Button>
+              >{{
+                isDraft
+                  ? $t('summaryPage.submitRequest')
+                  : $t('summaryPage.commitChanges')
+              }}</Button
+            >
           </v-card-actions>
         </v-card>
       </v-col>
@@ -80,11 +113,9 @@
     <div class="text-center">
       <v-dialog v-model="dialog" persistent width="70%" class="text-left">
         <v-card>
-          <v-card-title class="bc-subtitle padding-0" primary-title>
-            {{
+          <v-card-title class="bc-subtitle padding-0" primary-title>{{
             $t('summaryPage.disclaimerTitle')
-            }}
-          </v-card-title>
+          }}</v-card-title>
 
           <v-card-text class="text-left">
             <div v-html="$t('summaryPage.disclaimerContent')"></div>
@@ -98,12 +129,14 @@
               @click="dialog = false"
               aria-label="Back Button"
               secondary
-            >{{ $t('summaryPage.btnAgreeBack') }}</Button>
+              >{{ $t('summaryPage.btnAgreeBack') }}</Button
+            >
             <Button
               class="white--text submit-package ml-6"
               depressed
               @click="submitFinalRequest"
-            >{{ $t('summaryPage.btnAgree') }}</Button>
+              >{{ $t('summaryPage.btnAgree') }}</Button
+            >
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -113,18 +146,20 @@
 <script lang="ts">
 import { Component, Vue, Watch, Prop } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
-import { ProjectUserModel } from '@/models/ProjectInfoModel';
 import Button from '@/Atomic/Button/Button.vue';
 import TextArea from '@/Atomic/TextArea/TextArea.vue';
 import Loading from '@/Atomic/Loading/Loading.vue';
 import ClientID from '@/components/CreateApp/ClientID.vue';
 import TestAccountSummary from '@/components/CreateApp/TestAccountSummary.vue';
 import ProjectInfoSummary from '@/components/CreateApp/ProjectInfoSummary.vue';
+import TeamSummary from '@/components/CreateApp/TeamSummary.vue';
 import TechnicalReqSummary from '@/components/CreateApp/TechnicalReqSummary.vue';
 import PackageSelectSummary from '@/components/CreateApp/PackageSelectSummary.vue';
+import { projectStatus, projectRoles } from '@/constants/enums';
 
-const TechnicalReqModule = namespace('TechnicalReqModule');
 const ProjectInfoModule = namespace('ProjectInfoModule');
+const TeamModule = namespace('TeamRolesModule');
+const TechnicalReqModule = namespace('TechnicalReqModule');
 // const PackageAndTestModule = namespace('PackageAndTestModule');
 const SharedModule = namespace('SharedModule');
 
@@ -136,16 +171,22 @@ const SharedModule = namespace('SharedModule');
     ClientID,
     TestAccountSummary,
     ProjectInfoSummary,
+    TeamSummary,
     TechnicalReqSummary,
-    PackageSelectSummary
-  }
+    PackageSelectSummary,
+  },
 })
-export default class TestAccountRequest extends Vue {
+export default class ProjectSummary extends Vue {
   @Prop({ default: 0 })
   public id!: number;
 
   @ProjectInfoModule.Action('clearSubmitProjectStatus')
   public clearSubmitProjectStatus!: any;
+
+  @TeamModule.Getter('getTeamList')
+  public team!: any;
+  @TeamModule.Action('loadTeam')
+  public loadTeam!: any;
 
   @TechnicalReqModule.Getter('getTechnicalReq')
   public technicalReq!: any;
@@ -155,36 +196,52 @@ export default class TestAccountRequest extends Vue {
   @ProjectInfoModule.Action('submitProject') public submitProject!: any;
   @SharedModule.Action('redirectFromSummaryPage')
   public redirectFromSummaryPage!: any;
+  @SharedModule.Getter('isRedirectFromSummaryPage')
+  public isRedirectFromSummaryPage!: boolean;
 
+  @ProjectInfoModule.Getter('getSingleProjectInfo')
+  public getSingleProjectInfo!: any;
   @ProjectInfoModule.Getter('getFinalProjectSubmissionStatus')
   public getFinalProjectSubmissionStatus!: any;
 
   private isLoading: boolean = true;
   private projectId: number = this.id || 0;
   private dialog: boolean = false;
+  private isTeamAvailable: boolean = false;
   private isTechnicalInfoAvailable: boolean = false;
   private canSubmit: boolean = false;
   private showCannotSubmitError: boolean = false;
   private showTestAccountWarning: boolean = false;
   private showSystemError: boolean = false;
   private componentKey: number = 0;
+  private isDraft: boolean = false;
+  private isCreated: boolean = false;
+  private isUpdated: boolean = false;
 
   private selectedPackage: any = {
     claimNames: '',
     description: '',
     id: '',
-    packageName: ''
+    packageName: '',
   };
 
   @Watch('getFinalProjectSubmissionStatus')
   private ongetFinalProjectSubmissionStatusChanged(val: any) {
-    const { finalErrorStatus, finalSuccessStatus, testAccountSuccess } = val;
+    const {
+      finalErrorStatus,
+      finalSuccessStatus,
+      testAccountSuccess,
+      isCreated,
+      isUpdated,
+    } = val;
     if (finalSuccessStatus) {
+      this.isCreated = isCreated;
+      this.isUpdated = isUpdated;
       this.hideDisclimer();
       this.loadFullData();
       this.$vuetify.goTo(0, {
         duration: 1000,
-        easing: 'easeInOutCubic'
+        easing: 'easeInOutCubic',
       });
       this.showTestAccountWarning = !testAccountSuccess;
     } else if (finalErrorStatus) {
@@ -194,12 +251,44 @@ export default class TestAccountRequest extends Vue {
     this.clearSubmitProjectStatus();
   }
 
+  @Watch('team')
+  private onTeamChanged(val: any) {
+    this.setCanSubmit();
+  }
+
   @Watch('technicalReq')
   private ongetTechnicalReqInfoChanged(val: any) {
+    this.setCanSubmit();
+  }
+
+  @Watch('getSingleProjectInfo')
+  private ongetSingleProjectInfoChanged(val: any) {
+    if (val) {
+      this.isDraft = val.statusId === projectStatus.draft;
+
+      if (
+        this.isRedirectFromSummaryPage &&
+        val.statusId === projectStatus.development
+      ) {
+        this.scrollToBottom();
+      }
+      this.redirectFromSummaryPage(true);
+    }
+  }
+
+  private setCanSubmit() {
     this.isLoading = false;
-    this.isTechnicalInfoAvailable = val && val.id ? true : false;
+    this.isTeamAvailable = this.team && this.team.length > 0;
+    this.isTechnicalInfoAvailable =
+      this.technicalReq && this.technicalReq.id ? true : false;
     this.canSubmit =
-      val && val.id && val.scopePackageId && val.noOfTestAccount ? true : false;
+      this.technicalReq &&
+      this.technicalReq.id &&
+      this.technicalReq.scopePackageId &&
+      this.technicalReq.noOfTestAccount &&
+      this.team.length > 0
+        ? true
+        : false;
   }
 
   private hideDisclimer() {
@@ -238,11 +327,17 @@ export default class TestAccountRequest extends Vue {
     this.loadFullData();
   }
 
+  private scrollToBottom() {
+    this.$vuetify.goTo(document.body.scrollHeight, {
+      duration: 1000,
+      easing: 'easeInOutCubic',
+    });
+  }
+
   private loadFullData() {
     this.showSystemError = false;
-
+    this.loadTeam(this.id);
     this.loadTechnicalReqDetails(this.id);
-    this.redirectFromSummaryPage(true);
 
     this.componentKey = this.componentKey + 1;
   }
@@ -265,5 +360,8 @@ export default class TestAccountRequest extends Vue {
 .text-center {
   text-align: center !important;
 }
+.alert-msg {
+  width: 100%;
+  margin: 10px 15px;
+}
 </style>
-

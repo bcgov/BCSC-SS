@@ -3,7 +3,9 @@
 <template>
   <v-card
     class="mt-5"
-    :class="showCannotSubmitError  && !isTechnicalInfoAvailable ? 'red-border' : '' "
+    :class="
+      showCannotSubmitError && !isTechnicalInfoAvailable ? 'red-border' : ''
+    "
   >
     <v-toolbar dense class="bc-subtitle-2" dark>
       <v-card-title>
@@ -14,9 +16,7 @@
     <v-list dense class="px-5">
       <v-list-item>
         <v-list-item-content class="pr-30">
-          {{
-          $t('summaryPage.labelApplicationUrl')
-          }}
+          {{ $t('summaryPage.labelApplicationUrl') }}
           <span
             class="small-hint pad-50"
             v-html="$t('summaryPage.applicationUrlHint')"
@@ -32,9 +32,7 @@
       <v-divider></v-divider>
       <v-list-item>
         <v-list-item-content class="align-self-start pr-30">
-          {{
-          $t('summaryPage.labelRedirectUrl')
-          }}
+          {{ $t('summaryPage.labelRedirectUrl') }}
           <span
             class="small-hint pad-50"
             v-html="$t('summaryPage.labelRedirectUrlHint')"
@@ -50,9 +48,7 @@
       <v-divider></v-divider>
       <v-list-item>
         <v-list-item-content class="pr-30">
-          {{
-          $t('summaryPage.labelTestingMethod')
-          }}
+          {{ $t('summaryPage.labelTestingMethod') }}
           <span
             class="small-hint pad-50"
             v-html="$t('summaryPage.labelTestingMethodHint')"
@@ -61,17 +57,21 @@
 
         <v-list-item-content class="align-end">
           <div v-if="technicalReq.signingEncryptionType">
-            <v-icon small class="mr-1">mdi-link</v-icon>
-            {{ $t(`summaryPage.${getTestingMethodName(technicalReq.signingEncryptionType)}`) }}
+            <v-icon small class="mr-1">mdi-format-list-checks</v-icon>
+            {{
+            $t(
+            `summaryPage.${getTestingMethodName(
+            technicalReq.signingEncryptionType
+            )}`
+            )
+            }}
           </div>
         </v-list-item-content>
       </v-list-item>
-      <v-divider v-if="technicalReq.signingEncryptionType ===3"></v-divider>
-      <v-list-item v-if="technicalReq.signingEncryptionType ===3">
+      <v-divider v-if="technicalReq.signingEncryptionType === 3"></v-divider>
+      <v-list-item v-if="technicalReq.signingEncryptionType === 3">
         <v-list-item-content class="pr-30">
-          {{
-          $t('summaryPage.labelJWKSUrl')
-          }}
+          {{ $t('summaryPage.labelJWKSUrl') }}
           <span
             class="small-hint pad-50"
             v-html="$t('summaryPage.labelJWKSUrlHint')"
@@ -85,12 +85,10 @@
           </div>
         </v-list-item-content>
       </v-list-item>
-      <v-divider v-if="technicalReq.signingEncryptionType ===3"></v-divider>
-      <v-list-item v-if="technicalReq.signingEncryptionType ===3">
+      <v-divider v-if="technicalReq.signingEncryptionType === 3"></v-divider>
+      <v-list-item v-if="technicalReq.signingEncryptionType === 3">
         <v-list-item-content class="pr-30">
-          {{
-          $t('summaryPage.labelEncryptedResponseAlg')
-          }}
+          {{ $t('summaryPage.labelEncryptedResponseAlg') }}
           <span
             class="small-hint pad-50"
             v-html="$t('summaryPage.labelEncryptedResponseAlgHint')"
@@ -105,12 +103,10 @@
           </v-list-item-content>
         </v-list-item-content>
       </v-list-item>
-      <v-divider v-if="technicalReq.signingEncryptionType !==1"></v-divider>
-      <v-list-item v-if="technicalReq.signingEncryptionType !==1">
+      <v-divider v-if="technicalReq.signingEncryptionType !== 1"></v-divider>
+      <v-list-item v-if="technicalReq.signingEncryptionType !== 1">
         <v-list-item-content class="pr-30">
-          {{
-          $t('summaryPage.labelSignedResponseAlg')
-          }}
+          {{ $t('summaryPage.labelSignedResponseAlg') }}
           <span
             class="small-hint pad-50"
             v-html="$t('summaryPage.labelSignedResponseAlgHint')"
@@ -144,13 +140,10 @@ export default class TechnicalReqSummary extends Vue {
   @Prop({ default: false })
   public isTechnicalInfoAvailable!: boolean;
 
-  private testMethod: any = [
-    { 1: 'SimpleJSON', 2: 'SignedJWT', 3: 'SecureJWT' }
-  ];
+  private testMethod: any = [{ 1: 'SignedJWT', 2: 'SecureJWT' }];
 
   private getTestingMethodName(signingEncryptionType: any) {
-    return this.testMethod[0][signingEncryptionType] || 'SimpleJSON';
+    return this.testMethod[0][signingEncryptionType] || 'SignedJWT';
   }
 }
 </script>
-

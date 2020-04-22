@@ -12,7 +12,7 @@ var session = require('express-session');
 // Use Passport with OpenId Connect strategy to
 // authenticate users with OneLogin
 var passport = require('passport')
-var OneLoginStrategy = require('passport-openidconnect').Strategy
+var BCSCStrategy = require('passport-openidconnect').Strategy
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -21,7 +21,7 @@ var users = require('./routes/users');
 
 // Configure the OpenId Connect Strategy
 // with credentials obtained from BCSC self service app
-passport.use(new OneLoginStrategy({
+passport.use(new BCSCStrategy({
   issuer: process.env.OIDC_BASE_URI,
   clientID: process.env.OIDC_CLIENT_ID,
   clientSecret: process.env.OIDC_CLIENT_SECRET,
@@ -37,7 +37,9 @@ function(req, issuer, userId, profile, accessToken, refreshToken, params, cb) {
   console.log('userId:', userId);
   console.log('accessToken:', accessToken);
   console.log('refreshToken:', refreshToken);
+  console.log('profile:', profile);
   console.log('params:', params);
+ // console.log('cb:', cb);
 
   req.session.accessToken = accessToken;
 
@@ -45,10 +47,12 @@ function(req, issuer, userId, profile, accessToken, refreshToken, params, cb) {
 }));
 
 passport.serializeUser(function(user, done) {
+  console.log ("In serialize user" + user );
   done(null, user);
 });
 
 passport.deserializeUser(function(obj, done) {
+  console.log ("In de-serialize user" + obj );
   done(null, obj);
 });
 
@@ -121,7 +125,7 @@ app.get('/logout', function(req, res){
     }
   },function(err, respose, body){
 
-    console.log('Session Revoked at OneLogin');
+    console.log('Session Revoked at BCSC');
     res.redirect('/');
 
   });

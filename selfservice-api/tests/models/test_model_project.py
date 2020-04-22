@@ -27,7 +27,7 @@ def test_create_from_dict(session):
 
 def test_none_create_from_dict(session):
     """Assert skipping project creation by providing None."""
-    project = Project.create_from_dict(project_info=None, oauth_id=None)
+    project = Project.create_from_dict(None, None)
     assert project is None
 
 
@@ -43,8 +43,7 @@ def create_project(session):
     user = create_user(session)
     project_info = factory_project_info(is_model=True)
 
-    project = Project.create_from_dict(
-        project_info=project_info, oauth_id=user.oauth_id)
+    project = Project.create_from_dict(project_info, user)
     session.add(project)
     session.commit()
     return project
