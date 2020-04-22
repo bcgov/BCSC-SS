@@ -1,10 +1,15 @@
 /** * ClientID component */
 
 <template>
-  <v-card class="mx-auto mb-5" v-if="getApiData.oidcConfig && getApiData.oidcConfig.clientSecret">
+  <v-card
+    class="mx-auto mb-5"
+    v-if="getApiData.oidcConfig && getApiData.oidcConfig.clientSecret"
+  >
     <v-snackbar v-model="snackbar" :timeout="timeout">
       {{ text }}
-      <v-btn color="blue" text @click="snackbar = false">{{ $t('ClientID.labelSnackbarClose') }}</v-btn>
+      <v-btn color="blue" text @click="snackbar = false">{{
+        $t('ClientID.labelSnackbarClose')
+      }}</v-btn>
     </v-snackbar>
     <Loading v-if="isLoading && getApiData === 0" />
     <v-toolbar dense class="bc-subtitle-gold-1" dark>
@@ -13,9 +18,7 @@
     <v-list dense class="px-5">
       <v-list-item>
         <v-list-item-content class="pr-30">
-          {{
-          $t('ClientID.titleApiKey')
-          }}
+          {{ $t('ClientID.titleApiKey') }}
           <span
             class="small-hint"
             v-html="$t('ClientID.titleApiKeyInfo')"
@@ -24,10 +27,8 @@
         <v-list-item-content
           class="align-end pointer client-id-copy"
           @click="
-                  docopy(
-                    getApiData.oidcConfig && getApiData.oidcConfig.clientId
-                  )
-                "
+            docopy(getApiData.oidcConfig && getApiData.oidcConfig.clientId)
+          "
         >
           <code class="code-snippet">
             <v-icon small class="mr-1">mdi-content-copy</v-icon>
@@ -39,9 +40,7 @@
 
       <v-list-item>
         <v-list-item-content class="pr-30">
-          {{
-          $t('ClientID.titleClientSecret')
-          }}
+          {{ $t('ClientID.titleClientSecret') }}
           <span
             class="small-hint"
             v-html="$t('ClientID.titleClientSecretInfo')"
@@ -50,17 +49,17 @@
         <v-list-item-content
           class="align-end pointer d-block"
           @click="
-                  docopy(
-                    getApiData.oidcConfig && getApiData.oidcConfig.clientSecret
-                  )
-                "
+            docopy(getApiData.oidcConfig && getApiData.oidcConfig.clientSecret)
+          "
         >
           <code class="code-snippet">
             <div class="float-left">
               <v-icon small class="mr-2">mdi-content-copy</v-icon>
             </div>
 
-            <span>{{ getApiData.oidcConfig && getApiData.oidcConfig.clientSecret }}</span>
+            <span>{{
+              getApiData.oidcConfig && getApiData.oidcConfig.clientSecret
+            }}</span>
           </code>
         </v-list-item-content>
       </v-list-item>
@@ -69,9 +68,7 @@
       <v-list-item>
         <v-list-item-content class="align-self-start pr-30">
           <div>
-            {{
-            $t('ClientID.titleTestAccount')
-            }}
+            {{ $t('ClientID.titleTestAccount') }}
             <v-tooltip bottom open-on-click>
               <template v-slot:activator="{ on }">
                 <v-icon v-on="on">mdi-help-circle</v-icon>
@@ -89,22 +86,22 @@
             <template v-slot:default>
               <thead>
                 <tr>
-                  <th
-                    :scope="$t('ClientID.tblCardNo')"
-                    class="text-left"
-                  >{{$t('ClientID.tblCardNo')}}</th>
-                  <th
-                    :scope="$t('ClientID.tblPassCode')"
-                    class="text-left"
-                  >{{$t('ClientID.tblPassCode')}}</th>
-                  <th
-                    :scope="$t('ClientID.tblSurName')"
-                    class="text-left"
-                  >{{$t('ClientID.tblSurName')}}</th>
+                  <th :scope="$t('ClientID.tblCardNo')" class="text-left">
+                    {{ $t('ClientID.tblCardNo') }}
+                  </th>
+                  <th :scope="$t('ClientID.tblPassCode')" class="text-left">
+                    {{ $t('ClientID.tblPassCode') }}
+                  </th>
+                  <th :scope="$t('ClientID.tblSurName')" class="text-left">
+                    {{ $t('ClientID.tblSurName') }}
+                  </th>
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="(account) in getApiData.testAccount" :key="account.cardNumber">
+                <tr
+                  v-for="account in getApiData.testAccount"
+                  :key="account.cardNumber"
+                >
                   <td>{{ account.cardNumber }}</td>
                   <td>{{ account.passcode }}</td>
                   <td>{{ account.attributes.surname }}</td>
@@ -133,14 +130,14 @@ const ClientIdModule = namespace('ClientIdModule');
 
 @Component({
   components: {
-    Loading
-  }
+    Loading,
+  },
 })
 export default class ClientIDDetails extends Vue {
   @Prop({ default: 0 })
   public id!: number;
 
-  @Prop({ default: false})
+  @Prop({ default: false })
   public showTestAccountWarning!: boolean;
 
   @ClientIdModule.Getter('errorStatus') public errorStatus!: boolean;
@@ -177,5 +174,6 @@ export default class ClientIDDetails extends Vue {
   align-items: center;
   color: $BCgovBlack;
   font-weight: 200 !important;
+  word-break: break-all;
 }
 </style>

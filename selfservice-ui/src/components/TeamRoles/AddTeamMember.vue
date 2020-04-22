@@ -106,6 +106,15 @@
                     ></v-radio>
                   </v-radio-group>
 
+                  <div>
+                    {{
+                      $t(
+                        `addTeamMember.labelRoleInfo${
+                          rolesList[userDetails.role]
+                        }`
+                      )
+                    }}
+                  </div>
                   <v-card-actions class="btn-bottom">
                     <v-spacer></v-spacer>
                     <Button
