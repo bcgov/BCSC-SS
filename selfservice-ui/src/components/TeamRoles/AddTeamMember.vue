@@ -79,9 +79,9 @@
                   />
                 </v-col>
                 <v-col>
-                  <v-divider class="mx-4" vertical></v-divider>
+                  <v-divider class="mx-4 d-none d-sm-flex" vertical></v-divider>
                 </v-col>
-                <v-col cols="12" sm="5">
+                <v-col cols="12" sm="5" class="p-relative">
                   <v-card-subtitle class="headline bc-padding-left-0">
                     {{ $t('addTeamMember.roleTitle') }}
                   </v-card-subtitle>
@@ -125,7 +125,7 @@
                     >
                     <Button
                       :disabled="!valid"
-                      class="white--text submit-package ml-6"
+                      class="white--text submit-package "
                       @click="submitTeamMember"
                       >{{
                         $t(
@@ -278,7 +278,28 @@ export default class AddTeamMember extends Vue {
   padding: 3px 0 3px 0;
 }
 .btn-bottom {
-  bottom: 32px;
-  position: absolute;
+  flex-direction: column;
+  width: 100%;
+  @include sm {
+    bottom: 32px;
+    position: absolute;
+  }
+  & .btn {
+    width: 100%;
+    margin-top: 12px;
+  }
+  @include rwd('1260') {
+    bottom: 32px;
+    position: absolute;
+    flex-direction: row;
+    width: auto;
+    & .btn {
+      width: auto;
+      margin-top: 0;
+    }
+  }
+}
+.p-relative {
+  position: relative;
 }
 </style>
