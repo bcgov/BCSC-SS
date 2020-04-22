@@ -256,9 +256,11 @@ export default class AddTeamMember extends Vue {
     } else {
       this.editMode = false;
       this.clearMemberData();
-      if (this.$refs.form && this.$refs.form.resetValidation) {
-        this.$refs.form.resetValidation(); // tslint:disable-line
-      }
+
+      // to fix typescript error
+      (this.$refs.form as Vue & {
+        resetValidation: () => any;
+      }).resetValidation();
     }
   }
   private disabled() {
