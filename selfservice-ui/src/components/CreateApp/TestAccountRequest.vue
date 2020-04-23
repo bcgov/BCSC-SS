@@ -8,11 +8,7 @@
       </v-btn>
       <v-toolbar-title>{{ $t('testAccount.pagetitle') }}</v-toolbar-title>
       <div class="flex-grow-1"></div>
-      <v-col class="col-lg-4 col-md-5 col-8">
-        <v-alert type="error" v-if="errorStatus" class="alert-top"
-          >Something went wrong...</v-alert
-        >
-      </v-col>
+
       <div class="flex-grow-1"></div>
     </v-toolbar>
     <v-divider></v-divider>
@@ -20,6 +16,9 @@
       <v-container>
         <v-row class="mx-4">
           <v-col cols="12" flat>
+            <Alert type="error" v-if="errorStatus" class="alert-top"
+              >Something went wrong...</Alert
+            >
             <v-card flat>
               <!-- <v-list-item-content>BCSC Test Account</v-list-item-content> -->
               <v-list-item-content
@@ -127,6 +126,8 @@ import { Component, Vue, Watch, Prop } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
 import Button from '@/Atomic/Button/Button.vue';
 import TextArea from '@/Atomic/TextArea/TextArea.vue';
+import Alert from '@/Atomic/Alert/Alert.vue';
+
 const PackageAndTestModule = namespace('PackageAndTestModule');
 const TechnicalReqModule = namespace('TechnicalReqModule');
 const SharedModule = namespace('SharedModule');
@@ -135,6 +136,7 @@ const SharedModule = namespace('SharedModule');
   components: {
     Button,
     TextArea,
+    Alert,
   },
 })
 export default class TestAccountRequest extends Vue {
