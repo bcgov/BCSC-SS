@@ -10,7 +10,7 @@ const keycloakConfig: any = {
   url: process.env.VUE_APP_KEYCLOAK_URL,
   'ssl-required': sslRequired,
   clientId: process.env.VUE_APP_KEYCLOAK_CLIENT,
-  'confidential-port': confidentialPort
+  'confidential-port': confidentialPort,
 };
 /* tslint:enable */
 
@@ -69,7 +69,7 @@ export default class KeycloakService {
       email: token.email,
       roles: token.realm_access.roles,
       keycloakGuid: token.jti,
-      userName: token.username
+      userName: token.username,
     };
   }
   public static userRoles(): [] {
@@ -84,7 +84,7 @@ export default class KeycloakService {
         window
           .atob(base64Url)
           .split('')
-          .map(c => {
+          .map((c) => {
             return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
           })
           .join('')
@@ -117,23 +117,20 @@ export default class KeycloakService {
       KeycloakService.keycloak
         .init({
           onLoad: 'login-required',
-          redirectUri: window.location.origin + silentCheckSsoRedirectUri
+          redirectUri: window.location.origin + silentCheckSsoRedirectUri,
         })
         .success(() => {
           store.dispatch('KeyCloakModule/setKeyCloakAuth', {
             keycloak: KeycloakService.keycloak,
             path: silentCheckSsoRedirectUri,
             next,
-            fromUrl
+            fromUrl,
           });
 
           store.dispatch(
             'KeyCloakModule/setUserRole',
             KeycloakService.userRoles()
           );
-          KeycloakService.keycloak.loadUserProfile().success(profile => {
-            store.dispatch('KeyCloakModule/setUserProfile', profile);
-          });
           setInterval(() => {
             KeycloakService.keycloak
               .updateToken(5)
@@ -141,7 +138,7 @@ export default class KeycloakService {
                 if (refreshed) {
                   // console.log('token refreshed', refreshed);
                   store.dispatch('KeyCloakModule/setKeyCloakAuth', {
-                    keycloak: KeycloakService.keycloak
+                    keycloak: KeycloakService.keycloak,
                   });
                 }
               })
@@ -174,7 +171,7 @@ export default class KeycloakService {
     let hasAccess = false;
     if (KeycloakService.isAuthenticated()) {
       if (roles && roles.length > 0) {
-        roles.forEach(role => {
+        roles.forEach((role) => {
           if (userRolesAvailable.indexOf(role) !== -1) {
             hasAccess = true;
           }
