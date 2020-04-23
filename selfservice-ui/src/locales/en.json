@@ -130,9 +130,9 @@
     "systemError": "Something went wrong while processing your request. Please retry in a few minutes. If the problem persists, please contact the Product Owner.",
     "OrganizationNameHint": "This is the name of the Public Sector agency with which you are affiliated.",
     "projectNameHint": "Please provide us with a short name of your application which will create a login option with the BC Services Card",
-    "developerHint": "This is a person who understand OIDC and will be able to configure your BPS application for the BC Services Card Login",
-    "managerHint": "This is a person who will be the main point of contact for the BC Services Card IDIM team and provide updates on the project’s privacy, security, communication and agreement progress.",
-    "ctoHint": "This is a person who will provide attestations to the BC Services Card IDIM team on the compliance and completion of privacy, security, communication and agreement items.",
+    "developerHint": "The developer builds the integration with BC Services Card",
+    "managerHint": " The manager steers the integration through to production",
+    "ctoHint": "The Executive Sponsor attests to the integration application compliance",
     "applicationUrlHint": "This is your application home page, or where users will go to use your application.",
     "labelRedirectUrlHint": "These are potential URL addresses to which we could redirect your application on successful user authentication. If you have multiple redirects, use one field for each URL.",
     "labelJWKSUrlHint": "We use your JWKS  public key to encrypt our returned JWT. Warning - If the JWKS does not resolve, the JWT will not be encrypted.",
@@ -159,7 +159,7 @@
     "tblPassCode": "Passcode",
     "tblGivenName": "Given Name",
     "tblSurName": "Surname",
-    "warningLimitedTestAccount": "Currently, there are no more random test accounts for your use. Please contact IDIM Consulting or <a href='mailto:zorin.samji@gov.bc.ca'>Product Owner</a> who will be in touch with you shortly.",
+    "warningLimitedTestAccount": "There are no more test accounts for use. Please <a href='/contact-us'>contact us</a> for assistance.",
     "tooltipTestAccount": "If there is a mismatch between the number of test accounts you requested and what you see here, <br/>then there are no more random test accounts for your use. <br/>Please contact IDIM Consulting or Product Owner who will be in touch with you shortly."
   },
   "dashboard": {
@@ -191,7 +191,7 @@
     "labelPhone": "Phone",
     "btnContinue": "Continue",
     "btnSaveChanges": "Save Changes",
-    "errorMessageDomain": "Your email address does not match any of the eligible organizations in our BC Services Card Self Service System. If you believe you or your organization should have access to this system, please contact <a href='mailto:zorin.samji@gov.bc.ca'>IDIM Consulting</a> to be added. "
+    "errorMessageDomain": "Your email address does not match any of the eligible organizations in our BC Services Card Self Service System. If you believe you or your organization should have access to this system, please <a href='mailto:zorin.samji@gov.bc.ca'>contact us</a> for assistance. "
   },
   "home": {
     "pagetitle": "Complete Profile",
@@ -253,8 +253,8 @@
     "labelWorkEmail": "Work email",
     "labelPhone": "Office phone number",
     "errorTitle": "Please fix following errors",
-    "invalidDomain": "This email domain address you entered is not in our system of approved organizations. Please correct the email address or  <a href='/contact-us'>contact IDIM</a> to have the domain added to the system.",
-    "roleAlreadyAssigned": "This role is already assigned to another team member. Please select a different role or <a href='/contact-us'>contact IDIM</a> to change your project team membership.",
+    "invalidDomain": "This email domain address you entered is not in our system of approved organizations. Please correct the email address or  <a href='/contact-us'>contact us</a> to have the domain added to the system.",
+    "roleAlreadyAssigned": "This role is already assigned to another team member. Please select a different role or <a href='/contact-us'>contact us</a> to change your project team membership.",
     "emailAlreadyAssigned": "The email address you entered belongs to a user who already has been assigned in this project. An individual user can only have one project role.",
     "labelRoleInfodeveloper": "The developer builds the integration with BC Services Card",
     "labelRoleInfomanager": "The manager steers the integration through to production",

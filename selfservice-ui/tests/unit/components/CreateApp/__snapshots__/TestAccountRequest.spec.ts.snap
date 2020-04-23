@@ -37,12 +37,6 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
       />
        
       <div
-        class="col-lg-4 col-md-5 col-8 col"
-      >
-        <!---->
-      </div>
-       
-      <div
         class="flex-grow-1"
       />
     </div>
@@ -67,6 +61,8 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
           class="col col-12"
           flat=""
         >
+          <!---->
+           
           <div
             class="v-card v-card--flat v-sheet theme--light"
           >
@@ -340,12 +336,6 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
       />
        
       <div
-        class="col-lg-4 col-md-5 col-8 col"
-      >
-        <!---->
-      </div>
-       
-      <div
         class="flex-grow-1"
       />
     </div>
@@ -370,6 +360,8 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
           class="col col-12"
           flat=""
         >
+          <!---->
+           
           <div
             class="v-card v-card--flat v-sheet theme--light"
           >
@@ -643,12 +635,6 @@ exports[`TestAccountRequest.vue submit form with selected package on submit clic
       />
        
       <div
-        class="col-lg-4 col-md-5 col-8 col"
-      >
-        <!---->
-      </div>
-       
-      <div
         class="flex-grow-1"
       />
     </div>
@@ -673,6 +659,8 @@ exports[`TestAccountRequest.vue submit form with selected package on submit clic
           class="col col-12"
           flat=""
         >
+          <!---->
+           
           <div
             class="v-card v-card--flat v-sheet theme--light"
           >

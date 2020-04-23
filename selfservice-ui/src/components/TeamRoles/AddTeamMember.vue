@@ -7,22 +7,18 @@
         <v-card class="v-form ma-3" flat>
           <v-form ref="form" v-model="valid">
             <v-card class="v-form px-6 ma-3">
-              <v-alert
-                type="error"
-                dense
-                outlined
-                class="text-left"
-                v-if="memberErrorStatus"
-              >
-                <div>{{ $t('addTeamMember.errorTitle') }}</div>
-                <ul>
-                  <li
-                    v-for="(errors, idx) in errorList"
-                    :key="idx"
-                    v-html="$t(`addTeamMember.${errors}`)"
-                  ></li>
-                </ul>
-              </v-alert>
+              <Alert type="error" class="text-left" v-if="memberErrorStatus">
+                <div>
+                  <div>{{ $t('addTeamMember.errorTitle') }}</div>
+                  <ul>
+                    <li
+                      v-for="(errors, idx) in errorList"
+                      :key="idx"
+                      v-html="$t(`addTeamMember.${errors}`)"
+                    ></li>
+                  </ul>
+                </div>
+              </Alert>
 
               <v-row>
                 <v-col cols="12">
@@ -118,7 +114,7 @@
                   <v-card-actions class="btn-bottom">
                     <v-spacer></v-spacer>
                     <Button
-                      @click="$emit('toggleAddMember', false)"
+                      @click="cancel"
                       aria-label="Back Button"
                       secondary
                       >{{ $t('addTeamMember.btnCancel') }}</Button
@@ -152,6 +148,7 @@ import { Getter, namespace, Action } from 'vuex-class';
 // import { ProjectUserModel, ProjectInfoModel } from '@/models/ProjectInfoModel';
 import Input from '@/Atomic/Input/Input.vue';
 import Button from '@/Atomic/Button/Button.vue';
+import Alert from '@/Atomic/Alert/Alert.vue';
 
 import validationRules from '@/config/validationRules';
 import { projectRoles, projectRolesList } from '@/constants/enums';
@@ -165,6 +162,7 @@ const KeyCloakModule = namespace('KeyCloakModule');
   components: {
     Input,
     Button,
+    Alert,
   },
 })
 export default class AddTeamMember extends Vue {
@@ -193,6 +191,8 @@ export default class AddTeamMember extends Vue {
   public memberSucessStatus!: any;
   @TeamRolesModule.Action('clearMemberData')
   public clearMemberData!: any;
+  @TeamRolesModule.Action('clearErrors')
+  public clearErrors!: any;
 
   public errorList: any = {};
 
@@ -272,6 +272,12 @@ export default class AddTeamMember extends Vue {
       return true;
     }
     return false;
+  }
+  private cancel() {
+    this.resetValidation();
+    this.clearErrors();
+    this.userDetails = memberDetails();
+    this.$emit('toggleAddMember', false);
   }
 
   private mounted() {
