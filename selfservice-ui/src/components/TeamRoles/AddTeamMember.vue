@@ -114,7 +114,7 @@
                   <v-card-actions class="btn-bottom">
                     <v-spacer></v-spacer>
                     <Button
-                      @click="$emit('toggleAddMember', false)"
+                      @click="cancel"
                       aria-label="Back Button"
                       secondary
                       >{{ $t('addTeamMember.btnCancel') }}</Button
@@ -270,6 +270,11 @@ export default class AddTeamMember extends Vue {
       return true;
     }
     return false;
+  }
+  private cancel() {
+    this.resetValidation();
+    this.userDetails = memberDetails();
+    this.$emit('toggleAddMember', false);
   }
 
   private mounted() {

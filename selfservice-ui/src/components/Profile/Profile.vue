@@ -2,7 +2,7 @@
 
 <template>
   <v-card class="mx-auto card-width">
-    <v-alert type="error" v-if="errorStatus">Something went wrong...</v-alert>
+    <Alert type="error" v-if="errorStatus">Something went wrong...</Alert>
     <v-toolbar flat class="bc-subtitle" dark v-if="!errorStatus">
       <v-toolbar-title>{{
         $t(isComplete ? 'profile.pageCompleteTitle' : 'profile.pageTitle')
@@ -14,14 +14,14 @@
       <v-container>
         <v-row class="ma-5">
           <v-col cols="12" md="12">
-            <v-alert
+            <Alert
               type="error"
               dense
               outlined
               class="text-left"
               v-if="profileErrorStatus"
               v-html="$t('profile.errorMessageDomain')"
-            ></v-alert>
+            ></Alert>
             <v-card-subtitle
               v-if="isComplete"
               class="text-left padding-0 bc-padding-left-0"
@@ -96,11 +96,13 @@ import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
 import Input from '@/Atomic/Input/Input.vue';
 import Button from '@/Atomic/Button/Button.vue';
+import Alert from '@/Atomic/Alert/Alert.vue';
+
 import validationRules from '@/config/validationRules';
 
 const KeyCloakModule = namespace('KeyCloakModule');
 
-@Component({ components: { Input, Button } })
+@Component({ components: { Input, Button, Alert } })
 export default class Dashboard extends Vue {
   @Prop({ default: '' })
   public step!: string;

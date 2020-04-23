@@ -109,14 +109,14 @@
               </tbody>
             </template>
           </v-simple-table>
-          <v-alert
+          <Alert
             type="warning"
             dense
             outlined
             class="text-left"
             v-if="showTestAccountWarning"
             v-html="$t('ClientID.warningLimitedTestAccount')"
-          ></v-alert>
+          ></Alert>
         </v-list-item-content>
       </v-list-item>
     </v-list>
@@ -126,11 +126,14 @@
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
 import Loading from '@/Atomic/Loading/Loading.vue';
+import Alert from '@/Atomic/Alert/Alert.vue';
+
 const ClientIdModule = namespace('ClientIdModule');
 
 @Component({
   components: {
     Loading,
+    Alert,
   },
 })
 export default class ClientIDDetails extends Vue {
