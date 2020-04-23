@@ -123,7 +123,7 @@ import Loading from '@/Atomic/Loading/Loading.vue';
 import Button from '@/Atomic/Button/Button.vue';
 import AddTeamMember from '@/components/TeamRoles/AddTeamMember.vue';
 
-import { projectRolesList } from '@/constants/enums';
+import { projectRoles } from '@/constants/enums';
 
 const TeamRolesModule = namespace('TeamRolesModule');
 const KeyCloakModule = namespace('KeyCloakModule');
@@ -149,7 +149,7 @@ export default class TeamRoles extends Vue {
 
   private isLoading: boolean = false;
   // private selectedTab: number = 0;
-  private rolesList: any = projectRolesList;
+  private rolesList: any = projectRoles;
   private dialog: boolean = false;
   private dialogDelete: boolean = false;
   private memberId: number = 0;

@@ -88,19 +88,19 @@
 
                   <v-radio-group v-model="userDetails.role" :mandatory="false">
                     <v-radio
-                      :label="$t(`addTeamMember.labelRole${rolesList[1]}`)"
+                      :label="$t(`addTeamMember.labelRoledeveloper`)"
                       :value="projectRoles.developer"
                       class="my-2"
                     ></v-radio>
 
                     <v-radio
-                      :label="$t(`addTeamMember.labelRole${rolesList[2]}`)"
+                      :label="$t(`addTeamMember.labelRolemanager`)"
                       :value="projectRoles.manager"
                       class="my-2"
                     ></v-radio>
 
                     <v-radio
-                      :label="$t(`addTeamMember.labelRole${rolesList[3]}`)"
+                      :label="$t(`addTeamMember.labelRolecto`)"
                       :value="projectRoles.cto"
                       class="my-2"
                     ></v-radio>
@@ -110,7 +110,7 @@
                     {{
                       $t(
                         `addTeamMember.labelRoleInfo${
-                          rolesList[userDetails.role]
+                          projectRoles[userDetails.role]
                         }`
                       )
                     }}
@@ -149,12 +149,11 @@
 <script lang="ts">
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
-// import { ProjectUserModel, ProjectInfoModel } from '@/models/ProjectInfoModel';
 import Input from '@/Atomic/Input/Input.vue';
 import Button from '@/Atomic/Button/Button.vue';
 
 import validationRules from '@/config/validationRules';
-import { projectRoles, projectRolesList } from '@/constants/enums';
+import { projectRoles } from '@/constants/enums';
 import { TeamRoleModel } from '@/models/TeamRoleModel';
 import { memberDetails } from '@/store/modules/TeamRoles/defaults';
 
@@ -204,7 +203,6 @@ export default class AddTeamMember extends Vue {
   private rules: any = validationRules;
   private projectRoles: any = projectRoles;
   private selectedRole: any = 1;
-  private rolesList: any = projectRolesList;
   private valid: boolean = false;
   private editMode: boolean = false;
 

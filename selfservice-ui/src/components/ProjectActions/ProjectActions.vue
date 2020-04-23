@@ -88,7 +88,7 @@ import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
 
 import Button from '@/Atomic/Button/Button.vue';
-import { projectStatus, projectRolesList } from '@/constants/enums';
+import { projectStatus } from '@/constants/enums';
 
 const ProjectInfoModule = namespace('ProjectInfoModule');
 const KeyCloakModule = namespace('KeyCloakModule');

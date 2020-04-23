@@ -96,7 +96,7 @@
                           :label="
                             $t('technicalRequirements.labelSignedResponseAlg')
                           "
-                          :items="algorithm"
+                          :items="signedAlg"
                           :rules="[rules.required]"
                           outlined
                           :helpText="
@@ -129,13 +129,30 @@
                     :helpText="$t('technicalRequirements.JWKSText')"
                   />
                   <div class="row">
-                    <div class="col-12 col-md-5">
+                    <div class="col-12 col-md-4">
+                      <Select
+                        v-model="encryptedResponseEnc"
+                        :label="
+                          $t('technicalRequirements.labelEncryptedResponseEnc')
+                        "
+                        :items="encryptedEnc"
+                        :rules="[rules.required]"
+                        outlined
+                        :helpText="
+                          $t(
+                            'technicalRequirements.labelEncryptedResponseEncHint'
+                          )
+                        "
+                        helpClass="mb-9"
+                      />
+                    </div>
+                    <div class="col-12 col-md-4">
                       <Select
                         v-model="encryptedResponseAlg"
                         :label="
                           $t('technicalRequirements.labelEncryptedResponseAlg')
                         "
-                        :items="algorithm"
+                        :items="encryptedAlg"
                         :rules="[rules.required]"
                         outlined
                         :helpText="
@@ -146,19 +163,19 @@
                         helpClass="mb-9"
                       />
                     </div>
-                    <v-spacer />
-                    <div class="col-12 col-md-5">
+                    <div class="col-12 col-md-4">
                       <Select
                         v-model="signedResponseAlg"
                         :label="
                           $t('technicalRequirements.labelSignedResponseAlg')
                         "
-                        :items="algorithm"
+                        :items="signedAlg"
                         :rules="[rules.required]"
                         outlined
                         :helpText="
                           $t('technicalRequirements.labelSignedResponseAlgHint')
                         "
+                        helpClass="mb-3"
                       />
                     </div>
                   </div>
@@ -208,7 +225,7 @@ import Button from '@/Atomic/Button/Button.vue';
 import Select from '@/Atomic/Select/Select.vue';
 import validationRules from '@/config/validationRules';
 import Loading from '@/Atomic/Loading/Loading.vue';
-import { algorithamBase } from '@/constants/enums';
+import { algorithmBase } from '@/constants/enums';
 
 import {
   signedAlgorithm,
@@ -256,12 +273,15 @@ export default class AddTechnicalReq extends Vue {
   private clientUri: string = '';
   private redirectUris: any = [''];
   private jwksUri: string = '';
-  private encryptedResponseAlg: string = 'RS256';
+  private encryptedResponseEnc: string = 'A256GCM';
+  private encryptedResponseAlg: string = 'RSA1_5';
   private signedResponseAlg: string = 'RS256';
-  private algorithm: any = signedAlgorithm;
+  private signedAlg: any = signedAlgorithm;
+  private encryptedAlg: any = encryptedAlgorithm;
+  private encryptedEnc: any = encryptedEncoding;
   private blockRemoval = true;
-  private signingEncryptionType: number = algorithamBase.SignedJWT;
-  private algorithamBase: any = algorithamBase;
+  private signingEncryptionType: number = algorithmBase.SignedJWT;
+  private algorithamBase: any = algorithmBase;
 
   // private id: string = '';
   private isEditMode: boolean = false;
@@ -285,12 +305,16 @@ export default class AddTechnicalReq extends Vue {
       redirectUris: this.redirectUris,
       signingEncryptionType: this.signingEncryptionType,
       jwksUri:
-        this.signingEncryptionType === algorithamBase.SecureJWT
+        this.signingEncryptionType === algorithmBase.SecureJWT
           ? this.jwksUri
           : '',
       encryptedResponseAlg:
-        this.signingEncryptionType === algorithamBase.SecureJWT
+        this.signingEncryptionType === algorithmBase.SecureJWT
           ? this.encryptedResponseAlg
+          : null,
+      encryptedResponseEnc:
+        this.signingEncryptionType === algorithmBase.SecureJWT
+          ? this.encryptedResponseEnc
           : null,
       signedResponseAlg: this.signedResponseAlg,
     };
@@ -308,6 +332,8 @@ export default class AddTechnicalReq extends Vue {
     this.clientUri = val.clientUri;
     this.redirectUris = val.redirectUris || this.redirectUris;
     this.jwksUri = val.jwksUri;
+    this.encryptedResponseEnc =
+      val.encryptedResponseEnc || this.encryptedResponseEnc;
     this.encryptedResponseAlg =
       val.encryptedResponseAlg || this.encryptedResponseAlg;
     this.signedResponseAlg = val.signedResponseAlg || this.signedResponseAlg;
