@@ -191,6 +191,8 @@ export default class AddTeamMember extends Vue {
   public memberSucessStatus!: any;
   @TeamRolesModule.Action('clearMemberData')
   public clearMemberData!: any;
+  @TeamRolesModule.Action('clearErrors')
+  public clearErrors!: any;
 
   public errorList: any = {};
 
@@ -273,6 +275,7 @@ export default class AddTeamMember extends Vue {
   }
   private cancel() {
     this.resetValidation();
+    this.clearErrors();
     this.userDetails = memberDetails();
     this.$emit('toggleAddMember', false);
   }
