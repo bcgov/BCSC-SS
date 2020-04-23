@@ -805,16 +805,12 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
       class="col col-12"
     >
       <div
-        class="v-alert text-left v-sheet theme--light v-alert--dense v-alert--outlined error--text"
+        class="v-alert text-left text-left v-sheet theme--light v-alert--dense v-alert--outlined error--text"
         role="alert"
       >
         <div
           class="v-alert__wrapper"
         >
-          <i
-            aria-hidden="true"
-            class="v-icon notranslate v-alert__icon mdi mdi-alert theme--light error--text"
-          />
           <div
             class="v-alert__content"
           >

@@ -20,7 +20,7 @@
               outlined
               class="text-left"
               v-if="profileErrorStatus"
-              v-html="$t('profile.errorMessageDomain')"
+              ><span v-html="$t('profile.errorMessageDomain')"></span
             ></Alert>
             <v-card-subtitle
               v-if="isComplete"

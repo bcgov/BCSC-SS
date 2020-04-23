@@ -115,7 +115,8 @@
             outlined
             class="text-left"
             v-if="showTestAccountWarning"
-            v-html="$t('ClientID.warningLimitedTestAccount')"
+            :icon="false"
+            ><span v-html="$t('ClientID.warningLimitedTestAccount')"></span
           ></Alert>
         </v-list-item-content>
       </v-list-item>
