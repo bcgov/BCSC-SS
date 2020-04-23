@@ -2,9 +2,11 @@
 
 <template>
   <v-card class="mx-auto card-width">
-    <v-alert type="error" v-if="errorStatus">Something went wrong...</v-alert>
+    <Alert type="error" v-if="errorStatus">Something went wrong...</Alert>
     <v-toolbar flat class="bc-subtitle" dark v-if="!errorStatus">
-      <v-toolbar-title>{{ $t(isComplete ? 'profile.pageCompleteTitle' : 'profile.pageTitle') }}</v-toolbar-title>
+      <v-toolbar-title>{{
+        $t(isComplete ? 'profile.pageCompleteTitle' : 'profile.pageTitle')
+      }}</v-toolbar-title>
       <div class="flex-grow-1"></div>
     </v-toolbar>
     <v-divider></v-divider>
@@ -12,14 +14,14 @@
       <v-container>
         <v-row class="ma-5">
           <v-col cols="12" md="12">
-            <v-alert
+            <Alert
               type="error"
               dense
               outlined
               class="text-left"
               v-if="profileErrorStatus"
-              v-html="$t('profile.errorMessageDomain')"
-            ></v-alert>
+              ><span v-html="$t('profile.errorMessageDomain')"></span
+            ></Alert>
             <v-card-subtitle
               v-if="isComplete"
               class="text-left padding-0 bc-padding-left-0"
@@ -48,7 +50,7 @@
                 rules.required,
                 rules.email,
                 rules.length(2),
-                rules.maxLength(250)
+                rules.maxLength(250),
               ]"
               v-if="filedsToShow.email"
             />
@@ -73,11 +75,11 @@
                   @keyup.enter="createOrUpdateProfile"
                 >
                   {{
-                  $t(
-                  isComplete
-                  ? 'profile.btnContinue'
-                  : 'profile.btnSaveChanges'
-                  )
+                    $t(
+                      isComplete
+                        ? 'profile.btnContinue'
+                        : 'profile.btnSaveChanges'
+                    )
                   }}
                 </Button>
               </v-card-actions>
@@ -94,11 +96,13 @@ import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
 import Input from '@/Atomic/Input/Input.vue';
 import Button from '@/Atomic/Button/Button.vue';
+import Alert from '@/Atomic/Alert/Alert.vue';
+
 import validationRules from '@/config/validationRules';
 
 const KeyCloakModule = namespace('KeyCloakModule');
 
-@Component({ components: { Input, Button } })
+@Component({ components: { Input, Button, Alert } })
 export default class Dashboard extends Vue {
   @Prop({ default: '' })
   public step!: string;
@@ -125,17 +129,20 @@ export default class Dashboard extends Vue {
 
   @Watch('userProfile')
   private onUserProfileChanged(val: any) {
-    this.email = val.email;
-    this.phone = val.phone;
+    this.userDetails(val);
   }
 
   private createOrUpdateProfile() {
     const profile = { email: this.email, phone: this.phone };
     this.updateProfile(profile);
   }
+  private userDetails(val: any) {
+    this.email = val.email;
+    this.phone = val.phone;
+  }
 
   private mounted() {
-    this.onUserProfileChanged(this.userProfile);
+    this.userDetails(this.userProfile);
   }
 }
 </script>

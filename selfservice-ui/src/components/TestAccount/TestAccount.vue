@@ -24,17 +24,17 @@
             </v-card>
           </v-col>
           <v-col class="col-12" v-if="errorStatus || successStatus">
-            <v-alert
+            <Alert
               type="error"
               v-if="errorStatus"
               class="alert-top text-left"
-              >{{ $t('testAccountList.errorMessage') }}</v-alert
+              >{{ $t('testAccountList.errorMessage') }}</Alert
             >
-            <v-alert
+            <Alert
               type="success"
               class="alert-top text-left"
               v-if="successStatus"
-              >{{ $t('testAccountList.successMessage') }}</v-alert
+              >{{ $t('testAccountList.successMessage') }}</Alert
             >
           </v-col>
           <v-col cols="12" flat>
@@ -76,6 +76,7 @@ import { Component, Vue, Watch, Prop } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
 import Button from '@/Atomic/Button/Button.vue';
 import TextArea from '@/Atomic/TextArea/TextArea.vue';
+import Alert from '@/Atomic/Alert/Alert.vue';
 
 const TestAccountModule = namespace('TestAccountModule');
 
@@ -83,6 +84,7 @@ const TestAccountModule = namespace('TestAccountModule');
   components: {
     Button,
     TextArea,
+    Alert,
   },
 })
 export default class TestAccount extends Vue {

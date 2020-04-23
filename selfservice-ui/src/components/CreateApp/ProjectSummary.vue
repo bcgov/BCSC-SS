@@ -3,14 +3,24 @@
 <template>
   <div>
     <Loading v-if="isLoading" />
-    <v-alert type="success" class="alert-top text-left" v-if="isCreated">{{
-      $t('summaryPage.createSuccessMessage')
-    }}</v-alert>
-
-    <v-alert type="success" class="alert-top text-left" v-if="isUpdated">{{
-      $t('summaryPage.updateSuccessMessage')
-    }}</v-alert>
     <v-row v-else>
+      <Alert
+        type="success"
+        class="alert-top text-left alert-msg"
+        dense
+        outlined
+        v-if="isCreated"
+        >{{ $t('summaryPage.createSuccessMessage') }}</Alert
+      >
+
+      <Alert
+        type="success"
+        class="alert-top text-left alert-msg"
+        dense
+        outlined
+        v-if="isUpdated"
+        >{{ $t('summaryPage.updateSuccessMessage') }}</Alert
+      >
       <v-col cols="12" flat>
         <ClientID
           :id="projectId"
@@ -54,21 +64,21 @@
         />
       </v-col>
       <v-col cols="12">
-        <v-alert
+        <Alert
           type="error"
           dense
           outlined
           class="text-left"
           v-if="showCannotSubmitError"
-          >{{ $t('summaryPage.cantSubmitErrorMessage') }}</v-alert
+          >{{ $t('summaryPage.cantSubmitErrorMessage') }}</Alert
         >
-        <v-alert
+        <Alert
           type="error"
           dense
           outlined
           class="text-left"
           v-if="showSystemError"
-          >{{ $t('summaryPage.systemError') }}</v-alert
+          >{{ $t('summaryPage.systemError') }}</Alert
         >
       </v-col>
       <v-col cols="12">
@@ -139,6 +149,8 @@ import { Getter, namespace, Action } from 'vuex-class';
 import Button from '@/Atomic/Button/Button.vue';
 import TextArea from '@/Atomic/TextArea/TextArea.vue';
 import Loading from '@/Atomic/Loading/Loading.vue';
+import Alert from '@/Atomic/Alert/Alert.vue';
+
 import ClientID from '@/components/CreateApp/ClientID.vue';
 import TestAccountSummary from '@/components/CreateApp/TestAccountSummary.vue';
 import ProjectInfoSummary from '@/components/CreateApp/ProjectInfoSummary.vue';
@@ -164,6 +176,7 @@ const SharedModule = namespace('SharedModule');
     TeamSummary,
     TechnicalReqSummary,
     PackageSelectSummary,
+    Alert,
   },
 })
 export default class ProjectSummary extends Vue {
@@ -349,5 +362,9 @@ export default class ProjectSummary extends Vue {
 }
 .text-center {
   text-align: center !important;
+}
+.alert-msg {
+  width: 100%;
+  margin: 10px 15px;
 }
 </style>

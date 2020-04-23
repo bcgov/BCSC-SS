@@ -37,12 +37,6 @@ exports[`PackageSelect.vue from summary page renders props when passed and redir
       />
        
       <div
-        class="col-lg-4 col-md-5 col-8 col"
-      >
-        <!---->
-      </div>
-       
-      <div
         class="flex-grow-1"
       />
     </div>
@@ -67,6 +61,8 @@ exports[`PackageSelect.vue from summary page renders props when passed and redir
           class="col col-12"
           flat=""
         >
+          <!---->
+           
           <div
             class="v-card v-card--flat v-sheet theme--light"
           >
@@ -330,12 +326,6 @@ exports[`PackageSelect.vue renders props when passed 1`] = `
       />
        
       <div
-        class="col-lg-4 col-md-5 col-8 col"
-      >
-        <!---->
-      </div>
-       
-      <div
         class="flex-grow-1"
       />
     </div>
@@ -360,6 +350,8 @@ exports[`PackageSelect.vue renders props when passed 1`] = `
           class="col col-12"
           flat=""
         >
+          <!---->
+           
           <div
             class="v-card v-card--flat v-sheet theme--light"
           >
@@ -623,12 +615,6 @@ exports[`PackageSelect.vue select on package on click  1`] = `
       />
        
       <div
-        class="col-lg-4 col-md-5 col-8 col"
-      >
-        <!---->
-      </div>
-       
-      <div
         class="flex-grow-1"
       />
     </div>
@@ -653,6 +639,8 @@ exports[`PackageSelect.vue select on package on click  1`] = `
           class="col col-12"
           flat=""
         >
+          <!---->
+           
           <div
             class="v-card v-card--flat v-sheet theme--light"
           >
@@ -916,12 +904,6 @@ exports[`PackageSelect.vue should call gotback on back button click  1`] = `
       />
        
       <div
-        class="col-lg-4 col-md-5 col-8 col"
-      >
-        <!---->
-      </div>
-       
-      <div
         class="flex-grow-1"
       />
     </div>
@@ -946,6 +928,8 @@ exports[`PackageSelect.vue should call gotback on back button click  1`] = `
           class="col col-12"
           flat=""
         >
+          <!---->
+           
           <div
             class="v-card v-card--flat v-sheet theme--light"
           >
@@ -1209,12 +1193,6 @@ exports[`PackageSelect.vue submit form with selected package on submit click  1`
       />
        
       <div
-        class="col-lg-4 col-md-5 col-8 col"
-      >
-        <!---->
-      </div>
-       
-      <div
         class="flex-grow-1"
       />
     </div>
@@ -1239,6 +1217,8 @@ exports[`PackageSelect.vue submit form with selected package on submit click  1`
           class="col col-12"
           flat=""
         >
+          <!---->
+           
           <div
             class="v-card v-card--flat v-sheet theme--light"
           >
