@@ -82,10 +82,11 @@ exports[`TestAccount.vue renders props when passed with gettors 1`] = `
           >
             <textarea-stub
               counter=""
+              data-test-id="test-account-text"
               helptext=""
-              id="test-account"
+              id="test-account-text"
               label=""
-              name="test-account"
+              name="test-account-text"
               outlined=""
               rows="10"
               type="text"
@@ -116,9 +117,10 @@ exports[`TestAccount.vue renders props when passed with gettors 1`] = `
         <button-stub
           class="white--text submit-account ml-6"
           color=""
+          data-test-id="btn-test-account"
           depressed=""
           disabled="true"
-          name="button"
+          name="btn-test-account"
           type="button"
         >
           

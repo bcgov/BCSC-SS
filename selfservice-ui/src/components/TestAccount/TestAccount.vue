@@ -40,8 +40,9 @@
                 type="text"
                 outlined
                 rows="10"
-                name="test-account"
-                id="test-account"
+                name="test-account-text"
+                id="test-account-text"
+                data-test-id="test-account-text"
               />
             </v-card>
           </v-col>
