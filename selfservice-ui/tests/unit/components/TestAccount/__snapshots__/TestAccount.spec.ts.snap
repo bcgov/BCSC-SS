@@ -83,7 +83,9 @@ exports[`TestAccount.vue renders props when passed with gettors 1`] = `
             <textarea-stub
               counter=""
               helptext=""
+              id="test-account"
               label=""
+              name="test-account"
               outlined=""
               rows="10"
               type="text"
@@ -120,8 +122,6 @@ exports[`TestAccount.vue renders props when passed with gettors 1`] = `
           type="button"
         >
           
-          
-        
         </button-stub>
       </v-card-actions-stub>
     </v-card-stub>
