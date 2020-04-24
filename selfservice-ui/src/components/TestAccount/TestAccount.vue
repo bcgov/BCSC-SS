@@ -60,6 +60,8 @@
             class="white--text submit-account ml-6"
             depressed
             @click="submitTestAccount"
+            name="btn-test-account"
+            data-test-id="btn-test-account"
           >{{ $t('testAccountList.btnSaveChanges') }}</Button>
         </v-card-actions>
       </v-card>
