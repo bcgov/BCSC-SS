@@ -1,5 +1,247 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`TeamRoles Mount.vue renders props when delete member 1`] = `
+<div
+  class="container"
+>
+  <div
+    class="row ma-5"
+  >
+    <div
+      class="col col-12"
+    >
+      <div
+        class="v-card v-card--flat v-sheet theme--light"
+      >
+        <h2
+          class="text-left tab-headline page-title-h2"
+        >
+          
+          
+        
+        </h2>
+         
+        <p
+          class="text-left page-description"
+        >
+          
+          
+        
+        </p>
+         
+        <div
+          class="v-data-table mt-5 theme--light"
+        >
+          <div
+            class="v-data-table__wrapper"
+          >
+            <table>
+              <thead
+                class="tbl-head"
+              >
+                <tr
+                  class="text-left"
+                >
+                  <th
+                    class="text-left"
+                  >
+                    
+                  
+                
+                  </th>
+                   
+                  <th
+                    class="text-left"
+                  >
+                    
+                  
+                
+                  </th>
+                   
+                  <th
+                    class="text-left"
+                  >
+                    
+                  
+                
+                  </th>
+                   
+                  <th
+                    class="text-left"
+                  >
+                    
+                  
+                
+                  </th>
+                   
+                  <th
+                    class="text-left"
+                    scope="actions"
+                  />
+                </tr>
+              </thead>
+               
+              <tbody>
+                <tr
+                  class="text-left"
+                >
+                  <td>
+                    John Doe
+                  </td>
+                   
+                  <td>
+                    
+                  
+                  
+                    <i
+                      class="v-icon notranslate ml-2 v-icon--link mdi mdi-pencil theme--light"
+                      role="button"
+                      style="font-size: 16px;"
+                      tabindex="0"
+                    />
+                  </td>
+                   
+                  <td>
+                    asd@gov.bc.ca
+                  </td>
+                   
+                  <td>
+                    0987654321
+                  </td>
+                   
+                  <td>
+                    <i
+                      class="v-icon notranslate ml-2 v-icon--link mdi mdi-pencil theme--light"
+                      role="button"
+                      style="font-size: 16px;"
+                      tabindex="0"
+                    />
+                     
+                    <i
+                      class="v-icon notranslate ml-2 delete-member v-icon--link mdi mdi-delete theme--light"
+                      role="button"
+                      style="font-size: 16px;"
+                      tabindex="0"
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+         
+        <div
+          class="v-card__actions mt-5"
+        >
+          <div
+            class="spacer"
+          />
+           
+          <button
+            class="btn team-roles v-btn v-btn--contained theme--light v-size--default primary normal"
+            name="button"
+            type="button"
+          >
+            <span
+              class="v-btn__content"
+            >
+              
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+     
+    <div
+      class="col"
+    >
+      <div
+        class="text-center"
+      >
+        <div
+          class="v-dialog__container text-left"
+          role="dialog"
+        >
+          <div
+            class="v-dialog__content"
+            role="document"
+            style="z-index: 0;"
+          >
+            <div
+              class="v-dialog"
+              style="width: 85%; display: none;"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+     
+    <div
+      class="col"
+    >
+      <div
+        class="v-dialog__container"
+        role="dialog"
+      >
+        <div
+          class="v-dialog__content v-dialog__content--active"
+          role="document"
+          style="z-index: 202; z-index: 202;"
+          tabindex="0"
+        >
+          <div
+            class="v-dialog v-dialog--active v-dialog--persistent"
+            style="max-width: 400px;"
+          >
+            <div
+              class="v-card v-sheet theme--light"
+            >
+              <div
+                class="v-card__text text-left"
+              />
+               
+              <div
+                class="v-card__actions"
+              >
+                <div
+                  class="spacer"
+                />
+                 
+                <button
+                  class="btn v-btn v-btn--flat v-btn--text theme--light v-size--default secondary-btn normal"
+                  name="button"
+                  text=""
+                  type="button"
+                >
+                  <span
+                    class="v-btn__content"
+                  >
+                    Cancel
+                  </span>
+                </button>
+                 
+                <button
+                  class="btn v-btn v-btn--flat v-btn--text theme--light v-size--default primary normal"
+                  name="button"
+                  text=""
+                  type="button"
+                >
+                  <span
+                    class="v-btn__content"
+                  >
+                    Delete
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
 <div
   class="container"
@@ -29,7 +271,106 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
         
         </p>
          
-        <!---->
+        <div
+          class="v-data-table mt-5 theme--light"
+        >
+          <div
+            class="v-data-table__wrapper"
+          >
+            <table>
+              <thead
+                class="tbl-head"
+              >
+                <tr
+                  class="text-left"
+                >
+                  <th
+                    class="text-left"
+                  >
+                    
+                  
+                
+                  </th>
+                   
+                  <th
+                    class="text-left"
+                  >
+                    
+                  
+                
+                  </th>
+                   
+                  <th
+                    class="text-left"
+                  >
+                    
+                  
+                
+                  </th>
+                   
+                  <th
+                    class="text-left"
+                  >
+                    
+                  
+                
+                  </th>
+                   
+                  <th
+                    class="text-left"
+                    scope="actions"
+                  />
+                </tr>
+              </thead>
+               
+              <tbody>
+                <tr
+                  class="text-left"
+                >
+                  <td>
+                    John Doe
+                  </td>
+                   
+                  <td>
+                    
+                  
+                  
+                    <i
+                      class="v-icon notranslate ml-2 v-icon--link mdi mdi-pencil theme--light"
+                      role="button"
+                      style="font-size: 16px;"
+                      tabindex="0"
+                    />
+                  </td>
+                   
+                  <td>
+                    asd@gov.bc.ca
+                  </td>
+                   
+                  <td>
+                    0987654321
+                  </td>
+                   
+                  <td>
+                    <i
+                      class="v-icon notranslate ml-2 v-icon--link mdi mdi-pencil theme--light"
+                      role="button"
+                      style="font-size: 16px;"
+                      tabindex="0"
+                    />
+                     
+                    <i
+                      class="v-icon notranslate ml-2 delete-member v-icon--link mdi mdi-delete theme--light"
+                      role="button"
+                      style="font-size: 16px;"
+                      tabindex="0"
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
          
         <div
           class="v-card__actions mt-5"
@@ -159,7 +500,7 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                           class="v-text-field__slot"
                                         >
                                           <input
-                                            id="input-48"
+                                            id="input-56"
                                             type="text"
                                           />
                                         </div>
@@ -217,7 +558,7 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                           class="v-text-field__slot"
                                         >
                                           <input
-                                            id="input-52"
+                                            id="input-60"
                                             type="text"
                                           />
                                         </div>
@@ -275,7 +616,7 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                           class="v-text-field__slot"
                                         >
                                           <input
-                                            id="input-56"
+                                            id="input-64"
                                             type="text"
                                           />
                                         </div>
@@ -336,7 +677,7 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                           class="v-text-field__slot"
                                         >
                                           <input
-                                            id="input-60"
+                                            id="input-68"
                                             type="text"
                                           />
                                         </div>
@@ -391,7 +732,7 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                       style="height: auto;"
                                     >
                                       <div
-                                        aria-labelledby="input-64"
+                                        aria-labelledby="input-72"
                                         class="v-input--radio-group__input"
                                         role="radiogroup"
                                       >
@@ -403,8 +744,8 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                           >
                                             <input
                                               aria-checked="true"
-                                              id="input-65"
-                                              name="radio-64"
+                                              id="input-73"
+                                              name="radio-72"
                                               role="radio"
                                               type="radio"
                                               value="1"
@@ -427,8 +768,8 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                           >
                                             <input
                                               aria-checked="false"
-                                              id="input-67"
-                                              name="radio-64"
+                                              id="input-75"
+                                              name="radio-72"
                                               role="radio"
                                               type="radio"
                                               value="2"
@@ -451,8 +792,8 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                           >
                                             <input
                                               aria-checked="false"
-                                              id="input-69"
-                                              name="radio-64"
+                                              id="input-77"
+                                              name="radio-72"
                                               role="radio"
                                               type="radio"
                                               value="3"

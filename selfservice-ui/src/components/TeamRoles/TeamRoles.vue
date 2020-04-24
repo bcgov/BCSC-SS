@@ -61,7 +61,7 @@
                     >
                     <v-icon
                       @click="deleteMemberDialog(team.id)"
-                      class="ml-2"
+                      class="ml-2 delete-member"
                       small
                       >mdi-delete</v-icon
                     >
@@ -179,10 +179,6 @@ export default class TeamRoles extends Vue {
     }
     this.memberId = 0;
     this.dialogDelete = false;
-  }
-
-  private showActions() {
-    return this.isAdmin;
   }
 
   private mounted() {

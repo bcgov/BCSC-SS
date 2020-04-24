@@ -49,12 +49,12 @@ export default class Alert extends Vue {
   private outlined!: boolean;
 
   /**
-   *  outlined
+   *  icon
    */
   @Prop({
-    default: true,
+    default: undefined,
   })
-  private icon!: boolean;
+  private icon!: boolean | string;
 }
 </script>
 

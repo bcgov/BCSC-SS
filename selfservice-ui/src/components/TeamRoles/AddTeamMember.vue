@@ -218,7 +218,7 @@ export default class AddTeamMember extends Vue {
 
   @Watch('memberDetails')
   private ongetmemberDetailsChanged(val: any) {
-    this.userDetails = val;
+    this.userDetails = { ...val };
     this.resetValidation();
   }
 

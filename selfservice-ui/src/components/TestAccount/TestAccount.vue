@@ -17,10 +17,7 @@
         <v-row class="mx-4">
           <v-col cols="12" flat>
             <v-card flat>
-              <div
-                class="text-left"
-                v-html="$t('testAccountList.pageinfo')"
-              ></div>
+              <div class="text-left" v-html="$t('testAccountList.pageinfo')"></div>
             </v-card>
           </v-col>
           <v-col class="col-12" v-if="errorStatus || successStatus">
@@ -28,14 +25,12 @@
               type="error"
               v-if="errorStatus"
               class="alert-top text-left"
-              >{{ $t('testAccountList.errorMessage') }}</Alert
-            >
+            >{{ $t('testAccountList.errorMessage') }}</Alert>
             <Alert
               type="success"
               class="alert-top text-left"
               v-if="successStatus"
-              >{{ $t('testAccountList.successMessage') }}</Alert
-            >
+            >{{ $t('testAccountList.successMessage') }}</Alert>
           </v-col>
           <v-col cols="12" flat>
             <v-card flat>
@@ -45,6 +40,8 @@
                 type="text"
                 outlined
                 rows="10"
+                name="test-account"
+                id="test-account"
               />
             </v-card>
           </v-col>
@@ -63,9 +60,7 @@
             class="white--text submit-account ml-6"
             depressed
             @click="submitTestAccount"
-          >
-            {{ $t('testAccountList.btnSaveChanges') }}
-          </Button>
+          >{{ $t('testAccountList.btnSaveChanges') }}</Button>
         </v-card-actions>
       </v-card>
     </v-col>
@@ -84,8 +79,8 @@ const TestAccountModule = namespace('TestAccountModule');
   components: {
     Button,
     TextArea,
-    Alert,
-  },
+    Alert
+  }
 })
 export default class TestAccount extends Vue {
   @Prop({ default: 0 })
@@ -103,7 +98,7 @@ export default class TestAccount extends Vue {
 
   private submitTestAccount() {
     this.addTestAccounts({
-      testAccounts: this.testAccounts,
+      testAccounts: this.testAccounts
     });
   }
 
