@@ -181,10 +181,6 @@ export default class TeamRoles extends Vue {
     this.dialogDelete = false;
   }
 
-  private showActions() {
-    return this.isAdmin;
-  }
-
   private mounted() {
     this.isLoading = true;
     this.loadTeam(this.id);
