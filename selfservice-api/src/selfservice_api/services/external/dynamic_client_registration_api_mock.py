@@ -39,29 +39,7 @@ class DynamicClientRegistrationApiMock():
         response.client_id = secrets.token_hex(5)
         response.client_secret = secrets.token_urlsafe(30)
         response.registration_access_token = binascii.hexlify(os.urandom(24))
-        response.registration_client_uri = request.api_url + '/oauth2/register/' + response.client_id
-        response.client_id_issued_at = json.dumps(datetime.now().strftime('%Y-%m-%dT%H:%M:%SZ'))
-        response.client_secret_expires_at = '0'
-        response.client_name = request.client_name
-        response.client_uri = request.client_uri
-        response.redirect_uris = request.redirect_uris
-        response.jwks_uri = request.jwks_uri
-        response.contacts = request.contacts
-        response.token_endpoint_auth_method = request.token_endpoint_auth_method \
-            if request.token_endpoint_auth_method is not None else 'client_secret_post'
-        response.application_type = 'web'
-        response.subject_type = 'pairwise'
-        response.sector_identifier_uri = 'urn:org:example:client'
-        response.id_token_signed_response_alg = request.id_token_signed_response_alg
-        response.userinfo_signed_response_alg = request.userinfo_signed_response_alg
-        response.id_token_encrypted_response_alg = request.id_token_encrypted_response_alg \
-            if request.id_token_encrypted_response_alg is not None else 'RSA1_5'
-        response.id_token_encrypted_response_enc = request.id_token_encrypted_response_enc \
-            if request.id_token_encrypted_response_enc is not None else 'A256GCM'
-        response.userinfo_encrypted_response_alg = request.userinfo_encrypted_response_alg \
-            if request.userinfo_encrypted_response_alg is not None else 'RSA1_5'
-        response.userinfo_encrypted_response_enc = request.userinfo_encrypted_response_enc \
-            if request.userinfo_encrypted_response_enc is not None else 'A256GCM'
+        DynamicClientRegistrationApiMock.__fill_object__(request, response)
 
         return response
 
@@ -106,6 +84,17 @@ class DynamicClientRegistrationApiMock():
         response.client_id = request.client_id
         response.client_secret = secrets.token_urlsafe(30)
         response.registration_access_token = registration_access_token
+        DynamicClientRegistrationApiMock.__fill_object__(request, response)
+        return response
+
+    @staticmethod
+    def delete(client_id: str, registration_access_token: str, api_url: str):  # pylint: disable=unused-argument
+        """Delete Registration Request for a new client at the BCSC OpenID Provider."""
+        return True
+
+    @staticmethod
+    def __fill_object__(request, response):
+        """Populate response object."""
         response.registration_client_uri = request.api_url + '/oauth2/register/' + response.client_id
         response.client_id_issued_at = json.dumps(datetime.now().strftime('%Y-%m-%dT%H:%M:%SZ'))
         response.client_secret_expires_at = '0'
@@ -129,10 +118,3 @@ class DynamicClientRegistrationApiMock():
             if request.userinfo_encrypted_response_alg is not None else 'RSA1_5'
         response.userinfo_encrypted_response_enc = request.userinfo_encrypted_response_enc \
             if request.userinfo_encrypted_response_enc is not None else 'A256GCM'
-
-        return response
-
-    @staticmethod
-    def delete(client_id: str, registration_access_token: str, api_url: str):  # pylint: disable=unused-argument
-        """Delete Registration Request for a new client at the BCSC OpenID Provider."""
-        return True
