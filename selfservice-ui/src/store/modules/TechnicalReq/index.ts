@@ -18,11 +18,12 @@ export const state: TechnicalReqState = {
     clientUri: '',
     redirectUris: [],
     jwksUri: '',
+    encryptedResponseEnc: '',
     encryptedResponseAlg: '',
     signedResponseAlg: '',
-    signingEncryptionType: 1
+    signingEncryptionType: 1,
   },
-  message: ''
+  message: '',
 };
 
 const namespaced: boolean = true;
@@ -32,7 +33,7 @@ const TechnicalReqModule: Module<TechnicalReqState, RootState> = {
   state,
   getters,
   actions,
-  mutations
+  mutations,
 };
 
 export default TechnicalReqModule;

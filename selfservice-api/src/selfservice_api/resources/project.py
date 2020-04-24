@@ -280,9 +280,9 @@ class ProjectResourceById(Resource):
         api_request.userinfo_signed_response_alg = technical_req.userinfo_signed_response_alg
         api_request.token_endpoint_auth_method = ''
         api_request.id_token_encrypted_response_alg = technical_req.id_token_encrypted_response_alg
-        api_request.id_token_encrypted_response_enc = ''
+        api_request.id_token_encrypted_response_enc = technical_req.id_token_encrypted_response_enc
         api_request.userinfo_encrypted_response_alg = technical_req.userinfo_encrypted_response_alg
-        api_request.userinfo_encrypted_response_enc = ''
+        api_request.userinfo_encrypted_response_enc = technical_req.userinfo_encrypted_response_enc
 
         if is_prod:
             api_request.api_url = current_app.config.get('DYNAMIC_PROD_API_URL')

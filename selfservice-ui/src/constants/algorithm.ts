@@ -1,4 +1,4 @@
-const algorithm = [
+const signedAlgorithm = [
   'RS256',
   'RS384',
   'RS512',
@@ -7,6 +7,11 @@ const algorithm = [
   'ES512',
   'PS256',
   'PS384',
-  'PS512'
+  'PS512',
 ];
-export { algorithm };
+
+const encryptedAlgorithm = ['RSA1_5'];
+
+const encryptedEncoding = ['A256GCM', 'A256CBC-HS512'];
+
+export { signedAlgorithm, encryptedAlgorithm, encryptedEncoding };
