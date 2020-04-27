@@ -3,16 +3,14 @@
   <v-card class="mx-auto outer-card">
     <v-card class="mx-auto">
       <v-app-bar dark class="bc-subtitle">
-        <v-btn
-          icon
-          @click="$router.push('/dashboard/')"
-          aria-label="Back Button"
-        >
+        <v-btn icon @click="$router.push('/dashboard/')" aria-label="Back Button">
           <v-icon>mdi-arrow-left</v-icon>
         </v-btn>
-        <v-toolbar-title>{{
+        <v-toolbar-title>
+          {{
           $t('projectInfo.ProjectInfoTitle')
-        }}</v-toolbar-title>
+          }}
+        </v-toolbar-title>
         <v-spacer></v-spacer>
       </v-app-bar>
       <v-form ref="form" v-model="form">
@@ -66,12 +64,11 @@
                 <v-card-actions>
                   <v-spacer></v-spacer>
                   <Button
-                    @click="$router.push(`/project/${id}/summary/`)"
+                    @click="$router.push(`/project-container/${id}`)"
                     aria-label="Back Button"
                     secondary
                     v-if="!showWizardExperience()"
-                    >{{ $t('projectInfo.btnCancel') }}</Button
-                  >
+                  >{{ $t('projectInfo.btnCancel') }}</Button>
                   <Button
                     :disabled="!form"
                     :loading="isLoading"
@@ -81,11 +78,11 @@
                     @keyup.enter="submitProjectInfo"
                   >
                     {{
-                      $t(
-                        showWizardExperience()
-                          ? 'projectInfo.btnNext'
-                          : 'projectInfo.btnSaveChanges'
-                      )
+                    $t(
+                    showWizardExperience()
+                    ? 'projectInfo.btnNext'
+                    : 'projectInfo.btnSaveChanges'
+                    )
                     }}
                   </Button>
                 </v-card-actions>
@@ -151,7 +148,7 @@ export default class AddProjectInfo extends Vue {
     const data: ProjectInfoModel = {
       organizationName: this.organizationName,
       projectName: this.projectName,
-      description: this.description,
+      description: this.description
     };
 
     if (this.isEditMode) {
