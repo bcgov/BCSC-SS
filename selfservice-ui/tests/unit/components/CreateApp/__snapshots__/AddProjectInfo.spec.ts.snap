@@ -34,6 +34,8 @@ exports[`AddProjectInfo.vue renders edit props when passed 1`] = `
        
       <v-toolbar-title-stub>
         
+        
+      
       </v-toolbar-title-stub>
        
       <v-spacer-stub />
@@ -163,6 +165,8 @@ exports[`AddProjectInfo.vue renders props when passed 1`] = `
        
       <v-toolbar-title-stub>
         
+        
+      
       </v-toolbar-title-stub>
        
       <v-spacer-stub />

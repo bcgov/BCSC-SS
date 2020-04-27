@@ -1,13 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ProjectActions.vue renders props on click of delete 1`] = `
-<div
-  class="right-side "
->
+<div>
   <!---->
    
   <div
-    class="d-flex justify-end btn-delete col"
+    class="d-flex justify-end btn-delete pad-0 col"
     no-gutters=""
   >
     <i
@@ -15,6 +13,7 @@ exports[`ProjectActions.vue renders props on click of delete 1`] = `
       class="v-icon notranslate ml-2 icon-delete mdi mdi-delete theme--light"
       style="font-size: 16px;"
     />
+    
     
   
   </div>
@@ -68,10 +67,12 @@ exports[`ProjectActions.vue renders props on click of delete 1`] = `
                 >
                   <i
                     aria-hidden="true"
-                    class="v-icon notranslate ml-2   mdi mdi-delete theme--dark"
+                    class="v-icon notranslate ml-2 mdi mdi-delete theme--dark"
                     medium=""
                   />
                   
+            
+          
                 </div>
               </div>
             </header>
@@ -97,6 +98,8 @@ exports[`ProjectActions.vue renders props on click of delete 1`] = `
                   class="v-btn__content"
                 >
                   
+            
+          
                 </span>
               </button>
                
@@ -122,13 +125,11 @@ exports[`ProjectActions.vue renders props on click of delete 1`] = `
 `;
 
 exports[`ProjectActions.vue renders props on click of delete 2`] = `
-<div
-  class="right-side "
->
+<div>
   <!---->
    
   <div
-    class="d-flex justify-end btn-delete col"
+    class="d-flex justify-end btn-delete pad-0 col"
     no-gutters=""
   >
     <i
@@ -136,6 +137,7 @@ exports[`ProjectActions.vue renders props on click of delete 2`] = `
       class="v-icon notranslate ml-2 icon-delete mdi mdi-delete theme--light"
       style="font-size: 16px;"
     />
+    
     
   
   </div>
@@ -172,6 +174,8 @@ exports[`ProjectActions.vue renders props on click of delete 2`] = `
                   class="v-toolbar__title"
                 >
                   
+            
+          
                 </div>
               </div>
             </header>
@@ -197,6 +201,8 @@ exports[`ProjectActions.vue renders props on click of delete 2`] = `
                   class="v-btn__content"
                 >
                   
+            
+          
                 </span>
               </button>
                
@@ -210,6 +216,8 @@ exports[`ProjectActions.vue renders props on click of delete 2`] = `
                   class="v-btn__content"
                 >
                   
+            
+          
                 </span>
               </button>
             </div>
@@ -238,13 +246,11 @@ exports[`ProjectActions.vue renders props on click of delete 2`] = `
 `;
 
 exports[`ProjectActions.vue renders props when passed 1`] = `
-<div
-  class="right-side "
->
+<div>
   <!---->
    
   <div
-    class="d-flex justify-end btn-delete col"
+    class="d-flex justify-end btn-delete pad-0 col"
     no-gutters=""
   >
     <i
@@ -252,6 +258,7 @@ exports[`ProjectActions.vue renders props when passed 1`] = `
       class="v-icon notranslate ml-2 icon-delete mdi mdi-delete theme--light"
       style="font-size: 16px;"
     />
+    
     
   
   </div>
@@ -261,13 +268,11 @@ exports[`ProjectActions.vue renders props when passed 1`] = `
 `;
 
 exports[`ProjectActions.vue renders props when passed with gettors 1`] = `
-<div
-  class="right-side "
->
+<div>
   <!---->
    
   <div
-    class="d-flex justify-end btn-delete col"
+    class="d-flex justify-end btn-delete pad-0 col"
     no-gutters=""
   >
     <i
@@ -275,6 +280,7 @@ exports[`ProjectActions.vue renders props when passed with gettors 1`] = `
       class="v-icon notranslate ml-2 icon-delete mdi mdi-delete theme--light"
       style="font-size: 16px;"
     />
+    
     
   
   </div>
@@ -328,10 +334,12 @@ exports[`ProjectActions.vue renders props when passed with gettors 1`] = `
                 >
                   <i
                     aria-hidden="true"
-                    class="v-icon notranslate ml-2   mdi mdi-delete theme--dark"
+                    class="v-icon notranslate ml-2 mdi mdi-delete theme--dark"
                     medium=""
                   />
                   
+            
+          
                 </div>
               </div>
             </header>
@@ -357,6 +365,8 @@ exports[`ProjectActions.vue renders props when passed with gettors 1`] = `
                   class="v-btn__content"
                 >
                   
+            
+          
                 </span>
               </button>
                
