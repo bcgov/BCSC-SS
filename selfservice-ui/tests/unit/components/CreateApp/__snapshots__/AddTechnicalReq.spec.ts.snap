@@ -34,8 +34,6 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
           class="v-toolbar__title"
         >
           
-        
-      
         </div>
          
         <div
@@ -64,8 +62,6 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                 class="v-card__title headline bc-padding-left-0 text-capitalize"
               >
                 
-                
-              
               </div>
                
               <div
@@ -144,12 +140,10 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                 class="text-left my-1"
               >
                 
-                
-              
               </div>
                
               <div
-                class="row v-form px-4 "
+                class="row v-form px-4"
               >
                 <div
                   class="redirect-div"
@@ -223,7 +217,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                   class="clear-icon"
                 >
                   <i
-                    class="v-icon notranslate ml-2   v-icon--link mdi mdi-close theme--light"
+                    class="v-icon notranslate ml-2 v-icon--link mdi mdi-close theme--light"
                     role="button"
                     style="font-size: 36px;"
                     tabindex="0"
@@ -235,24 +229,18 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                 class="add-url text-left"
               >
                 
-                
-              
               </div>
                
               <div
                 class="v-card__title text-left bc-padding-left-0"
               >
                 
-                
-              
               </div>
                
               <div
                 class="v-card__subtitle text-left bc-padding-left-0"
               >
                 
-                
-              
               </div>
                
               <div
@@ -308,8 +296,6 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                           class="small-hint radio-help"
                         >
                           
-                    
-                  
                         </div>
                          
                         <div
@@ -453,8 +439,6 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                           class="small-hint radio-help"
                         >
                           
-                    
-                  
                         </div>
                       </div>
                     </div>
@@ -561,8 +545,6 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
           class="v-toolbar__title"
         >
           
-        
-      
         </div>
          
         <div
@@ -591,8 +573,6 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                 class="v-card__title headline bc-padding-left-0 text-capitalize"
               >
                 
-                
-              
               </div>
                
               <div
@@ -671,12 +651,10 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                 class="text-left my-1"
               >
                 
-                
-              
               </div>
                
               <div
-                class="row v-form px-4 "
+                class="row v-form px-4"
               >
                 <div
                   class="redirect-div"
@@ -750,7 +728,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                   class="clear-icon"
                 >
                   <i
-                    class="v-icon notranslate ml-2   v-icon--link mdi mdi-close theme--light"
+                    class="v-icon notranslate ml-2 v-icon--link mdi mdi-close theme--light"
                     role="button"
                     style="font-size: 36px;"
                     tabindex="0"
@@ -762,24 +740,18 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                 class="add-url text-left"
               >
                 
-                
-              
               </div>
                
               <div
                 class="v-card__title text-left bc-padding-left-0"
               >
                 
-                
-              
               </div>
                
               <div
                 class="v-card__subtitle text-left bc-padding-left-0"
               >
                 
-                
-              
               </div>
                
               <div
@@ -835,8 +807,6 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                           class="small-hint radio-help"
                         >
                           
-                    
-                  
                         </div>
                          
                         <div
@@ -980,8 +950,6 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                           class="small-hint radio-help"
                         >
                           
-                    
-                  
                         </div>
                       </div>
                     </div>
@@ -1088,8 +1056,6 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
           class="v-toolbar__title"
         >
           
-        
-      
         </div>
          
         <div
@@ -1118,8 +1084,6 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                 class="v-card__title headline bc-padding-left-0 text-capitalize"
               >
                 
-                
-              
               </div>
                
               <div
@@ -1198,12 +1162,10 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                 class="text-left my-1"
               >
                 
-                
-              
               </div>
                
               <div
-                class="row v-form px-4 "
+                class="row v-form px-4"
               >
                 <div
                   class="redirect-div"
@@ -1277,7 +1239,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                   class="clear-icon"
                 >
                   <i
-                    class="v-icon notranslate ml-2   v-icon--link mdi mdi-close theme--light"
+                    class="v-icon notranslate ml-2 v-icon--link mdi mdi-close theme--light"
                     role="button"
                     style="font-size: 36px;"
                     tabindex="0"
@@ -1289,24 +1251,18 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                 class="add-url text-left"
               >
                 
-                
-              
               </div>
                
               <div
                 class="v-card__title text-left bc-padding-left-0"
               >
                 
-                
-              
               </div>
                
               <div
                 class="v-card__subtitle text-left bc-padding-left-0"
               >
                 
-                
-              
               </div>
                
               <div
@@ -1362,8 +1318,6 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                           class="small-hint radio-help"
                         >
                           
-                    
-                  
                         </div>
                          
                         <div
@@ -1507,8 +1461,6 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                           class="small-hint radio-help"
                         >
                           
-                    
-                  
                         </div>
                       </div>
                     </div>
