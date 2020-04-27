@@ -54,7 +54,7 @@ export const actions: ActionTree<PackageState, RootState> = {
     commit('SET_LOADING', false);
   },
   redirect(state, { projectId, nextPageTogo }) {
-    const isredirectFromSummaryPage =
+    const isRedirectFromSummaryPage =
       state.rootState.SharedModule.isSummaryPage;
     const nextPage = isRedirectFromSummaryPage
       ? `/project-container/${projectId}/`
