@@ -34,6 +34,7 @@ class EmailService():
             message = Message(subject=email_queue.subject, html=email_queue.body,
                               recipients=email_queue.recipients, sender=email_queue.sender,
                               cc=email_queue.cc, bcc=email_queue.bcc)
+
             mail.send(message)
         except Exception as err:  # pylint: disable=broad-except
             log_error(err)
@@ -43,8 +44,10 @@ class EmailService():
         """Save and Send Email."""
         email_queue = EmailService._prepare_email_queue_(email_type, attributes=attributes)
         email_queue.email_type = email_type.value
-        if g.user:
+        if 'user' in g:
             email_queue.created_by = g.user.id
+        else:
+            email_queue.created_by = 'system'
         email_queue.save()
         cls.send(email_queue)
 
@@ -64,7 +67,7 @@ class EmailService():
         debug_email = current_app.config.get('EMAIL_ID_DEBUG')
         attributes['EMAIL_ID_DEBUG'] = debug_email
 
-        if g.user:
+        if 'user' in g:
             attributes['user'] = g.user
 
         email_queue = EmailQueue()
