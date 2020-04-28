@@ -2,18 +2,14 @@
 
 <template>
   <div>
-    <v-col
-      cols="12"
-      class="d-flex justify-end"
-      v-if="projectStatus === projectStatusList.development"
-      no-gutters
-    >
+    <v-col cols="12" class="d-flex justify-end" no-gutters>
       <v-card flat>
         <Button
           @click="toggleWarning()"
           :aria-label="$t('projectActions.btnRequestLiveAccess')"
           class="btn-req"
           secondary
+          :disabled="projectStatus !== projectStatusList.development"
         >{{ $t('projectActions.btnRequestLiveAccess') }}</Button>
       </v-card>
     </v-col>

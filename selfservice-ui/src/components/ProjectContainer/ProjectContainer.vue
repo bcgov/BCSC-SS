@@ -13,7 +13,7 @@
             class="text-left tab-headline font-weight-medium"
           >{{ projectInfo && projectInfo.organizationName }}</h4>
         </v-col>
-        <v-col cols="4" class="d-flex align-end flex-column-reverse mb-2" v-if="!isLoading">
+        <v-col cols="4" class="d-flex align-end flex-column-reverse mb-2" v-show="!isLoading">
           <ProjectActions :id="id" />
         </v-col>
 
