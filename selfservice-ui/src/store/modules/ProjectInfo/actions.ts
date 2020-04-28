@@ -6,6 +6,9 @@ import i18n from '../../../i18n';
 import { ProjectInfoService } from '@/services/ProjectInfoService';
 import router from '@/router';
 
+let projectCallInProgress = false;
+let lastProjectId = 0;
+
 /**
  * projectinfo Actions
  *
@@ -64,13 +67,23 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
    */
   async loadSingleProjectInfo({ commit }, id) {
     commit('SET_LOADING', true);
-    try {
-      const projectinfo = await ProjectInfoService.getProjectInfoById(id);
-      commit('SET_EDIT_PROJECTINFO', projectinfo.data);
-      commit('SET_LOADING', false);
-    } catch {
-      commit('SET_PROJECTINFO_SUCCESSFULLY', false);
-      commit('SET_PROJECTINFO_ERROR', true);
+    if (!projectCallInProgress) {
+      if (lastProjectId !== id) {
+        projectCallInProgress = true;
+        lastProjectId = id;
+      }
+      try {
+        const projectinfo = await ProjectInfoService.getProjectInfoById(id);
+        commit('SET_EDIT_PROJECTINFO', projectinfo.data);
+        commit('SET_LOADING', false);
+        projectCallInProgress = false;
+        lastProjectId = 0;
+      } catch {
+        commit('SET_PROJECTINFO_SUCCESSFULLY', false);
+        commit('SET_PROJECTINFO_ERROR', true);
+        projectCallInProgress = false;
+        lastProjectId = 0;
+      }
     }
   },
   /**

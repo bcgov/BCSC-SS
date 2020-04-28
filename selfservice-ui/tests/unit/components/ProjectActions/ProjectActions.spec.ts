@@ -51,6 +51,16 @@ describe('ProjectActions.vue', () => {
     expect(wrapper.element).toMatchSnapshot();
   });
 
+  it('renders props on click of Live access', () => {
+    const projectActionPage = mountFunction({});
+    const toggleDelete = jest.fn();
+    projectActionPage.setData({ projectStatus: 2 });
+    const button = projectActionPage.find('.btn-req');
+    projectActionPage.vm.$on('action-btn:clicked', toggleDelete);
+    button.trigger('click');
+
+    expect(projectActionPage.element).toMatchSnapshot();
+  });
   it('renders props when passed with gettors', () => {
     const projectActionPage = mountFunction({});
     const toggleDelete = jest.fn();
