@@ -20,7 +20,15 @@ exports[`ProjectContainer.vue renders props when passed 1`] = `
         <loading-stub />
       </v-col-stub>
        
-      <!---->
+      <v-col-stub
+        class="d-flex align-end flex-column-reverse mb-2"
+        cols="4"
+        tag="div"
+      >
+        <projectactions-stub
+          id="0"
+        />
+      </v-col-stub>
        
       <v-col-stub
         cols="12"
