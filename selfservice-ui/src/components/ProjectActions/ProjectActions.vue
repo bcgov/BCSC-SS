@@ -131,9 +131,9 @@ export default class ProjectActions extends Vue {
   private ongetChangeStatusChanged(val: any) {
     const { statusChangeError, statusChangeSuccess } = val;
     this.toggleWarning();
-    if (statusChangeSuccess === true) {
-      this.$router.push(`/project-container/${this.id}`);
-    }
+    // if (statusChangeSuccess === true) {
+    //   this.$router.push(`/project-container/${this.id}`);
+    // }
   }
   @Watch('getDeleteProjectReturn')
   private ongetgetDeleteProjectReturnChanged(val: any) {
