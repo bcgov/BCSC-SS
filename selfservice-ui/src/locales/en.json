@@ -275,5 +275,16 @@
     "btnDeleteCancel": "Cancel",
     "deleteDialogTitle": "Delete this project",
     "deleteDialogInfo": "<h3>You have chosen to delete this project</h4><p class='my-5'>Please note:</p><ul><li> Deleting this project will remove both the project and API from the system.</li><li> A project can only be deleted by a member of the project team while it is in the development state.</li><li>  Once you have marked development complete on your project, deletion is no longer possible. If you require a project deleted from this phase, please <a href='/contact-us'>contact us.</a></li></ul><p class='my-5 red--text'>Deleting a project is permanent and cannot be undone.</p><pclass='my-5 '>Do you wish to proceed with deleting this project?</p>"
+  },
+  "contactUs": {
+    "pagetitle": "Contact Us",
+    "pageinfo": "Contact info details",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "emailAddress": "Email Address",
+    "description": "How can we help you?",
+    "btnSend": "Send",
+    "successMessage": "Your message send successfully, We will get back to you soon",
+    "errorMessage": "Something went wrong. please try after sometime"
   }
 }
