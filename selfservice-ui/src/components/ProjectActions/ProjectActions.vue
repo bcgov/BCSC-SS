@@ -1,7 +1,7 @@
 /** * Dashboard of app */
 
 <template>
-  <div class="right-side ">
+  <div>
     <v-col
       cols="12"
       class="d-flex justify-end"
@@ -14,28 +14,29 @@
           :aria-label="$t('projectActions.btnRequestLiveAccess')"
           class="btn-req"
           secondary
-          >{{ $t('projectActions.btnRequestLiveAccess') }}</Button
-        >
+        >{{ $t('projectActions.btnRequestLiveAccess') }}</Button>
       </v-card>
     </v-col>
 
     <v-col
-      class="d-flex justify-end btn-delete"
+      class="d-flex justify-end btn-delete pad-0"
       @click="toggleDelete()"
       v-if="isAdmin || projectStatus < projectStatusList.developmentComplete"
       no-gutters
     >
-      <v-icon class="ml-2 icon-delete" small>mdi-delete</v-icon
-      >{{ $t('projectActions.labelDelete') }}
+      <v-icon class="ml-2 icon-delete" small>mdi-delete</v-icon>
+      {{ $t('projectActions.labelDelete') }}
     </v-col>
 
     <v-col v-if="requestDialog || deleteDialog">
       <v-dialog v-model="requestDialog" persistent max-width="70%">
         <v-card>
           <v-toolbar flat class="bc-subtitle" dark>
-            <v-toolbar-title>{{
+            <v-toolbar-title>
+              {{
               $t('projectActions.requestLiveAccessDialogTitle')
-            }}</v-toolbar-title>
+              }}
+            </v-toolbar-title>
           </v-toolbar>
           <v-card-text
             class="text-left ma-8"
@@ -43,12 +44,16 @@
           ></v-card-text>
           <v-card-actions class="pb-10">
             <v-spacer></v-spacer>
-            <Button secondary text @click="toggleWarning()">{{
+            <Button secondary text @click="toggleWarning()">
+              {{
               $t('projectActions.btnCancel')
-            }}</Button>
-            <Button text class="btn-live" @click="confirmLiveAccess()">{{
+              }}
+            </Button>
+            <Button text class="btn-live" @click="confirmLiveAccess()">
+              {{
               $t('projectActions.btnConfirm')
-            }}</Button>
+              }}
+            </Button>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -56,26 +61,24 @@
       <v-dialog v-model="deleteDialog" persistent max-width="70%">
         <v-card>
           <v-toolbar flat class="bc-subtitle" dark>
-            <v-toolbar-title
-              ><v-icon class="ml-2  " medium>mdi-delete</v-icon
-              >{{ $t('projectActions.deleteDialogTitle') }}</v-toolbar-title
-            >
+            <v-toolbar-title>
+              <v-icon class="ml-2" medium>mdi-delete</v-icon>
+              {{ $t('projectActions.deleteDialogTitle') }}
+            </v-toolbar-title>
           </v-toolbar>
-          <v-card-text
-            class="text-left ma-8"
-            v-html="$t('projectActions.deleteDialogInfo')"
-          ></v-card-text>
+          <v-card-text class="text-left ma-8" v-html="$t('projectActions.deleteDialogInfo')"></v-card-text>
           <v-card-actions class="pb-10">
             <v-spacer></v-spacer>
-            <Button secondary text @click="toggleDelete()">{{
+            <Button secondary text @click="toggleDelete()">
+              {{
               $t('projectActions.btnDeleteCancel')
-            }}</Button>
+              }}
+            </Button>
             <Button
               text
               class="dialog-delete"
               @click="confirmDeleteProject()"
-              >{{ $t('projectActions.btnDeleteConfirm') }}</Button
-            >
+            >{{ $t('projectActions.btnDeleteConfirm') }}</Button>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -95,8 +98,8 @@ const KeyCloakModule = namespace('KeyCloakModule');
 
 @Component({
   components: {
-    Button,
-  },
+    Button
+  }
 })
 export default class ProjectActions extends Vue {
   @Prop({ default: 0 })
@@ -161,7 +164,7 @@ export default class ProjectActions extends Vue {
   private confirmLiveAccess() {
     this.updateProjectStatus({
       projectId: this.id,
-      statusId: projectStatus.developmentComplete,
+      statusId: projectStatus.developmentComplete
     });
   }
   private confirmDeleteProject() {
@@ -172,14 +175,15 @@ export default class ProjectActions extends Vue {
 
 <style lang="scss" scoped>
 @import './../../assets/styles/theme.scss';
-.right-side {
-  margin-right: -25px;
-}
+
 .btn-delete {
   color: $BCgovBlue10;
   cursor: pointer;
   & .icon-delete {
     color: $BCgovBlue10;
   }
+}
+.pad-0 {
+  padding: 0 12px;
 }
 </style>

@@ -6,6 +6,9 @@ import i18n from '../../../i18n';
 import { ProjectInfoService } from '@/services/ProjectInfoService';
 import router from '@/router';
 
+let projectCallInProgress = false;
+let lastProjectId = 0;
+
 /**
  * projectinfo Actions
  *
@@ -62,15 +65,26 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
    * load single projectinfo   by id from server and set to store
    * @param {*} { commit }
    */
+
   async loadSingleProjectInfo({ commit }, id) {
     commit('SET_LOADING', true);
-    try {
-      const projectinfo = await ProjectInfoService.getProjectInfoById(id);
-      commit('SET_EDIT_PROJECTINFO', projectinfo.data);
-      commit('SET_LOADING', false);
-    } catch {
-      commit('SET_PROJECTINFO_SUCCESSFULLY', false);
-      commit('SET_PROJECTINFO_ERROR', true);
+    if (!projectCallInProgress) {
+      if (lastProjectId !== id) {
+        projectCallInProgress = true;
+        lastProjectId = id;
+      }
+      try {
+        const projectinfo = await ProjectInfoService.getProjectInfoById(id);
+        commit('SET_EDIT_PROJECTINFO', projectinfo.data);
+        commit('SET_LOADING', false);
+        projectCallInProgress = false;
+        lastProjectId = 0;
+      } catch {
+        commit('SET_PROJECTINFO_SUCCESSFULLY', false);
+        commit('SET_PROJECTINFO_ERROR', true);
+        projectCallInProgress = false;
+        lastProjectId = 0;
+      }
     }
   },
   /**
@@ -82,16 +96,19 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
     commit('SET_LOADING', true);
     try {
       // const { data, redirect } = projectData;
-      const isRedirectFromSummaryPage = rootState.SharedModule.isSummaryPage;
-      const redirect = !isRedirectFromSummaryPage ? 'team' : 'summary';
       const { id } = data;
+      const isRedirectFromSummaryPage = rootState.SharedModule.isSummaryPage;
+      const redirect = !isRedirectFromSummaryPage
+        ? `/project/${id}/team/`
+        : `/project-container/${id}/`;
+
       await ProjectInfoService.updateProjectInfo(data);
       commit('SET_LOADING', false);
       commit('SET_PROJECTINFO_SUCCESSFULLY', true);
       commit('SET_PROJECTINFO_ERROR', false);
       commit('SET_PROJECTINFO_MESSAGE', i18n.t('PROJECTINFO_UPDATE_MESSAGE'));
       dispatch('loadProjectInfo');
-      router.push(`/project/${id}/${redirect}/`);
+      router.push(redirect);
     } catch {
       commit('SET_LOADING', false);
       commit('SET_PROJECTINFO_SUCCESSFULLY', false);

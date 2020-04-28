@@ -8,13 +8,7 @@
 
       <div class="flex-grow-1"></div>
 
-      <v-btn
-        class="ma-2"
-        fab
-        dark
-        color="#fba30e"
-        @click="$router.push(`/project/info`)"
-      >
+      <v-btn class="ma-2" fab dark color="#fba30e" @click="$router.push(`/project/info`)">
         <v-icon dark large>mdi-plus</v-icon>
       </v-btn>
     </v-toolbar>
@@ -26,21 +20,20 @@
             <template v-slot:default>
               <thead>
                 <tr>
-                  <th :scope="$t('dashboard.tblTitleReferenceNo')">
-                    {{ $t('dashboard.tblTitleReferenceNo') }}
-                  </th>
-                  <th :scope="$t('dashboard.tblTitleProjectName')">
-                    {{ $t('dashboard.tblTitleProjectName') }}
-                  </th>
-                  <th :scope="$t('dashboard.tblTitlrole')" v-if="isClient">
-                    {{ $t('dashboard.tblTitlrole') }}
-                  </th>
-                  <th :scope="$t('dashboard.tblTitlCreated')">
-                    {{ $t('dashboard.tblTitlCreated') }}
-                  </th>
-                  <th :scope="$t('dashboard.tblTitleProjectStatus')">
-                    {{ $t('dashboard.tblTitleProjectStatus') }}
-                  </th>
+                  <th
+                    :scope="$t('dashboard.tblTitleReferenceNo')"
+                  >{{ $t('dashboard.tblTitleReferenceNo') }}</th>
+                  <th
+                    :scope="$t('dashboard.tblTitleProjectName')"
+                  >{{ $t('dashboard.tblTitleProjectName') }}</th>
+                  <th
+                    :scope="$t('dashboard.tblTitlrole')"
+                    v-if="isClient"
+                  >{{ $t('dashboard.tblTitlrole') }}</th>
+                  <th :scope="$t('dashboard.tblTitlCreated')">{{ $t('dashboard.tblTitlCreated') }}</th>
+                  <th
+                    :scope="$t('dashboard.tblTitleProjectStatus')"
+                  >{{ $t('dashboard.tblTitleProjectStatus') }}</th>
                 </tr>
               </thead>
               <tbody>
@@ -56,7 +49,7 @@
                   <td>{{ project.created }}</td>
                   <td>
                     {{
-                      $t(`dashboard.role${projectStatusList[project.statusId]}`)
+                    $t(`dashboard.role${projectStatusList[project.statusId]}`)
                     }}
                   </td>
                 </tr>
@@ -111,9 +104,10 @@ export default class Dashboard extends Vue {
       this.redirectFromSummaryPage(false);
     }
     this.$router.push(
-      project.statusId >= projectStatus.developmentComplete
-        ? `project-container/${project.id}`
-        : `/project/${project.id}/summary`
+      `project-container/${project.id}`
+      // project.statusId >= projectStatus.developmentComplete
+      //   ? `project-container/${project.id}`
+      //   : `/project/${project.id}/summary`
     );
   }
 }

@@ -83,8 +83,6 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
               class="v-list-item__content"
             >
               
-              
-            
             </div>
           </div>
         </div>
@@ -106,9 +104,7 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
                 <div
                   class="v-list-item__title headline"
                 >
-                  
-                    1
-                  
+                  1
                 </div>
                  
                 <div
@@ -139,9 +135,7 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
                 <div
                   class="v-list-item__title headline"
                 >
-                  
-                    2
-                  
+                  2
                 </div>
                  
                 <div
@@ -172,9 +166,7 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
                 <div
                   class="v-list-item__title headline"
                 >
-                  
-                    3
-                  
+                  3
                 </div>
                  
                 <div
@@ -205,9 +197,7 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
                 <div
                   class="v-list-item__title headline"
                 >
-                  
-                    5
-                  
+                  5
                 </div>
                  
                 <div
@@ -233,8 +223,6 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
               class="v-list-item__content"
             >
               
-              
-            
             </div>
              
             <div
@@ -382,8 +370,6 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
               class="v-list-item__content"
             >
               
-              
-            
             </div>
           </div>
         </div>
@@ -405,9 +391,7 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
                 <div
                   class="v-list-item__title headline"
                 >
-                  
-                    1
-                  
+                  1
                 </div>
                  
                 <div
@@ -438,9 +422,7 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
                 <div
                   class="v-list-item__title headline"
                 >
-                  
-                    2
-                  
+                  2
                 </div>
                  
                 <div
@@ -471,9 +453,7 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
                 <div
                   class="v-list-item__title headline"
                 >
-                  
-                    3
-                  
+                  3
                 </div>
                  
                 <div
@@ -504,9 +484,7 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
                 <div
                   class="v-list-item__title headline"
                 >
-                  
-                    5
-                  
+                  5
                 </div>
                  
                 <div
@@ -532,8 +510,6 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
               class="v-list-item__content"
             >
               
-              
-            
             </div>
              
             <div
@@ -681,8 +657,6 @@ exports[`TestAccountRequest.vue submit form with selected package on submit clic
               class="v-list-item__content"
             >
               
-              
-            
             </div>
           </div>
         </div>
@@ -704,9 +678,7 @@ exports[`TestAccountRequest.vue submit form with selected package on submit clic
                 <div
                   class="v-list-item__title headline"
                 >
-                  
-                    1
-                  
+                  1
                 </div>
                  
                 <div
@@ -737,9 +709,7 @@ exports[`TestAccountRequest.vue submit form with selected package on submit clic
                 <div
                   class="v-list-item__title headline"
                 >
-                  
-                    2
-                  
+                  2
                 </div>
                  
                 <div
@@ -770,9 +740,7 @@ exports[`TestAccountRequest.vue submit form with selected package on submit clic
                 <div
                   class="v-list-item__title headline"
                 >
-                  
-                    3
-                  
+                  3
                 </div>
                  
                 <div
@@ -803,9 +771,7 @@ exports[`TestAccountRequest.vue submit form with selected package on submit clic
                 <div
                   class="v-list-item__title headline"
                 >
-                  
-                    5
-                  
+                  5
                 </div>
                  
                 <div
@@ -831,8 +797,6 @@ exports[`TestAccountRequest.vue submit form with selected package on submit clic
               class="v-list-item__content"
             >
               
-              
-            
             </div>
              
             <div
