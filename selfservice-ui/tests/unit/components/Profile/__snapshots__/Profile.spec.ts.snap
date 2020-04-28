@@ -19,6 +19,8 @@ exports[`Profile.vue renders props when passed with gettors 1`] = `
   >
     <v-toolbar-title-stub>
       
+      
+    
     </v-toolbar-title-stub>
      
     <div
@@ -57,6 +59,7 @@ exports[`Profile.vue renders props when passed with gettors 1`] = `
           </v-card-title-stub>
            
           <input-stub
+            data-test-id="input-profile-email"
             helptext=""
             label=""
             outlined="true"
@@ -66,6 +69,7 @@ exports[`Profile.vue renders props when passed with gettors 1`] = `
           />
            
           <input-stub
+            data-test-id="input-profile-phone"
             helptext=""
             label=""
             outlined="true"
@@ -92,6 +96,7 @@ exports[`Profile.vue renders props when passed with gettors 1`] = `
               <button-stub
                 class="white--text"
                 color=""
+                data-test-id="btn-profile-update"
                 depressed=""
                 disabled="true"
                 name="button"

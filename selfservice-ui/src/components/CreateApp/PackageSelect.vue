@@ -36,6 +36,7 @@
                 class="d-flex align-center pa-4 select-package"
                 :class="active ? 'active-bg' : ''"
                 @click="selectedPackage(packageData.id)"
+                :data-test-id="`select-package-${packageData.id}`"
               >
                 <v-list-item three-line>
                   <v-list-item-content>
@@ -89,6 +90,7 @@
             :aria-label="$t('selectPackage.btnBack')"
             secondary
             class="back-btn"
+            data-test-id="btn-cancel-package-select"
           >
             {{
             $t(
@@ -104,6 +106,7 @@
             class="white--text submit-package ml-6"
             depressed
             @click="submitPackage"
+            data-test-id="btn-submit-package-select"
           >
             {{
             $t(

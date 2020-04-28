@@ -166,12 +166,12 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
    * updateProjectStatus to server
    * @param {*} { commit }
    */
-  async updateProjectStatus({ commit }, data) {
+  async updateProjectStatus({ commit, dispatch }, data) {
     commit('SET_LOADING', true);
     try {
       const { projectId, statusId } = data;
       await ProjectInfoService.updateStatusOfProject(projectId, statusId);
-
+      dispatch('loadSingleProjectInfo', projectId);
       commit('SET_STATUS_CHANGE_ERROR', false);
       commit('SET_STATUS_CHANGE_SUCESS', true);
       commit('SET_LOADING', false);

@@ -24,18 +24,18 @@
                 <v-col cols="12">
                   <div class="display-1">
                     {{
-                      $t(
-                        !editMode
-                          ? 'addTeamMember.pagetitle'
-                          : 'addTeamMember.pagetitleUpdate'
-                      )
+                    $t(
+                    !editMode
+                    ? 'addTeamMember.pagetitle'
+                    : 'addTeamMember.pagetitleUpdate'
+                    )
                     }}
                   </div>
                 </v-col>
                 <v-col cols="12" sm="6">
-                  <v-card-subtitle class="headline bc-padding-left-0">
-                    {{ $t('addTeamMember.contactInfo') }}
-                  </v-card-subtitle>
+                  <v-card-subtitle
+                    class="headline bc-padding-left-0"
+                  >{{ $t('addTeamMember.contactInfo') }}</v-card-subtitle>
                   <Input
                     v-model="userDetails.firstName"
                     :label="$t('addTeamMember.labelFirstName')"
@@ -46,6 +46,7 @@
                     ]"
                     type="text"
                     :disabled="disabled()"
+                    data-test-id="input-team-first-name"
                   />
                   <Input
                     v-model="userDetails.lastName"
@@ -57,6 +58,7 @@
                     ]"
                     type="text"
                     :disabled="disabled()"
+                    data-test-id="input-team-last-name"
                   />
                   <Input
                     v-model="userDetails.email"
@@ -64,6 +66,7 @@
                     :rules="[rules.required, rules.email, rules.maxLength(250)]"
                     type="text"
                     :disabled="disabled()"
+                    data-test-id="input-team-email"
                   />
 
                   <Input
@@ -72,17 +75,22 @@
                     type="text"
                     :disabled="disabled()"
                     :optional="true"
+                    data-test-id="input-team-phone"
                   />
                 </v-col>
                 <v-col>
                   <v-divider class="mx-4 d-none d-sm-flex" vertical></v-divider>
                 </v-col>
                 <v-col cols="12" sm="5" class="p-relative">
-                  <v-card-subtitle class="headline bc-padding-left-0">
-                    {{ $t('addTeamMember.roleTitle') }}
-                  </v-card-subtitle>
+                  <v-card-subtitle
+                    class="headline bc-padding-left-0"
+                  >{{ $t('addTeamMember.roleTitle') }}</v-card-subtitle>
 
-                  <v-radio-group v-model="userDetails.role" :mandatory="false">
+                  <v-radio-group
+                    v-model="userDetails.role"
+                    :mandatory="false"
+                    data-test-id="radio-team-role"
+                  >
                     <v-radio
                       :label="$t(`addTeamMember.labelRoledeveloper`)"
                       :value="projectRoles.developer"
@@ -104,11 +112,11 @@
 
                   <div>
                     {{
-                      $t(
-                        `addTeamMember.labelRoleInfo${
-                          projectRoles[userDetails.role]
-                        }`
-                      )
+                    $t(
+                    `addTeamMember.labelRoleInfo${
+                    projectRoles[userDetails.role]
+                    }`
+                    )
                     }}
                   </div>
                   <v-card-actions class="btn-bottom">
@@ -117,20 +125,22 @@
                       @click="cancel"
                       aria-label="Back Button"
                       secondary
-                      >{{ $t('addTeamMember.btnCancel') }}</Button
-                    >
+                      data-test-id="btn-cancel-add-team"
+                    >{{ $t('addTeamMember.btnCancel') }}</Button>
                     <Button
                       :disabled="!valid"
-                      class="white--text submit-package "
+                      class="white--text submit-package"
                       @click="submitTeamMember"
-                      >{{
-                        $t(
-                          !editMode
-                            ? 'addTeamMember.btnSumbmit'
-                            : 'addTeamMember.btnSumbmitSave'
-                        )
-                      }}</Button
+                      data-test-id="btn-submit-add-team"
                     >
+                      {{
+                      $t(
+                      !editMode
+                      ? 'addTeamMember.btnSumbmit'
+                      : 'addTeamMember.btnSumbmitSave'
+                      )
+                      }}
+                    </Button>
                   </v-card-actions>
                 </v-col>
               </v-row>
@@ -161,8 +171,8 @@ const KeyCloakModule = namespace('KeyCloakModule');
   components: {
     Input,
     Button,
-    Alert,
-  },
+    Alert
+  }
 })
 export default class AddTeamMember extends Vue {
   @Prop({ default: 0 })
@@ -239,12 +249,12 @@ export default class AddTeamMember extends Vue {
       this.updateTeamMember({
         userDetails: this.userDetails,
         projectId: this.id,
-        memberId: this.memberId,
+        memberId: this.memberId
       });
     } else {
       this.addTeamMember({
         userDetails: this.userDetails,
-        projectId: this.id,
+        projectId: this.id
       });
     }
     this.resetValidation();

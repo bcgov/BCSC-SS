@@ -8,7 +8,14 @@
 
       <div class="flex-grow-1"></div>
 
-      <v-btn class="ma-2" fab dark color="#fba30e" @click="$router.push(`/project/info`)">
+      <v-btn
+        class="ma-2"
+        fab
+        dark
+        color="#fba30e"
+        @click="$router.push(`/project/info`)"
+        data-test-id="btn-create-project"
+      >
         <v-icon dark large>mdi-plus</v-icon>
       </v-btn>
     </v-toolbar>
@@ -103,12 +110,7 @@ export default class Dashboard extends Vue {
     if (project.statusId === projectStatus.development) {
       this.redirectFromSummaryPage(false);
     }
-    this.$router.push(
-      `project-container/${project.id}`
-      // project.statusId >= projectStatus.developmentComplete
-      //   ? `project-container/${project.id}`
-      //   : `/project/${project.id}/summary`
-    );
+    this.$router.push(`project-container/${project.id}`);
   }
 }
 </script>

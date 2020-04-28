@@ -33,6 +33,7 @@
                     rules.maxLength(100),
                   ]"
                   :helpText="$t('projectInfo.OrganizationNameHint')"
+                  data-test-id="input-org-name"
                 />
 
                 <Input
@@ -45,6 +46,7 @@
                     rules.maxLength(100),
                   ]"
                   :helpText="$t('projectInfo.projectNameHint')"
+                  data-test-id="input-project-name"
                 />
 
                 <TextArea
@@ -54,6 +56,7 @@
                   :rules="[rules.required]"
                   outlined
                   :helpText="$t('projectInfo.DescriptionHint')"
+                  data-test-id="text-project-description"
                 />
               </v-card>
             </v-col>
@@ -68,6 +71,7 @@
                     aria-label="Back Button"
                     secondary
                     v-if="!showWizardExperience()"
+                    data-test-id="btn-cancel-project-info"
                   >{{ $t('projectInfo.btnCancel') }}</Button>
                   <Button
                     :disabled="!form"
@@ -76,6 +80,7 @@
                     depressed
                     @click="submitProjectInfo"
                     @keyup.enter="submitProjectInfo"
+                    data-test-id="btn-submit-project-info"
                   >
                     {{
                     $t(
