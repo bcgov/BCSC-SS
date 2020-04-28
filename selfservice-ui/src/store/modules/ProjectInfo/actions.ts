@@ -65,6 +65,7 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
    * load single projectinfo   by id from server and set to store
    * @param {*} { commit }
    */
+
   async loadSingleProjectInfo({ commit }, id) {
     commit('SET_LOADING', true);
     if (!projectCallInProgress) {
