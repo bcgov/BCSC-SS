@@ -22,8 +22,14 @@
             :aria-label="$t('team.btnBack')"
             secondary
             class="back-btn"
+            data-test-id="btn-cancel-project-team"
           >{{ $t(showWizardExperience() ? 'team.btnBack' : 'team.btnCancel') }}</Button>
-          <Button class="white--text submit-team ml-6" depressed @click="nextRedirect">
+          <Button
+            class="white--text submit-team ml-6"
+            depressed
+            @click="nextRedirect"
+            data-test-id="btn-submit-project-team"
+          >
             {{
             $t(
             showWizardExperience() ? 'team.btnNext' : 'team.btnSaveChanges'

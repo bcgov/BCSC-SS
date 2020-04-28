@@ -35,6 +35,7 @@
                 class="d-flex align-center pa-4 test-account"
                 :class="active ? 'active-bg' : ''"
                 @click="selectedTestAccount(testAccount)"
+                :data-test-id="`input-select-test-account-${testAccount}`"
               >
                 <v-list-item>
                   <v-list-item-content class="text-center">
@@ -66,7 +67,12 @@
         <v-divider></v-divider>
         <v-card-actions class="mx-4">
           <v-spacer></v-spacer>
-          <Button @click="goBack()" :aria-label="$t('testAccount.btnBack')" secondary>
+          <Button
+            @click="goBack()"
+            :aria-label="$t('testAccount.btnBack')"
+            secondary
+            data-test-id="btn-cancel-test-account"
+          >
             {{
             $t(
             showWizardExperience()
@@ -81,6 +87,7 @@
             class="white--text submit-account ml-6"
             depressed
             @click="submitTestAccount"
+            data-test-id="btn-submit-test-account"
           >
             {{
             $t(

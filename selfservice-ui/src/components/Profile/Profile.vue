@@ -4,9 +4,11 @@
   <v-card class="mx-auto card-width">
     <Alert type="error" v-if="errorStatus">Something went wrong...</Alert>
     <v-toolbar flat class="bc-subtitle" dark v-if="!errorStatus">
-      <v-toolbar-title>{{
+      <v-toolbar-title>
+        {{
         $t(isComplete ? 'profile.pageCompleteTitle' : 'profile.pageTitle')
-      }}</v-toolbar-title>
+        }}
+      </v-toolbar-title>
       <div class="flex-grow-1"></div>
     </v-toolbar>
     <v-divider></v-divider>
@@ -14,14 +16,9 @@
       <v-container>
         <v-row class="ma-5">
           <v-col cols="12" md="12">
-            <Alert
-              type="error"
-              dense
-              outlined
-              class="text-left"
-              v-if="profileErrorStatus"
-              ><span v-html="$t('profile.errorMessageDomain')"></span
-            ></Alert>
+            <Alert type="error" dense outlined class="text-left" v-if="profileErrorStatus">
+              <span v-html="$t('profile.errorMessageDomain')"></span>
+            </Alert>
             <v-card-subtitle
               v-if="isComplete"
               class="text-left padding-0 bc-padding-left-0"
@@ -52,6 +49,7 @@
                 rules.length(2),
                 rules.maxLength(250),
               ]"
+              data-test-id="input-profile-email"
               v-if="filedsToShow.email"
             />
             <Input
@@ -60,6 +58,7 @@
               type="text"
               :rules="[rules.required, rules.length(9), rules.maxLength(15)]"
               v-if="filedsToShow.phone"
+              data-test-id="input-profile-phone"
             />
           </v-col>
           <v-col cols="12">
@@ -73,13 +72,14 @@
                   depressed
                   @click="createOrUpdateProfile"
                   @keyup.enter="createOrUpdateProfile"
+                  data-test-id="btn-profile-update"
                 >
                   {{
-                    $t(
-                      isComplete
-                        ? 'profile.btnContinue'
-                        : 'profile.btnSaveChanges'
-                    )
+                  $t(
+                  isComplete
+                  ? 'profile.btnContinue'
+                  : 'profile.btnSaveChanges'
+                  )
                   }}
                 </Button>
               </v-card-actions>

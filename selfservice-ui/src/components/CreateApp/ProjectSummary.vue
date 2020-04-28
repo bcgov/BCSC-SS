@@ -10,6 +10,7 @@
         dense
         outlined
         v-if="isCreated"
+        data-test-id="alert-add-sucess-project-summary"
       >{{ $t('summaryPage.createSuccessMessage') }}</Alert>
 
       <Alert
@@ -18,6 +19,7 @@
         dense
         outlined
         v-if="isUpdated"
+        data-test-id="alert-update-sucess-project-summary"
       >{{ $t('summaryPage.updateSuccessMessage') }}</Alert>
       <v-col cols="12" flat>
         <ClientID
@@ -123,11 +125,13 @@
               @click="dialog = false"
               aria-label="Back Button"
               secondary
+              data-test-id="btn-cancel-project-summary"
             >{{ $t('summaryPage.btnAgreeBack') }}</Button>
             <Button
               class="white--text submit-package ml-6"
               depressed
               @click="submitFinalRequest"
+              data-test-id="btn-submit-project-summary"
             >{{ $t('summaryPage.btnAgree') }}</Button>
           </v-card-actions>
         </v-card>

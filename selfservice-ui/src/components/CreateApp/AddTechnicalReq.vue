@@ -31,6 +31,7 @@
                   type="text"
                   :rules="[rules.required, rules.url, rules.maxLength(500)]"
                   :helpText="$t('technicalRequirements.inputAppText')"
+                  data-test-id="input-app-url"
                 />
 
                 <div class="text-left my-1">{{ $t('technicalRequirements.labelRedirectUrl') }}</div>
@@ -46,6 +47,7 @@
                       :rules="[rules.required, rules.urlLocalHost]"
                       class="addUri"
                       outlined
+                      :data-test-id="`input-redirect-url${index}`"
                     />
                   </div>
                   <div class="clear-icon">
@@ -65,8 +67,16 @@
                 >{{ $t('technicalRequirements.labelTestMethodHint') }}</v-card-subtitle>
 
                 <v-card-subtitle class="text-left bc-padding-left-0">
-                  <v-radio-group v-model="signingEncryptionType" :mandatory="false">
-                    <v-radio label="Signed JWT" :value="algorithamBase.SignedJWT"></v-radio>
+                  <v-radio-group
+                    v-model="signingEncryptionType"
+                    :mandatory="false"
+                    data-test-id="radio-algoritham-base"
+                  >
+                    <v-radio
+                      label="Signed JWT"
+                      :value="algorithamBase.SignedJWT"
+                      data-test-id="radio-algoritham-base-signed-jwt"
+                    ></v-radio>
                     <div
                       class="small-hint radio-help"
                     >{{ $t('technicalRequirements.SignedJWTHint') }}</div>
@@ -88,11 +98,16 @@
                               'technicalRequirements.labelSignedResponseAlgHint'
                             )
                           "
+                          data-test-id="select-signed-response-alg"
                         />
                       </div>
                     </div>
 
-                    <v-radio label="Secure JWT" :value="algorithamBase.SecureJWT"></v-radio>
+                    <v-radio
+                      label="Secure JWT"
+                      :value="algorithamBase.SecureJWT"
+                      data-test-id="radio-algoritham-base-secure-jwt"
+                    ></v-radio>
                     <div
                       class="small-hint radio-help"
                     >{{ $t('technicalRequirements.SecureJWTHint') }}</div>
@@ -105,6 +120,7 @@
                     type="text"
                     :rules="[rules.required, rules.url, rules.maxLength(500)]"
                     :helpText="$t('technicalRequirements.JWKSText')"
+                    data-test-id="select-jwks-url"
                   />
                   <div class="row">
                     <div class="col-12 col-md-4">
@@ -122,6 +138,7 @@
                           )
                         "
                         helpClass="mb-9"
+                        data-test-id="select-encrypted-response-enc"
                       />
                     </div>
                     <div class="col-12 col-md-4">
@@ -139,6 +156,7 @@
                           )
                         "
                         helpClass="mb-9"
+                        data-test-id="select-encrypted-response-alg"
                       />
                     </div>
                     <div class="col-12 col-md-4">
@@ -154,6 +172,7 @@
                           $t('technicalRequirements.labelSignedResponseAlgHint')
                         "
                         helpClass="mb-3"
+                        data-test-id="select-signed-response-enc"
                       />
                     </div>
                   </div>
@@ -162,7 +181,12 @@
                 <v-divider></v-divider>
                 <v-card-actions>
                   <v-spacer></v-spacer>
-                  <Button @click="goBack()" aria-label="Back Button" secondary>
+                  <Button
+                    @click="goBack()"
+                    aria-label="Back Button"
+                    secondary
+                    data-test-id="btn-cancel-technical-req"
+                  >
                     {{
                     $t(
                     showWizardExperience()
@@ -177,6 +201,7 @@
                     class="white--text submit-req ml-6"
                     depressed
                     @click="addTechnicalReq()"
+                    data-test-id="btn-submit-technical-req"
                   >
                     {{
                     $t(
