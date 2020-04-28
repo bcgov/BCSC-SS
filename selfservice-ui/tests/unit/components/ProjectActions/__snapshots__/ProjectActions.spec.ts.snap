@@ -142,28 +142,7 @@ exports[`ProjectActions.vue renders props on click of Live access 1`] = `
 
 exports[`ProjectActions.vue renders props on click of delete 1`] = `
 <div>
-  <div
-    class="d-flex justify-end col col-12"
-    no-gutters=""
-  >
-    <div
-      class="v-card v-card--flat v-sheet theme--light"
-    >
-      <button
-        aria-disabled="true"
-        class="btn btn-req v-btn v-btn--contained v-btn--disabled theme--light v-size--default secondary-btn normal disabled"
-        disabled="disabled"
-        name="button"
-        type="button"
-      >
-        <span
-          class="v-btn__content"
-        >
-          
-        </span>
-      </button>
-    </div>
-  </div>
+  <!---->
    
   <div
     class="d-flex justify-end btn-delete pad-0 col"
@@ -287,28 +266,7 @@ exports[`ProjectActions.vue renders props on click of delete 1`] = `
 
 exports[`ProjectActions.vue renders props on click of delete 2`] = `
 <div>
-  <div
-    class="d-flex justify-end col col-12"
-    no-gutters=""
-  >
-    <div
-      class="v-card v-card--flat v-sheet theme--light"
-    >
-      <button
-        aria-disabled="true"
-        class="btn btn-req v-btn v-btn--contained v-btn--disabled theme--light v-size--default secondary-btn normal disabled"
-        disabled="disabled"
-        name="button"
-        type="button"
-      >
-        <span
-          class="v-btn__content"
-        >
-          
-        </span>
-      </button>
-    </div>
-  </div>
+  <!---->
    
   <div
     class="d-flex justify-end btn-delete pad-0 col"
@@ -429,28 +387,7 @@ exports[`ProjectActions.vue renders props on click of delete 2`] = `
 
 exports[`ProjectActions.vue renders props when passed 1`] = `
 <div>
-  <div
-    class="d-flex justify-end col col-12"
-    no-gutters=""
-  >
-    <div
-      class="v-card v-card--flat v-sheet theme--light"
-    >
-      <button
-        aria-disabled="true"
-        class="btn btn-req v-btn v-btn--contained v-btn--disabled theme--light v-size--default secondary-btn normal disabled"
-        disabled="disabled"
-        name="button"
-        type="button"
-      >
-        <span
-          class="v-btn__content"
-        >
-          
-        </span>
-      </button>
-    </div>
-  </div>
+  <!---->
    
   <div
     class="d-flex justify-end btn-delete pad-0 col"
@@ -472,28 +409,7 @@ exports[`ProjectActions.vue renders props when passed 1`] = `
 
 exports[`ProjectActions.vue renders props when passed with gettors 1`] = `
 <div>
-  <div
-    class="d-flex justify-end col col-12"
-    no-gutters=""
-  >
-    <div
-      class="v-card v-card--flat v-sheet theme--light"
-    >
-      <button
-        aria-disabled="true"
-        class="btn btn-req v-btn v-btn--contained v-btn--disabled theme--light v-size--default secondary-btn normal disabled"
-        disabled="disabled"
-        name="button"
-        type="button"
-      >
-        <span
-          class="v-btn__content"
-        >
-          
-        </span>
-      </button>
-    </div>
-  </div>
+  <!---->
    
   <div
     class="d-flex justify-end btn-delete pad-0 col"
