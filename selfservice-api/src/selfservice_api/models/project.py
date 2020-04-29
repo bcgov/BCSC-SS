@@ -35,6 +35,8 @@ class Project(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
     oidc_dev_date = db.Column(db.DateTime, nullable=True)
     oidc_prod_date = db.Column(db.DateTime, nullable=True)
 
+    is_deleted = db.Column(db.Boolean(), default=False, nullable=False)
+
     technical_req = db.relationship('TechnicalReq', backref='project', lazy=True)
 
     @classmethod

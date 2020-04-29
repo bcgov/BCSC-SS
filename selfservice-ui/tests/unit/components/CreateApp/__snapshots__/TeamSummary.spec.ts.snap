@@ -70,13 +70,17 @@ exports[`TeamSummary.vue renders props when passed 1`] = `
         <div
           class="ml-6"
         >
-          09870987654321
+          
+            09870987654321
+          
         </div>
          
         <div
           class="ml-6"
         >
-          e@e.com
+          
+            e@e.com
+          
         </div>
       </v-list-item-content-stub>
     </v-list-item-stub>
@@ -116,13 +120,17 @@ exports[`TeamSummary.vue renders props when passed 1`] = `
         <div
           class="ml-6"
         >
-          987654321
+          
+            987654321
+          
         </div>
          
         <div
           class="ml-6"
         >
-          bb@test.com
+          
+            bb@test.com
+          
         </div>
       </v-list-item-content-stub>
     </v-list-item-stub>
@@ -164,7 +172,9 @@ exports[`TeamSummary.vue renders props when passed 1`] = `
         <div
           class="ml-6"
         >
-          user@yopmail.com
+          
+            user@yopmail.com
+          
         </div>
       </v-list-item-content-stub>
     </v-list-item-stub>
@@ -244,13 +254,17 @@ exports[`TeamSummary.vue renders props when passed with gettors 1`] = `
         <div
           class="ml-6"
         >
-          09870987654321
+          
+            09870987654321
+          
         </div>
          
         <div
           class="ml-6"
         >
-          e@e.com
+          
+            e@e.com
+          
         </div>
       </div>
     </div>
@@ -294,13 +308,17 @@ exports[`TeamSummary.vue renders props when passed with gettors 1`] = `
         <div
           class="ml-6"
         >
-          987654321
+          
+            987654321
+          
         </div>
          
         <div
           class="ml-6"
         >
-          bb@test.com
+          
+            bb@test.com
+          
         </div>
       </div>
     </div>
@@ -346,7 +364,9 @@ exports[`TeamSummary.vue renders props when passed with gettors 1`] = `
         <div
           class="ml-6"
         >
-          user@yopmail.com
+          
+            user@yopmail.com
+          
         </div>
       </div>
     </div>

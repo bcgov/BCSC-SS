@@ -27,6 +27,7 @@ class EmailType(Enum):
 
     TEST_ACCOUNT = 'test_account'
     DEV_REQUEST = 'dev_request'
+    CONTACT_US = 'contact_us'
 
 
 class EmailSubject:  # pylint: disable=too-few-public-methods
@@ -34,6 +35,7 @@ class EmailSubject:  # pylint: disable=too-few-public-methods
 
     test_account = 'Test accounts in self service application low'
     dev_request = '{{project_name}} - Development Access Request - API Keys sent'
+    contact_us = 'Contact us request'
 
     @classmethod
     def get(cls, email_type: EmailType, attributes: dict):

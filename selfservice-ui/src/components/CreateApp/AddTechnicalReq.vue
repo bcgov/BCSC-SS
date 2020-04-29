@@ -1,16 +1,12 @@
 /** * Add TechnicalReq */
 <template>
   <v-card class="mx-auto outer-card">
-    <!--  <v-alert type="success" v-if="successStatus">TechnicalReq {{isEditMode ? 'Updated' : 'Added'}} succesfully</v-alert>
-    <v-alert type="error" v-if="errorStatus">Something went wrong...</v-alert>-->
     <v-card class="mx-auto">
       <v-app-bar dark class="bc-subtitle">
         <v-btn icon @click="goBack()" aria-label="Back Button">
           <v-icon>mdi-arrow-left</v-icon>
         </v-btn>
-        <v-toolbar-title>
-          {{ $t('technicalRequirements.technicalTitle') }}
-        </v-toolbar-title>
+        <v-toolbar-title>{{ $t('technicalRequirements.technicalTitle') }}</v-toolbar-title>
         <v-spacer></v-spacer>
       </v-app-bar>
 
@@ -22,14 +18,11 @@
               <v-card class="pa-4 pt-6 mb-4">
                 <v-card-title
                   class="headline bc-padding-left-0 text-capitalize"
-                >
-                  {{ getSingleProjectInfo && getSingleProjectInfo.projectName }}
-                </v-card-title>
+                >{{ getSingleProjectInfo && getSingleProjectInfo.projectName }}</v-card-title>
                 <v-card-subtitle
                   class="text-left bc-padding-left-0"
                   v-html="$t('technicalRequirements.technicalTitleInfo')"
-                >
-                </v-card-subtitle>
+                ></v-card-subtitle>
               </v-card>
               <v-card class="pa-4 pt-6">
                 <Input
@@ -38,15 +31,14 @@
                   type="text"
                   :rules="[rules.required, rules.url, rules.maxLength(500)]"
                   :helpText="$t('technicalRequirements.inputAppText')"
+                  data-test-id="input-app-url"
                 />
 
-                <div class="text-left my-1">
-                  {{ $t('technicalRequirements.labelRedirectUrl') }}
-                </div>
+                <div class="text-left my-1">{{ $t('technicalRequirements.labelRedirectUrl') }}</div>
                 <div
                   v-for="(redirectUri, index) in redirectUris"
                   v-bind:key="index"
-                  class="row v-form px-4 "
+                  class="row v-form px-4"
                 >
                   <div class="redirect-div">
                     <Input
@@ -55,37 +47,39 @@
                       :rules="[rules.required, rules.urlLocalHost]"
                       class="addUri"
                       outlined
+                      :data-test-id="`input-redirect-url${index}`"
                     />
                   </div>
                   <div class="clear-icon">
-                    <v-icon class="ml-2  " large="" @click="clearUri(index)"
-                      >mdi-close</v-icon
-                    >
+                    <v-icon class="ml-2" large @click="clearUri(index)">mdi-close</v-icon>
                   </div>
                 </div>
 
-                <div @click="addUri()" class="add-url text-left">
-                  {{ $t('technicalRequirements.AddURI') }}
-                </div>
-                <v-card-title class="text-left bc-padding-left-0">
-                  {{ $t('technicalRequirements.labelTestMethod') }}
-                </v-card-title>
-                <v-card-subtitle class="text-left bc-padding-left-0">
-                  {{ $t('technicalRequirements.labelTestMethodHint') }}
-                </v-card-subtitle>
+                <div
+                  @click="addUri()"
+                  class="add-url text-left"
+                >{{ $t('technicalRequirements.AddURI') }}</div>
+                <v-card-title
+                  class="text-left bc-padding-left-0"
+                >{{ $t('technicalRequirements.labelTestMethod') }}</v-card-title>
+                <v-card-subtitle
+                  class="text-left bc-padding-left-0"
+                >{{ $t('technicalRequirements.labelTestMethodHint') }}</v-card-subtitle>
 
                 <v-card-subtitle class="text-left bc-padding-left-0">
                   <v-radio-group
                     v-model="signingEncryptionType"
                     :mandatory="false"
+                    data-test-id="radio-algoritham-base"
                   >
                     <v-radio
                       label="Signed JWT"
                       :value="algorithamBase.SignedJWT"
+                      data-test-id="radio-algoritham-base-signed-jwt"
                     ></v-radio>
-                    <div class="small-hint radio-help">
-                      {{ $t('technicalRequirements.SignedJWTHint') }}
-                    </div>
+                    <div
+                      class="small-hint radio-help"
+                    >{{ $t('technicalRequirements.SignedJWTHint') }}</div>
                     <div
                       class="row pad-radio"
                       v-if="signingEncryptionType === algorithamBase.SignedJWT"
@@ -96,7 +90,7 @@
                           :label="
                             $t('technicalRequirements.labelSignedResponseAlg')
                           "
-                          :items="algorithm"
+                          :items="signedAlg"
                           :rules="[rules.required]"
                           outlined
                           :helpText="
@@ -104,6 +98,7 @@
                               'technicalRequirements.labelSignedResponseAlgHint'
                             )
                           "
+                          data-test-id="select-signed-response-alg"
                         />
                       </div>
                     </div>
@@ -111,31 +106,48 @@
                     <v-radio
                       label="Secure JWT"
                       :value="algorithamBase.SecureJWT"
+                      data-test-id="radio-algoritham-base-secure-jwt"
                     ></v-radio>
-                    <div class="small-hint radio-help">
-                      {{ $t('technicalRequirements.SecureJWTHint') }}
-                    </div>
+                    <div
+                      class="small-hint radio-help"
+                    >{{ $t('technicalRequirements.SecureJWTHint') }}</div>
                   </v-radio-group>
                 </v-card-subtitle>
-                <div
-                  v-if="signingEncryptionType === algorithamBase.SecureJWT"
-                  class="pad-radio"
-                >
+                <div v-if="signingEncryptionType === algorithamBase.SecureJWT" class="pad-radio">
                   <Input
                     v-model="jwksUri"
                     :label="$t('technicalRequirements.labelJWKSUrl')"
                     type="text"
                     :rules="[rules.required, rules.url, rules.maxLength(500)]"
                     :helpText="$t('technicalRequirements.JWKSText')"
+                    data-test-id="select-jwks-url"
                   />
                   <div class="row">
-                    <div class="col-12 col-md-5">
+                    <div class="col-12 col-md-4">
+                      <Select
+                        v-model="encryptedResponseEnc"
+                        :label="
+                          $t('technicalRequirements.labelEncryptedResponseEnc')
+                        "
+                        :items="encryptedEnc"
+                        :rules="[rules.required]"
+                        outlined
+                        :helpText="
+                          $t(
+                            'technicalRequirements.labelEncryptedResponseEncHint'
+                          )
+                        "
+                        helpClass="mb-9"
+                        data-test-id="select-encrypted-response-enc"
+                      />
+                    </div>
+                    <div class="col-12 col-md-4">
                       <Select
                         v-model="encryptedResponseAlg"
                         :label="
                           $t('technicalRequirements.labelEncryptedResponseAlg')
                         "
-                        :items="algorithm"
+                        :items="encryptedAlg"
                         :rules="[rules.required]"
                         outlined
                         :helpText="
@@ -144,21 +156,23 @@
                           )
                         "
                         helpClass="mb-9"
+                        data-test-id="select-encrypted-response-alg"
                       />
                     </div>
-                    <v-spacer />
-                    <div class="col-12 col-md-5">
+                    <div class="col-12 col-md-4">
                       <Select
                         v-model="signedResponseAlg"
                         :label="
                           $t('technicalRequirements.labelSignedResponseAlg')
                         "
-                        :items="algorithm"
+                        :items="signedAlg"
                         :rules="[rules.required]"
                         outlined
                         :helpText="
                           $t('technicalRequirements.labelSignedResponseAlgHint')
                         "
+                        helpClass="mb-3"
+                        data-test-id="select-signed-response-enc"
                       />
                     </div>
                   </div>
@@ -167,13 +181,18 @@
                 <v-divider></v-divider>
                 <v-card-actions>
                   <v-spacer></v-spacer>
-                  <Button @click="goBack()" aria-label="Back Button" secondary>
+                  <Button
+                    @click="goBack()"
+                    aria-label="Back Button"
+                    secondary
+                    data-test-id="btn-cancel-technical-req"
+                  >
                     {{
-                      $t(
-                        showWizardExperience()
-                          ? 'technicalRequirements.btnBack'
-                          : 'technicalRequirements.btnCancel'
-                      )
+                    $t(
+                    showWizardExperience()
+                    ? 'technicalRequirements.btnBack'
+                    : 'technicalRequirements.btnCancel'
+                    )
                     }}
                   </Button>
                   <Button
@@ -182,13 +201,14 @@
                     class="white--text submit-req ml-6"
                     depressed
                     @click="addTechnicalReq()"
+                    data-test-id="btn-submit-technical-req"
                   >
                     {{
-                      $t(
-                        showWizardExperience()
-                          ? 'technicalRequirements.btnNext'
-                          : 'technicalRequirements.btnSaveChanges'
-                      )
+                    $t(
+                    showWizardExperience()
+                    ? 'technicalRequirements.btnNext'
+                    : 'technicalRequirements.btnSaveChanges'
+                    )
                     }}
                   </Button>
                 </v-card-actions>
@@ -208,16 +228,20 @@ import Button from '@/Atomic/Button/Button.vue';
 import Select from '@/Atomic/Select/Select.vue';
 import validationRules from '@/config/validationRules';
 import Loading from '@/Atomic/Loading/Loading.vue';
-import { algorithamBase } from '@/constants/enums';
+import { algorithmBase } from '@/constants/enums';
 
-import { algorithm } from '@/constants/algorithm';
+import {
+  signedAlgorithm,
+  encryptedAlgorithm,
+  encryptedEncoding
+} from '@/constants/algorithm';
 import { TechnicalReqModel } from '@/models/TechnicalReqModel';
 const TechnicalReqModule = namespace('TechnicalReqModule');
 const ProjectInfoModule = namespace('ProjectInfoModule');
 const SharedModule = namespace('SharedModule');
 
 @Component({
-  components: { Input, Button, Select, Loading },
+  components: { Input, Button, Select, Loading }
 })
 export default class AddTechnicalReq extends Vue {
   @Prop({ default: 0 })
@@ -252,12 +276,15 @@ export default class AddTechnicalReq extends Vue {
   private clientUri: string = '';
   private redirectUris: any = [''];
   private jwksUri: string = '';
-  private encryptedResponseAlg: string = 'RS256';
+  private encryptedResponseEnc: string = 'A256GCM';
+  private encryptedResponseAlg: string = 'RSA1_5';
   private signedResponseAlg: string = 'RS256';
-  private algorithm: any = algorithm;
+  private signedAlg: any = signedAlgorithm;
+  private encryptedAlg: any = encryptedAlgorithm;
+  private encryptedEnc: any = encryptedEncoding;
   private blockRemoval = true;
-  private signingEncryptionType: number = algorithamBase.SignedJWT;
-  private algorithamBase: any = algorithamBase;
+  private signingEncryptionType: number = algorithmBase.SignedJWT;
+  private algorithamBase: any = algorithmBase;
 
   // private id: string = '';
   private isEditMode: boolean = false;
@@ -281,14 +308,18 @@ export default class AddTechnicalReq extends Vue {
       redirectUris: this.redirectUris,
       signingEncryptionType: this.signingEncryptionType,
       jwksUri:
-        this.signingEncryptionType === algorithamBase.SecureJWT
+        this.signingEncryptionType === algorithmBase.SecureJWT
           ? this.jwksUri
           : '',
       encryptedResponseAlg:
-        this.signingEncryptionType === algorithamBase.SecureJWT
+        this.signingEncryptionType === algorithmBase.SecureJWT
           ? this.encryptedResponseAlg
           : null,
-      signedResponseAlg: this.signedResponseAlg,
+      encryptedResponseEnc:
+        this.signingEncryptionType === algorithmBase.SecureJWT
+          ? this.encryptedResponseEnc
+          : null,
+      signedResponseAlg: this.signedResponseAlg
     };
 
     if (this.isEditMode && this.TechnicalReqId !== 0) {
@@ -304,6 +335,8 @@ export default class AddTechnicalReq extends Vue {
     this.clientUri = val.clientUri;
     this.redirectUris = val.redirectUris || this.redirectUris;
     this.jwksUri = val.jwksUri;
+    this.encryptedResponseEnc =
+      val.encryptedResponseEnc || this.encryptedResponseEnc;
     this.encryptedResponseAlg =
       val.encryptedResponseAlg || this.encryptedResponseAlg;
     this.signedResponseAlg = val.signedResponseAlg || this.signedResponseAlg;
@@ -327,9 +360,11 @@ export default class AddTechnicalReq extends Vue {
     }
   }
   private goBack() {
-    const redirectPage = this.showWizardExperience() ? 'team' : 'summary';
+    const redirectPage = this.showWizardExperience()
+      ? `/project/${this.projectId}/team/`
+      : `/project-container/${this.projectId}/`;
     this.redirectFromSummaryPage(false);
-    this.$router.push(`/project/${this.projectId}/${redirectPage}/`);
+    this.$router.push(redirectPage);
   }
   private showWizardExperience() {
     if (this.isEditMode && this.isRedirectFromSummaryPage) {

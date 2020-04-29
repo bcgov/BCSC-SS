@@ -24,6 +24,7 @@ from flask_jwt_oidc import AuthError
 from flask_restplus import Api
 
 from ..exceptions import BusinessException
+from .contact_us import API as CONTACTUS_API
 from .meta import API as META_API
 from .oidc_config import API as OIDC_CONFIG_API
 from .ops import API as OPS_API
@@ -69,6 +70,7 @@ def handle_auth_error(error: AuthError):
 
 API.add_namespace(OPS_API, path='/ops')
 API.add_namespace(META_API, path='/meta')
+API.add_namespace(CONTACTUS_API, path='/contactus')
 API.add_namespace(USER_API, path='/user')
 API.add_namespace(PROJECT_API, path='/project/info')
 API.add_namespace(TEAM_API, path='/project/<int:project_id>/team')

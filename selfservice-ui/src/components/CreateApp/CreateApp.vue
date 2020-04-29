@@ -7,7 +7,6 @@
     <AddTechnicalReq v-if="step === 'technical'" :id="id" />
     <PackageSelect v-if="step === 'package'" :id="id" />
     <TestAccountRequest v-if="step === 'test-account'" :id="id" />
-    <DevProjectSummary v-if="step === 'summary'" :id="id" />
     <ClientID v-if="step === 'api-key'" :id="id" />
   </div>
 </template>
@@ -19,7 +18,6 @@ import AddTeam from '@/components/CreateApp/AddTeam.vue';
 import AddTechnicalReq from '@/components/CreateApp/AddTechnicalReq.vue';
 import PackageSelect from '@/components/CreateApp/PackageSelect.vue';
 import TestAccountRequest from '@/components/CreateApp/TestAccountRequest.vue';
-import DevProjectSummary from '@/components/CreateApp/DevProjectSummary.vue';
 import ClientID from '@/components/CreateApp/ClientID.vue';
 
 @Component({
@@ -29,7 +27,6 @@ import ClientID from '@/components/CreateApp/ClientID.vue';
     AddTechnicalReq,
     PackageSelect,
     TestAccountRequest,
-    DevProjectSummary,
     ClientID
   }
 })

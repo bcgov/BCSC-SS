@@ -21,8 +21,9 @@ from selfservice_api.resources.test_account import TestAccountResource
 
 def test_create_from_list(session):
     """Assert test account creation from list."""
-    data = TestAccountResource._read_from_csv_data_(factory_test_account()['testAccounts'])
-    length = TestAccount.create_from_list(data)
+    test_accounts, total_count = \
+        TestAccountResource._read_from_csv_data_(factory_test_account(is_model=True)['testAccounts'])
+    length = TestAccount.create_from_list(test_accounts)
     assert length > 0
 
 
