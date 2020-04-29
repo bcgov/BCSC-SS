@@ -90,7 +90,7 @@
     "pageinfo": "<p class='pageinfo'>In order to test your configuration, we would like to know how many test accounts you need for package. Please note the test data provided to you will be randomized unless you indicate you have preferred customization.</p>",
     "how_many_test_account": "Choose the number of test user accounts you require",
     "special_notes": "Special requests or notes",
-    "specialNotesInfo": "<p>If you have any special requests for customized test account. Please contact IDIM Consulting or <a href='mailto:zorin.samji@gov.bc.ca'>Product Owner</a>.</p>",
+    "specialNotesInfo": "<p>If you have any special requests for customized test account. Please <a href='contact-us'>contact us</a>.</p>",
     "btnBack": "Go Back",
     "btnNext": "Next",
     "btnCancel": "Cancel",
@@ -195,7 +195,7 @@
     "labelPhone": "Phone",
     "btnContinue": "Continue",
     "btnSaveChanges": "Save Changes",
-    "errorMessageDomain": "Your email address does not match any of the eligible organizations in our BC Services Card Self Service System. If you believe you or your organization should have access to this system, please <a href='mailto:zorin.samji@gov.bc.ca'>contact us</a> for assistance. "
+    "errorMessageDomain": "Your email address does not match any of the eligible organizations in our BC Services Card Self Service System. If you believe you or your organization should have access to this system, please <a href='contact-us'>contact us</a> for assistance. "
   },
   "home": {
     "pagetitle": "Complete Profile",
@@ -275,5 +275,16 @@
     "btnDeleteCancel": "Cancel",
     "deleteDialogTitle": "Delete this project",
     "deleteDialogInfo": "<h3>You have chosen to delete this project</h4><p class='my-5'>Please note:</p><ul><li> Deleting this project will remove both the project and API from the system.</li><li> A project can only be deleted by a member of the project team while it is in the development state.</li><li>  Once you have marked development complete on your project, deletion is no longer possible. If you require a project deleted from this phase, please <a href='/contact-us'>contact us.</a></li></ul><p class='my-5 red--text'>Deleting a project is permanent and cannot be undone.</p><pclass='my-5 '>Do you wish to proceed with deleting this project?</p>"
+  },
+  "contactUs": {
+    "pagetitle": "Contact Us",
+    "pageinfo": "<p>The IDIM team will help you integrate with identity and authentication services that provide secure access to services for your clients. They have expertise in managing identity information, credentials and web access.</p><p>These services are mandated as part of the Provincial Identity Information Management Program.</p>",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "emailAddress": "Email Address",
+    "description": "How can we help you?",
+    "btnSend": "Send",
+    "successMessage": "Your message has been sent successfully to IDIM.",
+    "errorMessage": "Something went wrong. Please try again."
   }
 }
