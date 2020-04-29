@@ -22,6 +22,9 @@
         data-test-id="alert-update-sucess-project-summary"
       >{{ $t('summaryPage.updateSuccessMessage') }}</Alert>
       <v-col cols="12" flat>
+        <v-list-item-content class="text-left padding-0" v-html="$t('summaryPage.subTitle')"></v-list-item-content>
+      </v-col>
+      <v-col cols="12" flat>
         <ClientID
           :id="projectId"
           :showTestAccountWarning="showTestAccountWarning"
