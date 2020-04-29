@@ -10,8 +10,8 @@
         dense
         outlined
         v-if="isCreated"
-        >{{ $t('summaryPage.createSuccessMessage') }}</Alert
-      >
+        data-test-id="alert-add-sucess-project-summary"
+      >{{ $t('summaryPage.createSuccessMessage') }}</Alert>
 
       <Alert
         type="success"
@@ -19,8 +19,8 @@
         dense
         outlined
         v-if="isUpdated"
-        >{{ $t('summaryPage.updateSuccessMessage') }}</Alert
-      >
+        data-test-id="alert-update-sucess-project-summary"
+      >{{ $t('summaryPage.updateSuccessMessage') }}</Alert>
       <v-col cols="12" flat>
         <ClientID
           :id="projectId"
@@ -32,11 +32,7 @@
         <ProjectInfoSummary :id="projectId" />
       </v-col>
       <v-col cols="12" flat>
-        <TeamSummary
-          :id="projectId"
-          :team="team"
-          :isTeamAvailable="isTeamAvailable"
-        />
+        <TeamSummary :id="projectId" :team="team" :isTeamAvailable="isTeamAvailable" />
       </v-col>
       <v-col cols="12" flat>
         <TechnicalReqSummary
@@ -70,16 +66,14 @@
           outlined
           class="text-left"
           v-if="showCannotSubmitError"
-          >{{ $t('summaryPage.cantSubmitErrorMessage') }}</Alert
-        >
+        >{{ $t('summaryPage.cantSubmitErrorMessage') }}</Alert>
         <Alert
           type="error"
           dense
           outlined
           class="text-left"
           v-if="showSystemError"
-          >{{ $t('summaryPage.systemError') }}</Alert
-        >
+        >{{ $t('summaryPage.systemError') }}</Alert>
       </v-col>
       <v-col cols="12">
         <v-card flat class="mt-1">
@@ -92,19 +86,19 @@
               secondary
               class="back-btn"
               v-if="isDraft"
-              >{{ $t('summaryPage.goBack') }}</Button
-            >
+            >{{ $t('summaryPage.goBack') }}</Button>
             <Button
               :loading="isLoading"
               class="white--text submit-package ml-6"
               depressed
               @click="showDisclimer"
-              >{{
-                isDraft
-                  ? $t('summaryPage.submitRequest')
-                  : $t('summaryPage.commitChanges')
-              }}</Button
             >
+              {{
+              isDraft
+              ? $t('summaryPage.submitRequest')
+              : $t('summaryPage.commitChanges')
+              }}
+            </Button>
           </v-card-actions>
         </v-card>
       </v-col>
@@ -113,9 +107,11 @@
     <div class="text-center">
       <v-dialog v-model="dialog" persistent width="70%" class="text-left">
         <v-card>
-          <v-card-title class="bc-subtitle padding-0" primary-title>{{
+          <v-card-title class="bc-subtitle padding-0" primary-title>
+            {{
             $t('summaryPage.disclaimerTitle')
-          }}</v-card-title>
+            }}
+          </v-card-title>
 
           <v-card-text class="text-left">
             <div v-html="$t('summaryPage.disclaimerContent')"></div>
@@ -129,14 +125,14 @@
               @click="dialog = false"
               aria-label="Back Button"
               secondary
-              >{{ $t('summaryPage.btnAgreeBack') }}</Button
-            >
+              data-test-id="btn-cancel-project-summary"
+            >{{ $t('summaryPage.btnAgreeBack') }}</Button>
             <Button
               class="white--text submit-package ml-6"
               depressed
               @click="submitFinalRequest"
-              >{{ $t('summaryPage.btnAgree') }}</Button
-            >
+              data-test-id="btn-submit-project-summary"
+            >{{ $t('summaryPage.btnAgree') }}</Button>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -176,8 +172,8 @@ const SharedModule = namespace('SharedModule');
     TeamSummary,
     TechnicalReqSummary,
     PackageSelectSummary,
-    Alert,
-  },
+    Alert
+  }
 })
 export default class ProjectSummary extends Vue {
   @Prop({ default: 0 })
@@ -225,7 +221,7 @@ export default class ProjectSummary extends Vue {
     claimNames: '',
     description: '',
     id: '',
-    packageName: '',
+    packageName: ''
   };
 
   @Watch('getFinalProjectSubmissionStatus')
@@ -235,7 +231,7 @@ export default class ProjectSummary extends Vue {
       finalSuccessStatus,
       testAccountSuccess,
       isCreated,
-      isUpdated,
+      isUpdated
     } = val;
     if (finalSuccessStatus) {
       this.isCreated = isCreated;
@@ -244,7 +240,7 @@ export default class ProjectSummary extends Vue {
       this.loadFullData();
       this.$vuetify.goTo(0, {
         duration: 1000,
-        easing: 'easeInOutCubic',
+        easing: 'easeInOutCubic'
       });
       this.showTestAccountWarning = !testAccountSuccess;
     } else if (finalErrorStatus) {
@@ -268,7 +264,6 @@ export default class ProjectSummary extends Vue {
   private ongetSingleProjectInfoChanged(val: any) {
     if (val) {
       this.isDraft = val.statusId === projectStatus.draft;
-
       if (
         this.isRedirectFromSummaryPage &&
         val.statusId === projectStatus.development
@@ -333,7 +328,7 @@ export default class ProjectSummary extends Vue {
   private scrollToBottom() {
     this.$vuetify.goTo(document.body.scrollHeight, {
       duration: 1000,
-      easing: 'easeInOutCubic',
+      easing: 'easeInOutCubic'
     });
   }
 

@@ -17,16 +17,10 @@
       <v-container>
         <v-row class="ma-5">
           <v-col cols="12" flat>
-            <Alert type="error" v-if="errorStatus" class="alert-top"
-              >Something went wrong...</Alert
-            >
+            <Alert type="error" v-if="errorStatus" class="alert-top">Something went wrong...</Alert>
             <v-card flat>
-              <v-list-item-content class="headline">
-                {{ $t('selectPackage.choosePackage') }}
-              </v-list-item-content>
-              <v-list-item-content
-                v-html="$t('selectPackage.pagetitleInfo')"
-              ></v-list-item-content>
+              <v-list-item-content class="headline">{{ $t('selectPackage.choosePackage') }}</v-list-item-content>
+              <v-list-item-content v-html="$t('selectPackage.pagetitleInfo')"></v-list-item-content>
               <!-- <v-list-item-content>{{
                 $t('selectPackage.package2')
               }}</v-list-item-content>
@@ -36,30 +30,26 @@
             </v-card>
           </v-col>
 
-          <v-col
-            v-for="(packageData, idx) in getPackageList"
-            :key="idx"
-            cols="12"
-            md="12"
-          >
-            <v-item
-              v-slot:default="{ active }"
-              :value="packageData.id"
-              class="select-package"
-            >
+          <v-col v-for="(packageData, idx) in getPackageList" :key="idx" cols="12" md="12">
+            <v-item v-slot:default="{ active }" :value="packageData.id" class="select-package">
               <v-card
                 class="d-flex align-center pa-4 select-package"
                 :class="active ? 'active-bg' : ''"
                 @click="selectedPackage(packageData.id)"
+                :data-test-id="`select-package-${packageData.id}`"
               >
                 <v-list-item three-line>
                   <v-list-item-content>
-                    <v-list-item-title class="headline mb-1">{{
+                    <v-list-item-title class="headline mb-1">
+                      {{
                       packageData.packageName
-                    }}</v-list-item-title>
-                    <v-list-item-subtitle>{{
+                      }}
+                    </v-list-item-title>
+                    <v-list-item-subtitle>
+                      {{
                       $t('selectPackage.description')
-                    }}</v-list-item-subtitle>
+                      }}
+                    </v-list-item-subtitle>
                     <v-list-item-subtitle
                       v-for="claimName in packageData.claimNames"
                       :key="claimName"
@@ -67,22 +57,19 @@
                       <v-icon color="#969798" x-small>mdi-check-circle</v-icon>
                       {{ claimName }}
                     </v-list-item-subtitle>
-                    <v-list-item-subtitle class="mt-3">{{
+                    <v-list-item-subtitle class="mt-3">
+                      {{
                       packageData.description
-                    }}</v-list-item-subtitle>
+                      }}
+                    </v-list-item-subtitle>
                   </v-list-item-content>
                 </v-list-item>
                 <v-spacer></v-spacer>
                 <div v-if="!active" class="text-center mr-5">
-                  <v-icon color="#eae9e9" x-large
-                    >mdi-check-circle-outline</v-icon
-                  >
+                  <v-icon color="#eae9e9" x-large>mdi-check-circle-outline</v-icon>
                   <!-- Select this package -->
                 </div>
-                <div
-                  v-if="active"
-                  class="display-3 flex-grow-1 text-center mr-5"
-                >
+                <div v-if="active" class="display-3 flex-grow-1 text-center mr-5">
                   <v-icon color="green" x-large>mdi-check-circle</v-icon>
                 </div>
                 <!-- </v-scroll-y-transition> -->
@@ -103,13 +90,14 @@
             :aria-label="$t('selectPackage.btnBack')"
             secondary
             class="back-btn"
+            data-test-id="btn-cancel-package-select"
           >
             {{
-              $t(
-                showWizardExperience()
-                  ? 'selectPackage.btnBack'
-                  : 'selectPackage.btnCancel'
-              )
+            $t(
+            showWizardExperience()
+            ? 'selectPackage.btnBack'
+            : 'selectPackage.btnCancel'
+            )
             }}
           </Button>
           <Button
@@ -118,13 +106,14 @@
             class="white--text submit-package ml-6"
             depressed
             @click="submitPackage"
+            data-test-id="btn-submit-package-select"
           >
             {{
-              $t(
-                showWizardExperience()
-                  ? 'selectPackage.btnNext'
-                  : 'selectPackage.btnSaveChanges'
-              )
+            $t(
+            showWizardExperience()
+            ? 'selectPackage.btnNext'
+            : 'selectPackage.btnSaveChanges'
+            )
             }}
           </Button>
         </v-card-actions>
@@ -145,8 +134,8 @@ const TechnicalReqModule = namespace('TechnicalReqModule');
 @Component({
   components: {
     Button,
-    Alert,
-  },
+    Alert
+  }
 })
 export default class ListPackage extends Vue {
   @Prop({ default: 0 })
@@ -196,14 +185,17 @@ export default class ListPackage extends Vue {
     // add package to project com ehere
     this.addPackagetoProject({
       slectedPackage: this.slectedPackage,
-      projectId: this.projectId,
+      projectId: this.projectId
     });
   }
 
   private goBack() {
-    const redirectPage = this.showWizardExperience() ? 'technical' : 'summary';
+    const redirectPage = this.showWizardExperience()
+      ? `/project/${this.projectId}/technical/`
+      : `/project-container/${this.projectId}/`;
+
     this.redirectFromSummaryPage(false);
-    this.$router.push(`/project/${this.projectId}/${redirectPage}/`);
+    this.$router.push(redirectPage);
   }
   private showWizardExperience() {
     if (this.isRedirectFromSummaryPage) {

@@ -29,6 +29,8 @@ exports[`ProjectSummary.vue renders props when passed 1`] = `
           primarytitle=""
         >
           
+          
+        
         </v-card-title-stub>
          
         <v-card-text-stub
@@ -45,6 +47,7 @@ exports[`ProjectSummary.vue renders props when passed 1`] = `
           <button-stub
             aria-label="Back Button"
             color=""
+            data-test-id="btn-cancel-project-summary"
             name="button"
             secondary=""
             type="button"
@@ -55,6 +58,7 @@ exports[`ProjectSummary.vue renders props when passed 1`] = `
           <button-stub
             class="white--text submit-package ml-6"
             color=""
+            data-test-id="btn-submit-project-summary"
             depressed=""
             name="button"
             type="button"
@@ -827,6 +831,8 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
               class="v-btn__content"
             >
               
+            
+          
             </span>
           </button>
         </div>

@@ -83,8 +83,6 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
               class="v-list-item__content"
             >
               
-              
-            
             </div>
           </div>
         </div>
@@ -94,6 +92,7 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
         >
           <div
             class="d-flex align-center pa-4 test-account test-account v-card v-card--link v-sheet theme--light active-bg"
+            data-test-id="input-select-test-account-1"
             tabindex="0"
           >
             <div
@@ -106,9 +105,7 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
                 <div
                   class="v-list-item__title headline"
                 >
-                  
-                    1
-                  
+                  1
                 </div>
                  
                 <div
@@ -127,6 +124,7 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
         >
           <div
             class="d-flex align-center pa-4 test-account test-account v-card v-card--link v-sheet theme--light"
+            data-test-id="input-select-test-account-2"
             tabindex="0"
           >
             <div
@@ -139,9 +137,7 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
                 <div
                   class="v-list-item__title headline"
                 >
-                  
-                    2
-                  
+                  2
                 </div>
                  
                 <div
@@ -160,6 +156,7 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
         >
           <div
             class="d-flex align-center pa-4 test-account test-account v-card v-card--link v-sheet theme--light"
+            data-test-id="input-select-test-account-3"
             tabindex="0"
           >
             <div
@@ -172,9 +169,7 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
                 <div
                   class="v-list-item__title headline"
                 >
-                  
-                    3
-                  
+                  3
                 </div>
                  
                 <div
@@ -193,6 +188,7 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
         >
           <div
             class="d-flex align-center pa-4 test-account test-account v-card v-card--link v-sheet theme--light"
+            data-test-id="input-select-test-account-5"
             tabindex="0"
           >
             <div
@@ -205,9 +201,7 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
                 <div
                   class="v-list-item__title headline"
                 >
-                  
-                    5
-                  
+                  5
                 </div>
                  
                 <div
@@ -233,8 +227,6 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
               class="v-list-item__content"
             >
               
-              
-            
             </div>
              
             <div
@@ -267,6 +259,7 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
          
         <button
           class="btn v-btn v-btn--contained theme--light v-size--default secondary-btn normal"
+          data-test-id="btn-cancel-test-account"
           name="button"
           type="button"
         >
@@ -281,6 +274,7 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
          
         <button
           class="btn white--text submit-account ml-6 v-btn v-btn--depressed theme--light v-size--default primary normal"
+          data-test-id="btn-submit-test-account"
           depressed=""
           name="button"
           type="button"
@@ -382,8 +376,6 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
               class="v-list-item__content"
             >
               
-              
-            
             </div>
           </div>
         </div>
@@ -393,6 +385,7 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
         >
           <div
             class="d-flex align-center pa-4 test-account test-account v-card v-card--link v-sheet theme--light active-bg"
+            data-test-id="input-select-test-account-1"
             tabindex="0"
           >
             <div
@@ -405,9 +398,7 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
                 <div
                   class="v-list-item__title headline"
                 >
-                  
-                    1
-                  
+                  1
                 </div>
                  
                 <div
@@ -426,6 +417,7 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
         >
           <div
             class="d-flex align-center pa-4 test-account test-account v-card v-card--link v-sheet theme--light"
+            data-test-id="input-select-test-account-2"
             tabindex="0"
           >
             <div
@@ -438,9 +430,7 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
                 <div
                   class="v-list-item__title headline"
                 >
-                  
-                    2
-                  
+                  2
                 </div>
                  
                 <div
@@ -459,6 +449,7 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
         >
           <div
             class="d-flex align-center pa-4 test-account test-account v-card v-card--link v-sheet theme--light"
+            data-test-id="input-select-test-account-3"
             tabindex="0"
           >
             <div
@@ -471,9 +462,7 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
                 <div
                   class="v-list-item__title headline"
                 >
-                  
-                    3
-                  
+                  3
                 </div>
                  
                 <div
@@ -492,6 +481,7 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
         >
           <div
             class="d-flex align-center pa-4 test-account test-account v-card v-card--link v-sheet theme--light"
+            data-test-id="input-select-test-account-5"
             tabindex="0"
           >
             <div
@@ -504,9 +494,7 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
                 <div
                   class="v-list-item__title headline"
                 >
-                  
-                    5
-                  
+                  5
                 </div>
                  
                 <div
@@ -532,8 +520,6 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
               class="v-list-item__content"
             >
               
-              
-            
             </div>
              
             <div
@@ -566,6 +552,7 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
          
         <button
           class="btn v-btn v-btn--contained theme--light v-size--default secondary-btn normal"
+          data-test-id="btn-cancel-test-account"
           name="button"
           type="button"
         >
@@ -580,6 +567,7 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
          
         <button
           class="btn white--text submit-account ml-6 v-btn v-btn--depressed theme--light v-size--default primary normal"
+          data-test-id="btn-submit-test-account"
           depressed=""
           name="button"
           type="button"
@@ -681,8 +669,6 @@ exports[`TestAccountRequest.vue submit form with selected package on submit clic
               class="v-list-item__content"
             >
               
-              
-            
             </div>
           </div>
         </div>
@@ -692,6 +678,7 @@ exports[`TestAccountRequest.vue submit form with selected package on submit clic
         >
           <div
             class="d-flex align-center pa-4 test-account test-account v-card v-card--link v-sheet theme--light active-bg"
+            data-test-id="input-select-test-account-1"
             tabindex="0"
           >
             <div
@@ -704,9 +691,7 @@ exports[`TestAccountRequest.vue submit form with selected package on submit clic
                 <div
                   class="v-list-item__title headline"
                 >
-                  
-                    1
-                  
+                  1
                 </div>
                  
                 <div
@@ -725,6 +710,7 @@ exports[`TestAccountRequest.vue submit form with selected package on submit clic
         >
           <div
             class="d-flex align-center pa-4 test-account test-account v-card v-card--link v-sheet theme--light"
+            data-test-id="input-select-test-account-2"
             tabindex="0"
           >
             <div
@@ -737,9 +723,7 @@ exports[`TestAccountRequest.vue submit form with selected package on submit clic
                 <div
                   class="v-list-item__title headline"
                 >
-                  
-                    2
-                  
+                  2
                 </div>
                  
                 <div
@@ -758,6 +742,7 @@ exports[`TestAccountRequest.vue submit form with selected package on submit clic
         >
           <div
             class="d-flex align-center pa-4 test-account test-account v-card v-card--link v-sheet theme--light"
+            data-test-id="input-select-test-account-3"
             tabindex="0"
           >
             <div
@@ -770,9 +755,7 @@ exports[`TestAccountRequest.vue submit form with selected package on submit clic
                 <div
                   class="v-list-item__title headline"
                 >
-                  
-                    3
-                  
+                  3
                 </div>
                  
                 <div
@@ -791,6 +774,7 @@ exports[`TestAccountRequest.vue submit form with selected package on submit clic
         >
           <div
             class="d-flex align-center pa-4 test-account test-account v-card v-card--link v-sheet theme--light"
+            data-test-id="input-select-test-account-5"
             tabindex="0"
           >
             <div
@@ -803,9 +787,7 @@ exports[`TestAccountRequest.vue submit form with selected package on submit clic
                 <div
                   class="v-list-item__title headline"
                 >
-                  
-                    5
-                  
+                  5
                 </div>
                  
                 <div
@@ -831,8 +813,6 @@ exports[`TestAccountRequest.vue submit form with selected package on submit clic
               class="v-list-item__content"
             >
               
-              
-            
             </div>
              
             <div
@@ -865,6 +845,7 @@ exports[`TestAccountRequest.vue submit form with selected package on submit clic
          
         <button
           class="btn v-btn v-btn--contained theme--light v-size--default secondary-btn normal"
+          data-test-id="btn-cancel-test-account"
           name="button"
           type="button"
         >
@@ -879,6 +860,7 @@ exports[`TestAccountRequest.vue submit form with selected package on submit clic
          
         <button
           class="btn white--text submit-account ml-6 v-btn v-btn--depressed theme--light v-size--default primary normal"
+          data-test-id="btn-submit-test-account"
           depressed=""
           name="button"
           type="button"

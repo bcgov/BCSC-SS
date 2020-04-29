@@ -22,18 +22,18 @@
             :aria-label="$t('team.btnBack')"
             secondary
             class="back-btn"
-          >
-            {{ $t(showWizardExperience() ? 'team.btnBack' : 'team.btnCancel') }}
-          </Button>
+            data-test-id="btn-cancel-project-team"
+          >{{ $t(showWizardExperience() ? 'team.btnBack' : 'team.btnCancel') }}</Button>
           <Button
             class="white--text submit-team ml-6"
             depressed
             @click="nextRedirect"
+            data-test-id="btn-submit-project-team"
           >
             {{
-              $t(
-                showWizardExperience() ? 'team.btnNext' : 'team.btnSaveChanges'
-              )
+            $t(
+            showWizardExperience() ? 'team.btnNext' : 'team.btnSaveChanges'
+            )
             }}
           </Button>
         </v-card-actions>
@@ -66,9 +66,11 @@ export default class AddTeam extends Vue {
   private projectId: number = this.id || 0;
 
   private goBack() {
-    const redirectPage = this.showWizardExperience() ? 'info' : 'summary';
+    const redirectPage = this.showWizardExperience()
+      ? `/project/${this.projectId}/info/`
+      : `/project-container/${this.projectId}/`;
     this.redirectFromSummaryPage(false);
-    this.$router.push(`/project/${this.projectId}/${redirectPage}/`);
+    this.$router.push(redirectPage);
   }
   private showWizardExperience() {
     if (this.isRedirectFromSummaryPage) {
@@ -78,8 +80,10 @@ export default class AddTeam extends Vue {
   }
 
   private nextRedirect() {
-    const redirectPage = this.showWizardExperience() ? 'technical' : 'summary';
-    this.$router.push(`/project/${this.projectId}/${redirectPage}/`);
+    const redirectPage = this.showWizardExperience()
+      ? `/project/${this.projectId}/technical/`
+      : `/project-container/${this.projectId}/`;
+    this.$router.push(redirectPage);
   }
 }
 </script>

@@ -34,6 +34,8 @@ exports[`AddProjectInfo.vue renders edit props when passed 1`] = `
        
       <v-toolbar-title-stub>
         
+        
+      
       </v-toolbar-title-stub>
        
       <v-spacer-stub />
@@ -62,6 +64,7 @@ exports[`AddProjectInfo.vue renders edit props when passed 1`] = `
               />
                
               <input-stub
+                data-test-id="input-org-name"
                 helptext=""
                 label=""
                 outlined="true"
@@ -71,6 +74,7 @@ exports[`AddProjectInfo.vue renders edit props when passed 1`] = `
               />
                
               <input-stub
+                data-test-id="input-project-name"
                 helptext=""
                 label=""
                 outlined="true"
@@ -81,6 +85,7 @@ exports[`AddProjectInfo.vue renders edit props when passed 1`] = `
                
               <textarea-stub
                 counter=""
+                data-test-id="text-project-description"
                 helptext=""
                 label=""
                 outlined=""
@@ -110,6 +115,7 @@ exports[`AddProjectInfo.vue renders edit props when passed 1`] = `
                 <button-stub
                   class="white--text submit-project"
                   color=""
+                  data-test-id="btn-submit-project-info"
                   depressed=""
                   disabled="true"
                   name="button"
@@ -163,6 +169,8 @@ exports[`AddProjectInfo.vue renders props when passed 1`] = `
        
       <v-toolbar-title-stub>
         
+        
+      
       </v-toolbar-title-stub>
        
       <v-spacer-stub />
@@ -191,6 +199,7 @@ exports[`AddProjectInfo.vue renders props when passed 1`] = `
               />
                
               <input-stub
+                data-test-id="input-org-name"
                 helptext=""
                 label=""
                 outlined="true"
@@ -200,6 +209,7 @@ exports[`AddProjectInfo.vue renders props when passed 1`] = `
               />
                
               <input-stub
+                data-test-id="input-project-name"
                 helptext=""
                 label=""
                 outlined="true"
@@ -210,6 +220,7 @@ exports[`AddProjectInfo.vue renders props when passed 1`] = `
                
               <textarea-stub
                 counter=""
+                data-test-id="text-project-description"
                 helptext=""
                 label=""
                 outlined=""
@@ -239,6 +250,7 @@ exports[`AddProjectInfo.vue renders props when passed 1`] = `
                 <button-stub
                   class="white--text submit-project"
                   color=""
+                  data-test-id="btn-submit-project-info"
                   depressed=""
                   disabled="true"
                   name="button"
