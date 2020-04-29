@@ -11,9 +11,18 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""This exports all of the enums used by the application."""
+"""This manages Audit."""
 
-from .base_enum import ExtendedEnum, ExtendedIntEnum
-from .audit import AuditType, ProjectSubType
-from .project import ProjectRoles, ProjectStatus
-from .technical import EncryptedAlgorithm, EncryptedEncoding, SignedAlgorithm, SigningEncryptionType
+from .base_enum import ExtendedIntEnum
+
+
+class AuditType(ExtendedIntEnum):
+    """This enum provides the list of Audit Type."""
+
+    Project = 1, 'Project'
+
+
+class ProjectSubType(ExtendedIntEnum):
+    """This enum provides the list of Project Sub Type."""
+
+    Status = 1, 'Status'
