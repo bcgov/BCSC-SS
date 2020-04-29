@@ -23,7 +23,7 @@
 
     <h2 id="overview">Technical Overview</h2>
 
-      <p>The following links are a good introduction or refresher to the OIDC standard.</p><h4>OIDC explanations : </h4><p><a href="https://medium.com/@robert.broeckelmann/saml2-vs-jwt-understanding-openid-connect-part-1-fffe0d50f953">https://medium.com/@robert.broeckelmann/saml2-vs-jwt-understanding-openid-connect-part-1-fffe0d50f953</a></p><p><a href="https://medium.com/@robert.broeckelmann/saml2-vs-jwt-understanding-openid-connect-part-2-f361ca867baa">https://medium.com/@robert.broeckelmann/saml2-vs-jwt-understanding-openid-connect-part-2-f361ca867baa</a></p><h4>OIDC spec</h4><p><a href="https://openid.net/developers/specs/">https://openid.net/developers/specs/</a></p><h4>BC Services Card specific OIDC documentation</h4><p>Open ID Connect Integration guide</p><p><a href="https://bcbutton.atlassian.net/wiki/download/attachments/5242881/BC_Services_Card_OIDC_Integration_Guide1.0.3.pdf?api=v2"><span class="inline-comment-marker" data-ref="f2a02edc-6455-488a-a84e-ab5b1efee3cb">https://bcbutton.atlassian.net/wiki/download/attachments/5242881/BC_Services_Card_OIDC_Integration_Guide1.0.3.pdf?api=v2</span></a></p>
+      <p>The following links are a good introduction or refresher to the OIDC standard.</p><h4>OIDC explanations : </h4><p><a href="https://medium.com/@robert.broeckelmann/saml2-vs-jwt-understanding-openid-connect-part-1-fffe0d50f953">https://medium.com/@robert.broeckelmann/saml2-vs-jwt-understanding-openid-connect-part-1-fffe0d50f953</a></p><p><a href="https://medium.com/@robert.broeckelmann/saml2-vs-jwt-understanding-openid-connect-part-2-f361ca867baa">https://medium.com/@robert.broeckelmann/saml2-vs-jwt-understanding-openid-connect-part-2-f361ca867baa</a></p><h4>OIDC spec</h4><p><a href="https://openid.net/developers/specs/">https://openid.net/developers/specs/</a></p><h4>BC Services Card specific OIDC documentation</h4><p>Open ID Connect<a href="https://github.com/bcgov/servicescard-selfservice/blob/master/documents/BC_Services_Card_OIDC_Integration_Guide1.0.3%20(6).pdf"><span class="inline-comment-marker" data-ref="f2a02edc-6455-488a-a84e-ab5b1efee3cb"></span> Integration guide</a></p>
       <h4>Glossary</h4>
       <p>We will make use of the following terms in the self-service application, so it is a good idea to brush up on your knowledge of them : </p><ul><li><p>JWKS</p></li><li><p>JWT</p></li><li><p>Scopes</p></li><li><p>Userinfo</p></li><li><p>Client ID</p></li><li><p>Client Secret</p></li><li><p>“Well-known” discovery endpoint</p></li><li><p>Relying Party</p></li><li><p>Digital signing and encryption algorithms </p></li></ul>
 
@@ -40,7 +40,7 @@
     <h4>Development/Test</h4>
     <p>For access to the Test BCSCI, you will create a new development project in the BCSC-SS application.     It is a simple matter of running through the “Create new project” wizard.This registers your organisation and delivers the necessary items in a couple of minutes. You will need to know the following details about your own application and infrastructure to be able to complete the wizard. (<strong>Hint</strong> - you can modify your details any time, so start off simply eg. default signing, no encryption, and then ramp up complexity as needed. Perhaps even begin with one of the sample applications in the following section ?)</p>
     <ul>
-      <li>Signing algorithm - what algorithm do you require for signing the access-token and userinfo return JWT ? The BCSC-SS only supports asymmetric encryption,the options are :
+      <li><strong>Signing algorithm</strong> - what algorithm do you require for signing the access-token and userinfo return JWT ? The BCSC-SS only supports asymmetric encryption,the options are :</li>
         <ul>
           <li>RS256 (default)</li>
           <li>RS384</li>
@@ -55,11 +55,27 @@
 <p/>
         If unsure, use the default RS256. Note that you will need the public key from the opposing JWKS, the URL for this can be obtained from the BCSCI .well-known discovery endpoint under "jwks_uri"
 
-        <li>Application URL - your home page URL</li>
-        <li>Redirect URI - up to 10 can be entered. Note that the BCSCI will not allow a redirect to a URI other than in this list for your application. </li>
-        <li>The user attributes you require (scopes). We describe these in the BCSC-SS as "packages" - choose that which corresponds most closely to the data you need</li>
-        <li>The number of test accounts you will need, mostly one or 2 for initial testing. Test accounts are only relevant to the BCSCI Test environment and comprise an ID and a password instead of the usual BC Service card authentication mechanism which typically requires a mobile device for the second authentication factor. They are essential for testing your application without using real data. </li>
-        <li>Encryption and encoding algorithms. The returned data can optionally be encrypted. The BCSC-SS app supports ONLY asymmetric encryption, and requires that both userinfo and id_token encryptions are the same.The available options for encryption algorithms are RSA1_5 and RSA-OAEP, and the encoding can be A256GCM (default)  or A256CBC-HS512​. If using encryption you will need a JWKS set up , and the URL entered into the wizard. (there is sample code on setting up a JWKS in the  github repo if required) </li>
+        <li><strong>Application URL</strong> - your home page URL</li>
+        <li><strong> Redirect URI</strong> - up to 10 can be entered. Note that the BCSCI will not allow a redirect to a URI other than in this list for your application. </li>
+        <li><strong>Scopes</strong> - the user attributes or scopes you require. We describe these in the BCSC-SS as "packages" - choose that which corresponds most closely to the data you need</li>
+        <li><strong>Test accounts</strong> - the number of test accounts you will need, mostly one or 2 for initial testing. Test accounts are only relevant to the BCSCI Test environment and comprise an ID and a password instead of the usual BC Service card authentication mechanism which typically requires a mobile device for the second authentication factor. They are essential for testing your application without using real data. </li>
+        <li><strong>Encryption and encoding algorithms</strong>. The returned data can optionally be encrypted. The BCSC-SS app supports ONLY asymmetric encryption, and requires that both userinfo and id_token encryptions are the same.The available options for encryption algorithms are</li>
+        <ul>
+          <li>RSA1_5(default)</li>
+          <li>RSA-OAEP</li>
+        </ul>  
+        <p>and the encoding can be</p>
+        <ul>
+          <li>A256GCM (default)</li>
+          <li>A256CBC+HS512</li>
+          <li>A192GCM</li>
+          <li>A128GCM</li>
+          <li>A128CBC-HS256</li>
+          <li>A256CBC-HS512</li>
+          <li>A128CBC+HS256</li>
+        </ul>
+      </li>
+      <p></p>If using encryption you will need a JWKS set up , and the URL to your JWKS entered into the wizard. (there is sample code on setting up a JWKS in the  github repo if required) </li>
       </ul>
       <p/>
       <p>Once you have your client ID, client secret and test accounts, you are ready to plug these, together with the JWKS, access-token and userinfo endpoints into your application. These endpoints are described in the ".well-known" discovery endpoint of <a href="https://idtest.gov.bc.ca/login/.well-known/openid-configuration">https://idtest.gov.bc.ca/login/.well-known/openid-configuration</a></p>
@@ -80,7 +96,7 @@
         <p>&nbsp;</p>
     
     <h2 id="sampleapps">Sample Applications</h2>
-    <p>We have prepared a sample application and a Postman test utility which can be accessed, downloaded and run from Github . </p><p>The Postman test collection can be used for a quick check that the connections are working as expected and that the key and secret are valid. The sample javascripts application uses Express.js and Passport.js libraries and handles all aspects of the BCSC interaction including signature validation and encryption. </p><p>Each have a <a href="http://README.md">README.md</a> with full instructions and are a great way to do an initial validation of your key and secret which you obtain from the BC Services card self-service application. </p><p>Link to Postman utility </p><p><a href="https://github.com/bcgov/BCSC-SS/tree/dev/test-utils/postman-tester">Postman on Github</a> </p><p>Link to Javascript application</p><p><a href="https://github.com/bcgov/BCSC-SS/tree/dev/test-utils/nodejs-code-sample">Javascript on Github</a> </p><p />
+    <p>We have prepared a sample application and a Postman test utility which can be accessed, downloaded and run from Github . </p><p>The Postman test collection can be used for a quick check that the connections are working as expected and that the key and secret are valid. The sample javascripts application uses Express.js and Passport.js libraries and handles all aspects of the BCSC interaction including signature validation and encryption. </p><p>Each have a  README.md with full instructions and are a great way to do an initial validation of your key and secret which you obtain from the BC Services card self-service application. </p><p>Link to Postman utility </p><p><a href="https://github.com/bcgov/servicescard-selfservice/blob/master/samples/postman-tester/README.md">Postman on Github</a> </p><p>Link to Javascript application</p><p><a href="https://github.com/bcgov/servicescard-selfservice/blob/master/samples/nodejs-code-sample/README.md">Javascript on Github</a> </p><p />
         <p>&nbsp;</p>
 
 
