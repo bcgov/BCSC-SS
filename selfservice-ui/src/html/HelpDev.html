@@ -19,7 +19,7 @@
     <h1 class="">Developers Guide</h1>
 
     <h2 id="audience">Audience</h2>
-    <p>This guide is for developers and software architects who wish to develop an integration to the BC Services Card as one of the login and authentication methods for their web-application. It is expected that you would have at least a passing knowledge of token-based authentication systems such as OAuth2, OIDC or SAML. The guide elaborates on some of the available tools provided in this and other sites which help you build and test the integration to the Open ID Connect (OIDC) framework  provided by the BC Services Card infrastructure</p>
+    <p>This guide is for developers and software architects who wish to develop an integration to the BC Services Card as one of the login and authentication methods for their web-application. It is expected that you would have at least a passing knowledge of token-based authentication systems such as OAuth2, OIDC or SAML. The guide elaborates on some of the available tools provided in this and other sites which help you build and test the integration using the <strong>Open ID Connect (OIDC)</strong> framework  provided by the BC Services Card infrastructure</p>
 
     <h2 id="overview">Technical Overview</h2>
 
@@ -27,18 +27,20 @@
       <h4>Glossary</h4>
       <p>We will make use of the following terms in the self-service application, so it is a good idea to brush up on your knowledge of them : </p><ul><li><p>JWKS</p></li><li><p>JWT</p></li><li><p>Scopes</p></li><li><p>Userinfo</p></li><li><p>Client ID</p></li><li><p>Client Secret</p></li><li><p>“Well-known” discovery endpoint</p></li><li><p>Relying Party</p></li><li><p>Digital signing and encryption algorithms </p></li></ul>
 
+      Also, for brevity we will refer to the BC Services Card Infrastructure or "back-end" as  "BCSCI", and the BC Services Card Self-Service application as "BSCS-SS"
+
       <h4>Basic operation</h4>
       
-      <p>For all architectures the the user is redirected to, and authenticated by, the BC Services Card infrastructure independantly of your calling application.</p><p>On successful authentication, a series of token exchanges take place resulting in an access-token which can be used to get user identity information (also known as &quot;scopes&quot;) such as email address, first and last names or mailing address. Other than the data contained in the scopes which you select, there is no data accessible from the BC Services Card infrastructure. It is generally accepted good-practice to limit the scopes requested to the minimum needed for your purposes</p><p> This self-service application enables you to register with the system and return you the necessary client ID, secret and test accounts for you to plug into your application</p><p />
+      <p>For all architectures the the user is redirected to, and authenticated by, the BCSCI independently from your calling application.</p><p>On successful authentication, a series of token exchanges take place resulting in an access-token which can be used to get user identity information (also known as &quot;scopes&quot;) such as email address, first and last names or mailing address. Other than the data contained in the scopes which you select, there is no data accessible from the BCSCI. It is generally accepted good-practice to limit the scopes requested to the minimum needed for your purposes</p><p> The BCSC-SS application enables you to register with the system and return you the necessary client ID, secret and test accounts for you to plug into your application</p><p />
         <p>&nbsp;</p>
 
     <h2 id="idsecret">Get a Client ID and Secret</h2>
 
     </p>         <p>The four things you need for accessing the BC Services Card infrastructure are : </p><ul><li><p>Client ID</p></li><li><p>Client Secret</p></li><li><p>Scopes</p></li><li><p>Test accounts</p></li></ul>
     <h4>Development/Test</h4>
-    <p>For access to the Development BC Services Card infrastructure it is a simple matter of running through the “Create new project” wizard in our self-service application. This registers your organisation and delivers the necessary items in a couple of minutes. You will need to know the following details about your own application and infrastructure to be able to complete the wizard. (<strong>Hint</strong> - you can modify your details any time, so start off simply eg. default signing, no encryption, and then ramp up complexity as needed. Perhaps even begin with one of the sample applications below ?)</p>
+    <p>For access to the Test BCSCI, you will create a new development project in the BCSC-SS application.     It is a simple matter of running through the “Create new project” wizard.This registers your organisation and delivers the necessary items in a couple of minutes. You will need to know the following details about your own application and infrastructure to be able to complete the wizard. (<strong>Hint</strong> - you can modify your details any time, so start off simply eg. default signing, no encryption, and then ramp up complexity as needed. Perhaps even begin with one of the sample applications in the following section ?)</p>
     <ul>
-      <li>Signing algorithm - what algorithm do you require for signing the access-token and userinfo return JWT ? We only support asymmetric encryption,the options are :
+      <li>Signing algorithm - what algorithm do you require for signing the access-token and userinfo return JWT ? The BCSC-SS only supports asymmetric encryption,the options are :
         <ul>
           <li>RS256 (default)</li>
           <li>RS384</li>
@@ -51,26 +53,26 @@
           <li>PS512</li>
         </ul>
 <p/>
-        If unsure, use the default RS256. Note that you will need the public key from the opposing JWKS, the URL for this can be obtained from the .well-known discovery endpoint under "jwks_uri"
+        If unsure, use the default RS256. Note that you will need the public key from the opposing JWKS, the URL for this can be obtained from the BCSCI .well-known discovery endpoint under "jwks_uri"
 
         <li>Application URL - your home page URL</li>
-        <li>Redirect URI - up to 10 can be entered. Note that the BC Services Card infrastructure will not allow a redirect to a URI other than in this list for your application. </li>
-        <li>The user attributes you require (scopes). We describe this as "packages" - choose that which corresponds most closely to the data you need</li>
-        <li>The number of test accounts you will need, mostly one or 2 for initial testing.Test accounts are only relevant to the development environment and comprise an ID and a password instead of the usual BC Service card authentication mechanism which typically requires a mobile device for the second authentication factor. They are essential for testing your application without using real data. </li>
-        <li>Encryption and encoding algorithms. The returned data can optionally be encrypted, the only available option for encryption algorithm is RSA1_5 , and the encoding can be A256GCM (default)  or A256CBC-HS512​. If using encryption you will need a JWKS set up , and the URL entered in the wizard. (there is sample code on setting up a JWKS in github repo if required) </li>
+        <li>Redirect URI - up to 10 can be entered. Note that the BCSCI will not allow a redirect to a URI other than in this list for your application. </li>
+        <li>The user attributes you require (scopes). We describe these in the BCSC-SS as "packages" - choose that which corresponds most closely to the data you need</li>
+        <li>The number of test accounts you will need, mostly one or 2 for initial testing. Test accounts are only relevant to the BCSCI Test environment and comprise an ID and a password instead of the usual BC Service card authentication mechanism which typically requires a mobile device for the second authentication factor. They are essential for testing your application without using real data. </li>
+        <li>Encryption and encoding algorithms. The returned data can optionally be encrypted. The BCSC-SS app supports ONLY asymmetric encryption, and requires that both userinfo and id_token encryptions are the same.The available options for encryption algorithms are RSA1_5 and RSA-OAEP, and the encoding can be A256GCM (default)  or A256CBC-HS512​. If using encryption you will need a JWKS set up , and the URL entered into the wizard. (there is sample code on setting up a JWKS in the  github repo if required) </li>
       </ul>
       <p/>
-      <p>Once you have your client ID, client secret and test accounts, you are ready to plug these together with the JWKS, access-token and userinfo endpoints into your application. These endpoints are described in the ".well-known" discovery endpoint of <a href="https://idtest.gov.bc.ca/login/.well-known/openid-configuration">https://idtest.gov.bc.ca/login/.well-known/openid-configuration</a></p>
+      <p>Once you have your client ID, client secret and test accounts, you are ready to plug these, together with the JWKS, access-token and userinfo endpoints into your application. These endpoints are described in the ".well-known" discovery endpoint of <a href="https://idtest.gov.bc.ca/login/.well-known/openid-configuration">https://idtest.gov.bc.ca/login/.well-known/openid-configuration</a></p>
   
 
     <h4>Production/Live</h4>
     
-    <p> For migrating this into production, the process involves more paperwork and rigour, and sign-off by managers, since the BC Services Card delivers personally identifiable data. But from a development perspective it is not much different, with one major difference - in production you MUST encrypt all traffic to your application, so you will need to provide a JWKS and the encryption and encoding algorithms.<p>The table below summarises the differences between production and development : </p>
+    <p> For migrating your apllication and your BCSC-SS project into production, the process involves more paperwork and rigour, and sign-off by managers, since the BC Services Card delivers personally identifiable data. But from a development perspective it is not much different, with one major difference - in production you MUST encrypt all traffic to your application, so you will need to provide a JWKS and the encryption and encoding algorithms.<p>The table below summarises the differences between production and development : </p>
     
     <table aria-describedby="Comparison between dev and prod" >
       <tbody><tr><th  scope="col"><p /></th><th class="help-table-header" scope="col"><p><strong>Production</strong></p></th><th class="help-table-header" scope="col"><p><strong>Development</strong></p></th></tr>
         
-        <tr><td class="help-table-element"><p>Encryption</p></td><td class="help-table-element"><p>Mandatory</p></td><td class="help-table-element"><p>Optional</p></td></tr><tr><td class="help-table-element"><p>Scopes</p></td><td class="help-table-element"><p>Cannot be changed from Dev</p></td><td class="help-table-element"><p>Can be changed</p></td></tr>
+        <tr><td class="help-table-element"><p>Encryption</p></td><td class="help-table-element"><p>Mandatory</p></td><td class="help-table-element"><p>Optional</p></td></tr><tr><td class="help-table-element"><p>Scopes</p></td><td class="help-table-element"><p>Cannot change after Dev phase</p></td><td class="help-table-element"><p>Can be changed</p></td></tr>
         <tr><td class="help-table-element"><p>Discovery</p></td><td class="help-table-element"><p><a href="https://id.gov.bc.ca/login/.well-known/openid-configuration">https://id.gov.bc.ca/login/.well-known/openid-configuration</a>&nbsp;&nbsp;</p></td><td class="help-table-element"><p><a href="https://idtest.gov.bc.ca/login/.well-known/openid-configuration">https://idtest.gov.bc.ca/login/.well-known/openid-configuration</a></p></td></tr>
         
         <tr><td class="help-table-element"><p>Test accounts</p></td><td class="help-table-element"><p>No</p></td><td class="help-table-element"><p>Yes</p></td></tr>
@@ -83,7 +85,7 @@
 
 
     <h2 id="testandtrouble">Testing and Troubleshooting </h2>
-    <h2>Testing</h2><p>In order to test out your integration with BC Services Card you will need test accounts. Unlike real BC Services Card accounts (tied to real people) these do NOT need 2-factor authentication through a second device (typically mobile phone) , they are simply an ID and passcode , which allow easy testing of your integration. They are, however, only able to be used to test in your Dev environment. Once you migrate to the Production environment and are pointed at the Production BC Services Card servers, you will need to use real users for testing.</p><p>Test accounts are granted as part of the BC Services Card self-service application</p><h2>Troubleshooting</h2><p /><p /><p /><p />
+    <h2>Testing</h2><p>In order to test out your integration with BC Services Card you will need test accounts. Unlike real BC Services Card accounts (tied to real people) these do NOT need 2-factor authentication through a second device (typically mobile phone) , they are simply an ID and passcode , which allow easy testing of your integration. They are, however, only able to be used to test in your Dev environment. Once you migrate to the Production environment and are pointed at the Production BC Services Card servers, you will need to use real users for testing.</p><p>Test accounts are granted as part of the BCSC-SS application</p><h2>Troubleshooting</h2><p /><p /><p /><p />
         <p>&nbsp;</p>
     
   </div>
