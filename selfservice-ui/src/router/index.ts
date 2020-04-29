@@ -85,6 +85,14 @@ const routerData = [
       import(/* webpackChunkName: "testaccount" */ '../views/TestAccount.vue'),
   },
   {
+    path: '/contact-us',
+    name: 'contact-us',
+    meta: { requiresAuth: false },
+    props: true,
+    component: () =>
+      import(/* webpackChunkName: "contactUs" */ '../views/ContactUs.vue'),
+  },
+  {
     path: '/help/:page?',
     name: 'help',
     meta: metaAllRoles(false),

@@ -36,8 +36,8 @@ def cors_preflight(methods: str = 'GET'):
     return wrapper
 
 
-def verify_jwks_uri(jwks_uri: str):
-    """Make sure the `jwks_uri` is exist and in a valid format."""
+def verify_jwks_uri(jwks_uri: str):  # pragma: no cover
+    """Make sure the `jwks_uri` exist and in a valid format."""
     try:
         jsonurl = urlopen(jwks_uri)
         jwks = json.loads(jsonurl.read().decode('utf-8'))
