@@ -90,7 +90,7 @@
     "pageinfo": "<p class='pageinfo'>In order to test your configuration, we would like to know how many test accounts you need for package. Please note the test data provided to you will be randomized unless you indicate you have preferred customization.</p>",
     "how_many_test_account": "Choose the number of test user accounts you require",
     "special_notes": "Special requests or notes",
-    "specialNotesInfo": "<p>If you have any special requests for customized test account. Please contact IDIM Consulting or <a href='mailto:zorin.samji@gov.bc.ca'>Product Owner</a>.</p>",
+    "specialNotesInfo": "<p>If you have any special requests for customized test account. Please <a href='contact-us'>contact us</a>.</p>",
     "btnBack": "Go Back",
     "btnNext": "Next",
     "btnCancel": "Cancel",
@@ -195,7 +195,7 @@
     "labelPhone": "Phone",
     "btnContinue": "Continue",
     "btnSaveChanges": "Save Changes",
-    "errorMessageDomain": "Your email address does not match any of the eligible organizations in our BC Services Card Self Service System. If you believe you or your organization should have access to this system, please <a href='mailto:zorin.samji@gov.bc.ca'>contact us</a> for assistance. "
+    "errorMessageDomain": "Your email address does not match any of the eligible organizations in our BC Services Card Self Service System. If you believe you or your organization should have access to this system, please <a href='contact-us'>contact us</a> for assistance. "
   },
   "home": {
     "pagetitle": "Complete Profile",
@@ -284,7 +284,7 @@
     "emailAddress": "Email Address",
     "description": "How can we help you?",
     "btnSend": "Send",
-    "successMessage": "Your message send successfully, We will get back to you soon",
-    "errorMessage": "Something went wrong. please try after sometime"
+    "successMessage": "Your message has been sent successfully to IDIM.",
+    "errorMessage": "Something went wrong. Please try again."
   }
 }

@@ -140,6 +140,15 @@ export default class ContactUs extends Vue {
     const { successStatus, errorStatus } = val;
     this.successStatus = successStatus;
     this.errorStatus = errorStatus;
+    if (successStatus) {
+      (this.$refs.form as Vue & {
+        reset: () => any;
+      }).reset();
+      this.$vuetify.goTo(0, {
+        duration: 1000,
+        easing: 'easeInOutCubic'
+      });
+    }
   }
 
   private submitContactMessage() {
