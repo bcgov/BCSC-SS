@@ -1,7 +1,4 @@
-/** 
-* 
-ContactUs component 
-*/
+/** ContactUs component */
 
 <template>
   <v-card class="mx-auto outer-card">
