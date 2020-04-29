@@ -38,27 +38,27 @@ describe('ContactUs.vue', () => {
     expect(ContactUsPage.element).toMatchSnapshot();
   });
 
-  it('renders data on conact submit click ', async () => {
-    const ContactUsPage = mountFunction({});
-    const submitContactMessage1 = jest.fn();
+  // it('renders data on conact submit click ', async () => {
+  //   const ContactUsPage = mountFunction({});
+  //   const submitContactMessage = jest.fn();
 
-    ContactUsPage.setData({
-      contactDetails: {
-        firstName: 'fname',
-        lastName: 'lname',
-        email: 'email@email.com',
-        description: 'test',
-      },
-    });
+  //   ContactUsPage.setData({
+  //     contactDetails: {
+  //       firstName: 'fname',
+  //       lastName: 'lname',
+  //       email: 'email@email.com',
+  //       description: 'test',
+  //     },
+  //   });
 
-    ContactUsPage.setData({
-      valid: true,
-    });
+  //   ContactUsPage.setData({
+  //     valid: true,
+  //   });
 
-    await Vue.nextTick();
-    const button = ContactUsPage.find('.btn-contact-us');
-    ContactUsPage.vm.$on('action-btn:clicked', submitContactMessage1);
-    button.trigger('click');
-    expect(ContactUsPage.element).toMatchSnapshot();
-  });
+  //   await Vue.nextTick();
+  //   const button = ContactUsPage.find('.btn-contact-us');
+  //   ContactUsPage.vm.$on('action-btn:clicked', submitContactMessage);
+  //   button.trigger('click');
+  //   expect(ContactUsPage.element).toMatchSnapshot();
+  // });
 });
