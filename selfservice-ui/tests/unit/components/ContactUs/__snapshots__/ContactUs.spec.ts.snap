@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ContactUs.vue renders props on submit click 1`] = `
+exports[`ContactUs.vue renders data on conact submit click  1`] = `
 <div
   class="mx-auto outer-card v-card v-sheet theme--light"
 >

@@ -38,7 +38,7 @@ describe('ContactUs.vue', () => {
     expect(ContactUsPage.element).toMatchSnapshot();
   });
 
-  it('renders props on submit click', async () => {
+  it('renders data on conact submit click ', async () => {
     const ContactUsPage = mountFunction({});
     const submitContactMessage1 = jest.fn();
 
