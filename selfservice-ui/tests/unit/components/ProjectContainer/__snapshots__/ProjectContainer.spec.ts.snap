@@ -21,6 +21,16 @@ exports[`ProjectContainer.vue renders props when passed 1`] = `
       </v-col-stub>
        
       <v-col-stub
+        class="d-flex align-end flex-column-reverse mb-2"
+        cols="4"
+        tag="div"
+      >
+        <projectactions-stub
+          id="0"
+        />
+      </v-col-stub>
+       
+      <v-col-stub
         cols="12"
         tag="div"
       >
@@ -38,6 +48,8 @@ exports[`ProjectContainer.vue renders props when passed 1`] = `
             ripple="true"
           >
             
+            
+          
           </v-tab-stub>
            
           <v-tab-stub
@@ -45,6 +57,8 @@ exports[`ProjectContainer.vue renders props when passed 1`] = `
             ripple="true"
           >
             
+            
+          
           </v-tab-stub>
            
           <v-tab-stub
@@ -52,6 +66,8 @@ exports[`ProjectContainer.vue renders props when passed 1`] = `
             ripple="true"
           >
             
+            
+          
           </v-tab-stub>
            
           <v-tab-stub
@@ -59,6 +75,8 @@ exports[`ProjectContainer.vue renders props when passed 1`] = `
             ripple="true"
           >
             
+            
+          
           </v-tab-stub>
            
           <v-tab-stub
@@ -66,6 +84,8 @@ exports[`ProjectContainer.vue renders props when passed 1`] = `
             ripple="true"
           >
             
+            
+          
           </v-tab-stub>
            
           <v-tab-stub
@@ -73,6 +93,8 @@ exports[`ProjectContainer.vue renders props when passed 1`] = `
             ripple="true"
           >
             
+            
+          
           </v-tab-stub>
            
           <v-tab-stub
@@ -80,6 +102,8 @@ exports[`ProjectContainer.vue renders props when passed 1`] = `
             ripple="true"
           >
             
+            
+          
           </v-tab-stub>
            
           <v-tab-item-stub

@@ -17,16 +17,12 @@ exports[`TeamRoles Mount.vue renders props when delete member 1`] = `
           class="text-left tab-headline page-title-h2"
         >
           
-          
-        
         </h2>
          
         <p
           class="text-left page-description"
         >
           
-          
-        
         </p>
          
         <div
@@ -46,32 +42,24 @@ exports[`TeamRoles Mount.vue renders props when delete member 1`] = `
                     class="text-left"
                   >
                     
-                  
-                
                   </th>
                    
                   <th
                     class="text-left"
                   >
                     
-                  
-                
                   </th>
                    
                   <th
                     class="text-left"
                   >
                     
-                  
-                
                   </th>
                    
                   <th
                     class="text-left"
                   >
                     
-                  
-                
                   </th>
                    
                   <th
@@ -139,6 +127,7 @@ exports[`TeamRoles Mount.vue renders props when delete member 1`] = `
            
           <button
             class="btn team-roles v-btn v-btn--contained theme--light v-size--default primary normal"
+            data-test-id="btn-add-new-team"
             name="button"
             type="button"
           >
@@ -259,16 +248,12 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
           class="text-left tab-headline page-title-h2"
         >
           
-          
-        
         </h2>
          
         <p
           class="text-left page-description"
         >
           
-          
-        
         </p>
          
         <div
@@ -288,32 +273,24 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                     class="text-left"
                   >
                     
-                  
-                
                   </th>
                    
                   <th
                     class="text-left"
                   >
                     
-                  
-                
                   </th>
                    
                   <th
                     class="text-left"
                   >
                     
-                  
-                
                   </th>
                    
                   <th
                     class="text-left"
                   >
                     
-                  
-                
                   </th>
                    
                   <th
@@ -381,6 +358,7 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
            
           <button
             class="btn team-roles v-btn v-btn--contained theme--light v-size--default primary normal"
+            data-test-id="btn-add-new-team"
             name="button"
             type="button"
           >
@@ -460,12 +438,11 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                   class="v-card__subtitle headline bc-padding-left-0"
                                 >
                                   
-                  
-                
                                 </div>
                                  
                                 <div
                                   class="bc-form-text"
+                                  data-test-id="input-team-first-name"
                                   rules="v => !!v || 'This field is required',v => (v || '').length >= len || 'Invalid character length, required ' + len,v => (v || '').length <= len || 'Invalid character length, max length ' + len"
                                 >
                                   <div
@@ -500,6 +477,7 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                           class="v-text-field__slot"
                                         >
                                           <input
+                                            data-test-id="input-team-first-name"
                                             id="input-56"
                                             type="text"
                                           />
@@ -524,6 +502,7 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                  
                                 <div
                                   class="bc-form-text"
+                                  data-test-id="input-team-last-name"
                                   rules="v => !!v || 'This field is required',v => (v || '').length >= len || 'Invalid character length, required ' + len,v => (v || '').length <= len || 'Invalid character length, max length ' + len"
                                 >
                                   <div
@@ -558,6 +537,7 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                           class="v-text-field__slot"
                                         >
                                           <input
+                                            data-test-id="input-team-last-name"
                                             id="input-60"
                                             type="text"
                                           />
@@ -582,6 +562,7 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                  
                                 <div
                                   class="bc-form-text"
+                                  data-test-id="input-team-email"
                                   rules="v => !!v || 'This field is required',v => /^\\\\w+([.-]?\\\\w+)*@\\\\w+([.-]?\\\\w+)*(\\\\.\\\\w{2,10})+$/.test(v) || 'E-mail must be valid',v => (v || '').length <= len || 'Invalid character length, max length ' + len"
                                 >
                                   <div
@@ -616,6 +597,7 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                           class="v-text-field__slot"
                                         >
                                           <input
+                                            data-test-id="input-team-email"
                                             id="input-64"
                                             type="text"
                                           />
@@ -640,6 +622,7 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                  
                                 <div
                                   class="bc-form-text"
+                                  data-test-id="input-team-phone"
                                 >
                                   <div
                                     class="text-left my-1"
@@ -677,6 +660,7 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                           class="v-text-field__slot"
                                         >
                                           <input
+                                            data-test-id="input-team-phone"
                                             id="input-68"
                                             type="text"
                                           />
@@ -717,8 +701,6 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                   class="v-card__subtitle headline bc-padding-left-0"
                                 >
                                   
-                  
-                
                                 </div>
                                  
                                 <div
@@ -837,6 +819,7 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                   <button
                                     aria-label="Back Button"
                                     class="btn v-btn v-btn--contained theme--light v-size--default secondary-btn normal"
+                                    data-test-id="btn-cancel-add-team"
                                     name="button"
                                     type="button"
                                   >
@@ -849,7 +832,8 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                    
                                   <button
                                     aria-disabled="true"
-                                    class="btn white--text submit-package  v-btn v-btn--contained v-btn--disabled theme--light v-size--default primary normal disabled"
+                                    class="btn white--text submit-package v-btn v-btn--contained v-btn--disabled theme--light v-size--default primary normal disabled"
+                                    data-test-id="btn-submit-add-team"
                                     disabled="disabled"
                                     name="button"
                                     type="button"
@@ -858,6 +842,8 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                       class="v-btn__content"
                                     >
                                       
+                    
+                  
                                     </span>
                                   </button>
                                 </div>
@@ -920,16 +906,12 @@ exports[`TeamRoles.vue renders props when passed with gettors 1`] = `
           class="text-left tab-headline page-title-h2"
         >
           
-          
-        
         </h2>
          
         <p
           class="text-left page-description"
         >
           
-          
-        
         </p>
          
         <!---->
@@ -942,6 +924,7 @@ exports[`TeamRoles.vue renders props when passed with gettors 1`] = `
           <button-stub
             class="team-roles"
             color=""
+            data-test-id="btn-add-new-team"
             name="button"
             type="button"
           >

@@ -98,7 +98,7 @@
   },
   "summaryPage": {
     "pagetitle": "Summary",
-    "subTitle": "<p class='pageinfo mb-7'>This page is a summary of the details of your development request. </p><p><strong>Please note any changes will not be reflected until you submit/commit changes.</strong></p>",
+    "subTitle": "<p class='pageinfo mb-2'>This page is a summary of the details of your development request. </p><p><strong>Please note any changes will not be reflected until you submit/commit changes.</strong></p>",
     "createSuccessMessage": "Your request was successfully received",
     "updateSuccessMessage": "Your changes are successfully committed",
     "projectInfoTitle": "Project Information",

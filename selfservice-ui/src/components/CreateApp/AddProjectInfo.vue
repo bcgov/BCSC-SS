@@ -3,16 +3,14 @@
   <v-card class="mx-auto outer-card">
     <v-card class="mx-auto">
       <v-app-bar dark class="bc-subtitle">
-        <v-btn
-          icon
-          @click="$router.push('/dashboard/')"
-          aria-label="Back Button"
-        >
+        <v-btn icon @click="$router.push('/dashboard/')" aria-label="Back Button">
           <v-icon>mdi-arrow-left</v-icon>
         </v-btn>
-        <v-toolbar-title>{{
+        <v-toolbar-title>
+          {{
           $t('projectInfo.ProjectInfoTitle')
-        }}</v-toolbar-title>
+          }}
+        </v-toolbar-title>
         <v-spacer></v-spacer>
       </v-app-bar>
       <v-form ref="form" v-model="form">
@@ -35,6 +33,7 @@
                     rules.maxLength(100),
                   ]"
                   :helpText="$t('projectInfo.OrganizationNameHint')"
+                  data-test-id="input-org-name"
                 />
 
                 <Input
@@ -47,6 +46,7 @@
                     rules.maxLength(100),
                   ]"
                   :helpText="$t('projectInfo.projectNameHint')"
+                  data-test-id="input-project-name"
                 />
 
                 <TextArea
@@ -56,6 +56,7 @@
                   :rules="[rules.required]"
                   outlined
                   :helpText="$t('projectInfo.DescriptionHint')"
+                  data-test-id="text-project-description"
                 />
               </v-card>
             </v-col>
@@ -66,12 +67,12 @@
                 <v-card-actions>
                   <v-spacer></v-spacer>
                   <Button
-                    @click="$router.push(`/project/${id}/summary/`)"
+                    @click="$router.push(`/project-container/${id}`)"
                     aria-label="Back Button"
                     secondary
                     v-if="!showWizardExperience()"
-                    >{{ $t('projectInfo.btnCancel') }}</Button
-                  >
+                    data-test-id="btn-cancel-project-info"
+                  >{{ $t('projectInfo.btnCancel') }}</Button>
                   <Button
                     :disabled="!form"
                     :loading="isLoading"
@@ -79,13 +80,14 @@
                     depressed
                     @click="submitProjectInfo"
                     @keyup.enter="submitProjectInfo"
+                    data-test-id="btn-submit-project-info"
                   >
                     {{
-                      $t(
-                        showWizardExperience()
-                          ? 'projectInfo.btnNext'
-                          : 'projectInfo.btnSaveChanges'
-                      )
+                    $t(
+                    showWizardExperience()
+                    ? 'projectInfo.btnNext'
+                    : 'projectInfo.btnSaveChanges'
+                    )
                     }}
                   </Button>
                 </v-card-actions>
@@ -151,7 +153,7 @@ export default class AddProjectInfo extends Vue {
     const data: ProjectInfoModel = {
       organizationName: this.organizationName,
       projectName: this.projectName,
-      description: this.description,
+      description: this.description
     };
 
     if (this.isEditMode) {

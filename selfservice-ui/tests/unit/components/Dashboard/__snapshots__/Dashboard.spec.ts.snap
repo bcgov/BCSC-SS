@@ -33,6 +33,7 @@ exports[`Dashboard.vue renders props when passed with gettors 1`] = `
       class="ma-2"
       color="#fba30e"
       dark="true"
+      data-test-id="btn-create-project"
       fab="true"
       tag="button"
       type="button"
