@@ -98,7 +98,7 @@
   },
   "summaryPage": {
     "pagetitle": "Summary",
-    "subTitle": "<p class='pageinfo mb-7'>This page is a summary of the details of your development request. </p><p><strong>Please note any changes will not be reflected until you submit/commit changes.</strong></p>",
+    "subTitle": "<p class='pageinfo mb-2'>This page is a summary of the details of your development request. </p><p class='normal'><strong>Please note any changes will not be reflected until you submit/commit changes.</strong></p>",
     "createSuccessMessage": "Your request was successfully received",
     "updateSuccessMessage": "Your changes are successfully committed",
     "projectInfoTitle": "Project Information",
@@ -156,7 +156,7 @@
     "titleClientSecret": "Client secret",
     "titleClientSecretInfo": "This is a secret or password which is to be used together with the Client ID to obtain a token from the BC Services Card system for ongoing authorization.",
     "titleTestAccount": "Test user accounts",
-    "titleTestAccountInfo": "<p>These are account numbers with associated passphrases which can be used as test logins to the BC Services Card.The test accounts are provided in the format of ID #, ID key</p><p><a href='https://www2.gov.bc.ca/gov/content/governments/services-for-government/information-management-technology/identity-and-authentication-services/bc-services-card-authentication-service/design-develop-test/testing' target='_blank'>Learn more</a></p>",
+    "titleTestAccountInfo": "<p class='small-hint'>These are account numbers with associated passphrases which can be used as test logins to the BC Services Card.The test accounts are provided in the format of ID #, ID key</p><p><a href='https://www2.gov.bc.ca/gov/content/governments/services-for-government/information-management-technology/identity-and-authentication-services/bc-services-card-authentication-service/design-develop-test/testing' target='_blank'>Learn more</a></p>",
     "labelSnackbarClose": "Close",
     "Back": "Go Back",
     "tblCardNo": "Card Number",

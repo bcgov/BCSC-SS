@@ -151,6 +151,15 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
       flat=""
     >
       <div
+        class="v-list-item__content text-left padding-0"
+      />
+    </div>
+     
+    <div
+      class="col col-12"
+      flat=""
+    >
+      <div
         class="mx-auto mb-5 v-card v-sheet theme--light"
       >
         <!---->
