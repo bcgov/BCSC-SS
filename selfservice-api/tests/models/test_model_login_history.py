@@ -11,9 +11,16 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""This exports all of the enums used by the application."""
+"""This tests LoginHistory model."""
 
-from .base_enum import ExtendedEnum, ExtendedIntEnum
-from .audit import AuditType, ProjectSubType
-from .project import ProjectRoles, ProjectStatus
-from .technical import EncryptedAlgorithm, EncryptedEncoding, SignedAlgorithm, SigningEncryptionType
+from selfservice_api.models import LoginHistory
+
+
+def test_log(session):
+    """Assert login history creation."""
+    LoginHistory.log(1)
+
+
+def test_none_log(session):
+    """Assert skipping login history creation by providing None."""
+    LoginHistory.log(None)
