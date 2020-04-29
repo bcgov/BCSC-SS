@@ -99,11 +99,14 @@
   line-height: 22px;
   color: $gray10;
 }
+.v-application {
+  color: $BCgovFontColorInvertedDark;
+}
 
 .v-application p.pageinfo {
   margin-bottom: 5px;
   font-size: 16px;
-  color: rgba(0, 0, 0, 0.87);
+
   line-height: 24px;
   overflow-wrap: break-word;
   text-rendering: optimizelegibility;
@@ -113,5 +116,8 @@
 }
 .v-alert {
   line-height: 24px;
+  font-size: 16px;
+}
+.v-application p.normal {
   font-size: 16px;
 }
