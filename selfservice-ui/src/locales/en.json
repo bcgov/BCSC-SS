@@ -278,7 +278,7 @@
   },
   "contactUs": {
     "pagetitle": "Contact Us",
-    "pageinfo": "Contact info details",
+    "pageinfo": "<p>The IDIM team will help you integrate with identity and authentication services that provide secure access to services for your clients. They have expertise in managing identity information, credentials and web access.</p><p>These services are mandated as part of the Provincial Identity Information Management Program.</p>",
     "firstName": "First Name",
     "lastName": "Last Name",
     "emailAddress": "Email Address",

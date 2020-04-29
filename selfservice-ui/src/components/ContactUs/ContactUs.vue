@@ -3,13 +3,8 @@
 <template>
   <v-card class="mx-auto outer-card">
     <v-form ref="form" v-model="valid">
-      <v-toolbar flat class="bc-subtitle padding-0" dark>
-        <v-toolbar-title>{{ $t('contactUs.pagetitle') }}</v-toolbar-title>
-        <div class="flex-grow-1"></div>
-
-        <div class="flex-grow-1"></div>
-      </v-toolbar>
-      <v-divider></v-divider>
+      <h1 class="bc-page-title-h1">{{ $t('contactUs.pagetitle') }}</h1>
+      <div class="flex-grow-1"></div>
 
       <v-container>
         <v-row class="mx-4">

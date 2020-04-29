@@ -26,7 +26,7 @@
             class="footer-link"
             target="_ss"
           >Copyright</a>
-          <a href="/" class="footer-link">Contact Us</a>
+          <a href="/contact-us" class="footer-link">Contact Us</a>
         </v-row>
       </v-flex>
     </v-layout>
