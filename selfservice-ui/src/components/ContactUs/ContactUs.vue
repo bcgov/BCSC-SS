@@ -1,4 +1,7 @@
-/** * ContactUs component */
+/** 
+* 
+ContactUs component 
+*/
 
 <template>
   <v-card class="mx-auto outer-card">
@@ -31,7 +34,7 @@
               :label="$t('contactUs.firstName')"
               type="text"
               :rules="[rules.required,  rules.maxLength(500)]"
-              data-test-id="input-app-url"
+              data-test-id="input-firstname"
             />
 
             <Input
@@ -39,14 +42,14 @@
               :label="$t('contactUs.lastName')"
               type="text"
               :rules="[rules.required, rules.maxLength(500)]"
-              data-test-id="input-app-url"
+              data-test-id="input-lastname"
             />
             <Input
               v-model="contactDetails.email"
               :label="$t('contactUs.emailAddress')"
               type="text"
               :rules="[rules.required, rules.email, rules.maxLength(500)]"
-              data-test-id="input-app-url"
+              data-test-id="input-email"
             />
           </v-col>
           <v-col cols="12" flat>
@@ -57,9 +60,9 @@
                 type="text"
                 outlined
                 rows="10"
-                name="test-account-text"
-                id="test-account-text"
-                data-test-id="contact-us-description"
+                name="text-contact-us-description"
+                id="text-contact-us-description"
+                data-test-id="text-contact-us-description"
                 :rules="[rules.required]"
               />
             </v-card>
@@ -74,12 +77,11 @@
 
               <Button
                 :disabled="!valid"
-                :loading="isLoading"
-                class="white--text submit-account ml-6"
+                class="white--text btn-contact-us ml-6"
                 depressed
                 @click="submitContactMessage"
-                name="btn-test-account"
-                data-test-id="btn-test-account"
+                name="btn-contact-us"
+                data-test-id="btn-contact-us"
               >{{ $t('contactUs.btnSend') }}</Button>
             </v-card-actions>
           </v-card>
@@ -121,8 +123,6 @@ export default class ContactUs extends Vue {
   @ContactUsModule.Getter('getChangeStatus')
   public getChangeStatus!: boolean;
 
-  @ContactUsModule.Action('clearStatus') public clearStatus!: any;
-
   private rules = validationRules;
 
   private contactDetails: any;
@@ -155,10 +155,6 @@ export default class ContactUs extends Vue {
     this.addContactUs({
       contactDetails: this.contactDetails
     });
-  }
-
-  private mounted() {
-    this.clearStatus();
   }
 }
 </script>
