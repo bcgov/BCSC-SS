@@ -14,6 +14,7 @@
           :aria-label="$t('projectActions.btnRequestLiveAccess')"
           class="btn-req"
           secondary
+          :disabled="!betaEnabled"
         >{{ $t('projectActions.btnRequestLiveAccess') }}</Button>
       </v-card>
     </v-col>
@@ -126,6 +127,11 @@ export default class ProjectActions extends Vue {
   private showProjectActions: boolean = false;
   private projectStatus: number = 1;
   private projectStatusList: any = projectStatus;
+
+  private betaEnabled: boolean =
+    (process.env.VUE_APP_ENABLE_BETA &&
+      process.env.VUE_APP_ENABLE_BETA.toLowerCase() === 'true') ||
+    false;
 
   @Watch('getChangeStatus')
   private ongetChangeStatusChanged(val: any) {
