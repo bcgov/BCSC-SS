@@ -87,6 +87,7 @@ services:
         - KEYCLOAK_URL=${KEYCLOAK_URL}
         - KEYCLOAK_REALM=${KEYCLOAK_REALM}
         - KEYCLOAK_CLIENT=${KEYCLOAK_CLIENT}
+        - ENABLE_BETA=${ENABLE_BETA}
     ports:
       - '${WEB_PORT}:8080'
     depends_on:
