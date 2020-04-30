@@ -1,58 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Moving through a project</title>
+    <title>Step 2: Request Live Access</title>
   </head>
   <body>
     <p>&nbsp;</p>         
     
     <h1>Is this for you</h1>
     
-    <p><a href=/help/help-isforme>Check whether this is for you</a></p>
+    <p><a href="/help/help-isforme">Check whether this application is for you</a></p>
     
-    <h1>Starting a project: Development Access Request</h1><p>We call the activities in this step a <em>Development Access Request</em>.</p><p>Requesting a development Client ID and secret through the BC Services Card Self-Service application is designed to be free from barriers, enabling developers to easily access data within a protected development tier. This allows for a quick implementation of a proof of concept or a working model of the BC Services Card within a Broader Public Sector (BPS) application.</p> 
-
-    <img src="../../public/help-img/5-step-process.png" alt="5 step process"/>
-
-    <p> </p><h2>Draft Status</h2><p>The request is placed in Draft Status as the Broader Public Sector (BPS) project team provides details on their project and selects the Open ID Connect (OIDC) scope/data attributes package.</p><p>After you’ve logged in to the Self-Service application, the request is placed in Draft Status.  When in Draft Status, the Broader Public Sector (BPS) team gathers and provides details on their project and selects the Open ID Connect (OIDC) scope/package.</p>
-
-    <img src="../../public/help-img/draft.png" alt="Draft status" />
-    
-    <p> </p><h2>Moving from Draft to Development Status</h2><p>In order to obtain the Open ID Connect (OIDC) Client ID and Client Secret, the Broader Public Sector (BPS) team member submits the request moving it from <em>Draft</em> to <em>Development s</em>tatus.</p><p>The Development Status lets the BPS team experiment through an integration in a BC Services Card test environment with fictitious BC Services Card data.</p>
-    
-    <p><a href=/help/help-dev>Development Guide</a></p>
-
-    <img src="../../public/help-img/dvelopment-state.png" alt="Dev status" />
-    
-    <h1>Moving from Development Access to a Live Access Request</h1><p>After successful experimentation, if BPS team wants to pursue an integration with real citizen BC Services Cards, a BPS team member <strong>triggers</strong> a promotion of the project’s Development Access Request into a Live Access Request. </p><h2>Convert the Development Access Request into a Live Access Request:</h2><p>When the BPS team has completed their development testing with the encryption, identity data package and test URLs set, there is an opportunity for the BPS to explicitly indicate through press of a button the process to initiate  “Request Live Access”.  At this point, the BPS project’s Development Access Request has now turned into a Live Access Request.<p />
-
+       
+    <h1>Moving from Development Access to a Live Access Request</h1>
+    <p>After successful experimentation, if BPS team wants to pursue an integration with real citizen BC Services Cards, a BPS team member <strong>triggers</strong> a promotion of the project’s Development Access Request into a Live Access Request. 
+    </p>
+    <h2>Convert the Development Access Request into a Live Access Request:</h2>
+    <p>When the BPS team has completed their development testing with the encryption, identity data package and test URLs set, there is an opportunity for the BPS to explicitly indicate through press of a button the process to initiate  “Request Live Access”.  At this point, the BPS project’s Development Access Request has now turned into a Live Access Request.
+    </p>
+      <figure>
+        <figcaption>Request Live Access Button</figcaption>
         <img src="../../public/help-img/req-live.png" alt="Request live" />
+      </figure>
+
+  
         
-        <h2>What need from you</h2><p>To keep things simple, we’re asking each BPS for the contact information of three types of team members:</p><p>·       <strong>A developer</strong>, who uses the Client ID and secret details to configure the OpenID Connect (OIDC) configuration for the BPS online service;</p><p>·       <strong>A manager</strong>, who will be involved in the end to end Live Access Request Process. This person works with both the development and executive team;</p><p>·       <strong>An executive sponsor</strong>, who has the accountability and authority to sign off on privacy documents, security documents and service agreements.</p>
+        <h2>What we need from you</h2>
+        <p>To keep things simple, we’re asking each BPS for the contact information of three types of team members:</p>
+        <p>·       <strong>A developer</strong>, who uses the Client ID and secret details to configure the OpenID Connect (OIDC) configuration for the BPS online service;</p>
+        <p>·       <strong>A manager</strong>, who will be involved in the end to end Live Access Request Process. This person works with both the development and executive team;</p>
+        <p>·       <strong>An executive sponsor</strong>, who has the accountability and authority to sign off on privacy documents, security documents and service agreements.</p>
         
         <h1>Live Access Request Process</h1>
         
         <h2>Overview:</h2><p>The Live Access Request process is designed to enable Broader Public Sector (BPS) teams to work at their own pace to understand and address the various categories of compliance before integrating with a live production-ready environment of BC Services Card data. A member of the Provincial Identity Information Management (IDIM) Program is always available to help BPS clients in completing the integration components.</p>
-
-        <img src="../../public/help-img/4-step-process.png" alt="4 step process"/>
+        <figure>
+          <figcaption>Live Access Request Flow</figcaption>
+          <img src="../../public/help-img/4-step-process.png" alt="4 step process"/>
+        </figure>
+      
     
     <h2>Compliance Check Status:</h2><p>Before any Live Access Open ID Connect (OIDC) technical details are provided to the BPS team, a series of checks and balances are needed to provide the IDIM program with confidence to support the BPS team’s use of the BC Services Card integration. The IDIM Program is mandated to provide identity and authentication services using the BC Services Card to support citizen transactions with government services.</p><p>The transition into  <em><strong>Compliance Check</strong></em><strong> </strong>Status begins once the BPS provides information for any one compliance category.</p><p>By providing information, the BPS team is ready to initiate the compliance process to integrate the BC Services Card Log In mechanism with the BPS online service.  The method of compliance is through an approval and attestation model. The BPS manager approves the checklist items in a specific compliance section and subsequently the BPS Executive Sponsor attests to each of the checklist items in the compliance section.</p><p />
+    <figure>
+      <figcaption>Live Access Request Compliance Check Status</figcaption>
+      <img src="../../public/help-img/compliance-checks.png" alt="Compliance checks" />
+    </figure>
 
-    <img src="../../public/help-img/compliance-checks.png" alt="Compliance checks" />
     
     <p> </p><p>Compliance categories include: Privacy, Security, Communications, and Information Sharing Agreements.  Based on the BPS organization’s timeline and resources, each of the categories can be done in parallel, they don’t need to happen sequentially. Once all of the categories have been attested to, the live access request goes to the next status where IDIM will review the request.</p>
 
-    <img src="../../public/help-img/privacy-process.png" alt="Privacy process"/>
-    
-    <h2>Awaiting Approval </h2><p> </p><h3>Review Production URLs</h3><p>At anytime in the live access request, the BPS can update the production URLs to be used. The technical configuration of their development access request is the basis of the live access request. Note that the Team, Data Scope, Encryption and Signature Algorithms will not be changeable for the live access request.</p><h3>IDIM Review Live Access Request </h3><p>Once the BPS project has all the compliance checks completed and production URLs submitted, the status of the request moves into <em>Awaiting Approval</em> Status. The Client Relationship Associate within IDIM will be informed that the BPS request is ready to proceed with the production integration of BC Services Card.</p><p>The IDIM Client Relationship Associate will engage with the BPS team as necessary and when satisfied will request the IDIM Executive Director to approve a “Go” decision for the BPS project. </p><p /><p>[FOR IDIM TEAM ONLY INFO] The IDIM Client Relationship Associate triggers the status by “requesting IDIM Executive” button approval. </p><p />
+    <figure>
+      <figcaption>Live Access Request Privacy Compliance Status</figcaption>
+      <img src="../../public/help-img/privacy-process.png" alt="Privacy process"/>
+    </figure>
 
-    <img src="../../public/help-img/await-approval.png" alt="Awaiting approval"/>
+   
+    
+    <h2>Awaiting Approval </h2><p> </p>
+    <h3>Review Production URLs</h3>
+    <p>At anytime in the live access request, the BPS can update the production URLs to be used. The technical configuration of their development access request is the basis of the live access request. Note that the Team, Data Scope, Encryption and Signature Algorithms will not be changeable for the live access request.</p>
+    <h3>IDIM Review Live Access Request </h3><p>Once the BPS project has all the compliance checks completed and production URLs submitted, the status of the request moves into <em>Awaiting Approval</em> Status. The Client Relationship Associate within IDIM will be informed that the BPS request is ready to proceed with the production integration of BC Services Card.</p><p>The IDIM Client Relationship Associate will engage with the BPS team as necessary and when satisfied will request the IDIM Executive Director to approve a “Go” decision for the BPS project. </p><p /><p>[FOR IDIM TEAM ONLY INFO] The IDIM Client Relationship Associate triggers the status by “requesting IDIM Executive” button approval. </p><p />
+    <figure>
+      <figcaption>Live Access Request Awaiting Approval Status</figcaption>
+      <img src="../../public/help-img/await-approval.png" alt="Awaiting approval"/>
+    </figure>
+ 
     
     
-    <h2>Approval Granted and Ready for Production</h2><p><strong> </strong>The BPS team will be notified once IDIM approval has been granted and that IDIM is in support the BPS production deployment i.e. <em>Ready for Production. </em>The BPS will be informed obtain the Client ID and Secret from the Self Service Application and use within the BPS production application.</p><p> </p>
+    <h2>Approval Granted and Ready for Production</h2><p><strong> </strong>The BPS team will be notified once IDIM approval has been granted and that IDIM is in support of the BPS production deployment i.e. <em>Ready for Production. </em>The BPS will be informed obtain the Client ID and Secret from the Self Service Application and use within the BPS production application.</p><p> </p>
+    <figure>
+      <figcaption>Live Access Request Ready for Production Status</figcaption>
+      <img src="../../public/help-img/ready-for-prod.png" alt="Ready for prod" />
+    </figure>
 
-    <img src="../../public/help-img/ready-for-prod.png" alt="Ready for prod" />
+    <h2>Details for Live Access Request Flow </h2><p>The following sections map your Self Service Project with the technical details needed for your integration with BC Services Card.  We suggest the individuals you consider to be your <strong>Manager and Developer </strong>sit together to review this section. </p>
 
+    <figure>
+       <figcaption>Modifiable details when in Live  Access Flow Statuses</figcaption>
+       <img src="../../public/help-img/table2.png" alt="Live status table" />
+     </figure>
+
+     <h2>Get Started</h2><p>If you are ready to continue <a href ="/dashboard">let's get started</a></p>
     <p>&nbsp;</p>
 </body>
 </html>
