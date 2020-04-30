@@ -154,7 +154,7 @@ export default class ProjectContainer extends Vue {
   min-height: 300px; // temp fix
 }
 .v-tab {
-  color: $BCgovBlue5 !important;
+  color: $BCgovFontColorInvertedDark !important;
 }
 .v-tab--active {
   border: 1px solid $gray5;
@@ -162,6 +162,6 @@ export default class ProjectContainer extends Vue {
   color: $BCgovWhite !important;
 }
 .tab-headline {
-  color: $BCgovBlue5;
+  color: $BCgovFontColorInvertedDark;
 }
 </style>
