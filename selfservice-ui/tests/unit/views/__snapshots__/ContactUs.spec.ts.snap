@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContactUs.vue renders props when passed 1`] = `
+<v-card-stub
+  flat="true"
+  loaderheight="4"
+  tag="div"
+>
+  <contactus-stub
+    id="0"
+  />
+</v-card-stub>
+`;
