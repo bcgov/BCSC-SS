@@ -5,27 +5,29 @@
     <v-toolbar flat class="bc-subtitle" dark>
       <v-toolbar-title>{{ $t('dashboard.pagetitle') }}</v-toolbar-title>
       <div class="flex-grow-1"></div>
-
-      <div class="flex-grow-1"></div>
-
-      <v-btn
-        class="ma-2"
-        fab
-        dark
-        color="#fba30e"
-        @click="$router.push(`/project/info`)"
-        data-test-id="btn-create-project"
-      >
-        <v-icon dark large>mdi-plus</v-icon>
-      </v-btn>
     </v-toolbar>
     <v-divider></v-divider>
     <v-container>
-      <v-row class="ma-5">
+      <v-row class="ma-2">
+        <v-col cols="12">
+          <v-card-subtitle
+            class="text-left bc-padding-left-0 page-info pa-2"
+          >{{$t('dashboard.createProjectInfo')}}</v-card-subtitle>
+        </v-col>
+        <Button
+          class="white--text ml-3 yellow-btn"
+          depressed
+          :yellowBtn="true"
+          @click="$router.push(`/project/info`)"
+          name="btn-create-project"
+          data-test-id="btn-create-project"
+        >{{ $t('dashboard.btnCreateProject') }}</Button>
         <v-col cols="12" md="12" v-if="projectInfoList.length > 0">
+          <h2 class="bc-page-title-h1 px-2">{{ $t('dashboard.myprojectTitle') }}</h2>
+
           <v-simple-table class="text-left">
             <template v-slot:default>
-              <thead>
+              <thead class="table-head">
                 <tr>
                   <th
                     :scope="$t('dashboard.tblTitleReferenceNo')"
@@ -79,11 +81,17 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
 import { projectStatus } from '@/constants/enums';
 
+import Button from '@/Atomic/Button/Button.vue';
+
 const ProjectInfoModule = namespace('ProjectInfoModule');
 const KeyCloakModule = namespace('KeyCloakModule');
 const SharedModule = namespace('SharedModule');
 
-@Component
+@Component({
+  components: {
+    Button
+  }
+})
 export default class Dashboard extends Vue {
   @KeyCloakModule.Getter('isClient')
   public isClient!: any;
@@ -117,4 +125,13 @@ export default class Dashboard extends Vue {
 
 <style lang="scss" scoped>
 @import './../../assets/styles/theme.scss';
+.table-head {
+  background-color: $BCgovBlue5 !important;
+  color: $BCgovWhite !important;
+  & tr {
+    & th {
+      color: $BCgovWhite !important;
+    }
+  }
+}
 </style>

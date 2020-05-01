@@ -183,7 +183,10 @@
     "roleawaitingApproval": "Awaiting approval",
     "roleawaitingStagingKeys": "Awaiting staging keys",
     "roleawaitingProductionUse": "Awaiting production use",
-    "rolereadyForFirstCitizenUse": "Ready for first citizen use"
+    "rolereadyForFirstCitizenUse": "Ready for first citizen use",
+    "myprojectTitle": "My projects",
+    "btnCreateProject": "+ Create New Project",
+    "createProjectInfo": "New projects start in the development environment. When testing is complete, the production path becomes available."
   },
   "profile": {
     "pageTitle": "Profile",
