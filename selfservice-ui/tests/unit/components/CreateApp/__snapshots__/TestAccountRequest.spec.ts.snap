@@ -35,10 +35,6 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
       <div
         class="flex-grow-1"
       />
-       
-      <div
-        class="flex-grow-1"
-      />
     </div>
   </header>
    
@@ -58,13 +54,13 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
         class="row mx-4"
       >
         <div
-          class="col col-12"
+          class="pb-0 col col-12"
           flat=""
         >
           <!---->
            
           <div
-            class="v-card v-card--flat v-sheet theme--light"
+            class="pb-0 v-card v-card--flat v-sheet theme--light"
           >
             <div
               class="v-list-item__content"
@@ -73,7 +69,7 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
         </div>
          
         <div
-          class="col col-12"
+          class="pt-0 col col-12"
           flat=""
         >
           <div
@@ -258,7 +254,7 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
         />
          
         <button
-          class="btn v-btn v-btn--contained theme--light v-size--default secondary-btn normal"
+          class="btn v-btn v-btn--contained theme--light v-size--default  secondary-btn  normal"
           data-test-id="btn-cancel-test-account"
           name="button"
           type="button"
@@ -273,7 +269,7 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
         </button>
          
         <button
-          class="btn white--text submit-account ml-6 v-btn v-btn--depressed theme--light v-size--default primary normal"
+          class="btn white--text submit-account ml-6 v-btn v-btn--depressed theme--light v-size--default  primary  normal"
           data-test-id="btn-submit-test-account"
           depressed=""
           name="button"
@@ -328,10 +324,6 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
       <div
         class="flex-grow-1"
       />
-       
-      <div
-        class="flex-grow-1"
-      />
     </div>
   </header>
    
@@ -351,13 +343,13 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
         class="row mx-4"
       >
         <div
-          class="col col-12"
+          class="pb-0 col col-12"
           flat=""
         >
           <!---->
            
           <div
-            class="v-card v-card--flat v-sheet theme--light"
+            class="pb-0 v-card v-card--flat v-sheet theme--light"
           >
             <div
               class="v-list-item__content"
@@ -366,7 +358,7 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
         </div>
          
         <div
-          class="col col-12"
+          class="pt-0 col col-12"
           flat=""
         >
           <div
@@ -551,7 +543,7 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
         />
          
         <button
-          class="btn v-btn v-btn--contained theme--light v-size--default secondary-btn normal"
+          class="btn v-btn v-btn--contained theme--light v-size--default  secondary-btn  normal"
           data-test-id="btn-cancel-test-account"
           name="button"
           type="button"
@@ -566,7 +558,7 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
         </button>
          
         <button
-          class="btn white--text submit-account ml-6 v-btn v-btn--depressed theme--light v-size--default primary normal"
+          class="btn white--text submit-account ml-6 v-btn v-btn--depressed theme--light v-size--default  primary  normal"
           data-test-id="btn-submit-test-account"
           depressed=""
           name="button"
@@ -621,10 +613,6 @@ exports[`TestAccountRequest.vue submit form with selected package on submit clic
       <div
         class="flex-grow-1"
       />
-       
-      <div
-        class="flex-grow-1"
-      />
     </div>
   </header>
    
@@ -644,13 +632,13 @@ exports[`TestAccountRequest.vue submit form with selected package on submit clic
         class="row mx-4"
       >
         <div
-          class="col col-12"
+          class="pb-0 col col-12"
           flat=""
         >
           <!---->
            
           <div
-            class="v-card v-card--flat v-sheet theme--light"
+            class="pb-0 v-card v-card--flat v-sheet theme--light"
           >
             <div
               class="v-list-item__content"
@@ -659,7 +647,7 @@ exports[`TestAccountRequest.vue submit form with selected package on submit clic
         </div>
          
         <div
-          class="col col-12"
+          class="pt-0 col col-12"
           flat=""
         >
           <div
@@ -844,7 +832,7 @@ exports[`TestAccountRequest.vue submit form with selected package on submit clic
         />
          
         <button
-          class="btn v-btn v-btn--contained theme--light v-size--default secondary-btn normal"
+          class="btn v-btn v-btn--contained theme--light v-size--default  secondary-btn  normal"
           data-test-id="btn-cancel-test-account"
           name="button"
           type="button"
@@ -859,7 +847,7 @@ exports[`TestAccountRequest.vue submit form with selected package on submit clic
         </button>
          
         <button
-          class="btn white--text submit-account ml-6 v-btn v-btn--depressed theme--light v-size--default primary normal"
+          class="btn white--text submit-account ml-6 v-btn v-btn--depressed theme--light v-size--default  primary  normal"
           data-test-id="btn-submit-test-account"
           depressed=""
           name="button"

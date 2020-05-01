@@ -103,7 +103,7 @@ export default class Button extends Vue {
     }
     classToApply += this.dark !== false ? ' dark-calss' : ' normal';
     classToApply += this.disabled !== false ? ' disabled' : '';
-    console.log('classToApply', classToApply);
+
     return classToApply;
   }
 }

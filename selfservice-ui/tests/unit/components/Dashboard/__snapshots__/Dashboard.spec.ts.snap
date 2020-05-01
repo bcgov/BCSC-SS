@@ -23,28 +23,6 @@ exports[`Dashboard.vue renders props when passed with gettors 1`] = `
     <div
       class="flex-grow-1"
     />
-     
-    <div
-      class="flex-grow-1"
-    />
-     
-    <v-btn-stub
-      activeclass=""
-      class="ma-2"
-      color="#fba30e"
-      dark="true"
-      data-test-id="btn-create-project"
-      fab="true"
-      tag="button"
-      type="button"
-    >
-      <v-icon-stub
-        dark=""
-        large=""
-      >
-        mdi-plus
-      </v-icon-stub>
-    </v-btn-stub>
   </v-toolbar-stub>
    
   <v-divider-stub />
@@ -53,9 +31,32 @@ exports[`Dashboard.vue renders props when passed with gettors 1`] = `
     tag="div"
   >
     <v-row-stub
-      class="ma-5"
+      class="ma-2"
       tag="div"
     >
+      <v-col-stub
+        cols="12"
+        tag="div"
+      >
+        <v-card-subtitle-stub
+          class="text-left bc-padding-left-0 page-info pa-2"
+        >
+          
+        </v-card-subtitle-stub>
+      </v-col-stub>
+       
+      <button-stub
+        class="white--text ml-3 yellow-btn"
+        color=""
+        data-test-id="btn-create-project"
+        depressed=""
+        name="btn-create-project"
+        type="button"
+        yellowbtn="true"
+      >
+        
+      </button-stub>
+       
       <v-col-stub
         cols="12"
         md="12"

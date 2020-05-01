@@ -87,10 +87,10 @@
   },
   "testAccount": {
     "pagetitle": "Test Accounts",
-    "pageinfo": "<p class='pageinfo'>In order to test your configuration, we would like to know how many test accounts you need for package. Please note the test data provided to you will be randomized unless you indicate you have preferred customization.</p>",
+    "pageinfo": "<p class='pageinfo'>Select the number of test accounts you need to test your configuration for this request. The test account data provided to you will be randomized.</p><a href='https://www2.gov.bc.ca/gov/content/governments/services-for-government/information-management-technology/identity-and-authentication-services/bc-services-card-authentication-service/design-develop-test/testing'>Learn more about testing</a><p></p>",
     "how_many_test_account": "Choose the number of test user accounts you require",
     "special_notes": "Special requests or notes",
-    "specialNotesInfo": "<p>If you have any special requests for customized test account. Please <a href='contact-us'>contact us</a>.</p>",
+    "specialNotesInfo": "<p>If you have any special requests for customized test account. Please  <a href='/contact-us'>contact us</a> for assistance.</p>",
     "btnBack": "Go Back",
     "btnNext": "Next",
     "btnCancel": "Cancel",
@@ -198,7 +198,7 @@
     "labelPhone": "Phone",
     "btnContinue": "Continue",
     "btnSaveChanges": "Save Changes",
-    "errorMessageDomain": "Your email address does not match any of the eligible organizations in our BC Services Card Self Service System. If you believe you or your organization should have access to this system, please <a href='contact-us'>contact us</a> for assistance. "
+    "errorMessageDomain": "Your email address does not match any of the eligible organizations in our BC Services Card Self Service System. If you believe you or your organization should have access to this system, please <a href='/contact-us'>contact us</a> for assistance. "
   },
   "home": {
     "pagetitle": "Complete Profile",

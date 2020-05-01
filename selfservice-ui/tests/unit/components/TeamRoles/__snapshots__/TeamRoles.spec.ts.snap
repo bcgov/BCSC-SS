@@ -126,7 +126,7 @@ exports[`TeamRoles Mount.vue renders props when delete member 1`] = `
           />
            
           <button
-            class="btn team-roles v-btn v-btn--contained theme--light v-size--default primary normal"
+            class="btn team-roles v-btn v-btn--contained theme--light v-size--default  primary  normal"
             data-test-id="btn-add-new-team"
             name="button"
             type="button"
@@ -197,7 +197,7 @@ exports[`TeamRoles Mount.vue renders props when delete member 1`] = `
                 />
                  
                 <button
-                  class="btn v-btn v-btn--flat v-btn--text theme--light v-size--default secondary-btn normal"
+                  class="btn v-btn v-btn--flat v-btn--text theme--light v-size--default  secondary-btn  normal"
                   name="button"
                   text=""
                   type="button"
@@ -210,7 +210,7 @@ exports[`TeamRoles Mount.vue renders props when delete member 1`] = `
                 </button>
                  
                 <button
-                  class="btn v-btn v-btn--flat v-btn--text theme--light v-size--default primary normal"
+                  class="btn v-btn v-btn--flat v-btn--text theme--light v-size--default  primary  normal"
                   name="button"
                   text=""
                   type="button"
@@ -357,7 +357,7 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
           />
            
           <button
-            class="btn team-roles v-btn v-btn--contained theme--light v-size--default primary normal"
+            class="btn team-roles v-btn v-btn--contained theme--light v-size--default  primary  normal"
             data-test-id="btn-add-new-team"
             name="button"
             type="button"
@@ -818,7 +818,7 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                    
                                   <button
                                     aria-label="Back Button"
-                                    class="btn v-btn v-btn--contained theme--light v-size--default secondary-btn normal"
+                                    class="btn v-btn v-btn--contained theme--light v-size--default  secondary-btn  normal"
                                     data-test-id="btn-cancel-add-team"
                                     name="button"
                                     type="button"
@@ -832,7 +832,7 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                    
                                   <button
                                     aria-disabled="true"
-                                    class="btn white--text submit-package v-btn v-btn--contained v-btn--disabled theme--light v-size--default primary normal disabled"
+                                    class="btn white--text submit-package v-btn v-btn--contained v-btn--disabled theme--light v-size--default  primary  normal disabled"
                                     data-test-id="btn-submit-add-team"
                                     disabled="disabled"
                                     name="button"

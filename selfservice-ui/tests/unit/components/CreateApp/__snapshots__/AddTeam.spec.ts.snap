@@ -81,7 +81,7 @@ exports[`AddTeam.vue renders props when passed 1`] = `
               />
                
               <button
-                class="btn team-roles v-btn v-btn--contained theme--light v-size--default primary normal"
+                class="btn team-roles v-btn v-btn--contained theme--light v-size--default  primary  normal"
                 data-test-id="btn-add-new-team"
                 name="button"
                 type="button"
@@ -163,7 +163,7 @@ exports[`AddTeam.vue renders props when passed 1`] = `
         />
          
         <button
-          class="btn back-btn v-btn v-btn--contained theme--light v-size--default secondary-btn normal"
+          class="btn back-btn v-btn v-btn--contained theme--light v-size--default  secondary-btn  normal"
           data-test-id="btn-cancel-project-team"
           name="button"
           type="button"
@@ -176,7 +176,7 @@ exports[`AddTeam.vue renders props when passed 1`] = `
         </button>
          
         <button
-          class="btn white--text submit-team ml-6 v-btn v-btn--depressed theme--light v-size--default primary normal"
+          class="btn white--text submit-team ml-6 v-btn v-btn--depressed theme--light v-size--default  primary  normal"
           data-test-id="btn-submit-project-team"
           depressed=""
           name="button"
