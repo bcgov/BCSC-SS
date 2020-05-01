@@ -12,7 +12,8 @@
         <v-col cols="12">
           <v-card-subtitle
             class="text-left bc-padding-left-0 page-info pa-2"
-          >{{$t('dashboard.createProjectInfo')}}</v-card-subtitle>
+            v-html="$t('dashboard.createProjectInfo')"
+          ></v-card-subtitle>
         </v-col>
         <Button
           class="white--text ml-3 yellow-btn"
@@ -23,23 +24,23 @@
           data-test-id="btn-create-project"
         >{{ $t('dashboard.btnCreateProject') }}</Button>
         <v-col cols="12" md="12" v-if="projectInfoList.length > 0">
-          <h2 class="bc-page-title-h1 px-2">{{ $t('dashboard.myprojectTitle') }}</h2>
+          <h2 class="bc-page-title-h1 px-2 mb-2">{{ $t('dashboard.myprojectTitle') }}</h2>
 
           <v-simple-table class="text-left">
             <template v-slot:default>
               <thead class="table-head">
                 <tr>
                   <th
-                    :scope="$t('dashboard.tblTitleReferenceNo')"
-                  >{{ $t('dashboard.tblTitleReferenceNo') }}</th>
-                  <th
                     :scope="$t('dashboard.tblTitleProjectName')"
                   >{{ $t('dashboard.tblTitleProjectName') }}</th>
+                  <th
+                    :scope="$t('dashboard.tblTitleReferenceNo')"
+                  >{{ $t('dashboard.tblTitleReferenceNo') }}</th>
+                  <th :scope="$t('dashboard.tblTitlCreated')">{{ $t('dashboard.tblTitlCreated') }}</th>
                   <th
                     :scope="$t('dashboard.tblTitlrole')"
                     v-if="isClient"
                   >{{ $t('dashboard.tblTitlrole') }}</th>
-                  <th :scope="$t('dashboard.tblTitlCreated')">{{ $t('dashboard.tblTitlCreated') }}</th>
                   <th
                     :scope="$t('dashboard.tblTitleProjectStatus')"
                   >{{ $t('dashboard.tblTitleProjectStatus') }}</th>
@@ -52,10 +53,11 @@
                   @click="redirectToProject(project)"
                   style="cursor: pointer"
                 >
-                  <td>{{ project.id }}</td>
                   <td>{{ project.name }}</td>
-                  <td v-if="isClient">{{ project.role }}</td>
+                  <td>{{ project.id }}</td>
                   <td>{{ project.created }}</td>
+                  <td v-if="isClient">{{ project.role }}</td>
+
                   <td>
                     {{
                     $t(`dashboard.role${projectStatusList[project.statusId]}`)
@@ -131,6 +133,7 @@ export default class Dashboard extends Vue {
   & tr {
     & th {
       color: $BCgovWhite !important;
+      font-size: 14px;
     }
   }
 }

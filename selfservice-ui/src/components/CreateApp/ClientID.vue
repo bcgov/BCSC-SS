@@ -1,15 +1,14 @@
 /** * ClientID component */
 
 <template>
-  <v-card
-    class="mx-auto mb-5"
-    v-if="getApiData.oidcConfig && getApiData.oidcConfig.clientSecret"
-  >
+  <v-card class="mx-auto mb-5" v-if="getApiData.oidcConfig && getApiData.oidcConfig.clientSecret">
     <v-snackbar v-model="snackbar" :timeout="timeout">
       {{ text }}
-      <v-btn color="blue" text @click="snackbar = false">{{
+      <v-btn color="blue" text @click="snackbar = false">
+        {{
         $t('ClientID.labelSnackbarClose')
-      }}</v-btn>
+        }}
+      </v-btn>
     </v-snackbar>
     <Loading v-if="isLoading && getApiData === 0" />
     <v-toolbar dense class="bc-subtitle-gold-1" dark>
@@ -57,9 +56,11 @@
               <v-icon small class="mr-2">mdi-content-copy</v-icon>
             </div>
 
-            <span>{{
+            <span>
+              {{
               getApiData.oidcConfig && getApiData.oidcConfig.clientSecret
-            }}</span>
+              }}
+            </span>
           </code>
         </v-list-item-content>
       </v-list-item>
@@ -67,41 +68,30 @@
       <v-divider></v-divider>
       <v-list-item>
         <v-list-item-content class="align-self-start pr-30">
-          <div>
-            {{ $t('ClientID.titleTestAccount') }}
-            <v-tooltip bottom open-on-click>
-              <template v-slot:activator="{ on }">
-                <v-icon v-on="on">mdi-help-circle</v-icon>
-              </template>
-              <span v-html="$t('ClientID.tooltipTestAccount')"></span>
-            </v-tooltip>
-          </div>
-          <span
-            class="small-hint"
-            v-html="$t('ClientID.titleTestAccountInfo')"
-          ></span>
+          <div>{{ $t('ClientID.titleTestAccount') }}</div>
+          <span class="small-hint" v-html="$t('ClientID.titleTestAccountInfo')"></span>
         </v-list-item-content>
         <v-list-item-content class="align-self-start">
           <v-simple-table dense>
             <template v-slot:default>
               <thead>
                 <tr>
-                  <th :scope="$t('ClientID.tblCardNo')" class="text-left">
-                    {{ $t('ClientID.tblCardNo') }}
-                  </th>
-                  <th :scope="$t('ClientID.tblPassCode')" class="text-left">
-                    {{ $t('ClientID.tblPassCode') }}
-                  </th>
-                  <th :scope="$t('ClientID.tblSurName')" class="text-left">
-                    {{ $t('ClientID.tblSurName') }}
-                  </th>
+                  <th
+                    :scope="$t('ClientID.tblCardNo')"
+                    class="text-left"
+                  >{{ $t('ClientID.tblCardNo') }}</th>
+                  <th
+                    :scope="$t('ClientID.tblPassCode')"
+                    class="text-left"
+                  >{{ $t('ClientID.tblPassCode') }}</th>
+                  <th
+                    :scope="$t('ClientID.tblSurName')"
+                    class="text-left"
+                  >{{ $t('ClientID.tblSurName') }}</th>
                 </tr>
               </thead>
               <tbody>
-                <tr
-                  v-for="account in getApiData.testAccount"
-                  :key="account.cardNumber"
-                >
+                <tr v-for="account in getApiData.testAccount" :key="account.cardNumber">
                   <td>{{ account.cardNumber }}</td>
                   <td>{{ account.passcode }}</td>
                   <td>{{ account.attributes.surname }}</td>
@@ -116,8 +106,9 @@
             class="text-left"
             v-if="showTestAccountWarning"
             :icon="false"
-            ><span v-html="$t('ClientID.warningLimitedTestAccount')"></span
-          ></Alert>
+          >
+            <span v-html="$t('ClientID.warningLimitedTestAccount')"></span>
+          </Alert>
         </v-list-item-content>
       </v-list-item>
     </v-list>
@@ -134,8 +125,8 @@ const ClientIdModule = namespace('ClientIdModule');
 @Component({
   components: {
     Loading,
-    Alert,
-  },
+    Alert
+  }
 })
 export default class ClientIDDetails extends Vue {
   @Prop({ default: 0 })

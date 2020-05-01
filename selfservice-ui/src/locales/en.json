@@ -156,7 +156,7 @@
     "titleClientSecret": "Client secret",
     "titleClientSecretInfo": "This is a secret or password which is to be used together with the Client ID to obtain a token from the BC Services Card system for ongoing authorization.",
     "titleTestAccount": "Test user accounts",
-    "titleTestAccountInfo": "<p class='small-hint'>These are account numbers with associated passphrases which can be used as test logins to the BC Services Card.The test accounts are provided in the format of ID #, ID key</p><p><a href='https://www2.gov.bc.ca/gov/content/governments/services-for-government/information-management-technology/identity-and-authentication-services/bc-services-card-authentication-service/design-develop-test/testing' target='_blank'>Learn more</a></p>",
+    "titleTestAccountInfo": "<p class='small-hint'>Use these virtual card test accounts to login to the BC Services Card in the development environment.</p><p class='small-hint'>If you do not see all of the test accounts you requested, the system is out of accounts to provision. Please contact us for assistance.</p><p><a href='https://www2.gov.bc.ca/gov/content/governments/services-for-government/information-management-technology/identity-and-authentication-services/bc-services-card-authentication-service/design-develop-test/testing' target='_blank'>Learn more</a></p>",
     "labelSnackbarClose": "Close",
     "Back": "Go Back",
     "tblCardNo": "Card Number",
@@ -169,12 +169,12 @@
   "dashboard": {
     "pagetitle": "Projects",
     "tblTitleSi": "#",
-    "tblTitleProjectName": "Project name",
-    "tblTitleReferenceNo": "Reference number",
-    "tblTitlCreated": "Created",
-    "tblTitleProjectStatus": "Project status",
+    "tblTitleProjectName": "Project Name",
+    "tblTitleReferenceNo": "Project ID",
+    "tblTitlCreated": "Created Date",
+    "tblTitleProjectStatus": "Project Status",
     "tblTitleProjectActions": "Actions",
-    "tblTitlrole": "My role",
+    "tblTitlrole": "My Role",
     "noData": "There are no projects to view. Add one to start ",
     "roledraft": "Draft",
     "roledevelopment": "Development",
@@ -186,7 +186,7 @@
     "rolereadyForFirstCitizenUse": "Ready for first citizen use",
     "myprojectTitle": "My projects",
     "btnCreateProject": "+ Create New Project",
-    "createProjectInfo": "New projects start in the development environment. When testing is complete, the production path becomes available."
+    "createProjectInfo": "<p class='pageinfo'>New projects start in the development environment. When testing is complete, the production path becomes available.</p>"
   },
   "profile": {
     "pageTitle": "Profile",
