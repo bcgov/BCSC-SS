@@ -40,9 +40,7 @@ exports[`Dashboard.vue renders props when passed with gettors 1`] = `
       >
         <v-card-subtitle-stub
           class="text-left bc-padding-left-0 page-info pa-2"
-        >
-          
-        </v-card-subtitle-stub>
+        />
       </v-col-stub>
        
       <button-stub
