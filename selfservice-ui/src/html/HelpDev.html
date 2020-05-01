@@ -81,9 +81,9 @@
       <p>Once you have your client ID, client secret and test accounts, you are ready to plug these, together with the JWKS, access-token and userinfo endpoints into your application. These endpoints are described in the ".well-known" discovery endpoint of <a href="https://idtest.gov.bc.ca/login/.well-known/openid-configuration">https://idtest.gov.bc.ca/login/.well-known/openid-configuration</a></p>
   
 
-    <h4>Production/Live</h4>
+    <h4>Production</h4>
     
-    <p> For migrating your application and your BCSC-SS project into your live or production system, and by implication integrating with the BC Services Card Production environment, the process involves more paperwork and rigour, and sign-off by managers, since the BC Services Card delivers personally identifiable data. From a software development perspective there are a number of differences between the integration with the BC Services Card test environment and the BC Services Card production environment which need to be factored in, the major one being that in production you MUST encrypt all traffic to your application, so you will need to provide a JWKS and encryption and encoding algorithms.<p>The table below summarises the differences between production and development : </p>
+    <p> For migrating your application and your BCSC-SS project into your production system, and by implication integrating with the BC Services Card Production environment, the process involves more paperwork and rigour, and sign-off by managers, since the BC Services Card delivers personally identifiable data. From a software development perspective there are a number of differences between the integration with the BC Services Card test environment and the BC Services Card production environment which need to be factored in, the major one being that in production you MUST encrypt all traffic to your application, so you will need to provide a JWKS and encryption and encoding algorithms.<p>The table below summarises the differences between production and development : </p>
     
     <table aria-describedby="Comparison between dev and prod" >
       <tbody><tr><th  scope="col"><p /></th><th class="help-table-header" scope="col"><p><strong>Production</strong></p></th><th class="help-table-header" scope="col"><p><strong>Development</strong></p></th></tr>
