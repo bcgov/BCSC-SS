@@ -20,7 +20,7 @@ from selfservice_api.models.enums import AuditType
 def test_create_from_dict(session):
     """Assert audit creation from dict."""
     Audit.create_from_dict({
-        'audit_type': AuditType.Project,
+        'audit_type': AuditType.Project.value,
         'field': 'test_field',
         'new_value': '123456',
         'created_by': '1'
@@ -35,7 +35,7 @@ def test_none_create_from_dict(session):
 def test_create_from_list(session):
     """Assert audit creation from list."""
     Audit.create_from_list([{
-        'audit_type': AuditType.Project,
+        'audit_type': AuditType.Project.value,
         'field': 'test_field',
         'new_value': '123456',
         'created_by': '1'

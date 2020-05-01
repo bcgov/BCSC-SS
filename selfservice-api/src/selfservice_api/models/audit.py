@@ -24,7 +24,7 @@ class Audit(BaseModel, db.Model):  # pylint: disable=too-few-public-methods
 
     __tablename__ = 'audit'
     id = db.Column(db.Integer, primary_key=True)
-    audit_type = db.Column('audit_type', db.Integer, nullable=False)
+    audit_type = db.Column('audit_type', db.String(), nullable=False)
     audit_type_id = db.Column('audit_type_id', db.String(), nullable=True)
     sub_type = db.Column('sub_type', db.String(), nullable=True)
     sub_type_id = db.Column('sub_type_id', db.String(), nullable=True)
