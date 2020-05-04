@@ -480,7 +480,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                  
                 <button
                   aria-label="Back Button"
-                  class="btn v-btn v-btn--contained theme--light v-size--default secondary-btn normal"
+                  class="btn v-btn v-btn--contained theme--light v-size--default  secondary-btn  normal"
                   data-test-id="btn-cancel-technical-req"
                   name="button"
                   type="button"
@@ -496,7 +496,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                  
                 <button
                   aria-disabled="true"
-                  class="btn white--text submit-req ml-6 v-btn v-btn--depressed v-btn--disabled theme--light v-size--default primary normal disabled"
+                  class="btn white--text submit-req ml-6 v-btn v-btn--depressed v-btn--disabled theme--light v-size--default  primary  normal disabled"
                   data-test-id="btn-submit-technical-req"
                   depressed=""
                   disabled="disabled"
@@ -1001,7 +1001,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                  
                 <button
                   aria-label="Back Button"
-                  class="btn v-btn v-btn--contained theme--light v-size--default secondary-btn normal"
+                  class="btn v-btn v-btn--contained theme--light v-size--default  secondary-btn  normal"
                   data-test-id="btn-cancel-technical-req"
                   name="button"
                   type="button"
@@ -1017,7 +1017,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                  
                 <button
                   aria-disabled="true"
-                  class="btn white--text submit-req ml-6 v-btn v-btn--depressed v-btn--disabled theme--light v-size--default primary normal disabled"
+                  class="btn white--text submit-req ml-6 v-btn v-btn--depressed v-btn--disabled theme--light v-size--default  primary  normal disabled"
                   data-test-id="btn-submit-technical-req"
                   depressed=""
                   disabled="disabled"
@@ -1522,7 +1522,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                  
                 <button
                   aria-label="Back Button"
-                  class="btn v-btn v-btn--contained theme--light v-size--default secondary-btn normal"
+                  class="btn v-btn v-btn--contained theme--light v-size--default  secondary-btn  normal"
                   data-test-id="btn-cancel-technical-req"
                   name="button"
                   type="button"
@@ -1538,7 +1538,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                  
                 <button
                   aria-disabled="true"
-                  class="btn white--text submit-req ml-6 v-btn v-btn--depressed v-btn--disabled theme--light v-size--default primary normal disabled"
+                  class="btn white--text submit-req ml-6 v-btn v-btn--depressed v-btn--disabled theme--light v-size--default  primary  normal disabled"
                   data-test-id="btn-submit-technical-req"
                   depressed=""
                   disabled="disabled"

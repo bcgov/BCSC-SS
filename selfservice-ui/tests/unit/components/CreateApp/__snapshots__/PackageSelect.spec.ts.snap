@@ -268,7 +268,7 @@ exports[`PackageSelect.vue from summary page renders props when passed and redir
         />
          
         <button
-          class="btn back-btn v-btn v-btn--contained theme--light v-size--default secondary-btn normal"
+          class="btn back-btn v-btn v-btn--contained theme--light v-size--default  secondary-btn  normal"
           data-test-id="btn-cancel-package-select"
           name="button"
           type="button"
@@ -283,7 +283,7 @@ exports[`PackageSelect.vue from summary page renders props when passed and redir
         </button>
          
         <button
-          class="btn white--text submit-package ml-6 v-btn v-btn--depressed theme--light v-size--default primary normal"
+          class="btn white--text submit-package ml-6 v-btn v-btn--depressed theme--light v-size--default  primary  normal"
           data-test-id="btn-submit-package-select"
           depressed=""
           name="button"
@@ -571,7 +571,7 @@ exports[`PackageSelect.vue renders props when passed 1`] = `
         />
          
         <button
-          class="btn back-btn v-btn v-btn--contained theme--light v-size--default secondary-btn normal"
+          class="btn back-btn v-btn v-btn--contained theme--light v-size--default  secondary-btn  normal"
           data-test-id="btn-cancel-package-select"
           name="button"
           type="button"
@@ -586,7 +586,7 @@ exports[`PackageSelect.vue renders props when passed 1`] = `
         </button>
          
         <button
-          class="btn white--text submit-package ml-6 v-btn v-btn--depressed theme--light v-size--default primary normal"
+          class="btn white--text submit-package ml-6 v-btn v-btn--depressed theme--light v-size--default  primary  normal"
           data-test-id="btn-submit-package-select"
           depressed=""
           name="button"
@@ -874,7 +874,7 @@ exports[`PackageSelect.vue select on package on click  1`] = `
         />
          
         <button
-          class="btn back-btn v-btn v-btn--contained theme--light v-size--default secondary-btn normal"
+          class="btn back-btn v-btn v-btn--contained theme--light v-size--default  secondary-btn  normal"
           data-test-id="btn-cancel-package-select"
           name="button"
           type="button"
@@ -889,7 +889,7 @@ exports[`PackageSelect.vue select on package on click  1`] = `
         </button>
          
         <button
-          class="btn white--text submit-package ml-6 v-btn v-btn--depressed theme--light v-size--default primary normal"
+          class="btn white--text submit-package ml-6 v-btn v-btn--depressed theme--light v-size--default  primary  normal"
           data-test-id="btn-submit-package-select"
           depressed=""
           name="button"
@@ -1177,7 +1177,7 @@ exports[`PackageSelect.vue should call gotback on back button click  1`] = `
         />
          
         <button
-          class="btn back-btn v-btn v-btn--contained theme--light v-size--default secondary-btn normal"
+          class="btn back-btn v-btn v-btn--contained theme--light v-size--default  secondary-btn  normal"
           data-test-id="btn-cancel-package-select"
           name="button"
           type="button"
@@ -1192,7 +1192,7 @@ exports[`PackageSelect.vue should call gotback on back button click  1`] = `
         </button>
          
         <button
-          class="btn white--text submit-package ml-6 v-btn v-btn--depressed theme--light v-size--default primary normal"
+          class="btn white--text submit-package ml-6 v-btn v-btn--depressed theme--light v-size--default  primary  normal"
           data-test-id="btn-submit-package-select"
           depressed=""
           name="button"
@@ -1480,7 +1480,7 @@ exports[`PackageSelect.vue submit form with selected package on submit click  1`
         />
          
         <button
-          class="btn back-btn v-btn v-btn--contained theme--light v-size--default secondary-btn normal"
+          class="btn back-btn v-btn v-btn--contained theme--light v-size--default  secondary-btn  normal"
           data-test-id="btn-cancel-package-select"
           name="button"
           type="button"
@@ -1495,7 +1495,7 @@ exports[`PackageSelect.vue submit form with selected package on submit click  1`
         </button>
          
         <button
-          class="btn white--text submit-package ml-6 v-btn v-btn--depressed theme--light v-size--default primary normal"
+          class="btn white--text submit-package ml-6 v-btn v-btn--depressed theme--light v-size--default  primary  normal"
           data-test-id="btn-submit-package-select"
           depressed=""
           name="button"

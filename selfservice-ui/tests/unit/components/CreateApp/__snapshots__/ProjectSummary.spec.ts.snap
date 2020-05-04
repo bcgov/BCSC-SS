@@ -259,7 +259,9 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
                 </div>
                  
                 <span>
-                  new secret
+                  
+            new secret
+          
                 </span>
               </code>
             </div>
@@ -281,20 +283,6 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
             >
               <div>
                 
-          
-          
-                <span
-                  class="v-tooltip v-tooltip--bottom"
-                >
-                  <div
-                    class="v-tooltip__content"
-                    style="left: 0px; max-width: auto; opacity: 0; top: 12px; z-index: 0; display: none;"
-                  />
-                  <i
-                    aria-hidden="true"
-                    class="v-icon notranslate mdi mdi-help-circle theme--light"
-                  />
-                </span>
               </div>
                
               <span
@@ -318,24 +306,18 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
                           class="text-left"
                         >
                           
-                  
-                
                         </th>
                          
                         <th
                           class="text-left"
                         >
                           
-                  
-                
                         </th>
                          
                         <th
                           class="text-left"
                         >
                           
-                  
-                
                         </th>
                       </tr>
                     </thead>
@@ -831,7 +813,8 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
           <!---->
            
           <button
-            class="btn white--text submit-package ml-6 v-btn v-btn--depressed theme--light v-size--default primary normal"
+            class="btn white--text submit-package ml-6 v-btn v-btn--depressed theme--light v-size--default  primary  normal"
+            data-test-id="btn-submit-summary"
             depressed=""
             name="button"
             type="button"
