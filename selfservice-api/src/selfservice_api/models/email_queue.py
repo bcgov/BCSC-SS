@@ -21,7 +21,6 @@ from .db import db
 class EmailQueue(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):  # pylint: disable=too-few-public-methods
     """This class manages email queue."""
 
-    __tablename__ = 'email_queue'
     id = db.Column(db.Integer, primary_key=True)
     subject = db.Column('subject', db.String(), nullable=False)
     recipients = db.Column('recipients', db.JSON(), nullable=False)
