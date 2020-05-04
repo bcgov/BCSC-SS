@@ -15,6 +15,8 @@
 
 from __future__ import annotations
 
+from sqlalchemy import and_
+
 from .audit_mixin import AuditDateTimeMixin, AuditUserMixin
 from .base_model import BaseModel
 from .db import db
@@ -56,7 +58,7 @@ class Project(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
     def update(self, project_info: dict, user: User):
         """Update project."""
         project_info['modified_by'] = user.id
-        self.update_from_dict(['modified_by', 'organization_name', 'project_name', 'description'],
+        self.update_from_dict(['modified_by', 'organization_name', 'project_name', 'description', 'is_deleted'],
                               project_info)
         self.commit()
 
@@ -67,9 +69,9 @@ class Project(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
         self.commit()
 
     @classmethod
-    def find_by_id(cls, project_id) -> Project:
+    def find_by_id(cls, project_id, is_deleted=False) -> Project:
         """Find project that matches the provided id."""
-        return cls.query.filter_by(id=project_id).first()
+        return cls.query.filter(and_(Project.id == project_id, Project.is_deleted == is_deleted)).first()
 
     @classmethod
     def find_all_or_by_user(cls, user: User = None):
@@ -84,8 +86,9 @@ class Project(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
                     project_users_association.role
                 FROM project
                     JOIN project_users_association ON project.id = project_users_association.project_id
-                WHERE project_users_association.user_id = """ + str(user.id) +
-                                              ' ORDER BY project.created DESC')
+                WHERE
+                    project.is_deleted = false AND
+                    project_users_association.user_id = """ + str(user.id) + ' ORDER BY project.created DESC')
         else:
             result_proxy = db.session.execute("""SELECT
                     TO_CHAR(project.created, 'Mon dd yyyy') as created,
@@ -94,6 +97,8 @@ class Project(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
                     project.status,
                     project.ref_no as reference
                 FROM project
+                WHERE
+                    project.is_deleted = false
                 ORDER BY project.created DESC""")
 
         result = []

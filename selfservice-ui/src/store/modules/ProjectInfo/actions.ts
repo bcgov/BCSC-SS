@@ -189,6 +189,7 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
     commit('SET_LOADING', true);
     try {
       const { projectId } = data;
+      commit('SET_DELETE_SUCESS', false);
       await ProjectInfoService.deleteProject(projectId);
 
       commit('SET_DELETE_ERROR', false);
