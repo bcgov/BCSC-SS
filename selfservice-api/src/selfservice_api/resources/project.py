@@ -19,7 +19,7 @@ from flask import g, jsonify, request
 from flask_restplus import Namespace, Resource, cors
 from marshmallow import ValidationError
 
-from ..models import OIDCConfig, Project, ProjectUsersAssociation, TechnicalReq, TestAccount
+from ..models import Project, ProjectUsersAssociation, TestAccount
 from ..models.enums import ProjectRoles, ProjectStatus
 from ..schemas import ProjectSchema
 from ..services import AuditService, ProjectService
@@ -93,6 +93,7 @@ class ProjectResourceById(Resource):
     @auth.require
     def delete(project_id):
         """Delete project."""
+        user = g.user
         project = Project.find_by_id(project_id)
         can_delete = bool(project)
         including_prod = not auth.is_client_role()
@@ -100,13 +101,10 @@ class ProjectResourceById(Resource):
         if auth.is_client_role() and can_delete:
             can_delete = project.status < ProjectStatus.DevelopmentComplete
 
-        if can_delete:
+        if can_delete and not project.is_deleted:
             TestAccount.map_test_accounts(project.id, 0)
-            TechnicalReq.delete_by_project_id(project.id)
-            ProjectUsersAssociation.delete_all_by_project_id(project.id)
             ProjectService.dynamic_api_delete(project, including_prod)
-            OIDCConfig.delete_by_project_id(project.id)
-            project.delete()
+            project.update({'is_deleted': True}, user)
             return 'Deleted successfully', HTTPStatus.OK
 
         return 'Delete failed', HTTPStatus.BAD_REQUEST
