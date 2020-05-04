@@ -89,7 +89,7 @@ exports[`AddProjectInfo.vue renders edit props when passed 1`] = `
                 helptext=""
                 label=""
                 outlined=""
-                rules="v => !!v || 'This field is required'"
+                rules="v => !!v || 'This field is required',v => (v || '').length <= len || 'Invalid character length, max length ' + len"
                 type="text"
                 value=""
               />
@@ -224,7 +224,7 @@ exports[`AddProjectInfo.vue renders props when passed 1`] = `
                 helptext=""
                 label=""
                 outlined=""
-                rules="v => !!v || 'This field is required'"
+                rules="v => !!v || 'This field is required',v => (v || '').length <= len || 'Invalid character length, max length ' + len"
                 type="text"
                 value=""
               />

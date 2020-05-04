@@ -15,7 +15,7 @@
   },
   "projectInfo": {
     "ProjectInfoTitle": "Project Information",
-    "ProjectInfoTitleInfo": "<p class='pageinfo'>To receive access to the BC Services Card login API , we need to gather some information about the application you’re working with. This allows us to understand the purpose of your application or project within your organization and provide proper assistance to you, through development to the live access request.</p>",
+    "ProjectInfoTitleInfo": "<p class='pageinfo pb-0'>Our approach to help your organization experiment with the integration of the BC Services Card login option starts with some high level project information.<p class='pageinfo'>Through a project in our BC Services Card Self Service application, we will be able to gather information about the your application, provide assistance on your access request and ultimately provide you with the technical details of the Open ID Connect (OIDC) Client ID and Client Secret.</p></p>",
     "ProjectOrgTitle": "This API is available for organizations that fall within the BC Broader Public Sector (BPS).",
     "OrganizationName": "Organization name",
     "projectName": "Project name",
@@ -30,9 +30,9 @@
     "btnNext": "Next",
     "btnSaveChanges": "Save Changes",
     "btnCancel": "Cancel",
-    "OrganizationNameHint": "BC Services Card login is available to many Public Sector agencies. Please let us know which one you are affiliated with.",
-    "projectNameHint": "Please provide us with a short name of your application which will create a login option with the BC Services Card",
-    "DescriptionHint": "Please provide us with a short description of your application and why you need the BC Services Card as a login method",
+    "OrganizationNameHint": "Please let us know which Public Agency you are affiliated with",
+    "projectNameHint": "Please provide us with a short name of your project that will use the BC Services Card login",
+    "DescriptionHint": "Please provide us with a short description of your project and why you need the BC Services Card as a login method",
     "developerHint": "Please provide developer’s contact information who is associated to this request and project. This is a person who understand OIDC and will be able to configure your BPS application for the BC Services Card Login",
     "managerHint": "Please provide managers contact information who is associated to this request and project. This is a person who will be the main point of contact for the BC Services Card IDIM team and provide updates on the project’s privacy, security, communication and agreement progress.",
     "ctoHint": "Please provide Executive Sponsor’s contact information who is associated to this request and project. This is a person who will provide attestations to the BC Services Card IDIM team on the compliance and completion of privacy, security, communication and agreement items."
@@ -103,6 +103,7 @@
     "updateSuccessMessage": "Your changes are successfully committed",
     "projectInfoTitle": "Project Information",
     "labelProjectTitle": "Project name",
+    "labelProjectDescription": "Project Description",
     "labelOrganizationName": "Organization name",
     "developer": "Developer",
     "manager": "Manager ",
@@ -131,8 +132,8 @@
     "labelTestAccountsTitle": "Test Accounts",
     "cantSubmitErrorMessage": "Your submission contains incomplete fields. Please edit any sections requiring completion before submitting your request.",
     "systemError": "Something went wrong while processing your request. Please retry in a few minutes. If the problem persists, please contact the Product Owner.",
-    "OrganizationNameHint": "This is the name of the Public Sector agency with which you are affiliated.",
-    "projectNameHint": "Please provide us with a short name of your application which will create a login option with the BC Services Card",
+    "OrganizationNameHint": "The name of the Public Agency you are affiliated with",
+    "projectNameHint": "Short name of your Project",
     "developerHint": "The developer builds the integration with BC Services Card",
     "managerHint": " The manager steers the integration through to production",
     "ctoHint": "The Executive Sponsor attests to the integration application compliance",
@@ -147,7 +148,8 @@
     "labelTestingMethodHint": "This is the method you chose for testing in development. Please note that a production environment will require signing and encryption.",
     "SignedJWT": "Signed JWT",
     "SecureJWT": "Secure JWT",
-    "teamTitle": "Team"
+    "teamTitle": "Team",
+    "labelProjectDescriptionHint": "Description of your project needing the BC Services Card as a login method"
   },
   "ClientID": {
     "pagetitle": "API Key / Client ID",
