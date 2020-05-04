@@ -13,16 +13,24 @@
 # limitations under the License.
 """This manages Audit."""
 
-from .base_enum import ExtendedIntEnum
+from .base_enum import ExtendedEnum, ExtendedIntEnum
 
 
-class AuditType(ExtendedIntEnum):
+class AuditType(ExtendedEnum):
     """This enum provides the list of Audit Type."""
 
-    Project = 1, 'Project'
+    Project = 'project'
+    TechnicalReq = 'technical_req'
+    ProjectUsersAssociation = 'project_users_association'
+    TestAccount = 'test_account'
+    OIDCConfig = 'oidc_config'
 
 
 class ProjectSubType(ExtendedIntEnum):
     """This enum provides the list of Project Sub Type."""
 
-    Status = 1, 'Status'
+    User = 1, 'User'
+    Technical = 2, 'Technical Requirement'
+    Package = 3, 'Data Package'
+    TestAccount = 4, 'Test Account'
+    DevOidc = 5, 'Development OIDC'

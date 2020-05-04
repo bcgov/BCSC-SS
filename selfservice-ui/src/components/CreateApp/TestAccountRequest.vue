@@ -8,22 +8,20 @@
       </v-btn>
       <v-toolbar-title>{{ $t('testAccount.pagetitle') }}</v-toolbar-title>
       <div class="flex-grow-1"></div>
-
-      <div class="flex-grow-1"></div>
     </v-toolbar>
     <v-divider></v-divider>
     <v-item-group mandatory :value="slectedNumber">
       <v-container>
         <v-row class="mx-4">
-          <v-col cols="12" flat>
+          <v-col cols="12" class="pb-0" flat>
             <Alert type="error" v-if="errorStatus" class="alert-top">Something went wrong...</Alert>
-            <v-card flat>
+            <v-card flat class="pb-0">
               <!-- <v-list-item-content>BCSC Test Account</v-list-item-content> -->
               <v-list-item-content v-html="$t('testAccount.pageinfo', { package: 'package' })"></v-list-item-content>
             </v-card>
           </v-col>
 
-          <v-col cols="12" flat>
+          <v-col cols="12" class="pt-0" flat>
             <v-card flat>
               <v-list-item-content>{{ $t('testAccount.how_many_test_account') }}</v-list-item-content>
             </v-card>

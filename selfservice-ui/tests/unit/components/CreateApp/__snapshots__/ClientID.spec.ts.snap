@@ -101,7 +101,9 @@ exports[`ClientID.vue renders props when passed with gettors 1`] = `
           </div>
            
           <span>
+            
             test
+          
           </span>
         </code>
       </div>
@@ -123,20 +125,6 @@ exports[`ClientID.vue renders props when passed with gettors 1`] = `
       >
         <div>
           
-          
-          
-          <span
-            class="v-tooltip v-tooltip--bottom"
-          >
-            <div
-              class="v-tooltip__content"
-              style="left: 0px; max-width: auto; opacity: 0; top: 12px; z-index: 0; display: none;"
-            />
-            <i
-              aria-hidden="true"
-              class="v-icon notranslate mdi mdi-help-circle theme--light"
-            />
-          </span>
         </div>
          
         <span
@@ -160,24 +148,18 @@ exports[`ClientID.vue renders props when passed with gettors 1`] = `
                     class="text-left"
                   >
                     
-                  
-                
                   </th>
                    
                   <th
                     class="text-left"
                   >
                     
-                  
-                
                   </th>
                    
                   <th
                     class="text-left"
                   >
                     
-                  
-                
                   </th>
                 </tr>
               </thead>
@@ -220,6 +202,8 @@ exports[`ClientID.vue renders props when passed with gettors 2`] = `
             class="v-btn__content"
           >
             
+      
+    
           </span>
         </button>
       </div>
@@ -321,7 +305,9 @@ exports[`ClientID.vue renders props when passed with gettors 2`] = `
           </div>
            
           <span>
+            
             test
+          
           </span>
         </code>
       </div>
@@ -343,20 +329,6 @@ exports[`ClientID.vue renders props when passed with gettors 2`] = `
       >
         <div>
           
-          
-          
-          <span
-            class="v-tooltip v-tooltip--bottom"
-          >
-            <div
-              class="v-tooltip__content"
-              style="left: 0px; max-width: auto; opacity: 0; top: 12px; z-index: 0; display: none;"
-            />
-            <i
-              aria-hidden="true"
-              class="v-icon notranslate mdi mdi-help-circle theme--light"
-            />
-          </span>
         </div>
          
         <span
@@ -380,24 +352,18 @@ exports[`ClientID.vue renders props when passed with gettors 2`] = `
                     class="text-left"
                   >
                     
-                  
-                
                   </th>
                    
                   <th
                     class="text-left"
                   >
                     
-                  
-                
                   </th>
                    
                   <th
                     class="text-left"
                   >
                     
-                  
-                
                   </th>
                 </tr>
               </thead>

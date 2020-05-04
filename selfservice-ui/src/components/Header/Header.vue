@@ -22,14 +22,15 @@
       <v-spacer></v-spacer>
       <v-spacer></v-spacer>
 
-      <v-btn
+      <Button
         text
         to="/dashboard"
         link
         dark
+        :yellowBtn="true"
         class="d-none d-sm-flex login-btn side-right-margin"
         v-if="!isLoggedin"
-      >Login</v-btn>
+      >Login</Button>
 
       <v-toolbar-title v-if="isLoggedin" class="d-flex">
         <v-btn icon dark large @click="$router.push(`/profile`)">
@@ -68,11 +69,14 @@
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
 import Sidebar from './Sidebar.vue';
+import Button from '@/Atomic/Button/Button.vue';
+
 const KeyCloakModule = namespace('KeyCloakModule');
 
 @Component({
   components: {
-    Sidebar
+    Sidebar,
+    Button
   }
 })
 export default class Header extends Vue {

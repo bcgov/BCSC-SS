@@ -317,7 +317,7 @@ exports[`ContactUs.vue renders props when passed with gettors 1`] = `
              
             <button
               aria-disabled="true"
-              class="btn white--text btn-contact-us ml-6 v-btn v-btn--depressed v-btn--disabled theme--light v-size--default primary normal disabled"
+              class="btn white--text btn-contact-us ml-6 v-btn v-btn--depressed v-btn--disabled theme--light v-size--default  primary  normal disabled"
               data-test-id="btn-contact-us"
               depressed=""
               disabled="disabled"

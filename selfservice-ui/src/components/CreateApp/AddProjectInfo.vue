@@ -53,7 +53,7 @@
                   v-model="description"
                   :label="$t('projectInfo.Description')"
                   type="text"
-                  :rules="[rules.required]"
+                  :rules="[rules.required, rules.maxLength(500)]"
                   outlined
                   :helpText="$t('projectInfo.DescriptionHint')"
                   data-test-id="text-project-description"

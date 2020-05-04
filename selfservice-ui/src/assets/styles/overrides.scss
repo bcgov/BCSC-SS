@@ -121,3 +121,17 @@
 .v-application p.normal {
   font-size: 16px;
 }
+
+.yellow-btn {
+  background-color: $BCgovGold5 !important;
+  color: $BCgovWhite;
+  font-size: 18px !important;
+  padding: 10px 32px !important;
+  cursor: pointer;
+  font-weight: 700;
+  letter-spacing: 1px;
+  min-width: 64px;
+}
+.break-word-all {
+  word-break: break-all;
+}

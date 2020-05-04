@@ -22,7 +22,6 @@ from .db import db
 class LoginHistory(BaseModel, db.Model):  # pylint: disable=too-few-public-methods
     """This class manages LoginHistory."""
 
-    __tablename__ = 'login_history'
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.String(), nullable=False)
     logged_in = db.Column(db.DateTime, nullable=False, default=datetime.datetime.now)

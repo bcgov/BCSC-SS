@@ -89,11 +89,13 @@
               secondary
               class="back-btn"
               v-if="isDraft"
+              data-test-id="btn-cancel-summary"
             >{{ $t('summaryPage.goBack') }}</Button>
             <Button
               :loading="isLoading"
               class="white--text submit-package ml-6"
               depressed
+              data-test-id="btn-submit-summary"
               @click="showDisclimer"
             >
               {{
