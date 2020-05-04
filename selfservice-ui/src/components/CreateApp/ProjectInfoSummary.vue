@@ -43,6 +43,22 @@
           </div>
         </v-list-item-content>
       </v-list-item>
+      <v-divider></v-divider>
+      <v-list-item>
+        <v-list-item-content class="align-self-start pr-30">
+          {{ $t('summaryPage.labelProjectDescription') }}
+          <span
+            class="small-hint pad-50"
+            v-html="$t('summaryPage.labelProjectDescriptionHint')"
+          ></span>
+        </v-list-item-content>
+        <v-list-item-content class="align-end">
+          <div class="break-word-all">
+            <v-icon small class="mr-1">mdi-apps</v-icon>
+            {{ projectInfo.description }}
+          </div>
+        </v-list-item-content>
+      </v-list-item>
     </v-list>
   </v-card>
 </template>
