@@ -59,6 +59,7 @@
                   <td v-if="isClient">{{ project.role }}</td>
 
                   <td>
+                    <div class="bc_project_status" :class="getStatusClass(project.statusId)"></div>
                     {{
                     $t(`dashboard.role${projectStatusList[project.statusId]}`)
                     }}
@@ -121,6 +122,15 @@ export default class Dashboard extends Vue {
       this.redirectFromSummaryPage(false);
     }
     this.$router.push(`/project-container/${project.id}`);
+  }
+  private getStatusClass(statusId: number) {
+    let classToadd = ' bc-dev-project ';
+    if (statusId > 2) {
+      classToadd = ' bc-live-req-project ';
+    } else if (statusId > 6) {
+      classToadd = ' bc-live-project';
+    }
+    return classToadd;
   }
 }
 </script>
