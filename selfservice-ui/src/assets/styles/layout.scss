@@ -91,3 +91,30 @@
   color: $BCgovFontColorInvertedDark;
   text-align: left;
 }
+.bc_project_status {
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  background-color: $draftstatus;
+  float: left;
+  margin: 2px 5px;
+  animation: 2s circle;
+  &.bc-dev-project {
+    background-color: $draftstatus;
+  }
+  &.bc-live-req-project {
+    background-color: $liveReqStatus;
+  }
+
+  &.bc-live-project {
+    background-color: $liveStatus;
+  }
+}
+@keyframes circle {
+  0% {
+    clip-path: circle(0%);
+  }
+  100% {
+    clip-path: circle(100%);
+  }
+}
