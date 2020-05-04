@@ -15,7 +15,7 @@
   },
   "projectInfo": {
     "ProjectInfoTitle": "Project Information",
-    "ProjectInfoTitleInfo": "<p class='pageinfo pb-0'>Our approach to help your organization experiment with the integration of the BC Services Card login option starts with some high level project information.<p class='pageinfo'>Through a project in our BC Services Card Self Service application, we will be able to gather information about the your application, provide assistance on your access request and ultimately provide you with the technical details of the Open ID Connect (OIDC) Client ID and Client Secret.</p></p>",
+    "ProjectInfoTitleInfo": "<p class='pageinfo pb-0'>Our approach to help your organization experiment with the integration of the BC Services Card login option starts with some high level project information.<p class='pageinfo'>Through a project in our BC Services Card Self Service application, we will be able to gather information about your application, provide assistance on your access request, and ultimately provide you with the technical details of the Open ID Connect (OIDC) Client ID and Client Secret.</p></p>",
     "ProjectOrgTitle": "This API is available for organizations that fall within the BC Broader Public Sector (BPS).",
     "OrganizationName": "Organization name",
     "projectName": "Project name",
