@@ -18,6 +18,7 @@ describes the required fields, assumptions and constraints for
 creating, updating, deleting and viewing a client configuration.
 """
 
+import copy
 import json
 
 import requests
@@ -40,14 +41,17 @@ class DynamicClientRegistrationService():
         del request.api_url
         del request.api_token
 
-        response = requests.post(url, headers=headers, data=json.dumps(request.__dict__))
+        request_json_data = json.dumps(request.__dict__)
+
+        log_info('Create: ' + url + ', request_data: ' + request_json_data)
+
+        response = requests.post(url, headers=headers, data=request_json_data)
         data = None
         if response.ok:
             data = CreateResponseModel(response.json())
+            log_info(DynamicClientRegistrationService._get_sanitized_data_(data))
         else:
-            log_info(request.__dict__)
-            log_error(response.status_code)
-            log_error(response.text)
+            log_error('ERROR - status_code: ' + response.status_code + ', response: ' + response.text)
         return data
 
     @staticmethod
@@ -56,14 +60,15 @@ class DynamicClientRegistrationService():
         url = api_url + '/oauth2/register/' + client_id
         headers = DynamicClientRegistrationService._get_header_(registration_access_token)
 
+        log_info('Get: ' + url)
+
         response = requests.get(url, headers=headers)
         data = None
         if response.ok:
             data = GetResponseModel(response.json())
+            log_info(DynamicClientRegistrationService._get_sanitized_data_(data))
         else:
-            log_info(registration_access_token)
-            log_error(response.status_code)
-            log_error(response.text)
+            log_error('ERROR - status_code: ' + response.status_code + ', response: ' + response.text)
 
         return data
 
@@ -76,14 +81,16 @@ class DynamicClientRegistrationService():
         del request.api_url
         del request.api_token
 
-        response = requests.put(url, headers=headers, data=json.dumps(request.__dict__))
+        request_json_data = json.dumps(request.__dict__)
+        log_info('Update: ' + url + ', request_data: ' + request_json_data)
+
+        response = requests.put(url, headers=headers, data=request_json_data)
         data = None
         if response.ok:
             data = UpdateResponseModel(response.json())
+            log_info(DynamicClientRegistrationService._get_sanitized_data_(data))
         else:
-            log_info(request.__dict__)
-            log_error(response.status_code)
-            log_error(response.text)
+            log_error('ERROR - status_code: ' + response.status_code + ', response: ' + response.text)
 
         return data
 
@@ -92,6 +99,8 @@ class DynamicClientRegistrationService():
         """Delete Registration Request for a new client at the BCSC OpenID Provider."""
         url = api_url + '/oauth2/register/' + client_id
         headers = DynamicClientRegistrationService._get_header_(registration_access_token)
+
+        log_info('Delete: ' + url)
 
         response = requests.delete(url, headers=headers)
         return response.ok
@@ -103,3 +112,10 @@ class DynamicClientRegistrationService():
             'Authorization': 'Bearer ' + token,
             'Content-Type': 'application/json'
         }
+
+    @staticmethod
+    def _get_sanitized_data_(data):
+        """Remove sensitive data before logging."""
+        dc_data = copy.deepcopy(data)
+        dc_data.client_secret = None
+        dc_data.registration_access_token = None
