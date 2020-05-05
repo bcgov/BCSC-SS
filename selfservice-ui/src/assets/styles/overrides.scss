@@ -99,15 +99,39 @@
   line-height: 22px;
   color: $gray10;
 }
+.v-application {
+  color: $BCgovFontColorInvertedDark;
+}
 
 .v-application p.pageinfo {
   margin-bottom: 5px;
   font-size: 16px;
-  color: rgba(0, 0, 0, 0.87);
+
   line-height: 24px;
   overflow-wrap: break-word;
   text-rendering: optimizelegibility;
   flex-wrap: wrap;
   padding: 12px 0;
   text-align: left;
+}
+.v-alert {
+  line-height: 24px;
+  font-size: 16px;
+}
+.v-application p.normal {
+  font-size: 16px;
+}
+
+.yellow-btn {
+  background-color: $BCgovGold5 !important;
+  color: $BCgovWhite;
+  font-size: 18px !important;
+  padding: 10px 32px !important;
+  cursor: pointer;
+  font-weight: 700;
+  letter-spacing: 1px;
+  min-width: 64px;
+}
+.break-word-all {
+  word-break: break-all;
 }

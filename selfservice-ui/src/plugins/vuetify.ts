@@ -5,11 +5,17 @@ Vue.use(Vuetify);
 
 export default new Vuetify({
   icons: {
-    iconfont: 'mdi'
+    iconfont: 'mdi',
   },
   theme: {
+    themes: {
+      light: {
+        error: '#D8292F',
+        success: '#2E8540',
+      },
+    },
     options: {
-      cspNonce: 'cLv1G2y8KtMdR'
-    }
-  }
+      cspNonce: 'cLv1G2y8KtMdR',
+    },
+  },
 });

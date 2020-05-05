@@ -129,10 +129,10 @@ export const actions: ActionTree<KeyCloakState, RootState> = {
       dispatch('userRedirect', {
         path: '/profile/complete',
         next: 'null',
-        fromUrl: '/profile/complete'
+        fromUrl: '/profile/complete',
       });
     } catch (error) {
-      if (error.response.status === 400 && error.response.errors) {
+      if (error.response.status === 400 && error.response.data.errors) {
         commit('SET_PROFILE_DOMAIN_ERROR', true);
       } else {
         commit('SET_USER_ERROR', true);
@@ -170,5 +170,5 @@ export const actions: ActionTree<KeyCloakState, RootState> = {
   async clearStatus({ commit }) {
     commit('SET_PROFILE_DOMAIN_ERROR', false);
     commit('SET_USER_ERROR', false);
-  }
+  },
 };

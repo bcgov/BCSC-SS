@@ -29,6 +29,8 @@ exports[`ProjectSummary.vue renders props when passed 1`] = `
           primarytitle=""
         >
           
+          
+        
         </v-card-title-stub>
          
         <v-card-text-stub
@@ -45,6 +47,7 @@ exports[`ProjectSummary.vue renders props when passed 1`] = `
           <button-stub
             aria-label="Back Button"
             color=""
+            data-test-id="btn-cancel-project-summary"
             name="button"
             secondary=""
             type="button"
@@ -55,6 +58,7 @@ exports[`ProjectSummary.vue renders props when passed 1`] = `
           <button-stub
             class="white--text submit-package ml-6"
             color=""
+            data-test-id="btn-submit-project-summary"
             depressed=""
             name="button"
             type="button"
@@ -141,6 +145,15 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
     <!---->
      
     <!---->
+     
+    <div
+      class="col col-12"
+      flat=""
+    >
+      <div
+        class="v-list-item__content text-left padding-0"
+      />
+    </div>
      
     <div
       class="col col-12"
@@ -246,7 +259,9 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
                 </div>
                  
                 <span>
-                  new secret
+                  
+            new secret
+          
                 </span>
               </code>
             </div>
@@ -268,20 +283,6 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
             >
               <div>
                 
-          
-          
-                <span
-                  class="v-tooltip v-tooltip--bottom"
-                >
-                  <div
-                    class="v-tooltip__content"
-                    style="left: 0px; max-width: auto; opacity: 0; top: 12px; z-index: 0; display: none;"
-                  />
-                  <i
-                    aria-hidden="true"
-                    class="v-icon notranslate mdi mdi-help-circle theme--light"
-                  />
-                </span>
               </div>
                
               <span
@@ -305,24 +306,18 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
                           class="text-left"
                         >
                           
-                  
-                
                         </th>
                          
                         <th
                           class="text-left"
                         >
                           
-                  
-                
                         </th>
                          
                         <th
                           class="text-left"
                         >
                           
-                  
-                
                         </th>
                       </tr>
                     </thead>
@@ -465,12 +460,16 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
                 class="ml-6"
               >
                 
+            
+          
               </div>
                
               <div
                 class="ml-6"
               >
                 
+            
+          
               </div>
             </div>
           </div>
@@ -622,47 +621,13 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
            
           <!---->
            
-          <hr
-            aria-orientation="horizontal"
-            class="v-divider theme--light"
-            role="separator"
-          />
+          <!---->
            
-          <div
-            class="v-list-item theme--light"
-            role="listitem"
-            tabindex="-1"
-          >
-            <div
-              class="v-list-item__content pr-30"
-            >
-              
-        
-        
-              <span
-                class="small-hint pad-50"
-              />
-            </div>
-             
-            <div
-              class="v-list-item__content align-end"
-            >
-              <div
-                class="v-list-item__content align-end"
-              >
-                <div>
-                  <i
-                    aria-hidden="true"
-                    class="v-icon notranslate mr-1 mdi mdi-shield-key theme--light"
-                    style="font-size: 16px;"
-                  />
-                  
-            RS256
-          
-                </div>
-              </div>
-            </div>
-          </div>
+          <!---->
+           
+          <!---->
+           
+          <!---->
         </div>
       </div>
     </div>
@@ -805,7 +770,7 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
       class="col col-12"
     >
       <div
-        class="v-alert text-left v-sheet theme--light v-alert--dense v-alert--outlined error--text"
+        class="v-alert text-left text-left v-sheet theme--light v-alert--dense v-alert--outlined error--text"
         role="alert"
       >
         <div
@@ -848,7 +813,8 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
           <!---->
            
           <button
-            class="btn white--text submit-package ml-6 v-btn v-btn--depressed theme--light v-size--default primary normal"
+            class="btn white--text submit-package ml-6 v-btn v-btn--depressed theme--light v-size--default  primary  normal"
+            data-test-id="btn-submit-summary"
             depressed=""
             name="button"
             type="button"
@@ -857,6 +823,8 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
               class="v-btn__content"
             >
               
+            
+          
             </span>
           </button>
         </div>

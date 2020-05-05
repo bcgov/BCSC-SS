@@ -19,7 +19,7 @@ from flask import g, jsonify, request
 from flask_restplus import Namespace, Resource, cors
 from marshmallow import ValidationError
 
-from ..models import OrgWhitelist, User
+from ..models import LoginHistory, OrgWhitelist, User
 from ..schemas.user import UserSchema
 from ..utils.auth import auth, jwt
 from ..utils.util import cors_preflight
@@ -106,6 +106,8 @@ class UserResource(Resource):
             else:
                 user.update(dict_data)
 
+            LoginHistory.log(user.id)
+
             response, status = user_schema.dump(user), HTTPStatus.CREATED
         except ValidationError as user_err:
             response, status = {'systemErrors': user_err.messages}, \
@@ -123,5 +125,6 @@ class UserResource(Resource):
             'first_name': token_info.get('given_name'),
             'last_name': token_info.get('family_name')
         })
+        LoginHistory.log(user.id)
 
         return 'Updated successfully', HTTPStatus.OK

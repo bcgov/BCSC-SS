@@ -41,10 +41,13 @@ class TestAccountResource(Resource):
         data = test_account_json.get('testAccounts') if test_account_json else None
         if not data:
             return 'Unknown data', HTTPStatus.BAD_REQUEST
-        test_accounts = TestAccountResource._read_from_csv_data_(data)
+        test_accounts, total_count = TestAccountResource._read_from_csv_data_(data)
 
-        TestAccount.create_from_list(test_accounts)
-        response, status = str(len(test_accounts)) + ' test account created', HTTPStatus.CREATED
+        no_of_created = TestAccount.create_from_list(test_accounts)
+        response, status = {
+            'created': no_of_created,
+            'skipped': total_count - no_of_created
+        }, HTTPStatus.CREATED
 
         return response, status
 
@@ -67,4 +70,4 @@ class TestAccountResource(Resource):
                 row['attributes'] = attributes
                 test_accounts.append(row)
 
-        return test_accounts
+        return test_accounts, len(test_accounts_data)

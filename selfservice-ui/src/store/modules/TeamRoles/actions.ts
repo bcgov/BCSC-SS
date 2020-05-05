@@ -133,4 +133,9 @@ export const actions: ActionTree<TeamRoleState, RootState> = {
   clearMemberData({ commit }) {
     commit('SET_MEMBER_DETAILS', memberDetails());
   },
+  clearErrors({ commit }) {
+    commit('SET_MEMBER_ADDED_ERROR_LIST', {});
+    commit('SET_MEMBER_ADDED_ERROR', false);
+    commit('SET_MEMBER_ADDED', false);
+  },
 };

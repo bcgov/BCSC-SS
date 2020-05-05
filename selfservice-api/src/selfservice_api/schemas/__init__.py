@@ -13,6 +13,7 @@
 # limitations under the License.
 """This exports all of the schemas used by the application."""
 
+from .contact_us import ContactUsSchema
 from .oidc_config import OIDCConfigSchema
 from .project import ProjectSchema
 from .team import TeamSchema

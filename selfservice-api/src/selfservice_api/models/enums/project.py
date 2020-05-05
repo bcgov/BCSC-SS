@@ -13,7 +13,7 @@
 # limitations under the License.
 """This manages Project Enums."""
 
-from .base_enum import ExtendedEnum, ExtendedIntEnum
+from .base_enum import ExtendedIntEnum
 
 
 class ProjectRoles(ExtendedIntEnum):
@@ -35,27 +35,3 @@ class ProjectStatus(ExtendedIntEnum):
     PrepareProdTechConfig = 6, 'Prepare Prod Tech Config'
     RequireIDIMEDApproval = 7, 'Require IDIM ED Approval'
     ApprovalGranted = 8, 'Approval Granted'
-
-
-class Algorithms(ExtendedEnum):
-    """This enum provides the list of Algorithms supported by Dynamic API."""
-
-    HS256 = 'HS256'
-    HS384 = 'HS384'
-    HS512 = 'HS512'
-    RS256 = 'RS256'
-    RS384 = 'RS384'
-    RS512 = 'RS512'
-    ES256 = 'ES256'
-    ES384 = 'ES384'
-    ES512 = 'ES512'
-    PS256 = 'PS256'
-    PS384 = 'PS384'
-    PS512 = 'PS512'
-
-
-class SigningEncryptionType(ExtendedIntEnum):
-    """This enum provides the list of Signing and Encryption type."""
-
-    SignedJWT = 1, 'Signed JWT'
-    SecureJWT = 2, 'Secure JWT'

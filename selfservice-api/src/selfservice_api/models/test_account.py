@@ -33,16 +33,19 @@ class TestAccount(BaseModel, db.Model):
     @classmethod
     def create_from_list(cls, test_accounts):
         """Create test account's from list of dictionary."""
+        no_of_created = 0
         if test_accounts:
             for test_account_info in test_accounts:
-                test_account = TestAccount()
-                test_account.card_number = test_account_info['card_number']
-                test_account.passcode = test_account_info['passcode']
-                test_account.attributes = test_account_info['attributes']
-                test_account.save()
-            return len(test_accounts)
+                card_number = test_account_info['card_number']
+                if not cls.find_by_card_number(card_number):
+                    test_account = TestAccount()
+                    test_account.card_number = card_number
+                    test_account.passcode = test_account_info['passcode']
+                    test_account.attributes = test_account_info['attributes']
+                    test_account.save()
+                    no_of_created = no_of_created + 1
 
-        return 0
+        return no_of_created
 
     @classmethod
     def map_test_accounts(cls, project_id: int, no_of_accounts: int):
@@ -79,6 +82,11 @@ class TestAccount(BaseModel, db.Model):
     def find_all_by_project_id(cls, project_id):
         """Find test account that matches the provided id."""
         return cls.query.filter(TestAccount.project_id == project_id).all()
+
+    @classmethod
+    def find_by_card_number(cls, card_number):
+        """Find test account that matches the card_number."""
+        return cls.query.filter(TestAccount.card_number == card_number).first()
 
     def update(self, test_account_info: dict):
         """Update test account."""

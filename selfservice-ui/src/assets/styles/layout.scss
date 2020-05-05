@@ -1,3 +1,4 @@
+@import 'theme.scss';
 .app-container {
   display: flex;
   flex-flow: column nowrap;
@@ -84,4 +85,36 @@
   font-weight: 700;
   font-size: 24px;
   line-height: 1.5;
+}
+.bc-page-title-h1 {
+  padding: 35px 0 0 110px;
+  color: $BCgovFontColorInvertedDark;
+  text-align: left;
+}
+.bc_project_status {
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  background-color: $draftstatus;
+  float: left;
+  margin: 2px 5px;
+  animation: 2s circle;
+  &.bc-dev-project {
+    background-color: $draftstatus;
+  }
+  &.bc-live-req-project {
+    background-color: $liveReqStatus;
+  }
+
+  &.bc-live-project {
+    background-color: $liveStatus;
+  }
+}
+@keyframes circle {
+  0% {
+    clip-path: circle(0%);
+  }
+  100% {
+    clip-path: circle(100%);
+  }
 }

@@ -121,8 +121,3 @@ class ProjectUsersAssociation(BaseModel, db.Model):
         """Find all association by project id and user id."""
         return cls.query.filter(and_(ProjectUsersAssociation.project_id == project_id,
                                      ProjectUsersAssociation.user_id == user_id)).all()
-
-    @classmethod
-    def delete_all_by_project_id(cls, project_id: str):
-        """Delete all by project id."""
-        return cls.query.filter(ProjectUsersAssociation.project_id == project_id).delete()

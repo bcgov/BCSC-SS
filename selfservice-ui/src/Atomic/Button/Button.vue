@@ -6,12 +6,7 @@ important action on your service, such as Download or Submit. */
     class="btn"
     :type="type"
     :name="name"
-    v-bind:class="[
-      secondary !== false ? 'secondary-btn' : 'primary',
-      dark !== false ? 'dark-calss' : 'normal',
-      disabled !== false ? 'disabled' : '',
-    
-    ]"
+    :class="getclassList()"
     :aria-disabled="disabled"
     :disabled="disabled"
     @click="click"
@@ -82,12 +77,34 @@ export default class Button extends Vue {
   private color!: string;
 
   /**
+   *  yeloow color button, default will be primary
+   */
+  @Prop({
+    default: false
+  })
+  private yellowBtn!: boolean;
+
+  /**
    * on click
    * @description update on click
    *
    */
   private click() {
     this.$emit('click');
+  }
+
+  private getclassList() {
+    let classToApply = '';
+    if (this.yellowBtn) {
+      classToApply += ' yellow-btn';
+    } else {
+      classToApply +=
+        this.secondary !== false ? ' secondary-btn ' : ' primary ';
+    }
+    classToApply += this.dark !== false ? ' dark-calss' : ' normal';
+    classToApply += this.disabled !== false ? ' disabled' : '';
+
+    return classToApply;
   }
 }
 </script>
@@ -146,9 +163,13 @@ export default class Button extends Vue {
   color: $BCgovFontColorInvertedDark !important;
   opacity: 1;
 }
+.v-application .primary {
+  border: none;
+  border: 2px solid $BCgovBlue5 !important;
+}
 
 .primary {
-  border: none;
+  border: 2px solid $BCgovBlue5 !important;
   // background-color: #003366;
   border-radius: 4px;
   color: white;
@@ -191,5 +212,6 @@ export default class Button extends Vue {
 }
 .primary.theme--light.v-btn.v-btn--disabled:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
   background-color: $BCgovBlue5 !important;
+  color: white !important;
 }
 </style>

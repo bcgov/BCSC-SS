@@ -17,9 +17,7 @@
 class CreateRequestModel:  # pylint: disable=too-few-public-methods
     """Client Registration Request Model."""
 
-    """Required.
-    Name of the Client that will be presented to
-    the end user during authentication."""  # pylint: disable=pointless-string-statement
+    """Required. Name of the Client."""  # pylint: disable=pointless-string-statement
     client_name: str
 
     """Required.

@@ -34,6 +34,8 @@ class TechnicalReq(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
     userinfo_signed_response_alg = db.Column(db.String(10), nullable=True)
     id_token_encrypted_response_alg = db.Column(db.String(10), nullable=True)
     userinfo_encrypted_response_alg = db.Column(db.String(10), nullable=True)
+    id_token_encrypted_response_enc = db.Column(db.String(20), nullable=True)
+    userinfo_encrypted_response_enc = db.Column(db.String(20), nullable=True)
 
     scope_package_id = db.Column(db.Integer, db.ForeignKey('scope_package.id'), nullable=True)
 
@@ -42,7 +44,7 @@ class TechnicalReq(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
 
     signing_encryption_type = db.Column(db.Integer, nullable=True)
 
-    is_prod = db.Column(db.Boolean(), default=False)
+    is_prod = db.Column(db.Boolean(), default=False, nullable=False)
 
     @classmethod
     def create_from_dict(cls, technical_req_info: dict, user: User) -> TechnicalReq:
@@ -57,6 +59,8 @@ class TechnicalReq(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
             technical_req.userinfo_signed_response_alg = technical_req_info['userinfo_signed_response_alg']
             technical_req.id_token_encrypted_response_alg = technical_req_info['id_token_encrypted_response_alg']
             technical_req.userinfo_encrypted_response_alg = technical_req_info['userinfo_encrypted_response_alg']
+            technical_req.id_token_encrypted_response_enc = technical_req_info['id_token_encrypted_response_enc']
+            technical_req.userinfo_encrypted_response_enc = technical_req_info['userinfo_encrypted_response_enc']
             technical_req.signing_encryption_type = technical_req_info['signing_encryption_type']
             technical_req.is_prod = technical_req_info['is_prod']
             technical_req.created_by = user.id
@@ -77,11 +81,7 @@ class TechnicalReq(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
         self.update_from_dict(['modified_by', 'scope_package_id', 'no_of_test_account', 'note_test_account',
                                'client_uri', 'redirect_uris', 'jwks_uri', 'id_token_signed_response_alg',
                                'userinfo_signed_response_alg', 'id_token_encrypted_response_alg',
-                               'userinfo_encrypted_response_alg', 'signing_encryption_type'],
+                               'userinfo_encrypted_response_alg', 'id_token_encrypted_response_enc',
+                               'userinfo_encrypted_response_enc', 'signing_encryption_type'],
                               technical_req_info)
         self.commit()
-
-    @classmethod
-    def delete_by_project_id(cls, project_id):
-        """Delete technical requirement by project id."""
-        return cls.query.filter(TechnicalReq.project_id == project_id).delete()

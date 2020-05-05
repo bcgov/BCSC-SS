@@ -17,25 +17,20 @@
         <v-row class="mx-4">
           <v-col cols="12" flat>
             <v-card flat>
-              <div
-                class="text-left"
-                v-html="$t('testAccountList.pageinfo')"
-              ></div>
+              <div class="text-left" v-html="$t('testAccountList.pageinfo')"></div>
             </v-card>
           </v-col>
           <v-col class="col-12" v-if="errorStatus || successStatus">
-            <v-alert
+            <Alert
               type="error"
               v-if="errorStatus"
               class="alert-top text-left"
-              >{{ $t('testAccountList.errorMessage') }}</v-alert
-            >
-            <v-alert
+            >{{ $t('testAccountList.errorMessage') }}</Alert>
+            <Alert
               type="success"
               class="alert-top text-left"
               v-if="successStatus"
-              >{{ $t('testAccountList.successMessage') }}</v-alert
-            >
+            >{{ $t('testAccountList.successMessage') }}</Alert>
           </v-col>
           <v-col cols="12" flat>
             <v-card flat>
@@ -45,6 +40,9 @@
                 type="text"
                 outlined
                 rows="10"
+                name="test-account-text"
+                id="test-account-text"
+                data-test-id="test-account-text"
               />
             </v-card>
           </v-col>
@@ -63,9 +61,9 @@
             class="white--text submit-account ml-6"
             depressed
             @click="submitTestAccount"
-          >
-            {{ $t('testAccountList.btnSaveChanges') }}
-          </Button>
+            name="btn-test-account"
+            data-test-id="btn-test-account"
+          >{{ $t('testAccountList.btnSaveChanges') }}</Button>
         </v-card-actions>
       </v-card>
     </v-col>
@@ -76,6 +74,7 @@ import { Component, Vue, Watch, Prop } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
 import Button from '@/Atomic/Button/Button.vue';
 import TextArea from '@/Atomic/TextArea/TextArea.vue';
+import Alert from '@/Atomic/Alert/Alert.vue';
 
 const TestAccountModule = namespace('TestAccountModule');
 
@@ -83,7 +82,8 @@ const TestAccountModule = namespace('TestAccountModule');
   components: {
     Button,
     TextArea,
-  },
+    Alert
+  }
 })
 export default class TestAccount extends Vue {
   @Prop({ default: 0 })
@@ -101,7 +101,7 @@ export default class TestAccount extends Vue {
 
   private submitTestAccount() {
     this.addTestAccounts({
-      testAccounts: this.testAccounts,
+      testAccounts: this.testAccounts
     });
   }
 

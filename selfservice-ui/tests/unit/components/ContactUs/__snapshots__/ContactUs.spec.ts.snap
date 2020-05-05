@@ -1,0 +1,339 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContactUs.vue renders props when passed with gettors 1`] = `
+<div
+  class="mx-auto outer-card v-card v-sheet theme--light"
+>
+  <form
+    class="v-form"
+    novalidate="novalidate"
+  >
+    <h1
+      class="bc-page-title-h1"
+    >
+      
+    </h1>
+     
+    <div
+      class="flex-grow-1"
+    />
+     
+    <div
+      class="container"
+    >
+      <div
+        class="row mx-4"
+      >
+        <div
+          class="col col-12"
+          flat=""
+        >
+          <div
+            class="v-card v-card--flat v-sheet theme--light"
+          >
+            <div
+              class="text-left"
+            />
+          </div>
+        </div>
+         
+        <!---->
+         
+        <div
+          class="col col-8"
+        >
+          <div
+            class="bc-form-text"
+            data-test-id="input-firstname"
+            rules="v => !!v || 'This field is required',v => (v || '').length <= len || 'Invalid character length, max length ' + len"
+          >
+            <div
+              class="text-left my-1"
+            >
+              
+     
+              <!---->
+            </div>
+             
+            <!---->
+             
+            <div
+              class="v-input input theme--light v-text-field v-text-field--single-line v-text-field--solo v-text-field--enclosed v-text-field--outlined"
+            >
+              <div
+                class="v-input__control"
+              >
+                <div
+                  class="v-input__slot"
+                >
+                  <fieldset
+                    aria-hidden="true"
+                  >
+                    <legend>
+                      <span>
+                        ​
+                      </span>
+                    </legend>
+                  </fieldset>
+                  <div
+                    class="v-text-field__slot"
+                  >
+                    <input
+                      data-test-id="input-firstname"
+                      id="input-9"
+                      type="text"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="v-text-field__details"
+                >
+                  <div
+                    class="v-messages theme--light"
+                  >
+                    <span
+                      class="v-messages__wrapper"
+                      name="message-transition"
+                      tag="div"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+           
+          <div
+            class="bc-form-text"
+            data-test-id="input-lastname"
+            rules="v => !!v || 'This field is required',v => (v || '').length <= len || 'Invalid character length, max length ' + len"
+          >
+            <div
+              class="text-left my-1"
+            >
+              
+     
+              <!---->
+            </div>
+             
+            <!---->
+             
+            <div
+              class="v-input input theme--light v-text-field v-text-field--single-line v-text-field--solo v-text-field--enclosed v-text-field--outlined"
+            >
+              <div
+                class="v-input__control"
+              >
+                <div
+                  class="v-input__slot"
+                >
+                  <fieldset
+                    aria-hidden="true"
+                  >
+                    <legend>
+                      <span>
+                        ​
+                      </span>
+                    </legend>
+                  </fieldset>
+                  <div
+                    class="v-text-field__slot"
+                  >
+                    <input
+                      data-test-id="input-lastname"
+                      id="input-13"
+                      type="text"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="v-text-field__details"
+                >
+                  <div
+                    class="v-messages theme--light"
+                  >
+                    <span
+                      class="v-messages__wrapper"
+                      name="message-transition"
+                      tag="div"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+           
+          <div
+            class="bc-form-text"
+            data-test-id="input-email"
+            rules="v => !!v || 'This field is required',v => /^\\\\w+([.-]?\\\\w+)*@\\\\w+([.-]?\\\\w+)*(\\\\.\\\\w{2,10})+$/.test(v) || 'E-mail must be valid',v => (v || '').length <= len || 'Invalid character length, max length ' + len"
+          >
+            <div
+              class="text-left my-1"
+            >
+              
+     
+              <!---->
+            </div>
+             
+            <!---->
+             
+            <div
+              class="v-input input theme--light v-text-field v-text-field--single-line v-text-field--solo v-text-field--enclosed v-text-field--outlined"
+            >
+              <div
+                class="v-input__control"
+              >
+                <div
+                  class="v-input__slot"
+                >
+                  <fieldset
+                    aria-hidden="true"
+                  >
+                    <legend>
+                      <span>
+                        ​
+                      </span>
+                    </legend>
+                  </fieldset>
+                  <div
+                    class="v-text-field__slot"
+                  >
+                    <input
+                      data-test-id="input-email"
+                      id="input-17"
+                      type="text"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="v-text-field__details"
+                >
+                  <div
+                    class="v-messages theme--light"
+                  >
+                    <span
+                      class="v-messages__wrapper"
+                      name="message-transition"
+                      tag="div"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+         
+        <div
+          class="col col-12"
+          flat=""
+        >
+          <div
+            class="v-card v-card--flat v-sheet theme--light"
+          >
+            <div
+              class="bc-form-text"
+              data-test-id="text-contact-us-description"
+              id="text-contact-us-description"
+              name="text-contact-us-description"
+              outlined=""
+              rows="10"
+              rules="v => !!v || 'This field is required'"
+            >
+              <div
+                class="text-left my-1"
+              >
+                
+              </div>
+               
+              <!---->
+               
+              <div
+                class="v-input v-textarea theme--light v-text-field v-text-field--single-line v-text-field--solo v-text-field--enclosed v-text-field--outlined"
+              >
+                <div
+                  class="v-input__control"
+                >
+                  <div
+                    class="v-input__slot"
+                  >
+                    <fieldset
+                      aria-hidden="true"
+                    >
+                      <legend>
+                        <span>
+                          ​
+                        </span>
+                      </legend>
+                    </fieldset>
+                    <div
+                      class="v-text-field__slot"
+                    >
+                      <textarea
+                        data-test-id="text-contact-us-description"
+                        id="text-contact-us-description"
+                        name="text-contact-us-description"
+                        rows="10"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    class="v-text-field__details"
+                  >
+                    <div
+                      class="v-messages theme--light"
+                    >
+                      <span
+                        class="v-messages__wrapper"
+                        name="message-transition"
+                        tag="div"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+       
+      <div
+        class="col col-12"
+      >
+        <div
+          class="v-card v-card--flat v-sheet theme--light"
+        >
+          <hr
+            aria-orientation="horizontal"
+            class="v-divider theme--light"
+            role="separator"
+          />
+           
+          <div
+            class="v-card__actions"
+          >
+            <div
+              class="spacer"
+            />
+             
+            <button
+              aria-disabled="true"
+              class="btn white--text btn-contact-us ml-6 v-btn v-btn--depressed v-btn--disabled theme--light v-size--default  primary  normal disabled"
+              data-test-id="btn-contact-us"
+              depressed=""
+              disabled="disabled"
+              name="btn-contact-us"
+              type="button"
+            >
+              <span
+                class="v-btn__content"
+              >
+                
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+`;

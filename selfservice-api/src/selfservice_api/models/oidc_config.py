@@ -39,7 +39,7 @@ class OIDCConfig(BaseModel, db.Model):
     application_type = db.Column(db.String(100))
     subject_type = db.Column(db.String(100))
 
-    is_prod = db.Column(db.Boolean(), default=False)
+    is_prod = db.Column(db.Boolean(), default=False, nullable=False)
 
     @classmethod
     def create_from_dict(cls, oidc_config_info: dict) -> OIDCConfig:
@@ -75,8 +75,3 @@ class OIDCConfig(BaseModel, db.Model):
                                'token_endpoint_auth_method', 'application_type', 'subject_type'],
                               oidc_config_info)
         self.commit()
-
-    @classmethod
-    def delete_by_project_id(cls, project_id):
-        """Delete oidc config that matches the provided id."""
-        return cls.query.filter(OIDCConfig.project_id == project_id).delete()
