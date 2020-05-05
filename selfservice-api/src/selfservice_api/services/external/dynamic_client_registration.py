@@ -51,7 +51,7 @@ class DynamicClientRegistrationService():
             data = CreateResponseModel(response.json())
             log_info(DynamicClientRegistrationService._get_sanitized_data_(data))
         else:
-            log_error('ERROR - status_code: ' + response.status_code + ', response: ' + response.text)
+            log_error('ERROR:Create - status_code: ' + response.status_code + ', response: ' + response.text)
         return data
 
     @staticmethod
@@ -68,7 +68,7 @@ class DynamicClientRegistrationService():
             data = GetResponseModel(response.json())
             log_info(DynamicClientRegistrationService._get_sanitized_data_(data))
         else:
-            log_error('ERROR - status_code: ' + response.status_code + ', response: ' + response.text)
+            log_error('ERROR:Get - status_code: ' + response.status_code + ', response: ' + response.text)
 
         return data
 
@@ -90,7 +90,7 @@ class DynamicClientRegistrationService():
             data = UpdateResponseModel(response.json())
             log_info(DynamicClientRegistrationService._get_sanitized_data_(data))
         else:
-            log_error('ERROR - status_code: ' + response.status_code + ', response: ' + response.text)
+            log_error('ERROR:Update - status_code: ' + response.status_code + ', response: ' + response.text)
 
         return data
 
