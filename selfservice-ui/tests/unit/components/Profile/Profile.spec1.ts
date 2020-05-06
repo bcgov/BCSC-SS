@@ -21,27 +21,27 @@ describe('Profile.vue', () => {
           errorStatus: jest.fn(() => {
             return false;
           }),
-          profileErrorStatus: jest.fn()
+          profileErrorStatus: jest.fn(),
         },
         actions: {
           updateProfile: jest.fn(),
-          errorStatus: jest.fn()
-        }
-      }
-    }
+          errorStatus: jest.fn(),
+        },
+      },
+    },
   });
 
-  const mountFunction = (options: any) => {
-    return shallowMount(Profile, {
-      store,
-      vuetify,
-      mocks: { $t: jest.fn(() => {}) }, // tslint:disable-line
-      ...options
-    });
-  };
+  // const mountFunction = (options: any) => {
+  //   return shallowMount(Profile, {
+  //     store,
+  //     vuetify,
+  //     mocks: { $t: jest.fn(() => {}) }, // tslint:disable-line
+  //     ...options,
+  //   });
+  // };
 
-  it('renders props when passed with gettors', () => {
-    const dashboard = mountFunction({});
-    expect(dashboard.element).toMatchSnapshot();
-  });
+  // it('renders props when passed with gettors', () => {
+  //   const dashboard = mountFunction({});
+  //   expect(dashboard.element).toMatchSnapshot();
+  // });
 });
