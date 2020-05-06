@@ -96,7 +96,7 @@
               class="white--text submit-package ml-6"
               depressed
               data-test-id="btn-submit-summary"
-              @click="showDisclimer"
+              @click="submitFinalRequest"
             >
               {{
               isDraft
@@ -108,40 +108,6 @@
         </v-card>
       </v-col>
     </v-row>
-
-    <div class="text-center">
-      <v-dialog v-model="dialog" persistent width="70%" class="text-left">
-        <v-card>
-          <v-card-title class="bc-subtitle padding-0" primary-title>
-            {{
-            $t('summaryPage.disclaimerTitle')
-            }}
-          </v-card-title>
-
-          <v-card-text class="text-left">
-            <div v-html="$t('summaryPage.disclaimerContent')"></div>
-          </v-card-text>
-
-          <v-divider></v-divider>
-
-          <v-card-actions>
-            <v-spacer></v-spacer>
-            <Button
-              @click="dialog = false"
-              aria-label="Back Button"
-              secondary
-              data-test-id="btn-cancel-project-summary"
-            >{{ $t('summaryPage.btnAgreeBack') }}</Button>
-            <Button
-              class="white--text submit-package ml-6"
-              depressed
-              @click="submitFinalRequest"
-              data-test-id="btn-submit-project-summary"
-            >{{ $t('summaryPage.btnAgree') }}</Button>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
-    </div>
   </div>
 </template>
 <script lang="ts">
@@ -163,7 +129,6 @@ import { projectStatus, projectRoles } from '@/constants/enums';
 const ProjectInfoModule = namespace('ProjectInfoModule');
 const TeamModule = namespace('TeamRolesModule');
 const TechnicalReqModule = namespace('TechnicalReqModule');
-// const PackageAndTestModule = namespace('PackageAndTestModule');
 const SharedModule = namespace('SharedModule');
 
 @Component({
@@ -210,7 +175,6 @@ export default class ProjectSummary extends Vue {
 
   private isLoading: boolean = true;
   private projectId: number = this.id || 0;
-  private dialog: boolean = false;
   private isTeamAvailable: boolean = false;
   private isTechnicalInfoAvailable: boolean = false;
   private canSubmit: boolean = false;
@@ -241,7 +205,6 @@ export default class ProjectSummary extends Vue {
     if (finalSuccessStatus) {
       this.isCreated = isCreated;
       this.isUpdated = isUpdated;
-      this.hideDisclimer();
       this.loadFullData();
       this.$vuetify.goTo(0, {
         duration: 1000,
@@ -249,7 +212,6 @@ export default class ProjectSummary extends Vue {
       });
       this.showTestAccountWarning = !testAccountSuccess;
     } else if (finalErrorStatus) {
-      this.hideDisclimer();
       this.showSystemError = true;
     }
     this.clearSubmitProjectStatus();
@@ -294,21 +256,13 @@ export default class ProjectSummary extends Vue {
         : false;
   }
 
-  private hideDisclimer() {
-    this.dialog = false;
-  }
-
-  private showDisclimer() {
+  private submitFinalRequest() {
     if (this.canSubmit) {
-      this.dialog = true;
       this.showCannotSubmitError = false;
+      this.submitProject({ projectId: this.projectId });
     } else {
-      this.dialog = false;
       this.showCannotSubmitError = true;
     }
-  }
-  private submitFinalRequest() {
-    this.submitProject({ projectId: this.projectId });
   }
 
   private getDataScopeClasses(field: string) {
