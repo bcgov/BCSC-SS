@@ -148,7 +148,7 @@ exports[`ProjectContainer.vue renders props when passed 1`] = `
             >
               <v-card-text-stub>
                 <p>
-                  prod access request
+                  Prod access request
                 </p>
               </v-card-text-stub>
             </v-card-stub>
