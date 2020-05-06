@@ -70,8 +70,8 @@
                   :disabled="!form"
                   class="white--text"
                   depressed
-                  @click="createOrUpdateProfile"
-                  @keyup.enter="createOrUpdateProfile"
+                  @click="toggleDisclimer()"
+                  @keyup.enter="toggleDisclimer()"
                   data-test-id="btn-profile-update"
                 >
                   {{
@@ -85,6 +85,53 @@
               </v-card-actions>
             </v-card>
           </v-col>
+          <v-col class="text-center">
+            <v-dialog v-model="dialog" persistent width="90%" class="text-left overflow-y-auto">
+              <v-card class="pa-8">
+                <h1 class="text-left pa-5 ml-8">
+                  {{
+                  $t('profile.titleTerms')
+                  }}
+                </h1>
+                <p class="text-left pl-5 ml-8">
+                  {{
+                  $t('profile.termsAccept')
+                  }}
+                </p>
+                <v-divider></v-divider>
+                <v-card-text class="text-left terms-content pa-0" id="scroll-target" ref="termsDiv">
+                  <TermsAndConditions />
+                  <div
+                    v-intersect="{
+                  handler: onIntersect,
+                  options: {
+                    threshold: [0, 0.5, 1.0]
+                  }
+                }"
+                  ></div>
+                </v-card-text>
+
+                <v-divider></v-divider>
+
+                <v-card-actions class="terms-actions">
+                  <v-spacer></v-spacer>
+                  <Button
+                    @click="toggleDisclimer()"
+                    aria-label="Back Button"
+                    secondary
+                    data-test-id="btn-cancel-terms-profile"
+                  >{{ $t('profile.btnCancel') }}</Button>
+                  <Button
+                    :disabled="!buttonEnable"
+                    class="white--text submit-package ml-6"
+                    depressed
+                    @click="createOrUpdateProfile"
+                    data-test-id="btn-submit-terms-profile"
+                  >{{ $t('profile.btnAgree') }}</Button>
+                </v-card-actions>
+              </v-card>
+            </v-dialog>
+          </v-col>
         </v-row>
       </v-container>
     </v-form>
@@ -97,12 +144,13 @@ import { Getter, namespace, Action } from 'vuex-class';
 import Input from '@/Atomic/Input/Input.vue';
 import Button from '@/Atomic/Button/Button.vue';
 import Alert from '@/Atomic/Alert/Alert.vue';
+import TermsAndConditions from '@/components/Profile/TermsAndConditions.vue';
 
 import validationRules from '@/config/validationRules';
 
 const KeyCloakModule = namespace('KeyCloakModule');
 
-@Component({ components: { Input, Button, Alert } })
+@Component({ components: { Input, Button, Alert, TermsAndConditions } })
 export default class Dashboard extends Vue {
   @Prop({ default: '' })
   public step!: string;
@@ -121,11 +169,13 @@ export default class Dashboard extends Vue {
   private profileErrorStatus!: boolean;
 
   private form: boolean = false;
+  private dialog: boolean = false;
 
   /* istanbul ignore next */
   private rules = validationRules;
   private email: string = '';
   private phone: string = '';
+  private buttonEnable: boolean = false;
 
   @Watch('userProfile')
   private onUserProfileChanged(val: any) {
@@ -135,10 +185,17 @@ export default class Dashboard extends Vue {
   private createOrUpdateProfile() {
     const profile = { email: this.email, phone: this.phone };
     this.updateProfile(profile);
+    this.toggleDisclimer();
   }
   private userDetails(val: any) {
     this.email = val.email;
     this.phone = val.phone;
+  }
+  private toggleDisclimer() {
+    this.dialog = !this.dialog;
+  }
+  private onIntersect(entries: any, observer: any) {
+    this.buttonEnable = entries[0].intersectionRatio >= 0.5;
   }
 
   private mounted() {
@@ -154,5 +211,9 @@ export default class Dashboard extends Vue {
   @include lg {
     max-width: 50%;
   }
+}
+.terms-content {
+  max-height: 60vh;
+  overflow-y: auto;
 }
 </style>
