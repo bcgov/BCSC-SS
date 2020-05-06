@@ -71,7 +71,7 @@
             <v-tab-item class="custom-tabs-items">
               <v-card flat>
                 <v-card-text>
-                  <p>prod access request</p>
+                  <p>Prod access request</p>
                 </v-card-text>
               </v-card>
             </v-tab-item>
