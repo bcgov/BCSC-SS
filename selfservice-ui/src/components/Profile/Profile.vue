@@ -70,8 +70,8 @@
                   :disabled="!form"
                   class="white--text"
                   depressed
-                  @click="toggleDisclimer()"
-                  @keyup.enter="toggleDisclimer()"
+                  @click="toggleDisclaimer()"
+                  @keyup.enter="toggleDisclaimer()"
                   data-test-id="btn-profile-update"
                 >
                   {{
@@ -116,7 +116,7 @@
                 <v-card-actions class="terms-actions">
                   <v-spacer></v-spacer>
                   <Button
-                    @click="toggleDisclimer()"
+                    @click="toggleDisclaimer()"
                     aria-label="Back Button"
                     secondary
                     data-test-id="btn-cancel-terms-profile"
@@ -185,13 +185,13 @@ export default class Dashboard extends Vue {
   private createOrUpdateProfile() {
     const profile = { email: this.email, phone: this.phone };
     this.updateProfile(profile);
-    this.toggleDisclimer();
+    this.toggleDisclaimer();
   }
   private userDetails(val: any) {
     this.email = val.email;
     this.phone = val.phone;
   }
-  private toggleDisclimer() {
+  private toggleDisclaimer() {
     this.dialog = !this.dialog;
   }
   private onIntersect(entries: any, observer: any) {
