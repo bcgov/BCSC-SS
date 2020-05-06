@@ -206,7 +206,7 @@
     "pagetitle": "Complete Profile",
     "txtMainTitle": "Easily implement BC Services Card for online authentication",
     "txtFitForOrganization": "Is this a fit for your organization?",
-    "txtsubcontent1": "Do you want to use <a href='https://digital.gov.bc.ca' target='_ss'>digital technologies</a> that are transforming the way British Columbians live, work and play?",
+    "txtsubcontent1": "Do you want to use modern tools and <a href='https://digital.gov.bc.ca' target='_ss'>digital technologies</a> to deliver the services British Columbians want and improve the services people need?",
     "txtsubcontent2": "Are you part of a Broader Public Sector organization?",
     "txtsubcontent3": "Is your organization in need of <a href='https://www2.gov.bc.ca/assets/gov/government/services-for-government-and-broader-public-sector/information-technology-services/standards-files/identity_assurance_standard.pdf' target='_ss' >high assurance authentication?</a>",
     "txtsubTitle2": "What defines \"broader public sector\"?",
@@ -231,7 +231,7 @@
     "titleSecurity": "Security",
     "titleComms": "Communications",
     "titleAgreements": "Agreements",
-    "titleLiveSummary": "Live Summary"
+    "titleLiveSummary": "Prod Summary"
   },
   "teamRoles": {
     "pagetitle": "Project team roles",
@@ -270,11 +270,11 @@
     "labelRoleInfocto": "The Executive Sponsor attests to the integration application compliance"
   },
   "projectActions": {
-    "btnRequestLiveAccess": "Request live access",
-    "requestLiveAccessDialogTitle": "Request live access",
-    "requestLiveAccessDialogInfo": "<h3>You have chosen to request live access.</h3><p class='my-5'>This action will move your project into the next phase to begin the Live Access Request process.</p><p class='my-5 pr-2'>In this next phase, you will be guided through the process to understand and address the various categories of compliance before integrating with a live production-ready environment of BC Services Card data. A member of the Provincial Identity Information Management Program is always available to help BPS clients in completing the integration components.</p><p class='my-5'>The Provincial Identity Information Management Program is mandated to provide identity and authentication services using the BC Services Card to support citizen transactions with government services.</p><p class='my-5'><strong> Would you like to continue?</strong></p>",
+    "btnRequestLiveAccess": "Request Prod access",
+    "requestLiveAccessDialogTitle": "Request prod access",
+    "requestLiveAccessDialogInfo": "<h3>You have chosen to request prod access.</h3><p class='my-5'>This action will move your project into the next phase to begin the Live Access Request process.</p><p class='my-5 pr-2'>In this next phase, you will be guided through the process to understand and address the various categories of compliance before integrating with a live production-ready environment of BC Services Card data. A member of the Provincial Identity Information Management Program is always available to help BPS clients in completing the integration components.</p><p class='my-5'>The Provincial Identity Information Management Program is mandated to provide identity and authentication services using the BC Services Card to support citizen transactions with government services.</p><p class='my-5'><strong> Would you like to continue?</strong></p>",
     "btnCancel": "Cancel",
-    "btnConfirm": "Request live access",
+    "btnConfirm": "Request prod access",
     "labelDelete": "Delete project",
     "btnDeleteConfirm": "Delete this project",
     "btnDeleteCancel": "Cancel",
