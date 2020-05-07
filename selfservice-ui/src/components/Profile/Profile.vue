@@ -12,8 +12,6 @@
       <div class="flex-grow-1"></div>
     </v-toolbar>
     <v-divider></v-divider>
-    valid{{valid}}
-    sbemail{{email}}
     <v-form ref="form" v-model="valid" v-if="!errorStatus">
       <v-container>
         <v-row class="ma-5">
