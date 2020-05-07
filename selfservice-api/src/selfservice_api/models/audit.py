@@ -30,7 +30,7 @@ class Audit(BaseModel, db.Model):  # pylint: disable=too-few-public-methods
     sub_type_id = db.Column('sub_type_id', db.String(), nullable=True)
     field = db.Column('field', db.String(), nullable=False)
     old_value = db.Column('old_value', db.String(), nullable=True)
-    new_value = db.Column('new_value', db.String(), nullable=False)
+    new_value = db.Column('new_value', db.String(), nullable=True)
     created = db.Column(db.DateTime, nullable=False, default=datetime.datetime.now)
     created_by = db.Column(db.String(), nullable=False)
 

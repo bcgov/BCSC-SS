@@ -24,6 +24,7 @@ class AuditType(ExtendedEnum):
     ProjectUsersAssociation = 'project_users_association'
     TestAccount = 'test_account'
     OIDCConfig = 'oidc_config'
+    User = 'user'
 
 
 class ProjectSubType(ExtendedIntEnum):
