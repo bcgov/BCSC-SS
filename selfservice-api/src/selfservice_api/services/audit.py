@@ -48,7 +48,7 @@ class AuditService():
                 audit.sub_type_id = None
                 audit.field = field
                 audit.old_value = old_value
-                audit.value = value
+                audit.new_value = value
                 audit.created_by = user.id
                 db.session.add(audit)
 
@@ -58,8 +58,13 @@ class AuditService():
     def __get_valid_fields__(model):
         """Get list of valid fields for the specific Audit Type."""
         fields = model.__table__.columns.keys()
-        fields.remove('created')
-        fields.remove('modified')
-        fields.remove('created_by')
-        fields.remove('modified_by')
+        if 'created' in fields:
+            fields.remove('created')
+        if 'modified' in fields:
+            fields.remove('modified')
+        if 'created_by' in fields:
+            fields.remove('created_by')
+        if 'modified_by' in fields:
+            fields.remove('modified_by')
+
         return fields
