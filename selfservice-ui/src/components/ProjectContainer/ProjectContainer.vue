@@ -68,13 +68,7 @@
                 </v-card-text>
               </v-card>
             </v-tab-item>
-            <v-tab-item class="custom-tabs-items">
-              <v-card flat>
-                <v-card-text>
-                  <p>Live access request</p>
-                </v-card-text>
-              </v-card>
-            </v-tab-item>
+
             <v-tab-item class="custom-tabs-items">
               <v-card flat>
                 <v-card-text>
@@ -92,7 +86,21 @@
             <v-tab-item class="custom-tabs-items">
               <v-card flat>
                 <v-card-text>
-                  <p>Access Key</p>
+                  <p>Communications</p>
+                </v-card-text>
+              </v-card>
+            </v-tab-item>
+            <v-tab-item class="custom-tabs-items">
+              <v-card flat>
+                <v-card-text>
+                  <p>Agreements</p>
+                </v-card-text>
+              </v-card>
+            </v-tab-item>
+            <v-tab-item class="custom-tabs-items">
+              <v-card flat>
+                <v-card-text>
+                  <p>Prod access request</p>
                 </v-card-text>
               </v-card>
             </v-tab-item>

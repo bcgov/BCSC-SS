@@ -21,14 +21,14 @@ describe('Profile.vue', () => {
           errorStatus: jest.fn(() => {
             return false;
           }),
-          profileErrorStatus: jest.fn()
+          profileErrorStatus: jest.fn(),
         },
         actions: {
           updateProfile: jest.fn(),
-          errorStatus: jest.fn()
-        }
-      }
-    }
+          errorStatus: jest.fn(),
+        },
+      },
+    },
   });
 
   const mountFunction = (options: any) => {
@@ -36,7 +36,7 @@ describe('Profile.vue', () => {
       store,
       vuetify,
       mocks: { $t: jest.fn(() => {}) }, // tslint:disable-line
-      ...options
+      ...options,
     });
   };
 

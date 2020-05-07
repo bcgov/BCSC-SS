@@ -3,72 +3,6 @@
 exports[`ProjectSummary.vue renders props when passed 1`] = `
 <div>
   <loading-stub />
-   
-  <div
-    class="text-center"
-  >
-    <v-dialog-stub
-      class="text-left"
-      closedelay="0"
-      contentclass=""
-      maxwidth="none"
-      opendelay="0"
-      origin="center center"
-      persistent="true"
-      retainfocus="true"
-      transition="dialog-transition"
-      width="70%"
-    >
-      <v-card-stub
-        loaderheight="4"
-        tag="div"
-      >
-        <v-card-title-stub
-          class="bc-subtitle padding-0"
-          primary-title=""
-          primarytitle=""
-        >
-          
-          
-        
-        </v-card-title-stub>
-         
-        <v-card-text-stub
-          class="text-left"
-        >
-          <div />
-        </v-card-text-stub>
-         
-        <v-divider-stub />
-         
-        <v-card-actions-stub>
-          <v-spacer-stub />
-           
-          <button-stub
-            aria-label="Back Button"
-            color=""
-            data-test-id="btn-cancel-project-summary"
-            name="button"
-            secondary=""
-            type="button"
-          >
-            
-          </button-stub>
-           
-          <button-stub
-            class="white--text submit-package ml-6"
-            color=""
-            data-test-id="btn-submit-project-summary"
-            depressed=""
-            name="button"
-            type="button"
-          >
-            
-          </button-stub>
-        </v-card-actions-stub>
-      </v-card-stub>
-    </v-dialog-stub>
-  </div>
 </div>
 `;
 
@@ -111,26 +45,6 @@ exports[`ProjectSummary.vue renders props when passed with gettors 1`] = `
         </div>
          
         <span />
-      </div>
-    </div>
-  </div>
-   
-  <div
-    class="text-center"
-  >
-    <div
-      class="v-dialog__container text-left"
-      role="dialog"
-    >
-      <div
-        class="v-dialog__content"
-        role="document"
-        style="z-index: 0;"
-      >
-        <div
-          class="v-dialog v-dialog--persistent"
-          style="width: 70%; display: none;"
-        />
       </div>
     </div>
   </div>
@@ -828,26 +742,6 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
             </span>
           </button>
         </div>
-      </div>
-    </div>
-  </div>
-   
-  <div
-    class="text-center"
-  >
-    <div
-      class="v-dialog__container text-left"
-      role="dialog"
-    >
-      <div
-        class="v-dialog__content"
-        role="document"
-        style="z-index: 0;"
-      >
-        <div
-          class="v-dialog v-dialog--persistent"
-          style="width: 70%; display: none;"
-        />
       </div>
     </div>
   </div>

@@ -109,6 +109,88 @@ exports[`Profile.vue renders props when passed with gettors 1`] = `
             </v-card-actions-stub>
           </v-card-stub>
         </v-col-stub>
+         
+        <v-col-stub
+          class="text-center"
+          tag="div"
+        >
+          <v-dialog-stub
+            class="text-left overflow-y-auto"
+            closedelay="0"
+            contentclass=""
+            maxwidth="none"
+            opendelay="0"
+            origin="center center"
+            persistent="true"
+            retainfocus="true"
+            transition="dialog-transition"
+            width="90%"
+          >
+            <v-card-stub
+              class="pa-8"
+              loaderheight="4"
+              tag="div"
+            >
+              <h1
+                class="text-left pa-5 ml-8"
+              >
+                
+                
+              
+              </h1>
+               
+              <p
+                class="text-left pl-5 ml-8"
+              >
+                
+                
+              
+              </p>
+               
+              <v-divider-stub />
+               
+              <v-card-text-stub
+                class="text-left terms-content pa-0"
+                id="scroll-target"
+              >
+                <termsandconditions-stub />
+                 
+                <div />
+              </v-card-text-stub>
+               
+              <v-divider-stub />
+               
+              <v-card-actions-stub
+                class="terms-actions"
+              >
+                <v-spacer-stub />
+                 
+                <button-stub
+                  aria-label="Back Button"
+                  color=""
+                  data-test-id="btn-cancel-terms-profile"
+                  name="button"
+                  secondary=""
+                  type="button"
+                >
+                  
+                </button-stub>
+                 
+                <button-stub
+                  class="white--text submit-package ml-6"
+                  color=""
+                  data-test-id="btn-submit-terms-profile"
+                  depressed=""
+                  disabled="true"
+                  name="button"
+                  type="button"
+                >
+                  
+                </button-stub>
+              </v-card-actions-stub>
+            </v-card-stub>
+          </v-dialog-stub>
+        </v-col-stub>
       </v-row-stub>
     </v-container-stub>
   </v-form-stub>

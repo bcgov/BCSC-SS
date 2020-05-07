@@ -125,10 +125,6 @@
     "submitRequest": "Submit Request",
     "commitChanges": "Commit Changes",
     "goBack": "Go Back",
-    "disclaimerTitle": "Disclaimer",
-    "disclaimerContent": "<h4>Warranty Disclaimer</h4><p></p><p>This information is provided as a public service by the Government of British Columbia, Box 9411, Victoria, British Columbia, Canada V8W 9V1.</p><p>This website and all of the information it contains are provided 'as is' without warranty of any kind, whether express or implied. All implied warranties, including, without limitation, implied warranties of merchantability, fitness for a particular purpose, and non-infringement, are hereby expressly disclaimed. Links and references to any other websites are provided for information only and listing shall not be taken as endorsement of any kind. The Government of British Columbia is not responsible for the content or reliability of the linked websites and does not endorse the content, products, services or views expressed within them.</p><h4>Limitation of Liabilities</h4><p>Under no circumstances will the Government of British Columbia be liable to any person or business entity for any direct, indirect, special, incidental, consequential, or other damages based on any use of this website or any other website to which this site is linked, including, without limitation, any lost profits, business interruption, or loss of programs or information, even if the Government of British Columbia has been specifically advised of the possibility of such damages.</p>",
-    "btnAgree": "Agree & Continue",
-    "btnAgreeBack": "Cancel",
     "labelTestAccountsTitle": "Test Accounts",
     "cantSubmitErrorMessage": "Your submission contains incomplete fields. Please edit any sections requiring completion before submitting your request.",
     "systemError": "Something went wrong while processing your request. Please retry in a few minutes. If the problem persists, please contact the Product Owner.",
@@ -193,20 +189,24 @@
   "profile": {
     "pageTitle": "Profile",
     "pageCompleteTitle": "Complete Profile",
-    "titlePageInfoBCSC": "<p>Thank you for logging in with your BC Services Card. Please provide us with your Broader Public Sector agency work email address and phone number.</p><p>It should be noted all information collected is in a business context for business contact use only. Under the Freedom of Information and Protection of Privacy Act (FOIPPA), business contact information it is not considered Personal Information (PI). Please <a href='/contact-us'>contact us</a> with any questions.</p>",
-    "titlePageInfoIDIR": "<p>Thank you for logging in with your IDIR, which provides us with your work email address. Please provide us with your phone number.</p><p>It should be noted all information collected is in a business context for business contact use only. Under the Freedom of Information and Protection of Privacy Act (FOIPPA), business contact information it is not considered Personal Information (PI). Please <a href='/contact-us'>contact us</a> with any questions. </p>",
-    "titlePageCompleteInfo": "You can edit the following fields related to your profile",
+    "titlePageInfoBCSC": "<p class='pageinfo'>Thank you for logging in with your BC Services Card. Please provide us with your Broader Public Sector agency work email address and phone number.</p><p>It should be noted all information collected is in a business context for business contact use only. Under the Freedom of Information and Protection of Privacy Act (FOIPPA), business contact information it is not considered Personal Information (PI). Please <a href='/contact-us'>contact us</a> with any questions.</p>",
+    "titlePageInfoIDIR": "<p class='pageinfo'>Thank you for logging in with your IDIR, which provides us with your work email address. Please provide us with your phone number.</p><p>It should be noted all information collected is in a business context for business contact use only. Under the Freedom of Information and Protection of Privacy Act (FOIPPA), business contact information it is not considered Personal Information (PI). Please <a href='/contact-us'>contact us</a> with any questions. </p>",
+    "titlePageCompleteInfo": "<p class='pageinfo'>You can edit the following fields related to your profile</p>",
     "labelEmail": "Email (work)",
     "labelPhone": "Phone",
     "btnContinue": "Continue",
     "btnSaveChanges": "Save Changes",
-    "errorMessageDomain": "Your email address does not match any of the eligible organizations in our BC Services Card Self Service System. If you believe you or your organization should have access to this system, please <a href='/contact-us'>contact us</a> for assistance. "
+    "errorMessageDomain": "Your email address does not match any of the eligible organizations in our BC Services Card Self Service System. If you believe you or your organization should have access to this system, please <a href='/contact-us'>contact us</a> for assistance. ",
+    "btnCancel": "Cancel",
+    "btnAgree": "I accept",
+    "titleTerms": "TERMS & CONDITIONS",
+    "termsAccept": "Please read the following and click \"I Accept\" to accept the agreement and continue."
   },
   "home": {
     "pagetitle": "Complete Profile",
     "txtMainTitle": "Easily implement BC Services Card for online authentication",
     "txtFitForOrganization": "Is this a fit for your organization?",
-    "txtsubcontent1": "Do you want to use <a href='https://digital.gov.bc.ca' target='_ss'>digital technologies</a> that are transforming the way British Columbians live, work and play?",
+    "txtsubcontent1": "Do you want to use modern tools and <a href='https://digital.gov.bc.ca' target='_ss'>digital technologies</a> to deliver the services British Columbians want and improve the services people need?",
     "txtsubcontent2": "Are you part of a Broader Public Sector organization?",
     "txtsubcontent3": "Is your organization in need of <a href='https://www2.gov.bc.ca/assets/gov/government/services-for-government-and-broader-public-sector/information-technology-services/standards-files/identity_assurance_standard.pdf' target='_ss' >high assurance authentication?</a>",
     "txtsubTitle2": "What defines \"broader public sector\"?",
@@ -231,7 +231,7 @@
     "titleSecurity": "Security",
     "titleComms": "Communications",
     "titleAgreements": "Agreements",
-    "titleLiveSummary": "Live Summary"
+    "titleLiveSummary": "Prod Summary"
   },
   "teamRoles": {
     "pagetitle": "Project team roles",
@@ -270,11 +270,11 @@
     "labelRoleInfocto": "The Executive Sponsor attests to the integration application compliance"
   },
   "projectActions": {
-    "btnRequestLiveAccess": "Request live access",
-    "requestLiveAccessDialogTitle": "Request live access",
-    "requestLiveAccessDialogInfo": "<h3>You have chosen to request live access.</h3><p class='my-5'>This action will move your project into the next phase to begin the Live Access Request process.</p><p class='my-5 pr-2'>In this next phase, you will be guided through the process to understand and address the various categories of compliance before integrating with a live production-ready environment of BC Services Card data. A member of the Provincial Identity Information Management Program is always available to help BPS clients in completing the integration components.</p><p class='my-5'>The Provincial Identity Information Management Program is mandated to provide identity and authentication services using the BC Services Card to support citizen transactions with government services.</p><p class='my-5'><strong> Would you like to continue?</strong></p>",
+    "btnRequestLiveAccess": "Request Prod access",
+    "requestLiveAccessDialogTitle": "Request prod access",
+    "requestLiveAccessDialogInfo": "<h3>You have chosen to request prod access.</h3><p class='my-5'>This action will move your project into the next phase to begin the Prod Access Request process.</p><p class='my-5 pr-2'>In this next phase, you will be guided through the process to understand and address the various categories of compliance before integrating with a live production-ready environment of BC Services Card data. A member of the Provincial Identity Information Management Program is always available to help BPS clients in completing the integration components.</p><p class='my-5'>The Provincial Identity Information Management Program is mandated to provide identity and authentication services using the BC Services Card to support citizen transactions with government services.</p><p class='my-5'><strong> Would you like to continue?</strong></p>",
     "btnCancel": "Cancel",
-    "btnConfirm": "Request live access",
+    "btnConfirm": "Request prod access",
     "labelDelete": "Delete project",
     "btnDeleteConfirm": "Delete this project",
     "btnDeleteCancel": "Cancel",
