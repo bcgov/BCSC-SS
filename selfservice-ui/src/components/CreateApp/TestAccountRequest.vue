@@ -8,33 +8,22 @@
       </v-btn>
       <v-toolbar-title>{{ $t('testAccount.pagetitle') }}</v-toolbar-title>
       <div class="flex-grow-1"></div>
-      <v-col class="col-lg-4 col-md-5 col-8">
-        <v-alert type="error" v-if="errorStatus" class="alert-top">Something went wrong...</v-alert>
-      </v-col>
-      <div class="flex-grow-1"></div>
     </v-toolbar>
     <v-divider></v-divider>
     <v-item-group mandatory :value="slectedNumber">
       <v-container>
         <v-row class="mx-4">
-          <v-col cols="12" flat>
-            <v-card flat>
+          <v-col cols="12" class="pb-0" flat>
+            <Alert type="error" v-if="errorStatus" class="alert-top">Something went wrong...</Alert>
+            <v-card flat class="pb-0">
               <!-- <v-list-item-content>BCSC Test Account</v-list-item-content> -->
-              <v-list-item-content>
-                {{
-                $t('testAccount.pageinfo', { package: 'package' })
-                }}
-              </v-list-item-content>
+              <v-list-item-content v-html="$t('testAccount.pageinfo', { package: 'package' })"></v-list-item-content>
             </v-card>
           </v-col>
 
-          <v-col cols="12" flat>
+          <v-col cols="12" class="pt-0" flat>
             <v-card flat>
-              <v-list-item-content>
-                {{
-                $t('testAccount.how_many_test_account')
-                }}
-              </v-list-item-content>
+              <v-list-item-content>{{ $t('testAccount.how_many_test_account') }}</v-list-item-content>
             </v-card>
           </v-col>
 
@@ -44,14 +33,11 @@
                 class="d-flex align-center pa-4 test-account"
                 :class="active ? 'active-bg' : ''"
                 @click="selectedTestAccount(testAccount)"
+                :data-test-id="`input-select-test-account-${testAccount}`"
               >
                 <v-list-item>
                   <v-list-item-content class="text-center">
-                    <v-list-item-title class="headline">
-                      {{
-                      testAccount
-                      }}
-                    </v-list-item-title>
+                    <v-list-item-title class="headline">{{ testAccount }}</v-list-item-title>
                     <v-list-item-subtitle></v-list-item-subtitle>
                   </v-list-item-content>
                 </v-list-item>
@@ -61,18 +47,14 @@
           </v-col>
           <v-col cols="12" flat>
             <v-card flat>
-              <v-list-item-content>
-                {{
-                $t('testAccount.special_notes')
-                }}
-              </v-list-item-content>
+              <v-list-item-content>{{ $t('testAccount.special_notes') }}</v-list-item-content>
               <v-list-item-content class="subtitle-1" v-html="$t('testAccount.specialNotesInfo')"></v-list-item-content>
-              <TextArea
+              <!-- <TextArea
                 v-model="notes"
                 :label="$t('testAccount.special_notes')"
                 type="text"
                 outlined
-              />
+              />-->
             </v-card>
           </v-col>
         </v-row>
@@ -83,7 +65,12 @@
         <v-divider></v-divider>
         <v-card-actions class="mx-4">
           <v-spacer></v-spacer>
-          <Button @click="goBack()" :aria-label="$t('testAccount.btnBack')" secondary>
+          <Button
+            @click="goBack()"
+            :aria-label="$t('testAccount.btnBack')"
+            secondary
+            data-test-id="btn-cancel-test-account"
+          >
             {{
             $t(
             showWizardExperience()
@@ -98,6 +85,7 @@
             class="white--text submit-account ml-6"
             depressed
             @click="submitTestAccount"
+            data-test-id="btn-submit-test-account"
           >
             {{
             $t(
@@ -117,6 +105,8 @@ import { Component, Vue, Watch, Prop } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
 import Button from '@/Atomic/Button/Button.vue';
 import TextArea from '@/Atomic/TextArea/TextArea.vue';
+import Alert from '@/Atomic/Alert/Alert.vue';
+
 const PackageAndTestModule = namespace('PackageAndTestModule');
 const TechnicalReqModule = namespace('TechnicalReqModule');
 const SharedModule = namespace('SharedModule');
@@ -124,7 +114,8 @@ const SharedModule = namespace('SharedModule');
 @Component({
   components: {
     Button,
-    TextArea
+    TextArea,
+    Alert
   }
 })
 export default class TestAccountRequest extends Vue {
@@ -186,9 +177,12 @@ export default class TestAccountRequest extends Vue {
   }
 
   private goBack() {
-    const redirectPage = this.showWizardExperience() ? 'package' : 'summary';
+    const redirectPage = this.showWizardExperience()
+      ? `/project/${this.projectId}/package/`
+      : `/project-container/${this.projectId}/`;
+
     this.redirectFromSummaryPage(false);
-    this.$router.push(`/project/${this.projectId}/${redirectPage}/`);
+    this.$router.push(redirectPage);
   }
   private showWizardExperience() {
     if (this.isRedirectFromSummaryPage) {

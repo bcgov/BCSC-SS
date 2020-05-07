@@ -15,13 +15,13 @@
 
 from . import camel2snake
 
-from selfservice_api.models.enums.project import ProjectRoles
+from selfservice_api.models.enums import ProjectRoles, SigningEncryptionType
 
 
 def factory_user_info(is_model=False):
     """JSON data to create user info."""
     user = {
-        'email': 'developer@email.com',
+        'email': 'developer@gov.bc.ca',
         'phone': '987654321',
         'firstName': 'client',
         'lastName': 'ss',
@@ -33,41 +33,13 @@ def factory_user_info(is_model=False):
         return user
 
 
-def factory_project_info(is_model=False, my_role=ProjectRoles.Developer):
+def factory_project_info(is_model=False):
     """JSON data to create project info."""
     project = {
         'organizationName': 'organization',
         'projectName': 'project',
-        'description': 'project which i am trying to create',
-        'myRole': my_role,
-        'users': []
+        'description': 'project which i am trying to create'
     }
-    if my_role != ProjectRoles.Developer:
-        project['users'].append({
-            'email': 'developer@email.com',
-            'phone': '1234567890',
-            'firstName': 'f developer',
-            'lastName': 'l developer',
-            'role': ProjectRoles.Developer
-        })
-
-    if my_role != ProjectRoles.Manager:
-        project['users'].append({
-            'email': 'manager@email.com',
-            'phone': '1234567890',
-            'firstName': 'f manager',
-            'lastName': 'l manager',
-            'role': ProjectRoles.Manager
-        })
-
-    if my_role != ProjectRoles.Cto:
-        project['users'].append({
-            'email': 'cto@email.com',
-            'phone': '1234567890',
-            'firstName': 'f cto',
-            'lastName': 'l cto',
-            'role': ProjectRoles.Cto
-        })
 
     if is_model:
         return camel2snake(project)
@@ -75,7 +47,49 @@ def factory_project_info(is_model=False, my_role=ProjectRoles.Developer):
         return project
 
 
-def factory_project_technical_req(is_model=False):
+def factory_project_team_member(is_model=False, member_role=ProjectRoles.Developer):
+    """JSON data to create project info."""
+    team_member = {}
+    if member_role == ProjectRoles.Developer:
+        team_member = {
+            'email': 'developer@gov.bc.ca',
+            'phone': '1234567890',
+            'firstName': 'f developer',
+            'lastName': 'l developer',
+            'role': ProjectRoles.Developer
+        }
+    elif member_role == ProjectRoles.Manager:
+        team_member = {
+            'email': 'manager@gov.bc.ca',
+            'phone': '1234567890',
+            'firstName': 'f manager',
+            'lastName': 'l manager',
+            'role': ProjectRoles.Manager
+        }
+    elif member_role == ProjectRoles.Cto:
+        team_member = {
+            'email': 'cto@gov.bc.ca',
+            'phone': '1234567890',
+            'firstName': 'f cto',
+            'lastName': 'l cto',
+            'role': ProjectRoles.Cto
+        }
+    else:
+        team_member = {
+            'email': 'invalid@domain.com',
+            'phone': '1234567890',
+            'firstName': 'f invalid',
+            'lastName': 'l invalid',
+            'role': ProjectRoles.Developer
+        }
+
+    if is_model:
+        return camel2snake(team_member)
+    else:
+        return team_member
+
+
+def factory_project_technical_req(is_model=False, signing_encryption_type=SigningEncryptionType.SecureJWT):
     """JSON data to create technical req."""
     technical_req = {
         'projectId': 0,
@@ -83,12 +97,25 @@ def factory_project_technical_req(is_model=False):
         'redirectUris': [
             'https://someone.com/*'
         ],
+        'signingEncryptionType': signing_encryption_type,
         'jwksUri': 'https://someone.com/jwks',
-        'idTokenSignedResponseAlg': 'RS256',
-        'userinfoSignedResponseAlg': 'RS256'
+        'signedResponseAlg': 'RS256',
+        'encryptedResponseAlg': 'RSA1_5',
+        'encryptedResponseEnc': 'A256GCM'
     }
     if is_model:
-        return camel2snake(technical_req)
+        del technical_req['signedResponseAlg']
+        del technical_req['encryptedResponseAlg']
+        del technical_req['encryptedResponseEnc']
+        technical_req = camel2snake(technical_req)
+        technical_req['id_token_signed_response_alg'] = 'RS256'
+        technical_req['userinfo_signed_response_alg'] = 'RS256'
+        technical_req['id_token_encrypted_response_alg'] = 'RSA1_5'
+        technical_req['userinfo_encrypted_response_alg'] = 'RSA1_5'
+        technical_req['id_token_encrypted_response_enc'] = 'A256GCM'
+        technical_req['userinfo_encrypted_response_enc'] = 'A256GCM'
+        technical_req['is_prod'] = False
+        return technical_req
     else:
         return technical_req
 
@@ -107,9 +134,20 @@ def factory_project_oidc_config():
         'application_type': 'web',
         'subject_type': 'pairwise',
         'sector_identifier_uri': 'urn:org:example:client',
-        'id_token_encrypted_response_alg': 'RS256',
-        'id_token_encrypted_response_enc': 'RS256',
-        'userinfo_encrypted_response_alg': 'RS256',
-        'userinfo_encrypted_response_enc': 'RS256'
+        'id_token_encrypted_response_alg': 'RSA1_5',
+        'id_token_encrypted_response_enc': 'A256GCM',
+        'userinfo_encrypted_response_alg': 'RSA1_5',
+        'userinfo_encrypted_response_enc': 'A256GCM',
+        'is_prod': False
     }
     return oidc_config
+
+
+def factory_test_account(is_model=False):
+    """JSON data to create TestAccount."""
+    test_accounts = {
+        'testAccounts': 'SS4BPS201,98901,ONE,SS4BPS Felecia,F,4732 Easy Street,,V9B 3V9,1998-04-30\nSS4BPS999,' +
+        ('98989' if is_model else '') +
+        ',TWO,SS4BPS Benjamin,M,308-2464 Crimson Vale,Penticton BC V2A 5N1,V2A 5N1,2000-11-18'
+    }
+    return test_accounts

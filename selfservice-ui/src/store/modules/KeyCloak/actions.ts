@@ -36,13 +36,17 @@ export const actions: ActionTree<KeyCloakState, RootState> = {
         const user = await UserService.getUser();
         if (user && user.data && user.data.verified) {
           dispatch('isVerified', true);
+          dispatch('filedsToShow', user.data.fieldsRequired);
+          dispatch('setProvider', user.data.provider);
           dispatch('setUserProfile', user.data.user);
           dispatch('userRedirect', { path, next, fromUrl });
+          await UserService.updateUser();
         } else {
           dispatch('filedsToShow', user.data.fieldsRequired);
+          dispatch('setProvider', user.data.provider);
           dispatch('setUserProfile', user.data.user);
           dispatch('isVerified', false);
-          router.push({ path: '/complete-profile' });
+          router.push({ path: '/profile/complete' });
         }
         commit('SET_USER_ERROR', false);
       } catch {
@@ -101,28 +105,39 @@ export const actions: ActionTree<KeyCloakState, RootState> = {
    * @param {*} keycloak
    */
   userRedirect(store: any, { path, next, fromUrl }) {
-    if (fromUrl === '/complete-profile' && path === '/complete-profile') {
+    if (fromUrl === '/profile/complete' && path === '/profile/complete') {
       router.push({ name: 'dashboard' });
     } else if (fromUrl === '/login' && path === '/login') {
       // if (store.state.isClient || store.state.isAdmin) {
       router.push({ path: '/dashboard' });
     } else if (fromUrl === '/login' && path !== '/login') {
       router.push({ path });
-    } else {
+    } else if (next) {
       next();
     }
   },
 
   async updateProfile(state: any, profile: any) {
-    const { dispatch } = state;
-    const user = await UserService.createUser(profile.email, profile.phone);
-    dispatch('setUserProfile', user.data);
-    dispatch('isVerified', true);
-    dispatch('userRedirect', {
-      path: '/complete-profile',
-      next: 'null',
-      fromUrl: '/complete-profile'
-    });
+    const { dispatch, commit } = state;
+    dispatch('clearStatus');
+    try {
+      const user = await UserService.createUser(profile.email, profile.phone);
+
+      dispatch('setUserProfile', user.data);
+      dispatch('isVerified', true);
+
+      dispatch('userRedirect', {
+        path: '/profile/complete',
+        next: 'null',
+        fromUrl: '/profile/complete',
+      });
+    } catch (error) {
+      if (error.response.status === 400 && error.response.data.errors) {
+        commit('SET_PROFILE_DOMAIN_ERROR', true);
+      } else {
+        commit('SET_USER_ERROR', true);
+      }
+    }
   },
   /**
    * isVerified
@@ -139,5 +154,21 @@ export const actions: ActionTree<KeyCloakState, RootState> = {
    */
   filedsToShow({ commit }: any, fields: any) {
     commit('SET_FIELDS_TO_SHOW', fields);
-  }
+  },
+  /**
+   * setProvider
+   * @param {*} { commit }
+   * @param {*} provider
+   */
+  setProvider({ commit }: any, provider: string) {
+    commit('SET_PROVIDER', provider);
+  },
+  /**
+   * clear message
+   * @param {*} { commit }
+   */
+  async clearStatus({ commit }) {
+    commit('SET_PROFILE_DOMAIN_ERROR', false);
+    commit('SET_USER_ERROR', false);
+  },
 };

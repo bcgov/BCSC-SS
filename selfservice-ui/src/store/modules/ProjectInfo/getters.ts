@@ -49,7 +49,22 @@ export const getters: GetterTree<ProjectInfoState, RootState> = {
   getFinalProjectSubmissionStatus(state) {
     return {
       finalErrorStatus: state.finalErrorStatus,
-      finalSuccessStatus: state.finalSuccessStatus
+      finalSuccessStatus: state.finalSuccessStatus,
+      testAccountSuccess: state.testAccountSuccess,
+      isCreated: state.isCreated,
+      isUpdated: state.isUpdated,
     };
-  }
+  },
+  getChangeStatus(state) {
+    return {
+      statusChangeError: state.statusChangeError,
+      statusChangeSuccess: state.statusChangeSuccess,
+    };
+  },
+  getDeleteProjectReturn(state) {
+    return {
+      deleteProjectError: state.deleteProjectError,
+      deleteProjectSuccess: state.deleteProjectSuccess,
+    };
+  },
 };

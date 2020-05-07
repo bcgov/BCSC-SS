@@ -2,12 +2,12 @@
 
 exports[`CreateApp.vue renders props when passed 1`] = `
 <div>
-  <!---->
-   
   <addprojectinfo-stub
     action=""
     id=""
   />
+   
+  <!---->
    
   <!---->
    

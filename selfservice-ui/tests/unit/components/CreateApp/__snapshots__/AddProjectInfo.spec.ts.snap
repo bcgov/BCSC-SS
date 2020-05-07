@@ -59,33 +59,13 @@ exports[`AddProjectInfo.vue renders edit props when passed 1`] = `
               loaderheight="4"
               tag="div"
             >
-              <v-card-title-stub
-                class="headline bc-padding-left-0"
-              >
-                
-                
-              
-              </v-card-title-stub>
-               
               <v-card-subtitle-stub
-                class="text-left bc-padding-left-0"
+                class="text-left bc-padding-left-0 page-info"
               />
                
-              <v-card-subtitle-stub
-                class="font-weight-bold text-left bc-padding-left-0"
-              >
-                
-              </v-card-subtitle-stub>
-               
-              <v-card-subtitle-stub
-                class="text-left bc-padding-left-0"
-              >
-                
-                
-              
-              </v-card-subtitle-stub>
-               
               <input-stub
+                data-test-id="input-org-name"
+                helptext=""
                 label=""
                 outlined="true"
                 rules="v => !!v || 'This field is required',v => (v || '').length >= len || 'Invalid character length, required ' + len,v => (v || '').length <= len || 'Invalid character length, max length ' + len"
@@ -93,161 +73,28 @@ exports[`AddProjectInfo.vue renders edit props when passed 1`] = `
                 value=""
               />
                
-              <v-card-subtitle-stub
-                class="text-left bc-padding-left-0"
-              >
-                
-                
-              
-              </v-card-subtitle-stub>
-               
               <input-stub
+                data-test-id="input-project-name"
+                helptext=""
                 label=""
                 outlined="true"
                 rules="v => !!v || 'This field is required',v => (v || '').length >= len || 'Invalid character length, required ' + len,v => (v || '').length <= len || 'Invalid character length, max length ' + len"
                 type="text"
                 value=""
               />
-               
-              <v-card-subtitle-stub
-                class="text-left bc-padding-left-0"
-              >
-                
-                
-              
-              </v-card-subtitle-stub>
                
               <textarea-stub
                 counter=""
+                data-test-id="text-project-description"
+                helptext=""
                 label=""
                 outlined=""
-                rules="v => !!v || 'This field is required'"
+                rules="v => !!v || 'This field is required',v => (v || '').length <= len || 'Invalid character length, max length ' + len"
                 type="text"
                 value=""
               />
             </v-card-stub>
           </v-col-stub>
-           
-          <v-col-stub
-            cols="12"
-            tag="div"
-          >
-            <v-card-stub
-              class="pa-8 pt-6 ma-3"
-              loaderheight="4"
-              tag="div"
-            >
-              <v-card-title-stub
-                class="headline bc-padding-left-0"
-              >
-                
-                
-              
-              </v-card-title-stub>
-               
-              <v-card-subtitle-stub
-                class="text-left bc-padding-left-0"
-              >
-                
-                
-              
-              </v-card-subtitle-stub>
-               
-              <v-radio-group-stub
-                activeclass="v-item--active"
-                backgroundcolor=""
-                color="black"
-                column="true"
-                errorcount="1"
-                errormessages=""
-                height="auto"
-                messages=""
-                row="true"
-                rules=""
-                successmessages=""
-                value="1"
-                valuecomparator="function deepEqual(a, b) {
-  if (a === b) return true;
-
-  if (a instanceof Date && b instanceof Date) {
-    // If the values are Date, they were convert to timestamp with getTime and compare it
-    if (a.getTime() !== b.getTime()) return false;
-  }
-
-  if (a !== Object(a) || b !== Object(b)) {
-    // If the values aren't objects, they were already checked for equality
-    return false;
-  }
-
-  var props = Object.keys(a);
-
-  if (props.length !== Object.keys(b).length) {
-    // Different number of props, don't bother to check
-    return false;
-  }
-
-  return props.every(function (p) {
-    return deepEqual(a[p], b[p]);
-  });
-}"
-              >
-                <span
-                  class="mr-2"
-                >
-                  
-                </span>
-                 
-                <v-radio-stub
-                  class="black-color"
-                  officon="$radioOff"
-                  onicon="$radioOn"
-                  ripple="true"
-                  value="1"
-                />
-                 
-                <v-radio-stub
-                  label="Manager"
-                  officon="$radioOff"
-                  onicon="$radioOn"
-                  ripple="true"
-                  value="2"
-                />
-                 
-                <v-radio-stub
-                  officon="$radioOff"
-                  onicon="$radioOn"
-                  ripple="true"
-                  value="3"
-                />
-              </v-radio-group-stub>
-            </v-card-stub>
-          </v-col-stub>
-           
-          <v-col-stub
-            cols="12"
-            sm="6"
-            tag="div"
-          >
-            <projectusers-stub
-              rules="[object Object]"
-              title=""
-              userdetails="[object Object]"
-            />
-          </v-col-stub>
-           
-          <v-col-stub
-            cols="12"
-            sm="6"
-            tag="div"
-          >
-            <projectusers-stub
-              rules="[object Object]"
-              title=""
-              userdetails="[object Object]"
-            />
-          </v-col-stub>
-           
-          <!---->
            
           <v-col-stub
             cols="12"
@@ -267,7 +114,8 @@ exports[`AddProjectInfo.vue renders edit props when passed 1`] = `
                  
                 <button-stub
                   class="white--text submit-project"
-                  color="indigo accent-4"
+                  color=""
+                  data-test-id="btn-submit-project-info"
                   depressed=""
                   disabled="true"
                   name="button"
@@ -346,33 +194,13 @@ exports[`AddProjectInfo.vue renders props when passed 1`] = `
               loaderheight="4"
               tag="div"
             >
-              <v-card-title-stub
-                class="headline bc-padding-left-0"
-              >
-                
-                
-              
-              </v-card-title-stub>
-               
               <v-card-subtitle-stub
-                class="text-left bc-padding-left-0"
+                class="text-left bc-padding-left-0 page-info"
               />
                
-              <v-card-subtitle-stub
-                class="font-weight-bold text-left bc-padding-left-0"
-              >
-                
-              </v-card-subtitle-stub>
-               
-              <v-card-subtitle-stub
-                class="text-left bc-padding-left-0"
-              >
-                
-                
-              
-              </v-card-subtitle-stub>
-               
               <input-stub
+                data-test-id="input-org-name"
+                helptext=""
                 label=""
                 outlined="true"
                 rules="v => !!v || 'This field is required',v => (v || '').length >= len || 'Invalid character length, required ' + len,v => (v || '').length <= len || 'Invalid character length, max length ' + len"
@@ -380,161 +208,28 @@ exports[`AddProjectInfo.vue renders props when passed 1`] = `
                 value=""
               />
                
-              <v-card-subtitle-stub
-                class="text-left bc-padding-left-0"
-              >
-                
-                
-              
-              </v-card-subtitle-stub>
-               
               <input-stub
+                data-test-id="input-project-name"
+                helptext=""
                 label=""
                 outlined="true"
                 rules="v => !!v || 'This field is required',v => (v || '').length >= len || 'Invalid character length, required ' + len,v => (v || '').length <= len || 'Invalid character length, max length ' + len"
                 type="text"
                 value=""
               />
-               
-              <v-card-subtitle-stub
-                class="text-left bc-padding-left-0"
-              >
-                
-                
-              
-              </v-card-subtitle-stub>
                
               <textarea-stub
                 counter=""
+                data-test-id="text-project-description"
+                helptext=""
                 label=""
                 outlined=""
-                rules="v => !!v || 'This field is required'"
+                rules="v => !!v || 'This field is required',v => (v || '').length <= len || 'Invalid character length, max length ' + len"
                 type="text"
                 value=""
               />
             </v-card-stub>
           </v-col-stub>
-           
-          <v-col-stub
-            cols="12"
-            tag="div"
-          >
-            <v-card-stub
-              class="pa-8 pt-6 ma-3"
-              loaderheight="4"
-              tag="div"
-            >
-              <v-card-title-stub
-                class="headline bc-padding-left-0"
-              >
-                
-                
-              
-              </v-card-title-stub>
-               
-              <v-card-subtitle-stub
-                class="text-left bc-padding-left-0"
-              >
-                
-                
-              
-              </v-card-subtitle-stub>
-               
-              <v-radio-group-stub
-                activeclass="v-item--active"
-                backgroundcolor=""
-                color="black"
-                column="true"
-                errorcount="1"
-                errormessages=""
-                height="auto"
-                messages=""
-                row="true"
-                rules=""
-                successmessages=""
-                value="1"
-                valuecomparator="function deepEqual(a, b) {
-  if (a === b) return true;
-
-  if (a instanceof Date && b instanceof Date) {
-    // If the values are Date, they were convert to timestamp with getTime and compare it
-    if (a.getTime() !== b.getTime()) return false;
-  }
-
-  if (a !== Object(a) || b !== Object(b)) {
-    // If the values aren't objects, they were already checked for equality
-    return false;
-  }
-
-  var props = Object.keys(a);
-
-  if (props.length !== Object.keys(b).length) {
-    // Different number of props, don't bother to check
-    return false;
-  }
-
-  return props.every(function (p) {
-    return deepEqual(a[p], b[p]);
-  });
-}"
-              >
-                <span
-                  class="mr-2"
-                >
-                  
-                </span>
-                 
-                <v-radio-stub
-                  class="black-color"
-                  officon="$radioOff"
-                  onicon="$radioOn"
-                  ripple="true"
-                  value="1"
-                />
-                 
-                <v-radio-stub
-                  label="Manager"
-                  officon="$radioOff"
-                  onicon="$radioOn"
-                  ripple="true"
-                  value="2"
-                />
-                 
-                <v-radio-stub
-                  officon="$radioOff"
-                  onicon="$radioOn"
-                  ripple="true"
-                  value="3"
-                />
-              </v-radio-group-stub>
-            </v-card-stub>
-          </v-col-stub>
-           
-          <v-col-stub
-            cols="12"
-            sm="6"
-            tag="div"
-          >
-            <projectusers-stub
-              rules="[object Object]"
-              title=""
-              userdetails="[object Object]"
-            />
-          </v-col-stub>
-           
-          <v-col-stub
-            cols="12"
-            sm="6"
-            tag="div"
-          >
-            <projectusers-stub
-              rules="[object Object]"
-              title=""
-              userdetails="[object Object]"
-            />
-          </v-col-stub>
-           
-          <!---->
            
           <v-col-stub
             cols="12"
@@ -554,7 +249,8 @@ exports[`AddProjectInfo.vue renders props when passed 1`] = `
                  
                 <button-stub
                   class="white--text submit-project"
-                  color="indigo accent-4"
+                  color=""
+                  data-test-id="btn-submit-project-info"
                   depressed=""
                   disabled="true"
                   name="button"

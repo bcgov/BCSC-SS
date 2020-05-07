@@ -22,17 +22,21 @@
       <v-spacer></v-spacer>
       <v-spacer></v-spacer>
 
-      <v-btn
+      <Button
         text
         to="/dashboard"
         link
         dark
+        :yellowBtn="true"
         class="d-none d-sm-flex login-btn side-right-margin"
         v-if="!isLoggedin"
-      >Login</v-btn>
+      >Login</Button>
 
-      <v-toolbar-title v-if="isLoggedin">
-        Welcome {{ userProfile.firstName }} {{ userProfile.lastName }}
+      <v-toolbar-title v-if="isLoggedin" class="d-flex">
+        <v-btn icon dark large @click="$router.push(`/profile`)">
+          <v-icon>mdi-account-edit</v-icon>
+        </v-btn>
+        <div class="profile-title">Welcome {{ userProfile.firstName }} {{ userProfile.lastName }}</div>
         <v-btn text @click="logout" color="white">
           <span class="mr-2 logout" color="white">Logout</span>
         </v-btn>
@@ -41,31 +45,23 @@
         <v-icon>mdi-menu</v-icon>
       </v-btn>
     </v-app-bar>
-    <nav
-      class="navigation-main"
-      :class="{ 'active-menu': showMenu }"
-      id="navbar"
-      v-if="!showSideMenu"
-    >
+    <nav class="navigation-main" :class="{ 'active-menu': showMenu }" id="navbar" v-if="!hideMenu">
       <ul>
         <li class="d-sm-none">
           <v-btn text to="/" link dark class="mr-2 login-btn">Login</v-btn>
         </li>
-        <li>
-          <router-link to="/">Home</router-link>
-        </li>
-
-        <li>
-          <router-link to="dashboard">Dashboard</router-link>
-        </li>
-        <li>
-          <router-link to="/project/info">Create Project</router-link>
+        <li v-for="item in items" :key="item.title">
+          <router-link :to="item.link" v-if="checkRole(item)">
+            {{
+            item.title
+            }}
+          </router-link>
         </li>
       </ul>
     </nav>
-    <template class="abcd" :class="{ 'active-menu': showMenu }">
-      <Sidebar v-if="showSideMenu" :drawer="drawer" />
-    </template>
+    <!-- <template class="abcd" :class="{ 'active-menu': showMenu }">
+      <Sidebar v-if="hideMenu" :drawer="drawer" />
+    </template>-->
   </div>
 </template>
 
@@ -73,28 +69,43 @@
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
 import Sidebar from './Sidebar.vue';
+import Button from '@/Atomic/Button/Button.vue';
+
 const KeyCloakModule = namespace('KeyCloakModule');
 
 @Component({
   components: {
-    Sidebar
+    Sidebar,
+    Button
   }
 })
 export default class Header extends Vue {
-  @Prop({ default: false }) private verticalMenu!: boolean;
+  @Prop({ default: false }) private hideMenu!: boolean;
 
   @KeyCloakModule.Getter('userProfile') private userProfile!: [];
   @KeyCloakModule.Action('setLogout') private setLogout!: any;
   @KeyCloakModule.Getter('isLoggedin') private isLoggedin!: boolean;
+  @KeyCloakModule.Getter('isAdmin')
+  private isAdmin!: any;
 
   private showMenu: boolean = false;
   private drawer: boolean = false;
-  private showSideMenu: boolean = !this.verticalMenu;
+  private hideMenuInPage: boolean = !this.hideMenu;
+  private items: any = [
+    { title: 'Home', icon: 'mdi-home', link: '/' },
+    { title: 'Dashboard', link: '/dashboard' },
+    { title: 'Help', link: '/help' },
+    {
+      title: 'Load test accounts',
+      link: '/add-test-account',
+      roles: 'isAdmin'
+    }
+  ];
 
   @Watch('$route', { immediate: true, deep: true })
   private onUrlChange(newVal: any) {
-    const { showVerticalMenu = false } = newVal.meta;
-    this.showSideMenu = !showVerticalMenu || false;
+    const { hideMenu = false } = newVal.meta;
+    this.hideMenuInPage = !hideMenu || false;
   }
   /**
    * toggleMenu
@@ -110,6 +121,14 @@ export default class Header extends Vue {
    */
   private logout() {
     this.setLogout();
+  }
+  private checkRole(data: any) {
+    if (data && data.roles) {
+      if (data.roles === 'isAdmin') {
+        return this.isAdmin;
+      }
+    }
+    return true;
   }
 }
 </script>
@@ -208,5 +227,10 @@ export default class Header extends Vue {
   font-weight: 600;
   font-size: 16px;
   margin-left: 4px;
+}
+
+.profile-title {
+  display: flex;
+  align-self: center;
 }
 </style>

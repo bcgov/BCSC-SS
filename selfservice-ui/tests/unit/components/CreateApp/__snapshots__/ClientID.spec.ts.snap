@@ -101,7 +101,9 @@ exports[`ClientID.vue renders props when passed with gettors 1`] = `
           </div>
            
           <span>
+            
             test
+          
           </span>
         </code>
       </div>
@@ -121,9 +123,10 @@ exports[`ClientID.vue renders props when passed with gettors 1`] = `
       <div
         class="v-list-item__content align-self-start pr-30"
       >
-        
-        
-        
+        <div>
+          
+        </div>
+         
         <span
           class="small-hint"
         />
@@ -165,6 +168,8 @@ exports[`ClientID.vue renders props when passed with gettors 1`] = `
             </table>
           </div>
         </div>
+         
+        <!---->
       </div>
     </div>
   </div>
@@ -197,6 +202,8 @@ exports[`ClientID.vue renders props when passed with gettors 2`] = `
             class="v-btn__content"
           >
             
+      
+    
           </span>
         </button>
       </div>
@@ -298,7 +305,9 @@ exports[`ClientID.vue renders props when passed with gettors 2`] = `
           </div>
            
           <span>
+            
             test
+          
           </span>
         </code>
       </div>
@@ -318,9 +327,10 @@ exports[`ClientID.vue renders props when passed with gettors 2`] = `
       <div
         class="v-list-item__content align-self-start pr-30"
       >
-        
-        
-        
+        <div>
+          
+        </div>
+         
         <span
           class="small-hint"
         />
@@ -362,6 +372,8 @@ exports[`ClientID.vue renders props when passed with gettors 2`] = `
             </table>
           </div>
         </div>
+         
+        <!---->
       </div>
     </div>
   </div>

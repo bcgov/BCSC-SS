@@ -28,7 +28,7 @@
 
 // 4k and ultra-wides	 // < 1904px
 @mixin xl {
-  @media #{map-get($display-breakpoints, 'xl-and-up')} {
+  @media #{map-get($display-breakpoints, 'xl-only')} {
     @content;
   }
 }

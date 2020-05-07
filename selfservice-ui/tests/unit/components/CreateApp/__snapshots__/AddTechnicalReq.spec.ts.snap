@@ -34,8 +34,6 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
           class="v-toolbar__title"
         >
           
-        
-      
         </div>
          
         <div
@@ -64,32 +62,19 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                 class="v-card__title headline bc-padding-left-0 text-capitalize"
               >
                 
-                
-              
               </div>
                
               <div
                 class="v-card__subtitle text-left bc-padding-left-0"
-              >
-                
-                
-              
-              </div>
+              />
             </div>
              
             <div
               class="pa-4 pt-6 v-card v-sheet theme--light"
             >
               <div
-                class="v-card__subtitle text-left bc-padding-left-0"
-              >
-                
-                
-              
-              </div>
-               
-              <div
-                class="v-input input theme--light v-text-field v-text-field--enclosed v-text-field--outlined"
+                class="bc-form-text"
+                data-test-id="input-app-url"
                 rules="v => !!v || 'This field is required',v => {
     if (v === '') {
       return true;
@@ -99,259 +84,133 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
   },v => (v || '').length <= len || 'Invalid character length, max length ' + len"
               >
                 <div
-                  class="v-input__control"
+                  class="text-left my-1"
                 >
-                  <div
-                    class="v-input__slot"
-                  >
-                    <fieldset
-                      aria-hidden="true"
-                    >
-                      <legend
-                        style="width: 0px;"
-                      >
-                        <span>
-                          ​
-                        </span>
-                      </legend>
-                    </fieldset>
-                    <div
-                      class="v-text-field__slot"
-                    >
-                      <input
-                        id="input-14"
-                        type="text"
-                      />
-                    </div>
-                  </div>
-                  <div
-                    class="v-text-field__details"
-                  >
-                    <div
-                      class="v-messages theme--light"
-                    >
-                      <span
-                        class="v-messages__wrapper"
-                        name="message-transition"
-                        tag="div"
-                      />
-                    </div>
-                    <div
-                      class="v-counter theme--light"
-                    >
-                      0 / 500
-                    </div>
-                  </div>
+                  
+     
+                  <!---->
                 </div>
-              </div>
-               
-              <div
-                class="v-card__subtitle text-left bc-padding-left-0"
-              >
-                
-                
-              
-              </div>
-               
-              <div
-                class="v-input addUri theme--light v-text-field v-text-field--enclosed v-text-field--outlined"
-              >
+                 
+                <!---->
+                 
                 <div
-                  class="v-input__control"
+                  class="v-input input theme--light v-text-field v-text-field--single-line v-text-field--solo v-text-field--enclosed v-text-field--outlined"
                 >
                   <div
-                    class="v-input__slot"
+                    class="v-input__control"
                   >
-                    <fieldset
-                      aria-hidden="true"
+                    <div
+                      class="v-input__slot"
                     >
-                      <legend
-                        style="width: 0px;"
+                      <fieldset
+                        aria-hidden="true"
                       >
-                        <span>
-                          ​
-                        </span>
-                      </legend>
-                    </fieldset>
-                    <div
-                      class="v-text-field__slot"
-                    >
-                      <input
-                        id="input-17"
-                        type="text"
-                      />
-                    </div>
-                  </div>
-                  <div
-                    class="v-text-field__details"
-                  >
-                    <div
-                      class="v-messages theme--light"
-                    >
-                      <span
-                        class="v-messages__wrapper"
-                        name="message-transition"
-                        tag="div"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-               
-              <div
-                class="v-card__subtitle text-left bc-padding-left-0"
-              >
-                
-                
-              
-              </div>
-               
-              <div
-                class="v-input input pt-6 theme--light v-text-field v-text-field--enclosed v-text-field--outlined"
-                rules="v => !!v || 'This field is required',v => {
-    if (v === '') {
-      return true;
-    } else {
-      return /^(?:http(s)?:\\\\/\\\\/)[\\\\w.-]+(?:\\\\.[\\\\w\\\\.-]+)+[\\\\w\\\\-\\\\._~:/?#[\\\\]@!\\\\$&'\\\\(\\\\)\\\\*\\\\+,;=.]+$/.test(v) || ' must be valid URL';
-    }
-  },v => (v || '').length <= len || 'Invalid character length, max length ' + len"
-              >
-                <div
-                  class="v-input__control"
-                >
-                  <div
-                    class="v-input__slot"
-                  >
-                    <fieldset
-                      aria-hidden="true"
-                    >
-                      <legend
-                        style="width: 0px;"
+                        <legend>
+                          <span>
+                            ​
+                          </span>
+                        </legend>
+                      </fieldset>
+                      <div
+                        class="v-text-field__slot"
                       >
-                        <span>
-                          ​
-                        </span>
-                      </legend>
-                    </fieldset>
-                    <div
-                      class="v-text-field__slot"
-                    >
-                      <input
-                        id="input-21"
-                        type="text"
-                      />
-                    </div>
-                  </div>
-                  <div
-                    class="v-text-field__details"
-                  >
-                    <div
-                      class="v-messages theme--light"
-                    >
-                      <span
-                        class="v-messages__wrapper"
-                        name="message-transition"
-                        tag="div"
-                      />
+                        <input
+                          data-test-id="input-app-url"
+                          id="input-14"
+                          type="text"
+                        />
+                      </div>
                     </div>
                     <div
-                      class="v-counter theme--light"
-                    >
-                      0 / 500
-                    </div>
-                  </div>
-                </div>
-              </div>
-               
-              <div
-                class="row"
-              >
-                <div
-                  class="col-5"
-                >
-                  <div
-                    class="v-input v-input--is-label-active v-input--is-dirty theme--light v-text-field v-text-field--enclosed v-text-field--outlined v-select"
-                    outlined=""
-                    rules="v => !!v || 'This field is required'"
-                    value="RS256"
-                  >
-                    <div
-                      class="v-input__control"
+                      class="v-text-field__details"
                     >
                       <div
-                        aria-expanded="false"
-                        aria-haspopup="listbox"
-                        aria-owns="list-25"
-                        class="v-input__slot"
-                        role="button"
+                        class="v-messages theme--light"
                       >
-                        <fieldset
-                          aria-hidden="true"
-                        >
-                          <legend
-                            style="width: 0px;"
-                          >
-                            <span>
-                              ​
-                            </span>
-                          </legend>
-                        </fieldset>
+                        <span
+                          class="v-messages__wrapper"
+                          name="message-transition"
+                          tag="div"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+               
+              <div
+                class="text-left my-1"
+              >
+                
+              </div>
+               
+              <div
+                class="row v-form px-4"
+              >
+                <div
+                  class="redirect-div"
+                >
+                  <div
+                    class="bc-form-text addUri"
+                    data-test-id="input-redirect-url0"
+                    rules="v => !!v || 'This field is required',v => {
+    if (v === '') {
+      return true;
+    } else {
+      return /^((?:http(s)?:\\\\/\\\\/)[\\\\w.-]+(?:\\\\.[\\\\w\\\\.-]+)+[\\\\w\\\\-\\\\._~:/?#[\\\\]@!\\\\$&'\\\\(\\\\)\\\\*\\\\+,;=.]+|(localhost).*)$/.test(v) || ' must be valid URL (localhost allowed)';
+    }
+  }"
+                  >
+                    <div
+                      class="text-left my-1"
+                    >
+                      
+     
+                      <!---->
+                    </div>
+                     
+                    <!---->
+                     
+                    <div
+                      class="v-input input theme--light v-text-field v-text-field--single-line v-text-field--solo v-text-field--enclosed v-text-field--outlined"
+                    >
+                      <div
+                        class="v-input__control"
+                      >
                         <div
-                          class="v-select__slot"
+                          class="v-input__slot"
                         >
-                          <div
-                            class="v-select__selections"
+                          <fieldset
+                            aria-hidden="true"
                           >
-                            <div
-                              class="v-select__selection v-select__selection--comma"
-                            >
-                              RS256
-                            </div>
+                            <legend>
+                              <span>
+                                ​
+                              </span>
+                            </legend>
+                          </fieldset>
+                          <div
+                            class="v-text-field__slot"
+                          >
                             <input
-                              aria-readonly="true"
-                              autocomplete="off"
-                              id="input-25"
-                              readonly="readonly"
+                              data-test-id="input-redirect-url0"
+                              id="input-18"
                               type="text"
                             />
                           </div>
+                        </div>
+                        <div
+                          class="v-text-field__details"
+                        >
                           <div
-                            class="v-input__append-inner"
+                            class="v-messages theme--light"
                           >
-                            <div
-                              class="v-input__icon v-input__icon--append"
-                            >
-                              <i
-                                aria-hidden="true"
-                                class="v-icon notranslate mdi mdi-menu-down theme--light"
-                              />
-                            </div>
+                            <span
+                              class="v-messages__wrapper"
+                              name="message-transition"
+                              tag="div"
+                            />
                           </div>
-                          <input
-                            type="hidden"
-                            value="RS256"
-                          />
-                        </div>
-                        <div
-                          class="v-menu"
-                        >
-                          <div
-                            class="v-menu__content theme--light "
-                            style="max-height: 304px; min-width: 0px; max-width: auto; top: 12px; left: 0px; transform-origin: top left; z-index: 0; display: none;"
-                          />
-                        </div>
-                      </div>
-                      <div
-                        class="v-text-field__details"
-                      >
-                        <div
-                          class="v-messages theme--light"
-                        >
-                          <span
-                            class="v-messages__wrapper"
-                            name="message-transition"
-                            tag="div"
-                          />
                         </div>
                       </div>
                     </div>
@@ -359,101 +218,252 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                 </div>
                  
                 <div
-                  class="spacer"
-                />
-                 
+                  class="clear-icon"
+                >
+                  <i
+                    class="v-icon notranslate ml-2 v-icon--link mdi mdi-close theme--light"
+                    role="button"
+                    style="font-size: 36px;"
+                    tabindex="0"
+                  />
+                </div>
+              </div>
+               
+              <div
+                class="add-url text-left"
+              >
+                
+              </div>
+               
+              <div
+                class="v-card__title text-left bc-padding-left-0"
+              >
+                
+              </div>
+               
+              <div
+                class="v-card__subtitle text-left bc-padding-left-0"
+              >
+                
+              </div>
+               
+              <div
+                class="v-card__subtitle text-left bc-padding-left-0"
+              >
                 <div
-                  class="col-5"
+                  class="v-input v-input--is-label-active v-input--is-dirty theme--light v-input--selection-controls v-input--radio-group v-input--radio-group--column"
                 >
                   <div
-                    class="v-input col-6 v-input--is-label-active v-input--is-dirty theme--light v-text-field v-text-field--enclosed v-text-field--outlined v-select"
-                    outlined=""
-                    rules="v => !!v || 'This field is required'"
-                    value="RS256"
+                    class="v-input__control"
                   >
                     <div
-                      class="v-input__control"
+                      class="v-input__slot"
+                      style="height: auto;"
                     >
                       <div
-                        aria-expanded="false"
-                        aria-haspopup="listbox"
-                        aria-owns="list-33"
-                        class="v-input__slot"
-                        role="button"
+                        aria-labelledby="input-22"
+                        class="v-input--radio-group__input"
+                        role="radiogroup"
                       >
-                        <fieldset
-                          aria-hidden="true"
-                        >
-                          <legend
-                            style="width: 0px;"
-                          >
-                            <span>
-                              ​
-                            </span>
-                          </legend>
-                        </fieldset>
                         <div
-                          class="v-select__slot"
+                          class="v-radio theme--light v-item--active"
                         >
                           <div
-                            class="v-select__selections"
+                            class="v-input--selection-controls__input"
+                          >
+                            <input
+                              aria-checked="true"
+                              data-test-id="radio-algoritham-base-signed-jwt"
+                              id="input-23"
+                              name="radio-22"
+                              role="radio"
+                              type="radio"
+                              value="1"
+                            />
+                            <div
+                              class="v-input--selection-controls__ripple primary--text"
+                            />
+                            <i
+                              aria-hidden="true"
+                              class="v-icon notranslate mdi mdi-radiobox-marked theme--light primary--text"
+                            />
+                          </div>
+                          <label
+                            class="v-label theme--light"
+                            for="input-23"
+                            style="left: 0px; position: relative;"
+                          >
+                            Signed JWT
+                          </label>
+                        </div>
+                         
+                        <div
+                          class="small-hint radio-help"
+                        >
+                          
+                        </div>
+                         
+                        <div
+                          class="row pad-radio"
+                        >
+                          <div
+                            class="col-12 col-md-5"
                           >
                             <div
-                              class="v-select__selection v-select__selection--comma"
+                              class="bc-form-text"
+                              data-test-id="select-signed-response-alg"
+                              outlined=""
+                              rules="v => !!v || 'This field is required'"
+                              value="RS256"
                             >
-                              RS256
+                              <div
+                                class="text-left my-1"
+                              >
+                                
+                              </div>
+                               
+                              <!---->
+                               
+                              <div
+                                class="v-input v-input--is-label-active v-input--is-dirty theme--light v-text-field v-text-field--single-line v-text-field--solo v-text-field--enclosed v-text-field--outlined v-select"
+                              >
+                                <div
+                                  class="v-input__control"
+                                >
+                                  <div
+                                    aria-expanded="false"
+                                    aria-haspopup="listbox"
+                                    aria-owns="list-26"
+                                    class="v-input__slot"
+                                    role="button"
+                                  >
+                                    <fieldset
+                                      aria-hidden="true"
+                                    >
+                                      <legend>
+                                        <span>
+                                          ​
+                                        </span>
+                                      </legend>
+                                    </fieldset>
+                                    <div
+                                      class="v-select__slot"
+                                    >
+                                      <div
+                                        class="v-select__selections"
+                                      >
+                                        <div
+                                          class="v-select__selection v-select__selection--comma"
+                                        >
+                                          RS256
+                                        </div>
+                                        <input
+                                          aria-readonly="true"
+                                          autocomplete="off"
+                                          data-test-id="select-signed-response-alg"
+                                          id="input-26"
+                                          readonly="readonly"
+                                          type="text"
+                                        />
+                                      </div>
+                                      <div
+                                        class="v-input__append-inner"
+                                      >
+                                        <div
+                                          class="v-input__icon v-input__icon--append"
+                                        >
+                                          <i
+                                            aria-hidden="true"
+                                            class="v-icon notranslate mdi mdi-menu-down theme--light"
+                                          />
+                                        </div>
+                                      </div>
+                                      <input
+                                        type="hidden"
+                                        value="RS256"
+                                      />
+                                    </div>
+                                    <div
+                                      class="v-menu"
+                                    >
+                                      <div
+                                        class="v-menu__content theme--light "
+                                        style="max-height: 304px; min-width: 0px; max-width: auto; top: 12px; left: 0px; transform-origin: top left; z-index: 0; display: none;"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div
+                                    class="v-text-field__details"
+                                  >
+                                    <div
+                                      class="v-messages theme--light"
+                                    >
+                                      <span
+                                        class="v-messages__wrapper"
+                                        name="message-transition"
+                                        tag="div"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
+                          </div>
+                        </div>
+                         
+                        <div
+                          class="v-radio theme--light"
+                        >
+                          <div
+                            class="v-input--selection-controls__input"
+                          >
                             <input
-                              aria-readonly="true"
-                              autocomplete="off"
+                              aria-checked="false"
+                              data-test-id="radio-algoritham-base-secure-jwt"
                               id="input-33"
-                              readonly="readonly"
-                              type="text"
+                              name="radio-22"
+                              role="radio"
+                              type="radio"
+                              value="2"
+                            />
+                            <div
+                              class="v-input--selection-controls__ripple"
+                            />
+                            <i
+                              aria-hidden="true"
+                              class="v-icon notranslate mdi mdi-radiobox-blank theme--light"
                             />
                           </div>
-                          <div
-                            class="v-input__append-inner"
+                          <label
+                            class="v-label theme--light"
+                            for="input-33"
+                            style="left: 0px; position: relative;"
                           >
-                            <div
-                              class="v-input__icon v-input__icon--append"
-                            >
-                              <i
-                                aria-hidden="true"
-                                class="v-icon notranslate mdi mdi-menu-down theme--light"
-                              />
-                            </div>
-                          </div>
-                          <input
-                            type="hidden"
-                            value="RS256"
-                          />
+                            Secure JWT
+                          </label>
                         </div>
+                         
                         <div
-                          class="v-menu"
+                          class="small-hint radio-help"
                         >
-                          <div
-                            class="v-menu__content theme--light "
-                            style="max-height: 304px; min-width: 0px; max-width: auto; top: 12px; left: 0px; transform-origin: top left; z-index: 0; display: none;"
-                          />
+                          
                         </div>
                       </div>
-                      <div
-                        class="v-text-field__details"
-                      >
-                        <div
-                          class="v-messages theme--light"
-                        >
-                          <span
-                            class="v-messages__wrapper"
-                            name="message-transition"
-                            tag="div"
-                          />
-                        </div>
-                      </div>
+                    </div>
+                    <div
+                      class="v-messages theme--light"
+                    >
+                      <span
+                        class="v-messages__wrapper"
+                        name="message-transition"
+                        tag="div"
+                      />
                     </div>
                   </div>
                 </div>
               </div>
+               
+              <!---->
                
               <hr
                 aria-orientation="horizontal"
@@ -470,7 +480,8 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                  
                 <button
                   aria-label="Back Button"
-                  class="btn v-btn v-btn--contained theme--light v-size--default secondary-btn normal"
+                  class="btn v-btn v-btn--contained theme--light v-size--default  secondary-btn  normal"
+                  data-test-id="btn-cancel-technical-req"
                   name="button"
                   type="button"
                 >
@@ -485,7 +496,8 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                  
                 <button
                   aria-disabled="true"
-                  class="btn white--text submit-req ml-6 v-btn v-btn--depressed v-btn--disabled theme--light v-size--default primary normal disabled"
+                  class="btn white--text submit-req ml-6 v-btn v-btn--depressed v-btn--disabled theme--light v-size--default  primary  normal disabled"
+                  data-test-id="btn-submit-technical-req"
                   depressed=""
                   disabled="disabled"
                   name="button"
@@ -543,8 +555,6 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
           class="v-toolbar__title"
         >
           
-        
-      
         </div>
          
         <div
@@ -573,32 +583,19 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                 class="v-card__title headline bc-padding-left-0 text-capitalize"
               >
                 
-                
-              
               </div>
                
               <div
                 class="v-card__subtitle text-left bc-padding-left-0"
-              >
-                
-                
-              
-              </div>
+              />
             </div>
              
             <div
               class="pa-4 pt-6 v-card v-sheet theme--light"
             >
               <div
-                class="v-card__subtitle text-left bc-padding-left-0"
-              >
-                
-                
-              
-              </div>
-               
-              <div
-                class="v-input input theme--light v-text-field v-text-field--enclosed v-text-field--outlined"
+                class="bc-form-text"
+                data-test-id="input-app-url"
                 rules="v => !!v || 'This field is required',v => {
     if (v === '') {
       return true;
@@ -608,152 +605,372 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
   },v => (v || '').length <= len || 'Invalid character length, max length ' + len"
               >
                 <div
-                  class="v-input__control"
+                  class="text-left my-1"
+                >
+                  
+     
+                  <!---->
+                </div>
+                 
+                <!---->
+                 
+                <div
+                  class="v-input input theme--light v-text-field v-text-field--single-line v-text-field--solo v-text-field--enclosed v-text-field--outlined"
                 >
                   <div
-                    class="v-input__slot"
+                    class="v-input__control"
                   >
-                    <fieldset
-                      aria-hidden="true"
+                    <div
+                      class="v-input__slot"
                     >
-                      <legend
-                        style="width: 0px;"
+                      <fieldset
+                        aria-hidden="true"
                       >
-                        <span>
-                          ​
-                        </span>
-                      </legend>
-                    </fieldset>
-                    <div
-                      class="v-text-field__slot"
-                    >
-                      <input
-                        id="input-57"
-                        type="text"
-                      />
-                    </div>
-                  </div>
-                  <div
-                    class="v-text-field__details"
-                  >
-                    <div
-                      class="v-messages theme--light"
-                    >
-                      <span
-                        class="v-messages__wrapper"
-                        name="message-transition"
-                        tag="div"
-                      />
+                        <legend>
+                          <span>
+                            ​
+                          </span>
+                        </legend>
+                      </fieldset>
+                      <div
+                        class="v-text-field__slot"
+                      >
+                        <input
+                          data-test-id="input-app-url"
+                          id="input-54"
+                          type="text"
+                        />
+                      </div>
                     </div>
                     <div
-                      class="v-counter theme--light"
+                      class="v-text-field__details"
                     >
-                      0 / 500
+                      <div
+                        class="v-messages theme--light"
+                      >
+                        <span
+                          class="v-messages__wrapper"
+                          name="message-transition"
+                          tag="div"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
                
               <div
-                class="v-card__subtitle text-left bc-padding-left-0"
+                class="text-left my-1"
               >
                 
-                
-              
               </div>
                
               <div
-                class="v-input addUri theme--light v-text-field v-text-field--enclosed v-text-field--outlined"
+                class="row v-form px-4"
               >
                 <div
-                  class="v-input__control"
+                  class="redirect-div"
                 >
                   <div
-                    class="v-input__slot"
-                  >
-                    <fieldset
-                      aria-hidden="true"
-                    >
-                      <legend
-                        style="width: 0px;"
-                      >
-                        <span>
-                          ​
-                        </span>
-                      </legend>
-                    </fieldset>
-                    <div
-                      class="v-text-field__slot"
-                    >
-                      <input
-                        id="input-60"
-                        type="text"
-                      />
-                    </div>
-                  </div>
-                  <div
-                    class="v-text-field__details"
-                  >
-                    <div
-                      class="v-messages theme--light"
-                    >
-                      <span
-                        class="v-messages__wrapper"
-                        name="message-transition"
-                        tag="div"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-               
-              <div
-                class="v-card__subtitle text-left bc-padding-left-0"
-              >
-                
-                
-              
-              </div>
-               
-              <div
-                class="v-input input pt-6 theme--light v-text-field v-text-field--enclosed v-text-field--outlined"
-                rules="v => !!v || 'This field is required',v => {
+                    class="bc-form-text addUri"
+                    data-test-id="input-redirect-url0"
+                    rules="v => !!v || 'This field is required',v => {
     if (v === '') {
       return true;
     } else {
-      return /^(?:http(s)?:\\\\/\\\\/)[\\\\w.-]+(?:\\\\.[\\\\w\\\\.-]+)+[\\\\w\\\\-\\\\._~:/?#[\\\\]@!\\\\$&'\\\\(\\\\)\\\\*\\\\+,;=.]+$/.test(v) || ' must be valid URL';
+      return /^((?:http(s)?:\\\\/\\\\/)[\\\\w.-]+(?:\\\\.[\\\\w\\\\.-]+)+[\\\\w\\\\-\\\\._~:/?#[\\\\]@!\\\\$&'\\\\(\\\\)\\\\*\\\\+,;=.]+|(localhost).*)$/.test(v) || ' must be valid URL (localhost allowed)';
     }
-  },v => (v || '').length <= len || 'Invalid character length, max length ' + len"
-              >
-                <div
-                  class="v-input__control"
-                >
-                  <div
-                    class="v-input__slot"
+  }"
                   >
-                    <fieldset
-                      aria-hidden="true"
-                    >
-                      <legend
-                        style="width: 0px;"
-                      >
-                        <span>
-                          ​
-                        </span>
-                      </legend>
-                    </fieldset>
                     <div
-                      class="v-text-field__slot"
+                      class="text-left my-1"
                     >
-                      <input
-                        id="input-64"
-                        type="text"
-                      />
+                      
+     
+                      <!---->
+                    </div>
+                     
+                    <!---->
+                     
+                    <div
+                      class="v-input input theme--light v-text-field v-text-field--single-line v-text-field--solo v-text-field--enclosed v-text-field--outlined"
+                    >
+                      <div
+                        class="v-input__control"
+                      >
+                        <div
+                          class="v-input__slot"
+                        >
+                          <fieldset
+                            aria-hidden="true"
+                          >
+                            <legend>
+                              <span>
+                                ​
+                              </span>
+                            </legend>
+                          </fieldset>
+                          <div
+                            class="v-text-field__slot"
+                          >
+                            <input
+                              data-test-id="input-redirect-url0"
+                              id="input-58"
+                              type="text"
+                            />
+                          </div>
+                        </div>
+                        <div
+                          class="v-text-field__details"
+                        >
+                          <div
+                            class="v-messages theme--light"
+                          >
+                            <span
+                              class="v-messages__wrapper"
+                              name="message-transition"
+                              tag="div"
+                            />
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
+                </div>
+                 
+                <div
+                  class="clear-icon"
+                >
+                  <i
+                    class="v-icon notranslate ml-2 v-icon--link mdi mdi-close theme--light"
+                    role="button"
+                    style="font-size: 36px;"
+                    tabindex="0"
+                  />
+                </div>
+              </div>
+               
+              <div
+                class="add-url text-left"
+              >
+                
+              </div>
+               
+              <div
+                class="v-card__title text-left bc-padding-left-0"
+              >
+                
+              </div>
+               
+              <div
+                class="v-card__subtitle text-left bc-padding-left-0"
+              >
+                
+              </div>
+               
+              <div
+                class="v-card__subtitle text-left bc-padding-left-0"
+              >
+                <div
+                  class="v-input v-input--is-label-active v-input--is-dirty theme--light v-input--selection-controls v-input--radio-group v-input--radio-group--column"
+                >
                   <div
-                    class="v-text-field__details"
+                    class="v-input__control"
                   >
+                    <div
+                      class="v-input__slot"
+                      style="height: auto;"
+                    >
+                      <div
+                        aria-labelledby="input-62"
+                        class="v-input--radio-group__input"
+                        role="radiogroup"
+                      >
+                        <div
+                          class="v-radio theme--light v-item--active"
+                        >
+                          <div
+                            class="v-input--selection-controls__input"
+                          >
+                            <input
+                              aria-checked="true"
+                              data-test-id="radio-algoritham-base-signed-jwt"
+                              id="input-63"
+                              name="radio-62"
+                              role="radio"
+                              type="radio"
+                              value="1"
+                            />
+                            <div
+                              class="v-input--selection-controls__ripple primary--text"
+                            />
+                            <i
+                              aria-hidden="true"
+                              class="v-icon notranslate mdi mdi-radiobox-marked theme--light primary--text"
+                            />
+                          </div>
+                          <label
+                            class="v-label theme--light"
+                            for="input-63"
+                            style="left: 0px; position: relative;"
+                          >
+                            Signed JWT
+                          </label>
+                        </div>
+                         
+                        <div
+                          class="small-hint radio-help"
+                        >
+                          
+                        </div>
+                         
+                        <div
+                          class="row pad-radio"
+                        >
+                          <div
+                            class="col-12 col-md-5"
+                          >
+                            <div
+                              class="bc-form-text"
+                              data-test-id="select-signed-response-alg"
+                              outlined=""
+                              rules="v => !!v || 'This field is required'"
+                              value="RS256"
+                            >
+                              <div
+                                class="text-left my-1"
+                              >
+                                
+                              </div>
+                               
+                              <!---->
+                               
+                              <div
+                                class="v-input v-input--is-label-active v-input--is-dirty theme--light v-text-field v-text-field--single-line v-text-field--solo v-text-field--enclosed v-text-field--outlined v-select"
+                              >
+                                <div
+                                  class="v-input__control"
+                                >
+                                  <div
+                                    aria-expanded="false"
+                                    aria-haspopup="listbox"
+                                    aria-owns="list-66"
+                                    class="v-input__slot"
+                                    role="button"
+                                  >
+                                    <fieldset
+                                      aria-hidden="true"
+                                    >
+                                      <legend>
+                                        <span>
+                                          ​
+                                        </span>
+                                      </legend>
+                                    </fieldset>
+                                    <div
+                                      class="v-select__slot"
+                                    >
+                                      <div
+                                        class="v-select__selections"
+                                      >
+                                        <div
+                                          class="v-select__selection v-select__selection--comma"
+                                        >
+                                          RS256
+                                        </div>
+                                        <input
+                                          aria-readonly="true"
+                                          autocomplete="off"
+                                          data-test-id="select-signed-response-alg"
+                                          id="input-66"
+                                          readonly="readonly"
+                                          type="text"
+                                        />
+                                      </div>
+                                      <div
+                                        class="v-input__append-inner"
+                                      >
+                                        <div
+                                          class="v-input__icon v-input__icon--append"
+                                        >
+                                          <i
+                                            aria-hidden="true"
+                                            class="v-icon notranslate mdi mdi-menu-down theme--light"
+                                          />
+                                        </div>
+                                      </div>
+                                      <input
+                                        type="hidden"
+                                        value="RS256"
+                                      />
+                                    </div>
+                                    <div
+                                      class="v-menu"
+                                    >
+                                      <div
+                                        class="v-menu__content theme--light "
+                                        style="max-height: 304px; min-width: 0px; max-width: auto; top: 12px; left: 0px; transform-origin: top left; z-index: 0; display: none;"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div
+                                    class="v-text-field__details"
+                                  >
+                                    <div
+                                      class="v-messages theme--light"
+                                    >
+                                      <span
+                                        class="v-messages__wrapper"
+                                        name="message-transition"
+                                        tag="div"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                         
+                        <div
+                          class="v-radio theme--light"
+                        >
+                          <div
+                            class="v-input--selection-controls__input"
+                          >
+                            <input
+                              aria-checked="false"
+                              data-test-id="radio-algoritham-base-secure-jwt"
+                              id="input-73"
+                              name="radio-62"
+                              role="radio"
+                              type="radio"
+                              value="2"
+                            />
+                            <div
+                              class="v-input--selection-controls__ripple"
+                            />
+                            <i
+                              aria-hidden="true"
+                              class="v-icon notranslate mdi mdi-radiobox-blank theme--light"
+                            />
+                          </div>
+                          <label
+                            class="v-label theme--light"
+                            for="input-73"
+                            style="left: 0px; position: relative;"
+                          >
+                            Secure JWT
+                          </label>
+                        </div>
+                         
+                        <div
+                          class="small-hint radio-help"
+                        >
+                          
+                        </div>
+                      </div>
+                    </div>
                     <div
                       class="v-messages theme--light"
                     >
@@ -763,206 +980,11 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                         tag="div"
                       />
                     </div>
-                    <div
-                      class="v-counter theme--light"
-                    >
-                      0 / 500
-                    </div>
                   </div>
                 </div>
               </div>
                
-              <div
-                class="row"
-              >
-                <div
-                  class="col-5"
-                >
-                  <div
-                    class="v-input v-input--is-label-active v-input--is-dirty theme--light v-text-field v-text-field--enclosed v-text-field--outlined v-select"
-                    outlined=""
-                    rules="v => !!v || 'This field is required'"
-                    value="RS256"
-                  >
-                    <div
-                      class="v-input__control"
-                    >
-                      <div
-                        aria-expanded="false"
-                        aria-haspopup="listbox"
-                        aria-owns="list-68"
-                        class="v-input__slot"
-                        role="button"
-                      >
-                        <fieldset
-                          aria-hidden="true"
-                        >
-                          <legend
-                            style="width: 0px;"
-                          >
-                            <span>
-                              ​
-                            </span>
-                          </legend>
-                        </fieldset>
-                        <div
-                          class="v-select__slot"
-                        >
-                          <div
-                            class="v-select__selections"
-                          >
-                            <div
-                              class="v-select__selection v-select__selection--comma"
-                            >
-                              RS256
-                            </div>
-                            <input
-                              aria-readonly="true"
-                              autocomplete="off"
-                              id="input-68"
-                              readonly="readonly"
-                              type="text"
-                            />
-                          </div>
-                          <div
-                            class="v-input__append-inner"
-                          >
-                            <div
-                              class="v-input__icon v-input__icon--append"
-                            >
-                              <i
-                                aria-hidden="true"
-                                class="v-icon notranslate mdi mdi-menu-down theme--light"
-                              />
-                            </div>
-                          </div>
-                          <input
-                            type="hidden"
-                            value="RS256"
-                          />
-                        </div>
-                        <div
-                          class="v-menu"
-                        >
-                          <div
-                            class="v-menu__content theme--light "
-                            style="max-height: 304px; min-width: 0px; max-width: auto; top: 12px; left: 0px; transform-origin: top left; z-index: 0; display: none;"
-                          />
-                        </div>
-                      </div>
-                      <div
-                        class="v-text-field__details"
-                      >
-                        <div
-                          class="v-messages theme--light"
-                        >
-                          <span
-                            class="v-messages__wrapper"
-                            name="message-transition"
-                            tag="div"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                 
-                <div
-                  class="spacer"
-                />
-                 
-                <div
-                  class="col-5"
-                >
-                  <div
-                    class="v-input col-6 v-input--is-label-active v-input--is-dirty theme--light v-text-field v-text-field--enclosed v-text-field--outlined v-select"
-                    outlined=""
-                    rules="v => !!v || 'This field is required'"
-                    value="RS256"
-                  >
-                    <div
-                      class="v-input__control"
-                    >
-                      <div
-                        aria-expanded="false"
-                        aria-haspopup="listbox"
-                        aria-owns="list-76"
-                        class="v-input__slot"
-                        role="button"
-                      >
-                        <fieldset
-                          aria-hidden="true"
-                        >
-                          <legend
-                            style="width: 0px;"
-                          >
-                            <span>
-                              ​
-                            </span>
-                          </legend>
-                        </fieldset>
-                        <div
-                          class="v-select__slot"
-                        >
-                          <div
-                            class="v-select__selections"
-                          >
-                            <div
-                              class="v-select__selection v-select__selection--comma"
-                            >
-                              RS256
-                            </div>
-                            <input
-                              aria-readonly="true"
-                              autocomplete="off"
-                              id="input-76"
-                              readonly="readonly"
-                              type="text"
-                            />
-                          </div>
-                          <div
-                            class="v-input__append-inner"
-                          >
-                            <div
-                              class="v-input__icon v-input__icon--append"
-                            >
-                              <i
-                                aria-hidden="true"
-                                class="v-icon notranslate mdi mdi-menu-down theme--light"
-                              />
-                            </div>
-                          </div>
-                          <input
-                            type="hidden"
-                            value="RS256"
-                          />
-                        </div>
-                        <div
-                          class="v-menu"
-                        >
-                          <div
-                            class="v-menu__content theme--light "
-                            style="max-height: 304px; min-width: 0px; max-width: auto; top: 12px; left: 0px; transform-origin: top left; z-index: 0; display: none;"
-                          />
-                        </div>
-                      </div>
-                      <div
-                        class="v-text-field__details"
-                      >
-                        <div
-                          class="v-messages theme--light"
-                        >
-                          <span
-                            class="v-messages__wrapper"
-                            name="message-transition"
-                            tag="div"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <!---->
                
               <hr
                 aria-orientation="horizontal"
@@ -979,7 +1001,8 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                  
                 <button
                   aria-label="Back Button"
-                  class="btn v-btn v-btn--contained theme--light v-size--default secondary-btn normal"
+                  class="btn v-btn v-btn--contained theme--light v-size--default  secondary-btn  normal"
+                  data-test-id="btn-cancel-technical-req"
                   name="button"
                   type="button"
                 >
@@ -994,7 +1017,8 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                  
                 <button
                   aria-disabled="true"
-                  class="btn white--text submit-req ml-6 v-btn v-btn--depressed v-btn--disabled theme--light v-size--default primary normal disabled"
+                  class="btn white--text submit-req ml-6 v-btn v-btn--depressed v-btn--disabled theme--light v-size--default  primary  normal disabled"
+                  data-test-id="btn-submit-technical-req"
                   depressed=""
                   disabled="disabled"
                   name="button"
@@ -1052,8 +1076,6 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
           class="v-toolbar__title"
         >
           
-        
-      
         </div>
          
         <div
@@ -1082,32 +1104,19 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                 class="v-card__title headline bc-padding-left-0 text-capitalize"
               >
                 
-                
-              
               </div>
                
               <div
                 class="v-card__subtitle text-left bc-padding-left-0"
-              >
-                
-                
-              
-              </div>
+              />
             </div>
              
             <div
               class="pa-4 pt-6 v-card v-sheet theme--light"
             >
               <div
-                class="v-card__subtitle text-left bc-padding-left-0"
-              >
-                
-                
-              
-              </div>
-               
-              <div
-                class="v-input input theme--light v-text-field v-text-field--enclosed v-text-field--outlined"
+                class="bc-form-text"
+                data-test-id="input-app-url"
                 rules="v => !!v || 'This field is required',v => {
     if (v === '') {
       return true;
@@ -1117,152 +1126,372 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
   },v => (v || '').length <= len || 'Invalid character length, max length ' + len"
               >
                 <div
-                  class="v-input__control"
+                  class="text-left my-1"
+                >
+                  
+     
+                  <!---->
+                </div>
+                 
+                <!---->
+                 
+                <div
+                  class="v-input input theme--light v-text-field v-text-field--single-line v-text-field--solo v-text-field--enclosed v-text-field--outlined"
                 >
                   <div
-                    class="v-input__slot"
+                    class="v-input__control"
                   >
-                    <fieldset
-                      aria-hidden="true"
+                    <div
+                      class="v-input__slot"
                     >
-                      <legend
-                        style="width: 0px;"
+                      <fieldset
+                        aria-hidden="true"
                       >
-                        <span>
-                          ​
-                        </span>
-                      </legend>
-                    </fieldset>
-                    <div
-                      class="v-text-field__slot"
-                    >
-                      <input
-                        id="input-100"
-                        type="text"
-                      />
-                    </div>
-                  </div>
-                  <div
-                    class="v-text-field__details"
-                  >
-                    <div
-                      class="v-messages theme--light"
-                    >
-                      <span
-                        class="v-messages__wrapper"
-                        name="message-transition"
-                        tag="div"
-                      />
+                        <legend>
+                          <span>
+                            ​
+                          </span>
+                        </legend>
+                      </fieldset>
+                      <div
+                        class="v-text-field__slot"
+                      >
+                        <input
+                          data-test-id="input-app-url"
+                          id="input-94"
+                          type="text"
+                        />
+                      </div>
                     </div>
                     <div
-                      class="v-counter theme--light"
+                      class="v-text-field__details"
                     >
-                      0 / 500
+                      <div
+                        class="v-messages theme--light"
+                      >
+                        <span
+                          class="v-messages__wrapper"
+                          name="message-transition"
+                          tag="div"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
                
               <div
-                class="v-card__subtitle text-left bc-padding-left-0"
+                class="text-left my-1"
               >
                 
-                
-              
               </div>
                
               <div
-                class="v-input addUri theme--light v-text-field v-text-field--enclosed v-text-field--outlined"
+                class="row v-form px-4"
               >
                 <div
-                  class="v-input__control"
+                  class="redirect-div"
                 >
                   <div
-                    class="v-input__slot"
-                  >
-                    <fieldset
-                      aria-hidden="true"
-                    >
-                      <legend
-                        style="width: 0px;"
-                      >
-                        <span>
-                          ​
-                        </span>
-                      </legend>
-                    </fieldset>
-                    <div
-                      class="v-text-field__slot"
-                    >
-                      <input
-                        id="input-103"
-                        type="text"
-                      />
-                    </div>
-                  </div>
-                  <div
-                    class="v-text-field__details"
-                  >
-                    <div
-                      class="v-messages theme--light"
-                    >
-                      <span
-                        class="v-messages__wrapper"
-                        name="message-transition"
-                        tag="div"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-               
-              <div
-                class="v-card__subtitle text-left bc-padding-left-0"
-              >
-                
-                
-              
-              </div>
-               
-              <div
-                class="v-input input pt-6 theme--light v-text-field v-text-field--enclosed v-text-field--outlined"
-                rules="v => !!v || 'This field is required',v => {
+                    class="bc-form-text addUri"
+                    data-test-id="input-redirect-url0"
+                    rules="v => !!v || 'This field is required',v => {
     if (v === '') {
       return true;
     } else {
-      return /^(?:http(s)?:\\\\/\\\\/)[\\\\w.-]+(?:\\\\.[\\\\w\\\\.-]+)+[\\\\w\\\\-\\\\._~:/?#[\\\\]@!\\\\$&'\\\\(\\\\)\\\\*\\\\+,;=.]+$/.test(v) || ' must be valid URL';
+      return /^((?:http(s)?:\\\\/\\\\/)[\\\\w.-]+(?:\\\\.[\\\\w\\\\.-]+)+[\\\\w\\\\-\\\\._~:/?#[\\\\]@!\\\\$&'\\\\(\\\\)\\\\*\\\\+,;=.]+|(localhost).*)$/.test(v) || ' must be valid URL (localhost allowed)';
     }
-  },v => (v || '').length <= len || 'Invalid character length, max length ' + len"
-              >
-                <div
-                  class="v-input__control"
-                >
-                  <div
-                    class="v-input__slot"
+  }"
                   >
-                    <fieldset
-                      aria-hidden="true"
-                    >
-                      <legend
-                        style="width: 0px;"
-                      >
-                        <span>
-                          ​
-                        </span>
-                      </legend>
-                    </fieldset>
                     <div
-                      class="v-text-field__slot"
+                      class="text-left my-1"
                     >
-                      <input
-                        id="input-107"
-                        type="text"
-                      />
+                      
+     
+                      <!---->
+                    </div>
+                     
+                    <!---->
+                     
+                    <div
+                      class="v-input input theme--light v-text-field v-text-field--single-line v-text-field--solo v-text-field--enclosed v-text-field--outlined"
+                    >
+                      <div
+                        class="v-input__control"
+                      >
+                        <div
+                          class="v-input__slot"
+                        >
+                          <fieldset
+                            aria-hidden="true"
+                          >
+                            <legend>
+                              <span>
+                                ​
+                              </span>
+                            </legend>
+                          </fieldset>
+                          <div
+                            class="v-text-field__slot"
+                          >
+                            <input
+                              data-test-id="input-redirect-url0"
+                              id="input-98"
+                              type="text"
+                            />
+                          </div>
+                        </div>
+                        <div
+                          class="v-text-field__details"
+                        >
+                          <div
+                            class="v-messages theme--light"
+                          >
+                            <span
+                              class="v-messages__wrapper"
+                              name="message-transition"
+                              tag="div"
+                            />
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
+                </div>
+                 
+                <div
+                  class="clear-icon"
+                >
+                  <i
+                    class="v-icon notranslate ml-2 v-icon--link mdi mdi-close theme--light"
+                    role="button"
+                    style="font-size: 36px;"
+                    tabindex="0"
+                  />
+                </div>
+              </div>
+               
+              <div
+                class="add-url text-left"
+              >
+                
+              </div>
+               
+              <div
+                class="v-card__title text-left bc-padding-left-0"
+              >
+                
+              </div>
+               
+              <div
+                class="v-card__subtitle text-left bc-padding-left-0"
+              >
+                
+              </div>
+               
+              <div
+                class="v-card__subtitle text-left bc-padding-left-0"
+              >
+                <div
+                  class="v-input v-input--is-label-active v-input--is-dirty theme--light v-input--selection-controls v-input--radio-group v-input--radio-group--column"
+                >
                   <div
-                    class="v-text-field__details"
+                    class="v-input__control"
                   >
+                    <div
+                      class="v-input__slot"
+                      style="height: auto;"
+                    >
+                      <div
+                        aria-labelledby="input-102"
+                        class="v-input--radio-group__input"
+                        role="radiogroup"
+                      >
+                        <div
+                          class="v-radio theme--light v-item--active"
+                        >
+                          <div
+                            class="v-input--selection-controls__input"
+                          >
+                            <input
+                              aria-checked="true"
+                              data-test-id="radio-algoritham-base-signed-jwt"
+                              id="input-103"
+                              name="radio-102"
+                              role="radio"
+                              type="radio"
+                              value="1"
+                            />
+                            <div
+                              class="v-input--selection-controls__ripple primary--text"
+                            />
+                            <i
+                              aria-hidden="true"
+                              class="v-icon notranslate mdi mdi-radiobox-marked theme--light primary--text"
+                            />
+                          </div>
+                          <label
+                            class="v-label theme--light"
+                            for="input-103"
+                            style="left: 0px; position: relative;"
+                          >
+                            Signed JWT
+                          </label>
+                        </div>
+                         
+                        <div
+                          class="small-hint radio-help"
+                        >
+                          
+                        </div>
+                         
+                        <div
+                          class="row pad-radio"
+                        >
+                          <div
+                            class="col-12 col-md-5"
+                          >
+                            <div
+                              class="bc-form-text"
+                              data-test-id="select-signed-response-alg"
+                              outlined=""
+                              rules="v => !!v || 'This field is required'"
+                              value="RS256"
+                            >
+                              <div
+                                class="text-left my-1"
+                              >
+                                
+                              </div>
+                               
+                              <!---->
+                               
+                              <div
+                                class="v-input v-input--is-label-active v-input--is-dirty theme--light v-text-field v-text-field--single-line v-text-field--solo v-text-field--enclosed v-text-field--outlined v-select"
+                              >
+                                <div
+                                  class="v-input__control"
+                                >
+                                  <div
+                                    aria-expanded="false"
+                                    aria-haspopup="listbox"
+                                    aria-owns="list-106"
+                                    class="v-input__slot"
+                                    role="button"
+                                  >
+                                    <fieldset
+                                      aria-hidden="true"
+                                    >
+                                      <legend>
+                                        <span>
+                                          ​
+                                        </span>
+                                      </legend>
+                                    </fieldset>
+                                    <div
+                                      class="v-select__slot"
+                                    >
+                                      <div
+                                        class="v-select__selections"
+                                      >
+                                        <div
+                                          class="v-select__selection v-select__selection--comma"
+                                        >
+                                          RS256
+                                        </div>
+                                        <input
+                                          aria-readonly="true"
+                                          autocomplete="off"
+                                          data-test-id="select-signed-response-alg"
+                                          id="input-106"
+                                          readonly="readonly"
+                                          type="text"
+                                        />
+                                      </div>
+                                      <div
+                                        class="v-input__append-inner"
+                                      >
+                                        <div
+                                          class="v-input__icon v-input__icon--append"
+                                        >
+                                          <i
+                                            aria-hidden="true"
+                                            class="v-icon notranslate mdi mdi-menu-down theme--light"
+                                          />
+                                        </div>
+                                      </div>
+                                      <input
+                                        type="hidden"
+                                        value="RS256"
+                                      />
+                                    </div>
+                                    <div
+                                      class="v-menu"
+                                    >
+                                      <div
+                                        class="v-menu__content theme--light "
+                                        style="max-height: 304px; min-width: 0px; max-width: auto; top: 12px; left: 0px; transform-origin: top left; z-index: 0; display: none;"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div
+                                    class="v-text-field__details"
+                                  >
+                                    <div
+                                      class="v-messages theme--light"
+                                    >
+                                      <span
+                                        class="v-messages__wrapper"
+                                        name="message-transition"
+                                        tag="div"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                         
+                        <div
+                          class="v-radio theme--light"
+                        >
+                          <div
+                            class="v-input--selection-controls__input"
+                          >
+                            <input
+                              aria-checked="false"
+                              data-test-id="radio-algoritham-base-secure-jwt"
+                              id="input-113"
+                              name="radio-102"
+                              role="radio"
+                              type="radio"
+                              value="2"
+                            />
+                            <div
+                              class="v-input--selection-controls__ripple"
+                            />
+                            <i
+                              aria-hidden="true"
+                              class="v-icon notranslate mdi mdi-radiobox-blank theme--light"
+                            />
+                          </div>
+                          <label
+                            class="v-label theme--light"
+                            for="input-113"
+                            style="left: 0px; position: relative;"
+                          >
+                            Secure JWT
+                          </label>
+                        </div>
+                         
+                        <div
+                          class="small-hint radio-help"
+                        >
+                          
+                        </div>
+                      </div>
+                    </div>
                     <div
                       class="v-messages theme--light"
                     >
@@ -1272,206 +1501,11 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                         tag="div"
                       />
                     </div>
-                    <div
-                      class="v-counter theme--light"
-                    >
-                      0 / 500
-                    </div>
                   </div>
                 </div>
               </div>
                
-              <div
-                class="row"
-              >
-                <div
-                  class="col-5"
-                >
-                  <div
-                    class="v-input v-input--is-label-active v-input--is-dirty theme--light v-text-field v-text-field--enclosed v-text-field--outlined v-select"
-                    outlined=""
-                    rules="v => !!v || 'This field is required'"
-                    value="RS256"
-                  >
-                    <div
-                      class="v-input__control"
-                    >
-                      <div
-                        aria-expanded="false"
-                        aria-haspopup="listbox"
-                        aria-owns="list-111"
-                        class="v-input__slot"
-                        role="button"
-                      >
-                        <fieldset
-                          aria-hidden="true"
-                        >
-                          <legend
-                            style="width: 0px;"
-                          >
-                            <span>
-                              ​
-                            </span>
-                          </legend>
-                        </fieldset>
-                        <div
-                          class="v-select__slot"
-                        >
-                          <div
-                            class="v-select__selections"
-                          >
-                            <div
-                              class="v-select__selection v-select__selection--comma"
-                            >
-                              RS256
-                            </div>
-                            <input
-                              aria-readonly="true"
-                              autocomplete="off"
-                              id="input-111"
-                              readonly="readonly"
-                              type="text"
-                            />
-                          </div>
-                          <div
-                            class="v-input__append-inner"
-                          >
-                            <div
-                              class="v-input__icon v-input__icon--append"
-                            >
-                              <i
-                                aria-hidden="true"
-                                class="v-icon notranslate mdi mdi-menu-down theme--light"
-                              />
-                            </div>
-                          </div>
-                          <input
-                            type="hidden"
-                            value="RS256"
-                          />
-                        </div>
-                        <div
-                          class="v-menu"
-                        >
-                          <div
-                            class="v-menu__content theme--light "
-                            style="max-height: 304px; min-width: 0px; max-width: auto; top: 12px; left: 0px; transform-origin: top left; z-index: 0; display: none;"
-                          />
-                        </div>
-                      </div>
-                      <div
-                        class="v-text-field__details"
-                      >
-                        <div
-                          class="v-messages theme--light"
-                        >
-                          <span
-                            class="v-messages__wrapper"
-                            name="message-transition"
-                            tag="div"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                 
-                <div
-                  class="spacer"
-                />
-                 
-                <div
-                  class="col-5"
-                >
-                  <div
-                    class="v-input col-6 v-input--is-label-active v-input--is-dirty theme--light v-text-field v-text-field--enclosed v-text-field--outlined v-select"
-                    outlined=""
-                    rules="v => !!v || 'This field is required'"
-                    value="RS256"
-                  >
-                    <div
-                      class="v-input__control"
-                    >
-                      <div
-                        aria-expanded="false"
-                        aria-haspopup="listbox"
-                        aria-owns="list-119"
-                        class="v-input__slot"
-                        role="button"
-                      >
-                        <fieldset
-                          aria-hidden="true"
-                        >
-                          <legend
-                            style="width: 0px;"
-                          >
-                            <span>
-                              ​
-                            </span>
-                          </legend>
-                        </fieldset>
-                        <div
-                          class="v-select__slot"
-                        >
-                          <div
-                            class="v-select__selections"
-                          >
-                            <div
-                              class="v-select__selection v-select__selection--comma"
-                            >
-                              RS256
-                            </div>
-                            <input
-                              aria-readonly="true"
-                              autocomplete="off"
-                              id="input-119"
-                              readonly="readonly"
-                              type="text"
-                            />
-                          </div>
-                          <div
-                            class="v-input__append-inner"
-                          >
-                            <div
-                              class="v-input__icon v-input__icon--append"
-                            >
-                              <i
-                                aria-hidden="true"
-                                class="v-icon notranslate mdi mdi-menu-down theme--light"
-                              />
-                            </div>
-                          </div>
-                          <input
-                            type="hidden"
-                            value="RS256"
-                          />
-                        </div>
-                        <div
-                          class="v-menu"
-                        >
-                          <div
-                            class="v-menu__content theme--light "
-                            style="max-height: 304px; min-width: 0px; max-width: auto; top: 12px; left: 0px; transform-origin: top left; z-index: 0; display: none;"
-                          />
-                        </div>
-                      </div>
-                      <div
-                        class="v-text-field__details"
-                      >
-                        <div
-                          class="v-messages theme--light"
-                        >
-                          <span
-                            class="v-messages__wrapper"
-                            name="message-transition"
-                            tag="div"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <!---->
                
               <hr
                 aria-orientation="horizontal"
@@ -1488,7 +1522,8 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                  
                 <button
                   aria-label="Back Button"
-                  class="btn v-btn v-btn--contained theme--light v-size--default secondary-btn normal"
+                  class="btn v-btn v-btn--contained theme--light v-size--default  secondary-btn  normal"
+                  data-test-id="btn-cancel-technical-req"
                   name="button"
                   type="button"
                 >
@@ -1503,7 +1538,8 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                  
                 <button
                   aria-disabled="true"
-                  class="btn white--text submit-req ml-6 v-btn v-btn--depressed v-btn--disabled theme--light v-size--default primary normal disabled"
+                  class="btn white--text submit-req ml-6 v-btn v-btn--depressed v-btn--disabled theme--light v-size--default  primary  normal disabled"
+                  data-test-id="btn-submit-technical-req"
                   depressed=""
                   disabled="disabled"
                   name="button"

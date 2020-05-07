@@ -29,8 +29,15 @@ export class ProjectInfoService {
   public static async updateStatusOfProject(projectId: string, status: number) {
     const data = {
       status,
-      update: 'status'
+      update: 'status',
     };
     return await axios.patch(`${PROJECTINFO_URL}/${projectId}`, data);
+  }
+  /**
+   * delete project
+   * @param  {string} projectId
+   */
+  public static async deleteProject(projectId: string) {
+    return await axios.delete(`${PROJECTINFO_URL}/${projectId}`);
   }
 }

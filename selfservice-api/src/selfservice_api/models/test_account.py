@@ -31,25 +31,27 @@ class TestAccount(BaseModel, db.Model):
     attributes = db.Column(db.JSON(), nullable=True)
 
     @classmethod
-    def create_from_dict(cls, test_account_info: dict) -> TestAccount:
-        """Create a new test account from the provided dictionary."""
-        if test_account_info:
-            test_account = TestAccount()
-            test_account.project_id = test_account_info['project_id']
-            test_account.card_number = test_account_info['card_number']
-            test_account.passcode = test_account_info['passcode']
-            test_account.attributes = test_account_info['attributes']
+    def create_from_list(cls, test_accounts):
+        """Create test account's from list of dictionary."""
+        no_of_created = 0
+        if test_accounts:
+            for test_account_info in test_accounts:
+                card_number = test_account_info['card_number']
+                if not cls.find_by_card_number(card_number):
+                    test_account = TestAccount()
+                    test_account.card_number = card_number
+                    test_account.passcode = test_account_info['passcode']
+                    test_account.attributes = test_account_info['attributes']
+                    test_account.save()
+                    no_of_created = no_of_created + 1
 
-            test_account.save()
-
-            return test_account
-        return None
+        return no_of_created
 
     @classmethod
     def map_test_accounts(cls, project_id: int, no_of_accounts: int):
         """Find available test accounts and map to a project."""
         project_test_accounts = TestAccount.find_all_by_project_id(project_id)
-        if len(project_test_accounts) == 0:
+        if len(project_test_accounts) == 0 and no_of_accounts > 0:
             TestAccount._update_project_id_(project_id, no_of_accounts)
         else:
             if len(project_test_accounts) < no_of_accounts:
@@ -72,12 +74,22 @@ class TestAccount(BaseModel, db.Model):
         db.session.commit()
 
     @classmethod
+    def get_availability_count(cls):
+        """Get availability count of test account."""
+        return cls.query.filter(TestAccount.project_id.is_(None)).count()
+
+    @classmethod
     def find_all_by_project_id(cls, project_id):
         """Find test account that matches the provided id."""
         return cls.query.filter(TestAccount.project_id == project_id).all()
 
+    @classmethod
+    def find_by_card_number(cls, card_number):
+        """Find test account that matches the card_number."""
+        return cls.query.filter(TestAccount.card_number == card_number).first()
+
     def update(self, test_account_info: dict):
         """Update test account."""
-        self.update_from_dict(['project_id', 'card_number', 'passcode', 'attributes'],
+        self.update_from_dict(['project_id'],
                               test_account_info)
         self.commit()

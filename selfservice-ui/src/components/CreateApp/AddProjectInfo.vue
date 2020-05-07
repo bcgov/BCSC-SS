@@ -18,24 +18,11 @@
           <v-row dense>
             <v-col cols="12" md="12">
               <v-card class="pa-8 pt-6 ma-3">
-                <v-card-title class="headline bc-padding-left-0">
-                  {{
-                  $t('projectInfo.ProjectInfoTitle')
-                  }}
-                </v-card-title>
                 <v-card-subtitle
-                  class="text-left bc-padding-left-0"
+                  class="text-left bc-padding-left-0 page-info"
                   v-html="$t('projectInfo.ProjectInfoTitleInfo')"
                 ></v-card-subtitle>
-                <v-card-subtitle
-                  class="font-weight-bold text-left bc-padding-left-0"
-                >{{ $t('projectInfo.ProjectOrgTitle') }}</v-card-subtitle>
 
-                <v-card-subtitle class="text-left bc-padding-left-0">
-                  {{
-                  $t('projectInfo.OrganizationNameHint')
-                  }}
-                </v-card-subtitle>
                 <Input
                   v-model="organizationName"
                   :label="$t('projectInfo.OrganizationName')"
@@ -43,14 +30,12 @@
                   :rules="[
                     rules.required,
                     rules.length(2),
-                    rules.maxLength(100)
+                    rules.maxLength(100),
                   ]"
+                  :helpText="$t('projectInfo.OrganizationNameHint')"
+                  data-test-id="input-org-name"
                 />
-                <v-card-subtitle class="text-left bc-padding-left-0">
-                  {{
-                  $t('projectInfo.projectNameHint')
-                  }}
-                </v-card-subtitle>
+
                 <Input
                   v-model="projectName"
                   :label="$t('projectInfo.projectName')"
@@ -58,94 +43,22 @@
                   :rules="[
                     rules.required,
                     rules.length(2),
-                    rules.maxLength(100)
+                    rules.maxLength(100),
                   ]"
+                  :helpText="$t('projectInfo.projectNameHint')"
+                  data-test-id="input-project-name"
                 />
-                <v-card-subtitle class="text-left bc-padding-left-0">
-                  {{
-                  $t('projectInfo.DescriptionHint')
-                  }}
-                </v-card-subtitle>
+
                 <TextArea
                   v-model="description"
                   :label="$t('projectInfo.Description')"
                   type="text"
-                  :rules="[rules.required]"
+                  :rules="[rules.required, rules.maxLength(500)]"
                   outlined
+                  :helpText="$t('projectInfo.DescriptionHint')"
+                  data-test-id="text-project-description"
                 />
               </v-card>
-            </v-col>
-
-            <v-col cols="12">
-              <v-card class="pa-8 pt-6 ma-3">
-                <v-card-title class="headline bc-padding-left-0">
-                  {{
-                  $t('projectInfo.ProjectRoles')
-                  }}
-                </v-card-title>
-                <v-card-subtitle class="text-left bc-padding-left-0">
-                  {{
-                  $t('projectInfo.RolesTitleInfo')
-                  }}
-                </v-card-subtitle>
-                <v-radio-group v-model.number="myRole" row color="black">
-                  <span class="mr-2">{{ $t('projectInfo.myRole') }}</span>
-                  <v-radio class="black-color" v-bind:value="projectRoles.developer">
-                    <template v-slot:label>
-                      <span class="black-color">
-                        {{
-                        $t('projectInfo.DeveloperRole')
-                        }}
-                      </span>
-                    </template>
-                  </v-radio>
-                  <v-radio label="Manager" v-bind:value="projectRoles.manager">
-                    <template v-slot:label>
-                      <span class="black-color">
-                        {{
-                        $t('projectInfo.ManagerRole')
-                        }}
-                      </span>
-                    </template>
-                  </v-radio>
-                  <v-radio v-bind:value="projectRoles.cto">
-                    <template v-slot:label>
-                      <span class="black-color">
-                        {{
-                        $t('projectInfo.CTORole')
-                        }}
-                      </span>
-                    </template>
-                  </v-radio>
-                </v-radio-group>
-              </v-card>
-            </v-col>
-
-            <v-col cols="12" sm="6" v-if="myRole !== projectRoles.manager">
-              <ProjectUsers
-                :userDetails="getUserDetailsByRole(users, projectRoles.manager)"
-                :rules="rules"
-                :title="$t('projectInfo.ManagerRole')"
-                :hint="$t('projectInfo.managerHint')"
-              />
-            </v-col>
-            <v-col cols="12" sm="6" v-if="myRole !== projectRoles.cto">
-              <ProjectUsers
-                :userDetails="getUserDetailsByRole(users, projectRoles.cto)"
-                :rules="rules"
-                :title="$t('projectInfo.CTORole')"
-                :hint="$t('projectInfo.ctoHint')"
-              />
-            </v-col>
-            <v-col cols="12" sm="6" v-if="myRole !== projectRoles.developer">
-              <ProjectUsers
-                :userDetails="
-                  getUserDetailsByRole(users, projectRoles.developer)
-                "
-                :rules="rules"
-                :title="$t('projectInfo.DeveloperRole')"
-                :hint="$t('projectInfo.developerHint')"
-              />
             </v-col>
 
             <v-col cols="12">
@@ -154,19 +67,20 @@
                 <v-card-actions>
                   <v-spacer></v-spacer>
                   <Button
-                    @click="$router.push(`/project/${id}/summary/`)"
+                    @click="$router.push(`/project-container/${id}`)"
                     aria-label="Back Button"
                     secondary
                     v-if="!showWizardExperience()"
+                    data-test-id="btn-cancel-project-info"
                   >{{ $t('projectInfo.btnCancel') }}</Button>
                   <Button
                     :disabled="!form"
                     :loading="isLoading"
                     class="white--text submit-project"
-                    color="indigo accent-4"
                     depressed
                     @click="submitProjectInfo"
                     @keyup.enter="submitProjectInfo"
+                    data-test-id="btn-submit-project-info"
                   >
                     {{
                     $t(
@@ -188,18 +102,16 @@
 <script lang="ts">
 import { Component, Vue, Watch, Prop } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
-import { ProjectUserModel, ProjectInfoModel } from '@/models/ProjectInfoModel';
+import { ProjectInfoModel } from '@/models/ProjectInfoModel';
 import Input from '@/Atomic/Input/Input.vue';
 import TextArea from '@/Atomic/TextArea/TextArea.vue';
 import Button from '@/Atomic/Button/Button.vue';
-import ProjectUsers from './ProjectUsers.vue';
 import validationRules from '@/config/validationRules';
-import { projectRoles } from '@/constants/enums';
 
 const ProjectInfoModule = namespace('ProjectInfoModule');
 const SharedModule = namespace('SharedModule');
 
-@Component({ components: { Input, TextArea, Button, ProjectUsers } })
+@Component({ components: { Input, TextArea, Button } })
 export default class AddProjectInfo extends Vue {
   @Prop({ default: '' })
   public id!: string;
@@ -228,31 +140,6 @@ export default class AddProjectInfo extends Vue {
   private organizationName: string = '';
   private projectName: string = '';
   private description: string = '';
-  private myRole: number = 1;
-  private users: ProjectUserModel[] = [
-    {
-      email: '',
-      phone: '',
-      firstName: '',
-      lastName: '',
-      role: projectRoles.developer
-    },
-    {
-      email: '',
-      phone: '',
-      firstName: '',
-      lastName: '',
-      role: projectRoles.manager
-    },
-    {
-      email: '',
-      phone: '',
-      firstName: '',
-      lastName: '',
-      role: projectRoles.cto
-    }
-  ];
-  private projectRoles: any = projectRoles;
   private isEditMode: boolean = false;
   /* istanbul ignore next */
   private rules = validationRules;
@@ -263,17 +150,10 @@ export default class AddProjectInfo extends Vue {
   }
 
   private submitProjectInfo() {
-    // to fix change below line
-    const selectedUserIdx = this.users.filter(user => {
-      return user.role !== this.myRole;
-    });
-
     const data: ProjectInfoModel = {
       organizationName: this.organizationName,
       projectName: this.projectName,
-      description: this.description,
-      myRole: this.myRole,
-      users: selectedUserIdx
+      description: this.description
     };
 
     if (this.isEditMode) {
@@ -288,17 +168,10 @@ export default class AddProjectInfo extends Vue {
     }
   }
 
-  private getUserDetailsByRole(users: any, selectedRole: number) {
-    return users.find((userData: any) => userData.role === selectedRole);
-  }
-
   private updteEdit(val: any) {
     this.organizationName = val.organizationName;
     this.projectName = val.projectName;
     this.description = val.description;
-    this.myRole = val.myRole;
-    this.users = val.users;
-    // this.id = val.id;
     this.isEditMode = true;
   }
 
@@ -322,5 +195,11 @@ export default class AddProjectInfo extends Vue {
 <style lang="scss" scoped>
 .black-color {
   color: #000 !important;
+}
+.page-info {
+  padding-bottom: 0 !important;
+}
+.org-title {
+  padding-top: 0 !important;
 }
 </style>

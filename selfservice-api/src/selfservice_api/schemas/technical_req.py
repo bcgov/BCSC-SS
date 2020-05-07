@@ -13,7 +13,9 @@
 # limitations under the License.
 """This manages Technical Requirement Req/Res Schema."""
 
-from marshmallow import EXCLUDE, Schema, fields, validate
+from marshmallow import EXCLUDE, Schema, ValidationError, fields, validate, validates_schema
+
+from ..models.enums import EncryptedAlgorithm, EncryptedEncoding, SignedAlgorithm, SigningEncryptionType
 
 
 class TechnicalReqRequestSchema(Schema):
@@ -26,11 +28,54 @@ class TechnicalReqRequestSchema(Schema):
 
     id = fields.Int()
     project_id = fields.Int(data_key='projectId')
-    client_uri = fields.Str(data_key='clientUri', validate=validate.Length(max=500))
-    redirect_uris = fields.List(fields.String(), data_key='redirectUris', required=True)
-    jwks_uri = fields.Str(data_key='jwksUri', validate=validate.Length(max=500))
-    id_token_signed_response_alg = fields.Str(data_key='idTokenSignedResponseAlg', validate=validate.Length(max=10))
-    userinfo_signed_response_alg = fields.Str(data_key='userinfoSignedResponseAlg', validate=validate.Length(max=10))
+    client_uri = fields.Str(data_key='clientUri', required=True, validate=validate.Length(min=10, max=500))
+    redirect_uris = fields.List(fields.String(validate=validate.Length(min=10)),
+                                data_key='redirectUris', required=True, validate=validate.Length(min=1))
+    jwks_uri = fields.Str(data_key='jwksUri', required=False, validate=validate.Length(max=500), allow_none=True)
+
+    id_token_signed_response_alg = fields.Str(load_only=True, data_key='signedResponseAlg', allow_none=True)
+    userinfo_signed_response_alg = fields.Str(load_only=True, data_key='signedResponseAlg', allow_none=True)
+    id_token_encrypted_response_alg = fields.Str(load_only=True, data_key='encryptedResponseAlg', allow_none=True)
+    userinfo_encrypted_response_alg = fields.Str(load_only=True, data_key='encryptedResponseAlg', allow_none=True)
+    id_token_encrypted_response_enc = fields.Str(load_only=True, data_key='encryptedResponseEnc', allow_none=True)
+    userinfo_encrypted_response_enc = fields.Str(load_only=True, data_key='encryptedResponseEnc', allow_none=True)
+
+    signing_encryption_type = fields.Int(data_key='signingEncryptionType', required=True,
+                                         validate=validate.OneOf(list(map(int, SigningEncryptionType))))
+
+    # Encryption, Signing algorithm and Encryption encoding dumping to single field.
+    dump_signed_response_alg = fields.Str(dump_only=True, data_key='signedResponseAlg',
+                                          attribute='id_token_signed_response_alg')
+    dump_encrypted_response_alg = fields.Str(dump_only=True, data_key='encryptedResponseAlg',
+                                             attribute='id_token_encrypted_response_alg')
+    dump_encrypted_response_enc = fields.Str(dump_only=True, data_key='encryptedResponseEnc',
+                                             attribute='id_token_encrypted_response_enc')
+
+    @validates_schema
+    def validate_and_set_algorithm(self, data, **kwargs):  # pylint: disable=no-self-use
+        """Validate fields based on signing_encryption_type."""
+        if data['signing_encryption_type'] == SigningEncryptionType.SecureJWT:
+            errors = {}
+            if data['id_token_signed_response_alg'] not in SignedAlgorithm.list():
+                errors['signedResponseAlg'] = 'signedResponseAlg is required.'
+            if data['id_token_encrypted_response_alg'] not in EncryptedAlgorithm.list():
+                errors['encryptedResponseAlg'] = 'encryptedResponseAlg is required.'
+            if data['id_token_encrypted_response_enc'] not in EncryptedEncoding.list():
+                errors['encryptedResponseEnc'] = 'encryptedResponseEnc is required.'
+            if data['jwks_uri'] is None or len(data['jwks_uri'].strip()) <= 0:
+                errors['jwksUri'] = 'jwksUri is required.'
+            if errors:
+                raise ValidationError(errors)
+        elif data['signing_encryption_type'] == SigningEncryptionType.SignedJWT:
+            errors = {}
+            if data['id_token_signed_response_alg'] not in SignedAlgorithm.list():
+                errors['signedResponseAlg'] = 'signedResponseAlg is required.'
+            if errors:
+                raise ValidationError(errors)
+
+            data['id_token_encrypted_response_alg'] = data['userinfo_encrypted_response_alg'] = ''
+            data['id_token_encrypted_response_enc'] = data['userinfo_encrypted_response_enc'] = ''
+            data['jwks_uri'] = ''
 
 
 class TechnicalReqPackageSchema(Schema):

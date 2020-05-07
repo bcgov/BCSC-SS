@@ -24,6 +24,7 @@ services:
     depends_on:
       - db
     environment:
+      - FLASK_ENV=development
       - DATABASE_USERNAME=${DB_POSTGRES_USER}
       - DATABASE_PASSWORD=${DB_POSTGRES_PASSWORD}
       - DATABASE_NAME=${DB_POSTGRES_DB}
@@ -40,6 +41,12 @@ services:
       - DYNAMIC_TEST_API_TOKEN=${DYNAMIC_TEST_API_TOKEN}
       - DYNAMIC_PROD_API_URL=${DYNAMIC_PROD_API_URL}
       - DYNAMIC_PROD_API_TOKEN=${DYNAMIC_PROD_API_TOKEN}
+      - MAIL_SERVER=${MAIL_SERVER}
+      - MAIL_PORT=${MAIL_PORT}
+      - EMAIL_ID_FROM=${EMAIL_ID_FROM}
+      - EMAIL_ID_ANALYST=${EMAIL_ID_ANALYST}
+      - EMAIL_ID_CC=${EMAIL_ID_CC}
+      - EMAIL_ID_DEBUG=${EMAIL_ID_DEBUG}
   api:
     image: bscs_ss_api
     ports:
@@ -48,6 +55,7 @@ services:
     depends_on:
       - migration
     environment:
+      - FLASK_ENV=development
       - DATABASE_USERNAME=${DB_POSTGRES_USER}
       - DATABASE_PASSWORD=${DB_POSTGRES_PASSWORD}
       - DATABASE_NAME=${DB_POSTGRES_DB}
@@ -64,6 +72,12 @@ services:
       - DYNAMIC_TEST_API_TOKEN=${DYNAMIC_TEST_API_TOKEN}
       - DYNAMIC_PROD_API_URL=${DYNAMIC_PROD_API_URL}
       - DYNAMIC_PROD_API_TOKEN=${DYNAMIC_PROD_API_TOKEN}
+      - MAIL_SERVER=${MAIL_SERVER}
+      - MAIL_PORT=${MAIL_PORT}
+      - EMAIL_ID_FROM=${EMAIL_ID_FROM}
+      - EMAIL_ID_ANALYST=${EMAIL_ID_ANALYST}
+      - EMAIL_ID_CC=${EMAIL_ID_CC}
+      - EMAIL_ID_DEBUG=${EMAIL_ID_DEBUG}
   web:
     build:
       context: ./..
@@ -73,6 +87,7 @@ services:
         - KEYCLOAK_URL=${KEYCLOAK_URL}
         - KEYCLOAK_REALM=${KEYCLOAK_REALM}
         - KEYCLOAK_CLIENT=${KEYCLOAK_CLIENT}
+        - ENABLE_BETA=${ENABLE_BETA}
     ports:
       - '${WEB_PORT}:8080'
     depends_on:

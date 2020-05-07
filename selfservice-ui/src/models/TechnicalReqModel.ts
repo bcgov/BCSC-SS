@@ -4,6 +4,8 @@ export interface TechnicalReqModel {
   clientUri: string;
   redirectUris: string[];
   jwksUri: string;
-  idTokenSignedResponseAlg: string;
-  userinfoSignedResponseAlg: string;
+  encryptedResponseEnc: string | null;
+  encryptedResponseAlg: string | null;
+  signedResponseAlg: string | null;
+  signingEncryptionType: number;
 }

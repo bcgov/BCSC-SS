@@ -5,24 +5,28 @@
     <v-layout justify-center row wrap class="side-left-margin">
       <v-flex dark text-xs-center white--text xs12>
         <v-row justify="left" no-gutters>
-          <v-btn color="white" text>
-            Home
-          </v-btn>
-          <v-btn color="white" text>
-            Disclaimer
-          </v-btn>
-          <v-btn color="white" text>
-            Privacy
-          </v-btn>
-          <v-btn color="white" text>
-            Accessibility
-          </v-btn>
-          <v-btn color="white" text>
-            Copyright
-          </v-btn>
-          <v-btn color="white" text>
-            Contact Us
-          </v-btn>
+          <a href="/" class="footer-link">Home</a>
+          <a
+            href="https://www2.gov.bc.ca/gov/content/home/disclaimer"
+            class="footer-link"
+            target="_ss"
+          >Disclaimer</a>
+          <a
+            href="https://www2.gov.bc.ca/gov/content/home/privacy"
+            class="footer-link"
+            target="_ss"
+          >Privacy</a>
+          <a
+            href="https://www2.gov.bc.ca/gov/content/home/accessibility"
+            class="footer-link"
+            target="_ss"
+          >Accessibility</a>
+          <a
+            href="https://www2.gov.bc.ca/gov/content/home/copyright"
+            class="footer-link"
+            target="_ss"
+          >Copyright</a>
+          <a href="/contact-us" class="footer-link">Contact Us</a>
         </v-row>
       </v-flex>
     </v-layout>
@@ -44,13 +48,13 @@ footer {
   color: $BCgovWhite !important;
   padding: 4px 16px;
   z-index: 5;
-  @include sm {
-    // padding: 6px 65px 6px 65px;
-  }
 
-  .v-btn {
+  .footer-link {
+    padding: 10px 16px;
     border-radius: unset;
-    color: $BCgovWhite !important;
+    color: $BCgovWhite;
+    text-decoration: none;
+    font-size: 15px;
     @include sm {
       border-right: 1px solid $BCgovBlue3;
     }

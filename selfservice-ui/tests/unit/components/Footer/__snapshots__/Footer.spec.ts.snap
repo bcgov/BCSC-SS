@@ -25,77 +25,51 @@ exports[`Footer.vue renders props when passed 1`] = `
         nogutters="true"
         tag="div"
       >
-        <v-btn-stub
-          activeclass=""
-          color="white"
-          tag="button"
-          text="true"
-          type="button"
+        <a
+          class="footer-link"
+          href="/"
         >
-          
           Home
-        
-        </v-btn-stub>
+        </a>
          
-        <v-btn-stub
-          activeclass=""
-          color="white"
-          tag="button"
-          text="true"
-          type="button"
+        <a
+          class="footer-link"
+          href="https://www2.gov.bc.ca/gov/content/home/disclaimer"
+          target="_ss"
         >
-          
           Disclaimer
-        
-        </v-btn-stub>
+        </a>
          
-        <v-btn-stub
-          activeclass=""
-          color="white"
-          tag="button"
-          text="true"
-          type="button"
+        <a
+          class="footer-link"
+          href="https://www2.gov.bc.ca/gov/content/home/privacy"
+          target="_ss"
         >
-          
           Privacy
-        
-        </v-btn-stub>
+        </a>
          
-        <v-btn-stub
-          activeclass=""
-          color="white"
-          tag="button"
-          text="true"
-          type="button"
+        <a
+          class="footer-link"
+          href="https://www2.gov.bc.ca/gov/content/home/accessibility"
+          target="_ss"
         >
-          
           Accessibility
-        
-        </v-btn-stub>
+        </a>
          
-        <v-btn-stub
-          activeclass=""
-          color="white"
-          tag="button"
-          text="true"
-          type="button"
+        <a
+          class="footer-link"
+          href="https://www2.gov.bc.ca/gov/content/home/copyright"
+          target="_ss"
         >
-          
           Copyright
-        
-        </v-btn-stub>
+        </a>
          
-        <v-btn-stub
-          activeclass=""
-          color="white"
-          tag="button"
-          text="true"
-          type="button"
+        <a
+          class="footer-link"
+          href="/contact-us"
         >
-          
           Contact Us
-        
-        </v-btn-stub>
+        </a>
       </v-row-stub>
     </v-flex-stub>
   </v-layout-stub>

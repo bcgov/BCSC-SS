@@ -23,6 +23,12 @@ objects:
     JWT_OIDC_JWKS_CACHE_TIMEOUT: "${JWTOIDCJWKSCACHETIMEOUT}"
     DYNAMIC_TEST_API_URL: "${DYNAMIC_TEST_API_URL}"
     DYNAMIC_PROD_API_URL: "${DYNAMIC_PROD_API_URL}"
+    MAIL_SERVER: "${MAIL_SERVER}"
+    MAIL_PORT: "${MAIL_PORT}"
+    EMAIL_ID_FROM: "${EMAIL_ID_FROM}"
+    EMAIL_ID_ANALYST: "${EMAIL_ID_ANALYST_DEV}"
+    EMAIL_ID_CC: "${EMAIL_ID_CC_DEV}"
+    EMAIL_ID_DEBUG: "${EMAIL_ID_DEBUG}"
 - kind: ConfigMap
   apiVersion: v1
   metadata:
@@ -41,6 +47,12 @@ objects:
     JWT_OIDC_JWKS_CACHE_TIMEOUT: "${JWTOIDCJWKSCACHETIMEOUT}"
     DYNAMIC_TEST_API_URL: "${DYNAMIC_TEST_API_URL}"
     DYNAMIC_PROD_API_URL: "${DYNAMIC_PROD_API_URL}"
+    MAIL_SERVER: "${MAIL_SERVER}"
+    MAIL_PORT: "${MAIL_PORT}"
+    EMAIL_ID_FROM: "${EMAIL_ID_FROM}"
+    EMAIL_ID_ANALYST: "${EMAIL_ID_ANALYST}"
+    EMAIL_ID_CC: "${EMAIL_ID_CC}"
+    EMAIL_ID_DEBUG: "${EMAIL_ID_DEBUG}"
 - kind: ConfigMap
   apiVersion: v1
   metadata:
@@ -59,6 +71,12 @@ objects:
     JWT_OIDC_JWKS_CACHE_TIMEOUT: "${JWTOIDCJWKSCACHETIMEOUT}"
     DYNAMIC_TEST_API_URL: "${DYNAMIC_TEST_API_URL}"
     DYNAMIC_PROD_API_URL: "${DYNAMIC_PROD_API_URL}"
+    MAIL_SERVER: "${MAIL_SERVER}"
+    MAIL_PORT: "${MAIL_PORT}"
+    EMAIL_ID_FROM: "${EMAIL_ID_FROM}"
+    EMAIL_ID_ANALYST: "${EMAIL_ID_ANALYST}"
+    EMAIL_ID_CC: "${EMAIL_ID_CC}"
+    EMAIL_ID_DEBUG: "${EMAIL_ID_DEBUG}"
 parameters:
 - name: WEB_NAME
   displayName: Name
@@ -175,3 +193,30 @@ parameters:
   description: Dynamic API Prod Url.
   required: true
   value: "https://idtest.gov.bc.ca"
+- name: MAIL_SERVER
+  description: BC GOV MAIL SERVER
+  required: true
+  value: "apps.smtp.gov.bc.ca"
+- name: MAIL_PORT
+  description: BC GOV MAIL SERVER PORT
+  required: true
+  value: "25"
+- name: EMAIL_ID_FROM
+  description: NOREPLY email ID
+  required: true
+  value: "noreply.bcservicescard.selfservice@gov.bc.ca"
+- name: EMAIL_ID_ANALYST_DEV
+  description: Analyst email ID
+  value: "vysakh.menon@gov.bc.ca"
+- name: EMAIL_ID_CC_DEV
+  description: Comma seperated N number of email ID
+  value: "vysakh.menon@gov.bc.ca"
+- name: EMAIL_ID_ANALYST
+  description: Analyst email ID
+  value: "zorin.samji@gov.bc.ca"
+- name: EMAIL_ID_CC
+  description: Comma seperated N number of email ID
+  value: "zorin.samji@gov.bc.ca"
+- name: EMAIL_ID_DEBUG
+  description: Debug email ID
+  value: ""

@@ -1,0 +1,532 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProjectActions.vue renders props on click of Live access 1`] = `
+<div>
+  <div
+    class="d-flex justify-end col col-12"
+    no-gutters=""
+  >
+    <div
+      class="v-card v-card--flat v-sheet theme--light"
+    >
+      <button
+        class="btn btn-req v-btn v-btn--contained theme--light v-size--default  secondary-btn  normal"
+        name="button"
+        type="button"
+      >
+        <span
+          class="v-btn__content"
+        >
+          
+        </span>
+      </button>
+    </div>
+  </div>
+   
+  <div
+    class="d-flex justify-end btn-delete pad-0 col"
+    no-gutters=""
+  >
+    <i
+      aria-hidden="true"
+      class="v-icon notranslate ml-2 icon-delete mdi mdi-delete theme--light"
+      style="font-size: 16px;"
+    />
+    
+    
+  
+  </div>
+   
+  <div
+    class="col"
+  >
+    <div
+      class="v-dialog__container"
+      role="dialog"
+    >
+      <div
+        class="v-dialog__content v-dialog__content--active"
+        role="document"
+        style="z-index: 202;"
+        tabindex="0"
+      >
+        <div
+          class="v-dialog v-dialog--active v-dialog--persistent"
+          style="max-width: 70%;"
+        >
+          <div
+            class="v-card v-sheet theme--light"
+          >
+            <header
+              class="bc-subtitle v-sheet v-sheet--tile theme--dark v-toolbar v-toolbar--flat"
+              style="height: 64px;"
+            >
+              <div
+                class="v-toolbar__content"
+                style="height: 64px;"
+              >
+                <div
+                  class="v-toolbar__title"
+                >
+                  
+            
+          
+                </div>
+              </div>
+            </header>
+             
+            <div
+              class="v-card__text text-left ma-8"
+            />
+             
+            <div
+              class="v-card__actions pb-10"
+            >
+              <div
+                class="spacer"
+              />
+               
+              <button
+                class="btn v-btn v-btn--flat v-btn--text theme--light v-size--default  secondary-btn  normal"
+                name="button"
+                text=""
+                type="button"
+              >
+                <span
+                  class="v-btn__content"
+                >
+                  
+            
+          
+                </span>
+              </button>
+               
+              <button
+                class="btn btn-live v-btn v-btn--flat v-btn--text theme--light v-size--default  primary  normal"
+                name="button"
+                text=""
+                type="button"
+              >
+                <span
+                  class="v-btn__content"
+                >
+                  
+            
+          
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+    <div
+      class="v-dialog__container"
+      role="dialog"
+    >
+      <div
+        class="v-dialog__content"
+        role="document"
+        style="z-index: 0;"
+      >
+        <div
+          class="v-dialog v-dialog--persistent"
+          style="max-width: 70%; display: none;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ProjectActions.vue renders props on click of delete 1`] = `
+<div>
+  <!---->
+   
+  <div
+    class="d-flex justify-end btn-delete pad-0 col"
+    no-gutters=""
+  >
+    <i
+      aria-hidden="true"
+      class="v-icon notranslate ml-2 icon-delete mdi mdi-delete theme--light"
+      style="font-size: 16px;"
+    />
+    
+    
+  
+  </div>
+   
+  <div
+    class="col"
+  >
+    <div
+      class="v-dialog__container"
+      role="dialog"
+    >
+      <div
+        class="v-dialog__content"
+        role="document"
+        style="z-index: 0;"
+      >
+        <div
+          class="v-dialog v-dialog--persistent"
+          style="max-width: 70%; display: none;"
+        />
+      </div>
+    </div>
+     
+    <div
+      class="v-dialog__container"
+      role="dialog"
+    >
+      <div
+        class="v-dialog__content v-dialog__content--active"
+        role="document"
+        style="z-index: 202;"
+        tabindex="0"
+      >
+        <div
+          class="v-dialog v-dialog--active v-dialog--persistent"
+          style="max-width: 70%;"
+        >
+          <div
+            class="v-card v-sheet theme--light"
+          >
+            <header
+              class="bc-subtitle v-sheet v-sheet--tile theme--dark v-toolbar v-toolbar--flat"
+              style="height: 64px;"
+            >
+              <div
+                class="v-toolbar__content"
+                style="height: 64px;"
+              >
+                <div
+                  class="v-toolbar__title"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="v-icon notranslate ml-2 mdi mdi-delete theme--dark"
+                    medium=""
+                  />
+                  
+            
+          
+                </div>
+              </div>
+            </header>
+             
+            <div
+              class="v-card__text text-left ma-8"
+            />
+             
+            <div
+              class="v-card__actions pb-10"
+            >
+              <div
+                class="spacer"
+              />
+               
+              <button
+                class="btn v-btn v-btn--flat v-btn--text theme--light v-size--default  secondary-btn  normal"
+                name="button"
+                text=""
+                type="button"
+              >
+                <span
+                  class="v-btn__content"
+                >
+                  
+            
+          
+                </span>
+              </button>
+               
+              <button
+                class="btn dialog-delete v-btn v-btn--flat v-btn--text theme--light v-size--default  primary  normal"
+                name="button"
+                text=""
+                type="button"
+              >
+                <span
+                  class="v-btn__content"
+                >
+                  
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ProjectActions.vue renders props on click of delete 2`] = `
+<div>
+  <!---->
+   
+  <div
+    class="d-flex justify-end btn-delete pad-0 col"
+    no-gutters=""
+  >
+    <i
+      aria-hidden="true"
+      class="v-icon notranslate ml-2 icon-delete mdi mdi-delete theme--light"
+      style="font-size: 16px;"
+    />
+    
+    
+  
+  </div>
+   
+  <div
+    class="col"
+  >
+    <div
+      class="v-dialog__container"
+      role="dialog"
+    >
+      <div
+        class="v-dialog__content v-dialog__content--active"
+        role="document"
+        style="z-index: 202;"
+        tabindex="0"
+      >
+        <div
+          class="v-dialog v-dialog--active v-dialog--persistent"
+          style="max-width: 70%;"
+        >
+          <div
+            class="v-card v-sheet theme--light"
+          >
+            <header
+              class="bc-subtitle v-sheet v-sheet--tile theme--dark v-toolbar v-toolbar--flat"
+              style="height: 64px;"
+            >
+              <div
+                class="v-toolbar__content"
+                style="height: 64px;"
+              >
+                <div
+                  class="v-toolbar__title"
+                >
+                  
+            
+          
+                </div>
+              </div>
+            </header>
+             
+            <div
+              class="v-card__text text-left ma-8"
+            />
+             
+            <div
+              class="v-card__actions pb-10"
+            >
+              <div
+                class="spacer"
+              />
+               
+              <button
+                class="btn v-btn v-btn--flat v-btn--text theme--light v-size--default  secondary-btn  normal"
+                name="button"
+                text=""
+                type="button"
+              >
+                <span
+                  class="v-btn__content"
+                >
+                  
+            
+          
+                </span>
+              </button>
+               
+              <button
+                class="btn btn-live v-btn v-btn--flat v-btn--text theme--light v-size--default  primary  normal"
+                name="button"
+                text=""
+                type="button"
+              >
+                <span
+                  class="v-btn__content"
+                >
+                  
+            
+          
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+    <div
+      class="v-dialog__container"
+      role="dialog"
+    >
+      <div
+        class="v-dialog__content"
+        role="document"
+        style="z-index: 0;"
+      >
+        <div
+          class="v-dialog v-dialog--persistent"
+          style="max-width: 70%; display: none;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ProjectActions.vue renders props when passed 1`] = `
+<div>
+  <!---->
+   
+  <div
+    class="d-flex justify-end btn-delete pad-0 col"
+    no-gutters=""
+  >
+    <i
+      aria-hidden="true"
+      class="v-icon notranslate ml-2 icon-delete mdi mdi-delete theme--light"
+      style="font-size: 16px;"
+    />
+    
+    
+  
+  </div>
+   
+  <!---->
+</div>
+`;
+
+exports[`ProjectActions.vue renders props when passed with gettors 1`] = `
+<div>
+  <!---->
+   
+  <div
+    class="d-flex justify-end btn-delete pad-0 col"
+    no-gutters=""
+  >
+    <i
+      aria-hidden="true"
+      class="v-icon notranslate ml-2 icon-delete mdi mdi-delete theme--light"
+      style="font-size: 16px;"
+    />
+    
+    
+  
+  </div>
+   
+  <div
+    class="col"
+  >
+    <div
+      class="v-dialog__container"
+      role="dialog"
+    >
+      <div
+        class="v-dialog__content"
+        role="document"
+        style="z-index: 0;"
+      >
+        <div
+          class="v-dialog v-dialog--persistent"
+          style="max-width: 70%; display: none;"
+        />
+      </div>
+    </div>
+     
+    <div
+      class="v-dialog__container"
+      role="dialog"
+    >
+      <div
+        class="v-dialog__content v-dialog__content--active"
+        role="document"
+        style="z-index: 202;"
+        tabindex="0"
+      >
+        <div
+          class="v-dialog v-dialog--active v-dialog--persistent"
+          style="max-width: 70%;"
+        >
+          <div
+            class="v-card v-sheet theme--light"
+          >
+            <header
+              class="bc-subtitle v-sheet v-sheet--tile theme--dark v-toolbar v-toolbar--flat"
+              style="height: 64px;"
+            >
+              <div
+                class="v-toolbar__content"
+                style="height: 64px;"
+              >
+                <div
+                  class="v-toolbar__title"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="v-icon notranslate ml-2 mdi mdi-delete theme--dark"
+                    medium=""
+                  />
+                  
+            
+          
+                </div>
+              </div>
+            </header>
+             
+            <div
+              class="v-card__text text-left ma-8"
+            />
+             
+            <div
+              class="v-card__actions pb-10"
+            >
+              <div
+                class="spacer"
+              />
+               
+              <button
+                class="btn v-btn v-btn--flat v-btn--text theme--light v-size--default  secondary-btn  normal"
+                name="button"
+                text=""
+                type="button"
+              >
+                <span
+                  class="v-btn__content"
+                >
+                  
+            
+          
+                </span>
+              </button>
+               
+              <button
+                class="btn dialog-delete v-btn v-btn--flat v-btn--text theme--light v-size--default  primary  normal"
+                name="button"
+                text=""
+                type="button"
+              >
+                <span
+                  class="v-btn__content"
+                >
+                  
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

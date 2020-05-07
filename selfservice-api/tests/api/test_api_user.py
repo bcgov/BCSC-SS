@@ -16,7 +16,7 @@
 from http import HTTPStatus
 
 from ..helper.api_create_data import USER_API, _create_user_, _get_user_
-from ..helper.auth import ss_admin_auth_header, ss_client_auth_header
+from ..helper.auth import invalid_email_auth_header, ss_admin_auth_header, ss_client_auth_header
 
 
 def test_post_user(client, jwt, session):
@@ -27,8 +27,24 @@ def test_post_user(client, jwt, session):
 
 def test_post_user_validation(client, jwt, session):
     """Assert that the endpoint returns the bad request."""
-    response = _create_user_(client, jwt, invalid_data=True)
+    response = _create_user_(client, jwt, invalid_email=True)
     assert response.status_code == HTTPStatus.BAD_REQUEST
+    response = _create_user_(client, jwt, email_none=True)
+    assert response.status_code == HTTPStatus.BAD_REQUEST
+
+    response = _create_user_(client, jwt, invalid_phone=True)
+    assert response.status_code == HTTPStatus.BAD_REQUEST
+
+
+def test_put_user(client, jwt, session):
+    """Assert that the endpoint returns the success status."""
+    response = _create_user_(client, jwt)
+    headers = ss_client_auth_header(jwt)
+
+    response = client.put(USER_API,
+                          headers=headers, content_type='application/json')
+
+    assert response.status_code == HTTPStatus.OK
 
 
 def test_get_user(client, jwt, session):
@@ -45,6 +61,11 @@ def test_get_user_email(client, jwt, session):
     response = client.get(USER_API,
                           headers=headers, content_type='application/json')
 
+    assert response.status_code == HTTPStatus.OK
+
+    headers = invalid_email_auth_header(jwt)
+    response = client.get(USER_API,
+                          headers=headers, content_type='application/json')
     assert response.status_code == HTTPStatus.OK
 
 

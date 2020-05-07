@@ -20,47 +20,87 @@ from flask import g
 from flask_jwt_oidc import JwtManager
 
 from ..exceptions import BusinessException
-from ..models import User
-from ..models.project import ProjectUsersAssociation
+from ..models import ProjectUsersAssociation, User
 from .roles import Role
 
 
 jwt = JwtManager()  # pylint: disable=invalid-name; lower case name as used by convention in most Flask apps
 
 
-def can_access_project(project_roles):
-    """User should have one of the roles on the project.
+class Auth():
+    """Extending JwtManager to include additional functionalities."""
 
-    Args:
-        roles [str,]: Comma separated list of valid roles
-    """
-    def decorated(f):
+    @classmethod
+    def require(cls, f):
+        """Validate the Bearer Token and User in database."""
+        @jwt.requires_auth
         @wraps(f)
-        def wrapper(*args, **kwargs):
-            if is_client_role():
-                token_info = g.jwt_oidc_token_info
-                user = User.find_by_oauth_id(token_info.get('sub'))
+        def decorated(*args, **kwargs):
+            token_info = g.jwt_oidc_token_info
+            user = User.find_by_oauth_id(token_info.get('sub'))
+            if user:
+                g.user = user
+                return f(*args, **kwargs)
 
-                if user is not None:
-                    project_id = kwargs.get('project_id')
-                    associations = ProjectUsersAssociation.find_all(project_id, user.id)
-                    if associations is not None:
-                        roles = [association.role for association in associations]
-                        if all(elem in project_roles for elem in roles):
-                            return f(*args, **kwargs)
+            raise BusinessException('Access Denied', HTTPStatus.UNAUTHORIZED)
+
+        return decorated
+
+    @classmethod
+    def has_one_of_roles(cls, roles):
+        """Check that at least one of the realm roles are in the token by extending Auth.require.
+
+        Args:
+            roles [str,]: Comma separated list of valid roles
+        """
+        def decorated(f):
+            @Auth.require
+            @wraps(f)
+            def wrapper(*args, **kwargs):
+                if jwt.contains_role(roles):
+                    return f(*args, **kwargs)
                 raise BusinessException('Access Denied', HTTPStatus.UNAUTHORIZED)
+            return wrapper
+        return decorated
 
-            return f(*args, **kwargs)
-        return wrapper
-    return decorated
+    @classmethod
+    def can_access_project(cls, project_roles):
+        """User should have one of the roles on the project.
+
+        If the user is in `ss_admin` role it will skip the check and grand permission.
+        Args:
+            project_roles [str,]: Comma separated list of valid ProjectRole (enum)
+        """
+        def decorated(f):
+            @Auth.require
+            @wraps(f)
+            def wrapper(*args, **kwargs):
+                if Auth.is_client_role():
+                    user = g.user
+
+                    if user is not None:
+                        project_id = kwargs.get('project_id')
+                        associations = ProjectUsersAssociation.find_all_by_project_and_user_id(project_id, user.id)
+                        if associations is not None and not associations[0].project.is_deleted:
+                            roles = [association.role for association in associations]
+                            if all(elem in project_roles for elem in roles):
+                                return f(*args, **kwargs)
+                    raise BusinessException('Access Denied', HTTPStatus.UNAUTHORIZED)
+
+                return f(*args, **kwargs)
+            return wrapper
+        return decorated
+
+    @classmethod
+    def is_client_role(cls):
+        """Return True if the JWT relam roles contains ss_client and doesn't contain ss_admin."""
+        token_info = g.jwt_oidc_token_info
+
+        realm_access = token_info.get('realm_access')
+        if Role.ss_admin not in realm_access.get('roles') and Role.ss_client in realm_access.get('roles'):
+            return True
+
+        return False
 
 
-def is_client_role():
-    """Return True if the JWT relam roles contains ss_client and doesn't contain ss_admin."""
-    token_info = g.jwt_oidc_token_info
-
-    realm_access = token_info.get('realm_access')
-    if Role.ss_admin not in realm_access.get('roles') and Role.ss_client in realm_access.get('roles'):
-        return True
-
-    return False
+auth = Auth()  # pylint: disable=invalid-name; lower case name as used by convention in most Flask apps

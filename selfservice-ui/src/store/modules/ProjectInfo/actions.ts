@@ -6,6 +6,9 @@ import i18n from '../../../i18n';
 import { ProjectInfoService } from '@/services/ProjectInfoService';
 import router from '@/router';
 
+let projectCallInProgress = false;
+let lastProjectId = 0;
+
 /**
  * projectinfo Actions
  *
@@ -25,7 +28,7 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
       commit('SET_PROJECTINFO_MESSAGE', i18n.t('PROJECTINFO_ADD_MESSAGE'));
       commit('SET_EDIT_PROJECTINFO', projectinfo.data);
       const id = projectinfo.data.id;
-      router.push(`/project/${id}/technical/`);
+      router.push(`/project/${id}/team/`);
       // dispatch('loadProjectInfo');
     } catch {
       commit('SET_PROJECTINFO_SUCCESSFULLY', false);
@@ -62,15 +65,26 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
    * load single projectinfo   by id from server and set to store
    * @param {*} { commit }
    */
+
   async loadSingleProjectInfo({ commit }, id) {
     commit('SET_LOADING', true);
-    try {
-      const projectinfo = await ProjectInfoService.getProjectInfoById(id);
-      commit('SET_EDIT_PROJECTINFO', projectinfo.data);
-      commit('SET_LOADING', false);
-    } catch {
-      commit('SET_PROJECTINFO_SUCCESSFULLY', false);
-      commit('SET_PROJECTINFO_ERROR', true);
+    if (!projectCallInProgress) {
+      if (lastProjectId !== id) {
+        projectCallInProgress = true;
+        lastProjectId = id;
+      }
+      try {
+        const projectinfo = await ProjectInfoService.getProjectInfoById(id);
+        commit('SET_EDIT_PROJECTINFO', projectinfo.data);
+        commit('SET_LOADING', false);
+        projectCallInProgress = false;
+        lastProjectId = 0;
+      } catch {
+        commit('SET_PROJECTINFO_SUCCESSFULLY', false);
+        commit('SET_PROJECTINFO_ERROR', true);
+        projectCallInProgress = false;
+        lastProjectId = 0;
+      }
     }
   },
   /**
@@ -82,16 +96,19 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
     commit('SET_LOADING', true);
     try {
       // const { data, redirect } = projectData;
-      const isRedirectFromSummaryPage = rootState.SharedModule.isSummaryPage;
-      const redirect = !isRedirectFromSummaryPage ? 'technical' : 'summary';
       const { id } = data;
+      const isRedirectFromSummaryPage = rootState.SharedModule.isSummaryPage;
+      const redirect = !isRedirectFromSummaryPage
+        ? `/project/${id}/team/`
+        : `/project-container/${id}/`;
+
       await ProjectInfoService.updateProjectInfo(data);
       commit('SET_LOADING', false);
       commit('SET_PROJECTINFO_SUCCESSFULLY', true);
       commit('SET_PROJECTINFO_ERROR', false);
       commit('SET_PROJECTINFO_MESSAGE', i18n.t('PROJECTINFO_UPDATE_MESSAGE'));
       dispatch('loadProjectInfo');
-      router.push(`/project/${id}/${redirect}/`);
+      router.push(redirect);
     } catch {
       commit('SET_LOADING', false);
       commit('SET_PROJECTINFO_SUCCESSFULLY', false);
@@ -105,13 +122,28 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
    * @param {*} { commit }
    */
 
-  async submitProject({ commit, rootState }, data) {
+  async submitProject({ commit, dispatch }, data) {
     commit('SET_LOADING', true);
     try {
       const { projectId } = data;
-      // const packageData =
-      await ProjectInfoService.updateStatusOfProject(projectId, 2);
-      // router.push(`/project/${projectId}/summary/`);
+      const response = await ProjectInfoService.updateStatusOfProject(
+        projectId,
+        2
+      );
+      if (response.data.testAccountSuccess) {
+        commit('SET_TEST_ACCOUNT_SUCCESS', true);
+      } else {
+        commit('SET_TEST_ACCOUNT_SUCCESS', false);
+      }
+      if (response.data.isCreated) {
+        commit('SET_IS_CREATED', true);
+        commit('SET_IS_UPDATED', false);
+      }
+      if (response.data.isUpdated) {
+        commit('SET_IS_UPDATED', true);
+        commit('SET_IS_CREATED', false);
+      }
+      dispatch('loadSingleProjectInfo', projectId);
       commit('SET_PROJECT_SUBMIT_ERROR', false);
       commit('SET_PROJECT_SUBMIT_SUCESS', true);
       commit('SET_LOADING', false);
@@ -128,5 +160,45 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
   clearSubmitProjectStatus({ commit }) {
     commit('SET_PROJECT_SUBMIT_SUCESS', false);
     commit('SET_PROJECT_SUBMIT_ERROR', false);
-  }
+  },
+
+  /**
+   * updateProjectStatus to server
+   * @param {*} { commit }
+   */
+  async updateProjectStatus({ commit, dispatch }, data) {
+    commit('SET_LOADING', true);
+    try {
+      const { projectId, statusId } = data;
+      await ProjectInfoService.updateStatusOfProject(projectId, statusId);
+      dispatch('loadSingleProjectInfo', projectId);
+      commit('SET_STATUS_CHANGE_ERROR', false);
+      commit('SET_STATUS_CHANGE_SUCESS', true);
+      commit('SET_LOADING', false);
+    } catch {
+      commit('SET_STATUS_CHANGE_SUCESS', false);
+      commit('SET_STATUS_CHANGE_ERROR', true);
+      commit('SET_LOADING', false);
+    }
+  },
+  /**
+   * delete Project
+   * @param {*} { commit }
+   */
+  async deleteProject({ commit }, data) {
+    commit('SET_LOADING', true);
+    try {
+      const { projectId } = data;
+      commit('SET_DELETE_SUCESS', false);
+      await ProjectInfoService.deleteProject(projectId);
+
+      commit('SET_DELETE_ERROR', false);
+      commit('SET_DELETE_SUCESS', true);
+      commit('SET_LOADING', false);
+    } catch {
+      commit('SET_DELETE_SUCESS', false);
+      commit('SET_DELETE_ERROR', true);
+      commit('SET_LOADING', false);
+    }
+  },
 };

@@ -10,6 +10,7 @@ $gray6: #868e96;
 $gray7: #495057;
 $gray8: #343a40;
 $gray9: #212529;
+$gray10: #707070;
 
 // BC GOV BLUE PALETTE
 $BCgovBlue0: #e0e7ed;
@@ -53,6 +54,7 @@ $BCgovInputError: #ff5252;
 
 // Form Inputs
 $BCgovInputBG: #ffffff;
+$succssGreen: #2e8540;
 
 // Font Colors
 $BCgovFontColorInverted: #ffffff;
@@ -63,3 +65,7 @@ $BCgovWhite: #ffffff;
 $BCgovBlack: #000000;
 
 $BCgovActiveBg: #e2e2e2;
+
+$draftstatus: #f2f2f2;
+$liveReqStatus: $BCgovGold5;
+$liveStatus: $succssGreen;

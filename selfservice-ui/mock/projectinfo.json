@@ -35,8 +35,8 @@
       "clientUri": "uri",
       "redirectUris": [],
       "jwksUri": "uri",
-      "idTokenSignedResponseAlg": "RS256",
-      "userinfoSignedResponseAlg": "RS256",
+      "encryptedResponseAlg": "RS256",
+      "signedResponseAlg": "RS256",
       "scopePackageId": 1,
       "noOfTestAccount": 5,
       "noteTestAccount": "additional note"

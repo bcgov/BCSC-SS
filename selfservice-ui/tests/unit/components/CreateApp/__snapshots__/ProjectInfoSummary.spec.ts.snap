@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProjectInfoSummary.vue renders props when passed with gettors 1`] = `
+<v-card-stub
+  loaderheight="4"
+  tag="div"
+>
+  <loading-stub />
+   
+  <!---->
+</v-card-stub>
+`;

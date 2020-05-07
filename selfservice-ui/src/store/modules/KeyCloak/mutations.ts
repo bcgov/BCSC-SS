@@ -67,6 +67,9 @@ export const mutations: MutationTree<KeyCloakState> = {
   SET_FIELDS_TO_SHOW(state, fields: any) {
     state.fields = fields;
   },
+  SET_PROVIDER(state, provider: string) {
+    state.provider = provider;
+  },
   /**
    * set stae on success
    * @param {*} state
@@ -83,5 +86,13 @@ export const mutations: MutationTree<KeyCloakState> = {
    */
   SET_USER_ERROR(state, payload: any) {
     state.errorStatus = payload;
-  }
+  },
+  /**
+   * set stae on error
+   * @param {*} state
+   * @param {*} payload
+   */
+  SET_PROFILE_DOMAIN_ERROR(state, payload: any) {
+    state.profileErrorStatus = payload;
+  },
 };

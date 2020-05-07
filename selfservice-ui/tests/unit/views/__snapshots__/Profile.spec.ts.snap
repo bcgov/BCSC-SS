@@ -4,6 +4,8 @@ exports[`Profile.vue renders props when passed 1`] = `
 <div
   class="home"
 >
-  <profile-stub />
+  <profile-stub
+    step=""
+  />
 </div>
 `;

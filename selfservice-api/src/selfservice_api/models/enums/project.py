@@ -13,49 +13,25 @@
 # limitations under the License.
 """This manages Project Enums."""
 
-from enum import Enum, IntEnum
+from .base_enum import ExtendedIntEnum
 
 
-class ProjectRoles(IntEnum):
-    """This Enum provides the list of Project Roles."""
+class ProjectRoles(ExtendedIntEnum):
+    """This enum provides the list of Project Roles."""
 
-    Developer = 1
-    Manager = 2
-    Cto = 3
+    Developer = 1, 'Developer'
+    Manager = 2, 'Manager'
+    Cto = 3, 'Executive Sponsor'
 
 
-class ProjectStatus(IntEnum):
-    """This Enum provides the list of Project Status."""
-
-    def __new__(cls, value, phrase=''):
-        """Customize the value to include phrase."""
-        obj = int.__new__(cls, value)
-        obj._value_ = value
-
-        obj.phrase = phrase
-        return obj
+class ProjectStatus(ExtendedIntEnum):
+    """This enum provides the list of Project Status."""
 
     Draft = 1, 'Draft'
     Development = 2, 'Development'
-
-    @staticmethod
-    def get_phrase(value):
-        """Get phrase by value."""
-        return ProjectStatus(value).phrase
-
-
-class Algorithms(Enum):
-    """This enum provides the list of Algorithms supported by Dynamic API."""
-
-    HS256 = 'HS256'
-    HS384 = 'HS384'
-    HS512 = 'HS512'
-    RS256 = 'RS256'
-    RS384 = 'RS384'
-    RS512 = 'RS512'
-    ES256 = 'ES256'
-    ES384 = 'ES384'
-    ES512 = 'ES512'
-    PS256 = 'PS256'
-    PS384 = 'PS384'
-    PS512 = 'PS512'
+    DevelopmentComplete = 3, 'Development Complete'
+    ComplianceChecks = 4, 'Compliance Checks'
+    AwaitingApproval = 5, 'Awaiting Approval'
+    PrepareProdTechConfig = 6, 'Prepare Prod Tech Config'
+    RequireIDIMEDApproval = 7, 'Require IDIM ED Approval'
+    ApprovalGranted = 8, 'Approval Granted'

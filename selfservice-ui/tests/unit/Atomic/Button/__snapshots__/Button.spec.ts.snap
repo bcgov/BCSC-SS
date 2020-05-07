@@ -3,7 +3,7 @@
 exports[`Button.vue renders props when passed 1`] = `
 <v-btn-stub
   activeclass=""
-  class="btn primary normal"
+  class="btn  primary  normal"
   name="button"
   tag="button"
   type="button"

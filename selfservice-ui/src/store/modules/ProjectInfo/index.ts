@@ -16,13 +16,18 @@ export const state: ProjectInfoState = {
   singleProjectInfo: {
     organizationName: '',
     projectName: '',
-    myRole: 0,
     description: '',
-    users: []
   },
   message: '',
   finalSuccessStatus: false,
-  finalErrorStatus: false
+  finalErrorStatus: false,
+  testAccountSuccess: true,
+  statusChangeError: false,
+  statusChangeSuccess: false,
+  deleteProjectError: false,
+  deleteProjectSuccess: false,
+  isCreated: false,
+  isUpdated: false,
 };
 
 const namespaced: boolean = true;
@@ -32,7 +37,7 @@ const ProjectInfoModule: Module<ProjectInfoState, RootState> = {
   state,
   getters,
   actions,
-  mutations
+  mutations,
 };
 
 export default ProjectInfoModule;

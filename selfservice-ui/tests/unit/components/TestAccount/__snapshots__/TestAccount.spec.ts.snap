@@ -1,0 +1,132 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TestAccount.vue renders props when passed with gettors 1`] = `
+<v-card-stub
+  class="mx-auto outer-card"
+  loaderheight="4"
+  tag="div"
+>
+  <v-toolbar-stub
+    class="bc-subtitle padding-0"
+    dark="true"
+    extensionheight="48"
+    flat="true"
+    src=""
+    tag="header"
+    tile="true"
+  >
+    <v-btn-stub
+      activeclass=""
+      icon="true"
+      tag="button"
+      type="button"
+    >
+      <v-icon-stub>
+        mdi-arrow-left
+      </v-icon-stub>
+    </v-btn-stub>
+     
+    <v-toolbar-title-stub>
+      
+    </v-toolbar-title-stub>
+     
+    <div
+      class="flex-grow-1"
+    />
+     
+    <div
+      class="flex-grow-1"
+    />
+  </v-toolbar-stub>
+   
+  <v-divider-stub />
+   
+  <v-item-group-stub
+    activeclass="v-item--active"
+    mandatory="true"
+  >
+    <v-container-stub
+      tag="div"
+    >
+      <v-row-stub
+        class="mx-4"
+        tag="div"
+      >
+        <v-col-stub
+          cols="12"
+          flat=""
+          tag="div"
+        >
+          <v-card-stub
+            flat="true"
+            loaderheight="4"
+            tag="div"
+          >
+            <div
+              class="text-left"
+            />
+          </v-card-stub>
+        </v-col-stub>
+         
+        <!---->
+         
+        <v-col-stub
+          cols="12"
+          flat=""
+          tag="div"
+        >
+          <v-card-stub
+            flat="true"
+            loaderheight="4"
+            tag="div"
+          >
+            <textarea-stub
+              counter=""
+              data-test-id="test-account-text"
+              helptext=""
+              id="test-account-text"
+              label=""
+              name="test-account-text"
+              outlined=""
+              rows="10"
+              type="text"
+              value=""
+            />
+          </v-card-stub>
+        </v-col-stub>
+      </v-row-stub>
+    </v-container-stub>
+  </v-item-group-stub>
+   
+  <v-col-stub
+    cols="12"
+    tag="div"
+  >
+    <v-card-stub
+      flat="true"
+      loaderheight="4"
+      tag="div"
+    >
+      <v-divider-stub />
+       
+      <v-card-actions-stub
+        class="mx-4"
+      >
+        <v-spacer-stub />
+         
+        <button-stub
+          class="white--text submit-account ml-6"
+          color=""
+          data-test-id="btn-test-account"
+          depressed=""
+          disabled="true"
+          name="btn-test-account"
+          type="button"
+        >
+          
+        </button-stub>
+      </v-card-actions-stub>
+    </v-card-stub>
+  </v-col-stub>
+</v-card-stub>
+`;

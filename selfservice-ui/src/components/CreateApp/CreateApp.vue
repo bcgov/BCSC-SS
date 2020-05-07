@@ -2,11 +2,11 @@
 
 <template>
   <div>
-    <AddTechnicalReq v-if="step === 'technical'" :id="id" />
     <AddProjectInfo v-if="step === 'info'" :id="id" />
+    <AddTeam v-if="step === 'team'" :id="id" />
+    <AddTechnicalReq v-if="step === 'technical'" :id="id" />
     <PackageSelect v-if="step === 'package'" :id="id" />
     <TestAccountRequest v-if="step === 'test-account'" :id="id" />
-    <ProjectSummary v-if="step === 'summary'" :id="id" />
     <ClientID v-if="step === 'api-key'" :id="id" />
   </div>
 </template>
@@ -14,19 +14,19 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import AddProjectInfo from '@/components/CreateApp/AddProjectInfo.vue';
+import AddTeam from '@/components/CreateApp/AddTeam.vue';
 import AddTechnicalReq from '@/components/CreateApp/AddTechnicalReq.vue';
 import PackageSelect from '@/components/CreateApp/PackageSelect.vue';
 import TestAccountRequest from '@/components/CreateApp/TestAccountRequest.vue';
-import ProjectSummary from '@/components/CreateApp/ProjectSummary.vue';
 import ClientID from '@/components/CreateApp/ClientID.vue';
 
 @Component({
   components: {
     AddProjectInfo,
+    AddTeam,
     AddTechnicalReq,
     PackageSelect,
     TestAccountRequest,
-    ProjectSummary,
     ClientID
   }
 })

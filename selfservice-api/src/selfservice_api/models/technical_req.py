@@ -21,7 +21,7 @@ from .db import db
 from .user import User
 
 
-class TechnicalReq(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):  # pylint: disable=too-few-public-methods
+class TechnicalReq(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
     """This class manages technical requirement information."""
 
     id = db.Column(db.Integer, primary_key=True)
@@ -32,14 +32,22 @@ class TechnicalReq(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):  # 
     jwks_uri = db.Column(db.String(500), nullable=True)
     id_token_signed_response_alg = db.Column(db.String(10), nullable=True)
     userinfo_signed_response_alg = db.Column(db.String(10), nullable=True)
+    id_token_encrypted_response_alg = db.Column(db.String(10), nullable=True)
+    userinfo_encrypted_response_alg = db.Column(db.String(10), nullable=True)
+    id_token_encrypted_response_enc = db.Column(db.String(20), nullable=True)
+    userinfo_encrypted_response_enc = db.Column(db.String(20), nullable=True)
 
     scope_package_id = db.Column(db.Integer, db.ForeignKey('scope_package.id'), nullable=True)
 
     no_of_test_account = db.Column(db.Integer(), nullable=True)
     note_test_account = db.Column(db.Text(), nullable=True)
 
+    signing_encryption_type = db.Column(db.Integer, nullable=True)
+
+    is_prod = db.Column(db.Boolean(), default=False, nullable=False)
+
     @classmethod
-    def create_from_dict(cls, technical_req_info: dict, oauth_id: str) -> TechnicalReq:
+    def create_from_dict(cls, technical_req_info: dict, user: User) -> TechnicalReq:
         """Create a new technical requirement from the provided dictionary."""
         if technical_req_info:
             technical_req = TechnicalReq()
@@ -49,26 +57,31 @@ class TechnicalReq(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):  # 
             technical_req.jwks_uri = technical_req_info['jwks_uri']
             technical_req.id_token_signed_response_alg = technical_req_info['id_token_signed_response_alg']
             technical_req.userinfo_signed_response_alg = technical_req_info['userinfo_signed_response_alg']
-
-            current_user = User.find_by_oauth_id(oauth_id)
-            technical_req.created_by = current_user.id
-
+            technical_req.id_token_encrypted_response_alg = technical_req_info['id_token_encrypted_response_alg']
+            technical_req.userinfo_encrypted_response_alg = technical_req_info['userinfo_encrypted_response_alg']
+            technical_req.id_token_encrypted_response_enc = technical_req_info['id_token_encrypted_response_enc']
+            technical_req.userinfo_encrypted_response_enc = technical_req_info['userinfo_encrypted_response_enc']
+            technical_req.signing_encryption_type = technical_req_info['signing_encryption_type']
+            technical_req.is_prod = technical_req_info['is_prod']
+            technical_req.created_by = user.id
             technical_req.save()
 
             return technical_req
         return None
 
     @classmethod
-    def find_by_project_id(cls, project_id) -> TechnicalReq:
+    def find_by_project_id(cls, project_id, is_prod: bool) -> TechnicalReq:
         """Find technical requirement that matches the provided id."""
-        return cls.query.filter(TechnicalReq.project_id == project_id).first()
+        return cls.query.filter(TechnicalReq.project_id == project_id and
+                                TechnicalReq.is_prod == is_prod).first()
 
-    def update(self, oauth_id: str, technical_req_info: dict):
+    def update(self, technical_req_info: dict, user: User):
         """Update technical requirement."""
-        current_user = User.find_by_oauth_id(oauth_id)
-        technical_req_info['modified_by'] = current_user.id
+        technical_req_info['modified_by'] = user.id
         self.update_from_dict(['modified_by', 'scope_package_id', 'no_of_test_account', 'note_test_account',
                                'client_uri', 'redirect_uris', 'jwks_uri', 'id_token_signed_response_alg',
-                               'userinfo_signed_response_alg'],
+                               'userinfo_signed_response_alg', 'id_token_encrypted_response_alg',
+                               'userinfo_encrypted_response_alg', 'id_token_encrypted_response_enc',
+                               'userinfo_encrypted_response_enc', 'signing_encryption_type'],
                               technical_req_info)
         self.commit()

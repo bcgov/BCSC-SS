@@ -25,6 +25,6 @@ class TestAccountSchema(Schema):
         unknown = EXCLUDE
 
     id = fields.Int()
-    card_number = fields.Str(data_key='cardNumber')
-    passcode = fields.Str(data_key='passcode')
+    card_number = fields.Str(data_key='cardNumber', required=True)
+    passcode = fields.Str(data_key='passcode', required=True)
     attributes = fields.Raw(data_key='attributes')

@@ -15,18 +15,21 @@
 
 import json
 
-from .auth import TestJwtClaims, ss_client_auth_header
-from .request_data import factory_project_info, factory_project_technical_req
+from .auth import TestJwtClaims, ss_admin_auth_header, ss_client_auth_header
+from .request_data import (factory_project_info, factory_project_team_member,  # noqa: I001
+                           factory_project_technical_req, factory_test_account)  # noqa: I001
 
-from selfservice_api.models.enums import ProjectRoles
+from selfservice_api.models.enums import ProjectRoles, SigningEncryptionType
 
 
 API_URI_PREFIX = '/api/v1/'
 USER_API = API_URI_PREFIX + 'user'
 PROJECTINFO_API = API_URI_PREFIX + 'project/info'
+TEAM_API = API_URI_PREFIX + 'project/:project_id/team'
 TECHNICALREQ_API = API_URI_PREFIX + 'project/:project_id/technical-req'
 OIDCCONFIG_API = API_URI_PREFIX + 'project/:project_id/oidc-config'
 SCOPEPACKAGE_API = API_URI_PREFIX + 'scope-package'
+TESTACCOUNT_API = API_URI_PREFIX + 'test-account'
 
 # User: Start
 
@@ -41,17 +44,34 @@ def create_user(client, jwt, project_role='developer'):
     return user
 
 
-def _create_user_(client, jwt, project_role='developer', invalid_data=False):
+def _create_user_(client, jwt, project_role='developer', invalid_email=False, email_none=False, invalid_phone=False):
     """Create user and return response object."""
     headers = ss_client_auth_header(jwt, project_role=project_role)
     claims = TestJwtClaims['ss_client_' + project_role]
-    if invalid_data:
-        req_data = {}
-    else:
-        req_data = {
-            'email': claims['email'],
-            'phone': '5689732156'
-        }
+    req_data = {
+        'email': claims['email'],
+        'phone': '5689732156'
+    }
+    if invalid_email:
+        req_data['email'] = 'mail@email.com'
+    if email_none:
+        req_data['email'] = None
+    if invalid_phone:
+        req_data['phone'] = None
+
+    response = client.post(USER_API, data=json.dumps(req_data),
+                           headers=headers, content_type='application/json')
+    return response
+
+
+def _create_admin_user_(client, jwt):
+    """Create admin user and return response object."""
+    headers = ss_admin_auth_header(jwt)
+    claims = TestJwtClaims['ss_admin']
+    req_data = {
+        'email': claims['email'],
+        'phone': '5689732156'
+    }
 
     response = client.post(USER_API, data=json.dumps(req_data),
                            headers=headers, content_type='application/json')
@@ -86,13 +106,16 @@ def create_project(client, jwt):
     return project
 
 
-def _create_project_(client, jwt, my_role):
+def _create_project_(client, jwt, my_role, is_analyst=False):
     """Create project and return response object."""
-    project_role = 'developer' if my_role == 1 else 'manager' if my_role == 2 else 'cto'
-    headers = ss_client_auth_header(jwt, project_role=project_role)
-    create_user(client, jwt, project_role=project_role)
+    if not is_analyst:
+        project_role = 'developer' if my_role == 1 else 'manager' if my_role == 2 else 'cto'
+        headers = ss_client_auth_header(jwt, project_role=project_role)
+        create_user(client, jwt, project_role=project_role)
+    else:
+        headers = ss_admin_auth_header(jwt)
 
-    response = client.post(PROJECTINFO_API, data=json.dumps(factory_project_info(my_role=my_role)),
+    response = client.post(PROJECTINFO_API, data=json.dumps(factory_project_info()),
                            headers=headers, content_type='application/json')
     return response
 
@@ -104,9 +127,9 @@ def get_project(client, jwt):
     return project
 
 
-def _get_project_(client, jwt):
+def _get_project_(client, jwt, is_analyst=False):
     """Get project and return response object."""
-    headers = ss_client_auth_header(jwt)
+    headers = ss_admin_auth_header(jwt) if is_analyst else ss_client_auth_header(jwt)
     project = create_project(client, jwt)
 
     response = client.get(PROJECTINFO_API + '/' + str(project['id']),
@@ -115,9 +138,9 @@ def _get_project_(client, jwt):
     return response
 
 
-def _get_all_project_(client, jwt):
+def _get_all_project_(client, jwt, is_analyst=False):
     """Get all projects and return response object."""
-    headers = ss_client_auth_header(jwt)
+    headers = ss_admin_auth_header(jwt) if is_analyst else ss_client_auth_header(jwt)
     create_project(client, jwt)
 
     response = client.get(PROJECTINFO_API, headers=headers, content_type='application/json')
@@ -125,6 +148,53 @@ def _get_all_project_(client, jwt):
     return response
 
 # Project Info: End
+# Team: Start
+
+
+def create_team(client, jwt, member_role=ProjectRoles.Developer):
+    """Create team and return team object."""
+    response = _create_team_(client, jwt, member_role)
+    team = json.loads(response.data)
+    return team
+
+
+def _create_team_(client, jwt, member_role=ProjectRoles.Developer):
+    """Create team and return response object."""
+    headers = ss_client_auth_header(jwt)
+    project = create_project(client, jwt)
+    request_data = factory_project_team_member(False, member_role)
+
+    response = client.post(TEAM_API.replace(':project_id', str(project['id'])),
+                           data=json.dumps(request_data),
+                           headers=headers, content_type='application/json')
+    return response
+
+
+def _get_team_member_(client, jwt, project_id, member_id):
+    """Get a team member and return response."""
+    headers = ss_client_auth_header(jwt)
+    team_get_api = TEAM_API.replace(':project_id', project_id) + '/' + str(member_id)
+    response = client.get(team_get_api, headers=headers, content_type='application/json')
+    return response
+
+
+def _get_team_(client, jwt, project_id):
+    """Get team and return response."""
+    headers = ss_client_auth_header(jwt)
+    response = client.get(TEAM_API.replace(':project_id', project_id),
+                          headers=headers, content_type='application/json')
+    return response
+
+
+def _delete_team_member_(client, jwt, project_id, member_id):
+    """Delete a team member and return response."""
+    headers = ss_admin_auth_header(jwt)
+    team_delete_api = TEAM_API.replace(':project_id', project_id) + '/' + str(member_id)
+    response = client.delete(team_delete_api, headers=headers, content_type='application/json')
+    return response
+
+
+# Team: End
 # Technical Req: Start
 
 
@@ -175,11 +245,11 @@ def create_technical_req(client, jwt):
     return technical_req
 
 
-def _create_technical_req_(client, jwt):
+def _create_technical_req_(client, jwt, signing_encryption_type=SigningEncryptionType.SecureJWT):
     """Create technical requirement and return response object."""
     headers = ss_client_auth_header(jwt)
     project = create_project(client, jwt)
-    request_data = factory_project_technical_req()
+    request_data = factory_project_technical_req(signing_encryption_type=signing_encryption_type)
     request_data['projectId'] = project['id']
 
     response = client.post(TECHNICALREQ_API.replace(':project_id', str(project['id'])),
@@ -232,3 +302,18 @@ def _get_oidc_config_(client, jwt):
     return response
 
 # OIDC Config: End
+# Test Account: Start
+
+
+def _create_test_account_(client, jwt):
+    """Create test account and return response object."""
+    _create_admin_user_(client, jwt)
+
+    headers = ss_admin_auth_header(jwt)
+    request_data = factory_test_account()
+
+    response = client.post(TESTACCOUNT_API, data=json.dumps(request_data),
+                           headers=headers, content_type='application/json')
+    return response
+
+# Test Account: End

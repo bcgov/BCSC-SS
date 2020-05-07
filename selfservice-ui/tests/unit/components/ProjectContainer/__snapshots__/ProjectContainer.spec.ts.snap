@@ -1,0 +1,225 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProjectContainer.vue renders props when passed 1`] = `
+<v-card-stub
+  class="mx-auto outer-card"
+  loaderheight="4"
+  tag="div"
+>
+  <v-container-stub
+    tag="div"
+  >
+    <v-row-stub
+      class="ma-5"
+      tag="div"
+    >
+      <v-col-stub
+        cols="12"
+        tag="div"
+      >
+        <loading-stub />
+      </v-col-stub>
+       
+      <v-col-stub
+        class="d-flex align-end flex-column-reverse mb-2"
+        cols="4"
+        tag="div"
+      >
+        <projectactions-stub
+          id="0"
+        />
+      </v-col-stub>
+       
+      <v-col-stub
+        cols="12"
+        tag="div"
+      >
+        <v-tabs-stub
+          activeclass=""
+          mobilebreakpoint="1264"
+          nexticon="$next"
+          previcon="$prev"
+          slidercolor="d-none"
+          slidersize="2"
+          value="0"
+        >
+          <v-tab-stub
+            class="font-weight-bold"
+            ripple="true"
+          >
+            
+            
+          
+          </v-tab-stub>
+           
+          <v-tab-stub
+            class="font-weight-bold"
+            ripple="true"
+          >
+            
+            
+          
+          </v-tab-stub>
+           
+          <v-tab-stub
+            class="font-weight-bold"
+            ripple="true"
+          >
+            
+            
+          
+          </v-tab-stub>
+           
+          <v-tab-stub
+            class="font-weight-bold"
+            ripple="true"
+          >
+            
+            
+          
+          </v-tab-stub>
+           
+          <v-tab-stub
+            class="font-weight-bold"
+            ripple="true"
+          >
+            
+            
+          
+          </v-tab-stub>
+           
+          <v-tab-stub
+            class="font-weight-bold"
+            ripple="true"
+          >
+            
+            
+          
+          </v-tab-stub>
+           
+          <v-tab-stub
+            class="font-weight-bold"
+            ripple="true"
+          >
+            
+            
+          
+          </v-tab-stub>
+           
+          <v-tab-item-stub
+            class="custom-tabs-items"
+          >
+            <v-card-stub
+              flat="true"
+              loaderheight="4"
+              tag="div"
+            >
+              <v-card-text-stub>
+                <projectsummary-stub
+                  id="0"
+                />
+              </v-card-text-stub>
+            </v-card-stub>
+          </v-tab-item-stub>
+           
+          <v-tab-item-stub
+            class="custom-tabs-items"
+          >
+            <v-card-stub
+              flat="true"
+              loaderheight="4"
+              tag="div"
+            >
+              <v-card-text-stub>
+                <teamroles-stub
+                  id="0"
+                />
+              </v-card-text-stub>
+            </v-card-stub>
+          </v-tab-item-stub>
+           
+          <v-tab-item-stub
+            class="custom-tabs-items"
+          >
+            <v-card-stub
+              flat="true"
+              loaderheight="4"
+              tag="div"
+            >
+              <v-card-text-stub>
+                <p>
+                  Privacy
+                </p>
+              </v-card-text-stub>
+            </v-card-stub>
+          </v-tab-item-stub>
+           
+          <v-tab-item-stub
+            class="custom-tabs-items"
+          >
+            <v-card-stub
+              flat="true"
+              loaderheight="4"
+              tag="div"
+            >
+              <v-card-text-stub>
+                <p>
+                  Security
+                </p>
+              </v-card-text-stub>
+            </v-card-stub>
+          </v-tab-item-stub>
+           
+          <v-tab-item-stub
+            class="custom-tabs-items"
+          >
+            <v-card-stub
+              flat="true"
+              loaderheight="4"
+              tag="div"
+            >
+              <v-card-text-stub>
+                <p>
+                  Communications
+                </p>
+              </v-card-text-stub>
+            </v-card-stub>
+          </v-tab-item-stub>
+           
+          <v-tab-item-stub
+            class="custom-tabs-items"
+          >
+            <v-card-stub
+              flat="true"
+              loaderheight="4"
+              tag="div"
+            >
+              <v-card-text-stub>
+                <p>
+                  Agreements
+                </p>
+              </v-card-text-stub>
+            </v-card-stub>
+          </v-tab-item-stub>
+           
+          <v-tab-item-stub
+            class="custom-tabs-items"
+          >
+            <v-card-stub
+              flat="true"
+              loaderheight="4"
+              tag="div"
+            >
+              <v-card-text-stub>
+                <p>
+                  Prod access request
+                </p>
+              </v-card-text-stub>
+            </v-card-stub>
+          </v-tab-item-stub>
+        </v-tabs-stub>
+      </v-col-stub>
+    </v-row-stub>
+  </v-container-stub>
+</v-card-stub>
+`;

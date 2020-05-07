@@ -16,13 +16,20 @@
 import json
 from http import HTTPStatus
 
-from ..helper.api_create_data import (PROJECTINFO_API, _create_project_, _get_project_, _get_all_project_,  # noqa: I001
-                                    _update_technical_req_with_test_account_,  # noqa: I001
+from ..helper.api_create_data import (PROJECTINFO_API,  # noqa: I001
+                                    _create_admin_user_, _create_project_, _get_project_,  # noqa: I001
+                                    _get_all_project_, _update_technical_req_with_test_account_,  # noqa: I001
                                     create_project, create_technical_req_with_additional, create_user,  # noqa: I001
                                     get_project)  # noqa: I001
-from ..helper.auth import ss_client_auth_header
+from ..helper.auth import ss_admin_auth_header, ss_client_auth_header
 
-from selfservice_api.models.enums import ProjectRoles
+from selfservice_api.models.enums import ProjectRoles, ProjectStatus
+
+
+def test_post_project_as_analyst(client, jwt, session):
+    """Assert that the endpoint returns the success status."""
+    response = _create_project_(client, jwt, None, is_analyst=True)
+    assert response.status_code == HTTPStatus.CREATED
 
 
 def test_post_project_as_developer(client, jwt, session):
@@ -51,12 +58,12 @@ def test_post_project_as_cto(client, jwt, session):
 
 def test_post_project_validation(client, jwt, session):
     """Assert that the endpoint returns the failure status."""
+    create_user(client, jwt)
     headers = ss_client_auth_header(jwt)
     req_data = {}
 
     response = client.post(PROJECTINFO_API, data=json.dumps(req_data),
                            headers=headers, content_type='application/json')
-
     assert response.status_code == HTTPStatus.BAD_REQUEST
 
 
@@ -66,13 +73,43 @@ def test_get_all_project(client, jwt, session):
     assert response.status_code == HTTPStatus.OK
 
 
+def test_get_all_project_analyst(client, jwt, session):
+    """Assert that the endpoint returns the success status."""
+    _create_admin_user_(client, jwt)
+    response = _get_all_project_(client, jwt, True)
+    assert response.status_code == HTTPStatus.OK
+
+
 def test_get_project(client, jwt, session):
     """Assert that the endpoint returns the success status."""
     response = _get_project_(client, jwt)
     assert response.status_code == HTTPStatus.OK
 
+    response = _get_project_(client, jwt, is_analyst=True)
+    assert response.status_code == HTTPStatus.OK
 
-def test_put_project_(client, jwt, session):
+
+def test_delete_project(client, jwt, session):
+    """Assert that the endpoint returns the success status."""
+    # Delete as admin
+    headers = ss_admin_auth_header(jwt)
+    project = get_project(client, jwt)
+    response = client.delete(PROJECTINFO_API + '/' + str(project['id']),
+                             headers=headers, content_type='application/json')
+    assert response.status_code == HTTPStatus.OK
+
+    # Delete as client
+    headers = ss_client_auth_header(jwt)
+    project = get_project(client, jwt)
+    response = client.delete(PROJECTINFO_API + '/' + str(project['id']),
+                             headers=headers, content_type='application/json')
+    assert response.status_code == HTTPStatus.OK
+
+    response = client.delete(PROJECTINFO_API + '/1234', headers=headers, content_type='application/json')
+    assert response.status_code == HTTPStatus.BAD_REQUEST
+
+
+def test_put_project(client, jwt, session):
     """Assert that the endpoint returns the success status."""
     headers = ss_client_auth_header(jwt)
     project = get_project(client, jwt)
@@ -100,7 +137,7 @@ def test_patch_project_status(client, jwt, session):
     headers = ss_client_auth_header(jwt)
     technical_req = create_technical_req_with_additional(client, jwt)
 
-    req_data = {'update': 'status', 'status': 2}
+    req_data = {'update': 'status', 'status': ProjectStatus.Development}
     response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
                             data=json.dumps(req_data), headers=headers, content_type='application/json')
 
@@ -108,24 +145,36 @@ def test_patch_project_status(client, jwt, session):
 
     # check the update condition on test account
     _update_technical_req_with_test_account_(client, jwt, str(technical_req['projectId']), 2)
-
     response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
                             data=json.dumps(req_data), headers=headers, content_type='application/json')
     assert response.status_code == HTTPStatus.OK
 
     _update_technical_req_with_test_account_(client, jwt, str(technical_req['projectId']), 5)
-
     response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
                             data=json.dumps(req_data), headers=headers, content_type='application/json')
+    assert response.status_code == HTTPStatus.OK
+
+    _update_technical_req_with_test_account_(client, jwt, str(technical_req['projectId']), 0)
+    response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
+                            data=json.dumps(req_data), headers=headers, content_type='application/json')
+    assert response.status_code == HTTPStatus.OK
+
+    req_data = {'update': 'status', 'status': ProjectStatus.DevelopmentComplete}
+    response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
+                            data=json.dumps(req_data), headers=headers, content_type='application/json')
+
     assert response.status_code == HTTPStatus.OK
 
 
 def test_patch_project_status_validation(client, jwt, session):
     """Assert that the endpoint returns the failure status."""
     headers = ss_client_auth_header(jwt)
+    create_user(client, jwt)
+
     req_data = {}
 
-    response = client.patch(PROJECTINFO_API + '/1234',
+    technical_req = create_technical_req_with_additional(client, jwt)
+    response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
                             data=json.dumps(req_data), headers=headers, content_type='application/json')
 
     assert response.status_code == HTTPStatus.BAD_REQUEST
@@ -140,20 +189,13 @@ def test_patch_project_status_validation(client, jwt, session):
 
     req_data = {'update': 'status'}
 
-    response = client.patch(PROJECTINFO_API + '/1234',
-                            data=json.dumps(req_data), headers=headers, content_type='application/json')
-
-    assert response.status_code == HTTPStatus.BAD_REQUEST
-
-    req_data = {'update': 'status'}
-
     technical_req = create_technical_req_with_additional(client, jwt)
     response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
                             data=json.dumps(req_data), headers=headers, content_type='application/json')
 
     assert response.status_code == HTTPStatus.BAD_REQUEST
 
-    req_data = {'update': 'status', 'status': 2}
+    req_data = {'update': 'status', 'status': ProjectStatus.Development}
 
     project = create_project(client, jwt)
     response = client.patch(PROJECTINFO_API + '/' + str(project['id']),
@@ -169,7 +211,7 @@ def test_patch_project_status_oidc_and_test_account(client, jwt, session, config
 
     # Dynamic OIDC None response: Start
     config['dynamic_api_return_none'] = True
-    req_data = {'update': 'status', 'status': 2}
+    req_data = {'update': 'status', 'status': ProjectStatus.Development}
     response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
                             data=json.dumps(req_data), headers=headers, content_type='application/json')
 
@@ -191,3 +233,10 @@ def test_patch_project_status_oidc_and_test_account(client, jwt, session, config
     config.pop('dynamic_api_return_none')
 
     # Dynamic OIDC None response: End
+
+    config['LIMITED_TEST_ACCOUNT_TRIGGER_COUNT'] = 200
+    req_data = {'update': 'status', 'status': ProjectStatus.Development}
+    response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
+                            data=json.dumps(req_data), headers=headers, content_type='application/json')
+
+    assert response.status_code == HTTPStatus.OK

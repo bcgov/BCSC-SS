@@ -50,13 +50,16 @@ export const actions: ActionTree<PackageState, RootState> = {
       noOfTestAccount,
       noteTestAccount
     );
-    router.push(`/project/${projectId}/summary/`);
+    router.push(`/project-container/${projectId}`);
     commit('SET_LOADING', false);
   },
   redirect(state, { projectId, nextPageTogo }) {
     const isRedirectFromSummaryPage =
       state.rootState.SharedModule.isSummaryPage;
-    const nextPage = isRedirectFromSummaryPage ? 'summary' : nextPageTogo;
-    router.push(`/project/${projectId}/${nextPage}/`);
-  }
+    const nextPage = isRedirectFromSummaryPage
+      ? `/project-container/${projectId}/`
+      : `/project/${projectId}/${nextPageTogo}/`;
+
+    router.push(nextPage);
+  },
 };
