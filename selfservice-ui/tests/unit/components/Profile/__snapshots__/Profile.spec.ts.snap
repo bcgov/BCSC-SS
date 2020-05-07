@@ -33,10 +33,7 @@ exports[`Profile.vue renders popup on button click 1`] = `
     class="v-divider theme--light"
     role="separator"
   />
-  
-  validtrue
-  sbemailasd2@gov.bc.ca
-  
+   
   <form
     class="v-form"
     novalidate="novalidate"
@@ -282,10 +279,7 @@ exports[`Profile.vue renders props when passed with gettors 1`] = `
     class="v-divider theme--light"
     role="separator"
   />
-  
-  validfalse
-  sbemail
-  
+   
   <form
     class="v-form"
     novalidate="novalidate"
@@ -533,10 +527,7 @@ exports[`Profile.vue renders props when passed with gettors 2`] = `
     class="v-divider theme--light"
     role="separator"
   />
-  
-  validtrue
-  sbemailasd2@gov.bc.ca
-  
+   
   <form
     class="v-form"
     novalidate="novalidate"
