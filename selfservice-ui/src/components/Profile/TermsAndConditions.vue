@@ -175,14 +175,8 @@ export default class TermsAndConditions extends Vue {}
 
 <style lang="scss" scoped>
 @import './../../assets/styles/theme.scss';
-.card-width {
-  max-width: 80%;
-  @include lg {
-    max-width: 50%;
-  }
-}
 .terms p{
-font-size: 16px;
+  font-size: 16px;
 }
 
 </style>
