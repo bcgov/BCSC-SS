@@ -12,7 +12,7 @@
       <div class="flex-grow-1"></div>
     </v-toolbar>
     <v-divider></v-divider>
-    <v-form ref="form" v-model="form" v-if="!errorStatus">
+    <v-form ref="form" v-model="valid" v-if="!errorStatus">
       <v-container>
         <v-row class="ma-5">
           <v-col cols="12" md="12">
@@ -67,8 +67,8 @@
               <v-card-actions>
                 <v-spacer></v-spacer>
                 <Button
-                  :disabled="!form"
-                  class="white--text"
+                  :disabled="!valid"
+                  class="white--text btn-profile-update"
                   depressed
                   @click="toggleDisclaimer()"
                   @keyup.enter="toggleDisclaimer()"
@@ -123,7 +123,7 @@
                   >{{ $t('profile.btnCancel') }}</Button>
                   <Button
                     :disabled="!buttonEnable"
-                    class="white--text submit-package ml-6"
+                    class="white--text btn-submit-terms-profile ml-6"
                     depressed
                     @click="createOrUpdateProfile"
                     data-test-id="btn-submit-terms-profile"
@@ -168,7 +168,7 @@ export default class Dashboard extends Vue {
   @KeyCloakModule.Getter('profileErrorStatus')
   private profileErrorStatus!: boolean;
 
-  private form: boolean = false;
+  private valid: boolean = false;
   private dialog: boolean = false;
 
   /* istanbul ignore next */

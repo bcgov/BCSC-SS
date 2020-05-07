@@ -88,7 +88,10 @@ export const actions: ActionTree<TechnicalReqState, RootState> = {
   redirect(state, projectId) {
     const isRedirectFromSummaryPage =
       state.rootState.SharedModule.isSummaryPage;
-    const nextPage = isRedirectFromSummaryPage ? 'summary' : 'package';
-    router.push(`/project/${projectId}/${nextPage}/`);
-  }
+    const nextPage = isRedirectFromSummaryPage
+      ? `/project-container/${projectId}/`
+      : `/project/${projectId}/package/`;
+
+    router.push(nextPage);
+  },
 };
