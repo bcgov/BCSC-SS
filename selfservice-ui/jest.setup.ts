@@ -9,14 +9,14 @@ Vue.use(Vuex);
   constructor() {} // tslint:disable-line
 
   private observe() {
-    return null;
+    return jest.fn();
   }
 
   private disconnect() {
-    return null;
+    return jest.fn();
   }
 
   private unobserve() {
-    return null;
+    return jest.fn();
   }
 };
