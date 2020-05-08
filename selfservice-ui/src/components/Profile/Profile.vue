@@ -97,9 +97,6 @@
               class="text-left overflow-y-auto"
             >
               <v-card class="pa-8">
-                <h1 class="text-left pa-5 ml-8">
-                  {{ $t('profile.titleTerms') }}
-                </h1>
                 <p class="text-left pl-5 ml-8">
                   {{ $t('profile.termsAccept') }}
                 </p>
