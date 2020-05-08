@@ -10,8 +10,17 @@ const signedAlgorithm = [
   'PS512',
 ];
 
-const encryptedAlgorithm = ['RSA1_5'];
+const encryptedAlgorithm = ['RSA1_5', 'RSA-OAEP'];
 
-const encryptedEncoding = ['A256GCM', 'A256CBC-HS512'];
+const encryptedEncoding = [
+  'A256GCM',
+  'A256CBC+HS512',
+  'A192GCM',
+  'A128GCM',
+  'A128CBC-HS256',
+  'A192CBC-HS384',
+  'A256CBC-HS512',
+  'A128CBC+HS256',
+];
 
 export { signedAlgorithm, encryptedAlgorithm, encryptedEncoding };
