@@ -146,7 +146,12 @@
                   Use.
                 </p>
                 <h3>12. General</h3>
-                <p>
+                <p  v-intersect="{
+                      handler: onIntersect,
+                      options: {
+                        threshold: [0, 0.5, 1.0],
+                      },
+                    }">
                   These Terms of Use are the entire agreement between you and the Province with respect to the
                   subject matter of these Terms of Use. The headings in these Terms of Use are inserted for
                   convenience only and will not be used in interpreting or construing any provision of these Terms
@@ -170,7 +175,10 @@
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 
 @Component
-export default class TermsAndConditions extends Vue {}
+export default class TermsAndConditions extends Vue {
+  @Prop({ default: '' })
+  public onIntersect!: any;
+}
 </script>
 
 <style lang="scss" scoped>

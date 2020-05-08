@@ -5,9 +5,7 @@
     <Alert type="error" v-if="errorStatus">Something went wrong...</Alert>
     <v-toolbar flat class="bc-subtitle" dark v-if="!errorStatus">
       <v-toolbar-title>
-        {{
-        $t(isComplete ? 'profile.pageCompleteTitle' : 'profile.pageTitle')
-        }}
+        {{ $t(isComplete ? 'profile.pageCompleteTitle' : 'profile.pageTitle') }}
       </v-toolbar-title>
       <div class="flex-grow-1"></div>
     </v-toolbar>
@@ -16,7 +14,13 @@
       <v-container>
         <v-row class="ma-5">
           <v-col cols="12" md="12">
-            <Alert type="error" dense outlined class="text-left" v-if="profileErrorStatus">
+            <Alert
+              type="error"
+              dense
+              outlined
+              class="text-left"
+              v-if="profileErrorStatus"
+            >
               <span v-html="$t('profile.errorMessageDomain')"></span>
             </Alert>
             <v-card-subtitle
@@ -75,39 +79,44 @@
                   data-test-id="btn-profile-update"
                 >
                   {{
-                  $t(
-                  isComplete
-                  ? 'profile.btnContinue'
-                  : 'profile.btnSaveChanges'
-                  )
+                    $t(
+                      isComplete
+                        ? 'profile.btnContinue'
+                        : 'profile.btnSaveChanges'
+                    )
                   }}
                 </Button>
               </v-card-actions>
             </v-card>
           </v-col>
           <v-col class="text-center">
-            <v-dialog v-model="dialog" persistent width="90%" class="text-left overflow-y-auto">
+            <v-dialog
+              v-model="dialog"
+              persistent
+              width="90%"
+              class="text-left overflow-y-auto"
+            >
               <v-card class="pa-8">
                 <h1 class="text-left pa-5 ml-8">
-                  {{
-                  $t('profile.titleTerms')
-                  }}
+                  {{ $t('profile.titleTerms') }}
                 </h1>
                 <p class="text-left pl-5 ml-8">
-                  {{
-                  $t('profile.termsAccept')
-                  }}
+                  {{ $t('profile.termsAccept') }}
                 </p>
                 <v-divider></v-divider>
-                <v-card-text class="text-left terms-content pa-0" id="scroll-target" ref="termsDiv">
-                  <TermsAndConditions />
+                <v-card-text
+                  class="text-left terms-content pa-0"
+                  id="scroll-target"
+                  ref="termsDiv"
+                >
+                  <TermsAndConditions :onIntersect="onIntersect" />
                   <div
                     v-intersect="{
-                  handler: onIntersect,
-                  options: {
-                    threshold: [0, 0.5, 1.0]
-                  }
-                }"
+                      handler: onIntersect,
+                      options: {
+                        threshold: [0, 0.5, 1.0],
+                      },
+                    }"
                   ></div>
                 </v-card-text>
 
@@ -120,14 +129,16 @@
                     aria-label="Back Button"
                     secondary
                     data-test-id="btn-cancel-terms-profile"
-                  >{{ $t('profile.btnCancel') }}</Button>
+                    >{{ $t('profile.btnCancel') }}</Button
+                  >
                   <Button
                     :disabled="!buttonEnable"
                     class="white--text btn-submit-terms-profile ml-6"
                     depressed
                     @click="createOrUpdateProfile"
                     data-test-id="btn-submit-terms-profile"
-                  >{{ $t('profile.btnAgree') }}</Button>
+                    >{{ $t('profile.btnAgree') }}</Button
+                  >
                 </v-card-actions>
               </v-card>
             </v-dialog>
@@ -140,6 +151,7 @@
 
 <script lang="ts">
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
+import 'intersection-observer';
 import { Getter, namespace, Action } from 'vuex-class';
 import Input from '@/Atomic/Input/Input.vue';
 import Button from '@/Atomic/Button/Button.vue';
@@ -200,6 +212,9 @@ export default class Dashboard extends Vue {
 
   private mounted() {
     this.userDetails(this.userProfile);
+    if ((!'IntersectionObserver' as any) in window) {
+      this.buttonEnable = true;
+    }
   }
 }
 </script>
