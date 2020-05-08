@@ -194,7 +194,14 @@
 
           <h2>11. Indemnity</h2>
 
-          <p>
+          <p
+            v-intersect="{
+              handler: onIntersect,
+              options: {
+                threshold: [0, 0.5, 1.0],
+              },
+            }"
+          >
             You agree to indemnify, defend and hold harmless the Province and
             the Province's employees and agents from and against all claims,
             demands, obligations, losses, liabilities, costs or debts, and
@@ -206,14 +213,7 @@
 
           <h2>12. General</h2>
 
-          <p
-            v-intersect="{
-              handler: onIntersect,
-              options: {
-                threshold: [0, 0.5, 1.0],
-              },
-            }"
-          >
+          <p>
             These Terms of Use are the entire agreement between you and the
             Province with respect to the subject matter of these Terms of Use.
             The headings in these Terms of Use are inserted for convenience only
