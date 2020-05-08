@@ -37,13 +37,20 @@ class EncryptedAlgorithm(ExtendedEnum):
     """This enum provides the list of Encrypted Algorithm supported by Dynamic API."""
 
     RSA1_5 = 'RSA1_5'
+    RSA_OAEP = 'RSA-OAEP'
 
 
 class EncryptedEncoding(ExtendedEnum):
     """This enum provides the list of Encrypted Encoding supported by Dynamic API."""
 
     A256GCM = 'A256GCM'
+    A256CBC_PLUS_HS512 = 'A256CBC+HS512'
+    A192GCM = 'A192GCM'
+    A128GCM = 'A128GCM'
+    A128CBC_HS256 = 'A128CBC-HS256'
+    A192CBC_HS384 = 'A192CBC-HS384'
     A256CBC_HS512 = 'A256CBC-HS512'
+    A128CBC_PLUS_HS256 = 'A128CBC+HS256'
 
 
 class SigningEncryptionType(ExtendedIntEnum):
