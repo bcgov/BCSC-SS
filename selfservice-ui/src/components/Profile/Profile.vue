@@ -109,7 +109,7 @@
                   id="scroll-target"
                   ref="termsDiv"
                 >
-                  <TermsAndConditions />
+                  <TermsAndConditions :onIntersect="onIntersect" />
                   <div
                     v-intersect="{
                       handler: onIntersect,
