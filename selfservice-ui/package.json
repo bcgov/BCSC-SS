@@ -17,6 +17,7 @@
     "animate.css": "^3.7.2",
     "axios": "^0.19.1",
     "core-js": "^3.4.3",
+    "intersection-observer": "^0.10.0",
     "keycloak-js": "^8.0.1",
     "register-service-worker": "^1.6.2",
     "vue": "^2.6.10",
