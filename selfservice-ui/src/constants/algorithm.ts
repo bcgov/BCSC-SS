@@ -10,7 +10,7 @@ const signedAlgorithm = [
   'PS512',
 ];
 
-const encryptedAlgorithm = ['RSA1_5', 'RSA-OAEP'];
+const encryptedAlgorithm = ['RSA-OAEP', 'RSA1_5'];
 
 const encryptedEncoding = [
   'A256GCM',

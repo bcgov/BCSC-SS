@@ -20,6 +20,15 @@ from ..helper.api_create_data import TESTACCOUNT_API, _create_admin_user_, _crea
 from ..helper.auth import ss_admin_auth_header
 
 
+def test_test_account_availability(client, jwt, session):
+    """Assert that the endpoint returns the success status for test account."""
+    headers = ss_admin_auth_header(jwt)
+
+    response = client.get(TESTACCOUNT_API + '/availability',
+                          headers=headers, content_type='application/json')
+    assert response.status_code == HTTPStatus.OK
+
+
 def test_test_account(client, jwt, session):
     """Assert that the endpoint returns the success status for test account."""
     response = _create_test_account_(client, jwt)

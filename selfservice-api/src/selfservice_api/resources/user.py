@@ -92,6 +92,8 @@ class UserResource(Resource):
                 valid_domain = OrgWhitelist.validate_domain(domain)
                 if not valid_domain:
                     return {'errors': {'email': 'invalidDomain'}}, HTTPStatus.BAD_REQUEST
+            else:
+                return 'unidentified provider', HTTPStatus.BAD_REQUEST
 
             dict_data = user_schema.load({
                 'email': email,

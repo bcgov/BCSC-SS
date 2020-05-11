@@ -16,8 +16,8 @@
 import json
 from http import HTTPStatus
 
-from ..helper.api_create_data import (TEAM_API, create_team, _create_team_, _delete_team_member_,  # noqa: I001
-                                    _get_team_, _get_team_member_, create_project)  # noqa: I001
+from ..helper.api_create_data import (TEAM_API, create_team, create_user, _create_team_,  # noqa: I001
+                                    _delete_team_member_, _get_team_, _get_team_member_, create_project)  # noqa: I001
 from ..helper.auth import ss_admin_auth_header, ss_client_auth_header
 from ..helper.request_data import factory_project_team_member
 
@@ -72,6 +72,13 @@ def test_put_team(client, jwt, session):
                           headers=headers, content_type='application/json')
     assert response.status_code == HTTPStatus.OK
 
+    create_user(client, jwt, project_role='manager')
+    headers = ss_client_auth_header(jwt, project_role='manager')
+    team_put_api = TEAM_API.replace(':project_id', str(team['projectId'])) + '/' + str(team['id'])
+    response = client.put(team_put_api, data=json.dumps(team),
+                          headers=headers, content_type='application/json')
+    assert response.status_code == HTTPStatus.OK
+
 
 def test_put_team_validation(client, jwt, session):
     """Assert that the endpoint returns the failure status."""
@@ -91,6 +98,13 @@ def test_put_team_validation(client, jwt, session):
                           data=json.dumps(request_data),
                           headers=headers, content_type='application/json')
     assert response.status_code == HTTPStatus.BAD_REQUEST
+
+    # create_user(client, jwt, project_role='manager')
+    headers = ss_client_auth_header(jwt)
+    team_put_api = TEAM_API.replace(':project_id', str(team['projectId'])) + '/' + str(team['id'])
+    response = client.put(team_put_api, data=json.dumps(team),
+                          headers=headers, content_type='application/json')
+    assert response.status_code == HTTPStatus.UNAUTHORIZED
 
 
 def test_delete_team_member(client, jwt, session):

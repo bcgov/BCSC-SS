@@ -79,6 +79,11 @@ class TestAccount(BaseModel, db.Model):
         return cls.query.filter(TestAccount.project_id.is_(None)).count()
 
     @classmethod
+    def get_total_count(cls):
+        """Get total count of test account."""
+        return cls.query.count()
+
+    @classmethod
     def find_all_by_project_id(cls, project_id):
         """Find test account that matches the provided id."""
         return cls.query.filter(TestAccount.project_id == project_id).all()
