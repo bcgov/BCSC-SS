@@ -48,6 +48,7 @@ def test_post_technical_req_validation(client, jwt, session):
     req_data = factory_project_technical_req(signing_encryption_type=SigningEncryptionType.SignedJWT)
     req_data['signedResponseAlg'] = None
     req_data['encryptedResponseAlg'] = None
+    req_data['encryptedResponseEnc'] = None
     req_data['jwksUri'] = None
     response = client.post(TECHNICALREQ_API.replace(':project_id', str(project['id'])), data=json.dumps(req_data),
                            headers=headers, content_type='application/json')
@@ -56,6 +57,7 @@ def test_post_technical_req_validation(client, jwt, session):
     req_data = factory_project_technical_req(signing_encryption_type=SigningEncryptionType.SecureJWT)
     req_data['signedResponseAlg'] = None
     req_data['encryptedResponseAlg'] = None
+    req_data['encryptedResponseEnc'] = None
     req_data['jwksUri'] = None
     response = client.post(TECHNICALREQ_API.replace(':project_id', str(project['id'])), data=json.dumps(req_data),
                            headers=headers, content_type='application/json')
@@ -106,10 +108,16 @@ def test_patch_technical_req_validation(client, jwt, session):
     req_data = {
         'scopePackageId': scope_packages['scopePackages'][0]['id']
     }
-
     response = client.patch(TECHNICALREQ_API.replace(':project_id', str(technical_req['projectId'])),
                             data=json.dumps(req_data), headers=headers, content_type='application/json')
+    assert response.status_code == HTTPStatus.BAD_REQUEST
 
+    req_data = {
+        'update': 'package',
+        'scopePackageId': 'invalid'
+    }
+    response = client.patch(TECHNICALREQ_API.replace(':project_id', str(technical_req['projectId'])),
+                            data=json.dumps(req_data), headers=headers, content_type='application/json')
     assert response.status_code == HTTPStatus.BAD_REQUEST
 
 

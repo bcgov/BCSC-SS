@@ -13,6 +13,7 @@
 # limitations under the License.
 """Auth Test Utility for API testing."""
 
+import copy
 import os
 from enum import Enum
 
@@ -111,8 +112,15 @@ def ss_admin_auth_header(jwt):
 
 def invalid_email_auth_header(jwt):
     """Produce invalid email on JWT tokens for use in tests."""
-    claims = TestJwtClaims.ss_client_developer
+    claims = copy.deepcopy(TestJwtClaims.ss_client_developer.value)
     del claims['email']
+    return {'Authorization': 'Bearer ' + jwt.create_jwt(claims=claims, header=JWT_HEADER)}
+
+
+def invalid_provider_auth_header(jwt):
+    """Produce invalid provider on JWT tokens for use in tests."""
+    claims = copy.deepcopy(TestJwtClaims.ss_client_developer.value)
+    claims['provider'] = 'invalid'
     return {'Authorization': 'Bearer ' + jwt.create_jwt(claims=claims, header=JWT_HEADER)}
 
 

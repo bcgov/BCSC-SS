@@ -16,7 +16,7 @@
 import csv
 from http import HTTPStatus
 
-from flask import request
+from flask import jsonify, request
 from flask_restplus import Namespace, Resource, cors
 
 from ..models.test_account import TestAccount
@@ -25,6 +25,21 @@ from ..utils.util import cors_preflight
 
 
 API = Namespace('TestAccount', description='Test Account')
+
+
+@cors_preflight('GET,OPTIONS')
+@API.route('/availability', methods=['GET', 'OPTIONS'])
+class TestAccountCountResource(Resource):
+    """Resource to get availability of test account."""
+
+    @staticmethod
+    @cors.crossdomain(origin='*')
+    @auth.has_one_of_roles(['ss_admin'])
+    def get():
+        """Get availability of test account."""
+        return jsonify({
+            'count': TestAccount.get_availability_count()
+        }), HTTPStatus.OK
 
 
 @cors_preflight('POST,OPTIONS')
