@@ -19,5 +19,8 @@ export const getters: GetterTree<TestAccountState, RootState> = {
   },
   errorStatus(state) {
     return state.errorStatus;
-  }
+  },
+  getTestAccountCount(state) {
+    return state.testAccountCount;
+  },
 };

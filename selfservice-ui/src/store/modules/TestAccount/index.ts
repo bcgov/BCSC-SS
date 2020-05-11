@@ -12,7 +12,8 @@ export const state: TestAccountState = {
   testAccounts: {},
   isLoading: false,
   successStatus: false,
-  errorStatus: false
+  errorStatus: false,
+  testAccountCount: {},
 };
 
 const namespaced: boolean = true;
@@ -22,7 +23,7 @@ const SharedModule: Module<TestAccountState, RootState> = {
   state,
   getters,
   actions,
-  mutations
+  mutations,
 };
 
 export default SharedModule;

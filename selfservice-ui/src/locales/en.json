@@ -184,7 +184,10 @@
     "rolereadyForFirstCitizenUse": "Ready for first citizen use",
     "myprojectTitle": "My projects",
     "btnCreateProject": "+ Create New Project",
-    "createProjectInfo": "<p class='pageinfo'>New projects start in the development environment. When testing is complete, the production path becomes available.</p>"
+    "createProjectInfo": "<p class='pageinfo'>New projects start in the development environment. When testing is complete, the production path becomes available.</p>",
+    "virtualCardCountTitle": "Virtual card test accounts",
+    "btnManageTestAccount": "Manage test account",
+    "txtTestAccountRemain": "test accounts remaining"
   },
   "profile": {
     "pageTitle": "Profile",

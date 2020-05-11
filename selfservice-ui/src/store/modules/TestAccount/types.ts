@@ -3,4 +3,5 @@ export interface TestAccountState {
   isLoading: boolean;
   successStatus?: boolean;
   errorStatus?: boolean;
+  testAccountCount: any;
 }
