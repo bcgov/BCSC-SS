@@ -16,7 +16,7 @@
 import csv
 from http import HTTPStatus
 
-from flask import jsonify, request
+from flask import current_app, jsonify, request
 from flask_restplus import Namespace, Resource, cors
 
 from ..models.test_account import TestAccount
@@ -37,8 +37,13 @@ class TestAccountCountResource(Resource):
     @auth.has_one_of_roles(['ss_admin'])
     def get():
         """Get availability of test account."""
+        warning_count = current_app.config.get('LIMITED_TEST_ACCOUNT_TRIGGER_COUNT')
+        available_count = TestAccount.get_availability_count()
+        total_count = TestAccount.get_total_count()
         return jsonify({
-            'count': TestAccount.get_availability_count()
+            'available': available_count,
+            'total': total_count,
+            'warning': available_count <= warning_count
         }), HTTPStatus.OK
 
 
