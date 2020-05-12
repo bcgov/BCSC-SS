@@ -12,13 +12,13 @@ enum algorithmBase {
 
 enum projectStatus {
   draft = 1,
-  development = 2,
-  developmentComplete = 3,
+  dev = 2,
+  devComplete = 3,
   complianceChecks = 4,
-  awaitingApproval = 5,
-  awaitingStagingKeys = 6,
-  awaitingProductionUse = 7,
-  readyForFirstCitizenUse = 8,
+  complianceReview = 5,
+  complianceChecksComplete = 6,
+  awaitingProdKeys = 7,
+  inProd = 8,
 }
 
 export { projectRoles, algorithmBase, projectStatus };
