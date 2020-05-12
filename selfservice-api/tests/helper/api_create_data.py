@@ -333,8 +333,8 @@ def _get_project_audit_(client, jwt):
     technical_req = create_technical_req_with_additional(client, jwt)
 
     req_data = {'update': 'status', 'status': ProjectStatus.Development}
-    response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
-                            data=json.dumps(req_data), headers=headers, content_type='application/json')
+    client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
+                 data=json.dumps(req_data), headers=headers, content_type='application/json')
 
     response = client.get(PROJECTAUDIT_API.replace(':project_id', str(technical_req['projectId'])), headers=headers)
     return response

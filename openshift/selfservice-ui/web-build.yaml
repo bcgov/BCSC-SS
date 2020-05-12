@@ -127,4 +127,4 @@ parameters:
   value: "bcscss"
 - name: ENABLE_BETA
   required: true
-  value: "true"
+  value: "false"
