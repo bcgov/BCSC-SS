@@ -19,7 +19,7 @@ from .auth import TestJwtClaims, ss_admin_auth_header, ss_client_auth_header
 from .request_data import (factory_project_info, factory_project_team_member,  # noqa: I001
                            factory_project_technical_req, factory_test_account)  # noqa: I001
 
-from selfservice_api.models.enums import ProjectRoles, SigningEncryptionType
+from selfservice_api.models.enums import ProjectRoles, ProjectStatus, SigningEncryptionType
 
 
 API_URI_PREFIX = '/api/v1/'
@@ -28,6 +28,7 @@ PROJECTINFO_API = API_URI_PREFIX + 'project/info'
 TEAM_API = API_URI_PREFIX + 'project/:project_id/team'
 TECHNICALREQ_API = API_URI_PREFIX + 'project/:project_id/technical-req'
 OIDCCONFIG_API = API_URI_PREFIX + 'project/:project_id/oidc-config'
+PROJECTAUDIT_API = API_URI_PREFIX + 'project/:project_id/audit'
 SCOPEPACKAGE_API = API_URI_PREFIX + 'scope-package'
 TESTACCOUNT_API = API_URI_PREFIX + 'test-account'
 
@@ -317,3 +318,25 @@ def _create_test_account_(client, jwt):
     return response
 
 # Test Account: End
+# Project Audit: Start
+
+
+def get_project_audit_(client, jwt):
+    """Get project audit and return object."""
+    response = _get_project_audit_(client, jwt)
+    return json.loads(response.data)
+
+
+def _get_project_audit_(client, jwt):
+    """Get project audit and return response object."""
+    headers = ss_client_auth_header(jwt)
+    technical_req = create_technical_req_with_additional(client, jwt)
+
+    req_data = {'update': 'status', 'status': ProjectStatus.Development}
+    response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
+                            data=json.dumps(req_data), headers=headers, content_type='application/json')
+
+    response = client.get(PROJECTAUDIT_API.replace(':project_id', str(technical_req['projectId'])), headers=headers)
+    return response
+
+# Project Audit: End

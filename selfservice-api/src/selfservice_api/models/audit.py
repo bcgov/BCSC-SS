@@ -17,6 +17,7 @@ import datetime
 
 from .base_model import BaseModel
 from .db import db
+from .enums.project import ProjectRoles, ProjectStatus
 
 
 class Audit(BaseModel, db.Model):  # pylint: disable=too-few-public-methods
@@ -55,3 +56,34 @@ class Audit(BaseModel, db.Model):  # pylint: disable=too-few-public-methods
         if audit_list:
             for info in audit_list:
                 cls.create_from_dict(info)
+
+    @classmethod
+    def find_project_status(cls, project_id):
+        """Find project audit status."""
+        result_proxy = db.session.execute("""
+            SELECT
+                audit.new_value as "status",
+                TO_CHAR(audit.created, 'Mon dd yyyy') as "created",
+                "user".first_name || ' ' || "user".last_name as "name",
+                project_users_association.role
+            FROM audit
+                INNER JOIN "user" on "user".id = audit.created_by::integer
+                INNER JOIN project_users_association on project_users_association.user_id = "user".id and
+                            project_users_association.project_id = '""" + str(project_id) + """'
+            WHERE
+                audit.field = 'status' and
+                audit.audit_type = 'project' and
+                audit.audit_type_id = '""" + str(project_id) + """'
+            ORDER BY audit.created""")
+
+        result = []
+        for row in result_proxy:
+            info = dict(row)
+
+            info['statusId'] = int(info['status'])
+            info['status'] = ProjectStatus.get_phrase(int(info['status']))
+            info['role'] = ProjectRoles.get_phrase(info['role'])
+
+            result.append(info)
+
+        return result

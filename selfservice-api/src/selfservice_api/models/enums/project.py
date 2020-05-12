@@ -28,10 +28,10 @@ class ProjectStatus(ExtendedIntEnum):
     """This enum provides the list of Project Status."""
 
     Draft = 1, 'Draft'
-    Development = 2, 'Development'
-    DevelopmentComplete = 3, 'Development Complete'
+    Dev = 2, 'Dev'
+    DevComplete = 3, 'Dev Complete'
     ComplianceChecks = 4, 'Compliance Checks'
-    AwaitingApproval = 5, 'Awaiting Approval'
-    PrepareProdTechConfig = 6, 'Prepare Prod Tech Config'
-    RequireIDIMEDApproval = 7, 'Require IDIM ED Approval'
-    ApprovalGranted = 8, 'Approval Granted'
+    ComplianceReview = 5, 'Compliance Review'
+    ComplianceChecksComplete = 6, 'Compliance Checks Complete'
+    AwaitingProdKeys = 7, 'Awaiting Prod Keys'
+    InProd = 8, 'In Prod'

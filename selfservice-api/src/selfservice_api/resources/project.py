@@ -59,6 +59,7 @@ class ProjectResource(Resource):
             project_schema = ProjectSchema()
             dict_data = project_schema.load(project_json)
             project = Project.create_from_dict(dict_data, user)
+            AuditService.log_project_status_change(project, user)
 
             if auth.is_client_role():
                 ProjectUsersAssociation.create(user.id, project.id, ProjectRoles.Developer)
