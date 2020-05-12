@@ -108,8 +108,7 @@ export default class TestAccount extends Vue {
   @Watch('getTestAccountSuccessData')
   private ongetTestAccountSuccessDataChanged(val: any) {
     const { successStatus, errorStatus, testAccountSuccessData } = val;
-    this.errorStatus = false;
-    this.successStatus = false;
+    this.clearAllStatus();
     if (successStatus) {
       this.successStatus = true;
       this.successCount = testAccountSuccessData;
