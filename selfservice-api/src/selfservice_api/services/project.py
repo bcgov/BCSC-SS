@@ -46,7 +46,7 @@ class ProjectService():
         is_valid = False
         if 'update' in project_json and project_json['update'] == 'status':
             status = project_json.get('status')
-            if status == ProjectStatus.Development:
+            if status == ProjectStatus.Dev:
                 technical_req = TechnicalReq.find_by_project_id(project.id, False)
                 project_members = ProjectUsersAssociation.find_all_by_project_id(project.id)
                 if len(project_members) > 0 and \
@@ -54,8 +54,8 @@ class ProjectService():
                     technical_req.scope_package_id is not None and \
                         technical_req.no_of_test_account is not None:
                     is_valid = True
-            elif status == ProjectStatus.DevelopmentComplete:
-                is_valid = project.status == ProjectStatus.Development
+            elif status == ProjectStatus.DevComplete:
+                is_valid = project.status == ProjectStatus.Dev
 
         return is_valid
 

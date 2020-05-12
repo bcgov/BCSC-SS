@@ -13,6 +13,7 @@
 # limitations under the License.
 """API endpoints for managing an user resource."""
 
+import copy
 from http import HTTPStatus
 
 from flask import g, jsonify, request
@@ -20,7 +21,9 @@ from flask_restplus import Namespace, Resource, cors
 from marshmallow import ValidationError
 
 from ..models import LoginHistory, OrgWhitelist, User
+from ..models.enums import AuditType
 from ..schemas.user import UserSchema
+from ..services import AuditService
 from ..utils.auth import auth, jwt
 from ..utils.util import cors_preflight
 
@@ -89,6 +92,8 @@ class UserResource(Resource):
                 valid_domain = OrgWhitelist.validate_domain(domain)
                 if not valid_domain:
                     return {'errors': {'email': 'invalidDomain'}}, HTTPStatus.BAD_REQUEST
+            else:
+                return 'unidentified provider', HTTPStatus.BAD_REQUEST
 
             dict_data = user_schema.load({
                 'email': email,
@@ -98,14 +103,17 @@ class UserResource(Resource):
                 'oauthId': token_info.get('sub')
             })
             if not user:
-                # Check again with email id if email is available in token.
+                # Check again with email id to confirm the existence.
                 user = User.find_by_email(dict_data['email'])
+
+            old_user = copy.deepcopy(user)
 
             if not user:
                 user = User.create_from_dict(dict_data)
             else:
                 user.update(dict_data)
 
+            AuditService.log(AuditType.User, old_user, user, user)
             LoginHistory.log(user.id)
 
             response, status = user_schema.dump(user), HTTPStatus.CREATED

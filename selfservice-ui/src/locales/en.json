@@ -198,8 +198,7 @@
     "btnSaveChanges": "Save Changes",
     "errorMessageDomain": "Your email address does not match any of the eligible organizations in our BC Services Card Self Service System. If you believe you or your organization should have access to this system, please <a href='/contact-us'>contact us</a> for assistance. ",
     "btnCancel": "Cancel",
-    "btnAgree": "I accept",
-    "titleTerms": "TERMS & CONDITIONS",
+    "btnAgree": "I Accept",
     "termsAccept": "Please read the following and click \"I Accept\" to accept the agreement and continue."
   },
   "home": {

@@ -118,7 +118,7 @@ export default class Dashboard extends Vue {
   }
 
   private redirectToProject(project: any) {
-    if (project.statusId === projectStatus.development) {
+    if (project.statusId === projectStatus.dev) {
       this.redirectFromSummaryPage(false);
     }
     this.$router.push(`/project-container/${project.id}`);
