@@ -1,12 +1,6 @@
 /** * Dashboard of app */
 
 <template>
-  <!-- <v-card class="mx-auto" style="max-width: 80%;"> -->
-  <!-- <v-toolbar flat class="bc-subtitle" dark>
-      <v-toolbar-title>{{ $t('dashboard.pagetitle') }}</v-toolbar-title>
-      <div class="flex-grow-1"></div>
-    </v-toolbar> -->
-  <!-- <v-divider></v-divider> -->
   <v-container>
     <v-row class="ma-2">
       <v-col cols="12" v-if="isAdmin">
@@ -108,7 +102,6 @@
       </v-col>
     </v-row>
   </v-container>
-  <!-- </v-card> -->
 </template>
 
 <script lang="ts">
