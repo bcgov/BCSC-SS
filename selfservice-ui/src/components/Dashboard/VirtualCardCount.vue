@@ -1,4 +1,4 @@
-/** * Dashboard of app */
+/** * VirtualCardCount of app */
 
 <template>
   <v-card class="mx-auto">
