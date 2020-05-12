@@ -2,7 +2,7 @@
 
 <template>
   <div
-    class="text-center remaining-acc-txt"
+    class="remaining-acc-txt"
     v-if="getTestAccountCount && getTestAccountCount.total"
   >
     <span class="count" :class="getTestAccountCount.warning && 'not-available'">

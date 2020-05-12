@@ -4,4 +4,5 @@ export interface TestAccountState {
   successStatus?: boolean;
   errorStatus?: boolean;
   testAccountCount: any;
+  testAccountSuccessData: any;
 }

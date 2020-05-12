@@ -17,11 +17,16 @@ export const actions: ActionTree<TestAccountState, RootState> = {
     dispatch('clearStatus');
     try {
       const { testAccounts } = data;
-      await TestAccounts.addTestAccounts({ testAccounts });
+      const updatedTestAccounts = await TestAccounts.addTestAccounts({
+        testAccounts,
+      });
+
+      commit('SET_TEST_SUCCESS_DATA', updatedTestAccounts.data);
       commit('SET_SUCESS', true);
       commit('SET_ERROR', false);
       commit('SET_LOADING', false);
     } catch {
+      commit('SET_TEST_SUCCESS_DATA', {});
       commit('SET_ERROR', true);
       commit('SET_SUCESS', false);
       commit('SET_LOADING', false);

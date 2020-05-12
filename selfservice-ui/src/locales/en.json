@@ -216,14 +216,23 @@
     "btnLearmore": "Learn more",
     "txtgetStarted": "Get started"
   },
-  "testAccountList": {
+  "AddTestAccount": {
     "pagetitle": "Load Test Accounts",
     "pageinfo": "<h4>About Virtual Card test accounts</h4><p class=\"my-2\">This form allows you to upload test accounts to the BC Services Card Self-Service application. Users of this application can select one or more test accounts which will be provisioned from this test account pool. Test accounts are allocated discretely to the organization's project and will not be reused between projects.    </p><h4>Adding test accounts to the system</h4><p class=\"my-2\">As an IDIM representative, you are the user that can ensure there is a sufficient supply of virtual cards in this BC Services Card Self-Serve application so that users are not impeded from testing because of a lack of available test accounts.</p><p>To add test accounts, have a CSV file ready with your generated virtual card information in it. </p><ul><li> Copy from your CSV file and paste into the text area below. </li><li> Do not include the heading row which describes the column names.</li></ul>",
     "special_notes": "Paste your CSV in this text box",
     "btnBack": "Go Back",
     "btnSaveChanges": "Load Test Account",
     "errorMessage": "Something went wrong.",
-    "successMessage": "Test accounts loaded"
+    "successMessage": "Test accounts loaded",
+    "successCreatedMessage": " Test accounts added  and ",
+    "successSkippedMessage": " Test accounts skipped "
+  },
+  "testAccountList": {
+    "pagetitle": "Virtual card test account",
+    "btnBack": "Go Back",
+    "tabAddtestAccount": "Load Test Accounts",
+    "tabProjectUsage": "Project usage",
+    "tabViewCardInfo": "View card info"
   },
   "projectContainer": {
     "pagetitle": "Summary page",

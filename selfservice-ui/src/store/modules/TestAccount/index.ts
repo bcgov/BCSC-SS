@@ -14,6 +14,7 @@ export const state: TestAccountState = {
   successStatus: false,
   errorStatus: false,
   testAccountCount: {},
+  testAccountSuccessData: {},
 };
 
 const namespaced: boolean = true;
