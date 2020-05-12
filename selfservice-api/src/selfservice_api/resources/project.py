@@ -100,7 +100,7 @@ class ProjectResourceById(Resource):
         including_prod = not auth.is_client_role()
 
         if auth.is_client_role() and can_delete:
-            can_delete = project.status < ProjectStatus.DevelopmentComplete
+            can_delete = project.status < ProjectStatus.DevComplete
 
         if can_delete and not project.is_deleted:
             TestAccount.map_test_accounts(project.id, 0)
@@ -144,7 +144,7 @@ class ProjectResourceById(Resource):
             is_success = True
 
             # Decide when and which api to call
-            if project_status == ProjectStatus.Development:
+            if project_status == ProjectStatus.Dev:
                 is_success = ProjectService.dynamic_api_save(project, False)
                 if is_success:
                     response_additional = ProjectService.on_development_status(project)
