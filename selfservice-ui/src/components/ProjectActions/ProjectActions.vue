@@ -5,7 +5,7 @@
     <v-col
       cols="12"
       class="d-flex justify-end"
-      v-if="projectStatus === projectStatusList.development"
+      v-if="projectStatus === projectStatusList.dev"
       no-gutters
     >
       <v-card flat>
@@ -22,7 +22,7 @@
     <v-col
       class="d-flex justify-end btn-delete pad-0"
       @click="toggleDelete()"
-      v-if="isAdmin || projectStatus < projectStatusList.developmentComplete"
+      v-if="isAdmin || projectStatus < projectStatusList.devComplete"
       no-gutters
     >
       <v-icon class="ml-2 icon-delete" small>mdi-delete</v-icon>
@@ -167,7 +167,7 @@ export default class ProjectActions extends Vue {
   private confirmLiveAccess() {
     this.updateProjectStatus({
       projectId: this.id,
-      statusId: projectStatus.developmentComplete
+      statusId: projectStatus.devComplete
     });
   }
   private confirmDeleteProject() {
