@@ -43,6 +43,8 @@ objects:
           value: ${KEYCLOAK_REALM}
         - name: "KEYCLOAK_CLIENT"
           value: ${KEYCLOAK_CLIENT}
+        - name: "ENABLE_BETA"
+          value: ${ENABLE_BETA}
     output:
       to:
         kind: ImageStreamTag
@@ -123,3 +125,6 @@ parameters:
 - name: KEYCLOAK_CLIENT
   required: true
   value: "bcscss"
+- name: ENABLE_BETA
+  required: true
+  value: "false"

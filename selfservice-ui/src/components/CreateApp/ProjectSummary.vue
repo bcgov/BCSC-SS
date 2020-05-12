@@ -233,7 +233,7 @@ export default class ProjectSummary extends Vue {
       this.isDraft = val.statusId === projectStatus.draft;
       if (
         this.isRedirectFromSummaryPage &&
-        val.statusId === projectStatus.development
+        val.statusId === projectStatus.dev
       ) {
         this.scrollToBottom();
       }

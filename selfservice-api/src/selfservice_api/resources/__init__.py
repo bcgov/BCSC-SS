@@ -29,6 +29,7 @@ from .meta import API as META_API
 from .oidc_config import API as OIDC_CONFIG_API
 from .ops import API as OPS_API
 from .project import API as PROJECT_API
+from .project_audit import API as PROJECTAUDIT_API
 from .scope_package import API as SCOPEPACKAGE_API
 from .team import API as TEAM_API
 from .technical_req import API as TECHNICALREQ_API
@@ -75,7 +76,8 @@ API.add_namespace(USER_API, path='/user')
 API.add_namespace(PROJECT_API, path='/project/info')
 API.add_namespace(TEAM_API, path='/project/<int:project_id>/team')
 API.add_namespace(TECHNICALREQ_API, path='/project/<int:project_id>/technical-req')
+API.add_namespace(OIDC_CONFIG_API, path='/project/<int:project_id>/oidc-config')
+API.add_namespace(PROJECTAUDIT_API, path='/project/<int:project_id>/audit')
 API.add_namespace(VALUES_API, path='/values')
 API.add_namespace(SCOPEPACKAGE_API, path='/scope-package')
-API.add_namespace(OIDC_CONFIG_API, path='/project/<int:project_id>/oidc-config')
 API.add_namespace(TESTACCOUNT_API, path='/test-account')
