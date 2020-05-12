@@ -29,6 +29,7 @@ class User(AuditDateTimeMixin, BaseModel, db.Model):
     first_name = db.Column(db.String(250), nullable=False)
     last_name = db.Column(db.String(250), nullable=False)
     oauth_id = db.Column(db.String(100), nullable=True)
+    terms_accepted = db.Column(db.Boolean(), nullable=False, default=True)
 
     @classmethod
     def create_from_dict(cls, user_info: dict) -> User:

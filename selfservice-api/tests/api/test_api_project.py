@@ -137,7 +137,7 @@ def test_patch_project_status(client, jwt, session):
     headers = ss_client_auth_header(jwt)
     technical_req = create_technical_req_with_additional(client, jwt)
 
-    req_data = {'update': 'status', 'status': ProjectStatus.Development}
+    req_data = {'update': 'status', 'status': ProjectStatus.Dev}
     response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
                             data=json.dumps(req_data), headers=headers, content_type='application/json')
 
@@ -159,7 +159,7 @@ def test_patch_project_status(client, jwt, session):
                             data=json.dumps(req_data), headers=headers, content_type='application/json')
     assert response.status_code == HTTPStatus.OK
 
-    req_data = {'update': 'status', 'status': ProjectStatus.DevelopmentComplete}
+    req_data = {'update': 'status', 'status': ProjectStatus.DevComplete}
     response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
                             data=json.dumps(req_data), headers=headers, content_type='application/json')
 
@@ -195,7 +195,7 @@ def test_patch_project_status_validation(client, jwt, session):
 
     assert response.status_code == HTTPStatus.BAD_REQUEST
 
-    req_data = {'update': 'status', 'status': ProjectStatus.Development}
+    req_data = {'update': 'status', 'status': ProjectStatus.Dev}
 
     project = create_project(client, jwt)
     response = client.patch(PROJECTINFO_API + '/' + str(project['id']),
@@ -211,7 +211,7 @@ def test_patch_project_status_oidc_and_test_account(client, jwt, session, config
 
     # Dynamic OIDC None response: Start
     config['dynamic_api_return_none'] = True
-    req_data = {'update': 'status', 'status': ProjectStatus.Development}
+    req_data = {'update': 'status', 'status': ProjectStatus.Dev}
     response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
                             data=json.dumps(req_data), headers=headers, content_type='application/json')
 
@@ -235,7 +235,7 @@ def test_patch_project_status_oidc_and_test_account(client, jwt, session, config
     # Dynamic OIDC None response: End
 
     config['LIMITED_TEST_ACCOUNT_TRIGGER_COUNT'] = 200
-    req_data = {'update': 'status', 'status': ProjectStatus.Development}
+    req_data = {'update': 'status', 'status': ProjectStatus.Dev}
     response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
                             data=json.dumps(req_data), headers=headers, content_type='application/json')
 

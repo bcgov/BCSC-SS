@@ -27,20 +27,34 @@
  Note the format of the jwks.json
  ```
 { "keys" : [
-        {
-    "kty": "RSA",
-    "e": "AQAB",
-    "use": "enc",
-    "kid": "testkey",
-    "alg": "RS256",
-    "n": "t2MsTsJGRoMS4AlHX5uprzspq9g18c2DwVezuQSAeFcCy4BXECmLjmNbcaqLX4pDx48ht2fm5lNdd7vsL_1QDxUVxvHMtueMm9ZxbHYLyfWNC34aB6gHakVW4dX2km3-gKCKaZP_tDm8PvcO9uhpd2i3F3MerPR9JJrznwpMGbnYCEJlgaBTXeajZFbDqK5MwaWN1TwyL99cltWzBsj5qy2nlPfOQU4BHZtH7U4oBAOhM9kA6jbJZKoNKUWIVf4rgTi2FH5pHyz8yEP451xDTf6uxaR4jdMxLYAok-jgHNZxca9aMNekmpTY6SNFhDgoWUzNrmsDBs5WnxVLGqTBWw"
+{
+  "use": "enc",
+  "kty": "RSA",
+  "kid": "bcsc-demo",
+  "alg": "RSA-OAEP",
+  "n": "nY-t_UNF_ItsrDbHzBrI9bNfhj0B4YBTlHIsiP3m1BYUgcokSmM_YYilT_QP8exNHrYYHk7XD2cISZSGANibIxAHNNwv8CVXN6uL2R1mly5QupadmFhFMjq2JOzr972w2aUs0NO9dQ1lPk_A6w9T8QYoLti8ChT2ColmJDs3PHbFTSG0C9DX1_FE8aVYOE-SQYqzY5unOkjCD_3kYt6HT3tsTc5ZPoB8jSgAcQ-Q2SYu5-KArZQtghbeXP25GFPoIN-z6-UuPZI70v-1FodzCqW721B3Xk577N7r8a7KAcFUb6eYPAtGh7GFJBUCNpo4etL51LSb7dWFZnWDlODNgQ",
+  "e": "AQAB"
 }
     ]
 }
 
 ```
-The corresponding private key file is in jwks-private.json , not sure how to use this right now ... 
-Get these keys from the key generation site https://mkjwk.org/ 
+The corresponding private key file is in jwks-private.json, normally this would NOT be publically available in plugged into the application requesting the encrypted JWTs (see the demo apps). But for this sample it's OK as it ONLY should be used for test/demo purposes and ONLY in the test environment.
+
+To generate this file, install a great utility called step from [https://smallstep.com/docs/cli/crypto/jwk/create/!smallstep].
+
+The instructions for Windows aren't clear, I just downloaded step_windows_0.14.4-rc.1_amd64.tar.gz and unzipped using the bash shell provided by git bash 
+
+tar xzf step_windows_0.14.4-rc.1_amd64.tar.gz
+Then cd to the directory where the step.exe is and run
+
+$ ./step crypto jwk create c:/Users/chris/pub.jwk c:/Users/chris/priv.jwk -kty=RSA -size=2048 -alg=RSA-OAEP -use=enc -kid=bcsc-demo -no-password -insecure
+
+NB: Important that the alg matches that which you plug into the BCSC-SS app encryption algorithm !!!!
+
+Then cut and paste this JWK into a JWKS file (basically add the {keys: []} array around the key )
+
+
 ## OpenShift
 
 ## Setting up builds and deployments

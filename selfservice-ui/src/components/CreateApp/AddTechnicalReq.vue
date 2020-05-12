@@ -277,7 +277,7 @@ export default class AddTechnicalReq extends Vue {
   private redirectUris: any = [''];
   private jwksUri: string = '';
   private encryptedResponseEnc: string = 'A256GCM';
-  private encryptedResponseAlg: string = 'RSA1_5';
+  private encryptedResponseAlg: string = 'RSA-OAEP';
   private signedResponseAlg: string = 'RS256';
   private signedAlg: any = signedAlgorithm;
   private encryptedAlg: any = encryptedAlgorithm;
