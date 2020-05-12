@@ -30,21 +30,21 @@ exports[`TestAccount.vue renders props when passed with gettors 1`] = `
     tag="div"
   >
     <v-row-stub
-      class="ma-5"
+      class="mx-5"
       tag="div"
     >
       <!---->
        
       <v-col-stub
-        class="d-flex align-end flex-column-reverse mb-2"
-        cols="4"
-        tag="div"
-      />
-       
-      <v-col-stub
         cols="12"
         tag="div"
       >
+        <div
+          class="remaining-acc"
+        >
+          <remaingaccounts-stub />
+        </div>
+         
         <v-tabs-stub
           activeclass=""
           mobilebreakpoint="1264"
@@ -63,30 +63,6 @@ exports[`TestAccount.vue renders props when passed with gettors 1`] = `
           
           </v-tab-stub>
            
-          <v-tab-stub
-            class="font-weight-bold"
-            ripple="true"
-          >
-            
-            
-          
-          </v-tab-stub>
-           
-          <v-tab-stub
-            class="font-weight-bold"
-            ripple="true"
-          >
-            
-            
-          
-          </v-tab-stub>
-           
-          <div
-            class="remaining-acc"
-          >
-            <remaingaccounts-stub />
-          </div>
-           
           <v-tab-item-stub
             class="custom-tabs-items"
           >
@@ -99,102 +75,6 @@ exports[`TestAccount.vue renders props when passed with gettors 1`] = `
                 <addtestaccount-stub
                   id="0"
                 />
-              </v-card-text-stub>
-            </v-card-stub>
-          </v-tab-item-stub>
-           
-          <v-tab-item-stub
-            class="custom-tabs-items"
-          >
-            <v-card-stub
-              flat="true"
-              loaderheight="4"
-              tag="div"
-            >
-              <v-card-text-stub>
-                
-                
-                
-              </v-card-text-stub>
-            </v-card-stub>
-          </v-tab-item-stub>
-           
-          <v-tab-item-stub
-            class="custom-tabs-items"
-          >
-            <v-card-stub
-              flat="true"
-              loaderheight="4"
-              tag="div"
-            >
-              <v-card-text-stub>
-                <p>
-                  
-                </p>
-              </v-card-text-stub>
-            </v-card-stub>
-          </v-tab-item-stub>
-           
-          <v-tab-item-stub
-            class="custom-tabs-items"
-          >
-            <v-card-stub
-              flat="true"
-              loaderheight="4"
-              tag="div"
-            >
-              <v-card-text-stub>
-                <p>
-                  Security
-                </p>
-              </v-card-text-stub>
-            </v-card-stub>
-          </v-tab-item-stub>
-           
-          <v-tab-item-stub
-            class="custom-tabs-items"
-          >
-            <v-card-stub
-              flat="true"
-              loaderheight="4"
-              tag="div"
-            >
-              <v-card-text-stub>
-                <p>
-                  Communications
-                </p>
-              </v-card-text-stub>
-            </v-card-stub>
-          </v-tab-item-stub>
-           
-          <v-tab-item-stub
-            class="custom-tabs-items"
-          >
-            <v-card-stub
-              flat="true"
-              loaderheight="4"
-              tag="div"
-            >
-              <v-card-text-stub>
-                <p>
-                  Agreements
-                </p>
-              </v-card-text-stub>
-            </v-card-stub>
-          </v-tab-item-stub>
-           
-          <v-tab-item-stub
-            class="custom-tabs-items"
-          >
-            <v-card-stub
-              flat="true"
-              loaderheight="4"
-              tag="div"
-            >
-              <v-card-text-stub>
-                <p>
-                  Prod access request
-                </p>
               </v-card-text-stub>
             </v-card-stub>
           </v-tab-item-stub>
