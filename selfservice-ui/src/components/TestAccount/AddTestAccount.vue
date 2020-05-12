@@ -13,6 +13,7 @@
               ></div>
             </v-card>
           </v-col>
+
           <v-col class="col-12" v-if="errorStatus || successStatus">
             <Alert
               type="error"
@@ -25,10 +26,9 @@
               class="alert-top text-left"
               v-if="successStatus"
             >
-              <!-- {{ $t('AddTestAccount.successMessage') }} -->
-
               {{ successCount.created }}
               {{ $t('AddTestAccount.successCreatedMessage') }}
+              <br />
               {{ successCount.skipped }}
               {{ $t('AddTestAccount.successSkippedMessage') }}
             </Alert>
@@ -117,7 +117,8 @@ export default class TestAccount extends Vue {
     }
     setTimeout(() => {
       this.clearAllStatus();
-    }, 3000);
+      this.clearStatus();
+    }, 10000);
   }
 
   private submitTestAccount() {
@@ -128,11 +129,11 @@ export default class TestAccount extends Vue {
   private clearAllStatus() {
     this.errorStatus = false;
     this.successStatus = false;
-    this.clearStatus();
   }
 
   private mounted() {
     this.clearAllStatus();
+    this.clearStatus();
   }
 }
 </script>

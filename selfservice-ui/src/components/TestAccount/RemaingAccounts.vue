@@ -9,7 +9,9 @@
       {{ getTestAccountCount.available }}</span
     ><span class="divide">/</span
     ><span class="total">{{ getTestAccountCount.total }}</span>
-    {{ $t('dashboard.txtTestAccountRemain') }}
+    <span class="remaining-text">{{
+      $t('dashboard.txtTestAccountRemain')
+    }}</span>
   </div>
 </template>
 <script lang="ts">
@@ -36,8 +38,7 @@ export default class RemaingAccounts extends Vue {
 .remaining-acc-txt {
   color: $BCgovFontColorInvertedDark;
   & .count {
-    font-size: 24px;
-    margin: 2px;
+    font-size: 48px;
     font-weight: bold;
     color: $succssGreen;
     &.not-available {
@@ -45,13 +46,18 @@ export default class RemaingAccounts extends Vue {
     }
   }
   & .total {
-    margin: 2px;
-    font-size: 20px;
+    font-size: 36px;
     font-weight: bold;
   }
   & .divide {
-    font-size: 20px;
+    font-size: 36px;
     font-weight: bold;
+    margin: 0 6px;
+  }
+  & .remaining-text {
+    font-weight: bold;
+    font-size: 22px;
+    margin-left: 10px;
   }
 }
 </style>

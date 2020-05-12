@@ -56,5 +56,6 @@ export default class VirtualCardCount extends Vue {}
   width: 250px;
   display: inline;
   float: right;
+  margin-top: 15px;
 }
 </style>

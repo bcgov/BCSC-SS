@@ -42,12 +42,10 @@ export const actions: ActionTree<TestAccountState, RootState> = {
       const testAccounts = await TestAccounts.getTestAccountCount();
 
       commit('SET_TEST_ACCOUNTS', testAccounts.data);
-      commit('SET_SUCESS', true);
       commit('SET_ERROR', false);
       commit('SET_LOADING', false);
     } catch {
       commit('SET_ERROR', true);
-      commit('SET_SUCESS', false);
       commit('SET_LOADING', false);
     }
   },
