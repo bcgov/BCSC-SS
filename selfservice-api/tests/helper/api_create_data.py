@@ -332,7 +332,7 @@ def _get_project_audit_(client, jwt):
     headers = ss_client_auth_header(jwt)
     technical_req = create_technical_req_with_additional(client, jwt)
 
-    req_data = {'update': 'status', 'status': ProjectStatus.Development}
+    req_data = {'update': 'status', 'status': ProjectStatus.Dev}
     client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
                  data=json.dumps(req_data), headers=headers, content_type='application/json')
 
