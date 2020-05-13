@@ -1,4 +1,4 @@
-import { shallowMount, mount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import AddTestAccount from '@/components/TestAccount/AddTestAccount.vue';
 import Vuetify from 'vuetify';
 import Vuex from 'vuex';
