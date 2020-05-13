@@ -28,7 +28,7 @@ class ProjectStatus(ExtendedIntEnum):
     """This enum provides the list of Project Status."""
 
     Draft = 1, 'Draft'
-    Dev = 2, 'Dev'
+    Dev = 2, 'Development'
     DevComplete = 3, 'Dev Complete'
     ComplianceChecks = 4, 'Compliance Checks'
     ComplianceReview = 5, 'Compliance Review'
