@@ -1,98 +1,283 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AddTestAccount.vue renders props when passed with gettors 1`] = `
-<v-card-stub
-  class="mx-auto "
-  flat="true"
-  loaderheight="4"
-  tag="div"
+exports[`AddTestAccount.vue renders props when delete member 1`] = `
+<div
+  class="mx-auto  v-card v-card--flat v-sheet theme--light"
 >
-  <v-item-group-stub
-    activeclass="v-item--active"
-    mandatory="true"
+  <div
+    class="v-item-group theme--light"
   >
-    <v-container-stub
-      tag="div"
+    <div
+      class="container"
     >
-      <v-row-stub
-        class="mx-4"
-        tag="div"
+      <div
+        class="row mx-4"
       >
-        <v-col-stub
-          cols="12"
+        <div
+          class="col col-12"
           flat=""
-          tag="div"
         >
-          <v-card-stub
-            flat="true"
-            loaderheight="4"
-            tag="div"
+          <div
+            class="v-card v-card--flat v-sheet theme--light"
           >
             <div
               class="text-left"
             />
-          </v-card-stub>
-        </v-col-stub>
+          </div>
+        </div>
          
         <!---->
          
-        <v-col-stub
-          cols="12"
+        <div
+          class="col col-12"
           flat=""
-          tag="div"
         >
-          <v-card-stub
-            flat="true"
-            loaderheight="4"
-            tag="div"
+          <div
+            class="v-card v-card--flat v-sheet theme--light"
           >
-            <textarea-stub
-              counter=""
+            <div
+              class="bc-form-text"
               data-test-id="test-account-text"
-              helptext=""
               id="test-account-text"
-              label=""
               name="test-account-text"
               outlined=""
               rows="10"
-              type="text"
-              value=""
-            />
-          </v-card-stub>
-        </v-col-stub>
-      </v-row-stub>
-    </v-container-stub>
-  </v-item-group-stub>
+            >
+              <div
+                class="text-left my-1"
+              >
+                
+              </div>
+               
+              <!---->
+               
+              <div
+                class="v-input v-textarea v-input--is-label-active v-input--is-dirty theme--light v-text-field v-text-field--single-line v-text-field--solo v-text-field--enclosed v-text-field--outlined"
+              >
+                <div
+                  class="v-input__control"
+                >
+                  <div
+                    class="v-input__slot"
+                  >
+                    <fieldset
+                      aria-hidden="true"
+                    >
+                      <legend>
+                        <span>
+                          ​
+                        </span>
+                      </legend>
+                    </fieldset>
+                    <div
+                      class="v-text-field__slot"
+                    >
+                      <textarea
+                        data-test-id="test-account-text"
+                        id="test-account-text"
+                        name="test-account-text"
+                        rows="10"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    class="v-text-field__details"
+                  >
+                    <div
+                      class="v-messages theme--light"
+                    >
+                      <span
+                        class="v-messages__wrapper"
+                        name="message-transition"
+                        tag="div"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
    
-  <v-col-stub
-    cols="12"
-    tag="div"
+  <div
+    class="col col-12"
   >
-    <v-card-stub
-      flat="true"
-      loaderheight="4"
-      tag="div"
+    <div
+      class="v-card v-card--flat v-sheet theme--light"
     >
-      <v-divider-stub />
+      <hr
+        aria-orientation="horizontal"
+        class="v-divider theme--light"
+        role="separator"
+      />
        
-      <v-card-actions-stub
-        class="mx-4"
+      <div
+        class="v-card__actions mx-4"
       >
-        <v-spacer-stub />
+        <div
+          class="spacer"
+        />
          
-        <button-stub
-          class="white--text submit-account ml-6"
-          color=""
+        <button
+          class="btn white--text submit-test-account ml-6 v-btn v-btn--depressed theme--light v-size--default  primary  normal"
           data-test-id="btn-test-account"
           depressed=""
-          disabled="true"
           name="btn-test-account"
           type="button"
         >
-          
-        </button-stub>
-      </v-card-actions-stub>
-    </v-card-stub>
-  </v-col-stub>
-</v-card-stub>
+          <span
+            class="v-btn__content"
+          >
+            
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`AddTestAccount.vue renders props when passed with gettors 1`] = `
+<div
+  class="mx-auto  v-card v-card--flat v-sheet theme--light"
+>
+  <div
+    class="v-item-group theme--light"
+  >
+    <div
+      class="container"
+    >
+      <div
+        class="row mx-4"
+      >
+        <div
+          class="col col-12"
+          flat=""
+        >
+          <div
+            class="v-card v-card--flat v-sheet theme--light"
+          >
+            <div
+              class="text-left"
+            />
+          </div>
+        </div>
+         
+        <!---->
+         
+        <div
+          class="col col-12"
+          flat=""
+        >
+          <div
+            class="v-card v-card--flat v-sheet theme--light"
+          >
+            <div
+              class="bc-form-text"
+              data-test-id="test-account-text"
+              id="test-account-text"
+              name="test-account-text"
+              outlined=""
+              rows="10"
+            >
+              <div
+                class="text-left my-1"
+              >
+                
+              </div>
+               
+              <!---->
+               
+              <div
+                class="v-input v-textarea theme--light v-text-field v-text-field--single-line v-text-field--solo v-text-field--enclosed v-text-field--outlined"
+              >
+                <div
+                  class="v-input__control"
+                >
+                  <div
+                    class="v-input__slot"
+                  >
+                    <fieldset
+                      aria-hidden="true"
+                    >
+                      <legend>
+                        <span>
+                          ​
+                        </span>
+                      </legend>
+                    </fieldset>
+                    <div
+                      class="v-text-field__slot"
+                    >
+                      <textarea
+                        data-test-id="test-account-text"
+                        id="test-account-text"
+                        name="test-account-text"
+                        rows="10"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    class="v-text-field__details"
+                  >
+                    <div
+                      class="v-messages theme--light"
+                    >
+                      <span
+                        class="v-messages__wrapper"
+                        name="message-transition"
+                        tag="div"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+   
+  <div
+    class="col col-12"
+  >
+    <div
+      class="v-card v-card--flat v-sheet theme--light"
+    >
+      <hr
+        aria-orientation="horizontal"
+        class="v-divider theme--light"
+        role="separator"
+      />
+       
+      <div
+        class="v-card__actions mx-4"
+      >
+        <div
+          class="spacer"
+        />
+         
+        <button
+          aria-disabled="true"
+          class="btn white--text submit-test-account ml-6 v-btn v-btn--depressed v-btn--disabled theme--light v-size--default  primary  normal disabled"
+          data-test-id="btn-test-account"
+          depressed=""
+          disabled="disabled"
+          name="btn-test-account"
+          type="button"
+        >
+          <span
+            class="v-btn__content"
+          >
+            
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 `;
