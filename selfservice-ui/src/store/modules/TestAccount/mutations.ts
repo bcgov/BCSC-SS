@@ -30,5 +30,21 @@ export const mutations: MutationTree<TestAccountState> = {
    */
   SET_ERROR(state, payload: any) {
     state.errorStatus = payload;
-  }
+  },
+  /**
+   * set state on test account count
+   * @param {*} state
+   * @param {*} payload
+   */
+  SET_TEST_ACCOUNTS(state, count: any) {
+    state.testAccountCount = count;
+  },
+  /**
+   * set state on test account return
+   * @param {*} state
+   * @param {*} payload
+   */
+  SET_TEST_SUCCESS_DATA(state, data: any) {
+    state.testAccountSuccessData = data;
+  },
 };
