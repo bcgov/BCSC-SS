@@ -15,7 +15,9 @@
           class="btn-req"
           secondary
           :disabled="!betaEnabled"
-        >{{ $t('projectActions.btnRequestLiveAccess') }}</Button>
+          data-test-id="btn-request-prod-access"
+          >{{ $t('projectActions.btnRequestLiveAccess') }}</Button
+        >
       </v-card>
     </v-col>
 
@@ -24,6 +26,7 @@
       @click="toggleDelete()"
       v-if="isAdmin || projectStatus < projectStatusList.devComplete"
       no-gutters
+      data-test-id="btn-delete-project"
     >
       <v-icon class="ml-2 icon-delete" small>mdi-delete</v-icon>
       {{ $t('projectActions.labelDelete') }}
@@ -34,9 +37,7 @@
         <v-card>
           <v-toolbar flat class="bc-subtitle" dark>
             <v-toolbar-title>
-              {{
-              $t('projectActions.requestLiveAccessDialogTitle')
-              }}
+              {{ $t('projectActions.requestLiveAccessDialogTitle') }}
             </v-toolbar-title>
           </v-toolbar>
           <v-card-text
@@ -45,15 +46,21 @@
           ></v-card-text>
           <v-card-actions class="pb-10">
             <v-spacer></v-spacer>
-            <Button secondary text @click="toggleWarning()">
-              {{
-              $t('projectActions.btnCancel')
-              }}
+            <Button
+              secondary
+              text
+              @click="toggleWarning()"
+              data-test-id="btn-cancel-request-prod-access"
+            >
+              {{ $t('projectActions.btnCancel') }}
             </Button>
-            <Button text class="btn-live" @click="confirmLiveAccess()">
-              {{
-              $t('projectActions.btnConfirm')
-              }}
+            <Button
+              text
+              class="btn-live"
+              @click="confirmLiveAccess()"
+              data-test-id="btn-confirm-request-prod-access"
+            >
+              {{ $t('projectActions.btnConfirm') }}
             </Button>
           </v-card-actions>
         </v-card>
@@ -67,19 +74,27 @@
               {{ $t('projectActions.deleteDialogTitle') }}
             </v-toolbar-title>
           </v-toolbar>
-          <v-card-text class="text-left ma-8" v-html="$t('projectActions.deleteDialogInfo')"></v-card-text>
+          <v-card-text
+            class="text-left ma-8"
+            v-html="$t('projectActions.deleteDialogInfo')"
+          ></v-card-text>
           <v-card-actions class="pb-10">
             <v-spacer></v-spacer>
-            <Button secondary text @click="toggleDelete()">
-              {{
-              $t('projectActions.btnDeleteCancel')
-              }}
+            <Button
+              secondary
+              text
+              @click="toggleDelete()"
+              data-test-id="btn-cancel-delete-project"
+            >
+              {{ $t('projectActions.btnDeleteCancel') }}
             </Button>
             <Button
               text
               class="dialog-delete"
               @click="confirmDeleteProject()"
-            >{{ $t('projectActions.btnDeleteConfirm') }}</Button>
+              data-test-id="btn-confirm-delete-project"
+              >{{ $t('projectActions.btnDeleteConfirm') }}</Button
+            >
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -99,8 +114,8 @@ const KeyCloakModule = namespace('KeyCloakModule');
 
 @Component({
   components: {
-    Button
-  }
+    Button,
+  },
 })
 export default class ProjectActions extends Vue {
   @Prop({ default: 0 })
@@ -167,7 +182,7 @@ export default class ProjectActions extends Vue {
   private confirmLiveAccess() {
     this.updateProjectStatus({
       projectId: this.id,
-      statusId: projectStatus.devComplete
+      statusId: projectStatus.devComplete,
     });
   }
   private confirmDeleteProject() {
