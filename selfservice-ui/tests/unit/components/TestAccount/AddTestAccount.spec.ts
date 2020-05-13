@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils';
+import { shallowMount, mount } from '@vue/test-utils';
 import AddTestAccount from '@/components/TestAccount/AddTestAccount.vue';
 import Vuetify from 'vuetify';
 import Vuex from 'vuex';
@@ -21,11 +21,25 @@ describe('AddTestAccount.vue', () => {
           clearStatus: jest.fn(),
         },
       },
+      TestAccountModule: {
+        namespaced: true,
+        state: {},
+        getters: {
+          getTestAccountCount: jest.fn(),
+          isLoading: jest.fn(),
+          getTestAccountSuccessData: jest.fn(),
+        },
+        actions: {
+          loadTestAccountCount: jest.fn(),
+          clearStatus: jest.fn(),
+          addTestAccounts: jest.fn(),
+        },
+      },
     },
   });
 
   const mountFunction = (options: any) => {
-    return shallowMount(AddTestAccount, {
+    return mount(AddTestAccount, {
       store,
       vuetify,
       mocks: { $t: jest.fn(() => {}) }, // tslint:disable-line
@@ -35,6 +49,18 @@ describe('AddTestAccount.vue', () => {
 
   it('renders props when passed with gettors', () => {
     const AddTestAccountPage = mountFunction({});
+    expect(AddTestAccountPage.element).toMatchSnapshot();
+  });
+
+  it('renders props when delete member', () => {
+    const AddTestAccountPage = mountFunction({});
+    const toggleAddMember = jest.fn();
+
+    AddTestAccountPage.setData({ testAccounts: 'test' });
+    const button = AddTestAccountPage.find('.submit-test-account');
+    AddTestAccountPage.vm.$on('action-btn:clicked', toggleAddMember);
+    button.trigger('click');
+
     expect(AddTestAccountPage.element).toMatchSnapshot();
   });
 });

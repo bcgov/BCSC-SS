@@ -59,7 +59,7 @@
           <Button
             :disabled="testAccounts === ''"
             :loading="isLoading"
-            class="white--text submit-account ml-6"
+            class="white--text submit-test-account ml-6"
             depressed
             @click="submitTestAccount"
             name="btn-test-account"
