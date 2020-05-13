@@ -6,8 +6,6 @@ exports[`TestAccount.vue renders props when passed 1`] = `
   loaderheight="4"
   tag="div"
 >
-  <testaccount-stub
-    id="0"
-  />
+  <testaccount-stub />
 </v-card-stub>
 `;

@@ -3,114 +3,98 @@
 <template>
   <v-card class="mx-auto outer-card">
     <v-toolbar flat class="bc-subtitle padding-0" dark>
-      <v-btn icon @click="goBack()" :aria-label="$t('testAccountList.btnBack')">
-        <v-icon>mdi-arrow-left</v-icon>
-      </v-btn>
       <v-toolbar-title>{{ $t('testAccountList.pagetitle') }}</v-toolbar-title>
-      <div class="flex-grow-1"></div>
-
       <div class="flex-grow-1"></div>
     </v-toolbar>
     <v-divider></v-divider>
-    <v-item-group mandatory>
-      <v-container>
-        <v-row class="mx-4">
-          <v-col cols="12" flat>
-            <v-card flat>
-              <div class="text-left" v-html="$t('testAccountList.pageinfo')"></div>
-            </v-card>
-          </v-col>
-          <v-col class="col-12" v-if="errorStatus || successStatus">
-            <Alert
-              type="error"
-              v-if="errorStatus"
-              class="alert-top text-left"
-            >{{ $t('testAccountList.errorMessage') }}</Alert>
-            <Alert
-              type="success"
-              class="alert-top text-left"
-              v-if="successStatus"
-            >{{ $t('testAccountList.successMessage') }}</Alert>
-          </v-col>
-          <v-col cols="12" flat>
-            <v-card flat>
-              <TextArea
-                v-model="testAccounts"
-                :label="$t('testAccountList.special_notes')"
-                type="text"
-                outlined
-                rows="10"
-                name="test-account-text"
-                id="test-account-text"
-                data-test-id="test-account-text"
-              />
-            </v-card>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-item-group>
-    <v-col cols="12">
-      <v-card flat>
-        <v-divider></v-divider>
-        <v-card-actions class="mx-4">
-          <v-spacer></v-spacer>
+    <v-container>
+      <v-row class="mx-5">
+        <v-col cols="12" v-if="isLoading">
+          <Loading />
+        </v-col>
 
-          <Button
-            :disabled="testAccounts === ''"
-            :loading="isLoading"
-            class="white--text submit-account ml-6"
-            depressed
-            @click="submitTestAccount"
-            name="btn-test-account"
-            data-test-id="btn-test-account"
-          >{{ $t('testAccountList.btnSaveChanges') }}</Button>
-        </v-card-actions>
-      </v-card>
-    </v-col>
+        <v-col cols="12">
+          <div class="remaining-acc"><RemaingAccounts /></div>
+          <v-tabs slider-color="d-none" v-model="selectedTab">
+            <v-tab class="font-weight-bold">
+              {{ $t('testAccountList.tabAddtestAccount') }}
+            </v-tab>
+            <!-- <v-tab class="font-weight-bold">
+              {{ $t('testAccountList.tabProjectUsage') }}
+            </v-tab>
+            <v-tab class="font-weight-bold">
+              {{ $t('testAccountList.tabViewCardInfo') }}
+            </v-tab> -->
+
+            <v-tab-item class="custom-tabs-items">
+              <v-card flat>
+                <v-card-text>
+                  <AddTestAccount />
+                </v-card-text>
+              </v-card>
+            </v-tab-item>
+            <!-- <v-tab-item class="custom-tabs-items">
+              <v-card flat>
+                <v-card-text>
+                  {{ $t('testAccountList.tabProjectUsage') }}
+                </v-card-text>
+              </v-card>
+            </v-tab-item>
+
+            <v-tab-item class="custom-tabs-items">
+              <v-card flat>
+                <v-card-text>
+                  <p>{{ $t('testAccountList.tabViewCardInfo') }}</p>
+                </v-card-text>
+              </v-card>
+            </v-tab-item> -->
+          </v-tabs>
+        </v-col>
+      </v-row>
+    </v-container>
   </v-card>
 </template>
 <script lang="ts">
 import { Component, Vue, Watch, Prop } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
-import Button from '@/Atomic/Button/Button.vue';
-import TextArea from '@/Atomic/TextArea/TextArea.vue';
-import Alert from '@/Atomic/Alert/Alert.vue';
+
+import AddTestAccount from '@/components/TestAccount/AddTestAccount.vue';
+import RemaingAccounts from '@/components/TestAccount/RemaingAccounts.vue';
 
 const TestAccountModule = namespace('TestAccountModule');
 
 @Component({
   components: {
-    Button,
-    TextArea,
-    Alert
-  }
+    AddTestAccount,
+    RemaingAccounts,
+  },
 })
 export default class TestAccount extends Vue {
-  @Prop({ default: 0 })
-  public id!: number;
-
-  @TestAccountModule.Action('addTestAccounts')
-  public addTestAccounts!: any;
   @TestAccountModule.Getter('isLoading')
   public isLoading!: boolean;
-  @TestAccountModule.Getter('successStatus') public successStatus!: boolean;
-  @TestAccountModule.Getter('errorStatus') public errorStatus!: boolean;
-  @TestAccountModule.Action('clearStatus') public clearStatus!: any;
-
-  private testAccounts: string = '';
-
-  private submitTestAccount() {
-    this.addTestAccounts({
-      testAccounts: this.testAccounts
-    });
-  }
-
-  private mounted() {
-    this.clearStatus();
-  }
+  private selectedTab: number = 0;
 }
 </script>
 
 <style lang="scss" scoped>
 @import './../../assets/styles/theme.scss';
+.custom-tabs-items {
+  border: 1px solid $gray5;
+  min-height: 300px; // temp fix
+}
+.v-tab {
+  color: $BCgovFontColorInvertedDark !important;
+}
+.v-tab--active {
+  border: 1px solid $gray5;
+  background-color: $BCgovGold5;
+  color: $BCgovWhite !important;
+}
+.tab-headline {
+  color: $BCgovFontColorInvertedDark;
+}
+.remaining-acc {
+  width: 100%;
+  text-align: right;
+}
 </style>

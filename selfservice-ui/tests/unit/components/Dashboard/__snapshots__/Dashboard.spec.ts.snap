@@ -1,77 +1,92 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Dashboard.vue renders props when passed with gettors 1`] = `
-<v-card-stub
-  class="mx-auto"
-  loaderheight="4"
-  style="max-width: 80%;"
+<v-container-stub
   tag="div"
 >
-  <v-toolbar-stub
-    class="bc-subtitle"
-    dark="true"
-    extensionheight="48"
-    flat="true"
-    src=""
-    tag="header"
-    tile="true"
-  >
-    <v-toolbar-title-stub>
-      
-    </v-toolbar-title-stub>
-     
-    <div
-      class="flex-grow-1"
-    />
-  </v-toolbar-stub>
-   
-  <v-divider-stub />
-   
-  <v-container-stub
+  <v-row-stub
+    class="ma-2"
     tag="div"
   >
-    <v-row-stub
-      class="ma-2"
+    <!---->
+     
+    <v-col-stub
+      cols="12"
       tag="div"
     >
-      <v-col-stub
-        cols="12"
+      <v-card-stub
+        class="mx-auto"
+        loaderheight="4"
         tag="div"
       >
-        <v-card-subtitle-stub
-          class="text-left bc-padding-left-0 page-info pa-2"
-        />
-      </v-col-stub>
-       
-      <button-stub
-        class="white--text ml-3 yellow-btn"
-        color=""
-        data-test-id="btn-create-project"
-        depressed=""
-        name="btn-create-project"
-        type="button"
-        yellowbtn="true"
-      >
-        
-      </button-stub>
-       
-      <v-col-stub
-        cols="12"
-        md="12"
-        tag="div"
-      >
-        <v-card-stub
-          class="text-left"
+        <v-toolbar-stub
+          class="bc-subtitle"
+          dark="true"
+          extensionheight="48"
           flat="true"
-          loaderheight="4"
+          src=""
+          tag="header"
+          tile="true"
+        >
+          <v-toolbar-title-stub>
+            
+          </v-toolbar-title-stub>
+           
+          <div
+            class="flex-grow-1"
+          />
+        </v-toolbar-stub>
+         
+        <v-divider-stub />
+         
+        <v-container-stub
           tag="div"
         >
-          <v-card-text-stub>
-            
-          </v-card-text-stub>
-        </v-card-stub>
-      </v-col-stub>
-    </v-row-stub>
-  </v-container-stub>
-</v-card-stub>
+          <v-row-stub
+            class="ma-2"
+            tag="div"
+          >
+            <v-col-stub
+              cols="12"
+              tag="div"
+            >
+              <v-card-subtitle-stub
+                class="text-left bc-padding-left-0 page-info pa-2"
+              />
+               
+              <button-stub
+                class="white--text ml-3 yellow-btn"
+                color=""
+                data-test-id="btn-create-project"
+                depressed=""
+                name="btn-create-project"
+                type="button"
+                yellowbtn="true"
+              >
+                
+              </button-stub>
+               
+              <v-col-stub
+                cols="12"
+                md="12"
+                tag="div"
+              >
+                <v-card-stub
+                  class="text-left"
+                  flat="true"
+                  loaderheight="4"
+                  tag="div"
+                >
+                  <v-card-text-stub>
+                    
+                  </v-card-text-stub>
+                </v-card-stub>
+              </v-col-stub>
+            </v-col-stub>
+          </v-row-stub>
+        </v-container-stub>
+      </v-card-stub>
+    </v-col-stub>
+  </v-row-stub>
+</v-container-stub>
 `;
