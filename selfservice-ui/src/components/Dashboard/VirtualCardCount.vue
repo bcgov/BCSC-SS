@@ -11,10 +11,10 @@
     <v-divider></v-divider>
     <v-container>
       <v-row class="ma-2">
-        <v-col cols="12" md="7" class="text-center">
+        <v-col cols="12" md="8" class="text-center">
           <RemaingAccounts />
         </v-col>
-        <v-col cols="12" md="5">
+        <v-col cols="12" md="4">
           <div class="remaining-acc-btn">
             <Button
               class="white--text mt-md-4 manage-test"
