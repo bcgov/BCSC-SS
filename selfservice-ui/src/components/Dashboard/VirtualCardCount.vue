@@ -55,7 +55,9 @@ export default class VirtualCardCount extends Vue {}
 .remaining-acc-btn {
   width: 250px;
   display: inline;
-  float: right;
   margin-top: 15px;
+  @include lg {
+    float: right;
+  }
 }
 </style>
