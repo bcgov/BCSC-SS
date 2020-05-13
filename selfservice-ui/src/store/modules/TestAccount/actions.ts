@@ -17,13 +17,35 @@ export const actions: ActionTree<TestAccountState, RootState> = {
     dispatch('clearStatus');
     try {
       const { testAccounts } = data;
-      await TestAccounts.addTestAccounts({ testAccounts });
+      const updatedTestAccounts = await TestAccounts.addTestAccounts({
+        testAccounts,
+      });
+
+      commit('SET_TEST_SUCCESS_DATA', updatedTestAccounts.data);
       commit('SET_SUCESS', true);
       commit('SET_ERROR', false);
       commit('SET_LOADING', false);
     } catch {
+      commit('SET_TEST_SUCCESS_DATA', {});
       commit('SET_ERROR', true);
       commit('SET_SUCESS', false);
+      commit('SET_LOADING', false);
+    }
+  },
+  /**
+   * @param  {} {commit}
+   */
+  async loadTestAccountCount({ commit, dispatch }) {
+    commit('SET_LOADING', true);
+    dispatch('clearStatus');
+    try {
+      const testAccounts = await TestAccounts.getTestAccountCount();
+
+      commit('SET_TEST_ACCOUNTS', testAccounts.data);
+      commit('SET_ERROR', false);
+      commit('SET_LOADING', false);
+    } catch {
+      commit('SET_ERROR', true);
       commit('SET_LOADING', false);
     }
   },
@@ -35,5 +57,5 @@ export const actions: ActionTree<TestAccountState, RootState> = {
     commit('SET_SUCESS', false);
     commit('SET_ERROR', false);
     commit('SET_LOADING', false);
-  }
+  },
 };
