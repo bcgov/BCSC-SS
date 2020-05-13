@@ -17,7 +17,7 @@
         <v-col cols="12" md="4">
           <div class="remaining-acc-btn">
             <Button
-              class="white--text ml-3"
+              class="white--text mt-md-4 "
               depressed
               @click="$router.push(`/add-test-account`)"
               name="btn-create-project"
