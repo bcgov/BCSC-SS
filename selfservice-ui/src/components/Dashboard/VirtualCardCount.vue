@@ -21,7 +21,7 @@
               depressed
               @click="$router.push(`/add-test-account`)"
               name="btn-manage-test"
-              data-test-id="btn-create"
+              data-test-id="btn-create-test-account"
               >{{ $t('dashboard.btnManageTestAccount') }}</Button
             >
           </div>
