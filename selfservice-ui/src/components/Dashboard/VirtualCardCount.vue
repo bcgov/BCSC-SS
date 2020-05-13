@@ -17,7 +17,7 @@
         <v-col cols="12" md="4">
           <div class="remaining-acc-btn">
             <Button
-              class="white--text ml-3"
+              class="white--text mt-md-4 "
               depressed
               @click="$router.push(`/add-test-account`)"
               name="btn-create-project"
@@ -53,9 +53,10 @@ export default class VirtualCardCount extends Vue {}
 @import './../../assets/styles/theme.scss';
 
 .remaining-acc-btn {
-  width: 250px;
   display: inline;
-  float: right;
   margin-top: 15px;
+  @include lg {
+    float: right;
+  }
 }
 </style>
