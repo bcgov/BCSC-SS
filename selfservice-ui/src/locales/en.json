@@ -309,7 +309,8 @@
     "tblTitleProjectStatus": "Project Status",
     "tblTitleDateAssigned": "Date Assigned",
     "tblActionTakenBy": "Action taken by",
-    "tblActionRole": "Role"
+    "tblActionRole": "Role",
+    "noData": "No history data available"
   },
   "projectStatus": {
     "statusdraft": "Draft",

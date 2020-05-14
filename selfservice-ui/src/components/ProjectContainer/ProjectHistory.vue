@@ -39,7 +39,7 @@
                       {{
                         $t(
                           `projectStatus.status${
-                            projectStatusList[history.statusId]
+                            projectStatusList[history.status]
                           }`
                         )
                       }}
@@ -95,7 +95,7 @@ export default class ProjectHistory extends Vue {
   @ProjectInfoModule.Getter('getProjectHistory')
   public getProjectHistory!: any;
   @ProjectInfoModule.Action('loadProjectHistory')
-  public loadProjectInfo!: any;
+  public loadProjectHistory!: any;
 
   private projectStatusList: any = projectStatus;
   private projectRolesList: any = projectRoles;
@@ -109,7 +109,7 @@ export default class ProjectHistory extends Vue {
   }
 
   private mounted() {
-    this.loadProjectInfo(this.id);
+    this.loadProjectHistory(this.id);
   }
 }
 </script>
