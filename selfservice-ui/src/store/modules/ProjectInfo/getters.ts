@@ -67,4 +67,12 @@ export const getters: GetterTree<ProjectInfoState, RootState> = {
       deleteProjectSuccess: state.deleteProjectSuccess,
     };
   },
+  /**
+   * getProjectHistory
+   * @param {*} state
+   * @returns  {object}  projecthistory
+   */
+  getProjectHistory(state) {
+    return state.history;
+  },
 };

@@ -70,17 +70,26 @@
                           <td>{{ project.name }}</td>
                           <td>{{ project.id }}</td>
                           <td>{{ project.created }}</td>
-                          <td v-if="isClient">{{ project.role }}</td>
+                          <td v-if="isClient">
+                            {{
+                              $t(
+                                project.role &&
+                                  `projectRoles.role${
+                                    projectRolesList[project.role]
+                                  }`
+                              )
+                            }}
+                          </td>
 
                           <td>
                             <div
                               class="bc_project_status"
-                              :class="getStatusClass(project.statusId)"
+                              :class="getStatusClass(project.status)"
                             ></div>
                             {{
                               $t(
-                                `dashboard.role${
-                                  projectStatusList[project.statusId]
+                                `projectStatus.status${
+                                  projectStatusList[project.status]
                                 }`
                               )
                             }}
@@ -107,7 +116,7 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
-import { projectStatus } from '@/constants/enums';
+import { projectStatus, projectRoles } from '@/constants/enums';
 import VirtualCardCount from '@/components/Dashboard/VirtualCardCount.vue';
 
 import Button from '@/Atomic/Button/Button.vue';
@@ -141,6 +150,7 @@ export default class Dashboard extends Vue {
   public isRedirectFromSummaryPage!: boolean;
 
   private projectStatusList: any = projectStatus;
+  private projectRolesList: any = projectRoles;
 
   private mounted() {
     this.loadProjectInfo();

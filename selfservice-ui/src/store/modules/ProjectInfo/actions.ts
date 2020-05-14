@@ -201,4 +201,20 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
       commit('SET_LOADING', false);
     }
   },
+
+  /**
+   * load projectinfo from server and set to store
+   * @param {*} { commit }
+   */
+  async loadProjectHistory({ commit }, id) {
+    commit('SET_LOADING', true);
+    try {
+      const projectHistory = await ProjectInfoService.getProjectHistory(id);
+      commit('SET_PROJECTHISTORY', projectHistory.data.history);
+      commit('SET_LOADING', false);
+    } catch {
+      commit('SET_PROJECTHISTORY_ERROR', true);
+      commit('SET_LOADING', false);
+    }
+  },
 };
