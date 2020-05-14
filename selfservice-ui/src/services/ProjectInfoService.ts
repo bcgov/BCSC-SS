@@ -1,6 +1,7 @@
 import axios from '@/lib/axios';
 import { ProjectInfoModel } from '@/models/ProjectInfoModel';
-import { PROJECTINFO_URL } from '@/config/api-endpoints';
+import { PROJECTINFO_URL, PROJECTHISTORY_URL } from '@/config/api-endpoints';
+import { getUrl } from '@/lib/helpers';
 export class ProjectInfoService {
   /**
    * get list of project
@@ -39,5 +40,9 @@ export class ProjectInfoService {
    */
   public static async deleteProject(projectId: string) {
     return await axios.delete(`${PROJECTINFO_URL}/${projectId}`);
+  }
+  public static async getProjectHistory(id: string) {
+    const historyUrl = getUrl(PROJECTHISTORY_URL, id);
+    return await axios.get(historyUrl);
   }
 }

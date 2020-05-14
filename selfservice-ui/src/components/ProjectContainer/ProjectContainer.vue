@@ -8,51 +8,46 @@
           <Loading />
         </v-col>
         <v-col cols="8" v-else>
-          <h2 class="text-left tab-headline">{{ projectInfo && projectInfo.projectName }}</h2>
-          <h4
-            class="text-left tab-headline font-weight-medium"
-          >{{ projectInfo && projectInfo.organizationName }}</h4>
+          <h2 class="text-left tab-headline">
+            {{ projectInfo && projectInfo.projectName }}
+          </h2>
+          <h4 class="text-left tab-headline font-weight-medium">
+            {{ projectInfo && projectInfo.organizationName }}
+          </h4>
         </v-col>
-        <v-col cols="4" class="d-flex align-end flex-column-reverse mb-2" v-show="!isLoading">
+        <v-col
+          cols="4"
+          class="d-flex align-end flex-column-reverse mb-2"
+          v-show="!isLoading"
+        >
           <ProjectActions :id="id" />
         </v-col>
 
         <v-col cols="12">
           <v-tabs slider-color="d-none" v-model="selectedTab">
             <v-tab class="font-weight-bold">
-              {{
-              $t('projectContainer.titleDevSummary')
-              }}
+              {{ $t('projectContainer.titleDevSummary') }}
             </v-tab>
             <v-tab class="font-weight-bold">
-              {{
-              $t('projectContainer.titleTeamRoles')
-              }}
+              {{ $t('projectContainer.titleTeamRoles') }}
             </v-tab>
             <v-tab class="font-weight-bold">
-              {{
-              $t('projectContainer.titlePrivacy')
-              }}
+              {{ $t('projectContainer.titlePrivacy') }}
             </v-tab>
             <v-tab class="font-weight-bold">
-              {{
-              $t('projectContainer.titleSecurity')
-              }}
+              {{ $t('projectContainer.titleSecurity') }}
             </v-tab>
             <v-tab class="font-weight-bold">
-              {{
-              $t('projectContainer.titleComms')
-              }}
+              {{ $t('projectContainer.titleComms') }}
             </v-tab>
             <v-tab class="font-weight-bold">
-              {{
-              $t('projectContainer.titleAgreements')
-              }}
+              {{ $t('projectContainer.titleAgreements') }}
             </v-tab>
             <v-tab class="font-weight-bold">
-              {{
-              $t('projectContainer.titleLiveSummary')
-              }}
+              {{ $t('projectContainer.titleLiveSummary') }}
+            </v-tab>
+            <v-tab class="font-weight-bold">
+              {{ $t('projectContainer.titleHistory') }}
             </v-tab>
             <v-tab-item class="custom-tabs-items">
               <v-card flat>
@@ -104,6 +99,13 @@
                 </v-card-text>
               </v-card>
             </v-tab-item>
+            <v-tab-item class="custom-tabs-items">
+              <v-card flat>
+                <v-card-text>
+                  <p><ProjectHistory :id="id" /></p>
+                </v-card-text>
+              </v-card>
+            </v-tab-item>
           </v-tabs>
         </v-col>
       </v-row>
@@ -119,6 +121,7 @@ import Loading from '@/Atomic/Loading/Loading.vue';
 
 import TeamRoles from '@/components/TeamRoles/TeamRoles.vue';
 import ProjectActions from '@/components/ProjectActions/ProjectActions.vue';
+import ProjectHistory from '@/components/ProjectContainer/ProjectHistory.vue';
 
 const ProjectInfoModule = namespace('ProjectInfoModule');
 
@@ -127,8 +130,9 @@ const ProjectInfoModule = namespace('ProjectInfoModule');
     ProjectSummary,
     Loading,
     TeamRoles,
-    ProjectActions
-  }
+    ProjectActions,
+    ProjectHistory,
+  },
 })
 export default class ProjectContainer extends Vue {
   @Prop({ default: 0 })

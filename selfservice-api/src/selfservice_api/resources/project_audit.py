@@ -38,12 +38,11 @@ class ProjectAuditResource(Resource):
     def get(project_id):
         """Get project audit status."""
         status_list = Audit.find_project_status(project_id)
-        last_status = status_list[-1]['statusId']
+        last_status = status_list[-1]['status'] if len(status_list) > 0 else 0
         for project_status in ProjectStatus:
             if last_status < project_status:
                 status_list.append({
-                    'statusId': project_status,
-                    'status': ProjectStatus.get_phrase(project_status),
+                    'status': project_status,
                     'created': '',
                     'name': '',
                     'role': ''

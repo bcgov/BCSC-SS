@@ -15,4 +15,5 @@ export interface ProjectInfoState {
   deleteProjectSuccess?: boolean;
   isCreated: boolean;
   isUpdated: boolean;
+  history: any;
 }
