@@ -242,7 +242,8 @@
     "titleSecurity": "Security",
     "titleComms": "Communications",
     "titleAgreements": "Agreements",
-    "titleLiveSummary": "Prod Summary"
+    "titleLiveSummary": "Prod Summary",
+    "titleHistory": "History"
   },
   "teamRoles": {
     "pagetitle": "Project team roles",
@@ -302,5 +303,27 @@
     "btnSend": "Send",
     "successMessage": "Your message has been sent successfully to IDIM.",
     "errorMessage": "Something went wrong. Please try again."
+  },
+  "projectHistory": {
+    "tabSubTitle": "Project history",
+    "tblTitleProjectStatus": "Project Status",
+    "tblTitleDateAssigned": "Date Assigned",
+    "tblActionTakenBy": "Action taken by",
+    "tblActionRole": "Role"
+  },
+  "projectStatus": {
+    "statusdraft": "Draft",
+    "statusdev": "Development",
+    "statusdevComplete": "Development Complete",
+    "statuscomplianceChecks": "Compliance Checks",
+    "statuscomplianceReview": "Compliance Review",
+    "statuscomplianceChecksComplete": "Compliance Checks Complete",
+    "statusawaitingProdKeys": "Awaiting Prod Keys",
+    "statusinProd": "In Prod"
+  },
+  "projectRoles": {
+    "roledeveloper": "Developer",
+    "rolemanager": "Manager ",
+    "rolecto": "Executive Sponsor"
   }
 }

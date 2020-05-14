@@ -133,4 +133,12 @@ export const mutations: MutationTree<ProjectInfoState> = {
   SET_IS_UPDATED(state, payload: any) {
     state.isUpdated = payload;
   },
+  /**
+   * set is updated
+   * @param {*} state
+   * @param {*} payload
+   */
+  SET_PROJECTHISTORY(state, payload: any) {
+    state.history = payload;
+  },
 };

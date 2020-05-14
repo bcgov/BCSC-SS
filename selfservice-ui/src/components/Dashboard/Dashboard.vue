@@ -79,7 +79,7 @@
                             ></div>
                             {{
                               $t(
-                                `dashboard.role${
+                                `projectStatus.status${
                                   projectStatusList[project.statusId]
                                 }`
                               )
