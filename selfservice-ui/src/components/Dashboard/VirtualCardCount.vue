@@ -17,11 +17,11 @@
         <v-col cols="12" md="4">
           <div class="remaining-acc-btn">
             <Button
-              class="white--text ml-3"
+              class="white--text mt-md-4 manage-test"
               depressed
               @click="$router.push(`/add-test-account`)"
-              name="btn-create-project"
-              data-test-id="btn-create-project"
+              name="btn-manage-test"
+              data-test-id="btn-create-test-account"
               >{{ $t('dashboard.btnManageTestAccount') }}</Button
             >
           </div>
@@ -53,9 +53,13 @@ export default class VirtualCardCount extends Vue {}
 @import './../../assets/styles/theme.scss';
 
 .remaining-acc-btn {
-  width: 250px;
   display: inline;
-  float: right;
-  margin-top: 15px;
+
+  @include lg {
+    float: right;
+  }
+}
+.manage-test {
+  font-size: 14px !important;
 }
 </style>
