@@ -3,10 +3,13 @@
 <template>
   <v-card class="mx-auto">
     <v-container>
-      <v-row class="ma-2">
+      <v-row class="ma-2" v-if="isLoading">
+        <Loading />
+      </v-row>
+      <v-row class="ma-2" v-else>
         <v-col cols="12">
           <v-col cols="12" md="12" v-if="projectHistoryData.length > 0">
-            <h2 class="bc-page-title-h1 px-2 mb-2">
+            <h2 class="bc-container-title-h1 px-2 mb-5">
               {{ $t('projectHistory.tabSubTitle') }}
             </h2>
 
@@ -75,17 +78,17 @@ import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import { Getter, namespace, Action } from 'vuex-class';
 import { projectStatus, projectRoles } from '@/constants/enums';
 import VirtualCardCount from '@/components/Dashboard/VirtualCardCount.vue';
+import Loading from '@/Atomic/Loading/Loading.vue';
 
 import Button from '@/Atomic/Button/Button.vue';
 
 const ProjectInfoModule = namespace('ProjectInfoModule');
-const KeyCloakModule = namespace('KeyCloakModule');
-const SharedModule = namespace('SharedModule');
 
 @Component({
   components: {
     Button,
     VirtualCardCount,
+    Loading,
   },
 })
 export default class ProjectHistory extends Vue {
