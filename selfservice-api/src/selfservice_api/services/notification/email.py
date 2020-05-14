@@ -40,10 +40,18 @@ class EmailService():
             log_error(err)
 
     @classmethod
-    def save_and_send(cls, email_type: EmailType, attributes: dict):
-        """Save and Send Email."""
-        email_queue = EmailService._prepare_email_queue_(email_type, attributes=attributes)
-        email_queue.email_type = email_type.value
+    def save_and_send(cls, etype: EmailType, attributes: dict, to=None, cc=None):  # pylint: disable=invalid-name
+        """Save and Send Email.
+
+        :param etype: EmailType
+        :param attributes: dict
+
+        Optional parameters. Not required for any email type meant for an analyst.
+        :param to: list or str
+        :param cc: list or str
+        """
+        email_queue = EmailService._prepare_email_queue_(etype, attributes, to, cc)
+        email_queue.email_type = etype.value
         if 'user' in g:
             email_queue.created_by = g.user.id
         else:
@@ -52,7 +60,7 @@ class EmailService():
         cls.send(email_queue)
 
     @staticmethod
-    def _prepare_email_queue_(email_type: EmailType, attributes: dict):
+    def _prepare_email_queue_(etype: EmailType, attributes: dict, to, cc):  # pylint: disable=invalid-name
         """Prepare email queue object."""
         from_email = current_app.config.get('EMAIL_ID_FROM')
         attributes['EMAIL_ID_FROM'] = from_email
@@ -60,9 +68,22 @@ class EmailService():
         analyst_email = current_app.config.get('EMAIL_ID_ANALYST')
         attributes['EMAIL_ID_ANALYST'] = analyst_email
 
-        cc_email = current_app.config.get('EMAIL_ID_CC')
-        cc_email = cc_email.split(',') if cc_email else None
-        attributes['EMAIL_ID_CC'] = cc_email
+        email_id_cc = current_app.config.get('EMAIL_ID_CC')
+        attributes['EMAIL_ID_CC'] = email_id_cc.split(',') if email_id_cc else None
+
+        if isinstance(to) is list:
+            recipients = to
+        elif isinstance(to) is str:
+            recipients = to.split(',')
+        else:
+            recipients = [analyst_email]
+
+        if isinstance(cc) is list:
+            cc_email = cc
+        elif isinstance(cc) is str:
+            cc_email = cc.split(',')
+        else:
+            cc_email = attributes['EMAIL_ID_CC']
 
         debug_email = current_app.config.get('EMAIL_ID_DEBUG')
         attributes['EMAIL_ID_DEBUG'] = debug_email
@@ -72,11 +93,11 @@ class EmailService():
 
         email_queue = EmailQueue()
         email_queue.sender = from_email
-        email_queue.recipients = [analyst_email]
+        email_queue.recipients = recipients
         email_queue.cc = cc_email
         email_queue.bcc = [debug_email] if debug_email else None
 
-        email_queue.subject = EmailSubject.get(email_type, attributes)
-        email_queue.body = EmailBody.get(email_type, attributes)
+        email_queue.subject = EmailSubject.get(etype, attributes)
+        email_queue.body = EmailBody.get(etype, attributes)
 
         return email_queue
