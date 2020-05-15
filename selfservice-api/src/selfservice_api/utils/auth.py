@@ -81,7 +81,7 @@ class Auth():
                     if user is not None:
                         project_id = kwargs.get('project_id')
                         associations = ProjectUsersAssociation.find_all_by_project_and_user_id(project_id, user.id)
-                        if associations is not None and not associations[0].project.is_deleted:
+                        if associations and not associations[0].project.is_deleted:
                             roles = [association.role for association in associations]
                             if all(elem in project_roles for elem in roles):
                                 return f(*args, **kwargs)
