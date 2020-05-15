@@ -108,16 +108,17 @@ def test_delete_project(client, jwt, session):
     technical_req = create_technical_req_with_additional(client, jwt)
 
     req_data = {'update': 'status', 'status': ProjectStatus.Dev}
-    response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
+    project_id = str(technical_req['projectId'])
+    response = client.patch(PROJECTINFO_API + '/' + project_id,
                             data=json.dumps(req_data), headers=headers, content_type='application/json')
     assert response.status_code == HTTPStatus.OK
 
     req_data = {'update': 'status', 'status': ProjectStatus.DevComplete}
-    response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
+    response = client.patch(PROJECTINFO_API + '/' + project_id,
                             data=json.dumps(req_data), headers=headers, content_type='application/json')
     assert response.status_code == HTTPStatus.OK
 
-    response = client.delete(PROJECTINFO_API + '/' + str(technical_req['projectId']),
+    response = client.delete(PROJECTINFO_API + '/' + project_id,
                              headers=headers, content_type='application/json')
     assert response.status_code == HTTPStatus.BAD_REQUEST
 
