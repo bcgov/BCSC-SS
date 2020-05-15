@@ -32,6 +32,7 @@
                   :rules="[rules.required, rules.url, rules.maxLength(500)]"
                   :helpText="$t('technicalRequirements.inputAppText')"
                   data-test-id="input-app-url"
+                  id="input-app-url"
                 />
 
                 <div class="text-left my-1">{{ $t('technicalRequirements.labelRedirectUrl') }}</div>
@@ -48,6 +49,7 @@
                       class="addUri"
                       outlined
                       :data-test-id="`input-redirect-url${index}`"
+                      :id="`input-redirect-url${index}`"
                     />
                   </div>
                   <div class="clear-icon">
@@ -133,6 +135,7 @@
                     :rules="[rules.required, rules.url, rules.maxLength(500)]"
                     :helpText="$t('technicalRequirements.JWKSText')"
                     data-test-id="select-jwks-url"
+                    id="select-jwks-url"
                   />
                   <div class="row">
                     <div class="col-12 col-md-4">
@@ -151,6 +154,7 @@
                         "
                         helpClass="mb-9"
                         data-test-id="select-encrypted-response-enc"
+                        id="select-encrypted-response-enc"
                       />
                     </div>
                     <div class="col-12 col-md-4">
