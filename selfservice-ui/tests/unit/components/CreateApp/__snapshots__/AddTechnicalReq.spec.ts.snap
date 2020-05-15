@@ -85,7 +85,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
               >
                 <label
                   class="text-left my-1"
-                  for=""
+                  for="input-app-url"
                 >
                   
     
@@ -118,7 +118,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                       >
                         <input
                           data-test-id="input-app-url"
-                          id="input-14"
+                          id="input-app-url"
                           type="text"
                         />
                       </div>
@@ -165,7 +165,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                   >
                     <label
                       class="text-left my-1"
-                      for=""
+                      for="input-redirect-url0"
                     >
                       
     
@@ -198,7 +198,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                           >
                             <input
                               data-test-id="input-redirect-url0"
-                              id="input-18"
+                              id="input-redirect-url0"
                               type="text"
                             />
                           </div>
@@ -598,7 +598,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
               >
                 <label
                   class="text-left my-1"
-                  for=""
+                  for="input-app-url"
                 >
                   
     
@@ -631,7 +631,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                       >
                         <input
                           data-test-id="input-app-url"
-                          id="input-54"
+                          id="input-app-url"
                           type="text"
                         />
                       </div>
@@ -678,7 +678,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                   >
                     <label
                       class="text-left my-1"
-                      for=""
+                      for="input-redirect-url0"
                     >
                       
     
@@ -711,7 +711,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                           >
                             <input
                               data-test-id="input-redirect-url0"
-                              id="input-58"
+                              id="input-redirect-url0"
                               type="text"
                             />
                           </div>
@@ -1111,7 +1111,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
               >
                 <label
                   class="text-left my-1"
-                  for=""
+                  for="input-app-url"
                 >
                   
     
@@ -1144,7 +1144,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                       >
                         <input
                           data-test-id="input-app-url"
-                          id="input-94"
+                          id="input-app-url"
                           type="text"
                         />
                       </div>
@@ -1191,7 +1191,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                   >
                     <label
                       class="text-left my-1"
-                      for=""
+                      for="input-redirect-url0"
                     >
                       
     
@@ -1224,7 +1224,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                           >
                             <input
                               data-test-id="input-redirect-url0"
-                              id="input-98"
+                              id="input-redirect-url0"
                               type="text"
                             />
                           </div>

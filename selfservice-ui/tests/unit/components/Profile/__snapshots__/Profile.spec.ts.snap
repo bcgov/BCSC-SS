@@ -18,8 +18,6 @@ exports[`Profile.vue renders popup on button click 1`] = `
         class="v-toolbar__title"
       >
         
-      
-    
       </div>
        
       <div
@@ -69,7 +67,7 @@ exports[`Profile.vue renders popup on button click 1`] = `
           >
             <label
               class="text-left my-1"
-              for=""
+              for="input-profile-email"
             >
               
     
@@ -102,7 +100,7 @@ exports[`Profile.vue renders popup on button click 1`] = `
                   >
                     <input
                       data-test-id="input-profile-email"
-                      id="input-32"
+                      id="input-profile-email"
                       type="text"
                     />
                   </div>
@@ -131,7 +129,7 @@ exports[`Profile.vue renders popup on button click 1`] = `
           >
             <label
               class="text-left my-1"
-              for=""
+              for="input-profile-phone"
             >
               
     
@@ -164,7 +162,7 @@ exports[`Profile.vue renders popup on button click 1`] = `
                   >
                     <input
                       data-test-id="input-profile-phone"
-                      id="input-36"
+                      id="input-profile-phone"
                       type="text"
                     />
                   </div>
@@ -268,8 +266,6 @@ exports[`Profile.vue renders props when passed with gettors 1`] = `
         class="v-toolbar__title"
       >
         
-      
-    
       </div>
        
       <div
@@ -319,7 +315,7 @@ exports[`Profile.vue renders props when passed with gettors 1`] = `
           >
             <label
               class="text-left my-1"
-              for=""
+              for="input-profile-email"
             >
               
     
@@ -352,7 +348,7 @@ exports[`Profile.vue renders props when passed with gettors 1`] = `
                   >
                     <input
                       data-test-id="input-profile-email"
-                      id="input-10"
+                      id="input-profile-email"
                       type="text"
                     />
                   </div>
@@ -381,7 +377,7 @@ exports[`Profile.vue renders props when passed with gettors 1`] = `
           >
             <label
               class="text-left my-1"
-              for=""
+              for="input-profile-phone"
             >
               
     
@@ -414,7 +410,7 @@ exports[`Profile.vue renders props when passed with gettors 1`] = `
                   >
                     <input
                       data-test-id="input-profile-phone"
-                      id="input-14"
+                      id="input-profile-phone"
                       type="text"
                     />
                   </div>
@@ -520,8 +516,6 @@ exports[`Profile.vue renders props when passed with gettors 2`] = `
         class="v-toolbar__title"
       >
         
-      
-    
       </div>
        
       <div
@@ -571,7 +565,7 @@ exports[`Profile.vue renders props when passed with gettors 2`] = `
           >
             <label
               class="text-left my-1"
-              for=""
+              for="input-profile-email"
             >
               
     
@@ -604,7 +598,7 @@ exports[`Profile.vue renders props when passed with gettors 2`] = `
                   >
                     <input
                       data-test-id="input-profile-email"
-                      id="input-63"
+                      id="input-profile-email"
                       type="text"
                     />
                   </div>
@@ -633,7 +627,7 @@ exports[`Profile.vue renders props when passed with gettors 2`] = `
           >
             <label
               class="text-left my-1"
-              for=""
+              for="input-profile-phone"
             >
               
     
@@ -666,7 +660,7 @@ exports[`Profile.vue renders props when passed with gettors 2`] = `
                   >
                     <input
                       data-test-id="input-profile-phone"
-                      id="input-67"
+                      id="input-profile-phone"
                       type="text"
                     />
                   </div>
@@ -751,8 +745,6 @@ exports[`Profile.vue renders props when passed with gettors 2`] = `
                     class="text-left pl-5 ml-8"
                   >
                     
-                
-              
                   </p>
                    
                   <hr

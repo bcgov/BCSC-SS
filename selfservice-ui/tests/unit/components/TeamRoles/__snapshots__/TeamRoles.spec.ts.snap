@@ -465,7 +465,7 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                 >
                                   <label
                                     class="text-left my-1"
-                                    for=""
+                                    for="input-team-first-name"
                                   >
                                     
     
@@ -498,7 +498,7 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                         >
                                           <input
                                             data-test-id="input-team-first-name"
-                                            id="input-56"
+                                            id="input-team-first-name"
                                             type="text"
                                           />
                                         </div>
@@ -527,7 +527,7 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                 >
                                   <label
                                     class="text-left my-1"
-                                    for=""
+                                    for="input-team-last-name"
                                   >
                                     
     
@@ -560,7 +560,7 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                         >
                                           <input
                                             data-test-id="input-team-last-name"
-                                            id="input-60"
+                                            id="input-team-last-name"
                                             type="text"
                                           />
                                         </div>
@@ -589,7 +589,7 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                 >
                                   <label
                                     class="text-left my-1"
-                                    for=""
+                                    for="input-team-email"
                                   >
                                     
     
@@ -622,7 +622,7 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                         >
                                           <input
                                             data-test-id="input-team-email"
-                                            id="input-64"
+                                            id="input-team-email"
                                             type="text"
                                           />
                                         </div>
@@ -650,7 +650,7 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                 >
                                   <label
                                     class="text-left my-1"
-                                    for=""
+                                    for="input-team-phone"
                                   >
                                     
     
@@ -687,7 +687,7 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                         >
                                           <input
                                             data-test-id="input-team-phone"
-                                            id="input-68"
+                                            id="input-team-phone"
                                             type="text"
                                           />
                                         </div>
