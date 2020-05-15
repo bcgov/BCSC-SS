@@ -6,7 +6,7 @@
       <v-btn icon @click="goBack()" :aria-label="$t('selectPackage.btnBack')">
         <v-icon>mdi-arrow-left</v-icon>
       </v-btn>
-      <v-toolbar-title>{{ $t('selectPackage.pagetitle') }}</v-toolbar-title>
+      <h1 class="bc-h1-sub-ttile">{{ $t('selectPackage.pagetitle') }}</h1>
       <div class="flex-grow-1"></div>
 
       <div class="flex-grow-1"></div>

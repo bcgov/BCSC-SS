@@ -6,7 +6,7 @@
         <v-btn icon @click="goBack()" aria-label="Back Button">
           <v-icon>mdi-arrow-left</v-icon>
         </v-btn>
-        <v-toolbar-title>{{ $t('technicalRequirements.technicalTitle') }}</v-toolbar-title>
+        <h1 class="bc-h1-sub-ttile">{{ $t('technicalRequirements.technicalTitle') }}</h1>
         <v-spacer></v-spacer>
       </v-app-bar>
 
