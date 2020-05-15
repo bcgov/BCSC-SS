@@ -32,11 +32,13 @@ exports[`AddProjectInfo.vue renders edit props when passed 1`] = `
         </v-icon-stub>
       </v-btn-stub>
        
-      <v-toolbar-title-stub>
+      <h1
+        class="bc-h1-sub-ttile"
+      >
         
         
       
-      </v-toolbar-title-stub>
+      </h1>
        
       <v-spacer-stub />
     </v-app-bar-stub>
@@ -66,6 +68,7 @@ exports[`AddProjectInfo.vue renders edit props when passed 1`] = `
               <input-stub
                 data-test-id="input-org-name"
                 helptext=""
+                id="input-org-name"
                 label=""
                 outlined="true"
                 rules="v => !!v || 'This field is required',v => (v || '').length >= len || 'Invalid character length, required ' + len,v => (v || '').length <= len || 'Invalid character length, max length ' + len"
@@ -76,6 +79,7 @@ exports[`AddProjectInfo.vue renders edit props when passed 1`] = `
               <input-stub
                 data-test-id="input-project-name"
                 helptext=""
+                id="input-project-name"
                 label=""
                 outlined="true"
                 rules="v => !!v || 'This field is required',v => (v || '').length >= len || 'Invalid character length, required ' + len,v => (v || '').length <= len || 'Invalid character length, max length ' + len"
@@ -87,6 +91,7 @@ exports[`AddProjectInfo.vue renders edit props when passed 1`] = `
                 counter=""
                 data-test-id="text-project-description"
                 helptext=""
+                id="text-project-description"
                 label=""
                 outlined=""
                 rules="v => !!v || 'This field is required',v => (v || '').length <= len || 'Invalid character length, max length ' + len"
@@ -167,11 +172,13 @@ exports[`AddProjectInfo.vue renders props when passed 1`] = `
         </v-icon-stub>
       </v-btn-stub>
        
-      <v-toolbar-title-stub>
+      <h1
+        class="bc-h1-sub-ttile"
+      >
         
         
       
-      </v-toolbar-title-stub>
+      </h1>
        
       <v-spacer-stub />
     </v-app-bar-stub>
@@ -201,6 +208,7 @@ exports[`AddProjectInfo.vue renders props when passed 1`] = `
               <input-stub
                 data-test-id="input-org-name"
                 helptext=""
+                id="input-org-name"
                 label=""
                 outlined="true"
                 rules="v => !!v || 'This field is required',v => (v || '').length >= len || 'Invalid character length, required ' + len,v => (v || '').length <= len || 'Invalid character length, max length ' + len"
@@ -211,6 +219,7 @@ exports[`AddProjectInfo.vue renders props when passed 1`] = `
               <input-stub
                 data-test-id="input-project-name"
                 helptext=""
+                id="input-project-name"
                 label=""
                 outlined="true"
                 rules="v => !!v || 'This field is required',v => (v || '').length >= len || 'Invalid character length, required ' + len,v => (v || '').length <= len || 'Invalid character length, max length ' + len"
@@ -222,6 +231,7 @@ exports[`AddProjectInfo.vue renders props when passed 1`] = `
                 counter=""
                 data-test-id="text-project-description"
                 helptext=""
+                id="text-project-description"
                 label=""
                 outlined=""
                 rules="v => !!v || 'This field is required',v => (v || '').length <= len || 'Invalid character length, max length ' + len"

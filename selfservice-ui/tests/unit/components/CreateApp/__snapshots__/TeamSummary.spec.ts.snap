@@ -21,12 +21,18 @@ exports[`TeamSummary.vue renders props when passed 1`] = `
       
       <v-spacer-stub />
        
-      <v-icon-stub
-        class="ml-3"
-        small=""
+      <span
+        class="edit-wrapper"
+        role="link"
+        tabindex="0"
       >
-        mdi-pencil
-      </v-icon-stub>
+        <v-icon-stub
+          class="ml-3"
+          small=""
+        >
+          mdi-pencil
+        </v-icon-stub>
+      </span>
     </v-card-title-stub>
   </v-toolbar-stub>
    
@@ -70,17 +76,13 @@ exports[`TeamSummary.vue renders props when passed 1`] = `
         <div
           class="ml-6"
         >
-          
-            09870987654321
-          
+          09870987654321
         </div>
          
         <div
           class="ml-6"
         >
-          
-            e@e.com
-          
+          e@e.com
         </div>
       </v-list-item-content-stub>
     </v-list-item-stub>
@@ -120,17 +122,13 @@ exports[`TeamSummary.vue renders props when passed 1`] = `
         <div
           class="ml-6"
         >
-          
-            987654321
-          
+          987654321
         </div>
          
         <div
           class="ml-6"
         >
-          
-            bb@test.com
-          
+          bb@test.com
         </div>
       </v-list-item-content-stub>
     </v-list-item-stub>
@@ -172,9 +170,7 @@ exports[`TeamSummary.vue renders props when passed 1`] = `
         <div
           class="ml-6"
         >
-          
-            user@yopmail.com
-          
+          user@yopmail.com
         </div>
       </v-list-item-content-stub>
     </v-list-item-stub>
@@ -206,12 +202,17 @@ exports[`TeamSummary.vue renders props when passed with gettors 1`] = `
           class="spacer"
         />
          
-        <i
-          class="v-icon notranslate ml-3 v-icon--link mdi mdi-pencil theme--dark"
-          role="button"
-          style="font-size: 16px;"
+        <span
+          class="edit-wrapper"
+          role="link"
           tabindex="0"
-        />
+        >
+          <i
+            aria-hidden="true"
+            class="v-icon notranslate ml-3 mdi mdi-pencil theme--dark"
+            style="font-size: 16px;"
+          />
+        </span>
       </div>
     </div>
   </header>
@@ -254,17 +255,13 @@ exports[`TeamSummary.vue renders props when passed with gettors 1`] = `
         <div
           class="ml-6"
         >
-          
-            09870987654321
-          
+          09870987654321
         </div>
          
         <div
           class="ml-6"
         >
-          
-            e@e.com
-          
+          e@e.com
         </div>
       </div>
     </div>
@@ -308,17 +305,13 @@ exports[`TeamSummary.vue renders props when passed with gettors 1`] = `
         <div
           class="ml-6"
         >
-          
-            987654321
-          
+          987654321
         </div>
          
         <div
           class="ml-6"
         >
-          
-            bb@test.com
-          
+          bb@test.com
         </div>
       </div>
     </div>
@@ -364,9 +357,7 @@ exports[`TeamSummary.vue renders props when passed with gettors 1`] = `
         <div
           class="ml-6"
         >
-          
-            user@yopmail.com
-          
+          user@yopmail.com
         </div>
       </div>
     </div>

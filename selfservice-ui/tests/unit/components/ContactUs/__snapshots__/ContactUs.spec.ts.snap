@@ -47,13 +47,15 @@ exports[`ContactUs.vue renders props when passed with gettors 1`] = `
             data-test-id="input-firstname"
             rules="v => !!v || 'This field is required',v => (v || '').length <= len || 'Invalid character length, max length ' + len"
           >
-            <div
+            <label
               class="text-left my-1"
+              for=""
             >
               
-     
+    
+    
               <!---->
-            </div>
+            </label>
              
             <!---->
              
@@ -107,13 +109,15 @@ exports[`ContactUs.vue renders props when passed with gettors 1`] = `
             data-test-id="input-lastname"
             rules="v => !!v || 'This field is required',v => (v || '').length <= len || 'Invalid character length, max length ' + len"
           >
-            <div
+            <label
               class="text-left my-1"
+              for=""
             >
               
-     
+    
+    
               <!---->
-            </div>
+            </label>
              
             <!---->
              
@@ -167,13 +171,15 @@ exports[`ContactUs.vue renders props when passed with gettors 1`] = `
             data-test-id="input-email"
             rules="v => !!v || 'This field is required',v => /^\\\\w+([.-]?\\\\w+)*@\\\\w+([.-]?\\\\w+)*(\\\\.\\\\w{2,10})+$/.test(v) || 'E-mail must be valid',v => (v || '').length <= len || 'Invalid character length, max length ' + len"
           >
-            <div
+            <label
               class="text-left my-1"
+              for=""
             >
               
-     
+    
+    
               <!---->
-            </div>
+            </label>
              
             <!---->
              
@@ -233,17 +239,17 @@ exports[`ContactUs.vue renders props when passed with gettors 1`] = `
             <div
               class="bc-form-text"
               data-test-id="text-contact-us-description"
-              id="text-contact-us-description"
               name="text-contact-us-description"
               outlined=""
               rows="10"
               rules="v => !!v || 'This field is required'"
             >
-              <div
+              <label
                 class="text-left my-1"
+                for="text-contact-us-description"
               >
                 
-              </div>
+              </label>
                
               <!---->
                
