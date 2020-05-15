@@ -7,7 +7,14 @@
         {{
         $t('summaryPage.packageTestTitle')
         }}
-        <v-icon small class="ml-3" @click="$router.push(`/project/${id}/package`)">mdi-pencil</v-icon>
+        <span
+          @click="$router.push(`/project/${id}/package`)"
+          class="edit-wrapper"
+          :aria-label="$t('global.edit')"
+        >
+          <v-icon small class="ml-3">mdi-pencil</v-icon>
+          <span class="edit-label">{{ $t('global.edit') }}</span>
+        </span>
       </v-card-title>
     </v-toolbar>
 

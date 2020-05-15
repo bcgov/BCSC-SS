@@ -3,9 +3,9 @@ action on your service, such as Download or Submit. */
 
 <template>
   <div class="bc-form-text">
-    <div class="text-left my-1">{{label}}</div>
+    <label class="text-left my-1" :for="id">{{label}}</label>
     <div class="text-left mb-1 subtitle-2 bc-help-text" v-if="helpText !==''">{{helpText}}</div>
-    <v-textarea :value="value" @input="input" v-bind="$attrs" solo></v-textarea>
+    <v-textarea :value="value" @input="input" v-bind="$attrs" solo :id="id"></v-textarea>
   </div>
   <!-- outlined -->
 </template>
@@ -69,6 +69,13 @@ export default class TextArea extends Vue {
   })
   private helpText!: string;
   /**
+   *  id
+   */
+  @Prop({
+    default: ''
+  })
+  private id!: string;
+  /**
    * input
    * @description update value on key up or blur
    * @param {string} inputval
@@ -81,4 +88,7 @@ export default class TextArea extends Vue {
 
 <style lang="scss" scoped>
 // @import './../../assets/styles/theme.scss';
+.bc-form-text {
+  text-align: left;
+}
 </style>

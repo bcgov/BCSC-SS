@@ -6,9 +6,15 @@
       <v-card-title>
         {{ $t('summaryPage.teamTitle') }}
         <v-spacer></v-spacer>
-        <v-icon small class="ml-3" @click="$router.push(`/project/${id}/team`)"
-          >mdi-pencil</v-icon
+
+        <span
+          @click="$router.push(`/project/${id}/team`)"
+          class="edit-wrapper"
+          :aria-label="$t('global.edit')"
         >
+          <v-icon small class="ml-3">mdi-pencil</v-icon>
+          <span class="edit-label">{{ $t('global.edit') }}</span>
+        </span>
       </v-card-title>
     </v-toolbar>
 
@@ -28,18 +34,11 @@
               {{ member.firstName }}
               {{ member.lastName }}
             </div>
-            <div v-if="member.phone !== ''" class="ml-6">
-              {{ member.phone }}
-            </div>
-            <div v-if="member.email !== ''" class="ml-6">
-              {{ member.email }}
-            </div>
+            <div v-if="member.phone !== ''" class="ml-6">{{ member.phone }}</div>
+            <div v-if="member.email !== ''" class="ml-6">{{ member.email }}</div>
           </v-list-item-content>
         </v-list-item>
-        <v-divider
-          :key="`divider-${member.id}`"
-          v-if="index < team.length - 1"
-        ></v-divider>
+        <v-divider :key="`divider-${member.id}`" v-if="index < team.length - 1"></v-divider>
       </template>
     </v-list>
   </v-card>

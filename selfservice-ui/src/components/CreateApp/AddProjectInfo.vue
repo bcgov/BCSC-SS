@@ -6,11 +6,11 @@
         <v-btn icon @click="$router.push('/dashboard/')" aria-label="Back Button">
           <v-icon>mdi-arrow-left</v-icon>
         </v-btn>
-        <v-toolbar-title>
+        <h1 class="bc-h1-sub-ttile">
           {{
           $t('projectInfo.ProjectInfoTitle')
           }}
-        </v-toolbar-title>
+        </h1>
         <v-spacer></v-spacer>
       </v-app-bar>
       <v-form ref="form" v-model="form">
@@ -34,6 +34,7 @@
                   ]"
                   :helpText="$t('projectInfo.OrganizationNameHint')"
                   data-test-id="input-org-name"
+                  id="input-org-name"
                 />
 
                 <Input
@@ -47,6 +48,7 @@
                   ]"
                   :helpText="$t('projectInfo.projectNameHint')"
                   data-test-id="input-project-name"
+                  id="input-project-name"
                 />
 
                 <TextArea
@@ -57,6 +59,7 @@
                   outlined
                   :helpText="$t('projectInfo.DescriptionHint')"
                   data-test-id="text-project-description"
+                  id="text-project-description"
                 />
               </v-card>
             </v-col>

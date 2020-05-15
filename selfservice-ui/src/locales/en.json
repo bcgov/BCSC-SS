@@ -326,5 +326,8 @@
     "roledeveloper": "Developer",
     "rolemanager": "Manager ",
     "rolecto": "Executive Sponsor"
+  },
+  "global": {
+    "edit": "edit"
   }
 }

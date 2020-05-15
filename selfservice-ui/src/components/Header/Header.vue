@@ -14,6 +14,7 @@
         src="@/assets/images/bc-logo-horizontal.svg"
         alt="Go to the Government of British Columbia website"
         class="img side-left-margin"
+        tabindex="0"
       />
 
       <v-toolbar-title>{{ $t('main.siteTitle') }}</v-toolbar-title>
@@ -30,14 +31,22 @@
         :yellowBtn="true"
         class="d-none d-sm-flex login-btn side-right-margin"
         v-if="!isLoggedin"
+        tabindex="0"
       >Login</Button>
 
       <v-toolbar-title v-if="isLoggedin" class="d-flex">
-        <v-btn icon dark large @click="$router.push(`/profile`)">
+        <v-btn
+          icon
+          dark
+          large
+          @click="$router.push(`/profile`)"
+          class="icon-btn"
+          aria-label="Edit profile"
+        >
           <v-icon>mdi-account-edit</v-icon>
         </v-btn>
         <div class="profile-title">Welcome {{ userProfile.firstName }} {{ userProfile.lastName }}</div>
-        <v-btn text @click="logout" color="white">
+        <v-btn text @click="logout" color="white" class="icon-btn">
           <span class="mr-2 logout" color="white">Logout</span>
         </v-btn>
       </v-toolbar-title>

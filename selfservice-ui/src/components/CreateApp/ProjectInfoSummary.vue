@@ -7,7 +7,14 @@
       <v-card-title>
         {{ $t('summaryPage.projectInfoTitle') }}
         <v-spacer></v-spacer>
-        <v-icon small class="ml-3" @click="$router.push(`/project/${id}/info`)">mdi-pencil</v-icon>
+        <span
+          @click="$router.push(`/project/${id}/info`)"
+          class="edit-wrapper"
+          :aria-label="$t('global.edit')"
+        >
+          <v-icon small class="ml-3">mdi-pencil</v-icon>
+          <span class="edit-label">{{ $t('global.edit') }}</span>
+        </span>
       </v-card-title>
     </v-toolbar>
 
@@ -100,3 +107,6 @@ export default class ProjectInfoSummary extends Vue {
   }
 }
 </script>
+<style lang="scss" scoped>
+@import './../../assets/styles/theme.scss';
+</style>
