@@ -48,9 +48,9 @@
                       class="edit-wrapper"
                       tabindex="0"
                       :aria-label="$t('global.edit')"
+                      role="link"
                     >
                       <v-icon class="ml-2" small>mdi-pencil</v-icon>
-                      <span class="edit-label">{{ $t('global.edit') }}</span>
                     </span>
                   </td>
                   <td>

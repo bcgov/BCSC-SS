@@ -51,13 +51,23 @@
                     />
                   </div>
                   <div class="clear-icon">
-                    <v-icon class="ml-2" large @click="clearUri(index)">mdi-close</v-icon>
+                    <v-icon
+                      class="ml-2"
+                      large
+                      @click="clearUri(index)"
+                      @keyup.enter="clearUri(index)"
+                      tabindex="0"
+                      :aria-label="$t('technicalRequirements.ariaLabelRedirectUrlDelete')"
+                    >mdi-close</v-icon>
                   </div>
                 </div>
 
                 <div
                   @click="addUri()"
+                  @keyup.enter="addUri()"
                   class="add-url text-left"
+                  tabindex="0"
+                  role="button"
                 >{{ $t('technicalRequirements.AddURI') }}</div>
                 <v-card-title
                   class="text-left bc-padding-left-0"
@@ -71,9 +81,11 @@
                     v-model="signingEncryptionType"
                     :mandatory="false"
                     data-test-id="radio-algoritham-base"
+                    role="radiogroup"
+                    :aria-labelledby="$t('technicalRequirements.labelRadioGroup')"
                   >
                     <v-radio
-                      label="Signed JWT"
+                      :label="$t('technicalRequirements.labelSignedJWT')"
                       :value="algorithamBase.SignedJWT"
                       data-test-id="radio-algoritham-base-signed-jwt"
                     ></v-radio>
@@ -104,7 +116,7 @@
                     </div>
 
                     <v-radio
-                      label="Secure JWT"
+                      :label="$t('technicalRequirements.labelSecureJWT')"
                       :value="algorithamBase.SecureJWT"
                       data-test-id="radio-algoritham-base-secure-jwt"
                     ></v-radio>
