@@ -61,7 +61,7 @@ class TeamResource(Resource):
             dict_data = team_schema.load(team_json)
             validate_before_save(project_id, dict_data)
             team = ProjectUsersAssociation.create_from_dict(dict_data, project_id)
-            EmailService.save_and_send(EmailType.TEAM_MEMBER, {}, to=team.user.email)
+            EmailService.save_and_send(EmailType.TEAM_MEMBER, {}, to=team.user.email, cc=[])
 
             response, status = team_schema.dump(team), HTTPStatus.CREATED
         except ValidationError as team_err:

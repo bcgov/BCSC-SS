@@ -63,7 +63,7 @@ class EmailService():
     def _prepare_email_queue_(etype: EmailType, attributes: dict, to, cc):  # pylint: disable=invalid-name
         """Prepare email queue object."""
         app_url = current_app.config.get('APP_URL')
-        attributes['url'] = app_url
+        attributes['url'] = app_url.rstrip('/')
 
         from_email = current_app.config.get('EMAIL_ID_FROM')
         attributes['EMAIL_ID_FROM'] = from_email

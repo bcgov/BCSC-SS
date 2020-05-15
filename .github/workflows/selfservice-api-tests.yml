@@ -38,7 +38,7 @@ jobs:
       EMAIL_ID_ANALYST: TESTING
       EMAIL_ID_CC: TESTING
       EMAIL_ID_DEBUG: TESTING
-      APP_URL: http://localhost:8080
+      APP_URL: https://selfservice-dev.pathfinder.gov.bc.ca/
 
     steps:
       - uses: actions/checkout@v1
