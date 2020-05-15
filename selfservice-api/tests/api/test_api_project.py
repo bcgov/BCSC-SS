@@ -99,13 +99,26 @@ def test_delete_project(client, jwt, session):
     assert response.status_code == HTTPStatus.OK
 
     # Delete as client
-    headers = ss_client_auth_header(jwt)
     project = get_project(client, jwt)
     response = client.delete(PROJECTINFO_API + '/' + str(project['id']),
                              headers=headers, content_type='application/json')
     assert response.status_code == HTTPStatus.OK
 
-    response = client.delete(PROJECTINFO_API + '/1234', headers=headers, content_type='application/json')
+    headers = ss_client_auth_header(jwt)
+    technical_req = create_technical_req_with_additional(client, jwt)
+
+    req_data = {'update': 'status', 'status': ProjectStatus.Dev}
+    response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
+                            data=json.dumps(req_data), headers=headers, content_type='application/json')
+    assert response.status_code == HTTPStatus.OK
+
+    req_data = {'update': 'status', 'status': ProjectStatus.DevComplete}
+    response = client.patch(PROJECTINFO_API + '/' + str(technical_req['projectId']),
+                            data=json.dumps(req_data), headers=headers, content_type='application/json')
+    assert response.status_code == HTTPStatus.OK
+
+    response = client.delete(PROJECTINFO_API + '/' + str(technical_req['projectId']),
+                             headers=headers, content_type='application/json')
     assert response.status_code == HTTPStatus.BAD_REQUEST
 
 

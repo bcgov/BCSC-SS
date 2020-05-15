@@ -62,6 +62,9 @@ class EmailService():
     @staticmethod
     def _prepare_email_queue_(etype: EmailType, attributes: dict, to, cc):  # pylint: disable=invalid-name
         """Prepare email queue object."""
+        app_url = current_app.config.get('APP_URL')
+        attributes['url'] = app_url
+
         from_email = current_app.config.get('EMAIL_ID_FROM')
         attributes['EMAIL_ID_FROM'] = from_email
 
@@ -71,16 +74,16 @@ class EmailService():
         email_id_cc = current_app.config.get('EMAIL_ID_CC')
         attributes['EMAIL_ID_CC'] = email_id_cc.split(',') if email_id_cc else None
 
-        if isinstance(to) is list:
+        if isinstance(to, list):
             recipients = to
-        elif isinstance(to) is str:
+        elif isinstance(to, str):
             recipients = to.split(',')
         else:
             recipients = [analyst_email]
 
-        if isinstance(cc) is list:
+        if isinstance(cc, list):
             cc_email = cc
-        elif isinstance(cc) is str:
+        elif isinstance(cc, str):
             cc_email = cc.split(',')
         else:
             cc_email = attributes['EMAIL_ID_CC']

@@ -21,7 +21,9 @@ from marshmallow import ValidationError
 
 from ..exceptions import BusinessException
 from ..models import OrgWhitelist, ProjectUsersAssociation
+from ..models.enums import ProjectRoles
 from ..schemas import TeamSchema
+from ..services.notification import EmailService, EmailType
 from ..utils.auth import auth
 from ..utils.roles import Role
 from ..utils.util import cors_preflight
@@ -37,7 +39,7 @@ class TeamResource(Resource):
 
     @staticmethod
     @cors.crossdomain(origin='*')
-    @auth.require
+    @auth.can_access_project([ProjectRoles.Developer, ProjectRoles.Manager, ProjectRoles.Cto])
     def get(project_id):
         """Get team."""
         team = ProjectUsersAssociation.find_all_by_project_id(project_id)
@@ -49,7 +51,7 @@ class TeamResource(Resource):
 
     @staticmethod
     @cors.crossdomain(origin='*')
-    @auth.require
+    @auth.can_access_project([ProjectRoles.Developer, ProjectRoles.Manager, ProjectRoles.Cto])
     def post(project_id):
         """Post a new team using the request body."""
         team_json = request.get_json()
@@ -59,6 +61,8 @@ class TeamResource(Resource):
             dict_data = team_schema.load(team_json)
             validate_before_save(project_id, dict_data)
             team = ProjectUsersAssociation.create_from_dict(dict_data, project_id)
+            EmailService.save_and_send(EmailType.TEAM_MEMBER, {}, to=team.user.email)
+
             response, status = team_schema.dump(team), HTTPStatus.CREATED
         except ValidationError as team_err:
             response, status = {'systemErrors': team_err.messages}, HTTPStatus.BAD_REQUEST
@@ -74,7 +78,7 @@ class TeamResourceById(Resource):
 
     @staticmethod
     @cors.crossdomain(origin='*')
-    @auth.require
+    @auth.can_access_project([ProjectRoles.Developer, ProjectRoles.Manager, ProjectRoles.Cto])
     def get(project_id, member_id):  # pylint: disable=unused-argument
         """Get team member."""
         team_member = ProjectUsersAssociation.find_by_id(member_id)
@@ -93,7 +97,7 @@ class TeamResourceById(Resource):
 
     @staticmethod
     @cors.crossdomain(origin='*')
-    @auth.require
+    @auth.can_access_project([ProjectRoles.Developer, ProjectRoles.Manager, ProjectRoles.Cto])
     def put(project_id, member_id):
         """Update team member details."""
         team_json = request.get_json()

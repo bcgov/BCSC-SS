@@ -19,7 +19,7 @@ from flask import jsonify
 from flask_restplus import Namespace, Resource, cors
 
 from ..models import Audit
-from ..models.enums import ProjectStatus
+from ..models.enums import ProjectRoles, ProjectStatus
 from ..utils.auth import auth
 from ..utils.util import cors_preflight
 
@@ -34,7 +34,7 @@ class ProjectAuditResource(Resource):
 
     @staticmethod
     @cors.crossdomain(origin='*')
-    @auth.require
+    @auth.can_access_project([ProjectRoles.Developer, ProjectRoles.Manager, ProjectRoles.Cto])
     def get(project_id):
         """Get project audit status."""
         status_list = Audit.find_project_status(project_id)
