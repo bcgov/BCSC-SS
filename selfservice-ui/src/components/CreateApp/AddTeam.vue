@@ -5,7 +5,7 @@
       <v-btn icon @click="goBack()" :aria-label="$t('team.btnBack')">
         <v-icon>mdi-arrow-left</v-icon>
       </v-btn>
-      <v-toolbar-title>{{ $t('team.pageTitle') }}</v-toolbar-title>
+      <h1 class="bc-h1-sub-ttile">{{ $t('team.pageTitle') }}</h1>
       <div class="flex-grow-1"></div>
     </v-toolbar>
     <v-divider></v-divider>

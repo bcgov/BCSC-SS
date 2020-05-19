@@ -10,7 +10,7 @@
       <v-col cols="12">
         <v-card class="mx-auto">
           <v-toolbar flat class="bc-subtitle" dark>
-            <v-toolbar-title>{{ $t('dashboard.pagetitle') }}</v-toolbar-title>
+            <h1 class="bc-h1-sub-ttile">{{ $t('dashboard.pagetitle') }}</h1>
             <div class="flex-grow-1"></div>
           </v-toolbar>
           <v-divider></v-divider>
@@ -29,35 +29,31 @@
                   @click="$router.push(`/project/info`)"
                   name="btn-create-project"
                   data-test-id="btn-create-project"
-                  >{{ $t('dashboard.btnCreateProject') }}</Button
-                >
+                  :aria-label="$t('dashboard.areaLabelbtnCreateProject')"
+                >{{ $t('dashboard.btnCreateProject') }}</Button>
                 <v-col cols="12" md="12" v-if="projectInfoList.length > 0">
-                  <h2 class="bc-page-title-h1 px-2 mb-2">
-                    {{ $t('dashboard.myprojectTitle') }}
-                  </h2>
+                  <h2 class="bc-page-title-h1 px-2 mb-2">{{ $t('dashboard.myprojectTitle') }}</h2>
 
                   <v-simple-table class="text-left">
                     <template v-slot:default>
                       <thead class="table-head">
                         <tr>
-                          <th :scope="$t('dashboard.tblTitleProjectName')">
-                            {{ $t('dashboard.tblTitleProjectName') }}
-                          </th>
-                          <th :scope="$t('dashboard.tblTitleReferenceNo')">
-                            {{ $t('dashboard.tblTitleReferenceNo') }}
-                          </th>
-                          <th :scope="$t('dashboard.tblTitlCreated')">
-                            {{ $t('dashboard.tblTitlCreated') }}
-                          </th>
+                          <th
+                            :scope="$t('dashboard.tblTitleProjectName')"
+                          >{{ $t('dashboard.tblTitleProjectName') }}</th>
+                          <th
+                            :scope="$t('dashboard.tblTitleReferenceNo')"
+                          >{{ $t('dashboard.tblTitleReferenceNo') }}</th>
+                          <th
+                            :scope="$t('dashboard.tblTitlCreated')"
+                          >{{ $t('dashboard.tblTitlCreated') }}</th>
                           <th
                             :scope="$t('dashboard.tblTitlrole')"
                             v-if="isClient"
-                          >
-                            {{ $t('dashboard.tblTitlrole') }}
-                          </th>
-                          <th :scope="$t('dashboard.tblTitleProjectStatus')">
-                            {{ $t('dashboard.tblTitleProjectStatus') }}
-                          </th>
+                          >{{ $t('dashboard.tblTitlrole') }}</th>
+                          <th
+                            :scope="$t('dashboard.tblTitleProjectStatus')"
+                          >{{ $t('dashboard.tblTitleProjectStatus') }}</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -66,32 +62,30 @@
                           :key="project.id"
                           @click="redirectToProject(project)"
                           style="cursor: pointer"
+                          tabindex="0"
                         >
                           <td>{{ project.name }}</td>
                           <td>{{ project.id }}</td>
                           <td>{{ project.created }}</td>
                           <td v-if="isClient">
                             {{
-                              $t(
-                                project.role &&
-                                  `projectRoles.role${
-                                    projectRolesList[project.role]
-                                  }`
-                              )
+                            $t(
+                            project.role &&
+                            `projectRoles.role${
+                            projectRolesList[project.role]
+                            }`
+                            )
                             }}
                           </td>
 
                           <td>
-                            <div
-                              class="bc_project_status"
-                              :class="getStatusClass(project.status)"
-                            ></div>
+                            <div class="bc_project_status" :class="getStatusClass(project.status)"></div>
                             {{
-                              $t(
-                                `projectStatus.status${
-                                  projectStatusList[project.status]
-                                }`
-                              )
+                            $t(
+                            `projectStatus.status${
+                            projectStatusList[project.status]
+                            }`
+                            )
                             }}
                           </td>
                         </tr>
@@ -128,8 +122,8 @@ const SharedModule = namespace('SharedModule');
 @Component({
   components: {
     Button,
-    VirtualCardCount,
-  },
+    VirtualCardCount
+  }
 })
 export default class Dashboard extends Vue {
   @KeyCloakModule.Getter('isClient')

@@ -9,26 +9,24 @@
       <v-row class="ma-2" v-else>
         <v-col cols="12">
           <v-col cols="12" md="12" v-if="projectHistoryData.length > 0">
-            <h2 class="bc-container-title-h1 px-2 mb-5">
-              {{ $t('projectHistory.tabSubTitle') }}
-            </h2>
+            <h2 class="bc-container-title-h1 px-2 mb-5">{{ $t('projectHistory.tabSubTitle') }}</h2>
 
             <v-simple-table class="text-left">
               <template v-slot:default>
                 <thead class="table-head">
                   <tr>
-                    <th :scope="$t('projectHistory.tblTitleProjectStatus')">
-                      {{ $t('projectHistory.tblTitleProjectStatus') }}
-                    </th>
-                    <th :scope="$t('projectHistory.tblTitleDateAssigned')">
-                      {{ $t('projectHistory.tblTitleDateAssigned') }}
-                    </th>
-                    <th :scope="$t('projectHistory.tblActionTakenBy')">
-                      {{ $t('projectHistory.tblActionTakenBy') }}
-                    </th>
-                    <th :scope="$t('projectHistory.tblActionRole')">
-                      {{ $t('projectHistory.tblActionRole') }}
-                    </th>
+                    <th
+                      :scope="$t('projectHistory.tblTitleProjectStatus')"
+                    >{{ $t('projectHistory.tblTitleProjectStatus') }}</th>
+                    <th
+                      :scope="$t('projectHistory.tblTitleDateAssigned')"
+                    >{{ $t('projectHistory.tblTitleDateAssigned') }}</th>
+                    <th
+                      :scope="$t('projectHistory.tblActionTakenBy')"
+                    >{{ $t('projectHistory.tblActionTakenBy') }}</th>
+                    <th
+                      :scope="$t('projectHistory.tblActionRole')"
+                    >{{ $t('projectHistory.tblActionRole') }}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -40,21 +38,21 @@
                   >
                     <td>
                       {{
-                        $t(
-                          `projectStatus.status${
-                            projectStatusList[history.status]
-                          }`
-                        )
+                      $t(
+                      `projectStatus.status${
+                      projectStatusList[history.status]
+                      }`
+                      )
                       }}
                     </td>
                     <td>{{ history.created }}</td>
                     <td>{{ history.name }}</td>
                     <td>
                       {{
-                        $t(
-                          history.role &&
-                            `projectRoles.role${projectRolesList[history.role]}`
-                        )
+                      $t(
+                      history.role &&
+                      `projectRoles.role${projectRolesList[history.role]}`
+                      )
                       }}
                     </td>
                   </tr>
@@ -88,8 +86,8 @@ const ProjectInfoModule = namespace('ProjectInfoModule');
   components: {
     Button,
     VirtualCardCount,
-    Loading,
-  },
+    Loading
+  }
 })
 export default class ProjectHistory extends Vue {
   @Prop({ default: 0 })

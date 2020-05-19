@@ -3,12 +3,11 @@ important action on your service, such as Download or Submit. */
 
 <template>
   <div class="bc-form-text">
-    <div class="text-left my-1">
-      {{ label }} <span v-if="optional" class="optional">*optional</span>
-    </div>
-    <div class="text-left mb-1 subtitle-2 bc-help-text" v-if="helpText !== ''">
-      {{ helpText }}
-    </div>
+    <label class="text-left my-1" :for="id">
+      {{ label }}
+      <span v-if="optional" class="optional">*optional</span>
+    </label>
+    <div class="text-left mb-1 subtitle-2 bc-help-text" v-if="helpText !== ''">{{ helpText }}</div>
     <v-text-field
       :value="value"
       :counter="counter"
@@ -19,6 +18,7 @@ important action on your service, such as Download or Submit. */
       class="input"
       :outlined="outlined"
       solo
+      :id="id"
     ></v-text-field>
   </div>
   <!-- outlined -->
@@ -39,7 +39,7 @@ export default class Input extends Vue {
    *
    */
   @Prop({
-    default: false,
+    default: false
   })
   private counter!: boolean | string | number;
 
@@ -48,7 +48,7 @@ export default class Input extends Vue {
    * @values input, password
    */
   @Prop({
-    default: 'text',
+    default: 'text'
   })
   private type!: string;
 
@@ -56,7 +56,7 @@ export default class Input extends Vue {
    *  value for input
    */
   @Prop({
-    default: '',
+    default: ''
   })
   private value!: string;
 
@@ -64,7 +64,7 @@ export default class Input extends Vue {
    *  label text
    */
   @Prop({
-    default: '',
+    default: ''
   })
   private label!: string;
 
@@ -72,30 +72,37 @@ export default class Input extends Vue {
    *  required
    */
   @Prop({
-    default: false,
+    default: false
   })
   private required!: boolean;
   /**
    *  outlined
    */
   @Prop({
-    default: true,
+    default: true
   })
   private outlined!: boolean;
   /**
    *  helpText text
    */
   @Prop({
-    default: '',
+    default: ''
   })
   private helpText!: string;
   /**
    *  optional text
    */
   @Prop({
-    default: false,
+    default: false
   })
   private optional!: boolean;
+  /**
+   *  id
+   */
+  @Prop({
+    default: ''
+  })
+  private id!: string;
 
   /**
    * input
@@ -122,5 +129,6 @@ export default class Input extends Vue {
 }
 .bc-form-text {
   width: 100%;
+  text-align: left;
 }
 </style>

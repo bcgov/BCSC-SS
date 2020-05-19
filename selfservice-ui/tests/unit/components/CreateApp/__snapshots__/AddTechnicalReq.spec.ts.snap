@@ -30,11 +30,11 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
           </span>
         </button>
          
-        <div
-          class="v-toolbar__title"
+        <h1
+          class="bc-h1-sub-ttile"
         >
           
-        </div>
+        </h1>
          
         <div
           class="spacer"
@@ -83,13 +83,15 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
     }
   },v => (v || '').length <= len || 'Invalid character length, max length ' + len"
               >
-                <div
+                <label
                   class="text-left my-1"
+                  for="input-app-url"
                 >
                   
-     
+    
+    
                   <!---->
-                </div>
+                </label>
                  
                 <!---->
                  
@@ -116,7 +118,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                       >
                         <input
                           data-test-id="input-app-url"
-                          id="input-14"
+                          id="input-app-url"
                           type="text"
                         />
                       </div>
@@ -161,13 +163,15 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
     }
   }"
                   >
-                    <div
+                    <label
                       class="text-left my-1"
+                      for="input-redirect-url0"
                     >
                       
-     
+    
+    
                       <!---->
-                    </div>
+                    </label>
                      
                     <!---->
                      
@@ -194,7 +198,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                           >
                             <input
                               data-test-id="input-redirect-url0"
-                              id="input-18"
+                              id="input-redirect-url0"
                               type="text"
                             />
                           </div>
@@ -231,6 +235,8 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                
               <div
                 class="add-url text-left"
+                role="button"
+                tabindex="0"
               >
                 
               </div>
@@ -288,13 +294,6 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                               class="v-icon notranslate mdi mdi-radiobox-marked theme--light primary--text"
                             />
                           </div>
-                          <label
-                            class="v-label theme--light"
-                            for="input-23"
-                            style="left: 0px; position: relative;"
-                          >
-                            Signed JWT
-                          </label>
                         </div>
                          
                         <div
@@ -434,13 +433,6 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                               class="v-icon notranslate mdi mdi-radiobox-blank theme--light"
                             />
                           </div>
-                          <label
-                            class="v-label theme--light"
-                            for="input-33"
-                            style="left: 0px; position: relative;"
-                          >
-                            Secure JWT
-                          </label>
                         </div>
                          
                         <div
@@ -551,11 +543,11 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
           </span>
         </button>
          
-        <div
-          class="v-toolbar__title"
+        <h1
+          class="bc-h1-sub-ttile"
         >
           
-        </div>
+        </h1>
          
         <div
           class="spacer"
@@ -604,13 +596,15 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
     }
   },v => (v || '').length <= len || 'Invalid character length, max length ' + len"
               >
-                <div
+                <label
                   class="text-left my-1"
+                  for="input-app-url"
                 >
                   
-     
+    
+    
                   <!---->
-                </div>
+                </label>
                  
                 <!---->
                  
@@ -637,7 +631,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                       >
                         <input
                           data-test-id="input-app-url"
-                          id="input-54"
+                          id="input-app-url"
                           type="text"
                         />
                       </div>
@@ -682,13 +676,15 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
     }
   }"
                   >
-                    <div
+                    <label
                       class="text-left my-1"
+                      for="input-redirect-url0"
                     >
                       
-     
+    
+    
                       <!---->
-                    </div>
+                    </label>
                      
                     <!---->
                      
@@ -715,7 +711,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                           >
                             <input
                               data-test-id="input-redirect-url0"
-                              id="input-58"
+                              id="input-redirect-url0"
                               type="text"
                             />
                           </div>
@@ -752,6 +748,8 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                
               <div
                 class="add-url text-left"
+                role="button"
+                tabindex="0"
               >
                 
               </div>
@@ -809,13 +807,6 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                               class="v-icon notranslate mdi mdi-radiobox-marked theme--light primary--text"
                             />
                           </div>
-                          <label
-                            class="v-label theme--light"
-                            for="input-63"
-                            style="left: 0px; position: relative;"
-                          >
-                            Signed JWT
-                          </label>
                         </div>
                          
                         <div
@@ -955,13 +946,6 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                               class="v-icon notranslate mdi mdi-radiobox-blank theme--light"
                             />
                           </div>
-                          <label
-                            class="v-label theme--light"
-                            for="input-73"
-                            style="left: 0px; position: relative;"
-                          >
-                            Secure JWT
-                          </label>
                         </div>
                          
                         <div
@@ -1072,11 +1056,11 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
           </span>
         </button>
          
-        <div
-          class="v-toolbar__title"
+        <h1
+          class="bc-h1-sub-ttile"
         >
           
-        </div>
+        </h1>
          
         <div
           class="spacer"
@@ -1125,13 +1109,15 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
     }
   },v => (v || '').length <= len || 'Invalid character length, max length ' + len"
               >
-                <div
+                <label
                   class="text-left my-1"
+                  for="input-app-url"
                 >
                   
-     
+    
+    
                   <!---->
-                </div>
+                </label>
                  
                 <!---->
                  
@@ -1158,7 +1144,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                       >
                         <input
                           data-test-id="input-app-url"
-                          id="input-94"
+                          id="input-app-url"
                           type="text"
                         />
                       </div>
@@ -1203,13 +1189,15 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
     }
   }"
                   >
-                    <div
+                    <label
                       class="text-left my-1"
+                      for="input-redirect-url0"
                     >
                       
-     
+    
+    
                       <!---->
-                    </div>
+                    </label>
                      
                     <!---->
                      
@@ -1236,7 +1224,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                           >
                             <input
                               data-test-id="input-redirect-url0"
-                              id="input-98"
+                              id="input-redirect-url0"
                               type="text"
                             />
                           </div>
@@ -1273,6 +1261,8 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                
               <div
                 class="add-url text-left"
+                role="button"
+                tabindex="0"
               >
                 
               </div>
@@ -1330,13 +1320,6 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                               class="v-icon notranslate mdi mdi-radiobox-marked theme--light primary--text"
                             />
                           </div>
-                          <label
-                            class="v-label theme--light"
-                            for="input-103"
-                            style="left: 0px; position: relative;"
-                          >
-                            Signed JWT
-                          </label>
                         </div>
                          
                         <div
@@ -1476,13 +1459,6 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                               class="v-icon notranslate mdi mdi-radiobox-blank theme--light"
                             />
                           </div>
-                          <label
-                            class="v-label theme--light"
-                            for="input-113"
-                            style="left: 0px; position: relative;"
-                          >
-                            Secure JWT
-                          </label>
                         </div>
                          
                         <div

@@ -29,7 +29,14 @@
             docopy(getApiData.oidcConfig && getApiData.oidcConfig.clientId)
           "
         >
-          <code class="code-snippet">
+          <code
+            class="code-snippet"
+            :aria-label="$t('ClientID.ariaLabelApiKey')"
+            @keyup.enter="
+            docopy(getApiData.oidcConfig && getApiData.oidcConfig.clientId)
+          "
+            tabindex="0"
+          >
             <v-icon small class="mr-1">mdi-content-copy</v-icon>
             {{ getApiData.oidcConfig && getApiData.oidcConfig.clientId }}
           </code>
@@ -51,7 +58,14 @@
             docopy(getApiData.oidcConfig && getApiData.oidcConfig.clientSecret)
           "
         >
-          <code class="code-snippet">
+          <code
+            class="code-snippet"
+            :aria-label="$t('ClientID.ariaLabelClientSecret')"
+            tabindex="0"
+            @keyup.enter="
+            docopy(getApiData.oidcConfig && getApiData.oidcConfig.clientSecret)
+          "
+          >
             <div class="float-left">
               <v-icon small class="mr-2">mdi-content-copy</v-icon>
             </div>

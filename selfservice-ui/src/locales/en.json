@@ -61,7 +61,11 @@
     "labelTestMethodHint": "Choose your signing and encryption methods for testing below. These options are available to facilitate your testing. Please note that when you move into a production environment, it will be required that you enable signing and encryption at that time.",
     "SignedJWTHint": "We return a signed JWT for more security",
     "SecureJWTHint": "We return a signed and encrypted JWT for maximum security",
-    "AddURI": "+ Add another URI"
+    "AddURI": "+ Add another URI",
+    "ariaLabelRedirectUrlDelete": "Remove this entry",
+    "labelRadioGroup": "Security Choices",
+    "labelSignedJWT": "Signed JWT",
+    "labelSecureJWT": "Secure JWT"
   },
   "selectPackage": {
     "pagetitle": "Select Package",
@@ -162,7 +166,9 @@
     "tblGivenName": "Given Name",
     "tblSurName": "Surname",
     "warningLimitedTestAccount": "There are no more test accounts for use. Please <a href='/contact-us'>contact us</a> for assistance.",
-    "tooltipTestAccount": "If there is a mismatch between the number of test accounts you requested and what you see here, <br/>then there are no more random test accounts for your use. <br/>Please contact IDIM Consulting or Product Owner who will be in touch with you shortly."
+    "tooltipTestAccount": "If there is a mismatch between the number of test accounts you requested and what you see here, <br/>then there are no more random test accounts for your use. <br/>Please contact IDIM Consulting or Product Owner who will be in touch with you shortly.",
+    "ariaLabelApiKey": "copy Client ID to clipboard",
+    "ariaLabelClientSecret": "copy Client Secret to clipboard"
   },
   "dashboard": {
     "pagetitle": "Projects",
@@ -184,6 +190,7 @@
     "roleinProd": "In Prod",
     "myprojectTitle": "My projects",
     "btnCreateProject": "+ Create New Project",
+    "areaLabelbtnCreateProject": "Create New Project",
     "createProjectInfo": "<p class='pageinfo'>New projects start in the development environment. When testing is complete, the production path becomes available.</p>",
     "virtualCardCountTitle": "Virtual card test accounts",
     "btnManageTestAccount": "Manage test accounts",
@@ -326,5 +333,8 @@
     "roledeveloper": "Developer",
     "rolemanager": "Manager ",
     "rolecto": "Executive Sponsor"
+  },
+  "global": {
+    "edit": "edit"
   }
 }

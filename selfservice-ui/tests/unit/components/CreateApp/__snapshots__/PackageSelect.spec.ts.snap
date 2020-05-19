@@ -26,11 +26,11 @@ exports[`PackageSelect.vue from summary page renders props when passed and redir
         </span>
       </button>
        
-      <div
-        class="v-toolbar__title"
+      <h1
+        class="bc-h1-sub-ttile"
       >
         
-      </div>
+      </h1>
        
       <div
         class="flex-grow-1"
@@ -329,11 +329,11 @@ exports[`PackageSelect.vue renders props when passed 1`] = `
         </span>
       </button>
        
-      <div
-        class="v-toolbar__title"
+      <h1
+        class="bc-h1-sub-ttile"
       >
         
-      </div>
+      </h1>
        
       <div
         class="flex-grow-1"
@@ -632,11 +632,11 @@ exports[`PackageSelect.vue select on package on click  1`] = `
         </span>
       </button>
        
-      <div
-        class="v-toolbar__title"
+      <h1
+        class="bc-h1-sub-ttile"
       >
         
-      </div>
+      </h1>
        
       <div
         class="flex-grow-1"
@@ -935,11 +935,11 @@ exports[`PackageSelect.vue should call gotback on back button click  1`] = `
         </span>
       </button>
        
-      <div
-        class="v-toolbar__title"
+      <h1
+        class="bc-h1-sub-ttile"
       >
         
-      </div>
+      </h1>
        
       <div
         class="flex-grow-1"
@@ -1238,11 +1238,11 @@ exports[`PackageSelect.vue submit form with selected package on submit click  1`
         </span>
       </button>
        
-      <div
-        class="v-toolbar__title"
+      <h1
+        class="bc-h1-sub-ttile"
       >
         
-      </div>
+      </h1>
        
       <div
         class="flex-grow-1"
