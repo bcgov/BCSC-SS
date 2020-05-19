@@ -11,6 +11,7 @@
       <v-card flat>
         <Button
           @click="toggleWarning()"
+          @keyup.enter="toggleWarning()"
           :aria-label="$t('projectActions.btnRequestLiveAccess')"
           class="btn-req"
           secondary
@@ -24,6 +25,7 @@
     <v-col
       class="d-flex justify-end btn-delete pad-0"
       @click="toggleDelete()"
+      @keyup.enter="toggleDelete()"
       v-if="isAdmin || projectStatus < projectStatusList.devComplete"
       no-gutters
       data-test-id="btn-delete-project"
@@ -49,12 +51,14 @@
               secondary
               text
               @click="toggleWarning()"
+              @keyup.enter="toggleWarning()"
               data-test-id="btn-cancel-request-prod-access"
             >{{ $t('projectActions.btnCancel') }}</Button>
             <Button
               text
               class="btn-live"
               @click="confirmLiveAccess()"
+              @keyup.enter="confirmLiveAccess()"
               data-test-id="btn-confirm-request-prod-access"
             >{{ $t('projectActions.btnConfirm') }}</Button>
           </v-card-actions>
@@ -76,12 +80,14 @@
               secondary
               text
               @click="toggleDelete()"
+              @keyup.enter="toggleDelete()"
               data-test-id="btn-cancel-delete-project"
             >{{ $t('projectActions.btnDeleteCancel') }}</Button>
             <Button
               text
               class="dialog-delete"
               @click="confirmDeleteProject()"
+              @keyup.enter="confirmDeleteProject()"
               data-test-id="btn-confirm-delete-project"
             >{{ $t('projectActions.btnDeleteConfirm') }}</Button>
           </v-card-actions>

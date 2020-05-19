@@ -127,6 +127,7 @@
                     <v-spacer></v-spacer>
                     <Button
                       @click="cancel"
+                      @keyup.enter="cancel"
                       aria-label="Back Button"
                       secondary
                       data-test-id="btn-cancel-add-team"
@@ -135,6 +136,7 @@
                       :disabled="!valid"
                       class="white--text submit-package"
                       @click="submitTeamMember"
+                      @keyup.enter="submitTeamMember"
                       data-test-id="btn-submit-add-team"
                     >
                       {{

@@ -12,6 +12,7 @@
         {{ $t('summaryPage.technicalReqTitle') }}
         <span
           @click="$router.push(`/project/${id}/technical`)"
+          @keyup.enter="$router.push(`/project/${id}/technical`)"
           class="edit-wrapper"
           :aria-label="$t('global.edit')"
           tabindex="0"

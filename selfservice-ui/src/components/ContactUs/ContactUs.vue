@@ -77,6 +77,7 @@
                 class="white--text btn-contact-us ml-6"
                 depressed
                 @click="submitContactMessage"
+                @keyup.enter="submitContactMessage"
                 name="btn-contact-us"
                 data-test-id="btn-contact-us"
               >{{ $t('contactUs.btnSend') }}</Button>

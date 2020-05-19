@@ -3,9 +3,11 @@
 <template>
   <v-card class="mx-auto">
     <v-toolbar flat class="bc-subtitle" dark>
-      <v-toolbar-title>{{
+      <v-toolbar-title>
+        {{
         $t('dashboard.virtualCardCountTitle')
-      }}</v-toolbar-title>
+        }}
+      </v-toolbar-title>
       <div class="flex-grow-1"></div>
     </v-toolbar>
     <v-divider></v-divider>
@@ -20,10 +22,10 @@
               class="white--text mt-md-4 manage-test"
               depressed
               @click="$router.push(`/add-test-account`)"
+              @keyup.enter="$router.push(`/add-test-account`)"
               name="btn-manage-test"
               data-test-id="btn-create-test-account"
-              >{{ $t('dashboard.btnManageTestAccount') }}</Button
-            >
+            >{{ $t('dashboard.btnManageTestAccount') }}</Button>
           </div>
         </v-col>
       </v-row>
@@ -43,8 +45,8 @@ const TestAccountModule = namespace('TestAccountModule');
 @Component({
   components: {
     Button,
-    RemaingAccounts,
-  },
+    RemaingAccounts
+  }
 })
 export default class VirtualCardCount extends Vue {}
 </script>

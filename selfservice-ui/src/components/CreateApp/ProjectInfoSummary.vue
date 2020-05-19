@@ -9,6 +9,7 @@
         <v-spacer></v-spacer>
         <span
           @click="$router.push(`/project/${id}/info`)"
+          @keyup.enter="$router.push(`/project/${id}/info`)"
           class="edit-wrapper"
           :aria-label="$t('global.edit')"
           tabindex="0"

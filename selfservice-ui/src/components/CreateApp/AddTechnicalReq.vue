@@ -199,6 +199,7 @@
                   <v-spacer></v-spacer>
                   <Button
                     @click="goBack()"
+                    @keyup.enter="goBack()"
                     aria-label="Back Button"
                     secondary
                     data-test-id="btn-cancel-technical-req"
@@ -217,6 +218,7 @@
                     class="white--text submit-req ml-6"
                     depressed
                     @click="addTechnicalReq()"
+                    @keyup.enter="addTechnicalReq()"
                     data-test-id="btn-submit-technical-req"
                   >
                     {{

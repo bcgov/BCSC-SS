@@ -33,6 +33,7 @@
                 class="d-flex align-center pa-4 test-account"
                 :class="active ? 'active-bg' : ''"
                 @click="selectedTestAccount(testAccount)"
+                @keyup.enter="selectedTestAccount(testAccount)"
                 :data-test-id="`input-select-test-account-${testAccount}`"
               >
                 <v-list-item>
@@ -67,6 +68,7 @@
           <v-spacer></v-spacer>
           <Button
             @click="goBack()"
+            @keyup.enter="goBack()"
             :aria-label="$t('testAccount.btnBack')"
             secondary
             data-test-id="btn-cancel-test-account"
@@ -85,6 +87,7 @@
             class="white--text submit-account ml-6"
             depressed
             @click="submitTestAccount"
+            @keyup.enter="submitTestAccount"
             data-test-id="btn-submit-test-account"
           >
             {{

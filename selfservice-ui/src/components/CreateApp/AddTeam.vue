@@ -19,6 +19,7 @@
           <v-spacer></v-spacer>
           <Button
             @click="goBack"
+            @keyup.enter="goBack"
             :aria-label="$t('team.btnBack')"
             secondary
             class="back-btn"
@@ -28,6 +29,7 @@
             class="white--text submit-team ml-6"
             depressed
             @click="nextRedirect"
+            @keyup.enter="nextRedirect"
             data-test-id="btn-submit-project-team"
           >
             {{

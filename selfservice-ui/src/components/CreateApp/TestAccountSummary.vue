@@ -7,6 +7,7 @@
         {{ $t('summaryPage.labelTestAccountsTitle') }}
         <span
           @click="$router.push(`/project/${projectId}/test-account`)"
+          @keyup.enter="$router.push(`/project/${projectId}/test-account`)"
           class="edit-wrapper"
           :aria-label="$t('global.edit')"
           tabindex="0"

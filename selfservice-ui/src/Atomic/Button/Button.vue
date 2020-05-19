@@ -10,6 +10,7 @@ important action on your service, such as Download or Submit. */
     :aria-disabled="disabled"
     :disabled="disabled"
     @click="click"
+    @keyup.enter="click"
     v-bind="$attrs"
     :color="color !== '' ? color : undefined"
   >
