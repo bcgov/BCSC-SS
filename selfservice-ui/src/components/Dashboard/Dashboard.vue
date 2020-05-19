@@ -27,6 +27,7 @@
                   depressed
                   :yellowBtn="true"
                   @click="$router.push(`/project/info`)"
+                  @keyup.enter="$router.push(`/project/info`)"
                   name="btn-create-project"
                   data-test-id="btn-create-project"
                   :aria-label="$t('dashboard.areaLabelbtnCreateProject')"
@@ -61,6 +62,7 @@
                           v-for="project in projectInfoList"
                           :key="project.id"
                           @click="redirectToProject(project)"
+                          @keyup.enter="redirectToProject(project)"
                           style="cursor: pointer"
                           tabindex="0"
                         >

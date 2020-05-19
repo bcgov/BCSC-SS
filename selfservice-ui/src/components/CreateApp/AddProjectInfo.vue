@@ -71,6 +71,7 @@
                   <v-spacer></v-spacer>
                   <Button
                     @click="$router.push(`/project-container/${id}`)"
+                    @keyup.enter="$router.push(`/project-container/${id}`)"
                     aria-label="Back Button"
                     secondary
                     v-if="!showWizardExperience()"

@@ -1,16 +1,13 @@
 /** * Add TestAccount component */
 
 <template>
-  <v-card class="mx-auto " flat="">
+  <v-card class="mx-auto" flat>
     <v-item-group mandatory>
       <v-container>
         <v-row class="mx-4">
           <v-col cols="12" flat>
             <v-card flat>
-              <div
-                class="text-left"
-                v-html="$t('AddTestAccount.pageinfo')"
-              ></div>
+              <div class="text-left" v-html="$t('AddTestAccount.pageinfo')"></div>
             </v-card>
           </v-col>
 
@@ -19,13 +16,8 @@
               type="error"
               v-if="errorStatus"
               class="alert-top text-left"
-              >{{ $t('AddTestAccount.errorMessage') }}</Alert
-            >
-            <Alert
-              type="success"
-              class="alert-top text-left"
-              v-if="successStatus"
-            >
+            >{{ $t('AddTestAccount.errorMessage') }}</Alert>
+            <Alert type="success" class="alert-top text-left" v-if="successStatus">
               {{ successCount.created }}
               {{ $t('AddTestAccount.successCreatedMessage') }}
               <br />
@@ -62,10 +54,10 @@
             class="white--text submit-test-account ml-6"
             depressed
             @click="submitTestAccount"
+            @keyup.enter="submitTestAccount"
             name="btn-test-account"
             data-test-id="btn-test-account"
-            >{{ $t('AddTestAccount.btnSaveChanges') }}</Button
-          >
+          >{{ $t('AddTestAccount.btnSaveChanges') }}</Button>
         </v-card-actions>
       </v-card>
     </v-col>
@@ -84,8 +76,8 @@ const TestAccountModule = namespace('TestAccountModule');
   components: {
     Button,
     TextArea,
-    Alert,
-  },
+    Alert
+  }
 })
 export default class TestAccount extends Vue {
   @Prop({ default: 0 })
@@ -123,7 +115,7 @@ export default class TestAccount extends Vue {
 
   private submitTestAccount() {
     this.addTestAccounts({
-      testAccounts: this.testAccounts,
+      testAccounts: this.testAccounts
     });
   }
   private clearAllStatus() {

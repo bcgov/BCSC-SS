@@ -44,6 +44,7 @@
                     {{ $t(`teamRoles.labelRole${rolesList[team.role]}`) }}
                     <span
                       @click="toggleAddMember(true, team.id)"
+                      @keyup.enter="toggleAddMember(true, team.id)"
                       v-if="team.isCurrentUser"
                       class="edit-wrapper"
                       tabindex="0"
@@ -58,9 +59,15 @@
                   </td>
                   <td>{{ team.phone }}</td>
                   <td v-if="isAdmin">
-                    <v-icon @click="toggleAddMember(true, team.id)" class="ml-2" small>mdi-pencil</v-icon>
+                    <v-icon
+                      @click="toggleAddMember(true, team.id)"
+                      @keyup.enter="toggleAddMember(true, team.id)"
+                      class="ml-2"
+                      small
+                    >mdi-pencil</v-icon>
                     <v-icon
                       @click="deleteMemberDialog(team.id)"
+                      @keyup.enter="deleteMemberDialog(true, team.id)"
                       class="ml-2 delete-member"
                       small
                     >mdi-delete</v-icon>
@@ -73,6 +80,7 @@
             <v-spacer></v-spacer>
             <Button
               @click="toggleAddMember(true)"
+              @keyup.enter="toggleAddMember(true)"
               :aria-label="$t('teamRoles.btnAddTeamMember')"
               :disabled="teamList.length >= 3"
               class="team-roles"
@@ -97,8 +105,13 @@
             <v-card-text class="text-left" v-html="$t('teamRoles.deleteWarning')"></v-card-text>
             <v-card-actions>
               <v-spacer></v-spacer>
-              <Button secondary text @click="deleteMember(true)">Cancel</Button>
-              <Button text @click="deleteMember()">Delete</Button>
+              <Button
+                secondary
+                text
+                @click="deleteMember(true)"
+                @keyup.enter="deleteMember(true)"
+              >Cancel</Button>
+              <Button text @click="deleteMember()" @keyup.enter="deleteMember(true)">Delete</Button>
             </v-card-actions>
           </v-card>
         </v-dialog>

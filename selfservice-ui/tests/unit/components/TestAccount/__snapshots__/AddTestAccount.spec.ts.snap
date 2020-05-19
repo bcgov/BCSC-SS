@@ -2,7 +2,7 @@
 
 exports[`AddTestAccount.vue renders props when delete member 1`] = `
 <div
-  class="mx-auto  v-card v-card--flat v-sheet theme--light"
+  class="mx-auto v-card v-card--flat v-sheet theme--light"
 >
   <div
     class="v-item-group theme--light"
@@ -142,7 +142,7 @@ exports[`AddTestAccount.vue renders props when delete member 1`] = `
 
 exports[`AddTestAccount.vue renders props when passed with gettors 1`] = `
 <div
-  class="mx-auto  v-card v-card--flat v-sheet theme--light"
+  class="mx-auto v-card v-card--flat v-sheet theme--light"
 >
   <div
     class="v-item-group theme--light"

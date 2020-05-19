@@ -40,13 +40,14 @@
           dark
           large
           @click="$router.push(`/profile`)"
+          @keyup.enter="$router.push(`/profile`)"
           class="icon-btn"
           aria-label="Edit profile"
         >
           <v-icon>mdi-account-edit</v-icon>
         </v-btn>
         <div class="profile-title">Welcome {{ userProfile.firstName }} {{ userProfile.lastName }}</div>
-        <v-btn text @click="logout" color="white" class="icon-btn">
+        <v-btn text @click="logout" @keyup.enter="logout" color="white" class="icon-btn">
           <span class="mr-2 logout" color="white">Logout</span>
         </v-btn>
       </v-toolbar-title>

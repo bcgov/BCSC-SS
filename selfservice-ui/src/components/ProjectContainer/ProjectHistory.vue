@@ -34,6 +34,7 @@
                     v-for="history in projectHistoryData"
                     :key="history.id"
                     @click="redirectToProject(project)"
+                    @keyup.enter="redirectToProject(project)"
                     style="cursor: pointer"
                   >
                     <td>

@@ -36,6 +36,7 @@
                 class="d-flex align-center pa-4 select-package"
                 :class="active ? 'active-bg' : ''"
                 @click="selectedPackage(packageData.id)"
+                @keyup.enter="selectedPackage(packageData.id)"
                 :data-test-id="`select-package-${packageData.id}`"
               >
                 <v-list-item three-line>
@@ -87,6 +88,7 @@
           <v-spacer></v-spacer>
           <Button
             @click="goBack"
+            @keyup.enter="goBack"
             :aria-label="$t('selectPackage.btnBack')"
             secondary
             class="back-btn"
@@ -106,6 +108,7 @@
             class="white--text submit-package ml-6"
             depressed
             @click="submitPackage"
+            @keyup.enter="submitPackage"
             data-test-id="btn-submit-package-select"
           >
             {{

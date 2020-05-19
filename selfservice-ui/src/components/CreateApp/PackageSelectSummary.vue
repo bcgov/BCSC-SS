@@ -9,6 +9,7 @@
         }}
         <span
           @click="$router.push(`/project/${id}/package`)"
+          @keyup.enter="$router.push(`/project/${id}/package`)"
           class="edit-wrapper"
           :aria-label="$t('global.edit')"
           tabindex="0"

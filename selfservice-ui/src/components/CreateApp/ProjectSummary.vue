@@ -85,6 +85,7 @@
             <v-spacer></v-spacer>
             <Button
               @click="goBack()"
+              @keyup.enter="goBack()"
               :aria-label="$t('summaryPage.goBack')"
               secondary
               class="back-btn"
@@ -97,6 +98,7 @@
               depressed
               data-test-id="btn-submit-summary"
               @click="submitFinalRequest"
+              @keyup.enter="submitFinalRequest"
             >
               {{
               isDraft

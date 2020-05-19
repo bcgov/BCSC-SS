@@ -106,6 +106,7 @@
                   <v-spacer></v-spacer>
                   <Button
                     @click="toggleDisclaimer()"
+                    @keyup.enter="toggleDisclaimer()"
                     aria-label="Back Button"
                     secondary
                     data-test-id="btn-cancel-terms-profile"
@@ -115,6 +116,7 @@
                     class="white--text btn-submit-terms-profile ml-6"
                     depressed
                     @click="createOrUpdateProfile"
+                    @keyup.enter="createOrUpdateProfile"
                     data-test-id="btn-submit-terms-profile"
                   >{{ $t('profile.btnAgree') }}</Button>
                 </v-card-actions>
