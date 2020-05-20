@@ -159,7 +159,9 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
     if (v === '') {
       return true;
     } else {
-      return /^((?:http(s)?:\\\\/\\\\/)[\\\\w.-]+(?:\\\\.[\\\\w\\\\.-]+)+[\\\\w\\\\-\\\\._~:/?#[\\\\]@!\\\\$&'\\\\(\\\\)\\\\*\\\\+,;=.]+|(localhost).*)$/.test(v) || ' must be valid URL (localhost allowed)';
+      return (// tslint:disable
+        /^((?:http(s)?:\\\\/\\\\/)[\\\\w.-]+(?:\\\\.[\\\\w\\\\.-]+)+[\\\\w\\\\-\\\\._~:/?#[\\\\]@!\\\\$&'\\\\(\\\\)\\\\*\\\\+,;=.]+|((?:http(s)?:\\\\/\\\\/)localhost).*)$/.test(v) || ' must be valid URL (http://localhost allowed)'
+      ); // tslint:enable
     }
   }"
                   >
@@ -672,7 +674,9 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
     if (v === '') {
       return true;
     } else {
-      return /^((?:http(s)?:\\\\/\\\\/)[\\\\w.-]+(?:\\\\.[\\\\w\\\\.-]+)+[\\\\w\\\\-\\\\._~:/?#[\\\\]@!\\\\$&'\\\\(\\\\)\\\\*\\\\+,;=.]+|(localhost).*)$/.test(v) || ' must be valid URL (localhost allowed)';
+      return (// tslint:disable
+        /^((?:http(s)?:\\\\/\\\\/)[\\\\w.-]+(?:\\\\.[\\\\w\\\\.-]+)+[\\\\w\\\\-\\\\._~:/?#[\\\\]@!\\\\$&'\\\\(\\\\)\\\\*\\\\+,;=.]+|((?:http(s)?:\\\\/\\\\/)localhost).*)$/.test(v) || ' must be valid URL (http://localhost allowed)'
+      ); // tslint:enable
     }
   }"
                   >
@@ -1185,7 +1189,9 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
     if (v === '') {
       return true;
     } else {
-      return /^((?:http(s)?:\\\\/\\\\/)[\\\\w.-]+(?:\\\\.[\\\\w\\\\.-]+)+[\\\\w\\\\-\\\\._~:/?#[\\\\]@!\\\\$&'\\\\(\\\\)\\\\*\\\\+,;=.]+|(localhost).*)$/.test(v) || ' must be valid URL (localhost allowed)';
+      return (// tslint:disable
+        /^((?:http(s)?:\\\\/\\\\/)[\\\\w.-]+(?:\\\\.[\\\\w\\\\.-]+)+[\\\\w\\\\-\\\\._~:/?#[\\\\]@!\\\\$&'\\\\(\\\\)\\\\*\\\\+,;=.]+|((?:http(s)?:\\\\/\\\\/)localhost).*)$/.test(v) || ' must be valid URL (http://localhost allowed)'
+      ); // tslint:enable
     }
   }"
                   >
