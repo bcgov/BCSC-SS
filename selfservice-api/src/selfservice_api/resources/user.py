@@ -54,7 +54,7 @@ class UserResource(Resource):
         if user is not None:
             verified = True
             user_dump = UserSchema().dump(user)
-        elif token_info.get('email') is not None:
+        elif provider == 'idir' and token_info.get('email') is not None:
             # Check again with email id if email is available in token.
             user = User.find_by_email(token_info.get('email'))
             user_dump = UserSchema().dump(user) if user is not None else None
@@ -105,6 +105,8 @@ class UserResource(Resource):
             if not user:
                 # Check again with email id to confirm the existence.
                 user = User.find_by_email(dict_data['email'])
+                if user and user.oauth_id:
+                    return {'errors': {'email': 'emailAlreadyExist'}}, HTTPStatus.BAD_REQUEST
 
             old_user = copy.deepcopy(user)
 
