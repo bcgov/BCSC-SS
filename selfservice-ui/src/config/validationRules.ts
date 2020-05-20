@@ -23,10 +23,12 @@ const rules = {
       return true;
     } else {
       return (
-        /^((?:http(s)?:\/\/)[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+|(localhost).*)$/.test(
+        // tslint:disable
+        /^((?:http(s)?:\/\/)[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+|((?:http(s)?:\/\/)localhost).*)$/.test(
           v
-        ) || ' must be valid URL (localhost allowed)'
+        ) || ' must be valid URL (http://localhost allowed)'
       );
+      // tslint:enable
     }
   },
 };
