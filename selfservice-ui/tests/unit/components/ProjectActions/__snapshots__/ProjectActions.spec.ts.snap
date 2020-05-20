@@ -13,6 +13,7 @@ exports[`ProjectActions.vue renders props on click of Live access 1`] = `
         class="btn btn-req v-btn v-btn--contained theme--light v-size--default  secondary-btn  normal"
         data-test-id="btn-request-prod-access"
         name="button"
+        tabindex="0"
         type="button"
       >
         <span
@@ -28,6 +29,7 @@ exports[`ProjectActions.vue renders props on click of Live access 1`] = `
     class="d-flex justify-end btn-delete pad-0 col"
     data-test-id="btn-delete-project"
     no-gutters=""
+    tabindex="0"
   >
     <i
       aria-hidden="true"
@@ -71,8 +73,6 @@ exports[`ProjectActions.vue renders props on click of Live access 1`] = `
                   class="v-toolbar__title"
                 >
                   
-            
-          
                 </div>
               </div>
             </header>
@@ -99,8 +99,6 @@ exports[`ProjectActions.vue renders props on click of Live access 1`] = `
                   class="v-btn__content"
                 >
                   
-            
-          
                 </span>
               </button>
                
@@ -115,8 +113,6 @@ exports[`ProjectActions.vue renders props on click of Live access 1`] = `
                   class="v-btn__content"
                 >
                   
-            
-          
                 </span>
               </button>
             </div>
@@ -152,6 +148,7 @@ exports[`ProjectActions.vue renders props on click of delete 1`] = `
     class="d-flex justify-end btn-delete pad-0 col"
     data-test-id="btn-delete-project"
     no-gutters=""
+    tabindex="0"
   >
     <i
       aria-hidden="true"
@@ -244,8 +241,6 @@ exports[`ProjectActions.vue renders props on click of delete 1`] = `
                   class="v-btn__content"
                 >
                   
-            
-          
                 </span>
               </button>
                
@@ -279,6 +274,7 @@ exports[`ProjectActions.vue renders props on click of delete 2`] = `
     class="d-flex justify-end btn-delete pad-0 col"
     data-test-id="btn-delete-project"
     no-gutters=""
+    tabindex="0"
   >
     <i
       aria-hidden="true"
@@ -322,8 +318,6 @@ exports[`ProjectActions.vue renders props on click of delete 2`] = `
                   class="v-toolbar__title"
                 >
                   
-            
-          
                 </div>
               </div>
             </header>
@@ -350,8 +344,6 @@ exports[`ProjectActions.vue renders props on click of delete 2`] = `
                   class="v-btn__content"
                 >
                   
-            
-          
                 </span>
               </button>
                
@@ -366,8 +358,6 @@ exports[`ProjectActions.vue renders props on click of delete 2`] = `
                   class="v-btn__content"
                 >
                   
-            
-          
                 </span>
               </button>
             </div>
@@ -403,6 +393,7 @@ exports[`ProjectActions.vue renders props when passed 1`] = `
     class="d-flex justify-end btn-delete pad-0 col"
     data-test-id="btn-delete-project"
     no-gutters=""
+    tabindex="0"
   >
     <i
       aria-hidden="true"
@@ -426,6 +417,7 @@ exports[`ProjectActions.vue renders props when passed with gettors 1`] = `
     class="d-flex justify-end btn-delete pad-0 col"
     data-test-id="btn-delete-project"
     no-gutters=""
+    tabindex="0"
   >
     <i
       aria-hidden="true"
@@ -518,8 +510,6 @@ exports[`ProjectActions.vue renders props when passed with gettors 1`] = `
                   class="v-btn__content"
                 >
                   
-            
-          
                 </span>
               </button>
                

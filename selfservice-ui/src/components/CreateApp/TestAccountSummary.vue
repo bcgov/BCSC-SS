@@ -5,11 +5,16 @@
     <v-toolbar dense class="bc-subtitle-2" dark>
       <v-card-title>
         {{ $t('summaryPage.labelTestAccountsTitle') }}
-        <v-icon
-          small
-          class="ml-3"
+        <span
           @click="$router.push(`/project/${projectId}/test-account`)"
-        >mdi-pencil</v-icon>
+          @keyup.enter="$router.push(`/project/${projectId}/test-account`)"
+          class="edit-wrapper"
+          :aria-label="$t('global.edit')"
+          tabindex="0"
+          role="link"
+        >
+          <v-icon small class="ml-3">mdi-pencil</v-icon>
+        </span>
       </v-card-title>
     </v-toolbar>
     <v-list dense class="px-5">

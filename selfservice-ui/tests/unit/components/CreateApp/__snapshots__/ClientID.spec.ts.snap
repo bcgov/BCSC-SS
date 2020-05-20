@@ -49,6 +49,7 @@ exports[`ClientID.vue renders props when passed with gettors 1`] = `
       >
         <code
           class="code-snippet"
+          tabindex="0"
         >
           <i
             aria-hidden="true"
@@ -89,6 +90,7 @@ exports[`ClientID.vue renders props when passed with gettors 1`] = `
       >
         <code
           class="code-snippet"
+          tabindex="0"
         >
           <div
             class="float-left"
@@ -253,6 +255,7 @@ exports[`ClientID.vue renders props when passed with gettors 2`] = `
       >
         <code
           class="code-snippet"
+          tabindex="0"
         >
           <i
             aria-hidden="true"
@@ -293,6 +296,7 @@ exports[`ClientID.vue renders props when passed with gettors 2`] = `
       >
         <code
           class="code-snippet"
+          tabindex="0"
         >
           <div
             class="float-left"

@@ -85,6 +85,7 @@
             <v-spacer></v-spacer>
             <Button
               @click="goBack()"
+              @keyup.enter="goBack()"
               :aria-label="$t('summaryPage.goBack')"
               secondary
               class="back-btn"
@@ -97,6 +98,7 @@
               depressed
               data-test-id="btn-submit-summary"
               @click="submitFinalRequest"
+              @keyup.enter="submitFinalRequest"
             >
               {{
               isDraft
@@ -231,12 +233,6 @@ export default class ProjectSummary extends Vue {
   private ongetSingleProjectInfoChanged(val: any) {
     if (val) {
       this.isDraft = val.statusId === projectStatus.draft;
-      if (
-        this.isRedirectFromSummaryPage &&
-        val.statusId === projectStatus.dev
-      ) {
-        this.scrollToBottom();
-      }
       this.redirectFromSummaryPage(true);
     }
   }
@@ -282,13 +278,6 @@ export default class ProjectSummary extends Vue {
 
   private mounted() {
     this.loadFullData();
-  }
-
-  private scrollToBottom() {
-    this.$vuetify.goTo(document.body.scrollHeight, {
-      duration: 1000,
-      easing: 'easeInOutCubic'
-    });
   }
 
   private loadFullData() {

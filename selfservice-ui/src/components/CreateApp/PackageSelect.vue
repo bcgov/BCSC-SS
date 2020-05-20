@@ -6,7 +6,7 @@
       <v-btn icon @click="goBack()" :aria-label="$t('selectPackage.btnBack')">
         <v-icon>mdi-arrow-left</v-icon>
       </v-btn>
-      <v-toolbar-title>{{ $t('selectPackage.pagetitle') }}</v-toolbar-title>
+      <h1 class="bc-h1-sub-ttile">{{ $t('selectPackage.pagetitle') }}</h1>
       <div class="flex-grow-1"></div>
 
       <div class="flex-grow-1"></div>
@@ -36,6 +36,7 @@
                 class="d-flex align-center pa-4 select-package"
                 :class="active ? 'active-bg' : ''"
                 @click="selectedPackage(packageData.id)"
+                @keyup.enter="selectedPackage(packageData.id)"
                 :data-test-id="`select-package-${packageData.id}`"
               >
                 <v-list-item three-line>
@@ -87,6 +88,7 @@
           <v-spacer></v-spacer>
           <Button
             @click="goBack"
+            @keyup.enter="goBack"
             :aria-label="$t('selectPackage.btnBack')"
             secondary
             class="back-btn"
@@ -106,6 +108,7 @@
             class="white--text submit-package ml-6"
             depressed
             @click="submitPackage"
+            @keyup.enter="submitPackage"
             data-test-id="btn-submit-package-select"
           >
             {{

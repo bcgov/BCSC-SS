@@ -91,12 +91,12 @@ class ProjectResourceById(Resource):
 
     @staticmethod
     @cors.crossdomain(origin='*')
-    @auth.require
+    @auth.can_access_project([ProjectRoles.Developer, ProjectRoles.Manager, ProjectRoles.Cto])
     def delete(project_id):
         """Delete project."""
         user = g.user
         project = Project.find_by_id(project_id)
-        can_delete = bool(project)
+        can_delete = True
         including_prod = not auth.is_client_role()
 
         if auth.is_client_role() and can_delete:

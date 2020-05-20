@@ -26,11 +26,11 @@ exports[`TestAccountRequest.vue renders props when passed 1`] = `
         </span>
       </button>
        
-      <div
-        class="v-toolbar__title"
+      <h1
+        class="bc-h1-sub-ttile"
       >
         
-      </div>
+      </h1>
        
       <div
         class="flex-grow-1"
@@ -315,11 +315,11 @@ exports[`TestAccountRequest.vue select on package on click  1`] = `
         </span>
       </button>
        
-      <div
-        class="v-toolbar__title"
+      <h1
+        class="bc-h1-sub-ttile"
       >
         
-      </div>
+      </h1>
        
       <div
         class="flex-grow-1"
@@ -604,11 +604,11 @@ exports[`TestAccountRequest.vue submit form with selected package on submit clic
         </span>
       </button>
        
-      <div
-        class="v-toolbar__title"
+      <h1
+        class="bc-h1-sub-ttile"
       >
         
-      </div>
+      </h1>
        
       <div
         class="flex-grow-1"

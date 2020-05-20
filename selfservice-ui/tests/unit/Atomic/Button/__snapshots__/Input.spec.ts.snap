@@ -7,13 +7,15 @@ exports[`Input.vue renders props when passed 1`] = `
         return fn.apply(this, arguments);
       }"
 >
-  <div
+  <label
     class="text-left my-1"
+    for=""
   >
     
-     
+    
+    
     <!---->
-  </div>
+  </label>
    
   <!---->
    
@@ -72,13 +74,15 @@ exports[`Input.vue renders props when passed 2`] = `
         return fn.apply(this, arguments);
       }"
 >
-  <div
+  <label
     class="text-left my-1"
+    for=""
   >
     
-     
+    
+    
     <!---->
-  </div>
+  </label>
    
   <!---->
    

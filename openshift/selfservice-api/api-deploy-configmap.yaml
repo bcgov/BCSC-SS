@@ -29,6 +29,7 @@ objects:
     EMAIL_ID_ANALYST: "${EMAIL_ID_ANALYST_DEV}"
     EMAIL_ID_CC: "${EMAIL_ID_CC_DEV}"
     EMAIL_ID_DEBUG: "${EMAIL_ID_DEBUG}"
+    APP_URL: "${APP_URL_DEV}"
 - kind: ConfigMap
   apiVersion: v1
   metadata:
@@ -53,6 +54,7 @@ objects:
     EMAIL_ID_ANALYST: "${EMAIL_ID_ANALYST}"
     EMAIL_ID_CC: "${EMAIL_ID_CC}"
     EMAIL_ID_DEBUG: "${EMAIL_ID_DEBUG}"
+    APP_URL: "${APP_URL_TEST}"
 - kind: ConfigMap
   apiVersion: v1
   metadata:
@@ -77,6 +79,7 @@ objects:
     EMAIL_ID_ANALYST: "${EMAIL_ID_ANALYST}"
     EMAIL_ID_CC: "${EMAIL_ID_CC}"
     EMAIL_ID_DEBUG: "${EMAIL_ID_DEBUG}"
+    APP_URL: "${APP_URL_PROD}"
 parameters:
 - name: WEB_NAME
   displayName: Name
@@ -220,3 +223,18 @@ parameters:
 - name: EMAIL_ID_DEBUG
   description: Debug email ID
   value: ""
+- name: APP_URL_DEV
+  displayName: Application URL - Dev
+  description: Application URL - Dev
+  required: true
+  value: 'https://selfservice-dev.pathfinder.gov.bc.ca'
+- name: APP_URL_TEST
+  displayName: Application URL - Test
+  description: Application URL - Test
+  required: true
+  value: 'https://selfservice-test.pathfinder.gov.bc.ca'
+- name: APP_URL_PROD
+  displayName: Application URL - Prod
+  description: Application URL - Prod
+  required: true
+  value: 'https://selfservice-prod.pathfinder.gov.bc.ca'

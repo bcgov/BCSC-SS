@@ -47,6 +47,7 @@
                     type="text"
                     :disabled="disabled()"
                     data-test-id="input-team-first-name"
+                    id="input-team-first-name"
                   />
                   <Input
                     v-model="userDetails.lastName"
@@ -59,6 +60,7 @@
                     type="text"
                     :disabled="disabled()"
                     data-test-id="input-team-last-name"
+                    id="input-team-last-name"
                   />
                   <Input
                     v-model="userDetails.email"
@@ -67,6 +69,7 @@
                     type="text"
                     :disabled="disabled()"
                     data-test-id="input-team-email"
+                    id="input-team-email"
                   />
 
                   <Input
@@ -76,6 +79,7 @@
                     :disabled="disabled()"
                     :optional="true"
                     data-test-id="input-team-phone"
+                    id="input-team-phone"
                   />
                 </v-col>
                 <v-col>
@@ -123,6 +127,7 @@
                     <v-spacer></v-spacer>
                     <Button
                       @click="cancel"
+                      @keyup.enter="cancel"
                       aria-label="Back Button"
                       secondary
                       data-test-id="btn-cancel-add-team"
@@ -131,6 +136,7 @@
                       :disabled="!valid"
                       class="white--text submit-package"
                       @click="submitTeamMember"
+                      @keyup.enter="submitTeamMember"
                       data-test-id="btn-submit-add-team"
                     >
                       {{

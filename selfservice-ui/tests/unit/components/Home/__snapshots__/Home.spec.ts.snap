@@ -41,8 +41,6 @@ exports[`Home.vue renders props when passed 1`] = `
           class="second-headline"
         >
           
-          
-        
         </h2>
          
         <div
@@ -86,8 +84,6 @@ exports[`Home.vue renders props when passed 1`] = `
             type="button"
           >
             
-            
-          
           </button-stub>
         </v-card-actions-stub>
       </v-card-stub>

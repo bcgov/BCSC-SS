@@ -116,6 +116,8 @@ class _Config():  # pylint: disable=too-few-public-methods
     # APP Settings
     LIMITED_TEST_ACCOUNT_TRIGGER_COUNT = 20
 
+    APP_URL = os.getenv('APP_URL')
+
     TESTING = False
     DEBUG = False
 

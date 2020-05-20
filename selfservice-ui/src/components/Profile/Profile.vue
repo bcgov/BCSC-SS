@@ -4,9 +4,7 @@
   <v-card class="mx-auto card-width">
     <Alert type="error" v-if="errorStatus">Something went wrong...</Alert>
     <v-toolbar flat class="bc-subtitle" dark v-if="!errorStatus">
-      <v-toolbar-title>
-        {{ $t(isComplete ? 'profile.pageCompleteTitle' : 'profile.pageTitle') }}
-      </v-toolbar-title>
+      <v-toolbar-title>{{ $t(isComplete ? 'profile.pageCompleteTitle' : 'profile.pageTitle') }}</v-toolbar-title>
       <div class="flex-grow-1"></div>
     </v-toolbar>
     <v-divider></v-divider>
@@ -14,13 +12,7 @@
       <v-container>
         <v-row class="ma-5">
           <v-col cols="12" md="12">
-            <Alert
-              type="error"
-              dense
-              outlined
-              class="text-left"
-              v-if="profileErrorStatus"
-            >
+            <Alert type="error" dense outlined class="text-left" v-if="profileErrorStatus">
               <span v-html="$t('profile.errorMessageDomain')"></span>
             </Alert>
             <v-card-subtitle
@@ -54,6 +46,7 @@
                 rules.maxLength(250),
               ]"
               data-test-id="input-profile-email"
+              id="input-profile-email"
               v-if="filedsToShow.email"
             />
             <Input
@@ -63,6 +56,7 @@
               :rules="[rules.required, rules.length(9), rules.maxLength(15)]"
               v-if="filedsToShow.phone"
               data-test-id="input-profile-phone"
+              id="input-profile-phone"
             />
           </v-col>
           <v-col cols="12">
@@ -79,33 +73,22 @@
                   data-test-id="btn-profile-update"
                 >
                   {{
-                    $t(
-                      isComplete
-                        ? 'profile.btnContinue'
-                        : 'profile.btnSaveChanges'
-                    )
+                  $t(
+                  isComplete
+                  ? 'profile.btnContinue'
+                  : 'profile.btnSaveChanges'
+                  )
                   }}
                 </Button>
               </v-card-actions>
             </v-card>
           </v-col>
           <v-col class="text-center">
-            <v-dialog
-              v-model="dialog"
-              persistent
-              width="90%"
-              class="text-left overflow-y-auto"
-            >
+            <v-dialog v-model="dialog" persistent width="90%" class="text-left overflow-y-auto">
               <v-card class="pa-8">
-                <p class="text-left pl-5 ml-8">
-                  {{ $t('profile.termsAccept') }}
-                </p>
+                <p class="text-left pl-5 ml-8">{{ $t('profile.termsAccept') }}</p>
                 <v-divider></v-divider>
-                <v-card-text
-                  class="text-left terms-content pa-0"
-                  id="scroll-target"
-                  ref="termsDiv"
-                >
+                <v-card-text class="text-left terms-content pa-0" id="scroll-target" ref="termsDiv">
                   <TermsAndConditions :onIntersect="onIntersect" />
                   <div
                     v-intersect="{
@@ -123,19 +106,19 @@
                   <v-spacer></v-spacer>
                   <Button
                     @click="toggleDisclaimer()"
+                    @keyup.enter="toggleDisclaimer()"
                     aria-label="Back Button"
                     secondary
                     data-test-id="btn-cancel-terms-profile"
-                    >{{ $t('profile.btnCancel') }}</Button
-                  >
+                  >{{ $t('profile.btnCancel') }}</Button>
                   <Button
                     :disabled="!buttonEnable"
                     class="white--text btn-submit-terms-profile ml-6"
                     depressed
                     @click="createOrUpdateProfile"
+                    @keyup.enter="createOrUpdateProfile"
                     data-test-id="btn-submit-terms-profile"
-                    >{{ $t('profile.btnAgree') }}</Button
-                  >
+                  >{{ $t('profile.btnAgree') }}</Button>
                 </v-card-actions>
               </v-card>
             </v-dialog>

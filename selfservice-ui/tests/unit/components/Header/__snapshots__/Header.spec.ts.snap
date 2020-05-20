@@ -14,6 +14,7 @@ exports[`Header.vue Logout user on logout button onlick  1`] = `
         alt="Go to the Government of British Columbia website"
         class="img side-left-margin"
         src="@/assets/images/bc-logo-horizontal.svg"
+        tabindex="0"
       />
        
       <div
@@ -43,7 +44,8 @@ exports[`Header.vue Logout user on logout button onlick  1`] = `
         class="v-toolbar__title d-flex"
       >
         <button
-          class="v-btn v-btn--flat v-btn--icon v-btn--round theme--dark v-size--large"
+          aria-label="Edit profile"
+          class="icon-btn v-btn v-btn--flat v-btn--icon v-btn--round theme--dark v-size--large"
           type="button"
         >
           <span
@@ -63,7 +65,7 @@ exports[`Header.vue Logout user on logout button onlick  1`] = `
         </div>
          
         <button
-          class="v-btn v-btn--flat v-btn--text theme--light v-size--default white--text"
+          class="icon-btn v-btn v-btn--flat v-btn--text theme--light v-size--default white--text"
           type="button"
         >
           <span
@@ -174,6 +176,7 @@ exports[`Header.vue Toggle menu onlick  1`] = `
         alt="Go to the Government of British Columbia website"
         class="img side-left-margin"
         src="@/assets/images/bc-logo-horizontal.svg"
+        tabindex="0"
       />
        
       <div
@@ -203,7 +206,8 @@ exports[`Header.vue Toggle menu onlick  1`] = `
         class="v-toolbar__title d-flex"
       >
         <button
-          class="v-btn v-btn--flat v-btn--icon v-btn--round theme--dark v-size--large"
+          aria-label="Edit profile"
+          class="icon-btn v-btn v-btn--flat v-btn--icon v-btn--round theme--dark v-size--large"
           type="button"
         >
           <span
@@ -223,7 +227,7 @@ exports[`Header.vue Toggle menu onlick  1`] = `
         </div>
          
         <button
-          class="v-btn v-btn--flat v-btn--text theme--light v-size--default white--text"
+          class="icon-btn v-btn v-btn--flat v-btn--text theme--light v-size--default white--text"
           type="button"
         >
           <span
@@ -334,6 +338,7 @@ exports[`Header.vue renders props when passed 1`] = `
         alt="Go to the Government of British Columbia website"
         class="img side-left-margin"
         src="@/assets/images/bc-logo-horizontal.svg"
+        tabindex="0"
       />
        
       <div
@@ -363,7 +368,8 @@ exports[`Header.vue renders props when passed 1`] = `
         class="v-toolbar__title d-flex"
       >
         <button
-          class="v-btn v-btn--flat v-btn--icon v-btn--round theme--dark v-size--large"
+          aria-label="Edit profile"
+          class="icon-btn v-btn v-btn--flat v-btn--icon v-btn--round theme--dark v-size--large"
           type="button"
         >
           <span
@@ -383,7 +389,7 @@ exports[`Header.vue renders props when passed 1`] = `
         </div>
          
         <button
-          class="v-btn v-btn--flat v-btn--text theme--light v-size--default white--text"
+          class="icon-btn v-btn v-btn--flat v-btn--text theme--light v-size--default white--text"
           type="button"
         >
           <span

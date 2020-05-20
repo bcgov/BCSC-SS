@@ -11,29 +11,29 @@
     <v-row class="ma-5" v-else>
       <v-col cols="12">
         <v-card flat>
-          <h2 class="text-left tab-headline page-title-h2">
-            {{ $t('teamRoles.pagetitle') }}
-          </h2>
-          <p class="text-left page-description">
-            {{ $t('teamRoles.pageInfo') }}
-          </p>
+          <h2 class="text-left tab-headline page-title-h2">{{ $t('teamRoles.pagetitle') }}</h2>
+          <p class="text-left page-description">{{ $t('teamRoles.pageInfo') }}</p>
 
           <v-simple-table class="mt-5" v-if="teamList.length > 0">
             <template v-slot:default>
               <thead class="tbl-head">
                 <tr class="text-left">
-                  <th :scope="$t('teamRoles.tblHeadName')" class="text-left">
-                    {{ $t('teamRoles.tblHeadName') }}
-                  </th>
-                  <th :scope="$t('teamRoles.tblHeadMyRole')" class="text-left">
-                    {{ $t('teamRoles.tblHeadMyRole') }}
-                  </th>
-                  <th :scope="$t('teamRoles.tblHeadEmail')" class="text-left">
-                    {{ $t('teamRoles.tblHeadEmail') }}
-                  </th>
-                  <th :scope="$t('teamRoles.tblHeadPhone')" class="text-left">
-                    {{ $t('teamRoles.tblHeadPhone') }}
-                  </th>
+                  <th
+                    :scope="$t('teamRoles.tblHeadName')"
+                    class="text-left"
+                  >{{ $t('teamRoles.tblHeadName') }}</th>
+                  <th
+                    :scope="$t('teamRoles.tblHeadMyRole')"
+                    class="text-left"
+                  >{{ $t('teamRoles.tblHeadMyRole') }}</th>
+                  <th
+                    :scope="$t('teamRoles.tblHeadEmail')"
+                    class="text-left"
+                  >{{ $t('teamRoles.tblHeadEmail') }}</th>
+                  <th
+                    :scope="$t('teamRoles.tblHeadPhone')"
+                    class="text-left"
+                  >{{ $t('teamRoles.tblHeadPhone') }}</th>
                   <th scope="actions" class="text-left" v-if="isAdmin"></th>
                 </tr>
               </thead>
@@ -42,31 +42,35 @@
                   <td>{{ team.firstName }} {{ team.lastName }}</td>
                   <td>
                     {{ $t(`teamRoles.labelRole${rolesList[team.role]}`) }}
-                    <v-icon
+                    <span
                       @click="toggleAddMember(true, team.id)"
-                      class="ml-2"
-                      small
+                      @keyup.enter="toggleAddMember(true, team.id)"
                       v-if="team.isCurrentUser"
-                      >mdi-pencil</v-icon
+                      class="edit-wrapper"
+                      tabindex="0"
+                      :aria-label="$t('global.edit')"
+                      role="link"
                     >
+                      <v-icon class="ml-2" small>mdi-pencil</v-icon>
+                    </span>
                   </td>
                   <td>
-                    <a :href="`mailto:${team.email}`"> {{ team.email }}</a>
+                    <a :href="`mailto:${team.email}`">{{ team.email }}</a>
                   </td>
                   <td>{{ team.phone }}</td>
                   <td v-if="isAdmin">
                     <v-icon
                       @click="toggleAddMember(true, team.id)"
+                      @keyup.enter="toggleAddMember(true, team.id)"
                       class="ml-2"
                       small
-                      >mdi-pencil</v-icon
-                    >
+                    >mdi-pencil</v-icon>
                     <v-icon
                       @click="deleteMemberDialog(team.id)"
+                      @keyup.enter="deleteMemberDialog(true, team.id)"
                       class="ml-2 delete-member"
                       small
-                      >mdi-delete</v-icon
-                    >
+                    >mdi-delete</v-icon>
                   </td>
                 </tr>
               </tbody>
@@ -76,12 +80,12 @@
             <v-spacer></v-spacer>
             <Button
               @click="toggleAddMember(true)"
+              @keyup.enter="toggleAddMember(true)"
               :aria-label="$t('teamRoles.btnAddTeamMember')"
               :disabled="teamList.length >= 3"
               class="team-roles"
               data-test-id="btn-add-new-team"
-              >{{ $t('teamRoles.btnAddTeamMember') }}</Button
-            >
+            >{{ $t('teamRoles.btnAddTeamMember') }}</Button>
           </v-card-actions>
         </v-card>
       </v-col>
@@ -90,11 +94,7 @@
         <div class="text-center">
           <v-dialog v-model="dialog" width="85%" class="text-left">
             <v-card>
-              <AddTeamMember
-                :id="id"
-                @toggleAddMember="toggleAddMember"
-                :memberId="memberId"
-              />
+              <AddTeamMember :id="id" @toggleAddMember="toggleAddMember" :memberId="memberId" />
             </v-card>
           </v-dialog>
         </div>
@@ -102,14 +102,16 @@
       <v-col>
         <v-dialog v-model="dialogDelete" persistent max-width="400">
           <v-card>
-            <v-card-text
-              class="text-left"
-              v-html="$t('teamRoles.deleteWarning')"
-            ></v-card-text>
+            <v-card-text class="text-left" v-html="$t('teamRoles.deleteWarning')"></v-card-text>
             <v-card-actions>
               <v-spacer></v-spacer>
-              <Button secondary text @click="deleteMember(true)">Cancel</Button>
-              <Button text @click="deleteMember()">Delete</Button>
+              <Button
+                secondary
+                text
+                @click="deleteMember(true)"
+                @keyup.enter="deleteMember(true)"
+              >Cancel</Button>
+              <Button text @click="deleteMember()" @keyup.enter="deleteMember(true)">Delete</Button>
             </v-card-actions>
           </v-card>
         </v-dialog>
@@ -135,8 +137,8 @@ const KeyCloakModule = namespace('KeyCloakModule');
   components: {
     Loading,
     Button,
-    AddTeamMember,
-  },
+    AddTeamMember
+  }
 })
 export default class TeamRoles extends Vue {
   @Prop({ default: 0 })
@@ -177,7 +179,7 @@ export default class TeamRoles extends Vue {
       this.isLoading = true;
       this.deleteTeamMember({
         projectId: this.id,
-        memberId: this.memberId,
+        memberId: this.memberId
       });
     }
     this.memberId = 0;

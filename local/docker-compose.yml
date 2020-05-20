@@ -47,6 +47,7 @@ services:
       - EMAIL_ID_ANALYST=${EMAIL_ID_ANALYST}
       - EMAIL_ID_CC=${EMAIL_ID_CC}
       - EMAIL_ID_DEBUG=${EMAIL_ID_DEBUG}
+      - APP_URL=${APP_URL}
   api:
     image: bscs_ss_api
     ports:
@@ -78,6 +79,7 @@ services:
       - EMAIL_ID_ANALYST=${EMAIL_ID_ANALYST}
       - EMAIL_ID_CC=${EMAIL_ID_CC}
       - EMAIL_ID_DEBUG=${EMAIL_ID_DEBUG}
+      - APP_URL=${APP_URL}
   web:
     build:
       context: ./..

@@ -28,9 +28,11 @@ exports[`Dashboard.vue renders props when passed with gettors 1`] = `
           tag="header"
           tile="true"
         >
-          <v-toolbar-title-stub>
+          <h1
+            class="bc-h1-sub-ttile"
+          >
             
-          </v-toolbar-title-stub>
+          </h1>
            
           <div
             class="flex-grow-1"

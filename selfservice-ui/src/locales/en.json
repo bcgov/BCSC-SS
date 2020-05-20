@@ -61,7 +61,11 @@
     "labelTestMethodHint": "Choose your signing and encryption methods for testing below. These options are available to facilitate your testing. Please note that when you move into a production environment, it will be required that you enable signing and encryption at that time.",
     "SignedJWTHint": "We return a signed JWT for more security",
     "SecureJWTHint": "We return a signed and encrypted JWT for maximum security",
-    "AddURI": "+ Add another URI"
+    "AddURI": "+ Add another URI",
+    "ariaLabelRedirectUrlDelete": "Remove this entry",
+    "labelRadioGroup": "Security Choices",
+    "labelSignedJWT": "Signed JWT",
+    "labelSecureJWT": "Secure JWT"
   },
   "selectPackage": {
     "pagetitle": "Select Package",
@@ -154,7 +158,7 @@
     "titleClientSecret": "Client secret",
     "titleClientSecretInfo": "This is a secret or password which is to be used together with the Client ID to obtain a token from the BC Services Card system for ongoing authorization.",
     "titleTestAccount": "Test user accounts",
-    "titleTestAccountInfo": "<p class='small-hint'>Use these virtual card test accounts to login to the BC Services Card in the development environment.</p><p class='small-hint'>If you do not see all of the test accounts you requested, the system is out of accounts to provision. Please contact us for assistance.</p><p><a href='https://www2.gov.bc.ca/gov/content/governments/services-for-government/information-management-technology/identity-and-authentication-services/bc-services-card-authentication-service/design-develop-test/testing' target='_blank'>Learn more</a></p>",
+    "titleTestAccountInfo": "<p class='small-hint'>Use these virtual card test accounts to login to the BC Services Card in the development environment.</p><p class='small-hint'>If you do not see all of the test accounts you requested, the system is out of accounts to provision. Please <a href='/contact-us'>contact us</a> for assistance.</p><p><a href='https://www2.gov.bc.ca/gov/content/governments/services-for-government/information-management-technology/identity-and-authentication-services/bc-services-card-authentication-service/design-develop-test/testing' target='_blank'>Learn more</a></p>",
     "labelSnackbarClose": "Close",
     "Back": "Go Back",
     "tblCardNo": "Card Number",
@@ -162,7 +166,9 @@
     "tblGivenName": "Given Name",
     "tblSurName": "Surname",
     "warningLimitedTestAccount": "There are no more test accounts for use. Please <a href='/contact-us'>contact us</a> for assistance.",
-    "tooltipTestAccount": "If there is a mismatch between the number of test accounts you requested and what you see here, <br/>then there are no more random test accounts for your use. <br/>Please contact IDIM Consulting or Product Owner who will be in touch with you shortly."
+    "tooltipTestAccount": "If there is a mismatch between the number of test accounts you requested and what you see here, <br/>then there are no more random test accounts for your use. <br/>Please contact IDIM Consulting or Product Owner who will be in touch with you shortly.",
+    "ariaLabelApiKey": "copy Client ID to clipboard",
+    "ariaLabelClientSecret": "copy Client Secret to clipboard"
   },
   "dashboard": {
     "pagetitle": "Projects",
@@ -184,6 +190,7 @@
     "roleinProd": "In Prod",
     "myprojectTitle": "My projects",
     "btnCreateProject": "+ Create New Project",
+    "areaLabelbtnCreateProject": "Create New Project",
     "createProjectInfo": "<p class='pageinfo'>New projects start in the development environment. When testing is complete, the production path becomes available.</p>",
     "virtualCardCountTitle": "Virtual card test accounts",
     "btnManageTestAccount": "Manage test accounts",
@@ -242,7 +249,8 @@
     "titleSecurity": "Security",
     "titleComms": "Communications",
     "titleAgreements": "Agreements",
-    "titleLiveSummary": "Prod Summary"
+    "titleLiveSummary": "Prod Summary",
+    "titleHistory": "History"
   },
   "teamRoles": {
     "pagetitle": "Project team roles",
@@ -302,5 +310,31 @@
     "btnSend": "Send",
     "successMessage": "Your message has been sent successfully to IDIM.",
     "errorMessage": "Something went wrong. Please try again."
+  },
+  "projectHistory": {
+    "tabSubTitle": "Project history",
+    "tblTitleProjectStatus": "Project Status",
+    "tblTitleDateAssigned": "Date Assigned",
+    "tblActionTakenBy": "Action taken by",
+    "tblActionRole": "Role",
+    "noData": "No history data available"
+  },
+  "projectStatus": {
+    "statusdraft": "Draft",
+    "statusdev": "Development",
+    "statusdevComplete": "Development Complete",
+    "statuscomplianceChecks": "Compliance Checks",
+    "statuscomplianceReview": "Compliance Review",
+    "statuscomplianceChecksComplete": "Compliance Checks Complete",
+    "statusawaitingProdKeys": "Awaiting Prod Keys",
+    "statusinProd": "In Prod"
+  },
+  "projectRoles": {
+    "roledeveloper": "Developer",
+    "rolemanager": "Manager ",
+    "rolecto": "Executive Sponsor"
+  },
+  "global": {
+    "edit": "edit"
   }
 }

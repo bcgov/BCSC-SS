@@ -10,3 +10,4 @@ export const TESTACCOUNT_URL = BASE_URL + 'test-account';
 export const TEAMROLE_URL = BASE_URL + 'project/<projectId>/team';
 export const CONTACTUS_URL = BASE_URL + 'contactus';
 export const TESTACCOUNT_AVAILLABLITY_URL = `${TESTACCOUNT_URL}/availability`;
+export const PROJECTHISTORY_URL = `${BASE_URL}project/<projectId>/audit`;

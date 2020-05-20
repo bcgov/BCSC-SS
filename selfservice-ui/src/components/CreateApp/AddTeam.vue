@@ -5,7 +5,7 @@
       <v-btn icon @click="goBack()" :aria-label="$t('team.btnBack')">
         <v-icon>mdi-arrow-left</v-icon>
       </v-btn>
-      <v-toolbar-title>{{ $t('team.pageTitle') }}</v-toolbar-title>
+      <h1 class="bc-h1-sub-ttile">{{ $t('team.pageTitle') }}</h1>
       <div class="flex-grow-1"></div>
     </v-toolbar>
     <v-divider></v-divider>
@@ -19,6 +19,7 @@
           <v-spacer></v-spacer>
           <Button
             @click="goBack"
+            @keyup.enter="goBack"
             :aria-label="$t('team.btnBack')"
             secondary
             class="back-btn"
@@ -28,6 +29,7 @@
             class="white--text submit-team ml-6"
             depressed
             @click="nextRedirect"
+            @keyup.enter="nextRedirect"
             data-test-id="btn-submit-project-team"
           >
             {{

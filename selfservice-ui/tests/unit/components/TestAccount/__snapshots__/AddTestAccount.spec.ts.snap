@@ -2,7 +2,7 @@
 
 exports[`AddTestAccount.vue renders props when delete member 1`] = `
 <div
-  class="mx-auto  v-card v-card--flat v-sheet theme--light"
+  class="mx-auto v-card v-card--flat v-sheet theme--light"
 >
   <div
     class="v-item-group theme--light"
@@ -38,16 +38,16 @@ exports[`AddTestAccount.vue renders props when delete member 1`] = `
             <div
               class="bc-form-text"
               data-test-id="test-account-text"
-              id="test-account-text"
               name="test-account-text"
               outlined=""
               rows="10"
             >
-              <div
+              <label
                 class="text-left my-1"
+                for="test-account-text"
               >
                 
-              </div>
+              </label>
                
               <!---->
                
@@ -142,7 +142,7 @@ exports[`AddTestAccount.vue renders props when delete member 1`] = `
 
 exports[`AddTestAccount.vue renders props when passed with gettors 1`] = `
 <div
-  class="mx-auto  v-card v-card--flat v-sheet theme--light"
+  class="mx-auto v-card v-card--flat v-sheet theme--light"
 >
   <div
     class="v-item-group theme--light"
@@ -178,16 +178,16 @@ exports[`AddTestAccount.vue renders props when passed with gettors 1`] = `
             <div
               class="bc-form-text"
               data-test-id="test-account-text"
-              id="test-account-text"
               name="test-account-text"
               outlined=""
               rows="10"
             >
-              <div
+              <label
                 class="text-left my-1"
+                for="test-account-text"
               >
                 
-              </div>
+              </label>
                
               <!---->
                
