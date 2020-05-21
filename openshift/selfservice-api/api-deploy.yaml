@@ -263,6 +263,11 @@ objects:
               configMapKeyRef:
                 name: "${API_NAME}-${TAG_NAME}-config"
                 key: APP_URL
+          - name: ENV_TAG
+            valueFrom:
+              configMapKeyRef:
+                name: "${API_NAME}-${TAG_NAME}-config"
+                key: ENV_TAG
           resources:
             requests:
               cpu: "${CPU_REQUEST}"
