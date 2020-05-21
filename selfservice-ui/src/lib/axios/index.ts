@@ -23,8 +23,6 @@ instance.interceptors.response.use(
   },
   async (error) => {
     // redirect unathorized request to unathorized page
-    // resetprogress
-
     if (error.response.status === 401) {
       store.dispatch('ProjectInfoModule/resetprogress');
       await router.push('/unauthorized');
