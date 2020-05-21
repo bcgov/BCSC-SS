@@ -42,14 +42,17 @@ function render (res, userinfo){
 
 /* GET the profile of the current authenticated user */
 router.get('/profile', function(req, res, next) {
+  oidc_client.userinfo (req.session.accessToken)
+  .then ( (userinfo)=>{ render (res,userinfo)}  )
+  .catch((err) => {console.log("Error getting userinfo", err);}); 
 
-  request.get(
+  /*request.get(
     'https://idtest.gov.bc.ca/oauth2/userinfo',   // For EU instances use https://openid-connect-eu.onelogin.com/oidc/me
     {
     'auth': {
       'bearer': req.session.accessToken
     }
-  },function(err, response, body){
+  } ,function(err, response, body){
     console.log('User Info')
     console.log("Raw :" + body);
     try {
@@ -65,11 +68,11 @@ router.get('/profile', function(req, res, next) {
 
     })
 
-    }
+    } 
    // var decoded=jwt.decode(body,{json : true, complete: true});
     
 
-  });
+  });*/
 });
 
 module.exports = router;
