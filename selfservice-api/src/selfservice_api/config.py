@@ -120,8 +120,7 @@ class _Config():  # pylint: disable=too-few-public-methods
     ENV_TAG = os.getenv('ENV_TAG')
 
     # EMAIL Settings
-    MAIL_DEBUG = bool(os.getenv('SUPPRESS_EMAILING', 'False'))
-    MAIL_SUPPRESS_SEND = bool(os.getenv('SUPPRESS_EMAILING', 'False'))
+    MAIL_DEBUG = MAIL_SUPPRESS_SEND = os.getenv('SUPPRESS_EMAILING', 'False').lower() == 'true'
 
     TESTING = False
     DEBUG = False
