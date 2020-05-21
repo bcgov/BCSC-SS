@@ -56,7 +56,7 @@ export const actions: ActionTree<TechnicalReqState, RootState> = {
       commit('SET_EDIT_TECHNICALREQ', technicalreq.data);
       commit('SET_LOADING', false);
     } catch (error) {
-      if (error.response.status === 401) {
+      if (error && error.response && error.response.status === 401) {
         dispatch('SharedModule/unAuthorized', null, { root: true });
       }
       commit('SET_TECHNICALREQ_SUCCESSFULLY', false);

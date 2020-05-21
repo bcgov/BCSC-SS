@@ -19,7 +19,9 @@ export const actions: ActionTree<SharedState, RootState> = {
    * @param  {} {commit}
    * @param  {} flag redirect to unauthorized page page
    */
-  async unAuthorized({ commit }, flag: boolean) {
-    router.push('/unauthorized');
+  async unAuthorized({}, flag: boolean) {
+    if (router.currentRoute.path !== '/unauthorized') {
+      await router.push('/unauthorized');
+    }
   },
 };

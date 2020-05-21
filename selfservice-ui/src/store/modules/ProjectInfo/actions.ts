@@ -69,8 +69,9 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
    * @param {*} { commit }
    */
 
-  async loadSingleProjectInfo({ commit, dispatch, rootState }, id) {
+  async loadSingleProjectInfo({ commit, dispatch }, id) {
     commit('SET_LOADING', true);
+
     if (!projectCallInProgress) {
       if (lastProjectId !== id) {
         projectCallInProgress = true;
@@ -168,7 +169,12 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
     commit('SET_PROJECT_SUBMIT_SUCESS', false);
     commit('SET_PROJECT_SUBMIT_ERROR', false);
   },
-
+  /**
+   * reset project call status
+   */
+  resetprogress() {
+    projectCallInProgress = false;
+  },
   /**
    * updateProjectStatus to server
    * @param {*} { commit }
