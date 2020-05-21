@@ -60,13 +60,13 @@ API = Api(
 @API.errorhandler(BusinessException)
 def handle_business_exception(error: BusinessException):
     """Handle Business exception."""
-    return {'message': error.error}, error.status_code
+    return {'message': error.error}, error.status_code, {'Access-Control-Allow-Origin': '*'}
 
 
 @API.errorhandler(AuthError)
 def handle_auth_error(error: AuthError):
     """Handle Business exception."""
-    return {'message': 'Access Denied'}, error.status_code
+    return {'message': 'Access Denied'}, error.status_code, {'Access-Control-Allow-Origin': '*'}
 
 
 API.add_namespace(OPS_API, path='/ops')
