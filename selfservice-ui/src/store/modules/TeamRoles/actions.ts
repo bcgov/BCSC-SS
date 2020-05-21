@@ -12,13 +12,16 @@ export const actions: ActionTree<TeamRoleState, RootState> = {
    * load roles from server and set to store
    * @param {*} { commit }
    */
-  async loadTeam({ commit }, projectId) {
+  async loadTeam({ commit, dispatch }, projectId) {
     commit('SET_LOADING', true);
     try {
       const roles = await TeamRoles.getTeamRoles(projectId);
       commit('SET_ROLESLIST', roles.data.team);
       commit('SET_LOADING', false);
-    } catch {
+    } catch (error) {
+      if (error.response.status === 401) {
+        dispatch('SharedModule/unAuthorized', null, { root: true });
+      }
       commit('SET_ERROR', true);
       commit('SET_LOADING', false);
     }
@@ -87,6 +90,8 @@ export const actions: ActionTree<TeamRoleState, RootState> = {
       commit('SET_MEMBER_ADDED_ERROR_LIST', {});
       if (error && error.response && error.response.status === 400) {
         commit('SET_MEMBER_ADDED_ERROR_LIST', error.response.data.errors);
+      } else if (error.response.status === 401) {
+        dispatch('SharedModule/unAuthorized', null, { root: true });
       }
       commit('SET_MEMBER_ADDED', false);
       commit('SET_MEMBER_ADDED_ERROR', true);
