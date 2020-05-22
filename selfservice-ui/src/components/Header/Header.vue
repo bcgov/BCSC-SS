@@ -1,5 +1,4 @@
 /** * Header of app */
-
 <template>
   <div>
     <v-app-bar app color class="header" light clipped-left>
@@ -9,7 +8,6 @@
         class="img side-left-margin"
         tabindex="0"
       />
-
       <v-toolbar-title>{{ $t('header.siteTitle') }}</v-toolbar-title>
       <sup
         :aria-label="$t('header.ariaLabelBeta')"
