@@ -84,7 +84,7 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
         projectCallInProgress = false;
         lastProjectId = 0;
       } catch (error) {
-        if (error.response.status === 401) {
+        if (error && error.response && error.response.status === 401) {
           dispatch('SharedModule/unAuthorized', null, { root: true });
         }
         commit('SET_PROJECTINFO_SUCCESSFULLY', false);

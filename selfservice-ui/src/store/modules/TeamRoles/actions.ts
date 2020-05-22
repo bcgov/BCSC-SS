@@ -62,7 +62,7 @@ export const actions: ActionTree<TeamRoleState, RootState> = {
       dispatch('clearMemberData');
     } catch (error) {
       commit('SET_MEMBER_ADDED_ERROR_LIST', {});
-      if (error.response.status === 400) {
+      if (error && error.response && error.response.status === 400) {
         commit('SET_MEMBER_ADDED_ERROR_LIST', error.response.data.errors);
       }
       commit('SET_MEMBER_ADDED', false);
