@@ -9,7 +9,8 @@ describe('Footer.vue', () => {
     localVue.use(vuetify);
 
     wrapper = shallowMount(Footer, {
-      localVue
+      localVue,
+      mocks: { $t: jest.fn(() => {}) }, // tslint:disable-line
     });
   });
 
