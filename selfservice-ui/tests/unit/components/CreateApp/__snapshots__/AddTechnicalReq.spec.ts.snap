@@ -147,7 +147,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
               </div>
                
               <div
-                class="row v-form px-4"
+                class="row v-form px-4 pr-lg-0"
               >
                 <div
                   class="redirect-div"
@@ -662,7 +662,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
               </div>
                
               <div
-                class="row v-form px-4"
+                class="row v-form px-4 pr-lg-0"
               >
                 <div
                   class="redirect-div"
@@ -1177,7 +1177,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
               </div>
                
               <div
-                class="row v-form px-4"
+                class="row v-form px-4 pr-lg-0"
               >
                 <div
                   class="redirect-div"
