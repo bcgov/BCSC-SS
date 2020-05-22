@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddTeamMember.vue renders props when passed with gettors 1`] = `
+<v-container-stub
+  tag="div"
+>
+  <v-row-stub
+    class="text-left"
+    tag="div"
+  >
+    <v-col-stub
+      tag="div"
+    >
+      <v-card-stub
+        class="v-form ma-3"
+        flat="true"
+        loaderheight="4"
+        tag="div"
+      >
+        <!---->
+      </v-card-stub>
+    </v-col-stub>
+  </v-row-stub>
+</v-container-stub>
+`;
+
+exports[`AddTeamMember.vue renders props when passed with gettors with member id 1`] = `
+<v-container-stub
+  tag="div"
+>
+  <v-row-stub
+    class="text-left"
+    tag="div"
+  >
+    <v-col-stub
+      tag="div"
+    >
+      <v-card-stub
+        class="v-form ma-3"
+        flat="true"
+        loaderheight="4"
+        tag="div"
+      >
+        <!---->
+      </v-card-stub>
+    </v-col-stub>
+  </v-row-stub>
+</v-container-stub>
+`;
