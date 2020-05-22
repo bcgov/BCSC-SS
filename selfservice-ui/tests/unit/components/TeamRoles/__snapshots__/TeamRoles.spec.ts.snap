@@ -711,7 +711,7 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                               </div>
                                
                               <div
-                                class="col"
+                                class="col col-1"
                               >
                                 <hr
                                   aria-orientation="vertical"
