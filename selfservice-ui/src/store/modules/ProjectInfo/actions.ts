@@ -41,13 +41,16 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
    * load projectinfo from server and set to store
    * @param {*} { commit }
    */
-  async loadProjectInfo({ commit }) {
+  async loadProjectInfo({ commit, dispatch }) {
     commit('SET_LOADING', true);
     try {
       const projectinfo = await ProjectInfoService.getProjectInfos();
       commit('SET_PROJECTINFOLIST', projectinfo.data.projects);
       commit('SET_LOADING', false);
-    } catch {
+    } catch (error) {
+      if (error.response.status === 401) {
+        dispatch('SharedModule/unAuthorized', null, { root: true });
+      }
       commit('SET_PROJECTINFO_ERROR', true);
       commit('SET_LOADING', false);
     }
@@ -66,8 +69,9 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
    * @param {*} { commit }
    */
 
-  async loadSingleProjectInfo({ commit }, id) {
+  async loadSingleProjectInfo({ commit, dispatch }, id) {
     commit('SET_LOADING', true);
+
     if (!projectCallInProgress) {
       if (lastProjectId !== id) {
         projectCallInProgress = true;
@@ -79,9 +83,13 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
         commit('SET_LOADING', false);
         projectCallInProgress = false;
         lastProjectId = 0;
-      } catch {
+      } catch (error) {
+        if (error && error.response && error.response.status === 401) {
+          dispatch('SharedModule/unAuthorized', null, { root: true });
+        }
         commit('SET_PROJECTINFO_SUCCESSFULLY', false);
         commit('SET_PROJECTINFO_ERROR', true);
+        commit('SET_LOADING', false);
         projectCallInProgress = false;
         lastProjectId = 0;
       }
@@ -161,7 +169,12 @@ export const actions: ActionTree<ProjectInfoState, RootState> = {
     commit('SET_PROJECT_SUBMIT_SUCESS', false);
     commit('SET_PROJECT_SUBMIT_ERROR', false);
   },
-
+  /**
+   * reset project call status
+   */
+  resetprogress() {
+    projectCallInProgress = false;
+  },
   /**
    * updateProjectStatus to server
    * @param {*} { commit }

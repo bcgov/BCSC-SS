@@ -9,9 +9,16 @@
   "PACKAGE_ADD_MESSAGE": "Package  added successfully",
   "PACKAGE_UPDATE_MESSAGE": "Package Updated successfully",
   "PACKAGE_DELETE_MESSAGE": "Package  Deleted successfully",
-  "main": {
+  "header": {
     "siteTitle": "BC Services Card Self Service",
-    "loading": "Thank you for your patience<br />as we fulfill your request."
+    "loading": "Thank you for your patience<br />as we fulfill your request.",
+    "labelBeta": "Beta",
+    "labelLogoImageAlt": "Go to the Government of British Columbia website",
+    "labelLogin": "Login",
+    "labelLogout": "Logout",
+    "ariaLabelEditProfile": "Edit profile",
+    "ariaLabelBeta": "This application is currently in Beta phase",
+    "labelWelcome": "Welcome "
   },
   "projectInfo": {
     "ProjectInfoTitle": "Project Information",
@@ -336,6 +343,15 @@
     "rolecto": "Executive Sponsor"
   },
   "global": {
-    "edit": "edit"
+    "edit": "edit",
+    "loading": "Thank you for your patience<br />as we fulfill your request."
+  },
+  "footer": {
+    "linkHome": "Home",
+    "linkDisclaimer": "Disclaimer",
+    "linkPrivacy": "Privacy",
+    "linkAccessibility": "Accessibility",
+    "linkCopyright": "Copyright",
+    "linkContactus": "Contact Us"
   }
 }
