@@ -47,7 +47,7 @@ export const actions: ActionTree<TechnicalReqState, RootState> = {
    * load single technicalreq   by project id from server and set to store
    * @param {*} { commit }
    */
-  async loadTechnicalReqDetails({ commit }, id) {
+  async loadTechnicalReqDetails({ commit, dispatch }, id) {
     commit('SET_LOADING', true);
     try {
       const technicalreq = await TechnicalReqService.getTechnicalReqByProjectId(
@@ -55,7 +55,10 @@ export const actions: ActionTree<TechnicalReqState, RootState> = {
       );
       commit('SET_EDIT_TECHNICALREQ', technicalreq.data);
       commit('SET_LOADING', false);
-    } catch {
+    } catch (error) {
+      if (error && error.response && error.response.status === 401) {
+        dispatch('SharedModule/unAuthorized', null, { root: true });
+      }
       commit('SET_TECHNICALREQ_SUCCESSFULLY', false);
       commit('SET_TECHNICALREQ_ERROR', true);
       commit('SET_LOADING', false);

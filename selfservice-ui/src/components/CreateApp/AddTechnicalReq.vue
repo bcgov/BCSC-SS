@@ -39,7 +39,7 @@
                 <div
                   v-for="(redirectUri, index) in redirectUris"
                   v-bind:key="index"
-                  class="row v-form px-4"
+                  class="row v-form px-4 pr-lg-0"
                 >
                   <div class="redirect-div">
                     <Input
@@ -427,9 +427,17 @@ export default class AddTechnicalReq extends Vue {
   cursor: pointer;
 }
 .redirect-div {
-  width: 95%;
+  width: 90%;
+  @include sm {
+    width: 94%;
+  }
+  @include md {
+    width: 95%;
+  }
 }
 .clear-icon {
-  margin-top: 15px;
+  position: absolute;
+  margin-top: 10px;
+  right: 15px;
 }
 </style>

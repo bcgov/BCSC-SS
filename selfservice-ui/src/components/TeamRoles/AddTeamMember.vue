@@ -82,7 +82,7 @@
                     id="input-team-phone"
                   />
                 </v-col>
-                <v-col>
+                <v-col cols="1">
                   <v-divider class="mx-4 d-none d-sm-flex" vertical></v-divider>
                 </v-col>
                 <v-col cols="12" sm="5" class="p-relative">
@@ -308,6 +308,7 @@ export default class AddTeamMember extends Vue {
 .btn-bottom {
   flex-direction: column;
   width: 100%;
+
   @include sm {
     bottom: 32px;
     position: absolute;
@@ -315,6 +316,7 @@ export default class AddTeamMember extends Vue {
   & .btn {
     width: 100%;
     margin-top: 12px;
+    margin-left: 0px !important;
   }
   @include rwd('1260') {
     bottom: 32px;
@@ -324,6 +326,7 @@ export default class AddTeamMember extends Vue {
     & .btn {
       width: auto;
       margin-top: 0;
+      margin-left: 8px !important;
     }
   }
 }
