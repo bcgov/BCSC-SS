@@ -12,6 +12,7 @@ exports[`App.vue renders props when passed 1`] = `
     <v-container-stub
       class="main-content"
       fluid="true"
+      id="main"
       tag="div"
     >
       <router-view-stub />
