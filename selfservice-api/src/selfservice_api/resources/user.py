@@ -61,10 +61,11 @@ class UserResource(Resource):
                 user = existing_user
             user_dump = UserSchema().dump(user) if user is not None else None
 
+        email = token_info.get('email') if provider == 'idir' else ''
         user_dump = {
             'firstName': token_info.get('given_name'),
             'lastName': token_info.get('family_name'),
-            'email': token_info.get('email') if provider == 'idir' else ''
+            'email': email
         } if user_dump is None else user_dump
 
         return jsonify({
@@ -85,19 +86,7 @@ class UserResource(Resource):
         try:
             user = User.find_by_oauth_id(token_info.get('sub'))
             user_schema = UserSchema()
-
-            provider = token_info.get('provider')
-            if provider == 'idir':
-                email = token_info.get('email')
-            elif provider == 'bcsc':
-                email = user_json.get('email')
-                domain = email.strip().split('@').pop() if email and '@' in email else None
-                valid_domain = OrgWhitelist.validate_domain(domain)
-                if not valid_domain:
-                    return {'errors': {'email': 'invalidDomain'}}, HTTPStatus.BAD_REQUEST
-            else:
-                return 'unidentified provider', HTTPStatus.BAD_REQUEST
-
+            email = UserResource._get_email_by_provider_(token_info, user_json)
             dict_data = user_schema.load({
                 'email': email,
                 'phone': user_json.get('phone'),
@@ -105,6 +94,7 @@ class UserResource(Resource):
                 'lastName': token_info.get('family_name'),
                 'oauthId': token_info.get('sub')
             })
+
             if not user:
                 # Check again with email id to confirm the existence.
                 user = User.find_by_email(dict_data['email'])
@@ -145,3 +135,20 @@ class UserResource(Resource):
         LoginHistory.log(user.id)
 
         return 'Updated successfully', HTTPStatus.OK
+
+    @staticmethod
+    def _get_email_by_provider_(token_info, user_json):
+        provider = token_info.get('provider')
+        email = ''
+        if provider == 'idir':
+            email = token_info.get('email')
+        elif provider == 'bcsc':
+            email = user_json.get('email')
+            domain = email.strip().split('@').pop() if email and '@' in email else None
+            valid_domain = OrgWhitelist.validate_domain(domain)
+            if not valid_domain:
+                return {'errors': {'email': 'invalidDomain'}}, HTTPStatus.BAD_REQUEST
+        else:
+            return 'unidentified provider', HTTPStatus.BAD_REQUEST
+
+        return email
