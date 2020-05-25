@@ -45,7 +45,7 @@ class UserResource(Resource):
         user = User.find_by_oauth_id(token_info.get('sub'))
 
         verified = False
-        provider = token_info.get('provider')
+        provider = token_info.get('provider', '').lower()
         fields_required = {
             'email': not provider == 'idir',
             'phone': True
@@ -56,12 +56,15 @@ class UserResource(Resource):
             user_dump = UserSchema().dump(user)
         elif provider == 'idir' and token_info.get('email') is not None:
             # Check again with email id if email is available in token.
-            user = User.find_by_email(token_info.get('email'))
+            existing_user = User.find_by_email(token_info.get('email'))
+            if existing_user and not existing_user.oauth_id:
+                user = existing_user
             user_dump = UserSchema().dump(user) if user is not None else None
 
         user_dump = {
             'firstName': token_info.get('given_name'),
-            'lastName': token_info.get('family_name')
+            'lastName': token_info.get('family_name'),
+            'email': token_info.get('email') if provider == 'idir' else ''
         } if user_dump is None else user_dump
 
         return jsonify({
@@ -106,6 +109,10 @@ class UserResource(Resource):
                 # Check again with email id to confirm the existence.
                 user = User.find_by_email(dict_data['email'])
                 if user and user.oauth_id:
+                    return {'errors': {'email': 'emailAlreadyExist'}}, HTTPStatus.BAD_REQUEST
+            elif user.email.lower().strip() != dict_data['email'].lower().strip():
+                existing_user = User.find_by_email(dict_data['email'])
+                if existing_user and existing_user.oauth_id != user.oauth_id:
                     return {'errors': {'email': 'emailAlreadyExist'}}, HTTPStatus.BAD_REQUEST
 
             old_user = copy.deepcopy(user)

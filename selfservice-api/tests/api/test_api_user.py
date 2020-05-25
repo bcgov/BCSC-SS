@@ -16,9 +16,11 @@
 import json
 from http import HTTPStatus
 
-from ..helper.api_create_data import USER_API, _create_user_, _get_user_
+from ..helper.api_create_data import USER_API, _create_team_, _create_user_, _get_user_
 from ..helper.auth import (invalid_email_auth_header, invalid_provider_auth_header,  # noqa: I001
-                           ss_admin_auth_header, ss_client_auth_header)  # noqa: I001
+                           new_idir_auth_header, ss_admin_auth_header, ss_client_auth_header)  # noqa: I001
+
+from selfservice_api.models.enums import ProjectRoles
 
 
 def test_post_user(client, jwt, session):
@@ -46,6 +48,37 @@ def test_post_user_validation(client, jwt, session):
                            headers=headers, content_type='application/json')
     assert response.status_code == HTTPStatus.BAD_REQUEST
 
+    _create_new_idir_user_(client, jwt, session)
+    headers = new_idir_auth_header(jwt, sub='test-validation')
+    req_data = {
+        'email': 'new@gov.bc.ca',
+        'phone': '5689732156'
+    }
+
+    response = client.post(USER_API, data=json.dumps(req_data),
+                           headers=headers, content_type='application/json')
+    assert response.status_code == HTTPStatus.BAD_REQUEST
+
+    _create_user_(client, jwt)
+    headers = ss_client_auth_header(jwt)
+    req_data = {
+        'email': 'new@gov.bc.ca',
+        'phone': '5689732156'
+    }
+
+    response = client.post(USER_API, data=json.dumps(req_data),
+                           headers=headers, content_type='application/json')
+    assert response.status_code == HTTPStatus.BAD_REQUEST
+
+    req_data = {
+        'email': 'new2@gov.bc.ca',
+        'phone': '5689732156'
+    }
+
+    response = client.post(USER_API, data=json.dumps(req_data),
+                           headers=headers, content_type='application/json')
+    assert response.status_code == HTTPStatus.CREATED
+
 
 def test_put_user(client, jwt, session):
     """Assert that the endpoint returns the success status."""
@@ -61,7 +94,18 @@ def test_put_user(client, jwt, session):
 def test_get_user(client, jwt, session):
     """Assert that the endpoint returns the success status."""
     response = _get_user_(client, jwt)
+    assert response.status_code == HTTPStatus.OK
 
+    headers = new_idir_auth_header(jwt)
+    response = client.get(USER_API,
+                          headers=headers, content_type='application/json')
+    assert response.status_code == HTTPStatus.OK
+
+    _create_team_(client, jwt, member_role=ProjectRoles.Cto, new_email='new@gov.bc.ca')
+
+    headers = new_idir_auth_header(jwt)
+    response = client.get(USER_API,
+                          headers=headers, content_type='application/json')
     assert response.status_code == HTTPStatus.OK
 
 
@@ -83,8 +127,19 @@ def test_get_user_email(client, jwt, session):
 def test_get_user_admin(client, jwt, session):
     """Assert that the endpoint returns the success status."""
     headers = ss_admin_auth_header(jwt)
-
     response = client.get(USER_API,
                           headers=headers, content_type='application/json')
-
     assert response.status_code == HTTPStatus.OK
+
+
+def _create_new_idir_user_(client, jwt, session, email='new@gov.bc.ca', sub='65a62-6713-4e7d-8f12-99'):
+    """Assert that the endpoint returns the success status."""
+    headers = new_idir_auth_header(jwt, email=email, sub=sub)
+    req_data = {
+        'email': email,
+        'phone': '5689732156'
+    }
+
+    response = client.post(USER_API, data=json.dumps(req_data),
+                           headers=headers, content_type='application/json')
+    return response
