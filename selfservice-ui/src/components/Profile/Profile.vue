@@ -16,7 +16,7 @@
               <span v-html="$t('profile.errorMessageDomain')"></span>
             </Alert>
             <Alert type="error" dense outlined class="text-left" v-if="emailExistErrorStatus">
-              <span v-html="errorMessageEmailExist"></span>
+              <span v-html="$t('profile.errorMessageEmailExist', {email: email})"></span>
             </Alert>
             <v-card-subtitle
               v-if="isComplete"
@@ -179,13 +179,6 @@ export default class Dashboard extends Vue {
   @Watch('userProfile')
   private onUserProfileChanged(val: any) {
     this.userDetails(val);
-  }
-
-  @Watch('emailExistErrorStatus')
-  private onEmailExistErrorStatus() {
-    this.errorMessageEmailExist = this.$t('profile.errorMessageEmailExist')
-      .toString()
-      .replace('{{email}}', this.email);
   }
 
   private createOrUpdateProfile() {
