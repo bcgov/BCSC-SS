@@ -13,7 +13,9 @@
         :aria-label="$t('header.ariaLabelBeta')"
         class="beta-phase-banner"
       >{{$t('header.labelBeta')}}</sup>
-
+      <div id="access">
+        <a class="skip-main" href="#main">Skip to main content</a>
+      </div>
       <v-spacer></v-spacer>
 
       <Button
@@ -234,5 +236,18 @@ export default class Header extends Vue {
 .profile-title {
   display: flex;
   align-self: center;
+}
+
+#access a {
+  margin: 5px 0 0 -5000px;
+  width: 200px;
+  padding: 5px;
+  position: absolute;
+  top: 15px;
+  color: #fcba19;
+  &:focus,
+  &:active {
+    margin-left: 0;
+  }
 }
 </style>
