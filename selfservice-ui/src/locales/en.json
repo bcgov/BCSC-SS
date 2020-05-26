@@ -353,5 +353,13 @@
     "linkAccessibility": "Accessibility",
     "linkCopyright": "Copyright",
     "linkContactus": "Contact Us"
+  },
+  "errorpage": {
+    "404": "404",
+    "pageNotFound": "Page not found",
+    "pageYouLooking": "The page you're looking for can't be found.",
+    "returnTo": "Return to the <a href='/'>Services Card Self-Service</a> site.",
+    "unAuthorized": "Unauthorized",
+    "youAreNotAuthorized": "You are not authorized to view the page you're requested."
   }
 }
