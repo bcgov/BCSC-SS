@@ -133,7 +133,11 @@ export const actions: ActionTree<KeyCloakState, RootState> = {
       });
     } catch (error) {
       if (error.response.status === 400 && error.response.data.errors) {
-        commit('SET_PROFILE_DOMAIN_ERROR', true);
+        if (error.response.data.errors.email === 'invalidDomain') {
+          commit('SET_PROFILE_DOMAIN_ERROR', true);
+        } else if (error.response.data.errors.email === 'emailAlreadyExist') {
+          commit('SET_EMAIL_EXIST_ERROR', true);
+        }
       } else {
         commit('SET_USER_ERROR', true);
       }

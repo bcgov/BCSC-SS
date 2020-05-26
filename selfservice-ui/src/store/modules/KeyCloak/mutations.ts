@@ -95,4 +95,7 @@ export const mutations: MutationTree<KeyCloakState> = {
   SET_PROFILE_DOMAIN_ERROR(state, payload: any) {
     state.profileErrorStatus = payload;
   },
+  SET_EMAIL_EXIST_ERROR(state, payload: any) {
+    state.emailExistErrorStatus = payload;
+  },
 };

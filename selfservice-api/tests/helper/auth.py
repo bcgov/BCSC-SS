@@ -110,6 +110,15 @@ def ss_admin_auth_header(jwt):
     return {'Authorization': 'Bearer ' + jwt.create_jwt(claims=TestJwtClaims.ss_admin, header=JWT_HEADER)}
 
 
+def new_idir_auth_header(jwt, email='new@gov.bc.ca', sub='65a62-6713-4e7d-8f12-99'):
+    """Produce new idir JWT tokens for use in tests."""
+    claims = copy.deepcopy(TestJwtClaims.ss_client_developer.value)
+    claims['provider'] = 'idir'
+    claims['email'] = email
+    claims['sub'] = sub
+    return {'Authorization': 'Bearer ' + jwt.create_jwt(claims=claims, header=JWT_HEADER)}
+
+
 def invalid_email_auth_header(jwt):
     """Produce invalid email on JWT tokens for use in tests."""
     claims = copy.deepcopy(TestJwtClaims.ss_client_developer.value)
