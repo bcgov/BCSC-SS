@@ -57,5 +57,8 @@ export const getters: GetterTree<KeyCloakState, RootState> = {
   },
   profileErrorStatus(state) {
     return state.profileErrorStatus;
-  }
+  },
+  emailExistErrorStatus(state) {
+    return state.emailExistErrorStatus;
+  },
 };
