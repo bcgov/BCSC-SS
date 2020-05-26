@@ -240,7 +240,6 @@ export default class Header extends Vue {
 
 #access a {
   margin: 5px 0 0 -5000px;
-  // margin-left: 0;
   width: 200px;
   padding: 5px;
   position: absolute;
