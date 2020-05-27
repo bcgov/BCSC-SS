@@ -51,6 +51,8 @@ def create_app(run_mode=os.getenv('FLASK_ENV', 'production')):
         version = get_run_version()
         response.headers['API'] = f'selfservice_api/{version}'
         response.headers['X-Frame-Options'] = 'DENY'
+        if 'Access-Control-Allow-Origin' not in response.headers:
+            response.headers['Access-Control-Allow-Origin'] = '*'
         return response
 
     register_shellcontext(app)
