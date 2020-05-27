@@ -47,6 +47,8 @@ exports[`Profile.vue renders popup on button click 1`] = `
         >
           <!---->
            
+          <!---->
+           
           <div
             class="v-card__subtitle text-left padding-0 bc-padding-left-0"
           />
@@ -293,6 +295,8 @@ exports[`Profile.vue renders props when passed with gettors 1`] = `
         <div
           class="col-md-12 col-12"
         >
+          <!---->
+           
           <!---->
            
           <div
@@ -543,6 +547,8 @@ exports[`Profile.vue renders props when passed with gettors 2`] = `
         <div
           class="col-md-12 col-12"
         >
+          <!---->
+           
           <!---->
            
           <div

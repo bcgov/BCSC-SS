@@ -12,9 +12,9 @@ exports[`Unauthorized.vue renders without crashing 1`] = `
     tag="div"
     wrap=""
   >
-    
-    You are not Authorized to see
-  
+    <errorpage-stub
+      type="unauthorized"
+    />
   </v-layout-stub>
 </v-container-stub>
 `;

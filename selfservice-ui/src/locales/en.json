@@ -214,6 +214,7 @@
     "btnContinue": "Continue",
     "btnSaveChanges": "Save Changes",
     "errorMessageDomain": "Your email address does not match any of the eligible organizations in our BC Services Card Self Service System. If you believe you or your organization should have access to this system, please <a href='/contact-us'>contact us</a> for assistance. ",
+    "errorMessageEmailExist": "This email address <i>{email}</i> is already in use. Please log back in with the method associated to this email address or <a href='/contact-us'>contact us</a>.",
     "btnCancel": "Cancel",
     "btnAgree": "I Accept",
     "termsAccept": "Please read the following and click \"I Accept\" to accept the agreement and continue."
@@ -228,7 +229,8 @@
     "txtsubTitle2": "What defines \"broader public sector\"?",
     "txtsubcontent4": "Broader Public Sector includes the core provincial public service (ministries), health authorities, Crown corporations, K-12 schools, colleges, institutes, teaching universities, and research universities, contracted social service providers. It does not include Federal, local and municipal governments.",
     "btnLearmore": "Learn more",
-    "txtgetStarted": "Get started"
+    "txtgetStarted": "Get started",
+    "txtInformationBox": "Thank you for your interest in the BC Services Card Self Service Application. At this time, we are working with a limited number of early adopters as we build and refine this application. Please <a href='/contact-us'>contact us</a> if you would like to become one of our Early Adopters."
   },
   "AddTestAccount": {
     "pagetitle": "Load Test Accounts",
@@ -352,5 +354,13 @@
     "linkAccessibility": "Accessibility",
     "linkCopyright": "Copyright",
     "linkContactus": "Contact Us"
+  },
+  "errorpage": {
+    "404": "404",
+    "pageNotFound": "Page not found",
+    "pageYouLooking": "The page you're looking for can't be found.",
+    "returnTo": "Return to the  <a href='/'>BC Services Card Self-Service</a> site.",
+    "unAuthorized": "Unauthorized",
+    "youAreNotAuthorized": "You are not authorized to view the page you're requested."
   }
 }

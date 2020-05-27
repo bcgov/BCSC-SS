@@ -29,6 +29,17 @@ exports[`Header.vue Logout user on logout button onlick  1`] = `
       </sup>
        
       <div
+        id="access"
+      >
+        <a
+          class="skip-main"
+          href="#main"
+        >
+          Skip to main content
+        </a>
+      </div>
+       
+      <div
         class="spacer"
       />
        
@@ -184,6 +195,17 @@ exports[`Header.vue Toggle menu onlick  1`] = `
       </sup>
        
       <div
+        id="access"
+      >
+        <a
+          class="skip-main"
+          href="#main"
+        >
+          Skip to main content
+        </a>
+      </div>
+       
+      <div
         class="spacer"
       />
        
@@ -337,6 +359,17 @@ exports[`Header.vue renders props when passed 1`] = `
       >
         
       </sup>
+       
+      <div
+        id="access"
+      >
+        <a
+          class="skip-main"
+          href="#main"
+        >
+          Skip to main content
+        </a>
+      </div>
        
       <div
         class="spacer"
