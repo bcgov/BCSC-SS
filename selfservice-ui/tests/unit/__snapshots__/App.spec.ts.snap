@@ -6,11 +6,6 @@ exports[`App.vue renders props when passed 1`] = `
 >
   <header-stub />
    
-  <a
-    class="anchor"
-    id="top"
-  />
-   
   <v-content-stub
     tag="main"
   >
