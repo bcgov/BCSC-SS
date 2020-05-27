@@ -8,35 +8,37 @@
           <Loading />
         </v-col>
         <v-col cols="8" v-else>
-          <h1 class="text-left tab-headline">
-            {{ projectInfo && projectInfo.projectName }}
-          </h1>
-          <div class="text-left tab-headline font-weight-medium my-2">
-            {{ projectInfo && projectInfo.organizationName }}
-          </div>
+          <h1 class="text-left tab-headline">{{ projectInfo && projectInfo.projectName }}</h1>
+          <div
+            class="text-left tab-headline font-weight-medium my-2"
+          >{{ projectInfo && projectInfo.organizationName }}</div>
         </v-col>
-        <v-col
-          cols="4"
-          class="d-flex align-end flex-column-reverse mb-2"
-          v-show="!isLoading"
-        >
+        <v-col cols="4" class="d-flex align-end flex-column-reverse mb-2" v-show="!isLoading">
           <ProjectActions :id="id" />
         </v-col>
 
         <v-col cols="12">
           <v-tabs slider-color="d-none" v-model="selectedTab">
-            <v-tab class="font-weight-bold">{{
+            <v-tab class="font-weight-bold">
+              {{
               $t('projectContainer.titleDevSummary')
-            }}</v-tab>
-            <v-tab class="font-weight-bold">{{
+              }}
+            </v-tab>
+            <v-tab class="font-weight-bold">
+              {{
               $t('projectContainer.titleTeamRoles')
-            }}</v-tab>
-            <v-tab class="font-weight-bold">{{
+              }}
+            </v-tab>
+            <v-tab class="font-weight-bold">
+              {{
               $t('projectContainer.titleCompliance')
-            }}</v-tab>
-            <v-tab class="font-weight-bold">{{
+              }}
+            </v-tab>
+            <v-tab class="font-weight-bold">
+              {{
               $t('projectContainer.titleHistory')
-            }}</v-tab>
+              }}
+            </v-tab>
             <v-tab-item class="custom-tabs-items" tabindex="0">
               <v-card flat>
                 <v-card-text>
@@ -95,8 +97,8 @@ const ProjectInfoModule = namespace('ProjectInfoModule');
     TeamRoles,
     ProjectActions,
     ProjectHistory,
-    ProjectCompliance,
-  },
+    ProjectCompliance
+  }
 })
 export default class ProjectContainer extends Vue {
   @Prop({ default: 0 })
@@ -116,6 +118,10 @@ export default class ProjectContainer extends Vue {
 
   private mounted() {
     this.isLoading = true;
+
+    if (this.id === 0) {
+      this.$router.push('/unauthorized');
+    }
     if (this.projectInfo && this.projectInfo.id !== this.id) {
       this.loadSingleProjectInfo(this.id);
     }

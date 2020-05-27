@@ -20,6 +20,26 @@ exports[`Home.vue renders props when passed 1`] = `
     </v-col-stub>
      
     <v-col-stub
+      cols="12"
+      tag="div"
+    >
+      <v-row-stub
+        align="center"
+        justify="center"
+        tag="div"
+      >
+        <v-col-stub
+          cols="8"
+          tag="div"
+        >
+          <div
+            class="home-info-box"
+          />
+        </v-col-stub>
+      </v-row-stub>
+    </v-col-stub>
+     
+    <v-col-stub
       class="home-img"
       cols="12"
       md="6"

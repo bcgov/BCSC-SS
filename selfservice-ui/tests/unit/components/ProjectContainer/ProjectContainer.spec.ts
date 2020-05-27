@@ -3,12 +3,15 @@ import ProjectContainer from '@/components/ProjectContainer/ProjectContainer.vue
 import vuetify from 'vuetify';
 import Vuex from 'vuex';
 import { singleProject } from '../../mocks/projectinfo';
+import VueRouter from 'vue-router';
 
 describe('ProjectContainer.vue', () => {
   let wrapper: any;
   beforeEach(() => {
     const localVue = createLocalVue();
     localVue.use(vuetify);
+    localVue.use(VueRouter);
+    const router = new VueRouter();
     const store = new Vuex.Store({
       modules: {
         ProjectInfoModule: {
@@ -19,19 +22,20 @@ describe('ProjectContainer.vue', () => {
               return { singleProject };
             }),
             getFinalProjectSubmissionStatus: jest.fn(),
-            errorStatus: jest.fn()
+            errorStatus: jest.fn(),
           },
           actions: {
-            loadSingleProjectInfo: jest.fn()
-          }
-        }
-      }
+            loadSingleProjectInfo: jest.fn(),
+          },
+        },
+      },
     });
 
     wrapper = shallowMount(ProjectContainer, {
       localVue,
       store,
-      mocks: { $t: jest.fn(() => {}) } // tslint:disable-line
+      router,
+      mocks: { $t: jest.fn(() => {}) }, // tslint:disable-line
     });
   });
 

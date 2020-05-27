@@ -12,9 +12,9 @@ exports[`PageNotFound.vue renders without crashing 1`] = `
     tag="div"
     wrap=""
   >
-    
-    Not found
-  
+    <errorpage-stub
+      type="404"
+    />
   </v-layout-stub>
 </v-container-stub>
 `;
