@@ -12,7 +12,7 @@
       <v-col cols="12">
         <v-card flat>
           <h2 class="text-left tab-headline page-title-h2">{{ $t('teamRoles.pagetitle') }}</h2>
-          <p class="text-left page-description">{{ $t('teamRoles.pageInfo') }}</p>
+          <p class="text-left page-description pageinfo">{{ $t('teamRoles.pageInfo') }}</p>
 
           <v-simple-table class="mt-5" v-if="teamList.length > 0">
             <template v-slot:default>

@@ -14,13 +14,32 @@ describe('Dashboard.vue', () => {
         getters: {
           getProjectInfoList: jest.fn(() => {
             return [];
-          })
+          }),
         },
         actions: {
-          loadProjectInfo: jest.fn()
-        }
-      }
-    }
+          loadProjectInfo: jest.fn(),
+        },
+      },
+      KeyCloakModule: {
+        namespaced: true,
+        state: {},
+        getters: {
+          userProfile: jest.fn(() => {
+            return {
+              firstName: 'user',
+              lastName: 'lastName',
+            };
+          }),
+          isLoggedin: jest.fn(() => {
+            return true;
+          }),
+          isAdmin: jest.fn(() => {
+            return true;
+          }),
+        },
+        actions: { setLogout: jest.fn() },
+      },
+    },
   });
 
   const mountFunction = (options: any) => {
@@ -28,7 +47,7 @@ describe('Dashboard.vue', () => {
       store,
       vuetify,
       mocks: { $t: jest.fn(() => {}) }, // tslint:disable-line
-      ...options
+      ...options,
     });
   };
 
