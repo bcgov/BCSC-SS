@@ -8,25 +8,35 @@
           <Loading />
         </v-col>
         <v-col cols="8" v-else>
-          <h1 class="text-left tab-headline">{{ projectInfo && projectInfo.projectName }}</h1>
-          <div
-            class="text-left tab-headline font-weight-medium my-2"
-          >{{ projectInfo && projectInfo.organizationName }}</div>
+          <h1 class="text-left tab-headline">
+            {{ projectInfo && projectInfo.projectName }}
+          </h1>
+          <div class="text-left tab-headline font-weight-medium my-2">
+            {{ projectInfo && projectInfo.organizationName }}
+          </div>
         </v-col>
-        <v-col cols="4" class="d-flex align-end flex-column-reverse mb-2" v-show="!isLoading">
+        <v-col
+          cols="4"
+          class="d-flex align-end flex-column-reverse mb-2"
+          v-show="!isLoading"
+        >
           <ProjectActions :id="id" />
         </v-col>
 
         <v-col cols="12">
           <v-tabs slider-color="d-none" v-model="selectedTab">
-            <v-tab class="font-weight-bold">{{ $t('projectContainer.titleDevSummary') }}</v-tab>
-            <v-tab class="font-weight-bold">{{ $t('projectContainer.titleTeamRoles') }}</v-tab>
-            <v-tab class="font-weight-bold">{{ $t('projectContainer.titlePrivacy') }}</v-tab>
-            <v-tab class="font-weight-bold">{{ $t('projectContainer.titleSecurity') }}</v-tab>
-            <v-tab class="font-weight-bold">{{ $t('projectContainer.titleComms') }}</v-tab>
-            <v-tab class="font-weight-bold">{{ $t('projectContainer.titleAgreements') }}</v-tab>
-            <v-tab class="font-weight-bold">{{ $t('projectContainer.titleLiveSummary') }}</v-tab>
-            <v-tab class="font-weight-bold">{{ $t('projectContainer.titleHistory') }}</v-tab>
+            <v-tab class="font-weight-bold">{{
+              $t('projectContainer.titleDevSummary')
+            }}</v-tab>
+            <v-tab class="font-weight-bold">{{
+              $t('projectContainer.titleTeamRoles')
+            }}</v-tab>
+            <v-tab class="font-weight-bold">{{
+              $t('projectContainer.titleCompliance')
+            }}</v-tab>
+            <v-tab class="font-weight-bold">{{
+              $t('projectContainer.titleHistory')
+            }}</v-tab>
             <v-tab-item class="custom-tabs-items" tabindex="0">
               <v-card flat>
                 <v-card-text>
@@ -45,35 +55,7 @@
             <v-tab-item class="custom-tabs-items" tabindex="0">
               <v-card flat>
                 <v-card-text>
-                  <p>Privacy</p>
-                </v-card-text>
-              </v-card>
-            </v-tab-item>
-            <v-tab-item class="custom-tabs-items" tabindex="0">
-              <v-card flat>
-                <v-card-text>
-                  <p>Security</p>
-                </v-card-text>
-              </v-card>
-            </v-tab-item>
-            <v-tab-item class="custom-tabs-items" tabindex="0">
-              <v-card flat>
-                <v-card-text>
-                  <p>Communications</p>
-                </v-card-text>
-              </v-card>
-            </v-tab-item>
-            <v-tab-item class="custom-tabs-items" tabindex="0">
-              <v-card flat>
-                <v-card-text>
-                  <p>Agreements</p>
-                </v-card-text>
-              </v-card>
-            </v-tab-item>
-            <v-tab-item class="custom-tabs-items" tabindex="0">
-              <v-card flat>
-                <v-card-text>
-                  <p>Prod access request</p>
+                  <ProjectCompliance />
                 </v-card-text>
               </v-card>
             </v-tab-item>
@@ -102,6 +84,7 @@ import Loading from '@/Atomic/Loading/Loading.vue';
 import TeamRoles from '@/components/TeamRoles/TeamRoles.vue';
 import ProjectActions from '@/components/ProjectActions/ProjectActions.vue';
 import ProjectHistory from '@/components/ProjectContainer/ProjectHistory.vue';
+import ProjectCompliance from '@/components/ProjectContainer/ProjectCompliance.vue';
 
 const ProjectInfoModule = namespace('ProjectInfoModule');
 
@@ -111,8 +94,9 @@ const ProjectInfoModule = namespace('ProjectInfoModule');
     Loading,
     TeamRoles,
     ProjectActions,
-    ProjectHistory
-  }
+    ProjectHistory,
+    ProjectCompliance,
+  },
 })
 export default class ProjectContainer extends Vue {
   @Prop({ default: 0 })

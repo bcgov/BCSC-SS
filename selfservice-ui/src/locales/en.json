@@ -253,11 +253,7 @@
     "pagetitle": "Summary page",
     "titleDevSummary": "Dev Summary",
     "titleTeamRoles": "Team",
-    "titlePrivacy": "Privacy",
-    "titleSecurity": "Security",
-    "titleComms": "Communications",
-    "titleAgreements": "Agreements",
-    "titleLiveSummary": "Prod Summary",
+    "titleCompliance": "Compliance",
     "titleHistory": "History"
   },
   "teamRoles": {
@@ -326,6 +322,9 @@
     "tblActionTakenBy": "Action taken by",
     "tblActionRole": "Role",
     "noData": "No history data available"
+  },
+  "projectCompliance": {
+    "pageTitle": "Compliance Requirements"
   },
   "projectStatus": {
     "statusdraft": "Draft",
