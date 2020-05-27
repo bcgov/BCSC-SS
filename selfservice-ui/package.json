@@ -10,7 +10,7 @@
     "precommit": "npm run lint &  npm run test:unit",
     "styleguide": "vue-cli-service styleguidist",
     "styleguide:build": "vue-cli-service styleguidist:build",
-    "test:cypress":  "cypress run",
+    "test:cypress": "cypress run",
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {

@@ -86,7 +86,7 @@ describe('Home Page', function()
 
         //If clicked on Contact US, It should allow to click back
         cy.log("Click on Contact Us opens a URL in the same window")
-        cy.get('[href="/contact-us"]').click()  
+        cy.get('footer [href="/contact-us"]').click()  
         cy.wait(5000)
         cy.log("Should take user to Contact Us Page")
         cy.url().should('eq','https://selfservice-dev.pathfinder.gov.bc.ca/contact-us')
