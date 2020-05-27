@@ -1,7 +1,6 @@
 <template>
   <v-app>
     <Header :hideMenu="hideMenu" />
-    <a class="anchor" id="top"></a>
     <v-content>
       <v-container fluid class="main-content" id="main">
         <router-view />
@@ -54,11 +53,5 @@ export default class App extends Vue {
   @include sm {
     margin-top: 56px;
   }
-}
-a.anchor {
-  display: block;
-  position: relative;
-  top: -250px;
-  visibility: hidden;
 }
 </style>
