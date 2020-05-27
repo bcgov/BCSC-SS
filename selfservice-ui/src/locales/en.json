@@ -76,7 +76,7 @@
   },
   "selectPackage": {
     "pagetitle": "Select Package",
-    "pagetitleInfo": "<p class='pageinfo'>OIDC scopes are collections of user attributes which can be returned on successful authentication.</p>Select the most appropriate package of scopes for your use case, noting that the more attributes you require, the greater the overhead of complying with privacy regulations.</p><p><br /></p><p>The following standard scopes are supported :</p><p><ul ><li class='my-1'>openid - Unique identifier </li><li class='my-1'>profile - Given name and surname</li><li class='my-1'>email - Email address</li><li class='my-1'>address - Physical address (Street, locality, state or province, postal code and country) </li></ul></p>",
+    "pagetitleInfo": "<p class='pageinfo pa-0'>OIDC scopes are collections of user attributes which can be returned on successful authentication.</p><p class='pageinfo pa-0'>Select the most appropriate package of scopes for your use case, noting that the more attributes you require, the greater the overhead of complying with privacy regulations.</p><p><br /></p><p class='pageinfo pa-0'>The following standard scopes are supported:</p><p class='pageinfo pa-0'><ul class='ml-3'><li class='my-1'>openid - Unique identifier </li><li class='my-1'>profile - Given name and surname</li><li class='my-1'>email - Email address</li><li class='my-1'>address - Physical address (Street, locality, state or province, postal code and country) </li></ul></p>",
     "choosePackage": "Select your scope package",
     "description": "This package contains the following data:",
     "package1": "Package 1 - best fit for organizations looking for a digital signature",
@@ -98,10 +98,10 @@
   },
   "testAccount": {
     "pagetitle": "Test Accounts",
-    "pageinfo": "<p class='pageinfo'>Select the number of test accounts you need to test your configuration for this request. The test account data provided to you will be randomized.</p><a href='https://www2.gov.bc.ca/gov/content/governments/services-for-government/information-management-technology/identity-and-authentication-services/bc-services-card-authentication-service/design-develop-test/testing'>Learn more about testing</a><p></p>",
-    "how_many_test_account": "Choose the number of test user accounts you require",
-    "special_notes": "Special requests or notes",
-    "specialNotesInfo": "<p>If you have any special requests for customized test account. Please  <a href='/contact-us'>contact us</a> for assistance.</p>",
+    "pageinfo": "<p class='pageinfo'>Select the number of test accounts you need to test your configuration for this request. The test account data provided to you will be randomized.</p><a href='https://www2.gov.bc.ca/gov/content/governments/services-for-government/information-management-technology/identity-and-authentication-services/bc-services-card-authentication-service/design-develop-test/testing' target='_ss'>Learn more about testing</a><p></p>",
+    "how_many_test_account": "Choose the number of test user accounts you require:",
+    "special_notes": "Special Requests",
+    "specialNotesInfo": "<p class='pageinfo'>If you have any special requests for customized test accounts, please  <a href='/contact-us'>contact us</a> for assistance.</p>",
     "btnBack": "Go Back",
     "btnNext": "Next",
     "btnCancel": "Cancel",

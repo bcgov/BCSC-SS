@@ -35,7 +35,9 @@
                   id="input-app-url"
                 />
 
-                <div class="text-left my-1">{{ $t('technicalRequirements.labelRedirectUrl') }}</div>
+                <div
+                  class="text-left my-1 bc-form-text"
+                >{{ $t('technicalRequirements.labelRedirectUrl') }}</div>
                 <div
                   v-for="(redirectUri, index) in redirectUris"
                   v-bind:key="index"
@@ -90,6 +92,7 @@
                       :label="$t('technicalRequirements.labelSignedJWT')"
                       :value="algorithamBase.SignedJWT"
                       data-test-id="radio-algoritham-base-signed-jwt"
+                      class="bc-form-radio"
                     ></v-radio>
                     <div
                       class="small-hint radio-help"
@@ -121,6 +124,7 @@
                       :label="$t('technicalRequirements.labelSecureJWT')"
                       :value="algorithamBase.SecureJWT"
                       data-test-id="radio-algoritham-base-secure-jwt"
+                      class="bc-form-radio"
                     ></v-radio>
                     <div
                       class="small-hint radio-help"
