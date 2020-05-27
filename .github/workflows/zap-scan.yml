@@ -1,5 +1,13 @@
 name: ZAP
-on: push
+
+on:
+  push:
+    branches:
+      - test
+  pull_request:
+    branches:
+      - test
+
 jobs:
   scan:
     runs-on: ubuntu-latest
