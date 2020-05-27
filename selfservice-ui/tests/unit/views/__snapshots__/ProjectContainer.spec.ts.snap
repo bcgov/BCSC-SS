@@ -5,7 +5,7 @@ exports[`ProjectContainer.vue renders props when passed 1`] = `
   class="home"
 >
   <projectcontainer-stub
-    id=""
+    id="0"
     tab="info"
   />
 </div>
