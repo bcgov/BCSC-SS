@@ -352,7 +352,8 @@
     "linkPrivacy": "Privacy",
     "linkAccessibility": "Accessibility",
     "linkCopyright": "Copyright",
-    "linkContactus": "Contact Us"
+    "linkContactus": "Contact Us",
+    "linkTerms": "Terms of use"
   },
   "errorpage": {
     "404": "404",

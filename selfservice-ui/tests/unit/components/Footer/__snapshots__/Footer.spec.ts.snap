@@ -66,6 +66,13 @@ exports[`Footer.vue renders props when passed 1`] = `
          
         <a
           class="footer-link"
+          href="/terms-of-use"
+        >
+          
+        </a>
+         
+        <a
+          class="footer-link"
           href="/contact-us"
         >
           
