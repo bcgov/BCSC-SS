@@ -4,28 +4,37 @@
     <v-layout justify-center row wrap class="side-left-margin">
       <v-flex dark text-xs-center white--text xs12>
         <v-row justify="left" no-gutters>
-          <a href="/" class="footer-link">{{$t('footer.linkHome')}}</a>
+          <a href="/" class="footer-link">{{ $t('footer.linkHome') }}</a>
           <a
             href="https://www2.gov.bc.ca/gov/content/home/disclaimer"
             class="footer-link"
             target="_ss"
-          >{{$t('footer.linkDisclaimer')}}</a>
+            >{{ $t('footer.linkDisclaimer') }}</a
+          >
           <a
             href="https://www2.gov.bc.ca/gov/content/home/privacy"
             class="footer-link"
             target="_ss"
-          >{{$t('footer.linkPrivacy')}}</a>
+            >{{ $t('footer.linkPrivacy') }}</a
+          >
           <a
             href="https://www2.gov.bc.ca/gov/content/home/accessibility"
             class="footer-link"
             target="_ss"
-          >{{$t('footer.linkAccessibility')}}</a>
+            >{{ $t('footer.linkAccessibility') }}</a
+          >
           <a
             href="https://www2.gov.bc.ca/gov/content/home/copyright"
             class="footer-link"
             target="_ss"
-          >{{$t('footer.linkCopyright')}}</a>
-          <a href="/contact-us" class="footer-link">{{$t('footer.linkContactus')}}</a>
+            >{{ $t('footer.linkCopyright') }}</a
+          >
+          <a href="/terms-of-use" class="footer-link">{{
+            $t('footer.linkTerms')
+          }}</a>
+          <a href="/contact-us" class="footer-link">{{
+            $t('footer.linkContactus')
+          }}</a>
         </v-row>
       </v-flex>
     </v-layout>
