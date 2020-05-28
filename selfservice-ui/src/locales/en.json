@@ -273,6 +273,7 @@
   "addTeamMember": {
     "pagetitle": "Add a team member",
     "pagetitleUpdate": "Update a team member",
+    "pageTitleEditRole": "Edit role",
     "contactInfo": "Contact information",
     "roleTitle": "Role",
     "labelRoledeveloper": "Developer",
