@@ -22,7 +22,3 @@ yarn-error.log*
 *.sw?
 
 /coverage/*
-
-# Test artifacts
-cypress/videos/
-cypress/screenshots
