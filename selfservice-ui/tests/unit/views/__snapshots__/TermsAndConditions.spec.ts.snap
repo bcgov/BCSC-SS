@@ -4,8 +4,15 @@ exports[`TermsAndConditions.vue renders props when passed 1`] = `
 <div
   class="home text-left"
 >
-  <termsandconditions-stub
-    onintersect=""
-  />
+  <v-card-stub
+    class="mx-auto outer-card"
+    flat="true"
+    loaderheight="4"
+    tag="div"
+  >
+    <termsandconditions-stub
+      onintersect=""
+    />
+  </v-card-stub>
 </div>
 `;
