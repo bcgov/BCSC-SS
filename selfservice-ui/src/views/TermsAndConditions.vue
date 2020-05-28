@@ -1,6 +1,6 @@
 <template>
   <div class="home text-left">
-    <v-card class="mx-auto outer-card" flat="">
+    <v-card class="mx-auto outer-card" flat>
       <TermsAndConditions />
     </v-card>
   </div>
