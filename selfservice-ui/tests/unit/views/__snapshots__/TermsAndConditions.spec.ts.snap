@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TermsAndConditions.vue renders props when passed 1`] = `
+<div
+  class="home text-left"
+>
+  <termsandconditions-stub
+    onintersect=""
+  />
+</div>
+`;
