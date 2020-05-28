@@ -86,7 +86,6 @@ exports[`Header.vue Logout user on logout button onlick  1`] = `
       </div>
        
       <a
-        aria-current="page"
         class="mr-2 d-sm-none toggleMenu v-btn--active v-btn v-btn--flat v-btn--router v-btn--text theme--dark v-size--default"
         href="#/"
       >
@@ -111,7 +110,6 @@ exports[`Header.vue Logout user on logout button onlick  1`] = `
         class="d-sm-none"
       >
         <a
-          aria-current="page"
           class="mr-2 login-btn v-btn--active v-btn v-btn--flat v-btn--router v-btn--text theme--dark v-size--default"
           href="#/"
         >
@@ -125,7 +123,6 @@ exports[`Header.vue Logout user on logout button onlick  1`] = `
        
       <li>
         <a
-          aria-current="page"
           class="router-link-exact-active router-link-active"
           href="#/"
         >
@@ -255,7 +252,6 @@ exports[`Header.vue Toggle menu onlick  1`] = `
       </div>
        
       <a
-        aria-current="page"
         class="mr-2 d-sm-none toggleMenu v-btn--active v-btn v-btn--flat v-btn--router v-btn--text theme--dark v-size--default"
         href="#/"
       >
@@ -280,7 +276,6 @@ exports[`Header.vue Toggle menu onlick  1`] = `
         class="d-sm-none"
       >
         <a
-          aria-current="page"
           class="mr-2 login-btn v-btn--active v-btn v-btn--flat v-btn--router v-btn--text theme--dark v-size--default"
           href="#/"
         >
@@ -294,7 +289,6 @@ exports[`Header.vue Toggle menu onlick  1`] = `
        
       <li>
         <a
-          aria-current="page"
           class="router-link-exact-active router-link-active"
           href="#/"
         >
@@ -424,7 +418,6 @@ exports[`Header.vue renders props when passed 1`] = `
       </div>
        
       <a
-        aria-current="page"
         class="mr-2 d-sm-none toggleMenu v-btn--active v-btn v-btn--flat v-btn--router v-btn--text theme--dark v-size--default"
         href="#/"
       >
@@ -449,7 +442,6 @@ exports[`Header.vue renders props when passed 1`] = `
         class="d-sm-none"
       >
         <a
-          aria-current="page"
           class="mr-2 login-btn v-btn--active v-btn v-btn--flat v-btn--router v-btn--text theme--dark v-size--default"
           href="#/"
         >
@@ -463,7 +455,6 @@ exports[`Header.vue renders props when passed 1`] = `
        
       <li>
         <a
-          aria-current="page"
           class="router-link-exact-active router-link-active"
           href="#/"
         >

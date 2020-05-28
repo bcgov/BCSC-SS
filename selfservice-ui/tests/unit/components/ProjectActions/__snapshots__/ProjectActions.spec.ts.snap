@@ -56,7 +56,7 @@ exports[`ProjectActions.vue renders props on click of Live access 1`] = `
       >
         <div
           class="v-dialog v-dialog--active v-dialog--persistent"
-          style="transform-origin: center center; max-width: 70%;"
+          style="max-width: 70%;"
         >
           <div
             class="v-card v-sheet theme--light"
@@ -125,7 +125,16 @@ exports[`ProjectActions.vue renders props on click of Live access 1`] = `
       class="v-dialog__container"
       role="dialog"
     >
-      <!---->
+      <div
+        class="v-dialog__content"
+        role="document"
+        style="z-index: 0;"
+      >
+        <div
+          class="v-dialog v-dialog--persistent"
+          style="max-width: 70%; display: none;"
+        />
+      </div>
     </div>
   </div>
 </div>
@@ -158,7 +167,16 @@ exports[`ProjectActions.vue renders props on click of delete 1`] = `
       class="v-dialog__container"
       role="dialog"
     >
-      <!---->
+      <div
+        class="v-dialog__content"
+        role="document"
+        style="z-index: 0;"
+      >
+        <div
+          class="v-dialog v-dialog--persistent"
+          style="max-width: 70%; display: none;"
+        />
+      </div>
     </div>
      
     <div
@@ -173,7 +191,7 @@ exports[`ProjectActions.vue renders props on click of delete 1`] = `
       >
         <div
           class="v-dialog v-dialog--active v-dialog--persistent"
-          style="transform-origin: center center; max-width: 70%;"
+          style="max-width: 70%;"
         >
           <div
             class="v-card v-sheet theme--light"
@@ -283,7 +301,7 @@ exports[`ProjectActions.vue renders props on click of delete 2`] = `
       >
         <div
           class="v-dialog v-dialog--active v-dialog--persistent"
-          style="transform-origin: center center; max-width: 70%;"
+          style="max-width: 70%;"
         >
           <div
             class="v-card v-sheet theme--light"
@@ -352,7 +370,16 @@ exports[`ProjectActions.vue renders props on click of delete 2`] = `
       class="v-dialog__container"
       role="dialog"
     >
-      <!---->
+      <div
+        class="v-dialog__content"
+        role="document"
+        style="z-index: 0;"
+      >
+        <div
+          class="v-dialog v-dialog--persistent"
+          style="max-width: 70%; display: none;"
+        />
+      </div>
     </div>
   </div>
 </div>
@@ -409,7 +436,16 @@ exports[`ProjectActions.vue renders props when passed with gettors 1`] = `
       class="v-dialog__container"
       role="dialog"
     >
-      <!---->
+      <div
+        class="v-dialog__content"
+        role="document"
+        style="z-index: 0;"
+      >
+        <div
+          class="v-dialog v-dialog--persistent"
+          style="max-width: 70%; display: none;"
+        />
+      </div>
     </div>
      
     <div
@@ -424,7 +460,7 @@ exports[`ProjectActions.vue renders props when passed with gettors 1`] = `
       >
         <div
           class="v-dialog v-dialog--active v-dialog--persistent"
-          style="transform-origin: center center; max-width: 70%;"
+          style="max-width: 70%;"
         >
           <div
             class="v-card v-sheet theme--light"

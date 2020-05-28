@@ -107,16 +107,18 @@ exports[`TeamRoles Mount.vue renders props when delete member 1`] = `
                   </td>
                    
                   <td>
-                    <button
+                    <i
                       class="v-icon notranslate ml-2 v-icon--link mdi mdi-pencil theme--light"
+                      role="button"
                       style="font-size: 16px;"
-                      type="button"
+                      tabindex="0"
                     />
                      
-                    <button
+                    <i
                       class="v-icon notranslate ml-2 delete-member v-icon--link mdi mdi-delete theme--light"
+                      role="button"
                       style="font-size: 16px;"
-                      type="button"
+                      tabindex="0"
                     />
                   </td>
                 </tr>
@@ -158,7 +160,16 @@ exports[`TeamRoles Mount.vue renders props when delete member 1`] = `
           class="v-dialog__container text-left"
           role="dialog"
         >
-          <!---->
+          <div
+            class="v-dialog__content"
+            role="document"
+            style="z-index: 0;"
+          >
+            <div
+              class="v-dialog"
+              style="width: 85%; display: none;"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -173,12 +184,12 @@ exports[`TeamRoles Mount.vue renders props when delete member 1`] = `
         <div
           class="v-dialog__content v-dialog__content--active"
           role="document"
-          style="z-index: 202;"
+          style="z-index: 202; z-index: 202;"
           tabindex="0"
         >
           <div
             class="v-dialog v-dialog--active v-dialog--persistent"
-            style="transform-origin: center center; max-width: 400px;"
+            style="max-width: 400px;"
           >
             <div
               class="v-card v-sheet theme--light"
@@ -336,16 +347,18 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                   </td>
                    
                   <td>
-                    <button
+                    <i
                       class="v-icon notranslate ml-2 v-icon--link mdi mdi-pencil theme--light"
+                      role="button"
                       style="font-size: 16px;"
-                      type="button"
+                      tabindex="0"
                     />
                      
-                    <button
+                    <i
                       class="v-icon notranslate ml-2 delete-member v-icon--link mdi mdi-delete theme--light"
+                      role="button"
                       style="font-size: 16px;"
-                      type="button"
+                      tabindex="0"
                     />
                   </td>
                 </tr>
@@ -390,12 +403,12 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
           <div
             class="v-dialog__content v-dialog__content--active"
             role="document"
-            style="z-index: 202;"
+            style="z-index: 202; z-index: 202;"
             tabindex="0"
           >
             <div
               class="v-dialog v-dialog--active"
-              style="transform-origin: center center; width: 85%;"
+              style="width: 85%;"
             >
               <div
                 class="v-card v-sheet theme--light"
@@ -727,7 +740,7 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                       style="height: auto;"
                                     >
                                       <div
-                                        aria-labelledby="input-66"
+                                        aria-labelledby="input-72"
                                         class="v-input--radio-group__input"
                                         role="radiogroup"
                                       >
@@ -737,14 +750,10 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                           <div
                                             class="v-input--selection-controls__input"
                                           >
-                                            <i
-                                              aria-hidden="true"
-                                              class="v-icon notranslate mdi mdi-radiobox-marked theme--light primary--text"
-                                            />
                                             <input
                                               aria-checked="true"
-                                              id="input-67"
-                                              name="radio-66"
+                                              id="input-73"
+                                              name="radio-72"
                                               role="radio"
                                               type="radio"
                                               value="1"
@@ -752,6 +761,10 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                             <div
                                               class="v-input--selection-controls__ripple primary--text"
                                             />
+                                            <i
+                                              aria-hidden="true"
+                                              class="v-icon notranslate mdi mdi-radiobox-marked theme--light primary--text"
+                                            />
                                           </div>
                                         </div>
                                          
@@ -761,14 +774,10 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                           <div
                                             class="v-input--selection-controls__input"
                                           >
-                                            <i
-                                              aria-hidden="true"
-                                              class="v-icon notranslate mdi mdi-radiobox-blank theme--light"
-                                            />
                                             <input
                                               aria-checked="false"
-                                              id="input-69"
-                                              name="radio-66"
+                                              id="input-75"
+                                              name="radio-72"
                                               role="radio"
                                               type="radio"
                                               value="2"
@@ -776,6 +785,10 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                             <div
                                               class="v-input--selection-controls__ripple"
                                             />
+                                            <i
+                                              aria-hidden="true"
+                                              class="v-icon notranslate mdi mdi-radiobox-blank theme--light"
+                                            />
                                           </div>
                                         </div>
                                          
@@ -785,20 +798,20 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                           <div
                                             class="v-input--selection-controls__input"
                                           >
-                                            <i
-                                              aria-hidden="true"
-                                              class="v-icon notranslate mdi mdi-radiobox-blank theme--light"
-                                            />
                                             <input
                                               aria-checked="false"
-                                              id="input-71"
-                                              name="radio-66"
+                                              id="input-77"
+                                              name="radio-72"
                                               role="radio"
                                               type="radio"
                                               value="3"
                                             />
                                             <div
                                               class="v-input--selection-controls__ripple"
+                                            />
+                                            <i
+                                              aria-hidden="true"
+                                              class="v-icon notranslate mdi mdi-radiobox-blank theme--light"
                                             />
                                           </div>
                                         </div>
@@ -882,7 +895,16 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
         class="v-dialog__container"
         role="dialog"
       >
-        <!---->
+        <div
+          class="v-dialog__content"
+          role="document"
+          style="z-index: 0;"
+        >
+          <div
+            class="v-dialog v-dialog--persistent"
+            style="max-width: 400px; display: none;"
+          />
+        </div>
       </div>
     </div>
   </div>

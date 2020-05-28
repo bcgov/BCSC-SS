@@ -226,11 +226,11 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                 <div
                   class="clear-icon"
                 >
-                  <button
+                  <i
                     class="v-icon notranslate ml-2 v-icon--link mdi mdi-close theme--light"
+                    role="button"
                     style="font-size: 36px;"
                     tabindex="0"
-                    type="button"
                   />
                 </div>
               </div>
@@ -279,10 +279,6 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                           <div
                             class="v-input--selection-controls__input"
                           >
-                            <i
-                              aria-hidden="true"
-                              class="v-icon notranslate mdi mdi-radiobox-marked theme--light primary--text"
-                            />
                             <input
                               aria-checked="true"
                               data-test-id="radio-algoritham-base-signed-jwt"
@@ -294,6 +290,10 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                             />
                             <div
                               class="v-input--selection-controls__ripple primary--text"
+                            />
+                            <i
+                              aria-hidden="true"
+                              class="v-icon notranslate mdi mdi-radiobox-marked theme--light primary--text"
                             />
                           </div>
                         </div>
@@ -359,7 +359,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                                           RS256
                                         </div>
                                         <input
-                                          aria-readonly="false"
+                                          aria-readonly="true"
                                           autocomplete="off"
                                           data-test-id="select-signed-response-alg"
                                           id="input-26"
@@ -387,7 +387,10 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                                     <div
                                       class="v-menu"
                                     >
-                                      <!---->
+                                      <div
+                                        class="v-menu__content theme--light "
+                                        style="max-height: 304px; min-width: 0px; max-width: auto; top: 12px; left: 0px; transform-origin: top left; z-index: 0; display: none;"
+                                      />
                                     </div>
                                   </div>
                                   <div
@@ -415,14 +418,10 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                           <div
                             class="v-input--selection-controls__input"
                           >
-                            <i
-                              aria-hidden="true"
-                              class="v-icon notranslate mdi mdi-radiobox-blank theme--light"
-                            />
                             <input
                               aria-checked="false"
                               data-test-id="radio-algoritham-base-secure-jwt"
-                              id="input-31"
+                              id="input-33"
                               name="radio-22"
                               role="radio"
                               type="radio"
@@ -430,6 +429,10 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                             />
                             <div
                               class="v-input--selection-controls__ripple"
+                            />
+                            <i
+                              aria-hidden="true"
+                              class="v-icon notranslate mdi mdi-radiobox-blank theme--light"
                             />
                           </div>
                         </div>
@@ -738,11 +741,11 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                 <div
                   class="clear-icon"
                 >
-                  <button
+                  <i
                     class="v-icon notranslate ml-2 v-icon--link mdi mdi-close theme--light"
+                    role="button"
                     style="font-size: 36px;"
                     tabindex="0"
-                    type="button"
                   />
                 </div>
               </div>
@@ -781,7 +784,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                       style="height: auto;"
                     >
                       <div
-                        aria-labelledby="input-60"
+                        aria-labelledby="input-62"
                         class="v-input--radio-group__input"
                         role="radiogroup"
                       >
@@ -791,21 +794,21 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                           <div
                             class="v-input--selection-controls__input"
                           >
-                            <i
-                              aria-hidden="true"
-                              class="v-icon notranslate mdi mdi-radiobox-marked theme--light primary--text"
-                            />
                             <input
                               aria-checked="true"
                               data-test-id="radio-algoritham-base-signed-jwt"
-                              id="input-61"
-                              name="radio-60"
+                              id="input-63"
+                              name="radio-62"
                               role="radio"
                               type="radio"
                               value="1"
                             />
                             <div
                               class="v-input--selection-controls__ripple primary--text"
+                            />
+                            <i
+                              aria-hidden="true"
+                              class="v-icon notranslate mdi mdi-radiobox-marked theme--light primary--text"
                             />
                           </div>
                         </div>
@@ -846,7 +849,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                                   <div
                                     aria-expanded="false"
                                     aria-haspopup="listbox"
-                                    aria-owns="list-64"
+                                    aria-owns="list-66"
                                     class="v-input__slot"
                                     role="button"
                                   >
@@ -871,10 +874,10 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                                           RS256
                                         </div>
                                         <input
-                                          aria-readonly="false"
+                                          aria-readonly="true"
                                           autocomplete="off"
                                           data-test-id="select-signed-response-alg"
-                                          id="input-64"
+                                          id="input-66"
                                           readonly="readonly"
                                           type="text"
                                         />
@@ -899,7 +902,10 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                                     <div
                                       class="v-menu"
                                     >
-                                      <!---->
+                                      <div
+                                        class="v-menu__content theme--light "
+                                        style="max-height: 304px; min-width: 0px; max-width: auto; top: 12px; left: 0px; transform-origin: top left; z-index: 0; display: none;"
+                                      />
                                     </div>
                                   </div>
                                   <div
@@ -927,21 +933,21 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                           <div
                             class="v-input--selection-controls__input"
                           >
-                            <i
-                              aria-hidden="true"
-                              class="v-icon notranslate mdi mdi-radiobox-blank theme--light"
-                            />
                             <input
                               aria-checked="false"
                               data-test-id="radio-algoritham-base-secure-jwt"
-                              id="input-69"
-                              name="radio-60"
+                              id="input-73"
+                              name="radio-62"
                               role="radio"
                               type="radio"
                               value="2"
                             />
                             <div
                               class="v-input--selection-controls__ripple"
+                            />
+                            <i
+                              aria-hidden="true"
+                              class="v-icon notranslate mdi mdi-radiobox-blank theme--light"
                             />
                           </div>
                         </div>
@@ -1250,11 +1256,11 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                 <div
                   class="clear-icon"
                 >
-                  <button
+                  <i
                     class="v-icon notranslate ml-2 v-icon--link mdi mdi-close theme--light"
+                    role="button"
                     style="font-size: 36px;"
                     tabindex="0"
-                    type="button"
                   />
                 </div>
               </div>
@@ -1293,7 +1299,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                       style="height: auto;"
                     >
                       <div
-                        aria-labelledby="input-98"
+                        aria-labelledby="input-102"
                         class="v-input--radio-group__input"
                         role="radiogroup"
                       >
@@ -1303,21 +1309,21 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                           <div
                             class="v-input--selection-controls__input"
                           >
-                            <i
-                              aria-hidden="true"
-                              class="v-icon notranslate mdi mdi-radiobox-marked theme--light primary--text"
-                            />
                             <input
                               aria-checked="true"
                               data-test-id="radio-algoritham-base-signed-jwt"
-                              id="input-99"
-                              name="radio-98"
+                              id="input-103"
+                              name="radio-102"
                               role="radio"
                               type="radio"
                               value="1"
                             />
                             <div
                               class="v-input--selection-controls__ripple primary--text"
+                            />
+                            <i
+                              aria-hidden="true"
+                              class="v-icon notranslate mdi mdi-radiobox-marked theme--light primary--text"
                             />
                           </div>
                         </div>
@@ -1358,7 +1364,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                                   <div
                                     aria-expanded="false"
                                     aria-haspopup="listbox"
-                                    aria-owns="list-102"
+                                    aria-owns="list-106"
                                     class="v-input__slot"
                                     role="button"
                                   >
@@ -1383,10 +1389,10 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                                           RS256
                                         </div>
                                         <input
-                                          aria-readonly="false"
+                                          aria-readonly="true"
                                           autocomplete="off"
                                           data-test-id="select-signed-response-alg"
-                                          id="input-102"
+                                          id="input-106"
                                           readonly="readonly"
                                           type="text"
                                         />
@@ -1411,7 +1417,10 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                                     <div
                                       class="v-menu"
                                     >
-                                      <!---->
+                                      <div
+                                        class="v-menu__content theme--light "
+                                        style="max-height: 304px; min-width: 0px; max-width: auto; top: 12px; left: 0px; transform-origin: top left; z-index: 0; display: none;"
+                                      />
                                     </div>
                                   </div>
                                   <div
@@ -1439,21 +1448,21 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                           <div
                             class="v-input--selection-controls__input"
                           >
-                            <i
-                              aria-hidden="true"
-                              class="v-icon notranslate mdi mdi-radiobox-blank theme--light"
-                            />
                             <input
                               aria-checked="false"
                               data-test-id="radio-algoritham-base-secure-jwt"
-                              id="input-107"
-                              name="radio-98"
+                              id="input-113"
+                              name="radio-102"
                               role="radio"
                               type="radio"
                               value="2"
                             />
                             <div
                               class="v-input--selection-controls__ripple"
+                            />
+                            <i
+                              aria-hidden="true"
+                              class="v-icon notranslate mdi mdi-radiobox-blank theme--light"
                             />
                           </div>
                         </div>

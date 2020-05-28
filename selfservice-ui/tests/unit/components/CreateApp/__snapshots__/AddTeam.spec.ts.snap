@@ -106,7 +106,16 @@ exports[`AddTeam.vue renders props when passed 1`] = `
               class="v-dialog__container text-left"
               role="dialog"
             >
-              <!---->
+              <div
+                class="v-dialog__content"
+                role="document"
+                style="z-index: 0;"
+              >
+                <div
+                  class="v-dialog"
+                  style="width: 85%; display: none;"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -118,7 +127,16 @@ exports[`AddTeam.vue renders props when passed 1`] = `
             class="v-dialog__container"
             role="dialog"
           >
-            <!---->
+            <div
+              class="v-dialog__content"
+              role="document"
+              style="z-index: 0;"
+            >
+              <div
+                class="v-dialog v-dialog--persistent"
+                style="max-width: 400px; display: none;"
+              />
+            </div>
           </div>
         </div>
       </div>
