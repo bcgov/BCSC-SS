@@ -174,5 +174,7 @@ export const actions: ActionTree<KeyCloakState, RootState> = {
   async clearStatus({ commit }) {
     commit('SET_PROFILE_DOMAIN_ERROR', false);
     commit('SET_USER_ERROR', false);
+    commit('SET_PROFILE_DOMAIN_ERROR', false);
+    commit('SET_EMAIL_EXIST_ERROR', false);
   },
 };

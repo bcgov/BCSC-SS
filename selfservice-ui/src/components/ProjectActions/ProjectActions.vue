@@ -1,4 +1,4 @@
-/** * Dashboard of app */
+/** * ProjectActions of app */
 
 <template>
   <div>
@@ -26,7 +26,7 @@
       class="d-flex justify-end btn-delete pad-0"
       @click="toggleDelete()"
       @keyup.enter="toggleDelete()"
-      v-if="isAdmin || projectStatus < projectStatusList.devComplete"
+      v-if="projectStatus > 0 && (isAdmin || projectStatus < projectStatusList.devComplete)"
       no-gutters
       data-test-id="btn-delete-project"
       tabindex="0"
@@ -135,7 +135,7 @@ export default class ProjectActions extends Vue {
   private deleteDialog: boolean = false;
 
   private showProjectActions: boolean = false;
-  private projectStatus: number = 1;
+  private projectStatus: number = 0;
   private projectStatusList: any = projectStatus;
 
   private betaEnabled: boolean =

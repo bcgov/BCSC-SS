@@ -144,21 +144,7 @@ exports[`ProjectActions.vue renders props on click of delete 1`] = `
 <div>
   <!---->
    
-  <div
-    class="d-flex justify-end btn-delete pad-0 col"
-    data-test-id="btn-delete-project"
-    no-gutters=""
-    tabindex="0"
-  >
-    <i
-      aria-hidden="true"
-      class="v-icon notranslate ml-2 icon-delete mdi mdi-delete theme--light"
-      style="font-size: 16px;"
-    />
-    
-    
-  
-  </div>
+  <!---->
    
   <div
     class="col"
@@ -270,21 +256,7 @@ exports[`ProjectActions.vue renders props on click of delete 2`] = `
 <div>
   <!---->
    
-  <div
-    class="d-flex justify-end btn-delete pad-0 col"
-    data-test-id="btn-delete-project"
-    no-gutters=""
-    tabindex="0"
-  >
-    <i
-      aria-hidden="true"
-      class="v-icon notranslate ml-2 icon-delete mdi mdi-delete theme--light"
-      style="font-size: 16px;"
-    />
-    
-    
-  
-  </div>
+  <!---->
    
   <div
     class="col"
@@ -389,21 +361,7 @@ exports[`ProjectActions.vue renders props when passed 1`] = `
 <div>
   <!---->
    
-  <div
-    class="d-flex justify-end btn-delete pad-0 col"
-    data-test-id="btn-delete-project"
-    no-gutters=""
-    tabindex="0"
-  >
-    <i
-      aria-hidden="true"
-      class="v-icon notranslate ml-2 icon-delete mdi mdi-delete theme--light"
-      style="font-size: 16px;"
-    />
-    
-    
-  
-  </div>
+  <!---->
    
   <!---->
 </div>
