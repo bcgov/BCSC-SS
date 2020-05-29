@@ -103,7 +103,8 @@
   color: $BCgovFontColorInvertedDark;
 }
 
-.v-application p.pageinfo {
+.v-application p.pageinfo,
+.custom-paragraqph {
   margin-bottom: 5px;
   font-size: 16px;
 
@@ -112,6 +113,15 @@
   text-rendering: optimizelegibility;
   flex-wrap: wrap;
   padding: 12px 0;
+  text-align: left;
+  color: rgba(0, 0, 0, 0.6) !important;
+}
+.custom-p-styles {
+  font-size: 16px;
+  line-height: 24px;
+  overflow-wrap: break-word;
+  text-rendering: optimizelegibility;
+  flex-wrap: wrap;
   text-align: left;
   color: rgba(0, 0, 0, 0.6) !important;
 }
