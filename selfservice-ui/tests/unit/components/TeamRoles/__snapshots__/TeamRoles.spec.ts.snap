@@ -25,8 +25,6 @@ exports[`TeamRoles Mount.vue renders props when delete member 1`] = `
           class="text-left  pageinfo"
         >
           
-          
-        
         </p>
          
         <div
@@ -277,8 +275,6 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
           class="text-left  pageinfo"
         >
           
-          
-        
         </p>
          
         <div
@@ -964,8 +960,6 @@ exports[`TeamRoles.vue renders props when passed with gettors 1`] = `
           class="text-left  pageinfo"
         >
           
-          
-        
         </p>
          
         <!---->
