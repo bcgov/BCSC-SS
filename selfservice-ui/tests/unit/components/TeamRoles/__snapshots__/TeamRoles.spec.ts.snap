@@ -450,7 +450,7 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                           novalidate="novalidate"
                         >
                           <div
-                            class="v-form px-6 ma-3 v-card v-sheet theme--light"
+                            class="v-form px-6 pt-2 ma-3 v-card v-sheet theme--light"
                           >
                             <!---->
                              
