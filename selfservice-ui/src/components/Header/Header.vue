@@ -1,26 +1,21 @@
 /** * Header of app */
-
 <template>
   <div>
-    <!-- <v-app-bar app> -->
-
     <v-app-bar app color class="header" light clipped-left>
-      <!-- <v-app-bar-nav-icon
-        @click.stop="drawer = !drawer"
-        dark
-      ></v-app-bar-nav-icon>-->
-      <!-- <div class="banner"> -->
       <img
         src="@/assets/images/bc-logo-horizontal.svg"
-        alt="Go to the Government of British Columbia website"
+        :alt="$t('header.labelLogoImageAlt')"
         class="img side-left-margin"
         tabindex="0"
       />
-
-      <v-toolbar-title>{{ $t('main.siteTitle') }}</v-toolbar-title>
-      <sup aria-label="This application is currently in Beta phase" class="beta-phase-banner">Beta</sup>
-
-      <v-spacer></v-spacer>
+      <v-toolbar-title>{{ $t('header.siteTitle') }}</v-toolbar-title>
+      <sup
+        :aria-label="$t('header.ariaLabelBeta')"
+        class="beta-phase-banner"
+      >{{$t('header.labelBeta')}}</sup>
+      <div id="access">
+        <a class="skip-main" href="#main">Skip to main content</a>
+      </div>
       <v-spacer></v-spacer>
 
       <Button
@@ -32,7 +27,7 @@
         class="d-none d-sm-flex login-btn side-right-margin"
         v-if="!isLoggedin"
         tabindex="0"
-      >Login</Button>
+      >{{$t('header.labelLogin')}}</Button>
 
       <v-toolbar-title v-if="isLoggedin" class="d-flex">
         <v-btn
@@ -42,13 +37,15 @@
           @click="$router.push(`/profile`)"
           @keyup.enter="$router.push(`/profile`)"
           class="icon-btn"
-          aria-label="Edit profile"
+          :aria-label="$t('header.ariaLabelEditProfile')"
         >
           <v-icon>mdi-account-edit</v-icon>
         </v-btn>
-        <div class="profile-title">Welcome {{ userProfile.firstName }} {{ userProfile.lastName }}</div>
+        <div
+          class="profile-title"
+        >{{$t('header.labelWelcome')}} {{ userProfile.firstName }} {{ userProfile.lastName }}</div>
         <v-btn text @click="logout" @keyup.enter="logout" color="white" class="icon-btn">
-          <span class="mr-2 logout" color="white">Logout</span>
+          <span class="mr-2 logout" color="white">{{$t('header.labelLogout')}}</span>
         </v-btn>
       </v-toolbar-title>
       <v-btn text to="/" link dark class="mr-2 d-sm-none toggleMenu" @click="toggleMenu">
@@ -58,7 +55,7 @@
     <nav class="navigation-main" :class="{ 'active-menu': showMenu }" id="navbar" v-if="!hideMenu">
       <ul>
         <li class="d-sm-none">
-          <v-btn text to="/" link dark class="mr-2 login-btn">Login</v-btn>
+          <v-btn text to="/" link dark class="mr-2 login-btn">{{$t('header.labelLogin')}}</v-btn>
         </li>
         <li v-for="item in items" :key="item.title">
           <router-link :to="item.link" v-if="checkRole(item)">
@@ -69,9 +66,6 @@
         </li>
       </ul>
     </nav>
-    <!-- <template class="abcd" :class="{ 'active-menu': showMenu }">
-      <Sidebar v-if="hideMenu" :drawer="drawer" />
-    </template>-->
   </div>
 </template>
 
@@ -242,5 +236,18 @@ export default class Header extends Vue {
 .profile-title {
   display: flex;
   align-self: center;
+}
+
+#access a {
+  margin: 5px 0 0 -5000px;
+  width: 200px;
+  padding: 5px;
+  position: absolute;
+  top: 15px;
+  color: #fcba19;
+  &:focus,
+  &:active {
+    margin-left: 0;
+  }
 }
 </style>

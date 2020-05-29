@@ -39,6 +39,7 @@ jobs:
       EMAIL_ID_CC: TESTING
       EMAIL_ID_DEBUG: TESTING
       APP_URL: https://selfservice-dev.pathfinder.gov.bc.ca/
+      ENV_TAG: dev
 
     steps:
       - uses: actions/checkout@v1

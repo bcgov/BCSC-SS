@@ -11,13 +11,13 @@ import ProjectContainer from '@/components/ProjectContainer/ProjectContainer.vue
 
 @Component({
   components: {
-    ProjectContainer
-  }
+    ProjectContainer,
+  },
 })
 export default class ProjectContainerHome extends Vue {
   @Prop({ default: 'info' })
   public tab!: string;
-  @Prop({ default: '' })
+  @Prop({ default: 0 })
   public id!: string;
 }
 </script>

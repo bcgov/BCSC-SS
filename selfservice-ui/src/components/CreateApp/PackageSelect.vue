@@ -19,7 +19,6 @@
           <v-col cols="12" flat>
             <Alert type="error" v-if="errorStatus" class="alert-top">Something went wrong...</Alert>
             <v-card flat>
-              <v-list-item-content class="headline">{{ $t('selectPackage.choosePackage') }}</v-list-item-content>
               <v-list-item-content v-html="$t('selectPackage.pagetitleInfo')"></v-list-item-content>
               <!-- <v-list-item-content>{{
                 $t('selectPackage.package2')
@@ -46,7 +45,7 @@
                       packageData.packageName
                       }}
                     </v-list-item-title>
-                    <v-list-item-subtitle>
+                    <v-list-item-subtitle class="mb-2">
                       {{
                       $t('selectPackage.description')
                       }}
@@ -54,6 +53,7 @@
                     <v-list-item-subtitle
                       v-for="claimName in packageData.claimNames"
                       :key="claimName"
+                      class="ml-3"
                     >
                       <v-icon color="#969798" x-small>mdi-check-circle</v-icon>
                       {{ claimName }}

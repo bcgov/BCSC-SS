@@ -29,7 +29,9 @@ export default class KeycloakService {
    * Logouts keycloak service
    */
   public static logout() {
-    KeycloakService.keycloak.logout();
+    KeycloakService.keycloak.logout({
+      redirectUri: window.location.origin,
+    });
   }
 
   /**

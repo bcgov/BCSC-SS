@@ -12,4 +12,5 @@ export interface KeyCloakState {
   errorStatus: boolean;
   successStatus: boolean;
   profileErrorStatus: boolean;
+  emailExistErrorStatus: boolean;
 }

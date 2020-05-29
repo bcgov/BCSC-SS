@@ -15,6 +15,9 @@
             <Alert type="error" dense outlined class="text-left" v-if="profileErrorStatus">
               <span v-html="$t('profile.errorMessageDomain')"></span>
             </Alert>
+            <Alert type="error" dense outlined class="text-left" v-if="emailExistErrorStatus">
+              <span v-html="$t('profile.errorMessageEmailExist', {email: email})"></span>
+            </Alert>
             <v-card-subtitle
               v-if="isComplete"
               class="text-left padding-0 bc-padding-left-0"
@@ -154,11 +157,14 @@ export default class Dashboard extends Vue {
   private provider!: string;
   @KeyCloakModule.Action('updateProfile')
   private updateProfile!: any;
-  @KeyCloakModule.Getter('userProfile') private userProfile!: any;
+  @KeyCloakModule.Getter('userProfile')
+  private userProfile!: any;
   @KeyCloakModule.Getter('errorStatus')
   private errorStatus!: any;
   @KeyCloakModule.Getter('profileErrorStatus')
   private profileErrorStatus!: boolean;
+  @KeyCloakModule.Getter('emailExistErrorStatus')
+  private emailExistErrorStatus!: boolean;
 
   private valid: boolean = false;
   private dialog: boolean = false;
@@ -168,6 +174,7 @@ export default class Dashboard extends Vue {
   private email: string = '';
   private phone: string = '';
   private buttonEnable: boolean = false;
+  private errorMessageEmailExist: string = '';
 
   @Watch('userProfile')
   private onUserProfileChanged(val: any) {
@@ -179,13 +186,16 @@ export default class Dashboard extends Vue {
     this.updateProfile(profile);
     this.toggleDisclaimer();
   }
+
   private userDetails(val: any) {
     this.email = val.email;
     this.phone = val.phone;
   }
+
   private toggleDisclaimer() {
     this.dialog = !this.dialog;
   }
+
   private onIntersect(entries: any, observer: any) {
     this.buttonEnable = entries[0].intersectionRatio >= 0.5;
   }

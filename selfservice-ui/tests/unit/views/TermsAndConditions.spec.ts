@@ -1,16 +1,15 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils';
-import Footer from '@/components/Footer/Footer.vue';
+import TermsAndConditions from '@/views/TermsAndConditions.vue';
 import vuetify from 'vuetify';
 
-describe('Footer.vue', () => {
+describe('TermsAndConditions.vue', () => {
   let wrapper: any;
   beforeEach(() => {
     const localVue = createLocalVue();
     localVue.use(vuetify);
 
-    wrapper = shallowMount(Footer, {
+    wrapper = shallowMount(TermsAndConditions, {
       localVue,
-      mocks: { $t: jest.fn(() => {}) }, // tslint:disable-line
     });
   });
 

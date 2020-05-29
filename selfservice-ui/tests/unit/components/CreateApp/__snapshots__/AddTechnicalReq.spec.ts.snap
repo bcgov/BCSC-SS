@@ -141,13 +141,13 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
               </div>
                
               <div
-                class="text-left my-1"
+                class="text-left my-1 bc-form-text"
               >
                 
               </div>
                
               <div
-                class="row v-form px-4"
+                class="row v-form px-4 pr-lg-0"
               >
                 <div
                   class="redirect-div"
@@ -274,7 +274,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                         role="radiogroup"
                       >
                         <div
-                          class="v-radio theme--light v-item--active"
+                          class="v-radio bc-form-radio theme--light v-item--active"
                         >
                           <div
                             class="v-input--selection-controls__input"
@@ -413,7 +413,7 @@ exports[`AddTechnicalReq.vue renders props when passed 1`] = `
                         </div>
                          
                         <div
-                          class="v-radio theme--light"
+                          class="v-radio bc-form-radio theme--light"
                         >
                           <div
                             class="v-input--selection-controls__input"
@@ -656,13 +656,13 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
               </div>
                
               <div
-                class="text-left my-1"
+                class="text-left my-1 bc-form-text"
               >
                 
               </div>
                
               <div
-                class="row v-form px-4"
+                class="row v-form px-4 pr-lg-0"
               >
                 <div
                   class="redirect-div"
@@ -789,7 +789,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                         role="radiogroup"
                       >
                         <div
-                          class="v-radio theme--light v-item--active"
+                          class="v-radio bc-form-radio theme--light v-item--active"
                         >
                           <div
                             class="v-input--selection-controls__input"
@@ -928,7 +928,7 @@ exports[`AddTechnicalReq.vue renders props when passed 2`] = `
                         </div>
                          
                         <div
-                          class="v-radio theme--light"
+                          class="v-radio bc-form-radio theme--light"
                         >
                           <div
                             class="v-input--selection-controls__input"
@@ -1171,13 +1171,13 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
               </div>
                
               <div
-                class="text-left my-1"
+                class="text-left my-1 bc-form-text"
               >
                 
               </div>
                
               <div
-                class="row v-form px-4"
+                class="row v-form px-4 pr-lg-0"
               >
                 <div
                   class="redirect-div"
@@ -1304,7 +1304,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                         role="radiogroup"
                       >
                         <div
-                          class="v-radio theme--light v-item--active"
+                          class="v-radio bc-form-radio theme--light v-item--active"
                         >
                           <div
                             class="v-input--selection-controls__input"
@@ -1443,7 +1443,7 @@ exports[`AddTechnicalReq.vue submit form on onlick  1`] = `
                         </div>
                          
                         <div
-                          class="v-radio theme--light"
+                          class="v-radio bc-form-radio theme--light"
                         >
                           <div
                             class="v-input--selection-controls__input"

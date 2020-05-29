@@ -17,10 +17,12 @@ exports[`TeamRoles Mount.vue renders props when delete member 1`] = `
           class="text-left tab-headline page-title-h2"
         >
           
+          
+        
         </h2>
          
         <p
-          class="text-left page-description"
+          class="text-left  pageinfo"
         >
           
         </p>
@@ -42,24 +44,32 @@ exports[`TeamRoles Mount.vue renders props when delete member 1`] = `
                     class="text-left"
                   >
                     
+                  
+                
                   </th>
                    
                   <th
                     class="text-left"
                   >
                     
+                  
+                
                   </th>
                    
                   <th
                     class="text-left"
                   >
                     
+                  
+                
                   </th>
                    
                   <th
                     class="text-left"
                   >
                     
+                  
+                
                   </th>
                    
                   <th
@@ -257,10 +267,12 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
           class="text-left tab-headline page-title-h2"
         >
           
+          
+        
         </h2>
          
         <p
-          class="text-left page-description"
+          class="text-left  pageinfo"
         >
           
         </p>
@@ -282,24 +294,32 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                     class="text-left"
                   >
                     
+                  
+                
                   </th>
                    
                   <th
                     class="text-left"
                   >
                     
+                  
+                
                   </th>
                    
                   <th
                     class="text-left"
                   >
                     
+                  
+                
                   </th>
                    
                   <th
                     class="text-left"
                   >
                     
+                  
+                
                   </th>
                    
                   <th
@@ -711,7 +731,7 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                               </div>
                                
                               <div
-                                class="col"
+                                class="col col-1"
                               >
                                 <hr
                                   aria-orientation="vertical"
@@ -932,10 +952,12 @@ exports[`TeamRoles.vue renders props when passed with gettors 1`] = `
           class="text-left tab-headline page-title-h2"
         >
           
+          
+        
         </h2>
          
         <p
-          class="text-left page-description"
+          class="text-left  pageinfo"
         >
           
         </p>

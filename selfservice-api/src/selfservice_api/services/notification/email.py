@@ -65,6 +65,9 @@ class EmailService():
         app_url = current_app.config.get('APP_URL')
         attributes['url'] = app_url.rstrip('/')
 
+        env_tag = current_app.config.get('ENV_TAG')
+        attributes['ENV_TAG'] = env_tag
+
         from_email = current_app.config.get('EMAIL_ID_FROM')
         attributes['EMAIL_ID_FROM'] = from_email
 
@@ -100,7 +103,8 @@ class EmailService():
         email_queue.cc = cc_email
         email_queue.bcc = [debug_email] if debug_email else None
 
-        email_queue.subject = EmailSubject.get(etype, attributes)
+        subject_prefix = '[' + env_tag.title() + '] ' if env_tag != 'prod' else ''
+        email_queue.subject = subject_prefix + EmailSubject.get(etype, attributes)
         email_queue.body = EmailBody.get(etype, attributes)
 
         return email_queue

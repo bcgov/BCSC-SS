@@ -19,14 +19,26 @@
 
         <v-col cols="12">
           <v-tabs slider-color="d-none" v-model="selectedTab">
-            <v-tab class="font-weight-bold">{{ $t('projectContainer.titleDevSummary') }}</v-tab>
-            <v-tab class="font-weight-bold">{{ $t('projectContainer.titleTeamRoles') }}</v-tab>
-            <v-tab class="font-weight-bold">{{ $t('projectContainer.titlePrivacy') }}</v-tab>
-            <v-tab class="font-weight-bold">{{ $t('projectContainer.titleSecurity') }}</v-tab>
-            <v-tab class="font-weight-bold">{{ $t('projectContainer.titleComms') }}</v-tab>
-            <v-tab class="font-weight-bold">{{ $t('projectContainer.titleAgreements') }}</v-tab>
-            <v-tab class="font-weight-bold">{{ $t('projectContainer.titleLiveSummary') }}</v-tab>
-            <v-tab class="font-weight-bold">{{ $t('projectContainer.titleHistory') }}</v-tab>
+            <v-tab class="font-weight-bold">
+              {{
+              $t('projectContainer.titleDevSummary')
+              }}
+            </v-tab>
+            <v-tab class="font-weight-bold">
+              {{
+              $t('projectContainer.titleTeamRoles')
+              }}
+            </v-tab>
+            <v-tab class="font-weight-bold">
+              {{
+              $t('projectContainer.titleCompliance')
+              }}
+            </v-tab>
+            <v-tab class="font-weight-bold">
+              {{
+              $t('projectContainer.titleHistory')
+              }}
+            </v-tab>
             <v-tab-item class="custom-tabs-items" tabindex="0">
               <v-card flat>
                 <v-card-text>
@@ -45,35 +57,7 @@
             <v-tab-item class="custom-tabs-items" tabindex="0">
               <v-card flat>
                 <v-card-text>
-                  <p>Privacy</p>
-                </v-card-text>
-              </v-card>
-            </v-tab-item>
-            <v-tab-item class="custom-tabs-items" tabindex="0">
-              <v-card flat>
-                <v-card-text>
-                  <p>Security</p>
-                </v-card-text>
-              </v-card>
-            </v-tab-item>
-            <v-tab-item class="custom-tabs-items" tabindex="0">
-              <v-card flat>
-                <v-card-text>
-                  <p>Communications</p>
-                </v-card-text>
-              </v-card>
-            </v-tab-item>
-            <v-tab-item class="custom-tabs-items" tabindex="0">
-              <v-card flat>
-                <v-card-text>
-                  <p>Agreements</p>
-                </v-card-text>
-              </v-card>
-            </v-tab-item>
-            <v-tab-item class="custom-tabs-items" tabindex="0">
-              <v-card flat>
-                <v-card-text>
-                  <p>Prod access request</p>
+                  <ProjectCompliance />
                 </v-card-text>
               </v-card>
             </v-tab-item>
@@ -102,6 +86,7 @@ import Loading from '@/Atomic/Loading/Loading.vue';
 import TeamRoles from '@/components/TeamRoles/TeamRoles.vue';
 import ProjectActions from '@/components/ProjectActions/ProjectActions.vue';
 import ProjectHistory from '@/components/ProjectContainer/ProjectHistory.vue';
+import ProjectCompliance from '@/components/ProjectContainer/ProjectCompliance.vue';
 
 const ProjectInfoModule = namespace('ProjectInfoModule');
 
@@ -111,7 +96,8 @@ const ProjectInfoModule = namespace('ProjectInfoModule');
     Loading,
     TeamRoles,
     ProjectActions,
-    ProjectHistory
+    ProjectHistory,
+    ProjectCompliance
   }
 })
 export default class ProjectContainer extends Vue {
@@ -132,6 +118,10 @@ export default class ProjectContainer extends Vue {
 
   private mounted() {
     this.isLoading = true;
+
+    if (this.id === 0) {
+      this.$router.push('/unauthorized');
+    }
     if (this.projectInfo && this.projectInfo.id !== this.id) {
       this.loadSingleProjectInfo(this.id);
     }

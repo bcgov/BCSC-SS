@@ -29,6 +29,7 @@ describe('Profile.vue', () => {
             return false;
           }),
           profileErrorStatus: jest.fn(),
+          emailExistErrorStatus: jest.fn(),
         },
         actions: {
           updateProfile: jest.fn(),

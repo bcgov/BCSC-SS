@@ -35,11 +35,13 @@
                   id="input-app-url"
                 />
 
-                <div class="text-left my-1">{{ $t('technicalRequirements.labelRedirectUrl') }}</div>
+                <div
+                  class="text-left my-1 bc-form-text"
+                >{{ $t('technicalRequirements.labelRedirectUrl') }}</div>
                 <div
                   v-for="(redirectUri, index) in redirectUris"
                   v-bind:key="index"
-                  class="row v-form px-4"
+                  class="row v-form px-4 pr-lg-0"
                 >
                   <div class="redirect-div">
                     <Input
@@ -90,6 +92,7 @@
                       :label="$t('technicalRequirements.labelSignedJWT')"
                       :value="algorithamBase.SignedJWT"
                       data-test-id="radio-algoritham-base-signed-jwt"
+                      class="bc-form-radio"
                     ></v-radio>
                     <div
                       class="small-hint radio-help"
@@ -121,6 +124,7 @@
                       :label="$t('technicalRequirements.labelSecureJWT')"
                       :value="algorithamBase.SecureJWT"
                       data-test-id="radio-algoritham-base-secure-jwt"
+                      class="bc-form-radio"
                     ></v-radio>
                     <div
                       class="small-hint radio-help"
@@ -427,9 +431,17 @@ export default class AddTechnicalReq extends Vue {
   cursor: pointer;
 }
 .redirect-div {
-  width: 95%;
+  width: 90%;
+  @include sm {
+    width: 94%;
+  }
+  @include md {
+    width: 95%;
+  }
 }
 .clear-icon {
-  margin-top: 15px;
+  position: absolute;
+  margin-top: 10px;
+  right: 15px;
 }
 </style>

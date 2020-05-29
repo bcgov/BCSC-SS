@@ -117,6 +117,10 @@ class _Config():  # pylint: disable=too-few-public-methods
     LIMITED_TEST_ACCOUNT_TRIGGER_COUNT = 20
 
     APP_URL = os.getenv('APP_URL')
+    ENV_TAG = os.getenv('ENV_TAG')
+
+    # EMAIL Settings
+    MAIL_DEBUG = MAIL_SUPPRESS_SEND = os.getenv('SUPPRESS_EMAILING', 'False').lower() == 'true'
 
     TESTING = False
     DEBUG = False
@@ -127,10 +131,6 @@ class DevConfig(_Config):  # pylint: disable=too-few-public-methods
 
     TESTING = False
     DEBUG = True
-
-    # EMAIL Settings
-    MAIL_DEBUG = True
-    MAIL_SUPPRESS_SEND = True
 
 
 class TestConfig(_Config):  # pylint: disable=too-few-public-methods

@@ -4,6 +4,13 @@
       <v-col cols="12">
         <h1 class="text-center main-headline">{{ $t('home.txtMainTitle') }}</h1>
       </v-col>
+      <v-col cols="12">
+        <v-row align="center" justify="center">
+          <v-col cols="8">
+            <div class="home-info-box" v-html="$t('home.txtInformationBox')"></div>
+          </v-col>
+        </v-row>
+      </v-col>
       <v-col cols="12" md="6" class="home-img"></v-col>
       <v-col cols="12" md="6" class="text-left">
         <v-card flat>
@@ -99,5 +106,11 @@ export default class HelloWorld extends Vue {}
 }
 .btn-actions {
   margin-top: 50px;
+}
+
+.home-info-box {
+  background-color: $BCgovBlue11;
+  border: $BCgovBlue12 1px solid;
+  padding: 10px;
 }
 </style>

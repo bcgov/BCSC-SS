@@ -100,6 +100,16 @@ const routerData = [
     component: () => import(/* webpackChunkName: "help" */ '../views/Help.vue'),
   },
   {
+    path: '/terms-of-use',
+    name: 'TermsAndConditions',
+    meta: { requiresAuth: false },
+    props: true,
+    component: () =>
+      import(
+        /* webpackChunkName: "TermsAndConditions" */ '../views/TermsAndConditions.vue'
+      ),
+  },
+  {
     path: '/unauthorized',
     name: 'Unauthorized',
     meta: { requiresAuth: false },

@@ -22,20 +22,23 @@
 
               <v-row>
                 <v-col cols="12">
-                  <div class="display-1">
+                  <div class="display-1" v-if="isCurrentUser">
+                    {{ $t('addTeamMember.pageTitleEditRole') }}
+                  </div>
+                  <div class="display-1" v-else>
                     {{
-                    $t(
-                    !editMode
-                    ? 'addTeamMember.pagetitle'
-                    : 'addTeamMember.pagetitleUpdate'
-                    )
+                      $t(
+                        !editMode
+                          ? 'addTeamMember.pagetitle'
+                          : 'addTeamMember.pagetitleUpdate'
+                      )
                     }}
                   </div>
                 </v-col>
                 <v-col cols="12" sm="6">
-                  <v-card-subtitle
-                    class="headline bc-padding-left-0"
-                  >{{ $t('addTeamMember.contactInfo') }}</v-card-subtitle>
+                  <v-card-subtitle class="headline bc-padding-left-0">{{
+                    $t('addTeamMember.contactInfo')
+                  }}</v-card-subtitle>
                   <Input
                     v-model="userDetails.firstName"
                     :label="$t('addTeamMember.labelFirstName')"
@@ -82,13 +85,13 @@
                     id="input-team-phone"
                   />
                 </v-col>
-                <v-col>
+                <v-col cols="1">
                   <v-divider class="mx-4 d-none d-sm-flex" vertical></v-divider>
                 </v-col>
                 <v-col cols="12" sm="5" class="p-relative">
-                  <v-card-subtitle
-                    class="headline bc-padding-left-0"
-                  >{{ $t('addTeamMember.roleTitle') }}</v-card-subtitle>
+                  <v-card-subtitle class="headline bc-padding-left-0">{{
+                    $t('addTeamMember.roleTitle')
+                  }}</v-card-subtitle>
 
                   <v-radio-group
                     v-model="userDetails.role"
@@ -116,11 +119,11 @@
 
                   <div>
                     {{
-                    $t(
-                    `addTeamMember.labelRoleInfo${
-                    projectRoles[userDetails.role]
-                    }`
-                    )
+                      $t(
+                        `addTeamMember.labelRoleInfo${
+                          projectRoles[userDetails.role]
+                        }`
+                      )
                     }}
                   </div>
                   <v-card-actions class="btn-bottom">
@@ -131,7 +134,8 @@
                       aria-label="Back Button"
                       secondary
                       data-test-id="btn-cancel-add-team"
-                    >{{ $t('addTeamMember.btnCancel') }}</Button>
+                      >{{ $t('addTeamMember.btnCancel') }}</Button
+                    >
                     <Button
                       :disabled="!valid"
                       class="white--text submit-package"
@@ -140,11 +144,11 @@
                       data-test-id="btn-submit-add-team"
                     >
                       {{
-                      $t(
-                      !editMode
-                      ? 'addTeamMember.btnSumbmit'
-                      : 'addTeamMember.btnSumbmitSave'
-                      )
+                        $t(
+                          !editMode
+                            ? 'addTeamMember.btnSumbmit'
+                            : 'addTeamMember.btnSumbmitSave'
+                        )
                       }}
                     </Button>
                   </v-card-actions>
@@ -177,8 +181,8 @@ const KeyCloakModule = namespace('KeyCloakModule');
   components: {
     Input,
     Button,
-    Alert
-  }
+    Alert,
+  },
 })
 export default class AddTeamMember extends Vue {
   @Prop({ default: 0 })
@@ -187,6 +191,8 @@ export default class AddTeamMember extends Vue {
   public toggleAddMember: any;
   @Prop({ default: 0 })
   public memberId!: number;
+  @Prop({ default: false })
+  public isCurrentUser!: boolean;
 
   @TeamRolesModule.Getter('getTeamList')
   public teamList!: any;
@@ -255,12 +261,12 @@ export default class AddTeamMember extends Vue {
       this.updateTeamMember({
         userDetails: this.userDetails,
         projectId: this.id,
-        memberId: this.memberId
+        memberId: this.memberId,
       });
     } else {
       this.addTeamMember({
         userDetails: this.userDetails,
-        projectId: this.id
+        projectId: this.id,
       });
     }
     this.resetValidation();
@@ -308,6 +314,7 @@ export default class AddTeamMember extends Vue {
 .btn-bottom {
   flex-direction: column;
   width: 100%;
+
   @include sm {
     bottom: 32px;
     position: absolute;
@@ -315,6 +322,7 @@ export default class AddTeamMember extends Vue {
   & .btn {
     width: 100%;
     margin-top: 12px;
+    margin-left: 0px !important;
   }
   @include rwd('1260') {
     bottom: 32px;
@@ -324,6 +332,7 @@ export default class AddTeamMember extends Vue {
     & .btn {
       width: auto;
       margin-top: 0;
+      margin-left: 8px !important;
     }
   }
 }
