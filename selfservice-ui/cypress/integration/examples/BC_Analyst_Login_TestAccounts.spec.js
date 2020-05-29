@@ -5,9 +5,10 @@ describe('BC Dev Login Test for Analyst', function()
 {
     //Declaring a variable to change wait time in between the test for recording videos. Time is in milliseconds
     const time_ms = 500
+    const url = Cypress.config().baseUrl
     it('Visit the BC Dev Page and Login as Analyst', function(){
         cy.log("Visiting the BC Services Card [DEV] URL")
-        cy.visit('https://selfservice-dev.pathfinder.gov.bc.ca/')
+        cy.visit(url)
         cy.wait(time_ms)
         //Find the Login button
         cy.log("Searching for the Login button")
@@ -18,12 +19,12 @@ describe('BC Dev Login Test for Analyst', function()
         cy.kcLogout();
         cy.log("Fetching details from Json file and validating with Keycloak")
         cy.wait(time_ms)
-        //Logging in as Analyst via Keycloak (Picks up values from users/analyst.json)
+        //Logging in as Analyst via Keycloak (Picks up values from users/user_login.json)
         cy.log("Log In as Analyst")
-        cy.kcLogin("analyst");
+        cy.kcLogin("user_login")
         cy.wait(time_ms)
-        cy.log("Log in successful and user is directed to Dashboard")
-        cy.visit("https://selfservice-dev.pathfinder.gov.bc.ca/dashboard");
+        cy.log("Log in successful and user visits Dashboard Page")
+        cy.visit(url+"/dashboard")
         cy.wait(time_ms)
         cy.log("Analyst can view Remaining test accounts right above the dashboard")
         cy.log("Displays the remaining test accounts")
@@ -34,7 +35,7 @@ describe('BC Dev Login Test for Analyst', function()
         cy.wait(time_ms)
         cy.log("Redirected to Add Test Account Page")
         cy.wait(time_ms)
-        cy.visit('https://selfservice-dev.pathfinder.gov.bc.ca/add-test-account')
+        cy.visit(url+"/add-test-account")
         cy.wait(time_ms)
         cy.log("Paste csv contents in text area")
         cy.wait(time_ms)

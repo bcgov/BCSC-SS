@@ -2,9 +2,12 @@
 describe('Login with BC Services card in Test Server ', function()
 {
     const time_ms = 500
+    const url =Cypress.config().testUrl
+    const login_url =Cypress.config().bcscs_login
+    
     it('Should have Prod Request enabled', function(){
         cy.log("Visiting the BC Services Card [TEST] URL")
-        cy.visit('https://selfservice-test.pathfinder.gov.bc.ca/')
+        cy.visit(url)
         cy.wait(time_ms)
         cy.log("Click to Login")
         cy.contains('Login').click()
@@ -17,7 +20,7 @@ describe('Login with BC Services card in Test Server ', function()
         cy.get('#zocial-bcsc').click()
         cy.wait(time_ms)
         cy.log("Should open the BC Services Card Login Page")
-        cy.url().should('eq','https://idtest.gov.bc.ca/login/entry#start')
+        cy.url().should('eq',login_url+'/entry#start')
         cy.wait(time_ms)
         cy.log("Click on Virtual Card Testing")
         //Click on Virtual Card Testing
@@ -38,14 +41,14 @@ describe('Login with BC Services card in Test Server ', function()
         cy.get('#btnSubmit').click()
         cy.wait(time_ms)
         cy.log("It should take user to validate page")
-        cy.url().should('eq','https://idtest.gov.bc.ca/login/passcode/validate')
+        cy.url().should('eq',login_url+'/passcode/validate')
         cy.wait(time_ms)
         cy.log("Shows a disclaimer")
         cy.wait(time_ms)
         cy.log("Click Submit")
         cy.get('#btnSubmit').click()
         cy.wait(time_ms)
-        cy.url().should('include','https://selfservice-test.pathfinder.gov.bc.ca/dashboard')
+        cy.url().should('include',url+'/dashboard')
         cy.wait(time_ms)
         cy.get('tbody> tr > td >').click()
         cy.url().should('include','project-container')

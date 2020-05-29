@@ -2,9 +2,11 @@
 describe('BC Keycloak Login with IDIR', function()
 {
     const time_ms = 500
+    const url = Cypress.config().baseUrl
+    
     it('Visit the BC Dev Page and Login', function(){
         cy.log("Visiting the BC Services Card [DEV] URL")
-        cy.visit('https://selfservice-dev.pathfinder.gov.bc.ca/')
+        cy.visit(url)
         cy.wait(time_ms)
         cy.log("Searching for the Login Button")
         cy.contains('Login').click()
@@ -28,7 +30,7 @@ describe('BC Keycloak Login with IDIR', function()
         cy.contains('Continue').click()
         cy.wait(time_ms)
         cy.log("If User is valid, user will be taken to Dashboard view")
-        cy.url().should('include','https://selfservice-dev.pathfinder.gov.bc.ca/dashboard')
+        cy.url().should('include',url+'/dashboard')
         cy.wait(time_ms)
         cy.log("Test Complete")
         

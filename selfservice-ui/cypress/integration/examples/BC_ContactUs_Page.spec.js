@@ -2,17 +2,18 @@ describe('Home Page', function()
 {
     //Declaring a variable to change wait time in between the test for recording videos. Time is in milliseconds
     const time_ms = 500
+    const url = Cypress.config().baseUrl
     it('Visits the Home page', function()
     {   
         cy.log("Visiting the BC Services Card [DEV] URL")
-        cy.visit('https://selfservice-dev.pathfinder.gov.bc.ca/')
+        cy.visit(url)
         cy.wait(time_ms)
         //If clicked on Contact US, It should allow to click back
         cy.log("Click on Contact Us opens a URL in the same window")
         cy.get('footer [href="/contact-us"]').click()    
         cy.wait(time_ms)
         cy.log("Should take user to Contact Us Page")
-        cy.url().should('eq','https://selfservice-dev.pathfinder.gov.bc.ca/contact-us')
+        cy.url().should('eq',url+'/contact-us')
         cy.wait(time_ms)
         cy.log("Submit Contact details")
         cy.get('input[data-test-id="input-firstname"]').type('FirstName')
@@ -28,12 +29,12 @@ describe('Home Page', function()
         cy.wait(time_ms)
         cy.scrollTo("top")
         cy.log("success Message content")
-        cy.get('.v-alert').contains('Your message has been sent successfully to IDIM')
+        cy.get('.v-alert__content').contains('Your message has been sent successfully to IDIM')
         cy.wait(time_ms)
         cy.log("Clicking on back button should take user Back to Home Page")
         cy.go('back')  
         cy.wait(time_ms)
-        cy.visit('https://selfservice-dev.pathfinder.gov.bc.ca/')
+        cy.url().should('include',url)
         cy.log("Test Complete")
     })
     

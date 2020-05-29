@@ -3,8 +3,9 @@ describe('Home Page Basic Test', function()
     it('Testing essential elements on home page', function()
     {
         const time_ms = 500
+        const url = Cypress.config().baseUrl
         cy.log("Visiting the BC Services Card [DEV] URL")
-        cy.visit('https://selfservice-dev.pathfinder.gov.bc.ca/')
+        cy.visit(url)
         cy.wait(time_ms)
         cy.log("Looking for content : Beta")
         cy.contains('Beta')

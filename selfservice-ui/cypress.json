@@ -6,8 +6,12 @@
         "auth_client_id": "bcscss"
     },
     "baseUrl": "https://selfservice-dev.pathfinder.gov.bc.ca",
+    "demoUrl": "https://selfservice-demo.pathfinder.gov.bc.ca",
+    "testUrl":"https://selfservice-test.pathfinder.gov.bc.ca",
+    "bcscs_login":"https://idtest.gov.bc.ca/login",
     "video": true,
     "projectId": "kz1g7w",
     "videoCompression": 32,
     "videoUploadOnPasses": true
-}
+    }
+    
