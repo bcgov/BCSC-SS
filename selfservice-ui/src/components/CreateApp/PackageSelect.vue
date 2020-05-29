@@ -6,7 +6,7 @@
       <v-btn icon @click="goBack()" :aria-label="$t('selectPackage.btnBack')">
         <v-icon>mdi-arrow-left</v-icon>
       </v-btn>
-      <v-toolbar-title>{{ $t('selectPackage.pagetitle') }}</v-toolbar-title>
+      <h1 class="bc-h1-sub-ttile">{{ $t('selectPackage.pagetitle') }}</h1>
       <div class="flex-grow-1"></div>
 
       <div class="flex-grow-1"></div>
@@ -19,7 +19,6 @@
           <v-col cols="12" flat>
             <Alert type="error" v-if="errorStatus" class="alert-top">Something went wrong...</Alert>
             <v-card flat>
-              <v-list-item-content class="headline">{{ $t('selectPackage.choosePackage') }}</v-list-item-content>
               <v-list-item-content v-html="$t('selectPackage.pagetitleInfo')"></v-list-item-content>
               <!-- <v-list-item-content>{{
                 $t('selectPackage.package2')
@@ -36,6 +35,7 @@
                 class="d-flex align-center pa-4 select-package"
                 :class="active ? 'active-bg' : ''"
                 @click="selectedPackage(packageData.id)"
+                @keyup.enter="selectedPackage(packageData.id)"
                 :data-test-id="`select-package-${packageData.id}`"
               >
                 <v-list-item three-line>
@@ -45,7 +45,7 @@
                       packageData.packageName
                       }}
                     </v-list-item-title>
-                    <v-list-item-subtitle>
+                    <v-list-item-subtitle class="mb-2">
                       {{
                       $t('selectPackage.description')
                       }}
@@ -53,6 +53,7 @@
                     <v-list-item-subtitle
                       v-for="claimName in packageData.claimNames"
                       :key="claimName"
+                      class="ml-3"
                     >
                       <v-icon color="#969798" x-small>mdi-check-circle</v-icon>
                       {{ claimName }}
@@ -87,6 +88,7 @@
           <v-spacer></v-spacer>
           <Button
             @click="goBack"
+            @keyup.enter="goBack"
             :aria-label="$t('selectPackage.btnBack')"
             secondary
             class="back-btn"
@@ -106,6 +108,7 @@
             class="white--text submit-package ml-6"
             depressed
             @click="submitPackage"
+            @keyup.enter="submitPackage"
             data-test-id="btn-submit-package-select"
           >
             {{

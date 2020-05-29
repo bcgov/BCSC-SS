@@ -64,6 +64,7 @@ describe('ProjectActions.vue', () => {
   it('renders props when passed with gettors', () => {
     const projectActionPage = mountFunction({});
     const toggleDelete = jest.fn();
+    projectActionPage.setData({ projectStatus: 1 });
 
     const button = projectActionPage.find('.btn-delete');
     projectActionPage.vm.$on('action-btn:clicked', toggleDelete);

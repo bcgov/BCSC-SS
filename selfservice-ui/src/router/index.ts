@@ -15,7 +15,7 @@ const routerData = [
   {
     path: '/',
     name: 'home',
-    meta: { hideMenu: true },
+    meta: { hideMenu: false },
     component: Home,
     props: true,
   },
@@ -100,6 +100,16 @@ const routerData = [
     component: () => import(/* webpackChunkName: "help" */ '../views/Help.vue'),
   },
   {
+    path: '/terms-of-use',
+    name: 'TermsAndConditions',
+    meta: { requiresAuth: false },
+    props: true,
+    component: () =>
+      import(
+        /* webpackChunkName: "TermsAndConditions" */ '../views/TermsAndConditions.vue'
+      ),
+  },
+  {
     path: '/unauthorized',
     name: 'Unauthorized',
     meta: { requiresAuth: false },
@@ -144,6 +154,9 @@ router.beforeEach((to, from, next) => {
       });
     }
   } else {
+    if (sessionStorage.getItem('keycloak_token')) {
+      KeycloakService.init(next, to.path, []);
+    }
     next();
   }
 });

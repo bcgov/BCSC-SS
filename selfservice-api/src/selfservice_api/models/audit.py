@@ -17,7 +17,6 @@ import datetime
 
 from .base_model import BaseModel
 from .db import db
-from .enums.project import ProjectRoles, ProjectStatus
 
 
 class Audit(BaseModel, db.Model):  # pylint: disable=too-few-public-methods
@@ -80,9 +79,8 @@ class Audit(BaseModel, db.Model):  # pylint: disable=too-few-public-methods
         for row in result_proxy:
             info = dict(row)
 
-            info['statusId'] = int(info['status'])
-            info['status'] = ProjectStatus.get_phrase(int(info['status']))
-            info['role'] = ProjectRoles.get_phrase(info['role'])
+            info['status'] = int(info['status'])
+            info['role'] = int(info['role'])
 
             result.append(info)
 

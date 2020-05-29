@@ -8,7 +8,12 @@ exports[`Dashboard.vue renders props when passed with gettors 1`] = `
     class="ma-2"
     tag="div"
   >
-    <!---->
+    <v-col-stub
+      cols="12"
+      tag="div"
+    >
+      <virtualcardcount-stub />
+    </v-col-stub>
      
     <v-col-stub
       cols="12"
@@ -28,9 +33,11 @@ exports[`Dashboard.vue renders props when passed with gettors 1`] = `
           tag="header"
           tile="true"
         >
-          <v-toolbar-title-stub>
+          <h1
+            class="bc-h1-sub-ttile"
+          >
             
-          </v-toolbar-title-stub>
+          </h1>
            
           <div
             class="flex-grow-1"

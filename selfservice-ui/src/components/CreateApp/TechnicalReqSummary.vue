@@ -10,12 +10,16 @@
     <v-toolbar dense class="bc-subtitle-2" dark>
       <v-card-title>
         {{ $t('summaryPage.technicalReqTitle') }}
-        <v-icon
-          small
-          class="ml-3"
+        <span
           @click="$router.push(`/project/${id}/technical`)"
-          >mdi-pencil</v-icon
+          @keyup.enter="$router.push(`/project/${id}/technical`)"
+          class="edit-wrapper"
+          :aria-label="$t('global.edit')"
+          tabindex="0"
+          role="link"
         >
+          <v-icon small class="ml-3">mdi-pencil</v-icon>
+        </span>
       </v-card-title>
     </v-toolbar>
     <v-list dense class="px-5">
@@ -44,13 +48,8 @@
           ></span>
         </v-list-item-content>
         <v-list-item-content class="align-end">
-          <div
-            v-for="redirectUri in technicalReq.redirectUris"
-            :key="redirectUri"
-          >
-            <v-icon small class="mr-1" v-if="redirectUri !== ''"
-              >mdi-link</v-icon
-            >
+          <div v-for="redirectUri in technicalReq.redirectUris" :key="redirectUri">
+            <v-icon small class="mr-1" v-if="redirectUri !== ''">mdi-link</v-icon>
             {{ redirectUri }}
           </div>
         </v-list-item-content>
@@ -69,17 +68,13 @@
           <div v-if="technicalReq.signingEncryptionType">
             <v-icon small class="mr-1">mdi-format-list-checks</v-icon>
             {{
-              $t(`summaryPage.${algorithm[technicalReq.signingEncryptionType]}`)
+            $t(`summaryPage.${algorithm[technicalReq.signingEncryptionType]}`)
             }}
           </div>
         </v-list-item-content>
       </v-list-item>
-      <v-divider
-        v-if="technicalReq.signingEncryptionType == algorithm.SecureJWT"
-      ></v-divider>
-      <v-list-item
-        v-if="technicalReq.signingEncryptionType == algorithm.SecureJWT"
-      >
+      <v-divider v-if="technicalReq.signingEncryptionType == algorithm.SecureJWT"></v-divider>
+      <v-list-item v-if="technicalReq.signingEncryptionType == algorithm.SecureJWT">
         <v-list-item-content class="pr-30">
           {{ $t('summaryPage.labelJWKSUrl') }}
           <span
@@ -95,12 +90,8 @@
           </div>
         </v-list-item-content>
       </v-list-item>
-      <v-divider
-        v-if="technicalReq.signingEncryptionType == algorithm.SecureJWT"
-      ></v-divider>
-      <v-list-item
-        v-if="technicalReq.signingEncryptionType == algorithm.SecureJWT"
-      >
+      <v-divider v-if="technicalReq.signingEncryptionType == algorithm.SecureJWT"></v-divider>
+      <v-list-item v-if="technicalReq.signingEncryptionType == algorithm.SecureJWT">
         <v-list-item-content class="pr-30">
           {{ $t('summaryPage.labelEncryptedResponseEnc') }}
           <span
@@ -117,12 +108,8 @@
           </v-list-item-content>
         </v-list-item-content>
       </v-list-item>
-      <v-divider
-        v-if="technicalReq.signingEncryptionType == algorithm.SecureJWT"
-      ></v-divider>
-      <v-list-item
-        v-if="technicalReq.signingEncryptionType == algorithm.SecureJWT"
-      >
+      <v-divider v-if="technicalReq.signingEncryptionType == algorithm.SecureJWT"></v-divider>
+      <v-list-item v-if="technicalReq.signingEncryptionType == algorithm.SecureJWT">
         <v-list-item-content class="pr-30">
           {{ $t('summaryPage.labelEncryptedResponseAlg') }}
           <span

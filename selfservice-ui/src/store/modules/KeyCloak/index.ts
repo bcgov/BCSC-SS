@@ -20,7 +20,8 @@ export const state: KeyCloakState = {
   provider: '',
   successStatus: false,
   errorStatus: false,
-  profileErrorStatus: false
+  profileErrorStatus: false,
+  emailExistErrorStatus: false,
 };
 
 //  namespaced module
@@ -31,7 +32,7 @@ const KeyCloakModule: Module<KeyCloakState, RootState> = {
   state,
   getters,
   actions,
-  mutations
+  mutations,
 };
 
 export default KeyCloakModule;

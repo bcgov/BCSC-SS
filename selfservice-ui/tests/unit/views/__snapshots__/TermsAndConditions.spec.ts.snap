@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TermsAndConditions.vue renders props when passed 1`] = `
+<div
+  class="home text-left"
+>
+  <v-card-stub
+    class="mx-auto outer-card"
+    flat="true"
+    loaderheight="4"
+    tag="div"
+  >
+    <termsandconditions-stub
+      onintersect=""
+    />
+  </v-card-stub>
+</div>
+`;

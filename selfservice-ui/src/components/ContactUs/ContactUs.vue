@@ -3,11 +3,12 @@
 <template>
   <v-card class="mx-auto outer-card">
     <v-form ref="form" v-model="valid">
-      <h1 class="bc-page-title-h1">{{ $t('contactUs.pagetitle') }}</h1>
-      <div class="flex-grow-1"></div>
-
       <v-container>
         <v-row class="mx-4">
+          <v-col cols="12">
+            <h1 class="contcatus-title-h1">{{ $t('contactUs.pagetitle') }}</h1>
+          </v-col>
+          <div class="flex-grow-1"></div>
           <v-col cols="12" flat>
             <v-card flat>
               <div class="text-left" v-html="$t('contactUs.pageinfo')"></div>
@@ -18,19 +19,21 @@
               type="error"
               v-if="errorStatus"
               class="alert-top text-left"
-            >{{ $t('contactUs.errorMessage') }}</Alert>
+              >{{ $t('contactUs.errorMessage') }}</Alert
+            >
             <Alert
               type="success"
               class="alert-top text-left"
               v-if="successStatus"
-            >{{ $t('contactUs.successMessage') }}</Alert>
+              >{{ $t('contactUs.successMessage') }}</Alert
+            >
           </v-col>
           <v-col cols="8">
             <Input
               v-model="contactDetails.firstName"
               :label="$t('contactUs.firstName')"
               type="text"
-              :rules="[rules.required,  rules.maxLength(500)]"
+              :rules="[rules.required, rules.maxLength(500)]"
               data-test-id="input-firstname"
             />
 
@@ -77,9 +80,11 @@
                 class="white--text btn-contact-us ml-6"
                 depressed
                 @click="submitContactMessage"
+                @keyup.enter="submitContactMessage"
                 name="btn-contact-us"
                 data-test-id="btn-contact-us"
-              >{{ $t('contactUs.btnSend') }}</Button>
+                >{{ $t('contactUs.btnSend') }}</Button
+              >
             </v-card-actions>
           </v-card>
         </v-col>
@@ -106,8 +111,8 @@ const ContactUsModule = namespace('ContactUsModule');
     Button,
     TextArea,
     Alert,
-    Input
-  }
+    Input,
+  },
 })
 export default class ContactUs extends Vue {
   @Prop({ default: 0 })
@@ -143,14 +148,14 @@ export default class ContactUs extends Vue {
       }).reset();
       this.$vuetify.goTo(0, {
         duration: 1000,
-        easing: 'easeInOutCubic'
+        easing: 'easeInOutCubic',
       });
     }
   }
 
   private submitContactMessage() {
     this.addContactUs({
-      contactDetails: this.contactDetails
+      contactDetails: this.contactDetails,
     });
   }
 }
@@ -158,4 +163,8 @@ export default class ContactUs extends Vue {
 
 <style lang="scss" scoped>
 @import './../../assets/styles/theme.scss';
+.contcatus-title-h1 {
+  color: $BCgovFontColorInvertedDark;
+  text-align: left;
+}
 </style>

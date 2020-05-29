@@ -34,7 +34,6 @@ objects:
       dockerStrategy:
         dockerfilePath: "${DOCKER_FILE_PATH}"
         buildArgs:
-        buildArgs:
         - name: "API_BASE_URL"
           value: ${API_BASE_URL}
         - name: "KEYCLOAK_URL"
@@ -115,10 +114,10 @@ parameters:
   value: dev
 - name: API_BASE_URL
   required: true
-  value: "https://selfservice-api-dev.pathfinder.gov.bc.ca/api/v1/"
+  value: "https://selfservice-api-demo.pathfinder.gov.bc.ca/api/v1/"
 - name: KEYCLOAK_URL
   required: true
-  value: "https://sso-dev.pathfinder.gov.bc.ca/auth"
+  value: "https://sso-test.pathfinder.gov.bc.ca/auth"
 - name: KEYCLOAK_REALM
   required: true
   value: "1gw8g24z"

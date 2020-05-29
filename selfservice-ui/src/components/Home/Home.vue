@@ -4,24 +4,20 @@
       <v-col cols="12">
         <h1 class="text-center main-headline">{{ $t('home.txtMainTitle') }}</h1>
       </v-col>
+      <v-col cols="12">
+        <v-row align="center" justify="center">
+          <v-col cols="8">
+            <div class="home-info-box" v-html="$t('home.txtInformationBox')"></div>
+          </v-col>
+        </v-row>
+      </v-col>
       <v-col cols="12" md="6" class="home-img"></v-col>
       <v-col cols="12" md="6" class="text-left">
         <v-card flat>
-          <h2 class="second-headline">
-            {{ $t('home.txtFitForOrganization') }}
-          </h2>
-          <div
-            v-html="$t('home.txtsubcontent1')"
-            class="second-sub-content"
-          ></div>
-          <div
-            v-html="$t('home.txtsubcontent2')"
-            class="second-sub-content"
-          ></div>
-          <div
-            v-html="$t('home.txtsubcontent3')"
-            class="second-sub-content"
-          ></div>
+          <h2 class="second-headline">{{ $t('home.txtFitForOrganization') }}</h2>
+          <div v-html="$t('home.txtsubcontent1')" class="second-sub-content"></div>
+          <div v-html="$t('home.txtsubcontent2')" class="second-sub-content"></div>
+          <div v-html="$t('home.txtsubcontent3')" class="second-sub-content"></div>
 
           <h3 class="third-h3">{{ $t('home.txtsubTitle2') }}</h3>
           <div v-html="$t('home.txtsubcontent4')" class="subcontent3"></div>
@@ -30,14 +26,13 @@
               class="btn-all"
               color="#fcba19 !important"
               @click="$router.push('/help')"
-              >{{ $t('home.btnLearmore') }}</Button
-            >
+              @keyup.enter="$router.push('/help')"
+            >{{ $t('home.btnLearmore') }}</Button>
             <Button
               class="btn-all getting-start-btn"
               @click="$router.push('/dashboard/')"
-            >
-              {{ $t('home.txtgetStarted') }}
-            </Button>
+              @keyup.enter="$router.push('/dashboard/')"
+            >{{ $t('home.txtgetStarted') }}</Button>
           </v-card-actions>
         </v-card>
       </v-col>
@@ -111,5 +106,11 @@ export default class HelloWorld extends Vue {}
 }
 .btn-actions {
   margin-top: 50px;
+}
+
+.home-info-box {
+  background-color: $BCgovBlue11;
+  border: $BCgovBlue12 1px solid;
+  padding: 10px;
 }
 </style>

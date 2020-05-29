@@ -20,7 +20,7 @@ from sqlalchemy import and_
 from .audit_mixin import AuditDateTimeMixin, AuditUserMixin
 from .base_model import BaseModel
 from .db import db
-from .enums.project import ProjectRoles, ProjectStatus
+from .enums.project import ProjectStatus
 from .user import User
 
 
@@ -105,10 +105,9 @@ class Project(AuditDateTimeMixin, AuditUserMixin, BaseModel, db.Model):
         for row in result_proxy:
             info = dict(row)
 
-            info['statusId'] = info['status']
-            info['status'] = ProjectStatus.get_phrase(info['status'])
+            info['status'] = int(info['status'])
             if user is not None:
-                info['role'] = ProjectRoles.get_phrase(info['role'])
+                info['role'] = int(info['role'])
 
             result.append(info)
 

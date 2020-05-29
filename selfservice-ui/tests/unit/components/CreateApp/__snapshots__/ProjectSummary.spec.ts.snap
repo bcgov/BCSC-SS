@@ -118,9 +118,11 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
              
             <div
               class="v-list-item__content align-end pointer client-id-copy"
+              tabindex="0"
             >
               <code
                 class="code-snippet"
+                tabindex="-1"
               >
                 <i
                   aria-hidden="true"
@@ -158,9 +160,11 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
              
             <div
               class="v-list-item__content align-end pointer d-block"
+              tabindex="0"
             >
               <code
                 class="code-snippet"
+                tabindex="-1"
               >
                 <div
                   class="float-left"
@@ -220,18 +224,24 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
                           class="text-left"
                         >
                           
+                  
+                
                         </th>
                          
                         <th
                           class="text-left"
                         >
                           
+                  
+                
                         </th>
                          
                         <th
                           class="text-left"
                         >
                           
+                  
+                
                         </th>
                       </tr>
                     </thead>
@@ -325,12 +335,17 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
                 class="spacer"
               />
                
-              <i
-                class="v-icon notranslate ml-3 v-icon--link mdi mdi-pencil theme--dark"
-                role="button"
-                style="font-size: 16px;"
+              <span
+                class="edit-wrapper"
+                role="link"
                 tabindex="0"
-              />
+              >
+                <i
+                  aria-hidden="true"
+                  class="v-icon notranslate ml-3 mdi mdi-pencil theme--dark"
+                  style="font-size: 16px;"
+                />
+              </span>
             </div>
           </div>
         </header>
@@ -374,16 +389,12 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
                 class="ml-6"
               >
                 
-            
-          
               </div>
                
               <div
                 class="ml-6"
               >
                 
-            
-          
               </div>
             </div>
           </div>
@@ -414,12 +425,17 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
               
       
       
-              <i
-                class="v-icon notranslate ml-3 v-icon--link mdi mdi-pencil theme--dark"
-                role="button"
-                style="font-size: 16px;"
+              <span
+                class="edit-wrapper"
+                role="link"
                 tabindex="0"
-              />
+              >
+                <i
+                  aria-hidden="true"
+                  class="v-icon notranslate ml-3 mdi mdi-pencil theme--dark"
+                  style="font-size: 16px;"
+                />
+              </span>
             </div>
           </div>
         </header>
@@ -567,12 +583,17 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
               
       
       
-              <i
-                class="v-icon notranslate ml-3 v-icon--link mdi mdi-pencil theme--dark"
-                role="button"
-                style="font-size: 16px;"
+              <span
+                class="edit-wrapper"
+                role="link"
                 tabindex="0"
-              />
+              >
+                <i
+                  aria-hidden="true"
+                  class="v-icon notranslate ml-3 mdi mdi-pencil theme--dark"
+                  style="font-size: 16px;"
+                />
+              </span>
             </div>
           </div>
         </header>
@@ -634,12 +655,17 @@ exports[`ProjectSummary.vue show modal on click 1`] = `
               
       
       
-              <i
-                class="v-icon notranslate ml-3 v-icon--link mdi mdi-pencil theme--dark"
-                role="button"
-                style="font-size: 16px;"
+              <span
+                class="edit-wrapper"
+                role="link"
                 tabindex="0"
-              />
+              >
+                <i
+                  aria-hidden="true"
+                  class="v-icon notranslate ml-3 mdi mdi-pencil theme--dark"
+                  style="font-size: 16px;"
+                />
+              </span>
             </div>
           </div>
         </header>

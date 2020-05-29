@@ -24,7 +24,6 @@ services:
     depends_on:
       - db
     environment:
-      - FLASK_ENV=development
       - DATABASE_USERNAME=${DB_POSTGRES_USER}
       - DATABASE_PASSWORD=${DB_POSTGRES_PASSWORD}
       - DATABASE_NAME=${DB_POSTGRES_DB}
@@ -47,6 +46,9 @@ services:
       - EMAIL_ID_ANALYST=${EMAIL_ID_ANALYST}
       - EMAIL_ID_CC=${EMAIL_ID_CC}
       - EMAIL_ID_DEBUG=${EMAIL_ID_DEBUG}
+      - APP_URL=${APP_URL}
+      - ENV_TAG=${ENV_TAG}
+      - SUPPRESS_EMAILING=True
   api:
     image: bscs_ss_api
     ports:
@@ -55,7 +57,6 @@ services:
     depends_on:
       - migration
     environment:
-      - FLASK_ENV=development
       - DATABASE_USERNAME=${DB_POSTGRES_USER}
       - DATABASE_PASSWORD=${DB_POSTGRES_PASSWORD}
       - DATABASE_NAME=${DB_POSTGRES_DB}
@@ -78,6 +79,9 @@ services:
       - EMAIL_ID_ANALYST=${EMAIL_ID_ANALYST}
       - EMAIL_ID_CC=${EMAIL_ID_CC}
       - EMAIL_ID_DEBUG=${EMAIL_ID_DEBUG}
+      - APP_URL=${APP_URL}
+      - ENV_TAG=${ENV_TAG}
+      - SUPPRESS_EMAILING=True
   web:
     build:
       context: ./..

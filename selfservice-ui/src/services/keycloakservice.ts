@@ -29,7 +29,9 @@ export default class KeycloakService {
    * Logouts keycloak service
    */
   public static logout() {
-    KeycloakService.keycloak.logout();
+    KeycloakService.keycloak.logout({
+      redirectUri: window.location.origin,
+    });
   }
 
   /**
@@ -166,7 +168,7 @@ export default class KeycloakService {
     }
   }
 
-  public static checkPermission(roles: []) {
+  public static checkPermission(roles: [] = []) {
     const userRolesAvailable = KeycloakService.userRoles();
     let hasAccess = false;
     if (KeycloakService.isAuthenticated()) {
@@ -177,6 +179,9 @@ export default class KeycloakService {
           }
         });
         return hasAccess;
+      } else {
+        // if no roles provided, have access
+        hasAccess = true;
       }
     }
     return hasAccess;

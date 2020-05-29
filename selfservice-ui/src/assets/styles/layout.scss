@@ -118,3 +118,21 @@
     clip-path: circle(100%);
   }
 }
+
+.bc-container-title-h1 {
+  color: $BCgovFontColorInvertedDark;
+  text-align: left;
+  font-size: 26px;
+}
+
+.bc-h1-sub-ttile {
+  color: $BCgovWhite;
+}
+
+.edit-wrapper {
+  cursor: pointer;
+}
+.edit-label {
+  font-size: 14px;
+  margin-left: 5px;
+}

@@ -1,32 +1,40 @@
 /** * Footer of app */
-
 <template>
   <v-footer height="auto">
     <v-layout justify-center row wrap class="side-left-margin">
       <v-flex dark text-xs-center white--text xs12>
         <v-row justify="left" no-gutters>
-          <a href="/" class="footer-link">Home</a>
+          <a href="/" class="footer-link">{{ $t('footer.linkHome') }}</a>
           <a
             href="https://www2.gov.bc.ca/gov/content/home/disclaimer"
             class="footer-link"
             target="_ss"
-          >Disclaimer</a>
+            >{{ $t('footer.linkDisclaimer') }}</a
+          >
           <a
             href="https://www2.gov.bc.ca/gov/content/home/privacy"
             class="footer-link"
             target="_ss"
-          >Privacy</a>
+            >{{ $t('footer.linkPrivacy') }}</a
+          >
           <a
             href="https://www2.gov.bc.ca/gov/content/home/accessibility"
             class="footer-link"
             target="_ss"
-          >Accessibility</a>
+            >{{ $t('footer.linkAccessibility') }}</a
+          >
           <a
             href="https://www2.gov.bc.ca/gov/content/home/copyright"
             class="footer-link"
             target="_ss"
-          >Copyright</a>
-          <a href="/contact-us" class="footer-link">Contact Us</a>
+            >{{ $t('footer.linkCopyright') }}</a
+          >
+          <a href="/terms-of-use" class="footer-link">{{
+            $t('footer.linkTerms')
+          }}</a>
+          <a href="/contact-us" class="footer-link">{{
+            $t('footer.linkContactus')
+          }}</a>
         </v-row>
       </v-flex>
     </v-layout>

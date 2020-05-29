@@ -11,9 +11,9 @@ exports[`Header.vue Logout user on logout button onlick  1`] = `
       style="height: 64px;"
     >
       <img
-        alt="Go to the Government of British Columbia website"
         class="img side-left-margin"
         src="@/assets/images/bc-logo-horizontal.svg"
+        tabindex="0"
       />
        
       <div
@@ -23,15 +23,21 @@ exports[`Header.vue Logout user on logout button onlick  1`] = `
       </div>
        
       <sup
-        aria-label="This application is currently in Beta phase"
         class="beta-phase-banner"
       >
-        Beta
+        
       </sup>
        
       <div
-        class="spacer"
-      />
+        id="access"
+      >
+        <a
+          class="skip-main"
+          href="#main"
+        >
+          Skip to main content
+        </a>
+      </div>
        
       <div
         class="spacer"
@@ -43,7 +49,7 @@ exports[`Header.vue Logout user on logout button onlick  1`] = `
         class="v-toolbar__title d-flex"
       >
         <button
-          class="v-btn v-btn--flat v-btn--icon v-btn--round theme--dark v-size--large"
+          class="icon-btn v-btn v-btn--flat v-btn--icon v-btn--round theme--dark v-size--large"
           type="button"
         >
           <span
@@ -59,11 +65,11 @@ exports[`Header.vue Logout user on logout button onlick  1`] = `
         <div
           class="profile-title"
         >
-          Welcome user lastName
+           user lastName
         </div>
          
         <button
-          class="v-btn v-btn--flat v-btn--text theme--light v-size--default white--text"
+          class="icon-btn v-btn v-btn--flat v-btn--text theme--light v-size--default white--text"
           type="button"
         >
           <span
@@ -73,7 +79,7 @@ exports[`Header.vue Logout user on logout button onlick  1`] = `
               class="mr-2 logout"
               color="white"
             >
-              Logout
+              
             </span>
           </span>
         </button>
@@ -110,7 +116,7 @@ exports[`Header.vue Logout user on logout button onlick  1`] = `
           <span
             class="v-btn__content"
           >
-            Login
+            
           </span>
         </a>
       </li>
@@ -171,9 +177,9 @@ exports[`Header.vue Toggle menu onlick  1`] = `
       style="height: 64px;"
     >
       <img
-        alt="Go to the Government of British Columbia website"
         class="img side-left-margin"
         src="@/assets/images/bc-logo-horizontal.svg"
+        tabindex="0"
       />
        
       <div
@@ -183,15 +189,21 @@ exports[`Header.vue Toggle menu onlick  1`] = `
       </div>
        
       <sup
-        aria-label="This application is currently in Beta phase"
         class="beta-phase-banner"
       >
-        Beta
+        
       </sup>
        
       <div
-        class="spacer"
-      />
+        id="access"
+      >
+        <a
+          class="skip-main"
+          href="#main"
+        >
+          Skip to main content
+        </a>
+      </div>
        
       <div
         class="spacer"
@@ -203,7 +215,7 @@ exports[`Header.vue Toggle menu onlick  1`] = `
         class="v-toolbar__title d-flex"
       >
         <button
-          class="v-btn v-btn--flat v-btn--icon v-btn--round theme--dark v-size--large"
+          class="icon-btn v-btn v-btn--flat v-btn--icon v-btn--round theme--dark v-size--large"
           type="button"
         >
           <span
@@ -219,11 +231,11 @@ exports[`Header.vue Toggle menu onlick  1`] = `
         <div
           class="profile-title"
         >
-          Welcome user lastName
+           user lastName
         </div>
          
         <button
-          class="v-btn v-btn--flat v-btn--text theme--light v-size--default white--text"
+          class="icon-btn v-btn v-btn--flat v-btn--text theme--light v-size--default white--text"
           type="button"
         >
           <span
@@ -233,7 +245,7 @@ exports[`Header.vue Toggle menu onlick  1`] = `
               class="mr-2 logout"
               color="white"
             >
-              Logout
+              
             </span>
           </span>
         </button>
@@ -270,7 +282,7 @@ exports[`Header.vue Toggle menu onlick  1`] = `
           <span
             class="v-btn__content"
           >
-            Login
+            
           </span>
         </a>
       </li>
@@ -331,9 +343,9 @@ exports[`Header.vue renders props when passed 1`] = `
       style="height: 64px;"
     >
       <img
-        alt="Go to the Government of British Columbia website"
         class="img side-left-margin"
         src="@/assets/images/bc-logo-horizontal.svg"
+        tabindex="0"
       />
        
       <div
@@ -343,15 +355,21 @@ exports[`Header.vue renders props when passed 1`] = `
       </div>
        
       <sup
-        aria-label="This application is currently in Beta phase"
         class="beta-phase-banner"
       >
-        Beta
+        
       </sup>
        
       <div
-        class="spacer"
-      />
+        id="access"
+      >
+        <a
+          class="skip-main"
+          href="#main"
+        >
+          Skip to main content
+        </a>
+      </div>
        
       <div
         class="spacer"
@@ -363,7 +381,7 @@ exports[`Header.vue renders props when passed 1`] = `
         class="v-toolbar__title d-flex"
       >
         <button
-          class="v-btn v-btn--flat v-btn--icon v-btn--round theme--dark v-size--large"
+          class="icon-btn v-btn v-btn--flat v-btn--icon v-btn--round theme--dark v-size--large"
           type="button"
         >
           <span
@@ -379,11 +397,11 @@ exports[`Header.vue renders props when passed 1`] = `
         <div
           class="profile-title"
         >
-          Welcome user lastName
+           user lastName
         </div>
          
         <button
-          class="v-btn v-btn--flat v-btn--text theme--light v-size--default white--text"
+          class="icon-btn v-btn v-btn--flat v-btn--text theme--light v-size--default white--text"
           type="button"
         >
           <span
@@ -393,7 +411,7 @@ exports[`Header.vue renders props when passed 1`] = `
               class="mr-2 logout"
               color="white"
             >
-              Logout
+              
             </span>
           </span>
         </button>
@@ -430,7 +448,7 @@ exports[`Header.vue renders props when passed 1`] = `
           <span
             class="v-btn__content"
           >
-            Login
+            
           </span>
         </a>
       </li>

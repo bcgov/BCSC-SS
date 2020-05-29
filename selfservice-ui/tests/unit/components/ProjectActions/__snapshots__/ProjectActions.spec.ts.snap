@@ -11,7 +11,9 @@ exports[`ProjectActions.vue renders props on click of Live access 1`] = `
     >
       <button
         class="btn btn-req v-btn v-btn--contained theme--light v-size--default  secondary-btn  normal"
+        data-test-id="btn-request-prod-access"
         name="button"
+        tabindex="0"
         type="button"
       >
         <span
@@ -25,7 +27,9 @@ exports[`ProjectActions.vue renders props on click of Live access 1`] = `
    
   <div
     class="d-flex justify-end btn-delete pad-0 col"
+    data-test-id="btn-delete-project"
     no-gutters=""
+    tabindex="0"
   >
     <i
       aria-hidden="true"
@@ -69,8 +73,6 @@ exports[`ProjectActions.vue renders props on click of Live access 1`] = `
                   class="v-toolbar__title"
                 >
                   
-            
-          
                 </div>
               </div>
             </header>
@@ -88,6 +90,7 @@ exports[`ProjectActions.vue renders props on click of Live access 1`] = `
                
               <button
                 class="btn v-btn v-btn--flat v-btn--text theme--light v-size--default  secondary-btn  normal"
+                data-test-id="btn-cancel-request-prod-access"
                 name="button"
                 text=""
                 type="button"
@@ -96,13 +99,12 @@ exports[`ProjectActions.vue renders props on click of Live access 1`] = `
                   class="v-btn__content"
                 >
                   
-            
-          
                 </span>
               </button>
                
               <button
                 class="btn btn-live v-btn v-btn--flat v-btn--text theme--light v-size--default  primary  normal"
+                data-test-id="btn-confirm-request-prod-access"
                 name="button"
                 text=""
                 type="button"
@@ -111,8 +113,6 @@ exports[`ProjectActions.vue renders props on click of Live access 1`] = `
                   class="v-btn__content"
                 >
                   
-            
-          
                 </span>
               </button>
             </div>
@@ -144,19 +144,7 @@ exports[`ProjectActions.vue renders props on click of delete 1`] = `
 <div>
   <!---->
    
-  <div
-    class="d-flex justify-end btn-delete pad-0 col"
-    no-gutters=""
-  >
-    <i
-      aria-hidden="true"
-      class="v-icon notranslate ml-2 icon-delete mdi mdi-delete theme--light"
-      style="font-size: 16px;"
-    />
-    
-    
-  
-  </div>
+  <!---->
    
   <div
     class="col"
@@ -230,6 +218,7 @@ exports[`ProjectActions.vue renders props on click of delete 1`] = `
                
               <button
                 class="btn v-btn v-btn--flat v-btn--text theme--light v-size--default  secondary-btn  normal"
+                data-test-id="btn-cancel-delete-project"
                 name="button"
                 text=""
                 type="button"
@@ -238,13 +227,12 @@ exports[`ProjectActions.vue renders props on click of delete 1`] = `
                   class="v-btn__content"
                 >
                   
-            
-          
                 </span>
               </button>
                
               <button
                 class="btn dialog-delete v-btn v-btn--flat v-btn--text theme--light v-size--default  primary  normal"
+                data-test-id="btn-confirm-delete-project"
                 name="button"
                 text=""
                 type="button"
@@ -268,19 +256,7 @@ exports[`ProjectActions.vue renders props on click of delete 2`] = `
 <div>
   <!---->
    
-  <div
-    class="d-flex justify-end btn-delete pad-0 col"
-    no-gutters=""
-  >
-    <i
-      aria-hidden="true"
-      class="v-icon notranslate ml-2 icon-delete mdi mdi-delete theme--light"
-      style="font-size: 16px;"
-    />
-    
-    
-  
-  </div>
+  <!---->
    
   <div
     class="col"
@@ -314,8 +290,6 @@ exports[`ProjectActions.vue renders props on click of delete 2`] = `
                   class="v-toolbar__title"
                 >
                   
-            
-          
                 </div>
               </div>
             </header>
@@ -333,6 +307,7 @@ exports[`ProjectActions.vue renders props on click of delete 2`] = `
                
               <button
                 class="btn v-btn v-btn--flat v-btn--text theme--light v-size--default  secondary-btn  normal"
+                data-test-id="btn-cancel-request-prod-access"
                 name="button"
                 text=""
                 type="button"
@@ -341,13 +316,12 @@ exports[`ProjectActions.vue renders props on click of delete 2`] = `
                   class="v-btn__content"
                 >
                   
-            
-          
                 </span>
               </button>
                
               <button
                 class="btn btn-live v-btn v-btn--flat v-btn--text theme--light v-size--default  primary  normal"
+                data-test-id="btn-confirm-request-prod-access"
                 name="button"
                 text=""
                 type="button"
@@ -356,8 +330,6 @@ exports[`ProjectActions.vue renders props on click of delete 2`] = `
                   class="v-btn__content"
                 >
                   
-            
-          
                 </span>
               </button>
             </div>
@@ -389,19 +361,7 @@ exports[`ProjectActions.vue renders props when passed 1`] = `
 <div>
   <!---->
    
-  <div
-    class="d-flex justify-end btn-delete pad-0 col"
-    no-gutters=""
-  >
-    <i
-      aria-hidden="true"
-      class="v-icon notranslate ml-2 icon-delete mdi mdi-delete theme--light"
-      style="font-size: 16px;"
-    />
-    
-    
-  
-  </div>
+  <!---->
    
   <!---->
 </div>
@@ -413,7 +373,9 @@ exports[`ProjectActions.vue renders props when passed with gettors 1`] = `
    
   <div
     class="d-flex justify-end btn-delete pad-0 col"
+    data-test-id="btn-delete-project"
     no-gutters=""
+    tabindex="0"
   >
     <i
       aria-hidden="true"
@@ -497,6 +459,7 @@ exports[`ProjectActions.vue renders props when passed with gettors 1`] = `
                
               <button
                 class="btn v-btn v-btn--flat v-btn--text theme--light v-size--default  secondary-btn  normal"
+                data-test-id="btn-cancel-delete-project"
                 name="button"
                 text=""
                 type="button"
@@ -505,13 +468,12 @@ exports[`ProjectActions.vue renders props when passed with gettors 1`] = `
                   class="v-btn__content"
                 >
                   
-            
-          
                 </span>
               </button>
                
               <button
                 class="btn dialog-delete v-btn v-btn--flat v-btn--text theme--light v-size--default  primary  normal"
+                data-test-id="btn-confirm-delete-project"
                 name="button"
                 text=""
                 type="button"

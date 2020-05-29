@@ -9,9 +9,16 @@
   "PACKAGE_ADD_MESSAGE": "Package  added successfully",
   "PACKAGE_UPDATE_MESSAGE": "Package Updated successfully",
   "PACKAGE_DELETE_MESSAGE": "Package  Deleted successfully",
-  "main": {
+  "header": {
     "siteTitle": "BC Services Card Self Service",
-    "loading": "Thank you for your patience<br />as we fulfill your request."
+    "loading": "Thank you for your patience<br />as we fulfill your request.",
+    "labelBeta": "Beta",
+    "labelLogoImageAlt": "Go to the Government of British Columbia website",
+    "labelLogin": "Login",
+    "labelLogout": "Logout",
+    "ariaLabelEditProfile": "Edit profile",
+    "ariaLabelBeta": "This application is currently in Beta phase",
+    "labelWelcome": "Welcome "
   },
   "projectInfo": {
     "ProjectInfoTitle": "Project Information",
@@ -61,13 +68,17 @@
     "labelTestMethodHint": "Choose your signing and encryption methods for testing below. These options are available to facilitate your testing. Please note that when you move into a production environment, it will be required that you enable signing and encryption at that time.",
     "SignedJWTHint": "We return a signed JWT for more security",
     "SecureJWTHint": "We return a signed and encrypted JWT for maximum security",
-    "AddURI": "+ Add another URI"
+    "AddURI": "+ Add another URI",
+    "ariaLabelRedirectUrlDelete": "Remove this entry",
+    "labelRadioGroup": "Security Choices",
+    "labelSignedJWT": "Signed JWT",
+    "labelSecureJWT": "Secure JWT"
   },
   "selectPackage": {
     "pagetitle": "Select Package",
-    "pagetitleInfo": "<p class='pageinfo'>OIDC scopes are collections of user attributes which can be returned on successful authentication.</p>Select the most appropriate package of scopes for your use case, noting that the more attributes you require, the greater the overhead of complying with privacy regulations.</p><p><br /></p><p>The following standard scopes are supported :</p><p><ul ><li class='my-1'>openid - Unique identifier </li><li class='my-1'>profile - Given name and surname</li><li class='my-1'>email - Email address</li><li class='my-1'>address - Physical address (Street, locality, state or province, postal code and country) </li></ul></p>",
+    "pagetitleInfo": "<p class='pageinfo pa-0'>OIDC scopes are collections of user attributes which can be returned on successful authentication.</p><p class='pageinfo pa-0'>Select the most appropriate package of scopes for your use case, noting that you will need to provide a rationale for each scope in your production access request.</p><p><br /></p><p class='pageinfo pa-0'>The following standard scopes are supported:</p><p class='pageinfo pa-0'><ul class='ml-3 custom-p-styles'><li class='my-1'>openid - Unique identifier </li><li class='my-1'>profile - Given name and surname</li><li class='my-1'>email - Email address</li><li class='my-1'>address - Physical address (Street, locality, state or province, postal code and country) </li></ul></p>",
     "choosePackage": "Select your scope package",
-    "description": "This package contains the following data:",
+    "description": "This package contains the following scopes:",
     "package1": "Package 1 - best fit for organizations looking for a digital signature",
     "package2": "Package 2 - best fit for organizations who want to know who the user is and communicate directly with their users electronically",
     "package3": "Package 3 - best fit for organizations who want to know who the user is and communicate directly with their users non-electronically",
@@ -87,10 +98,10 @@
   },
   "testAccount": {
     "pagetitle": "Test Accounts",
-    "pageinfo": "<p class='pageinfo'>Select the number of test accounts you need to test your configuration for this request. The test account data provided to you will be randomized.</p><a href='https://www2.gov.bc.ca/gov/content/governments/services-for-government/information-management-technology/identity-and-authentication-services/bc-services-card-authentication-service/design-develop-test/testing'>Learn more about testing</a><p></p>",
-    "how_many_test_account": "Choose the number of test user accounts you require",
-    "special_notes": "Special requests or notes",
-    "specialNotesInfo": "<p>If you have any special requests for customized test account. Please  <a href='/contact-us'>contact us</a> for assistance.</p>",
+    "pageinfo": "<p class='pageinfo'>Select the number of test accounts you need to test your configuration for this request. The test account data provided to you will be randomized.</p><a href='https://www2.gov.bc.ca/gov/content/governments/services-for-government/information-management-technology/identity-and-authentication-services/bc-services-card-authentication-service/design-develop-test/testing' target='_ss'>Learn more about testing</a><p></p>",
+    "how_many_test_account": "Choose the number of test user accounts you require:",
+    "special_notes": "Special Requests",
+    "specialNotesInfo": "<p class='pageinfo'>If you have any special requests for customized test accounts, please  <a href='/contact-us'>contact us</a> for assistance.</p>",
     "btnBack": "Go Back",
     "btnNext": "Next",
     "btnCancel": "Cancel",
@@ -154,7 +165,7 @@
     "titleClientSecret": "Client secret",
     "titleClientSecretInfo": "This is a secret or password which is to be used together with the Client ID to obtain a token from the BC Services Card system for ongoing authorization.",
     "titleTestAccount": "Test user accounts",
-    "titleTestAccountInfo": "<p class='small-hint'>Use these virtual card test accounts to login to the BC Services Card in the development environment.</p><p class='small-hint'>If you do not see all of the test accounts you requested, the system is out of accounts to provision. Please contact us for assistance.</p><p><a href='https://www2.gov.bc.ca/gov/content/governments/services-for-government/information-management-technology/identity-and-authentication-services/bc-services-card-authentication-service/design-develop-test/testing' target='_blank'>Learn more</a></p>",
+    "titleTestAccountInfo": "<p class='small-hint'>Use these virtual card test accounts to login instead of using a real BC Services Card in the development environment.</p><p class='small-hint'>If you do not see all of the test accounts you requested, the system is out of accounts to provision. Please <a href='/contact-us'>contact us</a> for assistance.</p><p><a href='https://www2.gov.bc.ca/gov/content/governments/services-for-government/information-management-technology/identity-and-authentication-services/bc-services-card-authentication-service/design-develop-test/testing' target='_blank'>Learn more</a></p>",
     "labelSnackbarClose": "Close",
     "Back": "Go Back",
     "tblCardNo": "Card Number",
@@ -162,7 +173,9 @@
     "tblGivenName": "Given Name",
     "tblSurName": "Surname",
     "warningLimitedTestAccount": "There are no more test accounts for use. Please <a href='/contact-us'>contact us</a> for assistance.",
-    "tooltipTestAccount": "If there is a mismatch between the number of test accounts you requested and what you see here, <br/>then there are no more random test accounts for your use. <br/>Please contact IDIM Consulting or Product Owner who will be in touch with you shortly."
+    "tooltipTestAccount": "If there is a mismatch between the number of test accounts you requested and what you see here, <br/>then there are no more random test accounts for your use. <br/>Please contact IDIM Consulting or Product Owner who will be in touch with you shortly.",
+    "ariaLabelApiKey": "copy Client ID to clipboard",
+    "ariaLabelClientSecret": "copy Client Secret to clipboard"
   },
   "dashboard": {
     "pagetitle": "Projects",
@@ -184,6 +197,7 @@
     "roleinProd": "In Prod",
     "myprojectTitle": "My projects",
     "btnCreateProject": "+ Create New Project",
+    "areaLabelbtnCreateProject": "Create New Project",
     "createProjectInfo": "<p class='pageinfo'>New projects start in the development environment. When testing is complete, the production path becomes available.</p>",
     "virtualCardCountTitle": "Virtual card test accounts",
     "btnManageTestAccount": "Manage test accounts",
@@ -200,6 +214,7 @@
     "btnContinue": "Continue",
     "btnSaveChanges": "Save Changes",
     "errorMessageDomain": "Your email address does not match any of the eligible organizations in our BC Services Card Self Service System. If you believe you or your organization should have access to this system, please <a href='/contact-us'>contact us</a> for assistance. ",
+    "errorMessageEmailExist": "This email address <i>{email}</i> is already in use. Please log back in with the method associated to this email address or <a href='/contact-us'>contact us</a>.",
     "btnCancel": "Cancel",
     "btnAgree": "I Accept",
     "termsAccept": "Please read the following and click \"I Accept\" to accept the agreement and continue."
@@ -214,7 +229,8 @@
     "txtsubTitle2": "What defines \"broader public sector\"?",
     "txtsubcontent4": "Broader Public Sector includes the core provincial public service (ministries), health authorities, Crown corporations, K-12 schools, colleges, institutes, teaching universities, and research universities, contracted social service providers. It does not include Federal, local and municipal governments.",
     "btnLearmore": "Learn more",
-    "txtgetStarted": "Get started"
+    "txtgetStarted": "Get started",
+    "txtInformationBox": "Thank you for your interest in the BC Services Card Self Service Application. At this time, we are working with a limited number of early adopters as we build and refine this application. Please <a href='/contact-us'>contact us</a> if you would like to become one of our Early Adopters."
   },
   "AddTestAccount": {
     "pagetitle": "Load Test Accounts",
@@ -238,11 +254,8 @@
     "pagetitle": "Summary page",
     "titleDevSummary": "Dev Summary",
     "titleTeamRoles": "Team",
-    "titlePrivacy": "Privacy",
-    "titleSecurity": "Security",
-    "titleComms": "Communications",
-    "titleAgreements": "Agreements",
-    "titleLiveSummary": "Prod Summary"
+    "titleCompliance": "Compliance",
+    "titleHistory": "History"
   },
   "teamRoles": {
     "pagetitle": "Project team roles",
@@ -260,6 +273,7 @@
   "addTeamMember": {
     "pagetitle": "Add a team member",
     "pagetitleUpdate": "Update a team member",
+    "pageTitleEditRole": "Edit role",
     "contactInfo": "Contact information",
     "roleTitle": "Role",
     "labelRoledeveloper": "Developer",
@@ -290,7 +304,7 @@
     "btnDeleteConfirm": "Delete this project",
     "btnDeleteCancel": "Cancel",
     "deleteDialogTitle": "Delete this project",
-    "deleteDialogInfo": "<h3>You have chosen to delete this project</h4><p class='my-5'>Please note:</p><ul><li> Deleting this project will remove both the project and API from the system.</li><li> A project can only be deleted by a member of the project team while it is in the development state.</li><li>  Once you have marked development complete on your project, deletion is no longer possible. If you require a project deleted from this phase, please <a href='/contact-us'>contact us.</a></li></ul><p class='my-5 red--text'>Deleting a project is permanent and cannot be undone.</p><pclass='my-5 '>Do you wish to proceed with deleting this project?</p>"
+    "deleteDialogInfo": "<h3>You have chosen to delete this project</h4><p class='my-5'>Please note:</p><ul><li> Deleting this project will remove the project, your Client ID and Client Secret from the system.</li><li> A project can only be deleted by a member of the project team while it is in the development state.</li><li>  Once you have marked development complete on your project, deletion is no longer possible. If you require a project deleted from this phase, please <a href='/contact-us'>contact us.</a></li></ul><p class='my-5 red--text'>Deleting a project is permanent and cannot be undone.</p><pclass='my-5 '>Do you wish to proceed with deleting this project?</p>"
   },
   "contactUs": {
     "pagetitle": "Contact Us",
@@ -302,5 +316,52 @@
     "btnSend": "Send",
     "successMessage": "Your message has been sent successfully to IDIM.",
     "errorMessage": "Something went wrong. Please try again."
+  },
+  "projectHistory": {
+    "tabSubTitle": "Project history",
+    "tblTitleProjectStatus": "Project Status",
+    "tblTitleDateAssigned": "Date Assigned",
+    "tblActionTakenBy": "Action taken by",
+    "tblActionRole": "Role",
+    "noData": "No history data available"
+  },
+  "projectCompliance": {
+    "pageTitle": "Compliance Requirements"
+  },
+  "projectStatus": {
+    "statusdraft": "Draft",
+    "statusdev": "Development",
+    "statusdevComplete": "Development Complete",
+    "statuscomplianceChecks": "Compliance Checks",
+    "statuscomplianceReview": "Compliance Review",
+    "statuscomplianceChecksComplete": "Compliance Checks Complete",
+    "statusawaitingProdKeys": "Awaiting Prod Keys",
+    "statusinProd": "In Prod"
+  },
+  "projectRoles": {
+    "roledeveloper": "Developer",
+    "rolemanager": "Manager ",
+    "rolecto": "Executive Sponsor"
+  },
+  "global": {
+    "edit": "edit",
+    "loading": "Thank you for your patience<br />as we fulfill your request."
+  },
+  "footer": {
+    "linkHome": "Home",
+    "linkDisclaimer": "Disclaimer",
+    "linkPrivacy": "Privacy",
+    "linkAccessibility": "Accessibility",
+    "linkCopyright": "Copyright",
+    "linkContactus": "Contact Us",
+    "linkTerms": "Terms of Use"
+  },
+  "errorpage": {
+    "404": "404",
+    "pageNotFound": "Page not found",
+    "pageYouLooking": "The page you're looking for can't be found.",
+    "returnTo": "Return to the  <a href='/'>BC Services Card Self-Service</a> site.",
+    "unAuthorized": "Unauthorized",
+    "youAreNotAuthorized": "You are not authorized to view the page you're requested."
   }
 }

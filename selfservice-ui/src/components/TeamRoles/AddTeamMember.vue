@@ -2,12 +2,16 @@
 
 <template>
   <v-container>
-    <v-row class="text-left">
+    <v-row class="text-left" ref="addmember">
       <v-col v-if="userDetails">
         <v-card class="v-form ma-3" flat>
           <v-form ref="form" v-model="valid">
-            <v-card class="v-form px-6 ma-3">
-              <Alert type="error" class="text-left" v-if="memberErrorStatus">
+            <v-card class="v-form px-6 pt-2 ma-3">
+              <Alert
+                type="error"
+                class="text-left mt-2"
+                v-if="memberErrorStatus"
+              >
                 <div>
                   <div>{{ $t('addTeamMember.errorTitle') }}</div>
                   <ul>
@@ -22,20 +26,23 @@
 
               <v-row>
                 <v-col cols="12">
-                  <div class="display-1">
+                  <div class="display-1" v-if="isCurrentUser">
+                    {{ $t('addTeamMember.pageTitleEditRole') }}
+                  </div>
+                  <div class="display-1" v-else>
                     {{
-                    $t(
-                    !editMode
-                    ? 'addTeamMember.pagetitle'
-                    : 'addTeamMember.pagetitleUpdate'
-                    )
+                      $t(
+                        !editMode
+                          ? 'addTeamMember.pagetitle'
+                          : 'addTeamMember.pagetitleUpdate'
+                      )
                     }}
                   </div>
                 </v-col>
                 <v-col cols="12" sm="6">
-                  <v-card-subtitle
-                    class="headline bc-padding-left-0"
-                  >{{ $t('addTeamMember.contactInfo') }}</v-card-subtitle>
+                  <v-card-subtitle class="headline bc-padding-left-0">{{
+                    $t('addTeamMember.contactInfo')
+                  }}</v-card-subtitle>
                   <Input
                     v-model="userDetails.firstName"
                     :label="$t('addTeamMember.labelFirstName')"
@@ -47,6 +54,7 @@
                     type="text"
                     :disabled="disabled()"
                     data-test-id="input-team-first-name"
+                    id="input-team-first-name"
                   />
                   <Input
                     v-model="userDetails.lastName"
@@ -59,6 +67,7 @@
                     type="text"
                     :disabled="disabled()"
                     data-test-id="input-team-last-name"
+                    id="input-team-last-name"
                   />
                   <Input
                     v-model="userDetails.email"
@@ -67,6 +76,7 @@
                     type="text"
                     :disabled="disabled()"
                     data-test-id="input-team-email"
+                    id="input-team-email"
                   />
 
                   <Input
@@ -76,15 +86,16 @@
                     :disabled="disabled()"
                     :optional="true"
                     data-test-id="input-team-phone"
+                    id="input-team-phone"
                   />
                 </v-col>
-                <v-col>
+                <v-col cols="1">
                   <v-divider class="mx-4 d-none d-sm-flex" vertical></v-divider>
                 </v-col>
                 <v-col cols="12" sm="5" class="p-relative">
-                  <v-card-subtitle
-                    class="headline bc-padding-left-0"
-                  >{{ $t('addTeamMember.roleTitle') }}</v-card-subtitle>
+                  <v-card-subtitle class="headline bc-padding-left-0">{{
+                    $t('addTeamMember.roleTitle')
+                  }}</v-card-subtitle>
 
                   <v-radio-group
                     v-model="userDetails.role"
@@ -112,33 +123,36 @@
 
                   <div>
                     {{
-                    $t(
-                    `addTeamMember.labelRoleInfo${
-                    projectRoles[userDetails.role]
-                    }`
-                    )
+                      $t(
+                        `addTeamMember.labelRoleInfo${
+                          projectRoles[userDetails.role]
+                        }`
+                      )
                     }}
                   </div>
                   <v-card-actions class="btn-bottom">
                     <v-spacer></v-spacer>
                     <Button
                       @click="cancel"
+                      @keyup.enter="cancel"
                       aria-label="Back Button"
                       secondary
                       data-test-id="btn-cancel-add-team"
-                    >{{ $t('addTeamMember.btnCancel') }}</Button>
+                      >{{ $t('addTeamMember.btnCancel') }}</Button
+                    >
                     <Button
                       :disabled="!valid"
                       class="white--text submit-package"
                       @click="submitTeamMember"
+                      @keyup.enter="submitTeamMember"
                       data-test-id="btn-submit-add-team"
                     >
                       {{
-                      $t(
-                      !editMode
-                      ? 'addTeamMember.btnSumbmit'
-                      : 'addTeamMember.btnSumbmitSave'
-                      )
+                        $t(
+                          !editMode
+                            ? 'addTeamMember.btnSumbmit'
+                            : 'addTeamMember.btnSumbmitSave'
+                        )
                       }}
                     </Button>
                   </v-card-actions>
@@ -171,8 +185,8 @@ const KeyCloakModule = namespace('KeyCloakModule');
   components: {
     Input,
     Button,
-    Alert
-  }
+    Alert,
+  },
 })
 export default class AddTeamMember extends Vue {
   @Prop({ default: 0 })
@@ -181,6 +195,8 @@ export default class AddTeamMember extends Vue {
   public toggleAddMember: any;
   @Prop({ default: 0 })
   public memberId!: number;
+  @Prop({ default: false })
+  public isCurrentUser!: boolean;
 
   @TeamRolesModule.Getter('getTeamList')
   public teamList!: any;
@@ -224,6 +240,12 @@ export default class AddTeamMember extends Vue {
   @Watch('getMemberErrorList')
   private ongetMemberErrorListChanged(val: any) {
     this.errorList = val;
+
+    (this.$refs.addmember as Vue & {
+      scrollIntoView: ({}) => any;
+    }).scrollIntoView({
+      behavior: 'smooth',
+    });
   }
 
   @Watch('memberDetails')
@@ -249,12 +271,12 @@ export default class AddTeamMember extends Vue {
       this.updateTeamMember({
         userDetails: this.userDetails,
         projectId: this.id,
-        memberId: this.memberId
+        memberId: this.memberId,
       });
     } else {
       this.addTeamMember({
         userDetails: this.userDetails,
-        projectId: this.id
+        projectId: this.id,
       });
     }
     this.resetValidation();
@@ -302,6 +324,7 @@ export default class AddTeamMember extends Vue {
 .btn-bottom {
   flex-direction: column;
   width: 100%;
+
   @include sm {
     bottom: 32px;
     position: absolute;
@@ -309,6 +332,7 @@ export default class AddTeamMember extends Vue {
   & .btn {
     width: 100%;
     margin-top: 12px;
+    margin-left: 0px !important;
   }
   @include rwd('1260') {
     bottom: 32px;
@@ -318,6 +342,7 @@ export default class AddTeamMember extends Vue {
     & .btn {
       width: auto;
       margin-top: 0;
+      margin-left: 8px !important;
     }
   }
 }

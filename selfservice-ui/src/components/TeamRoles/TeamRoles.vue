@@ -14,10 +14,7 @@
           <h2 class="text-left tab-headline page-title-h2">
             {{ $t('teamRoles.pagetitle') }}
           </h2>
-          <p class="text-left page-description">
-            {{ $t('teamRoles.pageInfo') }}
-          </p>
-
+          <p class="text-left  pageinfo">{{ $t('teamRoles.pageInfo') }}</p>
           <v-simple-table class="mt-5" v-if="teamList.length > 0">
             <template v-slot:default>
               <thead class="tbl-head">
@@ -42,27 +39,37 @@
                   <td>{{ team.firstName }} {{ team.lastName }}</td>
                   <td>
                     {{ $t(`teamRoles.labelRole${rolesList[team.role]}`) }}
-                    <v-icon
-                      @click="toggleAddMember(true, team.id)"
-                      class="ml-2"
-                      small
-                      v-if="team.isCurrentUser"
-                      >mdi-pencil</v-icon
+                    <span
+                      @click="
+                        toggleAddMember(true, team.id, team.isCurrentUser)
+                      "
+                      @keyup.enter="
+                        toggleAddMember(true, team.id, team.isCurrentUser)
+                      "
+                      v-if="team.isCurrentUser && teamList.length == 1"
+                      class="edit-wrapper"
+                      tabindex="0"
+                      :aria-label="$t('global.edit')"
+                      role="link"
                     >
+                      <v-icon class="ml-2" small>mdi-pencil</v-icon>
+                    </span>
                   </td>
                   <td>
-                    <a :href="`mailto:${team.email}`"> {{ team.email }}</a>
+                    <a :href="`mailto:${team.email}`">{{ team.email }}</a>
                   </td>
                   <td>{{ team.phone }}</td>
                   <td v-if="isAdmin">
                     <v-icon
                       @click="toggleAddMember(true, team.id)"
+                      @keyup.enter="toggleAddMember(true, team.id)"
                       class="ml-2"
                       small
                       >mdi-pencil</v-icon
                     >
                     <v-icon
                       @click="deleteMemberDialog(team.id)"
+                      @keyup.enter="deleteMemberDialog(true, team.id)"
                       class="ml-2 delete-member"
                       small
                       >mdi-delete</v-icon
@@ -76,6 +83,7 @@
             <v-spacer></v-spacer>
             <Button
               @click="toggleAddMember(true)"
+              @keyup.enter="toggleAddMember(true)"
               :aria-label="$t('teamRoles.btnAddTeamMember')"
               :disabled="teamList.length >= 3"
               class="team-roles"
@@ -94,6 +102,7 @@
                 :id="id"
                 @toggleAddMember="toggleAddMember"
                 :memberId="memberId"
+                :isCurrentUser="isCurrentUser"
               />
             </v-card>
           </v-dialog>
@@ -108,8 +117,19 @@
             ></v-card-text>
             <v-card-actions>
               <v-spacer></v-spacer>
-              <Button secondary text @click="deleteMember(true)">Cancel</Button>
-              <Button text @click="deleteMember()">Delete</Button>
+              <Button
+                secondary
+                text
+                @click="deleteMember(true)"
+                @keyup.enter="deleteMember(true)"
+                >Cancel</Button
+              >
+              <Button
+                text
+                @click="deleteMember()"
+                @keyup.enter="deleteMember(true)"
+                >Delete</Button
+              >
             </v-card-actions>
           </v-card>
         </v-dialog>
@@ -156,14 +176,20 @@ export default class TeamRoles extends Vue {
   private dialog: boolean = false;
   private dialogDelete: boolean = false;
   private memberId: number = 0;
+  private isCurrentUser: boolean = false;
 
   @Watch('teamList')
   private ongetroleListChanged(val: any) {
     this.isLoading = false;
   }
 
-  private toggleAddMember(status: boolean = false, memberId: number = 0) {
+  private toggleAddMember(
+    status: boolean = false,
+    memberId: number = 0,
+    isCurrentUser: boolean = false
+  ) {
     this.memberId = memberId;
+    this.isCurrentUser = isCurrentUser;
     this.dialog = status;
   }
 

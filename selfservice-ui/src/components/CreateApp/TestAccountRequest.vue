@@ -6,7 +6,7 @@
       <v-btn icon @click="goBack()" :aria-label="$t('testAccount.btnBack')">
         <v-icon>mdi-arrow-left</v-icon>
       </v-btn>
-      <v-toolbar-title>{{ $t('testAccount.pagetitle') }}</v-toolbar-title>
+      <h1 class="bc-h1-sub-ttile">{{ $t('testAccount.pagetitle') }}</h1>
       <div class="flex-grow-1"></div>
     </v-toolbar>
     <v-divider></v-divider>
@@ -17,13 +17,16 @@
             <Alert type="error" v-if="errorStatus" class="alert-top">Something went wrong...</Alert>
             <v-card flat class="pb-0">
               <!-- <v-list-item-content>BCSC Test Account</v-list-item-content> -->
-              <v-list-item-content v-html="$t('testAccount.pageinfo', { package: 'package' })"></v-list-item-content>
+              <v-list-item-content
+                class="pb-0"
+                v-html="$t('testAccount.pageinfo', { package: 'package' })"
+              ></v-list-item-content>
             </v-card>
           </v-col>
 
           <v-col cols="12" class="pt-0" flat>
             <v-card flat>
-              <v-list-item-content>{{ $t('testAccount.how_many_test_account') }}</v-list-item-content>
+              <p class="pageinfo pb-0">{{ $t('testAccount.how_many_test_account') }}</p>
             </v-card>
           </v-col>
 
@@ -33,6 +36,7 @@
                 class="d-flex align-center pa-4 test-account"
                 :class="active ? 'active-bg' : ''"
                 @click="selectedTestAccount(testAccount)"
+                @keyup.enter="selectedTestAccount(testAccount)"
                 :data-test-id="`input-select-test-account-${testAccount}`"
               >
                 <v-list-item>
@@ -47,8 +51,7 @@
           </v-col>
           <v-col cols="12" flat>
             <v-card flat>
-              <v-list-item-content>{{ $t('testAccount.special_notes') }}</v-list-item-content>
-              <v-list-item-content class="subtitle-1" v-html="$t('testAccount.specialNotesInfo')"></v-list-item-content>
+              <div class="pageinfo" v-html="$t('testAccount.specialNotesInfo')"></div>
               <!-- <TextArea
                 v-model="notes"
                 :label="$t('testAccount.special_notes')"
@@ -67,6 +70,7 @@
           <v-spacer></v-spacer>
           <Button
             @click="goBack()"
+            @keyup.enter="goBack()"
             :aria-label="$t('testAccount.btnBack')"
             secondary
             data-test-id="btn-cancel-test-account"
@@ -85,6 +89,7 @@
             class="white--text submit-account ml-6"
             depressed
             @click="submitTestAccount"
+            @keyup.enter="submitTestAccount"
             data-test-id="btn-submit-test-account"
           >
             {{

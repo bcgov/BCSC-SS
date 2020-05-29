@@ -159,12 +159,13 @@ def create_team(client, jwt, member_role=ProjectRoles.Developer):
     return team
 
 
-def _create_team_(client, jwt, member_role=ProjectRoles.Developer):
+def _create_team_(client, jwt, member_role=ProjectRoles.Developer, new_email=None):
     """Create team and return response object."""
     headers = ss_client_auth_header(jwt)
     project = create_project(client, jwt)
     request_data = factory_project_team_member(False, member_role)
-
+    if new_email:
+        request_data['email'] = new_email
     response = client.post(TEAM_API.replace(':project_id', str(project['id'])),
                            data=json.dumps(request_data),
                            headers=headers, content_type='application/json')

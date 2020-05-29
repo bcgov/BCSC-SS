@@ -79,35 +79,9 @@ exports[`ProjectContainer.vue renders props when passed 1`] = `
           
           </v-tab-stub>
            
-          <v-tab-stub
-            class="font-weight-bold"
-            ripple="true"
-          >
-            
-            
-          
-          </v-tab-stub>
-           
-          <v-tab-stub
-            class="font-weight-bold"
-            ripple="true"
-          >
-            
-            
-          
-          </v-tab-stub>
-           
-          <v-tab-stub
-            class="font-weight-bold"
-            ripple="true"
-          >
-            
-            
-          
-          </v-tab-stub>
-           
           <v-tab-item-stub
             class="custom-tabs-items"
+            tabindex="0"
           >
             <v-card-stub
               flat="true"
@@ -124,6 +98,7 @@ exports[`ProjectContainer.vue renders props when passed 1`] = `
            
           <v-tab-item-stub
             class="custom-tabs-items"
+            tabindex="0"
           >
             <v-card-stub
               flat="true"
@@ -140,6 +115,7 @@ exports[`ProjectContainer.vue renders props when passed 1`] = `
            
           <v-tab-item-stub
             class="custom-tabs-items"
+            tabindex="0"
           >
             <v-card-stub
               flat="true"
@@ -147,15 +123,14 @@ exports[`ProjectContainer.vue renders props when passed 1`] = `
               tag="div"
             >
               <v-card-text-stub>
-                <p>
-                  Privacy
-                </p>
+                <projectcompliance-stub />
               </v-card-text-stub>
             </v-card-stub>
           </v-tab-item-stub>
            
           <v-tab-item-stub
             class="custom-tabs-items"
+            tabindex="0"
           >
             <v-card-stub
               flat="true"
@@ -164,55 +139,9 @@ exports[`ProjectContainer.vue renders props when passed 1`] = `
             >
               <v-card-text-stub>
                 <p>
-                  Security
-                </p>
-              </v-card-text-stub>
-            </v-card-stub>
-          </v-tab-item-stub>
-           
-          <v-tab-item-stub
-            class="custom-tabs-items"
-          >
-            <v-card-stub
-              flat="true"
-              loaderheight="4"
-              tag="div"
-            >
-              <v-card-text-stub>
-                <p>
-                  Communications
-                </p>
-              </v-card-text-stub>
-            </v-card-stub>
-          </v-tab-item-stub>
-           
-          <v-tab-item-stub
-            class="custom-tabs-items"
-          >
-            <v-card-stub
-              flat="true"
-              loaderheight="4"
-              tag="div"
-            >
-              <v-card-text-stub>
-                <p>
-                  Agreements
-                </p>
-              </v-card-text-stub>
-            </v-card-stub>
-          </v-tab-item-stub>
-           
-          <v-tab-item-stub
-            class="custom-tabs-items"
-          >
-            <v-card-stub
-              flat="true"
-              loaderheight="4"
-              tag="div"
-            >
-              <v-card-text-stub>
-                <p>
-                  Prod access request
+                  <projecthistory-stub
+                    id="0"
+                  />
                 </p>
               </v-card-text-stub>
             </v-card-stub>

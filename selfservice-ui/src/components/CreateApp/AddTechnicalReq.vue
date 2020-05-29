@@ -6,7 +6,7 @@
         <v-btn icon @click="goBack()" aria-label="Back Button">
           <v-icon>mdi-arrow-left</v-icon>
         </v-btn>
-        <v-toolbar-title>{{ $t('technicalRequirements.technicalTitle') }}</v-toolbar-title>
+        <h1 class="bc-h1-sub-ttile">{{ $t('technicalRequirements.technicalTitle') }}</h1>
         <v-spacer></v-spacer>
       </v-app-bar>
 
@@ -32,13 +32,16 @@
                   :rules="[rules.required, rules.url, rules.maxLength(500)]"
                   :helpText="$t('technicalRequirements.inputAppText')"
                   data-test-id="input-app-url"
+                  id="input-app-url"
                 />
 
-                <div class="text-left my-1">{{ $t('technicalRequirements.labelRedirectUrl') }}</div>
+                <div
+                  class="text-left my-1 bc-form-text"
+                >{{ $t('technicalRequirements.labelRedirectUrl') }}</div>
                 <div
                   v-for="(redirectUri, index) in redirectUris"
                   v-bind:key="index"
-                  class="row v-form px-4"
+                  class="row v-form px-4 pr-lg-0"
                 >
                   <div class="redirect-div">
                     <Input
@@ -48,16 +51,27 @@
                       class="addUri"
                       outlined
                       :data-test-id="`input-redirect-url${index}`"
+                      :id="`input-redirect-url${index}`"
                     />
                   </div>
                   <div class="clear-icon">
-                    <v-icon class="ml-2" large @click="clearUri(index)">mdi-close</v-icon>
+                    <v-icon
+                      class="ml-2"
+                      large
+                      @click="clearUri(index)"
+                      @keyup.enter="clearUri(index)"
+                      tabindex="0"
+                      :aria-label="$t('technicalRequirements.ariaLabelRedirectUrlDelete')"
+                    >mdi-close</v-icon>
                   </div>
                 </div>
 
                 <div
                   @click="addUri()"
+                  @keyup.enter="addUri()"
                   class="add-url text-left"
+                  tabindex="0"
+                  role="button"
                 >{{ $t('technicalRequirements.AddURI') }}</div>
                 <v-card-title
                   class="text-left bc-padding-left-0"
@@ -71,11 +85,14 @@
                     v-model="signingEncryptionType"
                     :mandatory="false"
                     data-test-id="radio-algoritham-base"
+                    role="radiogroup"
+                    :aria-labelledby="$t('technicalRequirements.labelRadioGroup')"
                   >
                     <v-radio
-                      label="Signed JWT"
+                      :label="$t('technicalRequirements.labelSignedJWT')"
                       :value="algorithamBase.SignedJWT"
                       data-test-id="radio-algoritham-base-signed-jwt"
+                      class="bc-form-radio"
                     ></v-radio>
                     <div
                       class="small-hint radio-help"
@@ -104,9 +121,10 @@
                     </div>
 
                     <v-radio
-                      label="Secure JWT"
+                      :label="$t('technicalRequirements.labelSecureJWT')"
                       :value="algorithamBase.SecureJWT"
                       data-test-id="radio-algoritham-base-secure-jwt"
+                      class="bc-form-radio"
                     ></v-radio>
                     <div
                       class="small-hint radio-help"
@@ -121,6 +139,7 @@
                     :rules="[rules.required, rules.url, rules.maxLength(500)]"
                     :helpText="$t('technicalRequirements.JWKSText')"
                     data-test-id="select-jwks-url"
+                    id="select-jwks-url"
                   />
                   <div class="row">
                     <div class="col-12 col-md-4">
@@ -139,6 +158,7 @@
                         "
                         helpClass="mb-9"
                         data-test-id="select-encrypted-response-enc"
+                        id="select-encrypted-response-enc"
                       />
                     </div>
                     <div class="col-12 col-md-4">
@@ -183,6 +203,7 @@
                   <v-spacer></v-spacer>
                   <Button
                     @click="goBack()"
+                    @keyup.enter="goBack()"
                     aria-label="Back Button"
                     secondary
                     data-test-id="btn-cancel-technical-req"
@@ -201,6 +222,7 @@
                     class="white--text submit-req ml-6"
                     depressed
                     @click="addTechnicalReq()"
+                    @keyup.enter="addTechnicalReq()"
                     data-test-id="btn-submit-technical-req"
                   >
                     {{
@@ -409,9 +431,17 @@ export default class AddTechnicalReq extends Vue {
   cursor: pointer;
 }
 .redirect-div {
-  width: 95%;
+  width: 90%;
+  @include sm {
+    width: 94%;
+  }
+  @include md {
+    width: 95%;
+  }
 }
 .clear-icon {
-  margin-top: 15px;
+  position: absolute;
+  margin-top: 10px;
+  right: 15px;
 }
 </style>

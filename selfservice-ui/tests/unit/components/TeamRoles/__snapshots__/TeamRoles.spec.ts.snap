@@ -22,11 +22,9 @@ exports[`TeamRoles Mount.vue renders props when delete member 1`] = `
         </h2>
          
         <p
-          class="text-left page-description"
+          class="text-left  pageinfo"
         >
           
-          
-        
         </p>
          
         <div
@@ -93,19 +91,24 @@ exports[`TeamRoles Mount.vue renders props when delete member 1`] = `
                     
                   
                   
-                    <i
-                      class="v-icon notranslate ml-2 v-icon--link mdi mdi-pencil theme--light"
-                      role="button"
-                      style="font-size: 16px;"
+                    <span
+                      class="edit-wrapper"
+                      role="link"
                       tabindex="0"
-                    />
+                    >
+                      <i
+                        aria-hidden="true"
+                        class="v-icon notranslate ml-2 mdi mdi-pencil theme--light"
+                        style="font-size: 16px;"
+                      />
+                    </span>
                   </td>
                    
                   <td>
                     <a
                       href="mailto:asd@gov.bc.ca"
                     >
-                       asd@gov.bc.ca
+                      asd@gov.bc.ca
                     </a>
                   </td>
                    
@@ -269,11 +272,9 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
         </h2>
          
         <p
-          class="text-left page-description"
+          class="text-left  pageinfo"
         >
           
-          
-        
         </p>
          
         <div
@@ -340,19 +341,24 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                     
                   
                   
-                    <i
-                      class="v-icon notranslate ml-2 v-icon--link mdi mdi-pencil theme--light"
-                      role="button"
-                      style="font-size: 16px;"
+                    <span
+                      class="edit-wrapper"
+                      role="link"
                       tabindex="0"
-                    />
+                    >
+                      <i
+                        aria-hidden="true"
+                        class="v-icon notranslate ml-2 mdi mdi-pencil theme--light"
+                        style="font-size: 16px;"
+                      />
+                    </span>
                   </td>
                    
                   <td>
                     <a
                       href="mailto:asd@gov.bc.ca"
                     >
-                       asd@gov.bc.ca
+                      asd@gov.bc.ca
                     </a>
                   </td>
                    
@@ -444,7 +450,7 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                           novalidate="novalidate"
                         >
                           <div
-                            class="v-form px-6 ma-3 v-card v-sheet theme--light"
+                            class="v-form px-6 pt-2 ma-3 v-card v-sheet theme--light"
                           >
                             <!---->
                              
@@ -477,13 +483,15 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                   data-test-id="input-team-first-name"
                                   rules="v => !!v || 'This field is required',v => (v || '').length >= len || 'Invalid character length, required ' + len,v => (v || '').length <= len || 'Invalid character length, max length ' + len"
                                 >
-                                  <div
+                                  <label
                                     class="text-left my-1"
+                                    for="input-team-first-name"
                                   >
                                     
-     
+    
+    
                                     <!---->
-                                  </div>
+                                  </label>
                                    
                                   <!---->
                                    
@@ -510,7 +518,7 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                         >
                                           <input
                                             data-test-id="input-team-first-name"
-                                            id="input-56"
+                                            id="input-team-first-name"
                                             type="text"
                                           />
                                         </div>
@@ -537,13 +545,15 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                   data-test-id="input-team-last-name"
                                   rules="v => !!v || 'This field is required',v => (v || '').length >= len || 'Invalid character length, required ' + len,v => (v || '').length <= len || 'Invalid character length, max length ' + len"
                                 >
-                                  <div
+                                  <label
                                     class="text-left my-1"
+                                    for="input-team-last-name"
                                   >
                                     
-     
+    
+    
                                     <!---->
-                                  </div>
+                                  </label>
                                    
                                   <!---->
                                    
@@ -570,7 +580,7 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                         >
                                           <input
                                             data-test-id="input-team-last-name"
-                                            id="input-60"
+                                            id="input-team-last-name"
                                             type="text"
                                           />
                                         </div>
@@ -597,13 +607,15 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                   data-test-id="input-team-email"
                                   rules="v => !!v || 'This field is required',v => /^\\\\w+([.-]?\\\\w+)*@\\\\w+([.-]?\\\\w+)*(\\\\.\\\\w{2,10})+$/.test(v) || 'E-mail must be valid',v => (v || '').length <= len || 'Invalid character length, max length ' + len"
                                 >
-                                  <div
+                                  <label
                                     class="text-left my-1"
+                                    for="input-team-email"
                                   >
                                     
-     
+    
+    
                                     <!---->
-                                  </div>
+                                  </label>
                                    
                                   <!---->
                                    
@@ -630,7 +642,7 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                         >
                                           <input
                                             data-test-id="input-team-email"
-                                            id="input-64"
+                                            id="input-team-email"
                                             type="text"
                                           />
                                         </div>
@@ -656,17 +668,19 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                   class="bc-form-text"
                                   data-test-id="input-team-phone"
                                 >
-                                  <div
+                                  <label
                                     class="text-left my-1"
+                                    for="input-team-phone"
                                   >
                                     
-     
+    
+    
                                     <span
                                       class="optional"
                                     >
                                       *optional
                                     </span>
-                                  </div>
+                                  </label>
                                    
                                   <!---->
                                    
@@ -693,7 +707,7 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                                         >
                                           <input
                                             data-test-id="input-team-phone"
-                                            id="input-68"
+                                            id="input-team-phone"
                                             type="text"
                                           />
                                         </div>
@@ -717,7 +731,7 @@ exports[`TeamRoles Mount.vue renders props when passed with gettors 1`] = `
                               </div>
                                
                               <div
-                                class="col"
+                                class="col col-1"
                               >
                                 <hr
                                   aria-orientation="vertical"
@@ -943,11 +957,9 @@ exports[`TeamRoles.vue renders props when passed with gettors 1`] = `
         </h2>
          
         <p
-          class="text-left page-description"
+          class="text-left  pageinfo"
         >
           
-          
-        
         </p>
          
         <!---->

@@ -1,5 +1,5 @@
 # build stage
-FROM node:lts-alpine as build-stage
+FROM node:12.17-alpine as build-stage
 
 # Using arguments to make it available in build
 ARG API_BASE_URL

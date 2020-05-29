@@ -257,7 +257,17 @@ objects:
             valueFrom:
               configMapKeyRef:
                 name: "${API_NAME}-${TAG_NAME}-config"
-                key: EMAIL_ID_FROM 
+                key: EMAIL_ID_FROM
+          - name: APP_URL
+            valueFrom:
+              configMapKeyRef:
+                name: "${API_NAME}-${TAG_NAME}-config"
+                key: APP_URL
+          - name: ENV_TAG
+            valueFrom:
+              configMapKeyRef:
+                name: "${API_NAME}-${TAG_NAME}-config"
+                key: ENV_TAG
           resources:
             requests:
               cpu: "${CPU_REQUEST}"

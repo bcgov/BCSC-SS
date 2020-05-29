@@ -2,7 +2,7 @@
   <v-app>
     <Header :hideMenu="hideMenu" />
     <v-content>
-      <v-container fluid class="main-content">
+      <v-container fluid class="main-content" id="main">
         <router-view />
       </v-container>
     </v-content>
