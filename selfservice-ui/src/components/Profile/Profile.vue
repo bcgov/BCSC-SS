@@ -157,6 +157,8 @@ export default class Dashboard extends Vue {
   private provider!: string;
   @KeyCloakModule.Action('updateProfile')
   private updateProfile!: any;
+  @KeyCloakModule.Action('clearStatus')
+  private clearStatus!: any;
   @KeyCloakModule.Getter('userProfile')
   private userProfile!: any;
   @KeyCloakModule.Getter('errorStatus')
@@ -205,6 +207,10 @@ export default class Dashboard extends Vue {
     if ((!'IntersectionObserver' as any) in window) {
       this.buttonEnable = true;
     }
+  }
+
+  private beforeDestroy() {
+    this.clearStatus();
   }
 }
 </script>
