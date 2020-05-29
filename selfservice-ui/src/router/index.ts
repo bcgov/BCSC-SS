@@ -15,7 +15,7 @@ const routerData = [
   {
     path: '/',
     name: 'home',
-    meta: { hideMenu: true },
+    meta: { hideMenu: false },
     component: Home,
     props: true,
   },
@@ -154,6 +154,9 @@ router.beforeEach((to, from, next) => {
       });
     }
   } else {
+    if (sessionStorage.getItem('keycloak_token')) {
+      KeycloakService.init(next, to.path, []);
+    }
     next();
   }
 });
