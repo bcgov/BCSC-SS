@@ -6,7 +6,7 @@
       <v-container>
         <v-row class="mx-4">
           <v-col cols="12">
-            <h1 class="bc-page-title-h1">{{ $t('contactUs.pagetitle') }}</h1>
+            <h1 class="contcatus-title-h1">{{ $t('contactUs.pagetitle') }}</h1>
           </v-col>
           <div class="flex-grow-1"></div>
           <v-col cols="12" flat>
@@ -163,4 +163,8 @@ export default class ContactUs extends Vue {
 
 <style lang="scss" scoped>
 @import './../../assets/styles/theme.scss';
+.contcatus-title-h1 {
+  color: $BCgovFontColorInvertedDark;
+  text-align: left;
+}
 </style>
