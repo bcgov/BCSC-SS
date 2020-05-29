@@ -8,22 +8,26 @@ exports[`ContactUs.vue renders props when passed with gettors 1`] = `
     class="v-form"
     novalidate="novalidate"
   >
-    <h1
-      class="bc-page-title-h1"
-    >
-      
-    </h1>
-     
-    <div
-      class="flex-grow-1"
-    />
-     
     <div
       class="container"
     >
       <div
         class="row mx-4"
       >
+        <div
+          class="col col-12"
+        >
+          <h1
+            class="contcatus-title-h1"
+          >
+            
+          </h1>
+        </div>
+         
+        <div
+          class="flex-grow-1"
+        />
+         
         <div
           class="col col-12"
           flat=""

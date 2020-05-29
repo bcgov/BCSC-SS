@@ -76,7 +76,7 @@
   },
   "selectPackage": {
     "pagetitle": "Select Package",
-    "pagetitleInfo": "<p class='pageinfo pa-0'>OIDC scopes are collections of user attributes which can be returned on successful authentication.</p><p class='pageinfo pa-0'>Select the most appropriate package of scopes for your use case, noting that you will need to provide a rationale for each scope in your production access request.</p><p><br /></p><p class='pageinfo pa-0'>The following standard scopes are supported:</p><p class='pageinfo pa-0'><ul class='ml-3'><li class='my-1'>openid - Unique identifier </li><li class='my-1'>profile - Given name and surname</li><li class='my-1'>email - Email address</li><li class='my-1'>address - Physical address (Street, locality, state or province, postal code and country) </li></ul></p>",
+    "pagetitleInfo": "<p class='pageinfo pa-0'>OIDC scopes are collections of user attributes which can be returned on successful authentication.</p><p class='pageinfo pa-0'>Select the most appropriate package of scopes for your use case, noting that you will need to provide a rationale for each scope in your production access request.</p><p><br /></p><p class='pageinfo pa-0'>The following standard scopes are supported:</p><p class='pageinfo pa-0'><ul class='ml-3 custom-p-styles'><li class='my-1'>openid - Unique identifier </li><li class='my-1'>profile - Given name and surname</li><li class='my-1'>email - Email address</li><li class='my-1'>address - Physical address (Street, locality, state or province, postal code and country) </li></ul></p>",
     "choosePackage": "Select your scope package",
     "description": "This package contains the following scopes:",
     "package1": "Package 1 - best fit for organizations looking for a digital signature",
@@ -354,7 +354,7 @@
     "linkAccessibility": "Accessibility",
     "linkCopyright": "Copyright",
     "linkContactus": "Contact Us",
-    "linkTerms": "Terms of use"
+    "linkTerms": "Terms of Use"
   },
   "errorpage": {
     "404": "404",

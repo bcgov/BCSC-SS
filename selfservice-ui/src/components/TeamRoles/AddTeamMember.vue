@@ -2,12 +2,16 @@
 
 <template>
   <v-container>
-    <v-row class="text-left">
+    <v-row class="text-left" ref="addmember">
       <v-col v-if="userDetails">
         <v-card class="v-form ma-3" flat>
           <v-form ref="form" v-model="valid">
-            <v-card class="v-form px-6 ma-3">
-              <Alert type="error" class="text-left" v-if="memberErrorStatus">
+            <v-card class="v-form px-6 pt-2 ma-3">
+              <Alert
+                type="error"
+                class="text-left mt-2"
+                v-if="memberErrorStatus"
+              >
                 <div>
                   <div>{{ $t('addTeamMember.errorTitle') }}</div>
                   <ul>
@@ -236,6 +240,12 @@ export default class AddTeamMember extends Vue {
   @Watch('getMemberErrorList')
   private ongetMemberErrorListChanged(val: any) {
     this.errorList = val;
+
+    (this.$refs.addmember as Vue & {
+      scrollIntoView: ({}) => any;
+    }).scrollIntoView({
+      behavior: 'smooth',
+    });
   }
 
   @Watch('memberDetails')
