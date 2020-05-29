@@ -6,6 +6,7 @@ exports[`AddTeamMember.vue renders props when passed with gettors 1`] = `
 >
   <v-row-stub
     class="text-left"
+    id="addmember"
     tag="div"
   >
     <v-col-stub
@@ -30,6 +31,7 @@ exports[`AddTeamMember.vue renders props when passed with gettors with member id
 >
   <v-row-stub
     class="text-left"
+    id="addmember"
     tag="div"
   >
     <v-col-stub
