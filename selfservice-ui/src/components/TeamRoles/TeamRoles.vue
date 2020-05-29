@@ -15,7 +15,6 @@
             {{ $t('teamRoles.pagetitle') }}
           </h2>
           <p class="text-left  pageinfo">{{ $t('teamRoles.pageInfo') }}</p>
-
           <v-simple-table class="mt-5" v-if="teamList.length > 0">
             <template v-slot:default>
               <thead class="tbl-head">
@@ -41,9 +40,13 @@
                   <td>
                     {{ $t(`teamRoles.labelRole${rolesList[team.role]}`) }}
                     <span
-                      @click="toggleAddMember(true, team.id)"
-                      @keyup.enter="toggleAddMember(true, team.id)"
-                      v-if="team.isCurrentUser"
+                      @click="
+                        toggleAddMember(true, team.id, team.isCurrentUser)
+                      "
+                      @keyup.enter="
+                        toggleAddMember(true, team.id, team.isCurrentUser)
+                      "
+                      v-if="team.isCurrentUser && teamList.length == 1"
                       class="edit-wrapper"
                       tabindex="0"
                       :aria-label="$t('global.edit')"
@@ -99,6 +102,7 @@
                 :id="id"
                 @toggleAddMember="toggleAddMember"
                 :memberId="memberId"
+                :isCurrentUser="isCurrentUser"
               />
             </v-card>
           </v-dialog>
@@ -172,14 +176,20 @@ export default class TeamRoles extends Vue {
   private dialog: boolean = false;
   private dialogDelete: boolean = false;
   private memberId: number = 0;
+  private isCurrentUser: boolean = false;
 
   @Watch('teamList')
   private ongetroleListChanged(val: any) {
     this.isLoading = false;
   }
 
-  private toggleAddMember(status: boolean = false, memberId: number = 0) {
+  private toggleAddMember(
+    status: boolean = false,
+    memberId: number = 0,
+    isCurrentUser: boolean = false
+  ) {
     this.memberId = memberId;
+    this.isCurrentUser = isCurrentUser;
     this.dialog = status;
   }
 

@@ -71,6 +71,8 @@ exports[`AddTeam.vue renders props when passed 1`] = `
               class="text-left  pageinfo"
             >
               
+          
+        
             </p>
              
             <!---->
