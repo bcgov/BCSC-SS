@@ -2,7 +2,7 @@
 
 <template>
   <v-container>
-    <v-row class="text-left" id="addmember" ref="addmember">
+    <v-row class="text-left" ref="addmember">
       <v-col v-if="userDetails">
         <v-card class="v-form ma-3" flat>
           <v-form ref="form" v-model="valid">
