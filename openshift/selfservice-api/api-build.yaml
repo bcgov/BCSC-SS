@@ -84,7 +84,7 @@ parameters:
   displayName: Output Image Tag
   description: The tag given to the built image.
   required: true
-  value: dev
+  value: latest
 - name: TAG_NAME
   displayName: Name
   description: The name assigned to all of the resources defined in this templates.
