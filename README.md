@@ -17,3 +17,7 @@ Through our partnership with the Exchange Lab, we are working in a new way to de
 ## Development
 Read the documentation 
 [here](DEVELOPMENT.md)
+
+## Project Lifecycle Badge
+img - [![img](https://img.shields.io/badge/Lifecycle-Maturing-007EC6)](https://github.com/bcgov/repomountie/blob/master/doc/lifecycle-badges.md)
+The codebase is being roughed out, but finer details are likely to change.
