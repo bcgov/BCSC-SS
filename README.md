@@ -1,4 +1,8 @@
+
 # BCSC-SS
+## Project Lifecycle Badge
+img - [![img](https://img.shields.io/badge/Lifecycle-Maturing-007EC6)](https://github.com/bcgov/repomountie/blob/master/doc/lifecycle-badges.md)
+The codebase is being roughed out, but finer details are likely to change.
 
 # Vision of BC Services Card Self Service Application:
 Our vision is to make it easier for public organizations to offer the widely-used BC Services Card, a secure and verified government issued identity as a login option for online services.
@@ -18,6 +22,4 @@ Through our partnership with the Exchange Lab, we are working in a new way to de
 Read the documentation 
 [here](DEVELOPMENT.md)
 
-## Project Lifecycle Badge
-img - [![img](https://img.shields.io/badge/Lifecycle-Maturing-007EC6)](https://github.com/bcgov/repomountie/blob/master/doc/lifecycle-badges.md)
-The codebase is being roughed out, but finer details are likely to change.
+
