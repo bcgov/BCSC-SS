@@ -15,7 +15,7 @@
   "dependencies": {
     "@mdi/font": "^4.9.95",
     "animate.css": "^3.7.2",
-    "axios": "^0.19.1",
+    "axios": "^0.21.1",
     "core-js": "^3.4.3",
     "intersection-observer": "^0.10.0",
     "keycloak-js": "^8.0.1",
