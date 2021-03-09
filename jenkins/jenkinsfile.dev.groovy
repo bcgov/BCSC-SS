@@ -32,40 +32,44 @@ API_NAME = common.API_NAME
 
 stage('Build ' + WEB_IMAGESTREAM_NAME) {
   node{
-    openshift.withProject() {
-    try{
-        // Make sure the frontend build configs exist
-        common.ensureBuildExists(WEB_BUILD,"openshift/selfservice-ui/web-build.yaml")
-        // Build and verify the app
-        common.buildAndVerify(WEB_BUILD)
+    openshift.withCluster() {
+      openshift.withProject() {
+      try{
+          // Make sure the frontend build configs exist
+          common.ensureBuildExists(WEB_BUILD,"openshift/selfservice-ui/web-build.yaml")
+          // Build and verify the app
+          common.buildAndVerify(WEB_BUILD)
 
-        // Success UI-Build Notification
-        common.successNotificaiton(ROCKETCHAT_TOKEN, WEB_IMAGESTREAM_NAME, BUILD_PHASE )
+          // Success UI-Build Notification
+          common.successNotificaiton(ROCKETCHAT_TOKEN, WEB_IMAGESTREAM_NAME, BUILD_PHASE )
 
-    }catch(error){
-        //Failure UI Build Notification
-        common.failureNotificaiton(ROCKETCHAT_TOKEN, WEB_IMAGESTREAM_NAME, BUILD_PHASE )
-        throw error
-    }
+      }catch(error){
+          //Failure UI Build Notification
+          common.failureNotificaiton(ROCKETCHAT_TOKEN, WEB_IMAGESTREAM_NAME, BUILD_PHASE )
+          throw error
+      }
+      }
     }
   }
 }
 
 stage('Build ' + API_IMAGESTREAM_NAME) {
   node{
-    openshift.withProject() {
-      try{
-        // Make sure the frontend build configs exist
-        common.ensureBuildExists(API_IMAGESTREAM_NAME,"openshift/selfservice-api/api-build.yaml")
-        // Build and verify the app
-        common.buildAndVerify(API_BUILD)
+    openshift.withCluster() {
+      openshift.withProject() {
+        try{
+          // Make sure the frontend build configs exist
+          common.ensureBuildExists(API_IMAGESTREAM_NAME,"openshift/selfservice-api/api-build.yaml")
+          // Build and verify the app
+          common.buildAndVerify(API_BUILD)
 
-        //Success DB-Build Notification
-        common.successNotificaiton(ROCKETCHAT_TOKEN, API_IMAGESTREAM_NAME, BUILD_PHASE)
-      }catch(error){
-        // failure DB Build Notification
-        common.failureNotificaiton(ROCKETCHAT_TOKEN, API_IMAGESTREAM_NAME, BUILD_PHASE )
-        throw error
+          //Success DB-Build Notification
+          common.successNotificaiton(ROCKETCHAT_TOKEN, API_IMAGESTREAM_NAME, BUILD_PHASE)
+        }catch(error){
+          // failure DB Build Notification
+          common.failureNotificaiton(ROCKETCHAT_TOKEN, API_IMAGESTREAM_NAME, BUILD_PHASE )
+          throw error
+        }
       }
     }
   }
