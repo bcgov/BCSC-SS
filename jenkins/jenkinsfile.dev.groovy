@@ -1,5 +1,5 @@
 // Common component parameters
-NAMESPACE = 'oultzp'
+NAMESPACE = 'ee5243'
 TOOLS_TAG = 'tools'
 NAMESPACE_BUILD = "${NAMESPACE}"  + '-' + "${TOOLS_TAG}"
 ROCKETCHAT_CHANNEL='#bcsc-ss-bot'
@@ -38,7 +38,7 @@ stage('Build ' + WEB_IMAGESTREAM_NAME) {
         common.ensureBuildExists(WEB_BUILD,"openshift/selfservice-ui/web-build.yaml")
         // Build and verify the app
         common.buildAndVerify(WEB_BUILD)
-        
+
         // Success UI-Build Notification
         common.successNotificaiton(ROCKETCHAT_TOKEN, WEB_IMAGESTREAM_NAME, BUILD_PHASE )
 
@@ -78,7 +78,7 @@ stage("Deploy" + WEB_IMAGESTREAM_NAME + "to ${common.web_environments.dev.name}"
   node{
     try{
       // Tag the images for deployment based on the image's hash
-      WEB_IMAGE_HASH = common.getLatestHash(WEB_IMAGESTREAM_NAME, environment)          
+      WEB_IMAGE_HASH = common.getLatestHash(WEB_IMAGESTREAM_NAME, environment)
       echo ">> WEB_IMAGE_HASH: ${WEB_IMAGE_HASH}"
 
       common.deployAndVerify(WEB_IMAGE_HASH,environment,WEB_NAME)
@@ -101,7 +101,7 @@ stage("Deploy" + WEB_IMAGESTREAM_NAME + "to ${common.web_environments.dev.name}"
 //   node{
 //     try{
 //       // Tag the images for deployment based on the image's hash
-//       DB_IMAGE_HASH = common.getLatestHash(DB_IMAGESTREAM_NAME, db_tag)          
+//       DB_IMAGE_HASH = common.getLatestHash(DB_IMAGESTREAM_NAME, db_tag)
 //       echo ">> DB_IMAGE_HASH: ${DB_IMAGE_HASH}"
 
 //       common.deployAndVerify(DB_IMAGE_HASH,environment,DB_IMAGESTREAM_NAME)
@@ -123,7 +123,7 @@ stage("Deploy to" + API_NAME + "${common.api_environments.dev.name}") {
   node{
     try{
       // Tag the images for deployment based on the image's hash
-      API_IMAGE_HASH = common.getLatestHash(API_IMAGESTREAM_NAME, environment)          
+      API_IMAGE_HASH = common.getLatestHash(API_IMAGESTREAM_NAME, environment)
       echo ">> API_IMAGE_HASH: ${API_IMAGE_HASH}"
 
       common.deployAndVerify(API_IMAGE_HASH,environment, API_NAME)
@@ -136,7 +136,7 @@ stage("Deploy to" + API_NAME + "${common.api_environments.dev.name}") {
       throw error
     }
   }
-}  
+}
 
 // stage('Get a ZAP Pod') {
 //   node('zap') {
@@ -149,4 +149,3 @@ stage("Deploy to" + API_NAME + "${common.api_environments.dev.name}") {
 //     }
 //   }
 // }
-

@@ -108,7 +108,7 @@ objects:
       spec:
         containers:
         - env:
-          - name: PATRONI_KUBERNETES_POD_IP
+          - name: POD_IP
             valueFrom:
               fieldRef:
                 apiVersion: v1
@@ -149,7 +149,7 @@ objects:
             value: 0.0.0.0:5432
           - name: PATRONI_RESTAPI_LISTEN
             value: 0.0.0.0:8008
-          image: ongres/patroni
+          image: image-registry.openshift-image-registry.svc:5000/bcgov/patroni-postgres:12.4-latest
           imagePullPolicy: IfNotPresent
           name: ${APPLICATION_NAME}
           ports:
@@ -172,7 +172,7 @@ objects:
         terminationGracePeriodSeconds: 0
         volumes:
         - name: ${APPLICATION_NAME}
-          persistentVolumeClaim: 
+          persistentVolumeClaim:
             claimName: ${APPLICATION_NAME}
     volumeClaimTemplates:
     - metadata:
@@ -262,11 +262,11 @@ parameters:
   name: PATRONI_CLUSTER_NAME
   value: patroni-persistent
 - description: The name of the OpenShift Service exposed for the patroni-persistent-master container.
-  displayName: Master service name.  
+  displayName: Master service name.
   name: PATRONI_MASTER_SERVICE_NAME
   value: patroni-persistent-master
 - description: The name of the OpenShift Service exposed for the patroni-persistent-replica containers.
-  displayName: Replica service name. 
+  displayName: Replica service name.
   name: PATRONI_REPLICA_SERVICE_NAME
   value: patroni-persistent-replica
 - description: Maximum amount of memory the container can use.
@@ -276,7 +276,7 @@ parameters:
 - description: The OpenShift Namespace where the patroni and postgresql ImageStream resides.
   displayName: ImageStream Namespace
   name: NAMESPACE
-  value: oultzp-tools
+  value: openshift
 - description: Username of the superuser account for initialization.
   displayName: Superuser Username
   name: PATRONI_SUPERUSER_USERNAME
@@ -293,11 +293,11 @@ parameters:
   displayName: Repication Passsword
   name: PATRONI_REPLICATION_PASSWORD
   value: postgres
-- description: Service account name used for pods and rolebindings to form a cluster in the project. 
+- description: Service account name used for pods and rolebindings to form a cluster in the project.
   displayName: Service Account
   name: SERVICE_ACCOUNT
   value: patroni-persistent
-- description: The size of the persistent volume to create. 
+- description: The size of the persistent volume to create.
   displayName: Persistent Volume Size
   name: PVC_SIZE
   value: 5Gi

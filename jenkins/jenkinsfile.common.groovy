@@ -17,7 +17,7 @@ DB_NAME =  'selfservice-db'
 // You shouldn't have to edit these if you're following the conventions
 ROCKETCHAT_CHANNEL='#bcsc-ss-bot'
 PATHFINDER_URL = "pathfinder.gov.bc.ca"
-PROJECT_PREFIX = 'oultzp'
+PROJECT_PREFIX = 'ee5243'
 
 
 class AppEnvironment{
@@ -67,21 +67,21 @@ def ensureBuildExists(buildConfigName,templatePath){
 
 def createTestDeployment(deploymentConfigName,templatePath){
   return sh (
-    script: """oc process -f "${env.WORKSPACE}/../workspace@script/${templatePath}" | oc apply -n oultzp-tools -f -""",
+    script: """oc process -f "${env.WORKSPACE}/../workspace@script/${templatePath}" | oc apply -n ee5243-tools -f -""",
     returnStdout: true
   ).trim()
 }
 
 def deleteTestDeployment(deploymentConfigName,templatePath){
     return sh (
-    script: """oc process -f "${env.WORKSPACE}/../workspace@script/${templatePath}" | oc delete -n oultzp-tools -f -""",
+    script: """oc process -f "${env.WORKSPACE}/../workspace@script/${templatePath}" | oc delete -n ee5243-tools -f -""",
     returnStdout: true
   ).trim()
   }
 
 def triggerBuild(buildConfigName){
   echo "Building: ${buildConfigName}"
-  openshiftBuild bldCfg: buildConfigName, showBuildLogs: 'true', waitTime: '9000000'  
+  openshiftBuild bldCfg: buildConfigName, showBuildLogs: 'true', waitTime: '9000000'
 }
 
 def verifyBuild(buildConfigName){
@@ -96,11 +96,11 @@ def buildAndVerify(buildConfigName){
 
 def tagImage(srcHash, destination, imageStream){
   openshiftTag(
-    destStream: imageStream, 
-    verbose: 'true', 
-    destTag: destination, 
-    srcStream: imageStream, 
-    srcTag: srcHash, 
+    destStream: imageStream,
+    verbose: 'true',
+    destTag: destination,
+    srcStream: imageStream,
+    srcTag: srcHash,
     waitTime: '9000000'
   )
 }
@@ -110,8 +110,8 @@ def deployAndVerify(srcHash, destination, imageStream){
   // tagImage(srcHash, destination, imageStream)
   // verify deployment
   openshiftVerifyDeployment(
-    deploymentConfig: "${imageStream}", 
-    namespace: "${PROJECT_PREFIX}-${destination}", 
+    deploymentConfig: "${imageStream}",
+    namespace: "${PROJECT_PREFIX}-${destination}",
     waitTime: '900000'
   )
 }
@@ -121,8 +121,8 @@ def deployAndVerifyTest(srcHash, destination, imageStream){
   tagImage(srcHash, destination, imageStream)
   // verify deployment
   openshiftVerifyDeployment(
-    deploymentConfig: "${imageStream}", 
-    namespace: "${PROJECT_PREFIX}-tools", 
+    deploymentConfig: "${imageStream}",
+    namespace: "${PROJECT_PREFIX}-tools",
     waitTime: '900000'
   )
 }
