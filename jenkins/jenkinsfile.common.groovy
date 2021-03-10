@@ -16,7 +16,7 @@ DB_NAME =  'selfservice-db'
 
 // You shouldn't have to edit these if you're following the conventions
 ROCKETCHAT_CHANNEL='#bcsc-ss-bot'
-PATHFINDER_URL = "pathfinder.gov.bc.ca"
+PATHFINDER_URL = "apps.silver.devops.gov.bc.ca"
 PROJECT_PREFIX = 'ee5243'
 
 
