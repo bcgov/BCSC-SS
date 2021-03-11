@@ -6,6 +6,7 @@ COPY . /app
 
 WORKDIR /app
 
+RUN apt-get -y install libpq
 RUN pip install -r requirements.txt
 
 EXPOSE 5000
