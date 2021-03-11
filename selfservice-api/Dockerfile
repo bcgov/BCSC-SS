@@ -1,11 +1,11 @@
-FROM python:3.7
+FROM public.ecr.aws/bitnami/python:3.9-prod
 
 COPY /selfservice-api/. /app
-RUN set -x \
-	&& chmod -R 777 /app
+# RUN set -x \
+# 	&& chmod -R 777 /app
 
 WORKDIR /app
 
-RUN pip install .
+RUN pip install -r requirements.txt
 
 EXPOSE 5000
