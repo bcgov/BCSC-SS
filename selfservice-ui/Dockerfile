@@ -15,9 +15,9 @@ ENV VUE_APP_KEYCLOAK_CLIENT=${KEYCLOAK_CLIENT}
 ENV VUE_APP_ENABLE_BETA=${ENABLE_BETA}
 
 WORKDIR /src
-COPY /selfservice-ui/package*.json ./
+COPY package*.json ./
 RUN npm install
-COPY /selfservice-ui/. .
+COPY . .
 
 RUN npm run build
 # CMD [ "npm", "run", "serve" ]
