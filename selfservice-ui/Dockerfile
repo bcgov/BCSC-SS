@@ -24,7 +24,7 @@ RUN npm run build
 
 # production stage
 # FROM nginx:stable-alpine as production-stage
-FROM image-registry.openshift-image-registry.svc:5000:1.16 as production-stage
+FROM image-registry.openshift-image-registry.svc:1.16 as production-stage
 
 ## Remove default nginx website, make default.conf writable by OpenShift's user
 # RUN set -x \
