@@ -6,7 +6,10 @@ COPY . /app
 
 WORKDIR /app
 
-RUN apt-get -y install libpq
+RUN apt-get -y update && \
+	apt-get -y upgrade && \
+	apt-get -y install python-psycopg2
+
 RUN pip install -r requirements.txt
 
 EXPOSE 5000
