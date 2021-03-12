@@ -13,3 +13,5 @@ RUN apt-get -y update && \
 RUN pip install -r requirements.txt
 
 EXPOSE 5000
+
+CMD python manage.py db upgrade && gunicorn -b :5000 selfservice_api:create_app()
