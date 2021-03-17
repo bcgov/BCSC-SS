@@ -14,5 +14,4 @@ RUN pip install .
 
 EXPOSE 5000
 
-#CMD tail -f /dev/null
-CMD ["gunicorn", "-b :5000", "selfservice_api:create_app()"]
+CMD ["gunicorn", "-b", ":5000", "selfservice_api:create_app()"]
