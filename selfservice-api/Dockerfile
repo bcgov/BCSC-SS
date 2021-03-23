@@ -1,11 +1,17 @@
-FROM python:3.7
+FROM public.ecr.aws/bitnami/python:3.9-prod
 
-COPY /selfservice-api/. /app
-RUN set -x \
-	&& chmod -R 777 /app
+## Install dependencies
+RUN apt-get -y update && \
+	apt-get -y upgrade && \
+	apt-get -y install --no-install-recommends libpq-dev
 
+COPY . /app
 WORKDIR /app
 
-RUN pip install .
+## Pre-install psycopg2-binary to avoid needing to build from source
+RUN pip install psycopg2-binary==2.8.6 && \
+    pip install .
 
 EXPOSE 5000
+
+CMD ["gunicorn", "-b", ":5000", "selfservice_api:create_app()"]
