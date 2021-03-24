@@ -16,7 +16,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build:
+  zap_scan:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -31,11 +31,11 @@ jobs:
           # GitHub Token to create issues in the repository
           token: # optional, default is ${{ github.token }}
           # Target URL
-          target: https://selfservice-dev.apps.silver.devops.gov.bc.ca/
+          target: https://selfservice-dev.apps.silver.devops.gov.bc.ca
           # Relative path of the ZAP configuration file
           rules_file_name: # optional
           # The Docker file to be executed
-          docker_name: # default is owasp/zap2docker-stable
+          docker_name: 'owasp/zap2docker-stable'
           # Additional command line options
           cmd_options: # optional
           # The title for the GitHub issue to be created
