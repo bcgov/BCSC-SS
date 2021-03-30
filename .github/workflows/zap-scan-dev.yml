@@ -31,7 +31,8 @@ jobs:
           # GitHub Token to create issues in the repository
           token: # optional, default is ${{ github.token }}
           # Target URL
-          target: https://selfservice-dev.apps.silver.devops.gov.bc.ca
+          ##target: https://selfservice-dev.apps.silver.devops.gov.bc.ca
+          target: https://developer.iddev.gov.bc.ca
           # Relative path of the ZAP configuration file
           rules_file_name: # optional
           # The Docker file to be executed
