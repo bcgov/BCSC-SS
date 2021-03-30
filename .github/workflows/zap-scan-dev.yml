@@ -28,6 +28,7 @@ jobs:
         # uses: zaproxy/action-baseline@acd8e997263688cb49cb5ff8247a4b2758c548ab
         uses: zaproxy/action-baseline@v0.4.0
         with:
+          issue_title:  ZAP Scan Baseline Report
           # GitHub Token to create issues in the repository
           token: ${{ github.token }}
           # Target URL
