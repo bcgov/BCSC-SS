@@ -28,7 +28,6 @@ jobs:
         # uses: zaproxy/action-baseline@acd8e997263688cb49cb5ff8247a4b2758c548ab
         uses: zaproxy/action-baseline@v0.4.0
         with:
-          issue_title:  ZAP Scan Baseline Report
           # GitHub Token to create issues in the repository
           token: ${{ github.token }}
           # Target URL
@@ -41,6 +40,6 @@ jobs:
           # Additional command line options
           cmd_options: # optional
           # The title for the GitHub issue to be created
-          issue_title: # optional, default is ZAP Scan Baseline Report
+          issue_title: ZAP Scan Baseline Report
           # The action status will be set to fail if ZAP identifies any alerts during the baseline scan
           fail_action: # optional
