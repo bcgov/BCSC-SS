@@ -37,13 +37,12 @@ jobs:
           server_port: 465
           username: ${{secrets.MAIL_ACCOUNT}}
           password: ${{secrets.MAIL_PASSWORD}}
-          sender: ZAP Scanner
-          from: ${{secrets.EMAIL_ID_FROM}}
+          from: ZAP Scanner <${{secrets.EMAIL_ID_FROM}}>
           to: ${{secrets.EMAIL_ID_ANALYST}}
           cc: ${{secrets.EMAIL_ID_CC}}
           subject: ZAP Scan Report
           body: Zap reports attached.
           # Optional content type (defaults to text/plain)
-          contentType: text/html
+          content_type: text/html
           # Optional attachment files (JSON type. require property 'path')
           attachments: ./zap/wrk/devreport.html, ./zap/wrk/fullreport.html, ./zap/wrk/apireport.html
