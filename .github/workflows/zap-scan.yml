@@ -26,7 +26,23 @@ jobs:
           cat /zap/wrk/fullreport.html
       - name: Run ZAP API Scan
         run: |
-          zap-api-scan.py -t https://selfservice-api-dev.apps.silver.devops.gov.bc.ca/ -g genapi.conf -r apireport.html || echo 0
+          zap-api-scan.py -t https://selfservice-api-dev.apps.silver.devops.gov.bc.ca/ -f openapi -g genapi.conf -r apireport.html || echo 0
           pwd && ls -l /zap/wrk/
           cat /zap/wrk/apireport.html
-          
+      - name: Send Reports
+        uses: devellany/send-mailer@v1.0.2
+        with:
+          host: ${{secrets.MAIL_SERVER}}
+          # Optional port (defaults to 465)
+          port: 25
+          account: ${{secrets.MAIL_ACCOUNT}}
+          password: ${{secrets.MAIL_PASSWORD}}
+          sender: ZAP Scanner
+          from: ${{secrets.EMAIL_ID_FROM}}
+          to: ${{secrets.EMAIL_ID_ANALYST}}
+          subject: ZAP Scan Report
+          body: Zap reports attached.
+          # Optional content type (defaults to text/plain)
+          contentType: text/html
+          # Optional attachment files (JSON type. require property 'path')
+          attachments: '[{"path":"/zap/wrk/devreport.html"}, {"path":"/zap/wrk/fullreport.html"}, {"path":"/zap/wrk/apireport.html"}]'
