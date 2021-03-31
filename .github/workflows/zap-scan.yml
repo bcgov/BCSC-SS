@@ -26,7 +26,7 @@ jobs:
           cat /zap/wrk/fullreport.html
       - name: Run ZAP API Scan
         run: |
-          zap-api-scan.py -t https://selfservice-api-dev.apps.silver.devops.gov.bc.ca/ -g gen.conf -r apireport.html || echo 0
+          zap-api-scan.py -t https://selfservice-api-dev.apps.silver.devops.gov.bc.ca/ -g genapi.conf -r apireport.html || echo 0
           pwd && ls -l /zap/wrk/
           cat /zap/wrk/apireport.html
           
