@@ -30,7 +30,7 @@ jobs:
           pwd && ls -l /zap/wrk/
           cat /zap/wrk/apireport.html
       - name: Send Reports
-        uses: devellany/send-mailer@v1.0.2
+        uses: dawidd6/action-send-mail@v2
         with:
           host: ${{secrets.MAIL_SERVER}}
           # Optional port (defaults to 465)
