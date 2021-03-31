@@ -7,13 +7,26 @@ jobs:
       image: owasp/zap2docker-stable
       options: --user root -v ${{ github.workspace }}:/zap/wrk/:rw
     steps:
-      - uses: actions/checkout@v2
-      - run: pwd && ls -l
-      - run: pip install --upgrade pip github3.py
-      - run: pip3 install --upgrade pip github3.py
-      - name: run zap baseline scan
-        run: zap-baseline.py -t https://selfservice-dev.pathfinder.gov.bc.ca/ -g gen.conf -r zapdevreport.html || echo 0
-      - run: pwd && ls -l /zap/wrk/
-      - run: cat /zap/wrk/zapdevreport.html
-      - run: apt-get update && apt-get install -q -y bsd-mailx
-      - run: echo "ZAP Scan Report" | mailx -s "ZAP Scan Report" -r "zorin.samji@gov.bc.ca" -a /zap/wrk/zapdevreport.html vysakh.menon@aot-technologies.com
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: install prerequisites
+        run: | 
+          pwd && ls -l
+          pip install --upgrade pip github3.py
+          pip3 install --upgrade pip github3.py
+      - name: Run ZAP Base Scan
+        run: |
+          zap-baseline.py -t https://developer.iddev.gov.bc.ca/ -g gen.conf -r devreport.html || echo 0
+          pwd && ls -l /zap/wrk/
+          cat /zap/wrk/devreport.html
+      - name: Run ZAP Full Scan
+        run: |
+          zap-full-scan.py -t https://developer.iddev.gov.bc.ca/ -g genfull.conf -r fullreport.html || echo 0
+          pwd && ls -l /zap/wrk/
+          cat /zap/wrk/fullreport.html
+      - name: Run ZAP API Scan
+        run: |
+          zap-api-scan.py -t https://selfservice-api-dev.apps.silver.devops.gov.bc.ca/ -g gen.conf -r apireport.html || echo 0
+          pwd && ls -l /zap/wrk/
+          cat /zap/wrk/apireport.html
+          
