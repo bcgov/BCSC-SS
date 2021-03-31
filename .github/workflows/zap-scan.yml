@@ -33,16 +33,23 @@ jobs:
         uses: dawidd6/action-send-mail@v2
         with:
           server_address: ${{secrets.MAIL_SERVER}}
-          # Optional port (defaults to 465)
-          server_port: 465
+          server_port: ${{secrets.MAIL_PORT}}
           username: ${{secrets.MAIL_ACCOUNT}}
           password: ${{secrets.MAIL_PASSWORD}}
-          from: ZAP Scanner <${{secrets.EMAIL_ID_FROM}}>
-          to: ${{secrets.EMAIL_ID_ANALYST}}
-          cc: ${{secrets.EMAIL_ID_CC}}
           subject: ZAP Scan Report
+          # Literal body:
           body: Zap reports attached.
-          # Optional content type (defaults to text/plain)
+          # Read file contents as body:
+          # body: file://README.md
+          to: ${{secrets.EMAIL_ID_ANALYST}}
+          from: ${{secrets.EMAIL_ID_FROM}}
+          # Optional carbon copy recipients
+          cc: ${{secrets.EMAIL_ID_CC}}
+          # Optional blind carbon copy recipients
+          # bcc: r2d2@example.com,hansolo@example.com
+          # Optional content type (defaults to text/plain):
           content_type: text/html
-          # Optional attachment files (JSON type. require property 'path')
-          attachments: ./zap/wrk/devreport.html, ./zap/wrk/fullreport.html, ./zap/wrk/apireport.html
+          # Optional converting Markdown to HTML (set content_type to text/html too):
+          # convert_markdown: true
+          # Optional attachments:
+          attachments: /zap/wrk/devreport.html, /zap/wrk/fullreport.html, /zap/wrk/apireport.html
